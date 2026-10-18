@@ -1,3 +1,11 @@
+/* 스크립트는 CSS가 준비됐다고 가정하지 않는다. WebKit은 모듈 스크립트를 외부 스타일시트보다 먼저 돌릴 수 있어서,
+   그대로 읽으면 아래 토큰이 비고 판화가 대체 서체로 새겨진다. 이 모듈을 가져오는 쪽은 모두 여기서 함께 기다린다 */
+const sheetReady = (l: HTMLLinkElement) => l.sheet ? Promise.resolve() : new Promise<void>(r => {
+  l.addEventListener('load', () => r(), { once: true });
+  l.addEventListener('error', () => r(), { once: true });
+});
+await Promise.all([...document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]')].map(sheetReady));
+
 export const root = document.documentElement;
 export const reduce = typeof window.matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cs = getComputedStyle(root);

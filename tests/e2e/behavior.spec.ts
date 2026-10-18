@@ -163,6 +163,7 @@ test.describe('review fixes', () => {
       const orig = FontFaceSet.prototype.load;
       FontFaceSet.prototype.load = function (font: string, text?: string) { w.__fonts.push(font); return orig.call(this, font, text); };
     });
+    await page.route(/_astro\/.*\.css$/, async r => { await new Promise(res => setTimeout(res, 800)); await r.continue(); });  // 경쟁을 매번 재현
     await page.goto('./');
     await ready(page);
     const fonts = await page.evaluate(() => (window as unknown as { __fonts: string[] }).__fonts);
