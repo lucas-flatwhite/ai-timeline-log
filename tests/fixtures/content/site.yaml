@@ -1,8 +1,9 @@
+# 작품 이름. 어느 언어에서도 같다
+name: AI Timeline Log
 start: 2022-11-30
 asOf: 2026-10-05
 firstEdition: 2026-10-05
 ko:
-  name: 생성형 AI 목판 연표
   heroGlyph: { wide: "{days}일", tall: "{days}\n일" }
   lede: "{startLong}부터 {asOfLong}까지 장면 {count}개."
   description: "설명 {count}"

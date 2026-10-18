@@ -21,6 +21,7 @@ describe('loadContent', () => {
   test('loads and normalizes the valid fixture', () => {
     const c = loadContent(FIXTURE);
     expect(c.site.asOf).toBe('2026-10-05');
+    expect(c.site.name).toBe('AI Timeline Log');    // 이름은 언어와 상관없이 하나
     expect(c.scenes.map(s => s.id)).toEqual(['2023-03-gpt-4']);
     expect(c.scenes[0].order).toBe(0);
     expect(c.scenes[0].aliases).toEqual([]);

@@ -26,7 +26,7 @@ ChatGPT 공개(2022-11-30)부터 기준일까지 생성형 AI의 주요 장면�
 | 내비게이션 | 데스크톱 눈금자를 색인으로 확장, 모바일은 상단 표시줄을 눌러 목차 시트 |
 | 빌드 | Astro (정적 출력). 내용은 빌드 시 HTML로 렌더링하고 JS는 판화·스크롤만 맡는다 |
 | 배포 | GitHub Pages, `https://lucas-flatwhite.github.io/ai-timeline-log/` (base `/ai-timeline-log`) |
-| 작품 이름 | 고정: "생성형 AI 목판 연표" / "AI Timeline Log"(repo 이름과 같음). 일수는 표지·설명·OG 이미지에만 |
+| 작품 이름 | 고정: 모든 언어에서 "AI Timeline Log"(repo 이름과 같음). 일수는 표지·설명·OG 이미지에만 |
 | 폰트 | fontsource로 직접 배포(OFL). Google Fonts 의존 제거 |
 | 라이선스 | 코드 MIT, 내용(`content/`) CC BY 4.0 |
 | 분석 도구 | 넣지 않음 |
@@ -123,17 +123,16 @@ en:
 
 ```yaml
 # content/site.yaml
+name: AI Timeline Log      # 작품 이름. 언어와 상관없이 하나
 start: 2022-11-30
 asOf: 2026-10-05           # 기준일. 갱신할 때 직접 바꾼다
 firstEdition: 2026-10-05   # 첫 판의 추가일. 이보다 늦은 added만 "최근 추가"로 취급
 ko:
-  name: 생성형 AI 목판 연표
   heroGlyph: { wide: "{days}일", tall: "{days}\n일" }
-  lede: "ChatGPT가 공개된 {start}부터 {asOf}까지, 생성형 AI가 지나온 장면 {count}개를 판화로 찍었습니다. …"
+  lede: "ChatGPT가 공개된 {startLong}부터 현재까지, AI가 지나온 장면들을 기록합니다."
 en:
-  name: AI Timeline Log
   heroGlyph: { wide: "{days} days", tall: "{days}\ndays" }
-  lede: "..."
+  lede: "A record of the moments AI has passed through, from ChatGPT's launch on {startLong} to the present."
 ```
 
 ### 4.3 기타 컬렉션
@@ -235,7 +234,7 @@ en:
 - 첫 판 이후 추가된 장면에 출처 없음
 - 장면이 있는 연도에 연도 요약 없음
 - 금지어: ko `놀라운`, `혁명적`, `게임 체인저` / en `revolutionary`, `game-changer`, `groundbreaking`, `stunning`, `incredible` / 공통 `!`, 이모지
-- 상대 시간 표현: ko `오늘`, `최근`, `올해`, `현재` / en `today`, `recently`, `this year`
+- 상대 시간 표현(장면·연도·시기 글에만): ko `오늘`, `최근`, `올해`, `현재` / en `today`, `recently`, `this year`. 사이트 소개 문구의 "현재까지"(`to the present`)는 계속 갱신되는 로그라는 뜻이라 예외다
 
 **경고**
 - 맞는 원본 출처가 연결되지 않은 첫 판 장면

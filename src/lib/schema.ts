@@ -38,7 +38,6 @@ export const sceneSchema = z.object({
 });
 
 const siteText = z.object({
-  name: text,
   heroGlyph: z.object({ wide: text, tall: text }),
   lede: text,
   description: text,
@@ -46,7 +45,7 @@ const siteText = z.object({
   ledgerNote: text,
   sourcesNote: text,
 });
-export const siteSchema = z.object({ start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText.optional() });
+export const siteSchema = z.object({ name: text, start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText.optional() });
 
 const titled = z.object({ title: text, body: text });
 export const yearsSchema = z.record(z.string().regex(/^\d{4}$/), z.object({ ko: titled, en: titled.optional() }));

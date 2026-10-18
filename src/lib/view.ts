@@ -100,7 +100,7 @@ export function buildView(c: Content, locale: Locale): PageView {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
     barTitle: title, barStart: startDot,
-    heroName: st.name, heroRange: `${startDot} → ${asOfDot}`, heroSr: t.heroSr,
+    heroName: site.name, heroRange: `${startDot} → ${asOfDot}`, heroSr: t.heroSr,
     heroWide, heroTall, heroLines: heroTall.split('\n'),
     lede: fill(st.lede, vars), cue: t.cue,
     blocks, scenes,

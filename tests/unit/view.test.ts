@@ -20,13 +20,13 @@ describe('buildView(ko) reproduces the original strings', () => {
     expect(v.ogDescription).toBe('ChatGPT 공개부터 2026년 10월까지, 생성형 AI의 장면 28개를 목판화로 찍은 스크롤 연표.');
     expect(v.barTitle).toBe('생성형 AI 1,405일');
     expect(v.barStart).toBe('2022.11.30');
-    expect(v.heroName).toBe('생성형 AI 목판 연표');
+    expect(v.heroName).toBe('AI Timeline Log');
     expect(v.heroRange).toBe('2022.11.30 → 2026.10.05');
     expect(v.heroSr).toBe('생성형 AI ');
     expect(v.heroLines).toEqual(['1,405', '일']);
     expect(v.heroWide).toBe('1,405일');
     expect(v.heroTall).toBe('1,405\n일');
-    expect(v.lede).toBe('ChatGPT가 공개된 2022년 11월 30일부터 2026년 10월 5일까지, 생성형 AI가 지나온 장면 28개를 판화로 찍었습니다. 내리면 판이 한 장씩 멈춰 서서 자세한 내용을 보여 주고, 더 내리면 다음 판으로 넘어갑니다.');
+    expect(v.lede).toBe('ChatGPT가 공개된 2022년 11월 30일부터 현재까지, AI가 지나온 장면들을 기록합니다.');
     expect(v.cue).toBe('아래로');
   });
 
