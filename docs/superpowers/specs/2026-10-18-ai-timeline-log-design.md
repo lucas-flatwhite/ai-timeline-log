@@ -25,7 +25,7 @@ ChatGPT 공개(2022-11-30)부터 기준일까지 생성형 AI의 주요 장면�
 | 언어 주소 | `/` 한국어, `/en/` 영어. 자동 리다이렉트 없음. 언어 전환 링크 제공 |
 | 내비게이션 | 데스크톱 눈금자를 색인으로 확장, 모바일은 상단 표시줄을 눌러 목차 시트 |
 | 빌드 | Astro (정적 출력). 내용은 빌드 시 HTML로 렌더링하고 JS는 판화·스크롤만 맡는다 |
-| 배포 | GitHub Pages, `https://lucas-flatwhite.github.io/ai-timeline-log/` (base `/ai-timeline-log`) |
+| 배포 | Vercel. 정식 주소 `https://lucasflatwhite.com/ai-timeline-log/` (base `/ai-timeline-log`). 이 저장소는 별도 Vercel 프로젝트(`ai-timeline-log.vercel.app`)로 배포하고, 메인 사이트(`lucasflatwhite-com`)의 `vercel.json`이 `/ai-timeline-log/*`를 이 프로젝트로 rewrite한다. 빌드 결과는 루트에 놓이므로 이 저장소의 `vercel.json`이 `/ai-timeline-log/*`를 `/*`로 되돌린다 |
 | 작품 이름 | 고정: 모든 언어에서 "AI Timeline Log"(repo 이름과 같음). 탭 제목·표시줄·맺음 마지막 줄은 이름만. 일수는 표지 판화와 맺음 제목에만 |
 | 폰트 | fontsource로 직접 배포(OFL). Google Fonts 의존 제거 |
 | 라이선스 | 코드 MIT, 내용(`content/`) CC BY 4.0 |
@@ -71,7 +71,7 @@ scripts/
   og.ts                      빌드된 표지를 Playwright로 찍어 OG 이미지 생성
 tests/                       Playwright 테스트, 데이터 검사 단위 테스트
 .github/
-  workflows/deploy.yml       빌드·검사·배포
+  (배포는 Vercel이 main push마다 한다. vercel.json 참고)
   workflows/check.yml        PR 검사
   ISSUE_TEMPLATE/correction.yml
 docs/editorial.md            편집 원칙 (선정 기준, 문체, 금지어, 출처, 정정)
@@ -280,7 +280,7 @@ en:
 2. **로그 구조**: 고정 ID와 시드, 판 번호 제거, 기준일 계산, 최근 추가, 정정·갱신 기록, 빌드 검사, 기존 출처 연결.
 3. **내비게이션**: 상단 표시줄 버튼, 목차 시트, 눈금자 색인.
 4. **영어**: 번역과 용어집, `/en/`, 언어 전환, hreflang, 영어 레이아웃 검증.
-5. **공유와 배포**: OG 이미지, 메타, GitHub Actions(PR 검사, Pages 배포), 라이선스 분리, `docs/editorial.md`, `CLAUDE.md`, 이슈 템플릿, README.
+5. **공유와 배포**: OG 이미지, 메타, GitHub Actions(PR 검사), Vercel 배포, 라이선스 분리, `docs/editorial.md`, `CLAUDE.md`, 이슈 템플릿, README.
 
 ## 14. 범위 밖
 
