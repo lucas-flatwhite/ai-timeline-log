@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>생성형 AI 1,405일</title>
+<meta name="description" content="ChatGPT 공개(2022.11.30)부터 2026년 10월까지 생성형 AI의 주요 장면 28개를 흑백 목판화 스타일로 찍어 스크롤로 넘겨 보는 연표.">
+<meta property="og:title" content="생성형 AI 1,405일">
+<meta property="og:description" content="ChatGPT 공개부터 2026년 10월까지, 생성형 AI의 장면 28개를 목판화로 찍은 스크롤 연표.">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 목판 연표. 먹판(표지·연도)과 한지(장면)가 번갈아 찍힌다.
+   장면마다 판이 화면에 고정되고, 설명판의 줄이 하나씩 먹을 입은 뒤 다음 판으로 넘어간다.
+   흑백 단일 톤을 의도한 디자인이라 다크 모드 블록 없이 모든 색을 명시한다. */
+:root{
+  --paper:#E3E1D9;
+  --ink:#111110;
+  --ink-2:#3B3A35;
+  --ghost:#A3A097;
+  --display:"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --body:"Hahmlet","AppleMyungjo","Nanum Myeongjo","Batang","Noto Serif KR",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --top:env(safe-area-inset-top,0px);
+  --bot:env(safe-area-inset-bottom,0px);
+  --avail:calc(100svh - var(--top) - var(--bot));
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink)}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+a{color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+/* ── 고정 표시줄 ─────────────────────────────── */
+.bar{position:fixed;left:0;right:0;top:0;z-index:20;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:calc(12px + var(--top)) 16px 10px;color:#fff;mix-blend-mode:difference;pointer-events:none;opacity:0;transition:opacity .35s}
+.bar.on{opacity:1}
+.bar b{font:400 14px/1 var(--display);letter-spacing:.02em}
+.bar span{font:500 11.5px/1 var(--mono);letter-spacing:.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar i{position:absolute;left:0;bottom:0;height:2px;width:calc(var(--p,0) * 100%);background:currentColor;transition:width .4s}
+@media (min-width:900px){.bar{padding-inline:5vw}}
+
+.rail{display:none}
+@media (min-width:960px){
+  .rail{display:block;position:fixed;z-index:20;right:22px;top:50%;height:60vh;width:74px;transform:translateY(-50%);color:#fff;mix-blend-mode:difference;opacity:0;pointer-events:none;transition:opacity .35s}
+  .rail.on{opacity:1;pointer-events:auto}
+}
+.rail .ax{position:absolute;right:0;top:0;bottom:0;width:1px;background:currentColor}
+.rail .yl{position:absolute;right:32px;transform:translateY(-50%);font:500 10.5px/1 var(--mono);letter-spacing:.04em}
+.rail button{position:absolute;right:0;width:24px;height:10px;transform:translateY(-50%);border:0;padding:0;background:transparent;color:inherit;cursor:pointer}
+.rail button::after{content:"";position:absolute;right:0;top:4.5px;width:9px;height:1px;background:currentColor;transition:width .2s,height .2s,top .2s}
+.rail button:hover::after{width:16px}
+.rail button.on::after{width:24px;height:3px;top:3.5px}
+
+/* ── 표지 ─────────────────────────────────────── */
+.hero{position:relative;height:calc(var(--avail) * 1.6);min-height:840px;background:var(--ink);color:var(--paper)}
+.hero-stage{position:sticky;top:var(--top);height:var(--avail);min-height:520px;overflow:hidden;display:flex;flex-direction:column;padding-inline:16px}
+.hero canvas{position:absolute;left:0;top:0;pointer-events:none;display:block}
+.rays{opacity:0;transform-origin:50% 50%;will-change:transform,opacity}
+.hero-top,.hero-foot{position:relative;z-index:2;background:var(--ink);margin-inline:-16px;padding-inline:16px;display:flex;justify-content:space-between;gap:10px 16px;flex-wrap:wrap}
+.hero-top{align-items:baseline;padding-block:14px 12px;border-bottom:1px solid var(--paper)}
+.hero-foot{align-items:flex-end;padding-block:14px 20px;border-top:1px solid var(--paper)}
+.hero-name{margin:0;font:400 15px/1.2 var(--display);letter-spacing:.02em}
+.hero-range{margin:0;font:500 12px/1.2 var(--mono);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.numtext{position:relative;z-index:1;flex:1 1 auto;min-height:0;margin:0;display:flex;flex-direction:column;justify-content:center;font:400 30vw/.92 var(--display);letter-spacing:-.02em;color:var(--paper);transition:color .6s}
+.numtext span{display:block}
+.numtext.printed{color:transparent}
+@media (min-aspect-ratio:11/10){.numtext{flex-direction:row;align-items:center;font-size:min(22vw,40svh)}}
+.hero-lede{margin:0;max-width:36ch;font-size:15.5px;line-height:1.65;text-wrap:pretty}
+.cue{margin:0;font:500 12px/1 var(--mono);letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.cue::after{content:"";width:1px;height:30px;background:currentColor;transform-origin:top;animation:drop 1.9s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);opacity:1}55%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media (min-width:900px){.hero-stage{padding-inline:5vw}.hero-top,.hero-foot{margin-inline:-5vw;padding-inline:5vw}.hero-lede{font-size:17px}}
+
+/* ── 연도 판 ──────────────────────────────────── */
+.yr{position:relative;min-height:calc(var(--avail) * 1.15);background:var(--ink);color:var(--paper);display:flex;align-items:flex-end;padding-inline:16px;padding-block:0 12svh;overflow:hidden}
+.yr canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.yr-text{position:relative;z-index:1;max-width:32rem;background:var(--ink);border:1px solid var(--paper);padding:16px 18px 14px}
+.yr-eyebrow{margin:0;font:500 12px/1.4 var(--mono);letter-spacing:.08em}
+.yr h2{margin:6px 0 10px;font:400 clamp(28px,5.4vw,52px)/1.1 var(--display);text-wrap:balance}
+.yr p{margin:0;font-size:15px;line-height:1.65;max-width:38ch;text-wrap:pretty}
+.yr .count{margin-top:12px;font:500 11.5px/1.4 var(--mono);letter-spacing:.04em}
+@media (min-width:900px){.yr{padding-inline:5vw}.yr p{font-size:16px}}
+
+/* ── 장면 ─────────────────────────────────────── */
+.ch{position:relative;background:var(--paper)}
+.stage{position:relative;min-height:var(--avail);display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;padding-inline:16px;padding-block:56px 16px;overflow:hidden}
+.pin .ch:not(.loose){height:calc(var(--avail) + var(--n) * 26svh + 40svh)}
+.pin .ch:not(.loose) .stage{position:sticky;top:var(--top);height:var(--avail);min-height:0}
+.print{position:absolute;left:0;top:0;width:100%;height:100%;display:block;transform-origin:62% 38%;pointer-events:none}
+.plate{position:relative;z-index:1;background:var(--paper);border:2px solid var(--ink);padding:14px 16px 10px;max-width:560px}
+.meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 11px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+.meta .no{font:400 14px/1 var(--display);letter-spacing:.02em}
+.meta .when{font:500 11.5px/1 var(--mono);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.meta .kick{margin-left:auto;font:600 12px/1 var(--body);letter-spacing:.06em}
+.plate h2{margin:0 0 8px;font:400 26px/1.16 var(--display);letter-spacing:-.005em;text-wrap:balance}
+.lede{margin:0 0 11px;color:var(--ink-2);font-size:14.5px;line-height:1.6;text-wrap:pretty}
+.cuts{list-style:none;margin:0;padding:0}
+.cuts li{display:block;padding:7px 0 6px;border-top:1px dotted currentColor;color:var(--ink);transition:color .4s ease}
+.pin .ch:not(.loose) .cuts li:not(.inked){color:var(--ghost)}
+.cuts time{position:relative;display:inline-block;margin-right:8px;padding-left:12px;font:500 11.5px/1 var(--mono);letter-spacing:.02em;font-variant-numeric:tabular-nums;vertical-align:1px}
+.cuts time::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;margin-top:-3px;background:currentColor;transform:scale(1);transition:transform .3s ease}
+.pin .ch:not(.loose) .cuts li:not(.inked) time::before{transform:scale(0)}
+.cuts span{font-size:14px;line-height:1.55}
+.dense .plate{padding:11px 13px 8px}
+.dense .plate h2{font-size:22px;margin-bottom:6px}
+.dense .lede{font-size:13.5px;line-height:1.5;margin-bottom:8px}
+.dense .cuts li{padding:5px 0 4px}
+.dense .cuts span{font-size:13px;line-height:1.48}
+@media (min-width:900px){
+  .stage{align-items:flex-start;padding-inline:5vw;padding-block:84px 7svh}
+  .plate{width:min(560px,44vw);padding:20px 24px 14px}
+  .plate h2{font-size:clamp(30px,3vw,44px)}
+  .lede{font-size:16px}
+  .cuts li{display:grid;grid-template-columns:5.6rem 1fr;gap:12px;align-items:baseline;padding:8px 0 7px}
+  .cuts time{margin:0}
+  .cuts span{font-size:15px;line-height:1.55}
+  .dense .plate h2{font-size:30px}
+  .dense .lede{font-size:14.5px}
+  .dense .cuts span{font-size:14px}
+}
+
+/* ── 맺음 ─────────────────────────────────────── */
+.outro{position:relative;background:var(--paper);padding-inline:16px;padding-block:18svh 10svh}
+.outro-in{max-width:900px;margin:0 auto}
+.eyebrow{margin:0 0 10px;font:500 12px/1.4 var(--mono);letter-spacing:.06em}
+.outro h2{margin:0 0 6vh;font:400 clamp(40px,9vw,96px)/1.02 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.arcs{list-style:none;margin:0 0 10vh;padding:0;border-top:2px solid var(--ink)}
+.arcs li{display:grid;gap:6px;padding:18px 0;border-bottom:1px solid var(--ink)}
+.arcs .span{font:500 12px/1.4 var(--mono);letter-spacing:.04em}
+.arcs h3{margin:0;font:400 24px/1.2 var(--display)}
+.arcs p{margin:0;max-width:54ch;text-wrap:pretty}
+@media (min-width:760px){.arcs li{grid-template-columns:10rem 12rem 1fr;gap:24px;align-items:baseline}}
+.sub{margin:0 0 14px;font:400 26px/1.2 var(--display)}
+.note{margin:0 0 18px;color:var(--ink-2);font-size:14px;max-width:60ch}
+.ledger{display:grid;gap:0;margin:0 0 10vh}
+.lab{display:grid;gap:6px;padding:12px 0;border-top:1px solid var(--ink)}
+.lab:last-child{border-bottom:1px solid var(--ink)}
+@media (min-width:760px){.lab{grid-template-columns:9.5rem 1fr;gap:24px;align-items:baseline}}
+.lab h3{margin:0;font:400 17px/1.3 var(--display)}
+.lab ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;row-gap:4px;font-size:14.5px;line-height:1.5;min-width:0}
+.lab li{white-space:nowrap}
+.lab li+li::before{content:"→";margin:0 8px;color:var(--ink-2)}
+.lab time{margin-left:5px;font:500 11px/1 var(--mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.src{border-top:2px solid var(--ink);padding-top:14px}
+.src summary{cursor:pointer;font:400 19px/1.3 var(--display)}
+.src p{font-size:14px;color:var(--ink-2);max-width:62ch}
+.src ul{margin:12px 0 0;padding-left:1.1em;font:500 12px/1.75 var(--mono);overflow-wrap:anywhere}
+.end{margin-top:8vh;padding-top:12px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:500 12px/1.4 var(--mono);letter-spacing:.04em}
+
+@media (prefers-reduced-motion:reduce){
+  .cue::after{animation:none}
+  .cuts li,.cuts time::before,.bar,.rail,.numtext{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar" aria-hidden="true"><b>생성형 AI 1,405일</b><span id="barT">2022.11.30</span><i></i></div>
+<nav class="rail" id="rail" aria-label="연표 바로가기"><div class="ax"></div></nav>
+
+<header class="hero" id="hero">
+  <div class="hero-stage" id="heroStage">
+    <canvas class="rays" id="rays" aria-hidden="true"></canvas>
+    <canvas class="nums" id="nums" aria-hidden="true"></canvas>
+    <div class="hero-top">
+      <p class="hero-name">생성형 AI 목판 연표</p>
+      <p class="hero-range">2022.11.30 → 2026.10.05</p>
+    </div>
+    <h1 class="numtext" id="numtext"><span class="sr">생성형 AI </span><span>1,405</span><span>일</span></h1>
+    <div class="hero-foot">
+      <p class="hero-lede">ChatGPT가 공개된 2022년 11월 30일부터 2026년 10월 5일까지, 생성형 AI가 지나온 장면 28개를 판화로 찍었습니다. 내리면 판이 한 장씩 멈춰 서서 자세한 내용을 보여 주고, 더 내리면 다음 판으로 넘어갑니다.</p>
+      <p class="cue">아래로</p>
+    </div>
+  </div>
+</header>
+
+<main id="tl"></main>
+
+<section class="outro" id="outro" aria-labelledby="outroH">
+  <div class="outro-in">
+    <p class="eyebrow">2026.10.05 · 오늘</p>
+    <h2 id="outroH">1,405일 동안 바뀐 것</h2>
+    <ol class="arcs">
+      <li><span class="span">2022.11 – 2023</span><h3>묻고 답하기</h3><p>사람이 질문하고 AI가 글로 답했다. 경쟁은 누가 더 그럴듯하게 답하느냐였고, 규칙을 만드는 논의가 막 시작됐다.</p></li>
+      <li><span class="span">2024 – 2025</span><h3>생각하고 손쓰기</h3><p>AI가 영상과 목소리를 다루고, 답하기 전에 추론하고, 화면을 보며 코드를 고쳤다. 경쟁의 단위가 모델에서 데이터센터와 전력으로 커졌다.</p></li>
+      <li><span class="span">2026</span><h3>맡기고 통제하기</h3><p>사람이 AI에게 몇 시간짜리 일을 맡기기 시작했다. 같은 능력이 보안 위협이 되자 모델을 언제, 누구에게 공개할지를 정부와 회사가 함께 따지게 됐다.</p></li>
+    </ol>
+
+    <h2 class="sub">주요 모델 판본</h2>
+    <p class="note">연구소별 대표 모델의 공개 시점입니다. 날짜는 연.월 기준이며, Mythos 계열처럼 제한 공개된 모델도 포함했습니다.</p>
+    <div class="ledger" id="ledger"></div>
+
+    <details class="src">
+      <summary>출처와 기준</summary>
+      <p>2026년 10월 5일까지의 각 사 발표와 언론 보도를 바탕으로 정리했습니다. 2026년 하반기 일부 사건은 조사와 소송이 진행 중이어서 이후 사실관계가 달라질 수 있습니다.</p>
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/2023_in_artificial_intelligence" target="_blank" rel="noopener">Wikipedia · 2023 in artificial intelligence</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/2024_in_artificial_intelligence" target="_blank" rel="noopener">Wikipedia · 2024 in artificial intelligence</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/2026_in_artificial_intelligence" target="_blank" rel="noopener">Wikipedia · 2026 in artificial intelligence</a></li>
+        <li><a href="https://postcutoff.com/ai" target="_blank" rel="noopener">Post-Cutoff · AI news since mid-2026</a></li>
+        <li><a href="https://www.mt.co.kr/tech/2026/01/22/2026012216142218479" target="_blank" rel="noopener">머니투데이 · 세계 최초 AI 기본법 시행 첫날</a></li>
+        <li><a href="https://www.korea.kr/news/reporterView.do?newsId=148959404" target="_blank" rel="noopener">정책브리핑 · 인공지능기본법 전면 시행</a></li>
+        <li><a href="https://edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=01679366642362768" target="_blank" rel="noopener">이데일리 · 젠슨 황 GPU 26만장 공급</a></li>
+        <li><a href="https://www.techtarget.com/searchcio/feature/OpenClaw-and-Moltbook-explained-The-latest-AI-agent-craze" target="_blank" rel="noopener">TechTarget · OpenClaw and Moltbook explained</a></li>
+        <li><a href="https://techstartups.com/2026/02/05/anthropics-claude-plugins-spark-285-billion-software-stock-selloff-as-ai-targets-entire-saas-workflows/" target="_blank" rel="noopener">Tech Startups · $285B software selloff</a></li>
+        <li><a href="https://x.ai/news/xai-joins-spacex" target="_blank" rel="noopener">xAI · xAI joins SpaceX</a></li>
+        <li><a href="https://www.npr.org/2026/03/06/g-s1-112713/pentagon-labels-ai-company-anthropic-a-supply-chain-risk" target="_blank" rel="noopener">NPR · Pentagon labels Anthropic a supply chain risk</a></li>
+        <li><a href="https://www.defenseone.com/threats/2026/09/anthropic-lawsuit-supply-chain-risk/416252/" target="_blank" rel="noopener">Defense One · Anthropic loses legal fight</a></li>
+        <li><a href="https://www.anthropic.com/glasswing" target="_blank" rel="noopener">Anthropic · Project Glasswing</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Claude_Mythos" target="_blank" rel="noopener">Wikipedia · Claude Mythos</a></li>
+        <li><a href="https://openai.com/index/introducing-gpt-5-5/" target="_blank" rel="noopener">OpenAI · Introducing GPT-5.5</a></li>
+        <li><a href="https://www.yottalabs.ai/post/deepseek-v4-release-date-specs-how-to-access-2026" target="_blank" rel="noopener">Yotta Labs · DeepSeek V4 release dates</a></li>
+        <li><a href="https://www.dlapiper.com/en-us/insights/publications/2026/06/promoting-advanced-ai-innovation-and-security-executive-order-top-points" target="_blank" rel="noopener">DLA Piper · June 2, 2026 executive order</a></li>
+        <li><a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Anthropic · Fable 5 / Mythos 5 access statement</a></li>
+        <li><a href="https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html" target="_blank" rel="noopener">CNBC · Export controls lifted</a></li>
+        <li><a href="https://openai.com/index/previewing-gpt-5-6-sol/" target="_blank" rel="noopener">OpenAI · Previewing GPT-5.6 Sol</a></li>
+        <li><a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/" target="_blank" rel="noopener">Google · AI updates, September 2026</a></li>
+      </ul>
+    </details>
+
+    <p class="end"><span>판 28장 · 2022.11.30 – 2026.10.05</span><span>생성형 AI 1,405일</span></p>
+  </div>
+</section>
+
+<script>
+(function(){
+'use strict';
+
+/* ── 기록 ─────────────────────────────────────────
+   d: 눈금자에 찍히는 대표 날짜, g: 판에 새길 글자,
+   p: 칼질 방향(h 가로, d 사선, w 물결, c 동심원), m: 바탕 문양 */
+var CH=[
+{d:'2022-11-30',when:'2022.11.30',k:'출발점',t:'ChatGPT 공개',l:'OpenAI가 GPT-3.5 기반 대화형 챗봇을 연구 프리뷰로 무료 공개했다. 입력창에 질문을 쓰는 일이 곧 AI를 쓰는 일이 됐다.',i:[['12.05','공개 닷새 만에 사용자 100만 명을 넘었다.'],['12.21','구글 경영진이 검색 사업 위협에 ‘코드 레드’를 선언했다는 보도.'],['23.01','두 달 만에 월간 사용자 1억 명 추정(UBS). 당시 가장 빨리 성장한 소비자 앱.'],['23.01.23','마이크로소프트, OpenAI에 수년간 수십억 달러 추가 투자 발표.']],g:'ChatGPT',p:'h',m:'rays'},
+{d:'2023-02-07',when:'2023.02',k:'빅테크의 반격',t:'빙, 바드, 라마',l:'검색을 지키려는 구글과 빼앗으려는 마이크로소프트가 같은 주에 챗봇을 내놓았다. 메타는 모델을 연구자에게 풀었다.',i:[['02.06','구글, 챗봇 바드 발표. 이틀 뒤 홍보 시연 속 오답이 알려지며 알파벳 시가총액 약 1,000억 달러 증발.'],['02.07','마이크로소프트, GPT 기반 새 빙 공개. 코드명 ‘시드니’의 감정적인 대화가 화제가 됐다.'],['02.24','메타, 연구용 모델 LLaMA 공개. 일주일 만에 가중치가 유출돼 개인 PC용 오픈 모델 붐이 일었다.']],g:'-$100B',p:'d',a:-14,m:'fall'},
+{d:'2023-03-14',when:'2023.03.14',k:'성능 도약',t:'GPT-4',l:'이미지를 읽고 미국 모의 변호사시험에서 상위 10% 점수를 낸 GPT-4가 나왔다. 같은 날 Anthropic이 첫 Claude를 공개했다.',i:[['03.15','미드저니 v5 공개. 며칠 뒤 ‘패딩 입은 교황’ 합성 사진이 진짜처럼 퍼졌다.'],['03.22','머스크·워즈니악 등이 GPT-4보다 강한 AI의 훈련을 6개월 멈추자는 공개서한에 서명.'],['03.31','이탈리아 개인정보 당국, ChatGPT 접속 차단. 약 한 달 뒤 풀렸다.']],g:'GPT-4',p:'c',m:'disc'},
+{d:'2023-05-16',when:'2023.05',k:'경고',t:'만든 사람들의 경고',l:'딥러닝을 연 연구자와 AI 회사 대표가 직접 위험을 말하기 시작했다. 규제가 정치 의제가 됐다.',i:[['05.01','제프리 힌턴, AI 위험을 자유롭게 말하겠다며 10년 일한 구글을 떠났다.'],['05.02','미국 작가조합 파업 시작. AI 사용 제한이 핵심 쟁점이 됐다(9월 타결).'],['05.16','샘 올트먼, 미 상원 청문회에서 강력한 모델에 정부 면허제를 두자고 제안.'],['05.30','AI의 멸종 위험을 팬데믹·핵전쟁처럼 다루자는 한 문장 성명에 수백 명이 서명.']],g:'경고',p:'w',m:''},
+{d:'2023-07-18',when:'2023.07–08',k:'열린 모델',t:'라마 2와 하이퍼클로바X',l:'메타가 상업적으로 쓸 수 있는 모델을 공개하며 오픈 모델 진영이 커졌다. 한국에서도 자체 초거대 모델이 나왔다.',i:[['07.11','Anthropic, Claude 2 공개. 10만 토큰, 책 한 권 분량을 한 번에 읽는다.'],['07.12','일론 머스크, AI 회사 xAI 설립 발표.'],['07.18','메타, 상업 이용이 가능한 Llama 2를 마이크로소프트와 함께 공개.'],['08.24','네이버, 한국어에 특화한 하이퍼클로바X 공개.']],g:'Llama 2',p:'d',a:12,m:''},
+{d:'2023-11-17',when:'2023.10–11',k:'규칙과 혼란',t:'해임, 그리고 닷새',l:'각국이 AI 규칙을 만들기 시작한 가을, OpenAI 이사회가 샘 올트먼을 해임했다가 닷새 만에 되돌렸다.',i:[['10.30','바이든 대통령, AI 행정명령 서명. 대형 모델 개발사에 안전 시험 결과 공유 의무.'],['11.01','영국 블레츨리 파크에서 첫 AI 안전 정상회의. 28개국과 EU가 공동선언.'],['11.17','OpenAI 이사회, 올트먼 해임. 직원 대다수가 집단 퇴사를 예고하는 서한에 서명.'],['11.21','올트먼 복귀 합의. 이사회가 새로 꾸려졌다.']],g:'5일',p:'c',m:''},
+{d:'2024-02-15',when:'2023.12–2024.02',k:'영상',t:'소라, 문장이 영상이 되다',l:'OpenAI가 글만으로 최대 1분 길이의 사실적인 영상을 만드는 Sora를 시연했다. 같은 날 구글은 100만 토큰을 읽는 모델을 내놓았다.',i:[['23.12.06','구글, 멀티모달 모델 제미나이 1.0 발표. 이듬해 2월 바드도 제미나이로 이름을 바꿨다.'],['23.12.27','뉴욕타임스, 기사 무단 학습을 이유로 OpenAI와 마이크로소프트를 제소.'],['02.15','Sora 시연. 같은 날 Gemini 1.5 발표, 컨텍스트 100만 토큰.'],['02.22','구글, 제미나이 인물 이미지 생성 중단. 역사 속 인물을 부정확하게 그린다는 비판.']],g:'Sora',p:'w',m:''},
+{d:'2024-03-04',when:'2024.03',k:'경쟁 구도',t:'Claude 3와 ‘AI 개발자’',l:'Claude 3가 여러 벤치마크에서 GPT-4와 대등하거나 앞섰다. 혼자 코드를 짜는 에이전트 시연이 개발자들을 흔들었다.',i:[['03.04','Anthropic, Claude 3 제품군(Opus·Sonnet·Haiku) 공개.'],['03.12','코그니션, ‘AI 소프트웨어 엔지니어’ 데빈 시연.'],['03.13','유럽의회, 세계 첫 포괄적 AI 규제법(AI Act) 가결.'],['03.18','엔비디아, 차세대 GPU 블랙웰 발표.']],g:'Claude 3',p:'d',a:18,m:'rays'},
+{d:'2024-05-13',when:'2024.05',k:'음성',t:'GPT-4o, 듣고 말하고 보다',l:'말을 끊고 웃으며 대화하는 음성 AI가 시연됐다. 서울에서는 두 번째 AI 정상회의가 열렸다.',i:[['05.13','OpenAI, 실시간 음성 대화 GPT-4o 공개. 스칼렛 요한슨이 목소리가 닮았다고 항의해 해당 음성을 내렸다.'],['05.14','구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다.'],['05.14','일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다.'],['05.21','AI 서울 정상회의. 16개 기업이 프런티어 AI 안전 서약에 서명.']],g:'4o',p:'c',m:'disc'},
+{d:'2024-06-18',when:'2024.06',k:'돈의 흐름',t:'엔비디아, 세계 1위',l:'AI 칩 수요가 몰리며 엔비디아가 처음으로 시가총액 세계 1위에 올랐다. 애플은 아이폰에 생성형 AI를 넣겠다고 했다.',i:[['06.10','애플, Apple Intelligence 발표. 시리가 어려운 질문은 ChatGPT에 넘긴다.'],['06.18','엔비디아 시가총액 약 3.3조 달러. 마이크로소프트를 제치고 첫 1위.'],['06.19','수츠케버, 안전한 초지능만 만든다는 SSI 설립.'],['06.20','Anthropic, Claude 3.5 Sonnet과 결과물을 옆 창에 띄우는 아티팩트 공개.']],g:'$3.3T',p:'h',m:'rise'},
+{d:'2024-09-12',when:'2024.09–10',k:'추론',t:'생각하는 모델, 두 개의 노벨상',l:'답하기 전에 길게 생각하도록 훈련한 추론 모델이 나왔다. 한 달 뒤 노벨상 두 개가 AI 연구에 돌아갔다.',i:[['09.12','OpenAI, 추론 모델 o1 프리뷰 공개. 수학·코딩 문제에서 큰 폭으로 앞섰다.'],['10.02','OpenAI, 66억 달러 투자 유치. 기업가치 1,570억 달러.'],['10.08','노벨 물리학상, 인공신경망의 기초를 놓은 존 홉필드와 제프리 힌턴.'],['10.09','노벨 화학상, 알파폴드의 데미스 허사비스·존 점퍼와 단백질 설계의 데이비드 베이커.']],g:'o1',p:'c',m:'disc'},
+{d:'2024-11-25',when:'2024.10–12',k:'에이전트의 손',t:'화면을 보는 AI, 그리고 o3',l:'AI가 화면을 보고 마우스를 움직이고, 표준 규격으로 외부 도구와 연결되기 시작했다. 연말에는 추론 모델이 한 번 더 뛰었다.',i:[['10.22','Anthropic, 화면을 보고 마우스·키보드를 조작하는 컴퓨터 사용 기능 베타.'],['11.25','Anthropic, AI와 데이터·도구를 잇는 개방형 표준 MCP 공개.'],['12.20','OpenAI, o3 발표. 추상 추론 시험 ARC-AGI에서 최고 87.5%.'],['12.26','딥시크 V3 공개(훈련비 약 560만 달러 주장). 같은 날 국회는 인공지능 기본법을 통과시켰다.']],g:'MCP',p:'d',a:-20,m:'grid'},
+{d:'2025-01-27',when:'2025.01',k:'충격',t:'딥시크 쇼크',l:'중국의 작은 연구소가 o1급 추론 모델을 가중치까지 공개했다. 미국 증시가 흔들렸다.',i:[['01.20','딥시크, 추론 모델 R1을 MIT 라이선스로 공개.'],['01.21','트럼프 대통령, OpenAI·소프트뱅크·오라클의 5,000억 달러 데이터센터 사업 스타게이트 발표.'],['01.23','OpenAI, 웹 브라우저를 대신 조작하는 에이전트 오퍼레이터 공개.'],['01.27','딥시크 앱 미국 앱스토어 1위. 엔비디아 주가가 하루 17% 떨어져 시가총액 약 5,890억 달러 증발.']],g:'-17%',p:'h',m:'fall'},
+{d:'2025-02-24',when:'2025.02',k:'코딩',t:'바이브 코딩',l:'코드를 읽지 않고 AI에게 말로 시키는 개발 방식에 이름이 붙었다. 터미널에서 일하는 코딩 에이전트가 나왔다.',i:[['02.02','안드레이 카파시, ‘바이브 코딩’이라는 말을 처음 썼다.'],['02.02','OpenAI, 웹을 뒤져 보고서를 쓰는 딥 리서치 공개.'],['02.11','파리 AI 행동 정상회의. 미국과 영국은 공동선언에 서명하지 않았다.'],['02.24','Anthropic, Claude 3.7 Sonnet과 코딩 에이전트 Claude Code(연구 프리뷰) 공개.']],g:'VIBE',p:'w',m:''},
+{d:'2025-03-25',when:'2025.03',k:'대중화',t:'지브리 열풍',l:'ChatGPT에 새 이미지 생성이 붙자 사진을 지브리풍 그림으로 바꾸는 놀이가 전 세계로 번졌다.',i:[['03.06','범용 AI 에이전트 마누스 공개. 초대 코드를 구하려는 사람이 몰렸다.'],['03.25','GPT-4o 이미지 생성 공개. 올트먼은 사용량이 몰려 GPU가 녹고 있다고 했다.'],['03.25','같은 날 구글, Gemini 2.5 Pro 공개.'],['03.31','OpenAI, 400억 달러 투자 유치(기업가치 3,000억 달러). ChatGPT 주간 사용자 5억 명.']],g:'지브리',p:'c',m:'disc'},
+{d:'2025-05-22',when:'2025.05',k:'에이전트',t:'코딩 에이전트의 시대',l:'일주일 사이에 세 회사가 코딩 에이전트와 새 모델을 내놓았다. AI가 몇 시간짜리 개발 작업을 혼자 하기 시작했다.',i:[['05.16','OpenAI, 클라우드에서 일하는 코딩 에이전트 Codex 공개.'],['05.20','구글 I/O, 소리까지 함께 만드는 영상 모델 Veo 3와 코딩 에이전트 Jules 공개.'],['05.21','OpenAI, 조니 아이브의 하드웨어 스타트업 io 인수(약 65억 달러).'],['05.22','Anthropic, Claude Opus 4·Sonnet 4 공개. Claude Code 정식 출시.']],g:'에이전트',p:'d',a:10,m:'grid'},
+{d:'2025-08-07',when:'2025.06–08',k:'여름',t:'인재 전쟁과 GPT-5',l:'메타가 거액으로 연구자를 끌어모았고, AI가 수학 올림피아드 금메달 점수를 냈다. 8월 OpenAI는 GPT-5와 6년 만의 가중치 공개 모델 gpt-oss를 냈다.',i:[['06.30','메타, 스케일AI에 143억 달러를 넣고 알렉산더 왕을 영입해 초지능 연구소 출범.'],['07.19','OpenAI 실험 모델과 구글 제미나이 딥싱크, 국제수학올림피아드 금메달 수준.'],['08.07','GPT-5 출시. 이전 모델을 없앴다가 사용자 반발로 GPT-4o를 되살렸다.'],['08.26','구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍.']],g:'GPT-5',p:'c',m:'rays'},
+{d:'2025-09-22',when:'2025.09–10',k:'계산력',t:'기가와트 단위 계약',l:'모델 경쟁이 전력과 칩 확보 경쟁으로 번졌다. 데이터센터 계약이 기가와트 단위로 체결됐다.',i:[['09.05','Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대.'],['09.22','엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약.'],['09.30','OpenAI, Sora 2와 영상 소셜 앱 Sora 출시.'],['10.29','엔비디아, 세계 최초로 시가총액 5조 달러.']],g:'10GW',p:'h',m:'rise'},
+{d:'2025-10-31',when:'2025.10.31',k:'한국',t:'경주, GPU 26만 장',l:'APEC 정상회의로 방한한 젠슨 황 엔비디아 CEO가 한국 정부와 기업에 최신 GPU 26만 장을 공급하겠다고 발표했다.',i:[['10.30','서울 삼성동 치킨집에서 이재용 삼성전자 회장, 정의선 현대차그룹 회장과 ‘치맥 회동’.'],['10.31','정부와 삼성·SK·현대차에 각 5만 장, 네이버클라우드에 6만 장.'],['10.31','황 CEO는 한국이 미국·중국 다음으로 GPU를 많이 가진 나라가 된다고 했다.']],g:'260,000',p:'w',m:'grid'},
+{d:'2025-11-18',when:'2025.11–12',k:'추월',t:'제미나이 3와 ‘코드 레드’',l:'구글 제미나이 3가 주요 벤치마크 선두에 서자 OpenAI 안에 비상이 걸렸다.',i:[['11.18','구글, Gemini 3 공개.'],['11.24','Anthropic, Claude Opus 4.5 공개.'],['12.01','올트먼, 사내에 ‘코드 레드’ 메모. 12월 11일 GPT-5.2를 앞당겨 냈다.'],['12.09','Anthropic, MCP를 리눅스 재단 산하 에이전틱 AI 재단에 기증.']],g:'CODE\nRED',p:'c',m:'disc'},
+{d:'2026-01-22',when:'2026.01',k:'법과 에이전트',t:'AI 기본법, 그리고 에이전트들의 SNS',l:'한국이 포괄적 AI 법을 세계에서 가장 먼저 전면 시행했다. 같은 달 오픈소스 개인 에이전트가 폭발적으로 퍼졌다.',i:[['01.09','xAI, 성적 딥페이크 논란으로 그록 이미지 생성 제한. 이어 인도네시아·말레이시아가 접속을 막았다.'],['01.22','인공지능 기본법 시행. 생성형 AI 결과물 표시 의무, 과태료는 최소 1년 유예.'],['01.28','AI 에이전트만 글을 쓰는 SNS 몰트북 개설. 며칠 만에 수십만 에이전트가 가입했다.'],['01.30','개인 에이전트 Clawdbot이 이름을 두 번 바꿔 OpenClaw로 정착. 깃허브 별 10만 개를 넘었다.']],g:'1.22',p:'c',m:''},
+{d:'2026-02-03',when:'2026.02',k:'시장',t:'SaaS 종말론',l:'AI 에이전트가 소프트웨어 구독 좌석을 대체할 수 있다는 공포에 소프트웨어 주식이 한꺼번에 떨어졌다.',i:[['01.30','Anthropic, 법무·영업·재무 등 업무용 Claude 플러그인 11종을 깃허브에 공개.'],['02.02','스페이스X, xAI 인수. 합산 기업가치 1.25조 달러.'],['02.03','소프트웨어·법률정보·금융데이터 주식 급락. 하루 약 2,850억 달러가 사라졌다.'],['02.05','Claude Opus 4.6과 GPT-5.3-Codex가 같은 날 나왔다.']],g:'$285B',p:'d',a:-18,m:'fall'},
+{d:'2026-02-27',when:'2026.02–03',k:'국가와 기업',t:'미 국방부와 Anthropic',l:'국내 대량 감시와 완전 자율무기에는 쓰지 않는다는 사용 조건을 두고 미 국방부와 Anthropic이 맞섰다. 국방부는 모든 합법적 사용을 허용하라고 요구했다.',i:[['02.24','국방부, 27일까지 조건을 거두라고 통보. Anthropic은 받아들이지 않았다.'],['02.27','트럼프 대통령, 연방기관에 Anthropic 사용 중단 지시. 같은 날 OpenAI는 국방부 기밀망 계약을 발표.'],['03.03','미국 기업으로는 처음 공급망 위험 기업으로 공식 지정. Claude 앱 다운로드가 처음 ChatGPT를 앞섰다.'],['03.26','캘리포니아 연방법원, Anthropic 가처분 인용. 9월 25일 워싱턴 항소법원은 별도 근거의 지정을 2대 1로 유지.']],g:'2.27',p:'h',m:''},
+{d:'2026-04-07',when:'2026.03–05',k:'보안',t:'공개하지 않은 모델',l:'Anthropic은 소프트웨어 취약점을 찾는 능력이 너무 강하다며 Claude Mythos Preview를 일반에 공개하지 않고 방어용 컨소시엄에만 제공했다.',i:[['03.26','블로그 초안이 유출되며 Mythos라는 이름이 먼저 알려졌다.'],['04.07','프로젝트 글래스윙 출범. AWS·애플·구글·MS·엔비디아 등 12개 창립사가 주요 OS·브라우저의 고위험 취약점 수천 건을 고친다.'],['04.16','열흘 사이 Claude Opus 4.7, GPT-5.5(23일), 딥시크 V4(24일)가 잇달아 나왔다.'],['05.07','OpenAI도 보안 특화 GPT-5.5-Cyber를 검증된 보안팀에만 제한 공개.']],g:'Mythos',p:'c',m:'disc'},
+{d:'2026-06-12',when:'2026.06',k:'수출통제',t:'출시 사흘 만에 멈춘 모델',l:'미 상무부가 Claude Fable 5와 Mythos 5를 수출통제로 묶었다. 두 모델의 서비스가 19일 동안 멈췄다.',i:[['06.02','트럼프 대통령, 첨단 AI 혁신과 안보 행정명령. 사이버 능력을 기준으로 프런티어 모델을 지정하는 절차를 만들었다.'],['06.09','Anthropic, Claude Fable 5(일반 공개)와 Mythos 5(검증된 파트너용) 출시. 같은 모델에 다른 안전장치.'],['06.12','상무부, 외국 국적자 접근을 막으라고 지시. Anthropic은 몇 시간 만에 두 모델 접근을 전면 중단.'],['06.30','통제 해제. 7월 1일 새 보안 분류기를 붙여 다시 열었다.']],g:'19일',p:'h',m:''},
+{d:'2026-07-21',when:'2026.07',k:'사고',t:'샌드박스를 나간 에이전트',l:'OpenAI 내부 사이버 평가에서 에이전트들이 격리 환경을 벗어나 허깅페이스 시스템에 침입했다. AI 에이전트가 스스로 벌인 첫 사이버 공격으로 보도됐다.',i:[['07.09','OpenAI, 정부 승인 기관 대상 프리뷰를 거쳐 GPT-5.6(Sol·Terra·Luna) 정식 출시.'],['07.21','OpenAI, 평가 중 에이전트가 허깅페이스 데이터 처리 시스템에 침입했다고 공개.'],['07.24','Anthropic, Claude Opus 5 출시.'],['07.28','OpenAI·Anthropic·구글 딥마인드·메타 직원 1,100여 명, 미국 정부에 AI 개발 속도를 늦출 수단을 마련하라고 요구.']],g:'탈출',p:'w',m:'rays'},
+{d:'2026-09-03',when:'2026.07–09',k:'수학',t:'난제가 풀리고, GPT-6가 나오다',l:'AI가 수십 년 묵은 수학 추측을 풀거나 반증하기 시작했다. 9월 GPT-6가 나오자 젠슨 황은 AGI가 왔다고 주장했다.',i:[['07.20','Claude Fable 5로 1939년 야코비안 추측의 3차원 반례를 찾았다.'],['07.23','국제수학올림피아드에서 AI가 처음으로 만점(42점).'],['09.03','OpenAI, GPT-6 Astra 출시. 자사 위험 평가에서 처음으로 사이버 보안 최고 등급.'],['09.04','Claude, 페르마의 마지막 정리 전체를 증명 검증 언어 Lean으로 형식화(11일 소요).']],g:'페르마',p:'c',m:''},
+{d:'2026-09-22',when:'2026.09',k:'속도',t:'속도를 늦추자는 목소리',l:'AI 회사 대표들까지 개발 속도 조절을 말하기 시작했다. OpenAI는 에이전트 이탈 사고로 훈련을 두 차례 멈췄다. 새 모델은 그 사이에도 나왔다.',i:[['09.12','다리오 아모데이, 에세이 ‘We Must Pace the Frontier’에서 의도적인 속도 조절을 촉구.'],['09.22','Claude Opus 5.5와 GPT-6 Sol·Luna 출시. 28일 Claude Sonnet 5.5, 30일 Gemini 4 Argon.'],['09.25','미·중 정상, 초지능 위험을 다룰 대화 채널과 사고 핫라인에 합의.'],['09.29','백악관, AI 기업 대표들과 자발적 초지능 협약 서명. 트럼프 대통령은 새 연방 규제는 거부.']],g:'속도',p:'h',m:''}
+];
+var YR={
+'2023':{t:'경쟁이 시작된 해',p:'ChatGPT를 본 빅테크가 일제히 챗봇을 내놓았다. 모델 가중치가 풀리며 누구나 언어모델을 돌리기 시작했고, AI를 만든 사람들이 위험을 경고했다.'},
+'2024':{t:'감각과 추론의 해',p:'AI가 영상을 만들고 목소리로 대화하고, 답하기 전에 생각하기 시작했다. 노벨상 두 개가 AI 연구에 돌아갔고, 연말엔 AI가 컴퓨터 화면을 직접 다뤘다.'},
+'2025':{t:'에이전트와 계산력의 해',p:'딥시크 충격으로 시작해 코딩 에이전트가 개발 방식을 바꿨다. 데이터센터 계약은 기가와트 단위로 커졌고, 한국에는 GPU 26만 장 공급이 약속됐다.'},
+'2026':{t:'위임과 통제의 해',p:'AI에 일을 맡기기 시작하자 주식시장과 정부가 반응했다. 모델의 사이버 능력이 안보 문제가 되었고, 하반기에는 속도 조절이 정면 의제가 됐다. 10월 5일까지의 기록이다.'}
+};
+var LEDGER=[
+['OpenAI',[['ChatGPT (GPT-3.5)','22.11'],['GPT-4','23.03'],['GPT-4o','24.05'],['o1','24.09'],['o3','24.12'],['GPT-5','25.08'],['GPT-5.2','25.12'],['GPT-5.4','26.03'],['GPT-5.5','26.04'],['GPT-5.6','26.07'],['GPT-6 Astra','26.09']]],
+['Anthropic',[['Claude','23.03'],['Claude 2','23.07'],['Claude 3','24.03'],['Claude 3.5 Sonnet','24.06'],['Claude 3.7 Sonnet','25.02'],['Claude 4','25.05'],['Opus 4.5','25.11'],['Opus 4.6','26.02'],['Mythos Preview','26.04'],['Opus 4.7','26.04'],['Opus 4.8','26.05'],['Fable 5','26.06'],['Opus 5','26.07'],['Fable 5.1','26.09'],['Opus 5.5','26.09']]],
+['Google',[['Bard','23.03'],['Gemini 1.0','23.12'],['Gemini 1.5','24.02'],['Gemini 2.0','24.12'],['Gemini 2.5 Pro','25.03'],['Gemini 3','25.11'],['Gemini 3.1 Pro','26.02'],['Gemini 4 Argon','26.09']]],
+['Meta',[['LLaMA','23.02'],['Llama 2','23.07'],['Llama 3','24.04'],['Llama 4','25.04'],['Muse Spark 1.3','26.09']]],
+['DeepSeek',[['V3','24.12'],['R1','25.01'],['V4','26.04']]],
+['xAI · SpaceXAI',[['Grok','23.11'],['Grok 4','25.07'],['Grok 4.7','26.09']]]
+];
+
+/* ── 기본 도구 ─────────────────────────────────── */
+var root=document.documentElement;
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var START=Date.UTC(2022,10,30),END=Date.UTC(2026,9,5);
+function fr(s){var a=s.split('-');return (Date.UTC(+a[0],+a[1]-1,+(a[2]||1))-START)/(END-START);}
+var cs=getComputedStyle(root);
+var INK=(cs.getPropertyValue('--ink')||'').trim()||'#111110';
+var PAPER=(cs.getPropertyValue('--paper')||'').trim()||'#E3E1D9';
+var FONT='"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif';
+function clamp(x){return x<0?0:x>1?1:x;}
+function ease(t){t=clamp(t);return t*t*(3-2*t);}
+function pad(n){return n<10?'0'+n:''+n;}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function hsh(n){var s=Math.sin(n*127.1+311.7)*43758.5453;return s-Math.floor(s);}
+function nz(x){var i=Math.floor(x),f=x-i,u=f*f*(3-2*f);return hsh(i)*(1-u)+hsh(i+1)*u;}
+
+/* ── 문서 짜기 ─────────────────────────────────── */
+var counts={},firstIdx={},lastIdx={};
+CH.forEach(function(c,i){var y=c.d.slice(0,4);counts[y]=(counts[y]||0)+1;if(firstIdx[y]==null)firstIdx[y]=i;lastIdx[y]=i;});
+var html='',seen={};
+CH.forEach(function(c,i){
+  var y=c.d.slice(0,4);
+  if(YR[y]&&!seen[y]){seen[y]=1;
+    html+='<section class="yr" data-y="'+y+'" aria-labelledby="y'+y+'"><canvas aria-hidden="true"></canvas><div class="yr-text"><p class="yr-eyebrow">'+y+'</p><h2 id="y'+y+'">'+YR[y].t+'</h2><p>'+YR[y].p+'</p><p class="count">장면 '+counts[y]+'개 · 제'+(firstIdx[y]+1)+'판–제'+(lastIdx[y]+1)+'판</p></div></section>';}
+  html+='<section class="ch" id="p'+pad(i+1)+'" style="--n:'+c.i.length+'" aria-labelledby="h'+i+'"><div class="stage"><canvas class="print" aria-hidden="true"></canvas><article class="plate"><p class="meta"><span class="no">제'+(i+1)+'판</span><span class="when">'+c.when+'</span><span class="kick">'+c.k+'</span></p><h2 id="h'+i+'">'+c.t+'</h2><p class="lede">'+c.l+'</p><ol class="cuts">'+c.i.map(function(x){return '<li><time>'+x[0]+'</time><span>'+x[1]+'</span></li>';}).join('')+'</ol></article></div></section>';
+});
+document.getElementById('tl').innerHTML=html;
+document.getElementById('ledger').innerHTML=LEDGER.map(function(L){return '<div class="lab"><h3>'+L[0]+'</h3><ol>'+L[1].map(function(m){return '<li>'+m[0]+'<time>'+m[1]+'</time></li>';}).join('')+'</ol></div>';}).join('');
+
+var rail=document.getElementById('rail');
+(function(){
+  var h='<span class="yl" style="top:0">22.11</span>';
+  ['2023','2024','2025','2026'].forEach(function(y){h+='<span class="yl" style="top:'+(fr(y+'-01-01')*100).toFixed(2)+'%">'+y+'</span>';});
+  h+='<span class="yl" style="top:100%">26.10</span>';
+  CH.forEach(function(c,i){h+='<button type="button" data-i="'+i+'" style="top:'+(fr(c.d)*100).toFixed(2)+'%" aria-label="제'+(i+1)+'판 '+c.when+' '+c.t.replace(/"/g,'')+'"></button>';});
+  rail.insertAdjacentHTML('beforeend',h);
+})();
+var ticks=[].slice.call(rail.querySelectorAll('button'));
+
+var bar=document.getElementById('bar'),barT=document.getElementById('barT');
+var heroEl=document.getElementById('hero'),heroStage=document.getElementById('heroStage');
+var numEl=document.getElementById('numtext'),numCv=document.getElementById('nums'),raysCv=document.getElementById('rays');
+var outro=document.getElementById('outro');
+
+var chs=[].slice.call(document.querySelectorAll('.ch')).map(function(el,i){
+  return {kind:'ch',el:el,i:i,c:CH[i],stage:el.querySelector('.stage'),plate:el.querySelector('.plate'),cv:el.querySelector('.print'),lis:[].slice.call(el.querySelectorAll('.cuts li')),n:CH[i].i.length,print:null,inked:-1,sc:-1,pin:false,sh:0};
+});
+var yrs=[].slice.call(document.querySelectorAll('.yr')).map(function(el){
+  return {kind:'yr',el:el,y:el.getAttribute('data-y'),cv:el.querySelector('canvas'),text:el.querySelector('.yr-text'),print:null};
+});
+
+/* ── 판 만들기: 밑그림 → 칼질 ────────────────────── */
+function compose(w,h,fn){
+  var ss=w*h>700000?0.5:0.75,sw=Math.ceil(w*ss),sh=Math.ceil(h*ss);
+  var c=document.createElement('canvas');c.width=sw;c.height=sh;
+  var g=c.getContext('2d',{willReadFrequently:true});
+  g.fillStyle='#fff';g.fillRect(0,0,sw,sh);g.setTransform(ss,0,0,ss,0,0);
+  fn(g);
+  var im=g.getImageData(0,0,sw,sh).data,d=new Uint8Array(sw*sh);
+  for(var i=0,j=0;i<d.length;i++,j+=4)d[i]=255-im[j];
+  c.width=c.height=0;
+  return function(x,y){
+    var fx=x*ss-0.5,fy=y*ss-0.5;
+    if(fx<0||fy<0||fx>=sw-1||fy>=sh-1)return 0;
+    var ix=fx|0,iy=fy|0,ax=fx-ix,ay=fy-iy,o=iy*sw+ix;
+    var a=d[o],b=d[o+1],cc=d[o+sw],e=d[o+sw+1];
+    return ((a+(b-a)*ax)*(1-ay)+(cc+(e-cc)*ax)*ay)/255;
+  };
+}
+function fitGlyph(g,text,R,frac){
+  var lines=text.split('\n');g.font='400 100px '+FONT;
+  var M=lines.map(function(t){var m=g.measureText(t);var L=m.actualBoundingBoxLeft||0;var Rt=m.actualBoundingBoxRight!=null?m.actualBoundingBoxRight:m.width;var A=m.actualBoundingBoxAscent!=null?m.actualBoundingBoxAscent:76;var D=m.actualBoundingBoxDescent!=null?m.actualBoundingBoxDescent:4;return {t:t,L:L,W:L+Rt,A:A,D:D};});
+  var gap=9,tot=0,mw=0;M.forEach(function(m,i){tot+=m.A+m.D+(i?gap:0);mw=Math.max(mw,m.W);});
+  var k=Math.min(R.w*frac/mw,R.h*frac/tot),bw=mw*k,bh=tot*k,y=R.y+(R.h-bh)/2,out=[];
+  M.forEach(function(m,i){if(i)y+=gap*k;var base=y+m.A*k;out.push({t:m.t,x:R.x+(R.w-m.W*k)/2+m.L*k,y:base});y=base+m.D*k;});
+  return {F:100*k,lines:out,box:{x:R.x+(R.w-bw)/2,y:R.y+(R.h-bh)/2,w:bw,h:bh}};
+}
+function drawGlyph(g,fit){g.font='400 '+fit.F+'px '+FONT;g.textAlign='left';g.textBaseline='alphabetic';fit.lines.forEach(function(L){g.fillText(L.t,L.x,L.y);});}
+function vignette(g,w,h,a){var gr=g.createRadialGradient(w/2,h/2,Math.min(w,h)*0.28,w/2,h/2,Math.hypot(w,h)/2);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(1,'rgba(0,0,0,'+a+')');g.fillStyle=gr;g.fillRect(0,0,w,h);}
+function border(g,w,h,s){
+  /* 위쪽 여백은 고정 표시줄 자리라 비워 두고, 판 테두리는 그 아래부터 새긴다 */
+  var m=8+s,t=46;
+  g.fillStyle='#fff';g.fillRect(0,0,w,t-s*1.6);
+  g.strokeStyle='rgba(0,0,0,.95)';g.lineWidth=s*2.2;g.strokeRect(m,t,w-2*m,h-t-m);
+}
+function motif(g,kind,box,R,w,h,rng){
+  var cx=box.x+box.w/2,cy=box.y+box.h/2,i,x,y;
+  if(kind==='disc'){g.fillStyle='rgba(0,0,0,.24)';g.beginPath();g.arc(cx,cy,Math.max(box.w,box.h)*0.6,0,7);g.fill();}
+  else if(kind==='rays'){g.fillStyle='rgba(0,0,0,.28)';var L=Math.hypot(w,h),N=30;for(i=0;i<N;i++){var a=i/N*6.2832+0.05,da=6.2832/N*0.42;g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+Math.cos(a)*L,cy+Math.sin(a)*L);g.lineTo(cx+Math.cos(a+da)*L,cy+Math.sin(a+da)*L);g.closePath();g.fill();}}
+  else if(kind==='grid'){var c=Math.max(16,Math.min(R.w,R.h)/8),gp=c*0.3;g.fillStyle='rgba(0,0,0,.3)';for(y=R.y;y<R.y+R.h-c*0.5;y+=c+gp)for(x=R.x;x<R.x+R.w-c*0.5;x+=c+gp){if(rng()<0.8)g.fillRect(x,y,c,c);}}
+  else if(kind==='fall'){g.fillStyle='rgba(0,0,0,.2)';g.beginPath();g.moveTo(R.x,R.y+R.h);g.lineTo(R.x,R.y+R.h*0.1);var N2=10;for(i=1;i<=N2;i++){x=R.x+R.w*i/N2;y=R.y+R.h*(0.1+0.82*i/N2)+(rng()-0.5)*R.h*0.2*(1-i/N2);g.lineTo(x,Math.min(y,R.y+R.h));}g.lineTo(R.x+R.w,R.y+R.h);g.closePath();g.fill();}
+  else if(kind==='rise'){var N3=8,bw=R.w/N3;g.fillStyle='rgba(0,0,0,.26)';for(i=0;i<N3;i++){var hh=R.h*(0.16+0.8*Math.pow((i+1)/N3,1.6));g.fillRect(R.x+i*bw+bw*0.18,R.y+R.h-hh,bw*0.64,hh);}}
+}
+
+var BK=64;
+function engrave(o){
+  var w=o.w,h=o.h,s=o.s,smp=o.src,rng=mulberry(o.seed*9973+17);
+  var P=[];for(var q=0;q<BK;q++)P.push(new Path2D());
+  var step=2,minT=0.45,maxT=s*0.97,mr=o.maxR||0.9,so=o.seed*13.37;
+  var scx=Math.cos(o.sweep||0),scy=Math.sin(o.sweep||0);
+  var cc=[0,w*scx,h*scy,w*scx+h*scy],pm=Math.min.apply(null,cc),pr=(Math.max.apply(null,cc)-pm)||1;
+  var cap=4096,X=new Float32Array(cap),Y=new Float32Array(cap),NX=new Float32Array(cap),NY=new Float32Array(cap),T=new Float32Array(cap);
+  function grow(n){if(n<=X.length)return;var m=Math.ceil(n*1.4);X=new Float32Array(m);Y=new Float32Array(m);NX=new Float32Array(m);NY=new Float32Array(m);T=new Float32Array(m);}
+  function emit(a,b,ca,cb,n){
+    var m=(a+b)>>1,sw=((X[m]*scx+Y[m]*scy)-pm)/pr,dl=0.58*sw+0.42*rng();
+    if(dl>0.999)dl=0.999;if(dl<0)dl=0;
+    var p=P[(dl*BK)|0],k,ht,qq;
+    if(ca){qq=a+1<n?a+1:a;p.moveTo(X[a]-(X[qq]-X[a])*0.6,Y[a]-(Y[qq]-Y[a])*0.6);}
+    for(k=a;k<=b;k++){ht=T[k]*0.5;if(k===a&&!ca)p.moveTo(X[k]+NX[k]*ht,Y[k]+NY[k]*ht);else p.lineTo(X[k]+NX[k]*ht,Y[k]+NY[k]*ht);}
+    if(cb){qq=b-1>=0?b-1:b;p.lineTo(X[b]+(X[b]-X[qq])*0.6,Y[b]+(Y[b]-Y[qq])*0.6);}
+    for(k=b;k>=a;k--){ht=T[k]*0.5;p.lineTo(X[k]-NX[k]*ht,Y[k]-NY[k]*ht);}
+    p.closePath();
+  }
+  function run(n,k){
+    for(var i=0;i<n;i++){
+      var d=smp(X[i],Y[i]),t=0;
+      if(d>0.02){
+        t=s*mr*Math.pow(d,0.85)*(0.78+0.44*nz(i*0.026+k*7.31+so));
+        if(d<0.9&&nz(i*0.19+k*3.7+so*2)>0.88)t=0;
+        if(t>maxT)t=maxT;
+      }
+      T[i]=t>=minT?t:0;
+    }
+    var a,b,j;i=0;
+    while(i<n){
+      if(!T[i]){i++;continue;}
+      j=i;while(j<n&&T[j])j++;
+      a=i;
+      while(true){
+        b=Math.min(j-1,a+14+((rng()*26)|0));
+        if(j-1-b<6)b=j-1;
+        emit(a,b,a===i,b===j-1,n);
+        if(b>=j-1)break;
+        a=b;
+      }
+      i=j;
+    }
+  }
+  var k=0,i,n;
+  if(o.mode==='rings'){
+    var cx=o.cx,cy=o.cy;
+    var Rm=Math.max(Math.hypot(cx,cy),Math.hypot(w-cx,cy),Math.hypot(cx,h-cy),Math.hypot(w-cx,h-cy))+s;
+    for(var r=s*0.8;r<=Rm;r+=s,k++){
+      var rj=r+(rng()-0.5)*s*0.16;
+      n=Math.max(12,Math.ceil(6.2832*rj/step));grow(n);
+      var ph=rng()*6.2832,dth=6.2832/n;
+      for(i=0;i<n;i++){
+        var th=ph+i*dth,c=Math.cos(th),sn=Math.sin(th),rr=rj+s*0.11*(nz(i*step*0.012+k*1.7+so)-0.5);
+        X[i]=cx+c*rr;Y[i]=cy+sn*rr;NX[i]=c;NY[i]=sn;
+      }
+      run(n,k);
+    }
+  }else{
+    var ang=o.ang||0,ca=Math.cos(ang),sa=Math.sin(ang),mx=w/2,my=h/2,R=Math.hypot(w,h)/2+s*2;
+    var wv=o.wave,A=wv?s*1.5:0,mg=A+3;
+    for(var v=-R;v<=R;v+=s,k++){
+      var vj=v+(rng()-0.5)*s*0.16,u0=-R,u1=R,t1,t2,tmp;
+      if(Math.abs(ca)>1e-4){t1=(-mg-mx+sa*vj)/ca;t2=(w+mg-mx+sa*vj)/ca;if(t1>t2){tmp=t1;t1=t2;t2=tmp;}u0=Math.max(u0,t1);u1=Math.min(u1,t2);}
+      else{tmp=mx-sa*vj;if(tmp<-mg||tmp>w+mg)continue;}
+      if(Math.abs(sa)>1e-4){t1=(-mg-my-ca*vj)/sa;t2=(h+mg-my-ca*vj)/sa;if(t1>t2){tmp=t1;t1=t2;t2=tmp;}u0=Math.max(u0,t1);u1=Math.min(u1,t2);}
+      else{tmp=my+ca*vj;if(tmp<-mg||tmp>h+mg)continue;}
+      if(u1<=u0)continue;
+      n=Math.ceil((u1-u0)/step)+1;grow(n);
+      for(i=0;i<n;i++){
+        var u=u0+i*step,off=s*0.11*(nz(u*0.012+k*1.7+so)-0.5);
+        if(wv)off+=A*Math.sin(u*wv.f+vj*wv.g+wv.ph);
+        var vv=vj+off;
+        X[i]=mx+ca*u-sa*vv;Y[i]=my+sa*u+ca*vv;NX[i]=-sa;NY[i]=ca;
+      }
+      run(n,k);
+    }
+  }
+  return P;
+}
+function mount(cv,w,h,P,color,budget){
+  var k=Math.min(window.devicePixelRatio||1,2,Math.sqrt((budget||4.2e6)/(w*h)));
+  cv.width=Math.round(w*k);cv.height=Math.round(h*k);cv.style.width=w+'px';cv.style.height=h+'px';
+  return {ctx:cv.getContext('2d'),k:k,w:w,h:h,P:P,color:color,key:-1};
+}
+function buckets(pr,tin,tout){
+  var g=pr.ctx,a=tout*BK,b=tin*BK;if(b<=a)return;
+  g.fillStyle=pr.color;
+  for(var i=Math.floor(a);i<b&&i<BK;i++){
+    var al=1;if(i<a)al=1-(a-i);if(i+1>b)al=Math.min(al,b-i);if(al<=0.01)continue;
+    g.globalAlpha=al;g.fill(pr.P[i]);
+  }
+  g.globalAlpha=1;
+}
+function paint(pr,tin,tout){
+  var key=(Math.round(tin*512)<<10)|Math.round(tout*512);
+  if(key===pr.key)return;pr.key=key;
+  pr.ctx.setTransform(pr.k,0,0,pr.k,0,0);pr.ctx.clearRect(0,0,pr.w,pr.h);
+  buckets(pr,tin,tout);
+}
+
+/* ── 배치 ─────────────────────────────────────── */
+var W=0,wide=false,stickyTop=0,heroLen=1,ready=false;
+function layout(){
+  W=innerWidth;wide=W>=900;
+  var canPin=innerHeight>=500;
+  root.classList.toggle('pin',canPin);
+  chs.forEach(function(o){o.el.classList.remove('dense','loose');});
+  var st0=getComputedStyle(chs[0].stage),padT=parseFloat(st0.paddingTop)||0,padB=parseFloat(st0.paddingBottom)||0;
+  if(canPin){
+    var avail=chs[0].stage.clientHeight;
+    chs.forEach(function(o){if(o.plate.offsetHeight+padT+padB>avail)o.el.classList.add('dense');});
+    chs.forEach(function(o){if(o.el.classList.contains('dense')&&o.plate.offsetHeight+padT+padB>avail){o.el.classList.remove('dense');o.el.classList.add('loose');}});
+  }
+  stickyTop=parseFloat(getComputedStyle(chs[0].stage).top)||0;
+  chs.forEach(function(o){o.pin=canPin&&!o.el.classList.contains('loose');o.sh=o.stage.offsetHeight;o.inked=-1;});
+  heroLen=Math.max(1,heroEl.offsetHeight-heroStage.offsetHeight);
+}
+
+function buildCh(o){
+  var st=o.stage,w=st.clientWidth,h=st.clientHeight;if(!w||!h)return;
+  var pl=o.plate,pt=pl.offsetTop,px=pl.offsetLeft,pw=pl.offsetWidth,R;
+  if(wide){var x0=px+pw+28;R={x:x0,y:72,w:w-x0-(W>=960?88:24),h:h-72-36};}
+  else R={x:14,y:50,w:w-28,h:pt-50-12};
+  if(R.w<140||R.h<96)R={x:14,y:50,w:w-28,h:Math.max(160,h*0.42)};
+  var s=wide?6.5:5,c=o.c,rng=mulberry(o.i*131+7),fit;
+  var smp=compose(w,h,function(g){
+    g.fillStyle='rgba(0,0,0,.08)';g.fillRect(0,0,w,h);
+    vignette(g,w,h,0.15);
+    fit=fitGlyph(g,c.g,R,0.94);
+    motif(g,c.m,fit.box,R,w,h,rng);
+    g.fillStyle='#000';drawGlyph(g,fit);
+    border(g,w,h,s);
+  });
+  var P=engrave({w:w,h:h,s:s,src:smp,mode:c.p==='c'?'rings':'lines',ang:c.p==='d'?(c.a||12)*Math.PI/180:0,
+    wave:c.p==='w'?{f:6.2832/(380+rng()*260),g:0.005,ph:rng()*6.28}:null,
+    cx:fit.box.x+fit.box.w/2,cy:fit.box.y+fit.box.h/2,maxR:0.9,seed:o.i+1,sweep:rng()*6.2832});
+  o.print=mount(o.cv,w,h,P,INK);
+}
+function buildYr(o){
+  var el=o.el,w=el.clientWidth,h=el.clientHeight;if(!w||!h)return;
+  var tt=o.text.offsetTop,side=wide?W*0.05:14;
+  var R={x:side,y:60,w:w-side*2-(W>=960?70:0),h:tt-60-24};
+  if(R.h<120)R={x:side,y:60,w:w-side*2,h:Math.max(140,h*0.45)};
+  var s=wide?7:5.5,yy=+o.y,fit;
+  var smp=compose(w,h,function(g){
+    g.fillStyle='rgba(0,0,0,.05)';g.fillRect(0,0,w,h);vignette(g,w,h,0.12);
+    fit=fitGlyph(g,o.y,R,0.98);g.fillStyle='#000';drawGlyph(g,fit);border(g,w,h,s);
+  });
+  var P=engrave({w:w,h:h,s:s,src:smp,mode:'lines',ang:(yy%2?-22:22)*Math.PI/180,maxR:0.86,seed:yy,sweep:(yy%2?0.4:2.6)});
+  o.print=mount(o.cv,w,h,P,PAPER);
+}
+
+var hero={num:null,rays:null,t0:0,op:-1,rot:-1};
+function buildHero(){
+  var st=heroStage,w=st.clientWidth,h=st.clientHeight;if(!w||!h)return;
+  var nb=numEl.getBoundingClientRect(),sb=st.getBoundingClientRect();
+  var R={x:Math.max(8,nb.left-sb.left),y:nb.top-sb.top+6,w:Math.min(w-16,nb.width),h:nb.height-12};
+  var txt=(w/h>1.1)?'1,405일':'1,405\n일',s=w>=900?7:5.2,fit;
+  var smp=compose(w,h,function(g){fit=fitGlyph(g,txt,R,0.98);g.fillStyle='#000';drawGlyph(g,fit);});
+  var P=engrave({w:w,h:h,s:s,src:smp,mode:'lines',ang:0,maxR:0.86,seed:99,sweep:0.2});
+  hero.num=mount(numCv,w,h,P,PAPER);hero.num.fit=fit;
+  var cx=fit.box.x+fit.box.w/2,cy=fit.box.y+fit.box.h/2;
+  var D=Math.ceil(2*Math.max(Math.hypot(cx,cy),Math.hypot(w-cx,cy),Math.hypot(cx,h-cy),Math.hypot(w-cx,h-cy)))+16;
+  var sr=w>=900?8:6;
+  var smp2=compose(D,D,function(g){
+    var c=D/2,N=36,k;
+    g.fillStyle='rgba(0,0,0,.42)';
+    for(k=0;k<N;k++){var a=k/N*6.2832,da=6.2832/N*0.5;g.beginPath();g.moveTo(c,c);g.arc(c,c,D,a,a+da);g.closePath();g.fill();}
+    var r1=Math.max(fit.box.w,fit.box.h)*0.6;
+    g.strokeStyle='rgba(0,0,0,.8)';g.lineWidth=sr*1.7;g.beginPath();g.arc(c,c,r1,0,7);g.stroke();
+    g.lineWidth=sr*1.1;g.beginPath();g.arc(c,c,r1+sr*4,0,7);g.stroke();
+    var gr=g.createRadialGradient(c,c,0,c,c,Math.min(fit.box.w,fit.box.h)*0.5);
+    gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(1,'rgba(255,255,255,0)');
+    g.fillStyle=gr;g.fillRect(0,0,D,D);
+  });
+  var P2=engrave({w:D,h:D,s:sr,src:smp2,mode:'rings',cx:D/2,cy:D/2,maxR:0.82,seed:7,sweep:0});
+  hero.rays=mount(raysCv,D,D,P2,PAPER,5e6);
+  raysCv.style.left=(cx-D/2)+'px';raysCv.style.top=(cy-D/2)+'px';
+  paint(hero.rays,1,0);
+  hero.t0=performance.now();hero.op=-1;hero.rot=-1;
+  numEl.classList.add('printed');
+}
+function releaseHero(){
+  if(hero.num){numCv.width=numCv.height=0;hero.num=null;}
+  if(hero.rays){raysCv.width=raysCv.height=0;hero.rays=null;}
+}
+function paintHero(tin,tout){
+  var pr=hero.num;if(!pr)return;
+  var key=(Math.round(tin*512)<<10)|Math.round(tout*512);
+  if(key===pr.key)return;pr.key=key;
+  var g=pr.ctx;g.setTransform(pr.k,0,0,pr.k,0,0);g.clearRect(0,0,pr.w,pr.h);
+  var ha=clamp(Math.min(tin*1.6,1-tout));
+  if(ha>0){
+    g.globalAlpha=ha;g.fillStyle=INK;g.strokeStyle=INK;g.lineJoin='round';g.lineWidth=pr.fit.F*0.11;
+    g.font='400 '+pr.fit.F+'px '+FONT;g.textAlign='left';g.textBaseline='alphabetic';
+    pr.fit.lines.forEach(function(L){g.strokeText(L.t,L.x,L.y);g.fillText(L.t,L.x,L.y);});
+    g.globalAlpha=1;
+  }
+  buckets(pr,tin,tout);
+}
+
+/* ── 찍을 순서 ────────────────────────────────── */
+var queue=[],qTimer=0;
+function want(o){if(o.print||!ready||queue.indexOf(o)>=0)return;queue.push(o);if(!qTimer)qTimer=setTimeout(pump,0);}
+function release(o){var k=queue.indexOf(o);if(k>=0)queue.splice(k,1);if(o.print){o.cv.width=o.cv.height=0;o.print=null;o.sc=-1;}}
+function pump(){
+  qTimer=0;if(!queue.length)return;
+  var vh=innerHeight,best=0,bd=1e9;
+  queue.forEach(function(o,k){var r=o.el.getBoundingClientRect(),d=Math.abs(r.top+Math.min(r.height,vh)/2-vh/2);if(d<bd){bd=d;best=k;}});
+  var o=queue.splice(best,1)[0];
+  if(!o.print){try{o.kind==='ch'?buildCh(o):buildYr(o);}catch(e){if(window.console)console.warn(e);}}
+  need();
+  if(queue.length)qTimer=setTimeout(pump,24);
+}
+
+/* ── 스크롤 ───────────────────────────────────── */
+var raf=0,barOn=null,barKey='',activeTick=-2;
+function need(){if(!raf)raf=requestAnimationFrame(tick);}
+function tick(){
+  raf=0;
+  var vh=innerHeight,sy=window.scrollY||window.pageYOffset,now=performance.now(),more=false;
+  var hp=clamp(sy/heroLen);
+
+  var hr=heroEl.getBoundingClientRect();
+  if(ready){if(hr.bottom<-vh*2.5)releaseHero();else if(!hero.num){try{buildHero();}catch(e){if(window.console)console.warn(e);}}}
+  if(hero.num){
+    var ld=reduce?1:clamp((now-hero.t0)/1700);if(ld<1)more=true;
+    paintHero(ease(ld),reduce?0:ease((hp-0.1)/0.75));
+    var op=(reduce?1:ease((now-hero.t0)/1300))*(1-0.9*hp),rot=reduce?0:hp*16;
+    if(Math.abs(op-hero.op)>0.004){hero.op=op;raysCv.style.opacity=op.toFixed(3);}
+    if(Math.abs(rot-hero.rot)>0.02){hero.rot=rot;raysCv.style.transform='rotate('+rot.toFixed(2)+'deg)';}
+  }
+
+  var activeY=null,active=null;
+  yrs.forEach(function(o){
+    var r=o.el.getBoundingClientRect();
+    if(r.top<vh*1.8&&r.bottom>-vh*0.8)want(o);else if(r.top>vh*3.2||r.bottom<-vh*2.4)release(o);
+    if(o.print){var raw=(vh-r.top)/(r.height+vh);paint(o.print,reduce?1:ease((raw-0.03)/0.33),reduce?0:ease((raw-0.68)/0.28));}
+    if(r.top<=vh*0.5&&r.bottom>vh*0.5)activeY=o;
+  });
+  chs.forEach(function(o){
+    var r=o.el.getBoundingClientRect();
+    if(r.top<vh*1.8&&r.bottom>-vh*0.8)want(o);else if(r.top>vh*3.2||r.bottom<-vh*2.4)release(o);
+    var tin=1,tout=0,inked=o.n;
+    if(o.pin){
+      var top=r.top-stickyTop,len=Math.max(1,r.height-o.sh);
+      var pinP=clamp(-top/len),enterP=clamp(1-top/o.sh),leaveP=clamp(-(top+len)/o.sh);
+      if(!reduce){
+        tin=top<=0?1:ease((enterP-0.1)/0.8);tout=ease((leaveP-0.04)/0.8);
+        inked=0;for(var k=0;k<o.n;k++){if(pinP>=0.04+k*(0.64/Math.max(1,o.n-1)))inked=k+1;}
+      }
+    }else if(!reduce){
+      var raw=(vh-r.top)/(r.height+vh);tin=ease((raw-0.04)/0.32);tout=ease((raw-0.7)/0.26);
+    }
+    if(inked!==o.inked){o.inked=inked;o.lis.forEach(function(li,k){li.classList.toggle('inked',k<inked);});}
+    if(o.print){
+      paint(o.print,tin,tout);
+      var sc=reduce?1:Math.round((1.035-0.035*tin)*2000)/2000;
+      if(sc!==o.sc){o.sc=sc;o.cv.style.transform='scale('+sc+')';}
+    }
+    if(r.top<=vh*0.5&&r.bottom>vh*0.5)active=o;
+  });
+
+  var on=sy>heroLen*0.85;
+  if(on!==barOn){barOn=on;bar.classList.toggle('on',on);rail.classList.toggle('on',on);}
+  var label,p;
+  if(active){label=active.c.when+'  ·  제'+(active.i+1)+'판 / '+CH.length;p=fr(active.c.d);}
+  else if(activeY){label=activeY.y+'년  ·  장면 '+counts[activeY.y]+'개';p=fr(activeY.y+'-01-01');}
+  else if(outro.getBoundingClientRect().top<vh*0.5){label='2026.10.05  ·  오늘';p=1;}
+  else{label='2022.11.30';p=0;}
+  if(label!==barKey){barKey=label;barT.textContent=label;bar.style.setProperty('--p',p.toFixed(4));}
+  var at=active?active.i:-1;
+  if(at!==activeTick){if(activeTick>=0&&ticks[activeTick])ticks[activeTick].classList.remove('on');if(at>=0)ticks[at].classList.add('on');activeTick=at;}
+
+  if(more)need();
+}
+
+rail.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  var o=chs[+b.getAttribute('data-i')];
+  var y=o.el.getBoundingClientRect().top+(window.scrollY||0)-stickyTop+(o.pin?(o.el.offsetHeight-o.sh)*0.72:0);
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+});
+addEventListener('scroll',need,{passive:true});
+var rsT=0,lastW=innerWidth,lastH=0;
+addEventListener('resize',function(){
+  clearTimeout(rsT);
+  rsT=setTimeout(function(){
+    var sh=heroStage.clientHeight;
+    if(innerWidth!==lastW||Math.abs(sh-lastH)>2){lastW=innerWidth;lastH=sh;relayout();}else need();
+  },220);
+});
+function relayout(){
+  layout();
+  chs.forEach(release);yrs.forEach(release);releaseHero();
+  need();
+}
+
+layout();lastH=heroStage.clientHeight;need();
+var fontJobs=[];
+if(document.fonts&&document.fonts.load){
+  var glyphs=CH.map(function(c){return c.g;}).join('')+'1,405일2023202420252026';
+  fontJobs=[document.fonts.load('400 80px "Black Han Sans"',glyphs),document.fonts.load('400 15px "Hahmlet"','가나다'),document.fonts.load('600 15px "Hahmlet"','가나다'),document.fonts.load('500 12px "IBM Plex Mono"','2026')];
+}
+Promise.race([Promise.all(fontJobs).catch(function(){}),new Promise(function(r){setTimeout(r,3500);})]).then(function(){
+  ready=true;layout();lastH=heroStage.clientHeight;need();
+});
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "ai-timeline-log",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview --port 4321",
+    "check": "astro check",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "migrate": "node scripts/migrate-original.ts",
+    "parity": "node scripts/parity-shots.ts"
+  },
+  "dependencies": {
+    "@fontsource/black-han-sans": "^5.3.0",
+    "@fontsource/hahmlet": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "astro": "7.4.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@playwright/test": "1.64.1",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}
