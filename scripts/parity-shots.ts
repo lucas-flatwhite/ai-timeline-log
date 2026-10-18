@@ -5,11 +5,13 @@ import { resolve } from 'node:path';
 const NEW = 'http://localhost:4321/ai-timeline-log/';
 const ORIGINAL = 'file://' + resolve('reference/original/index.html');
 const VIEWPORTS = [{ width: 390, height: 780 }, { width: 1440, height: 860 }];
-/* [이름, 원본 선택자, 새 선택자] — 장면 3개는 첫 장면과 글이 가장 긴 두 장면 */
+/* [이름, 원본 선택자, 새 선택자] — 첫 장면, 글이 가장 긴 두 장면, 사선·물결 판화 한 장면씩 */
 const SHOTS: [string, string, string][] = [
   ['hero', '#hero', '#hero'],
   ['year-2023', '.yr[data-y="2023"]', '.yr[data-y="2023"]'],
   ['chatgpt', '#p01', '[id="2022-11-chatgpt"]'],
+  ['bing-bard-llama', '#p02', '[id="2023-02-bing-bard-llama"]'],
+  ['sora', '#p07', '[id="2024-02-sora"]'],
   ['pentagon', '#p23', '[id="2026-02-pentagon"]'],
   ['mythos', '#p24', '[id="2026-04-mythos"]'],
   ['outro', '#outro', '#outro'],

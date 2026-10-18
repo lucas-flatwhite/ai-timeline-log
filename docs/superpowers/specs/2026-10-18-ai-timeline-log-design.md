@@ -88,7 +88,7 @@ CLAUDE.md                    장면 추가 절차 등 에이전트용 작업 규
 # content/scenes/2025-01-27-deepseek.yaml
 id: 2025-01-deepseek            # 고정 ID = 주소. 바꾸지 않는다
 date: 2025-01-27                # 대표 날짜 (정렬, 눈금자 위치)
-span: { from: 2025-01 }         # 설명판의 기간 표시. to 생략 가능
+span: { from: 2025-01 }         # 설명판의 기간 표시. 월 단위 이상, to 생략 가능, to ≥ from
 order: 0                        # 같은 날짜 장면의 순서 (선택)
 added: 2026-10-05               # 로그에 추가된 날
 updated: 2026-10-05             # 내용이 바뀐 날 (선택)
@@ -162,7 +162,7 @@ en:
 ## 6. 렌더링 원칙
 
 - **모든 글은 정적 HTML**: 장면, 연도 판, 목차, 맺음, 출처가 JS 없이도 다 읽힌다.
-- **JS는 DOM을 읽는다**: 판화 설정은 각 섹션의 `data-*` 속성(`data-glyph`, `data-pattern`, `data-angle`, `data-motif`, `data-date`, `data-seed`)으로 넘긴다. JS가 필요한 UI 문구(표시줄 라벨 등)는 페이지당 `<script type="application/json" id="ui">` 하나로 넘긴다.
+- **JS는 DOM을 읽는다**: 판화 설정은 각 섹션의 `data-*` 속성(`data-glyph`, `data-pattern`, `data-angle`, `data-motif`, `data-seed`)으로 넘긴다. 표시줄 문구와 진행값도 빌드 때 언어별로 다 만들어 각 섹션의 `data-bar`(완성된 문구), `data-p`(0~1 진행값)로 넘긴다. 그래서 JS는 날짜 형식이나 언어별 문구를 하나도 모른다. (처음 안은 `data-date`와 페이지당 `<script type="application/json" id="ui">`였으나, 1단계 구현에서 이쪽이 더 단순해 바꿨다.)
 - **판화 엔진은 텍스트에 의존하지 않는다**: 엔진은 문자열과 서체를 받아 밑그림을 그리고 칼선으로 다시 새길 뿐이다. 서체는 CSS 토큰 `--display`에서 읽는다(원본의 `FONT` 상수 중복 제거).
 - **언어별 서체 토큰**: `:root:lang(ko)`, `:root:lang(en)`에서 `--display`, `--body`, `--mono`를 정의한다. 지금은 두 언어 모두 Black Han Sans / Hahmlet / IBM Plex Mono(라틴 글자 포함)를 쓴다.
 - **폰트 대기**: 판화를 찍기 전에 현재 언어의 판화 글자와 표지 글자로 `document.fonts.load`를 호출한다. 직접 배포와 preload를 쓰므로 원본의 3.5초 경쟁은 안전장치로만 남긴다.
@@ -228,6 +228,8 @@ en:
 **오류**
 - 필수 필드 누락, ko·en 텍스트 누락(장면, 항목, 연도, 시기, 계보 연구소명)
 - 날짜 형식 위반, `date`·항목 날짜·`added`가 `asOf`보다 늦음, `added`가 `firstEdition`보다 이름
+- `span`이 연도만 적힘(월 단위 이상이어야 함), `span.to`가 `span.from`보다 이름
+- `content/scenes/` 폴더 없음 (다른 오류와 함께 모아서 보고)
 - 항목 수가 3~4개가 아님
 - `id` 또는 `aliases` 중복, 파일명이 `date`와 맞지 않음
 - 첫 판 이후 추가된 장면에 출처 없음
