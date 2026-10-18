@@ -1,5 +1,6 @@
 ---
 import type { PageView } from '../lib/view.ts';
+import LangSwitch from './LangSwitch.astro';
 const { view } = Astro.props as { view: PageView };
 const o = view.outro;
 ---
@@ -20,5 +21,6 @@ const o = view.outro;
     </details>
 
     <p class="end"><span>{o.end[0]}</span><span>{o.end[1]}</span></p>
+    <LangSwitch view={view} />
   </div>
 </section>

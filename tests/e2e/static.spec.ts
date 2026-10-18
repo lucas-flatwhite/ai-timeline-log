@@ -24,6 +24,16 @@ test.describe('without JavaScript', () => {
     await expect(page.locator('#numtext')).toHaveAttribute('data-tall', '1,405\n일');
   });
 
+  test('language switch on the cover and at the end: KO is current, EN is not a link yet', async ({ page }) => {
+    await page.goto('./');
+    for (const where of ['.hero-top', '.outro']) {
+      const nav = page.locator(`${where} nav.lang`);
+      await expect(nav.locator('a[aria-current="page"]')).toHaveText('KO');
+      await expect(nav.locator('[aria-disabled="true"]')).toHaveText('EN');
+      await expect(nav.locator('a', { hasText: 'EN' })).toHaveCount(0);
+    }
+  });
+
   test('no external font service', async ({ page }) => {
     await page.goto('./');
     expect(await page.content()).not.toContain('fonts.googleapis.com');

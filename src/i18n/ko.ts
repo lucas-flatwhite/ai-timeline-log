@@ -3,6 +3,8 @@ export const ko = {
   title: (days: string) => `생성형 AI ${days}일`,
   heroSr: '생성형 AI ',
   cue: '아래로',
+  langNav: '언어',
+  langSoon: (name: string) => `${name} 준비 중`,
   plateNo: (n: number) => `제${n}판`,
   yearCount: (count: number, first: number, last: number) => `장면 ${count}개 · 제${first}판–제${last}판`,
   barScene: (when: string, n: number, total: number) => `${when}  ·  제${n}판 / ${total}`,

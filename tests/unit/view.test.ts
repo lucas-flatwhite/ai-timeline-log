@@ -30,6 +30,14 @@ describe('buildView(ko) reproduces the original strings', () => {
     expect(v.cue).toBe('아래로');
   });
 
+  test('language switch lists every locale; one without a page is not a link yet', () => {
+    expect(v.langNav).toBe('언어');
+    expect(v.langs).toEqual([
+      { code: 'ko', label: 'KO', name: '한국어', path: '', current: true },
+      { code: 'en', label: 'EN', name: 'English', path: null, current: false, soon: 'English 준비 중' },
+    ]);
+  });
+
   test('blocks: year plates sit before their first scene, none for 2022', () => {
     const order = v.blocks.map(b => (b.kind === 'year' ? `Y${b.year.year}` : b.scene.index));
     expect(order.slice(0, 3)).toEqual([0, 'Y2023', 1]);

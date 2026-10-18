@@ -1,0 +1,8 @@
+---
+import type { PageView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<nav class="lang" aria-label={view.langNav}>{view.langs.map(l => l.path === null
+  ? <span lang={l.code} aria-disabled="true" title={l.soon}>{l.label}</span>
+  : <a lang={l.code} hreflang={l.code} href={base + l.path} aria-current={l.current ? 'page' : undefined} title={l.name}>{l.label}</a>)}</nav>

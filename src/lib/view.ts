@@ -3,7 +3,7 @@ import {
   daysBetween, fraction, formatSpan, formatItemDate, formatDot, formatLong, formatMonthLong,
   formatYYMM, formatDate, type Locale,
 } from './dates.ts';
-import { uiFor } from '../i18n/index.ts';
+import { ui, uiFor, locales } from '../i18n/index.ts';
 
 export interface ItemView { date: string; label: string; text: string }
 export interface SceneView {
@@ -13,10 +13,12 @@ export interface SceneView {
 }
 export interface YearView { year: string; title: string; body: string; countLine: string; bar: string; p: number }
 export type Block = { kind: 'year'; year: YearView } | { kind: 'scene'; scene: SceneView };
+export interface LangView { code: Locale; label: string; name: string; path: string | null; current: boolean; soon?: string }
 export interface PageView {
   lang: Locale; title: string; description: string; ogTitle: string; ogDescription: string;
   barTitle: string; barStart: string; heroName: string; heroRange: string; heroSr: string;
   heroWide: string; heroTall: string; heroLines: string[]; lede: string; cue: string;
+  langNav: string; langs: LangView[];
   blocks: Block[]; scenes: SceneView[];
   rail: { nav: string; labels: { text: string; top: string }[]; ticks: { i: number; top: string; aria: string }[] };
   outro: {
@@ -103,6 +105,10 @@ export function buildView(c: Content, locale: Locale): PageView {
     heroName: site.name, heroRange: `${startDot} → ${asOfDot}`, heroSr: t.heroSr,
     heroWide, heroTall, heroLines: heroTall.split('\n'),
     lede: fill(st.lede, vars), cue: t.cue,
+    langNav: t.langNav,
+    langs: locales.map(l => (ui[l.code] && site[l.code]
+      ? { ...l, current: l.code === locale }
+      : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
     blocks, scenes,
     rail: {
       nav: t.railNav,

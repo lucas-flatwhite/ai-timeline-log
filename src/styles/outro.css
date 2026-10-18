@@ -24,4 +24,5 @@
 .src summary{cursor:pointer;font:400 19px/1.3 var(--display)}
 .src p{font-size:14px;color:var(--ink-2);max-width:62ch}
 .src ul{margin:12px 0 0;padding-left:1.1em;font:500 12px/1.75 var(--mono);overflow-wrap:anywhere}
+.outro .lang{justify-content:flex-end;margin-top:14px}
 .end{margin-top:8vh;padding-top:12px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:500 12px/1.4 var(--mono);letter-spacing:.04em}
