@@ -1,0 +1,33 @@
+id: 2025-11-music-deals
+date: 2025-11-25
+span:
+  from: 2025-10
+  to: 2025-11
+added: 2026-10-18
+print:
+  pattern: w
+  motif: rise
+  glyph: No.1
+sources:
+  - url: https://www.musicbusinessworldwide.com/universal-music-settles-udio-lawsuit-strikes-deal-for-licensed-ai-music-platform
+    title: Universal Music settles Udio lawsuit, strikes deal for licensed AI music platform
+    publisher: Music Business Worldwide
+  - url: https://www.theregister.com/2025/11/10/ai_country_artist_hits_number_one/
+    title: Fake country artist goes to #1 on Billboard digital songs chart
+    publisher: The Register
+  - url: https://en.wikipedia.org/wiki/2025_in_artificial_intelligence
+    title: 2025 in artificial intelligence
+    publisher: Wikipedia
+items:
+  - date: 2025-10-29
+    ko: 유니버설뮤직, 유디오와 소송을 끝내고 라이선스 음악 플랫폼을 함께 만들기로 합의. 유디오는 곡 다운로드를 막아 이용자 반발을 샀다.
+  - date: 2025-11-08
+    ko: AI 가수 브레이킹 러스트의 ‘Walk My Walk’, 빌보드 컨트리 디지털 송 세일즈 1위. AI 곡의 첫 빌보드 차트 1위로 보도됐다.
+  - date: 2025-11-19
+    ko: 워너뮤직, 유디오와 합의. 같은 날 수노는 기업가치 24.5억 달러로 2억 5,000만 달러를 유치했다.
+  - date: 2025-11-25
+    ko: 워너뮤직, 수노와도 합의하고 라이선스를 받은 음악 모델을 함께 만들기로 했다.
+ko:
+  kicker: 음악
+  title: 소송 대신 계약
+  lede: AI가 만든 노래가 차트 1위에 올랐다. AI 작곡 서비스를 고소했던 음반사들은 소송을 접고 라이선스 계약을 맺었다.

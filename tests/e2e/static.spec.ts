@@ -6,12 +6,12 @@ test.describe('without JavaScript', () => {
   test('every piece of text is in the HTML', async ({ page }) => {
     await page.goto('./');
     await expect(page).toHaveTitle('AI Timeline Log');
-    await expect(page.locator('section.ch')).toHaveCount(28);
-    await expect(page.locator('section.ch h2')).toHaveCount(28);
-    await expect(page.locator('.cuts li')).toHaveCount(109);
+    await expect(page.locator('section.ch')).toHaveCount(33);
+    await expect(page.locator('section.ch h2')).toHaveCount(33);
+    await expect(page.locator('.cuts li')).toHaveCount(128);
     await expect(page.locator('section.yr')).toHaveCount(4);
     await expect(page.locator('.lab')).toHaveCount(6);
-    await expect(page.locator('.src li')).toHaveCount(21);
+    await expect(page.locator('.src li')).toHaveCount(22);
     await expect(page.locator('[id="2025-01-deepseek"] h2')).toHaveText('딥시크 쇼크');
     await expect(page.locator('[id="2022-11-chatgpt"] .cuts time').first()).toHaveText('12.05');
   });

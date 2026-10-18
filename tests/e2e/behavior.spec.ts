@@ -73,7 +73,7 @@ test.describe('reduced motion', () => {
     await page.goto('./');
     await ready(page);
     await page.evaluate(() => scrollTo(0, 2000));
-    await expect(page.locator('.cuts li.inked')).toHaveCount(109);
+    await expect(page.locator('.cuts li.inked')).toHaveCount(128);
   });
 });
 
@@ -106,7 +106,7 @@ test.describe('fonts blocked', () => {
     await page.goto('./');
     await ready(page);
     await expect.poll(() => page.locator('#nums').evaluate((c: HTMLCanvasElement) => c.width)).toBeGreaterThan(0);
-    await expect(page.locator('section.ch')).toHaveCount(28);
+    await expect(page.locator('section.ch')).toHaveCount(33);
     expect(errors).toEqual([]);
   });
 });

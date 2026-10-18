@@ -15,9 +15,9 @@ describe('fill', () => {
 describe('buildView(ko)', () => {
   test('head and hero', () => {
     expect(v.title).toBe('AI Timeline Log');
-    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지 생성형 AI의 주요 장면 28개를 흑백 목판화 스타일로 찍어 스크롤로 넘겨 보는 연표.');
+    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지 생성형 AI의 주요 장면 33개를 흑백 목판화 스타일로 찍어 스크롤로 넘겨 보는 연표.');
     expect(v.ogTitle).toBe('AI Timeline Log');
-    expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 장면 28개를 목판화로 찍은 스크롤 연표.');
+    expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 장면 33개를 목판화로 찍은 스크롤 연표.');
     expect(v.barTitle).toBe('AI Timeline Log');
     expect(v.barStart).toBe('2022.11.30');
     expect(v.heroName).toBe('AI Timeline Log');
@@ -52,7 +52,7 @@ describe('buildView(ko)', () => {
     const d = scene('2025-01-deepseek');
     expect(d.no).toBe('제13판');
     expect(d.when).toBe('2025.01');
-    expect(d.bar).toBe('2025.01  ·  제13판 / 28');
+    expect(d.bar).toBe('2025.01  ·  제13판 / 33');
     expect(d.aria).toBe('제13판 2025.01 딥시크 쇼크');
     expect(d.seed).toBe(12);
     expect(d.items[0]).toEqual({ date: '2025-01-20', label: '01.20', text: '딥시크, 추론 모델 R1을 MIT 라이선스로 공개.' });
@@ -67,7 +67,7 @@ describe('buildView(ko)', () => {
     expect(v.rail.labels.map(l => l.text)).toEqual(['22.11', '2023', '2024', '2025', '2026', '26.10']);
     expect(v.rail.labels[0].top).toBe('0');
     expect(v.rail.labels[5].top).toBe('100%');
-    expect(v.rail.ticks).toHaveLength(28);
+    expect(v.rail.ticks).toHaveLength(33);
     expect(v.rail.ticks[0].top).toBe('0.00%');
   });
 
@@ -79,7 +79,7 @@ describe('buildView(ko)', () => {
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '22.11' });
     expect(v.outro.sourcesTitle).toBe('출처와 기준');
-    expect(v.outro.sourcesNote.startsWith('2026년 10월 5일까지의 각 사 발표와')).toBe(true);
-    expect(v.outro.end).toEqual(['판 28장 · 2022.11.30 – 현재', 'AI Timeline Log']);
+    expect(v.outro.sourcesNote.startsWith('2026년 10월 18일까지의 각 사 발표와')).toBe(true);
+    expect(v.outro.end).toEqual(['판 33장 · 2022.11.30 – 현재', 'AI Timeline Log']);
   });
 });

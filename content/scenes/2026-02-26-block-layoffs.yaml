@@ -1,0 +1,30 @@
+id: 2026-02-block-layoffs
+date: 2026-02-26
+span:
+  from: 2025-08
+  to: 2026-02
+added: 2026-10-18
+print:
+  pattern: h
+  motif: fall
+  glyph: -40%
+sources:
+  - url: https://fortune.com/2026/02/27/block-jack-dorsey-ceo-xyz-stock-square-4000-ai-layoffs/
+    title: Block cuts 4,000 jobs as Jack Dorsey cites AI
+    publisher: Fortune
+  - url: https://digitaleconomy.stanford.edu/app/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf
+    title: Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence
+    publisher: Stanford Digital Economy Lab
+items:
+  - date: 2025-08-26
+    ko: 스탠퍼드 연구진, AI 노출이 큰 직종에서 22~25세 고용이 상대적으로 13% 줄었다고 발표. 경력자 고용은 그대로였다.
+  - date: 2025-10-28
+    ko: 아마존, 사무직 약 1만 4,000명 감원. AI로 회사를 더 가볍게 운영하겠다고 설명했다.
+  - date: 2026-02-26
+    ko: 블록, 직원 1만여 명 가운데 4,000명 이상을 줄인다고 발표. 잭 도시는 사업이 탄탄하다며 AI 도구가 회사 운영 방식을 바꿨다고 설명했다.
+  - date: 2026-02-26
+    ko: 블록 주가, 발표 직후 시간외 거래에서 25% 넘게 올랐다.
+ko:
+  kicker: 일자리
+  title: 직원 40%를 줄인 블록
+  lede: 실적이 좋은 회사가 AI를 이유로 직원 40%를 내보냈고, 주가는 올랐다. 신입 자리부터 줄고 있다는 연구도 나왔다.

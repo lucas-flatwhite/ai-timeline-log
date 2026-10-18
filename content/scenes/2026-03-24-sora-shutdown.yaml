@@ -1,0 +1,30 @@
+id: 2026-03-sora-shutdown
+date: 2026-03-24
+span:
+  from: 2025-12
+  to: 2026-09
+added: 2026-10-18
+print:
+  pattern: c
+  motif: fall
+  glyph: 종료
+sources:
+  - url: https://decrypt.co/362243/openai-shut-down-sora-derailing-1-billion-deal-disney
+    title: OpenAI shuts down Sora, derailing $1 billion deal with Disney
+    publisher: Decrypt
+  - url: https://en.wikipedia.org/wiki/2026_in_artificial_intelligence
+    title: 2026 in artificial intelligence
+    publisher: Wikipedia
+items:
+  - date: 2025-12-11
+    ko: 디즈니, OpenAI에 10억 달러 투자 계약. 소라에서 디즈니 캐릭터 200여 개를 쓸 수 있게 하기로 했다.
+  - date: 2026-03-24
+    ko: OpenAI, 소라 앱과 API를 닫고 로봇용 세계 시뮬레이션 연구에 집중한다고 발표. 디즈니 투자는 집행되지 않고 무산됐다.
+  - date: 2026-04-26
+    ko: 소라 앱 서비스 종료. 영상 소셜 앱으로 출시한 지 7개월 만이다.
+  - date: 2026-09-24
+    ko: 소라 API까지 종료되며 개발자 접근도 끝났다.
+ko:
+  kicker: 퇴장
+  title: 소라가 문을 닫다
+  lede: 문장을 영상으로 바꿔 세상을 놀라게 한 소라가 2년 만에 문을 닫았다. OpenAI는 영상 서비스보다 연구에 계산력을 몰기로 했다.
