@@ -155,6 +155,25 @@ test.describe('review fixes', () => {
     expect(await page.evaluate(() => (window as unknown as { __siv: number }).__siv)).toBeGreaterThanOrEqual(1);
   });
 
+  test('the engraver waits for the real typefaces, not fallbacks', async ({ page }) => {
+    // WebKit은 모듈 스크립트를 스타일시트보다 먼저 돌릴 수 있다 → CSS 토큰이 비면 sans-serif로 새긴다
+    await page.addInitScript(() => {
+      const w = window as unknown as { __fonts: string[] };
+      w.__fonts = [];
+      const orig = FontFaceSet.prototype.load;
+      FontFaceSet.prototype.load = function (font: string, text?: string) { w.__fonts.push(font); return orig.call(this, font, text); };
+    });
+    await page.goto('./');
+    await ready(page);
+    const fonts = await page.evaluate(() => (window as unknown as { __fonts: string[] }).__fonts);
+    expect(fonts.slice(0, 4)).toEqual([
+      expect.stringContaining('"Black Han Sans"'),
+      expect.stringContaining('"Hahmlet"'),
+      expect.stringContaining('"Hahmlet"'),
+      expect.stringContaining('"IBM Plex Mono"'),
+    ]);
+  });
+
   test('fonts that never arrive fall back after the timeout', async ({ page }) => {
     await page.route(/\.(woff2?)$/, () => { /* 응답하지 않음 */ });
     const t0 = Date.now();
