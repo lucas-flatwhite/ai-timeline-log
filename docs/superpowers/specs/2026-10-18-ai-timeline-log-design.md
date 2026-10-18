@@ -26,7 +26,7 @@ ChatGPT 공개(2022-11-30)부터 기준일까지 생성형 AI의 주요 장면�
 | 내비게이션 | 데스크톱 눈금자를 색인으로 확장, 모바일은 상단 표시줄을 눌러 목차 시트 |
 | 빌드 | Astro (정적 출력). 내용은 빌드 시 HTML로 렌더링하고 JS는 판화·스크롤만 맡는다 |
 | 배포 | GitHub Pages, `https://lucas-flatwhite.github.io/ai-timeline-log/` (base `/ai-timeline-log`) |
-| 작품 이름 | 고정: "생성형 AI 목판 연표" / "A Woodcut Timeline of Generative AI"(가안). 일수는 표지·설명·OG 이미지에만 |
+| 작품 이름 | 고정: "생성형 AI 목판 연표" / "AI Timeline Log"(repo 이름과 같음). 일수는 표지·설명·OG 이미지에만 |
 | 폰트 | fontsource로 직접 배포(OFL). Google Fonts 의존 제거 |
 | 라이선스 | 코드 MIT, 내용(`content/`) CC BY 4.0 |
 | 분석 도구 | 넣지 않음 |
@@ -131,7 +131,7 @@ ko:
   heroGlyph: { wide: "{days}일", tall: "{days}\n일" }
   lede: "ChatGPT가 공개된 {start}부터 {asOf}까지, 생성형 AI가 지나온 장면 {count}개를 판화로 찍었습니다. …"
 en:
-  name: A Woodcut Timeline of Generative AI
+  name: AI Timeline Log
   heroGlyph: { wide: "{days} days", tall: "{days}\ndays" }
   lede: "..."
 ```
@@ -235,10 +235,10 @@ en:
 - 금지어: ko `놀라운`, `혁명적`, `게임 체인저` / en `revolutionary`, `game-changer`, `groundbreaking`, `stunning`, `incredible` / 공통 `!`, 이모지
 - 상대 시간 표현: ko `오늘`, `최근`, `올해`, `현재` / en `today`, `recently`, `this year`
 
-**경고** (원본 내용 중 일부가 기준을 넘기 때문에 실패시키지 않는다)
-- ko: 제목 18자, 요약 110자, 항목 60자 초과
-- en: 제목 40자, 요약 220자, 항목 120자 초과
+**경고**
 - 맞는 원본 출처가 연결되지 않은 첫 판 장면
+
+글자 수 기준은 두지 않는다. 설명판이 화면에 들어가는지는 서체와 줄바꿈에 따라 달라서 글자 수로는 추정밖에 안 되고, 실제 판정은 레이아웃 테스트(12절)가 한다. 문체는 금지어 검사와 `docs/editorial.md`가 지킨다. 항목 3~4개 규칙은 장면 구조이자 고정 스크롤 길이를 정하는 값이라 유지한다.
 
 ## 10. 메타·공유
 
@@ -258,6 +258,7 @@ en:
 
 **자동 테스트 (Playwright)**
 - ko·en × 390×780, 1440×860: 고정 중인 설명판이 화면 안에 들어가거나 `loose`로 풀림(잘림 없음)
+- 같은 조건에서 `dense`·`loose`가 된 장면 목록을 언어별로 출력한다. 실패 조건은 아니고, 번역이 길어 고정이 풀린 장면을 찾아 글을 줄이는 데 쓴다
 - 콘솔 오류 없음
 - JS 끔: 모든 장면 제목과 항목이 HTML에 있고 목차가 보임
 - `prefers-reduced-motion`: 모든 항목이 처음부터 먹을 입은 상태
