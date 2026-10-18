@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/base",
+  "compilerOptions": { "strictNullChecks": true },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["node_modules", "dist", "reference", ".parity"]
 }

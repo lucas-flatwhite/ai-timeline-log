@@ -1,7 +1,7 @@
 import { z } from 'astro/zod';
 import { normalizeDate } from './dates.ts';
 
-const isoDate = z.unknown().transform((v, ctx) => {
+const isoDate = z.union([z.string(), z.number(), z.date()]).transform((v, ctx) => {
   try { return normalizeDate(v); }
   catch (e) { ctx.addIssue({ code: 'custom', message: (e as Error).message }); return z.NEVER; }
 });
@@ -24,7 +24,7 @@ export const sceneSchema = z.object({
     motif: z.enum(['rays', 'disc', 'grid', 'fall', 'rise', 'none']),
     glyph: text,
   }),
-  sources: z.array(z.object({ url: z.string().url(), title: text, publisher: z.string().optional() })).default([]),
+  sources: z.array(z.object({ url: z.url(), title: text, publisher: z.string().optional() })).default([]),
   corrections: z.array(z.object({ date: dayDate, ko: text, en: text.optional() })).default([]),
   items: z.array(z.object({ date: isoDate, ko: text, en: text.optional() })).min(3).max(4),
   ko: sceneText,
@@ -49,7 +49,7 @@ export const ledgerSchema = z.array(z.object({
   lab: z.object({ ko: text, en: text.optional() }),
   models: z.array(z.object({ name: text, date: isoDate })).min(1),
 }));
-export const sourcesSchema = z.array(z.object({ url: z.string().url(), title: text }));
+export const sourcesSchema = z.array(z.object({ url: z.url(), title: text }));
 
 export type Scene = z.output<typeof sceneSchema>;
 export type Site = z.output<typeof siteSchema>;
