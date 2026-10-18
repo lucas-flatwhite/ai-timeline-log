@@ -3,7 +3,7 @@ import type { PageView } from '../lib/view.ts';
 import LangSwitch from './LangSwitch.astro';
 const { view } = Astro.props as { view: PageView };
 ---
-<header class="hero" id="hero">
+<header class="hero" id="hero" data-live-start={view.live.start}>
   <div class="hero-stage" id="heroStage">
     <canvas class="rays" id="rays" aria-hidden="true"></canvas>
     <canvas class="nums" id="nums" aria-hidden="true"></canvas>
@@ -12,7 +12,7 @@ const { view } = Astro.props as { view: PageView };
       <LangSwitch view={view} />
       <p class="hero-range">{view.heroRange}</p>
     </div>
-    <h1 class="numtext" id="numtext" data-wide={view.heroWide} data-tall={view.heroTall}><span class="sr">{view.heroSr}</span>{view.heroLines.map(l => <span>{l}</span>)}</h1>
+    <h1 class="numtext" id="numtext" data-wide={view.heroWide} data-tall={view.heroTall} data-wide-tpl={view.live.wide} data-tall-tpl={view.live.tall}><span class="sr">{view.heroSr}</span>{view.heroLines.map(l => <span>{l}</span>)}</h1>
     <div class="hero-foot">
       <p class="hero-lede">{view.lede}</p>
       <p class="cue">{view.cue}</p>

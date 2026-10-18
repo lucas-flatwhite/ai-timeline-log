@@ -1,7 +1,7 @@
 import type { Content } from './content.ts';
 import {
   daysBetween, fraction, formatSpan, formatItemDate, formatDot, formatLong, formatMonthLong,
-  formatYYMM, formatDate, type Locale,
+  formatYYMM, formatDate, todayISO, type Locale,
 } from './dates.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
 
@@ -18,6 +18,8 @@ export interface PageView {
   lang: Locale; title: string; description: string; ogTitle: string; ogDescription: string;
   barTitle: string; barStart: string; heroName: string; heroRange: string; heroSr: string;
   heroWide: string; heroTall: string; heroLines: string[]; lede: string; cue: string;
+  /** 브라우저가 오늘 날짜로 일수를 다시 채울 때 쓰는 시작일과 틀({days}) */
+  live: { start: string; wide: string; tall: string; outroTitle: string };
   langNav: string; langs: LangView[];
   blocks: Block[]; scenes: SceneView[];
   rail: { nav: string; labels: { text: string; top: string }[]; ticks: { i: number; top: string; aria: string }[] };
@@ -42,11 +44,12 @@ function need<T>(v: T | undefined, what: string): T {
 
 const pct = (x: number) => (x * 100).toFixed(2) + '%';
 
-export function buildView(c: Content, locale: Locale): PageView {
+/** today: 일수를 셀 날. 빌드 때는 빌드한 날이 들어가고, 브라우저가 보는 날로 다시 채운다 */
+export function buildView(c: Content, locale: Locale, today: string = todayISO()): PageView {
   const t = uiFor(locale);
   const { site } = c;
   const st = need(site[locale], `site.${locale}`);
-  const days = daysBetween(site.start, site.asOf).toLocaleString('en-US');
+  const days = daysBetween(site.start, today).toLocaleString('en-US');
   const count = c.scenes.length;
   const startDot = formatDot(site.start), asOfDot = formatDot(site.asOf);
   const vars = {
@@ -96,15 +99,16 @@ export function buildView(c: Content, locale: Locale): PageView {
   const startYear = site.start.slice(0, 4);
   const railYears = [...new Set(scenes.map(s => s.year))].filter(y => y > startYear);
   const heroWide = fill(st.heroGlyph.wide, vars), heroTall = fill(st.heroGlyph.tall, vars);
-  const title = t.title(days);
+  const title = site.name;
 
   return {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
     barTitle: title, barStart: startDot,
-    heroName: site.name, heroRange: `${startDot} → ${asOfDot}`, heroSr: t.heroSr,
+    heroName: site.name, heroRange: `${startDot} → ${t.now}`, heroSr: `${site.name} `,
     heroWide, heroTall, heroLines: heroTall.split('\n'),
     lede: fill(st.lede, vars), cue: t.cue,
+    live: { start: site.start, wide: st.heroGlyph.wide, tall: st.heroGlyph.tall, outroTitle: t.outroTitle('{days}') },
     langNav: t.langNav,
     langs: locales.map(l => (ui[l.code] && site[l.code]
       ? { ...l, current: l.code === locale }
@@ -120,7 +124,7 @@ export function buildView(c: Content, locale: Locale): PageView {
       ticks: scenes.map(s => ({ i: s.index, top: pct(s.p), aria: s.aria })),
     },
     outro: {
-      bar: t.barEnd(asOfDot), eyebrow: t.outroEyebrow(asOfDot), title: t.outroTitle(days),
+      bar: t.now, eyebrow: t.now, title: t.outroTitle(days),
       arcs: c.arcs.map(a => {
         const at = need(a[locale], `arc.${locale}`);
         return { span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: at.title, body: at.body };
@@ -129,7 +133,7 @@ export function buildView(c: Content, locale: Locale): PageView {
       ledger: c.ledger.map(l => ({ lab: need(l.lab[locale], `ledger.lab.${locale}`), models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
       sourcesTitle: t.sourcesTitle, sourcesNote: fill(st.sourcesNote, vars),
       sources: c.sources.map(s => ({ url: s.url, title: s.title })),
-      end: [t.endCount(count, startDot, asOfDot), title],
+      end: [t.endCount(count, startDot, t.now), title],
     },
   };
 }

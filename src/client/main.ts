@@ -4,6 +4,9 @@ import { root, reduce, L, FONT, BODY, MONO } from './env.ts';
 import { buildCh, buildYr } from './plates.ts';
 import { hero, buildHero, releaseHero, paintHero, type HeroEls } from './hero.ts';
 import type { SceneRec, YearRec, Rec } from './types.ts';
+import { applyLiveDays } from './live.ts';
+
+applyLiveDays();
 
 const byId = (id: string) => document.getElementById(id) as HTMLElement;
 const rail = byId('rail'), bar = byId('bar'), barT = byId('barT'), heroEl = byId('hero'), outro = byId('outro');

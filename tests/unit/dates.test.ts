@@ -1,8 +1,12 @@
 import { describe, test, expect } from 'vitest';
 import {
   parts, normalizeDate, daysBetween, fraction, formatDot, formatYYMM, formatDate, formatLong,
-  formatMonthLong, formatSpan, formatItemDate, parseLegacyWhen, parseLegacyItemDate,
+  formatMonthLong, formatSpan, formatItemDate, parseLegacyWhen, parseLegacyItemDate, todayISO,
 } from '../../src/lib/dates.ts';
+
+test('todayISO uses the local calendar date', () => {
+  expect(todayISO(new Date(2026, 0, 5, 23, 59))).toBe('2026-01-05');
+});
 
 const ORIGINAL_WHENS = [
   '2022.11.30', '2023.02', '2023.03.14', '2023.05', '2023.07–08', '2023.10–11', '2023.12–2024.02',

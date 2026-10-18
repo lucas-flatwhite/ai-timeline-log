@@ -5,7 +5,7 @@ test.describe('without JavaScript', () => {
 
   test('every piece of text is in the HTML', async ({ page }) => {
     await page.goto('./');
-    await expect(page).toHaveTitle('생성형 AI 1,405일');
+    await expect(page).toHaveTitle('AI Timeline Log');
     await expect(page.locator('section.ch')).toHaveCount(28);
     await expect(page.locator('section.ch h2')).toHaveCount(28);
     await expect(page.locator('.cuts li')).toHaveCount(109);
@@ -21,7 +21,8 @@ test.describe('without JavaScript', () => {
     await expect(page.locator('[id="2025-11-gemini-3"]')).toHaveAttribute('data-glyph', 'CODE\nRED');
     await expect(page.locator('[id="2026-01-ai-basic-act"]')).toHaveAttribute('data-glyph', '1.22');
     await expect(page.locator('[id="2024-11-computer-use-mcp"]')).toHaveAttribute('data-angle', '-20');
-    await expect(page.locator('#numtext')).toHaveAttribute('data-tall', '1,405\n일');
+    await expect(page.locator('#numtext')).toHaveAttribute('data-tall-tpl', '{days}\n일');
+    await expect(page.locator('#numtext')).toHaveAttribute('data-tall', /^[\d,]+\n일$/);   // 빌드한 날 기준. JS가 보는 날로 다시 채운다
   });
 
   test('language switch on the cover and at the end: KO is current, EN is not a link yet', async ({ page }) => {

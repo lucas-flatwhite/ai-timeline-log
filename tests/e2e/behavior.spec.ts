@@ -111,6 +111,19 @@ test.describe('fonts blocked', () => {
   });
 });
 
+test.describe('live day count', () => {
+  test.use({ viewport: { width: 390, height: 780 } });
+  test('counts days to the viewer\'s today, not the build day', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-12-01T12:00:00'));   // 2022-11-30 → 2026-12-01 = 1,462일
+    await page.goto('./');
+    await ready(page);
+    await expect(page.locator('#numtext')).toHaveAttribute('data-wide', '1,462일');
+    await expect(page.locator('#numtext')).toHaveAttribute('data-tall', '1,462\n일');
+    await expect(page.locator('#numtext')).toHaveText('AI Timeline Log 1,462일');
+    await expect(page.locator('#outroH')).toHaveText('1,462일 동안 바뀐 것');
+  });
+});
+
 test.describe('short landscape', () => {
   test.use({ viewport: { width: 844, height: 390 } });
   test('no pinning, no errors, no horizontal scroll', async ({ page }) => {

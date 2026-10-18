@@ -116,3 +116,9 @@ export function parseLegacyItemDate(s: string, sceneYear: number): string {
   if (p.length === 2) return normalizeDate(+p[0] > 12 ? `20${p[0]}-${p[1]}` : `${sceneYear}-${p[0]}-${p[1]}`);
   throw new Error(`Unrecognized item date "${s}"`);
 }
+
+/** 보는 사람(또는 빌드하는 곳)의 현지 날짜를 YYYY-MM-DD로 */
+export function todayISO(d: Date = new Date()): string {
+  const p = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}

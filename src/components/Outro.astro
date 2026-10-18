@@ -7,7 +7,7 @@ const o = view.outro;
 <section class="outro" id="outro" aria-labelledby="outroH" data-bar={o.bar}>
   <div class="outro-in">
     <p class="eyebrow">{o.eyebrow}</p>
-    <h2 id="outroH">{o.title}</h2>
+    <h2 id="outroH" data-live={view.live.outroTitle}>{o.title}</h2>
     <ol class="arcs">{o.arcs.map(a => <li><span class="span">{a.span}</span><h3>{a.title}</h3><p>{a.body}</p></li>)}</ol>
 
     <h2 class="sub">{o.ledgerTitle}</h2>

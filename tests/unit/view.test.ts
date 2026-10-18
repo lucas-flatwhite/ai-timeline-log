@@ -2,7 +2,7 @@ import { describe, test, expect } from 'vitest';
 import { loadContent } from '../../src/lib/content.ts';
 import { buildView, fill } from '../../src/lib/view.ts';
 
-const v = buildView(loadContent(), 'ko');
+const v = buildView(loadContent(), 'ko', '2026-10-18');   // 일수는 기준일(asOf)이 아니라 오늘로 센다
 const scene = (id: string) => v.scenes.find(s => s.id === id)!;
 
 describe('fill', () => {
@@ -12,20 +12,21 @@ describe('fill', () => {
   });
 });
 
-describe('buildView(ko) reproduces the original strings', () => {
+describe('buildView(ko)', () => {
   test('head and hero', () => {
-    expect(v.title).toBe('생성형 AI 1,405일');
-    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 2026년 10월까지 생성형 AI의 주요 장면 28개를 흑백 목판화 스타일로 찍어 스크롤로 넘겨 보는 연표.');
-    expect(v.ogTitle).toBe('생성형 AI 1,405일');
-    expect(v.ogDescription).toBe('ChatGPT 공개부터 2026년 10월까지, 생성형 AI의 장면 28개를 목판화로 찍은 스크롤 연표.');
-    expect(v.barTitle).toBe('생성형 AI 1,405일');
+    expect(v.title).toBe('AI Timeline Log');
+    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지 생성형 AI의 주요 장면 28개를 흑백 목판화 스타일로 찍어 스크롤로 넘겨 보는 연표.');
+    expect(v.ogTitle).toBe('AI Timeline Log');
+    expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 장면 28개를 목판화로 찍은 스크롤 연표.');
+    expect(v.barTitle).toBe('AI Timeline Log');
     expect(v.barStart).toBe('2022.11.30');
     expect(v.heroName).toBe('AI Timeline Log');
-    expect(v.heroRange).toBe('2022.11.30 → 2026.10.05');
-    expect(v.heroSr).toBe('생성형 AI ');
-    expect(v.heroLines).toEqual(['1,405', '일']);
-    expect(v.heroWide).toBe('1,405일');
-    expect(v.heroTall).toBe('1,405\n일');
+    expect(v.heroRange).toBe('2022.11.30 → 현재');
+    expect(v.heroSr).toBe('AI Timeline Log ');
+    expect(v.heroLines).toEqual(['1,418', '일']);
+    expect(v.heroWide).toBe('1,418일');
+    expect(v.heroTall).toBe('1,418\n일');
+    expect(v.live).toEqual({ start: '2022-11-30', wide: '{days}일', tall: '{days}\n일', outroTitle: '{days}일 동안 바뀐 것' });
     expect(v.lede).toBe('ChatGPT가 공개된 2022년 11월 30일부터 현재까지, AI가 지나온 장면들을 기록합니다.');
     expect(v.cue).toBe('아래로');
   });
@@ -71,14 +72,14 @@ describe('buildView(ko) reproduces the original strings', () => {
   });
 
   test('outro', () => {
-    expect(v.outro.bar).toBe('2026.10.05  ·  오늘');
-    expect(v.outro.eyebrow).toBe('2026.10.05 · 오늘');
-    expect(v.outro.title).toBe('1,405일 동안 바뀐 것');
+    expect(v.outro.bar).toBe('현재');
+    expect(v.outro.eyebrow).toBe('현재');
+    expect(v.outro.title).toBe('1,418일 동안 바뀐 것');
     expect(v.outro.arcs[0].span).toBe('2022.11 – 2023');
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '22.11' });
     expect(v.outro.sourcesTitle).toBe('출처와 기준');
     expect(v.outro.sourcesNote.startsWith('2026년 10월 5일까지의 각 사 발표와')).toBe(true);
-    expect(v.outro.end).toEqual(['판 28장 · 2022.11.30 – 2026.10.05', '생성형 AI 1,405일']);
+    expect(v.outro.end).toEqual(['판 28장 · 2022.11.30 – 현재', 'AI Timeline Log']);
   });
 });
