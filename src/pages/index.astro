@@ -17,4 +17,5 @@ const view = buildView(loadContent(), 'ko');
 <Hero view={view} />
 <main id="tl">{view.blocks.map(b => (b.kind === 'year' ? <YearPlate year={b.year} /> : <Scene scene={b.scene} />))}</main>
 <Outro view={view} />
+<script>import '../client/main.ts';</script>
 </Page>
