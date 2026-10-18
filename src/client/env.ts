@@ -1,5 +1,5 @@
 export const root = document.documentElement;
-export const reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+export const reduce = typeof window.matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cs = getComputedStyle(root);
 export const INK = cs.getPropertyValue('--ink').trim() || '#111110';
 export const PAPER = cs.getPropertyValue('--paper').trim() || '#E3E1D9';
