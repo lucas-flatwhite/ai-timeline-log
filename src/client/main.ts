@@ -159,7 +159,9 @@ try {
 } catch (e) { console.warn(e); }
 Promise.race([Promise.all(fontJobs).catch(() => {}), new Promise(r => setTimeout(r, 3500))]).then(() => {
   L.ready = true; layout(); lastH = els.stage.clientHeight;
-  const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  let id = location.hash.slice(1);
+  try { id = decodeURIComponent(id); } catch { /* 깨진 %-인코딩은 그대로 둔다 */ }
+  const target = id ? document.getElementById(id) : null;
   if (target && Math.abs(window.scrollY - initialY) < 2) target.scrollIntoView();
   need();
   root.dataset.ready = '1';

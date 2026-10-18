@@ -125,3 +125,44 @@ test.describe('short landscape', () => {
     expect(errors).toEqual([]);
   });
 });
+
+test.describe('review fixes', () => {
+  test.use({ viewport: { width: 390, height: 780 } });
+
+  test('a malformed hash does not stall startup', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', e => errors.push(e.message));
+    await page.goto('./#50%');
+    await ready(page);
+    await expect.poll(() => page.locator('#nums').evaluate((c: HTMLCanvasElement) => c.width)).toBeGreaterThan(0);
+    expect(errors).toEqual([]);
+  });
+
+  test('deep link is realigned when the browser scrolled before the script ran', async ({ page }) => {
+    // 번들을 늦게 보내 브라우저가 먼저 #id로 스크롤하게 만든다 → main.ts의 재정렬 경로를 강제한다
+    // Chromium은 레이아웃이 바뀌어도 #목표로 스스로 다시 스크롤하므로, 재정렬 경로가 실행됐는지도 센다
+    await page.addInitScript(() => {
+      const w = window as unknown as { __siv: number };
+      w.__siv = 0;
+      const orig = Element.prototype.scrollIntoView;
+      Element.prototype.scrollIntoView = function (...a: Parameters<Element['scrollIntoView']>) { w.__siv++; return orig.apply(this, a); };
+    });
+    await page.route(/_astro\/.*\.js$/, async r => { await new Promise(res => setTimeout(res, 1500)); await r.continue(); });
+    await page.goto('./#2025-01-deepseek');
+    await ready(page);
+    await expect.poll(() => page.locator('[id="2025-01-deepseek"]').evaluate(el => Math.abs(el.getBoundingClientRect().top))).toBeLessThan(2);
+    await expect.poll(() => page.locator('#barT').textContent()).toContain('2025.01  ·  제13판');
+    expect(await page.evaluate(() => (window as unknown as { __siv: number }).__siv)).toBeGreaterThanOrEqual(1);
+  });
+
+  test('fonts that never arrive fall back after the timeout', async ({ page }) => {
+    await page.route(/\.(woff2?)$/, () => { /* 응답하지 않음 */ });
+    const t0 = Date.now();
+    await page.goto('./', { waitUntil: 'domcontentloaded' });
+    await ready(page);
+    const took = Date.now() - t0;
+    expect(took).toBeGreaterThan(3000);
+    expect(took).toBeLessThan(8000);
+    await expect.poll(() => page.locator('#nums').evaluate((c: HTMLCanvasElement) => c.width)).toBeGreaterThan(0);
+  });
+});
