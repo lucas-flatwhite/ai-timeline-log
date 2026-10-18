@@ -1,7 +1,38 @@
+# 의존성
 node_modules/
+
+# 빌드 결과 (Astro)
 dist/
 .astro/
-.superpowers/
+*.tsbuildinfo
+
+# 테스트 결과 (Playwright, Vitest)
 test-results/
 playwright-report/
+blob-report/
+playwright/.cache/
+coverage/
+
+# 환경 변수 (예시 파일만 커밋)
+.env
+.env.*
+!.env.example
+
+# 로그
+*.log
+npm-debug.log*
+
+# 편집기
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# 운영체제
 .DS_Store
+._*
+Thumbs.db
+
+# 에이전트 작업 공간·개인 설정
+.superpowers/
+.claude/settings.local.json
