@@ -100,22 +100,6 @@ export function formatItemDate(locale: Locale, iso: string, sceneYear: number): 
   return short ? `${EN[p.m! - 1]} ${p.d}` : en(p);
 }
 
-/** 원본의 기간 표기("2023.07–08", "2023.12–2024.02", "2022.11.30")를 Span으로 */
-export function parseLegacyWhen(when: string): Span {
-  const r = /^(\d{4})\.(\d{2})(?:\.(\d{2}))?(?:–(?:(\d{4})\.)?(\d{2}))?$/.exec(when);
-  if (!r) throw new Error(`Unrecognized when "${when}"`);
-  const [, y, mo, d, y2, mo2] = r;
-  const from = d ? `${y}-${mo}-${d}` : `${y}-${mo}`;
-  return mo2 ? { from, to: `${y2 ?? y}-${mo2}` } : { from };
-}
-
-/** 원본의 항목 날짜 축약형: "MM.DD"(장면 연도), "YY.MM", "YY.MM.DD" */
-export function parseLegacyItemDate(s: string, sceneYear: number): string {
-  const p = s.split('.');
-  if (p.length === 3) return normalizeDate(`20${p[0]}-${p[1]}-${p[2]}`);
-  if (p.length === 2) return normalizeDate(+p[0] > 12 ? `20${p[0]}-${p[1]}` : `${sceneYear}-${p[0]}-${p[1]}`);
-  throw new Error(`Unrecognized item date "${s}"`);
-}
 
 /** 보는 사람(또는 빌드하는 곳)의 현지 날짜를 YYYY-MM-DD로 */
 export function todayISO(d: Date = new Date()): string {

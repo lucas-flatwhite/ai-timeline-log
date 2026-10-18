@@ -11,9 +11,7 @@
     "preview": "astro preview --port 4321",
     "check": "astro check",
     "test": "vitest run",
-    "test:e2e": "playwright test",
-    "migrate": "node scripts/migrate-original.ts",
-    "parity": "node scripts/parity-shots.ts"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@fontsource/black-han-sans": "^5.3.0",

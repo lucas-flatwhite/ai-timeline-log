@@ -68,10 +68,8 @@ src/
 public/
   .nojekyll, og/ko.png, og/en.png
 scripts/
-  migrate-original.ts        1회용: 원본 CH/YR/LEDGER → YAML 이관
   og.ts                      빌드된 표지를 Playwright로 찍어 OG 이미지 생성
 tests/                       Playwright 테스트, 데이터 검사 단위 테스트
-reference/original/          원본 index.html, README, 프롬프트 (비교 기준, 배포 제외)
 .github/
   workflows/deploy.yml       빌드·검사·배포
   workflows/check.yml        PR 검사
@@ -278,7 +276,7 @@ en:
 
 ## 13. 단계
 
-1. **기반과 원본 재현 (ko)**: Astro 프로젝트, `reference/original/` 보관, 이관 스크립트로 한국어 내용 이관, 엔진·스크롤 모듈화, 폰트 직접 배포. 원본과 같은 화면이 나오는 것까지.
+1. **기반과 원본 재현 (ko)**: Astro 프로젝트, 원본 아티팩트에서 한국어 내용 이관, 엔진·스크롤 모듈화, 폰트 직접 배포. 원본과 같은 화면이 나오는 것까지. (완료 후 원본·이관 스크립트·비교 도구는 저장소에서 제거했다. git 기록에 남아 있다)
 2. **로그 구조**: 고정 ID와 시드, 판 번호 제거, 기준일 계산, 최근 추가, 정정·갱신 기록, 빌드 검사, 기존 출처 연결.
 3. **내비게이션**: 상단 표시줄 버튼, 목차 시트, 눈금자 색인.
 4. **영어**: 번역과 용어집, `/en/`, 언어 전환, hreflang, 영어 레이아웃 검증.

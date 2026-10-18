@@ -1,19 +1,12 @@
 import { describe, test, expect } from 'vitest';
 import {
   parts, normalizeDate, daysBetween, fraction, formatDot, formatYYMM, formatDate, formatLong,
-  formatMonthLong, formatSpan, formatItemDate, parseLegacyWhen, parseLegacyItemDate, todayISO,
+  formatMonthLong, formatSpan, formatItemDate, todayISO,
 } from '../../src/lib/dates.ts';
 
 test('todayISO uses the local calendar date', () => {
   expect(todayISO(new Date(2026, 0, 5, 23, 59))).toBe('2026-01-05');
 });
-
-const ORIGINAL_WHENS = [
-  '2022.11.30', '2023.02', '2023.03.14', '2023.05', '2023.07–08', '2023.10–11', '2023.12–2024.02',
-  '2024.03', '2024.05', '2024.06', '2024.09–10', '2024.10–12', '2025.01', '2025.02', '2025.03',
-  '2025.05', '2025.06–08', '2025.09–10', '2025.10.31', '2025.11–12', '2026.01', '2026.02',
-  '2026.02–03', '2026.03–05', '2026.06', '2026.07', '2026.07–09', '2026.09',
-];
 
 describe('parts / normalizeDate', () => {
   test('accepts year, month and day precision', () => {
@@ -79,20 +72,5 @@ describe('formatting', () => {
     expect(formatItemDate('en', '2025-01-20', 2025)).toBe('Jan 20');
     expect(formatItemDate('en', '2023-01-23', 2022)).toBe('Jan 23, 2023');
     expect(formatItemDate('en', '2023-01', 2022)).toBe('Jan 2023');
-  });
-});
-
-describe('legacy parsing', () => {
-  test('every original "when" round-trips', () => {
-    for (const w of ORIGINAL_WHENS) expect(formatSpan('ko', parseLegacyWhen(w))).toBe(w);
-  });
-  test('item shorthands', () => {
-    expect(parseLegacyItemDate('12.05', 2022)).toBe('2022-12-05');
-    expect(parseLegacyItemDate('23.01', 2022)).toBe('2023-01');
-    expect(parseLegacyItemDate('23.01.23', 2022)).toBe('2023-01-23');
-    expect(() => parseLegacyItemDate('2023', 2022)).toThrow();
-  });
-  test('rejects unknown when', () => {
-    expect(() => parseLegacyWhen('2023년 2월')).toThrow();
   });
 });
