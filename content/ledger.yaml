@@ -1,0 +1,108 @@
+- lab:
+    ko: OpenAI
+  models:
+    - name: ChatGPT (GPT-3.5)
+      date: 2022-11
+    - name: GPT-4
+      date: 2023-03
+    - name: GPT-4o
+      date: 2024-05
+    - name: o1
+      date: 2024-09
+    - name: o3
+      date: 2024-12
+    - name: GPT-5
+      date: 2025-08
+    - name: GPT-5.2
+      date: 2025-12
+    - name: GPT-5.4
+      date: 2026-03
+    - name: GPT-5.5
+      date: 2026-04
+    - name: GPT-5.6
+      date: 2026-07
+    - name: GPT-6 Astra
+      date: 2026-09
+- lab:
+    ko: Anthropic
+  models:
+    - name: Claude
+      date: 2023-03
+    - name: Claude 2
+      date: 2023-07
+    - name: Claude 3
+      date: 2024-03
+    - name: Claude 3.5 Sonnet
+      date: 2024-06
+    - name: Claude 3.7 Sonnet
+      date: 2025-02
+    - name: Claude 4
+      date: 2025-05
+    - name: Opus 4.5
+      date: 2025-11
+    - name: Opus 4.6
+      date: 2026-02
+    - name: Mythos Preview
+      date: 2026-04
+    - name: Opus 4.7
+      date: 2026-04
+    - name: Opus 4.8
+      date: 2026-05
+    - name: Fable 5
+      date: 2026-06
+    - name: Opus 5
+      date: 2026-07
+    - name: Fable 5.1
+      date: 2026-09
+    - name: Opus 5.5
+      date: 2026-09
+- lab:
+    ko: Google
+  models:
+    - name: Bard
+      date: 2023-03
+    - name: Gemini 1.0
+      date: 2023-12
+    - name: Gemini 1.5
+      date: 2024-02
+    - name: Gemini 2.0
+      date: 2024-12
+    - name: Gemini 2.5 Pro
+      date: 2025-03
+    - name: Gemini 3
+      date: 2025-11
+    - name: Gemini 3.1 Pro
+      date: 2026-02
+    - name: Gemini 4 Argon
+      date: 2026-09
+- lab:
+    ko: Meta
+  models:
+    - name: LLaMA
+      date: 2023-02
+    - name: Llama 2
+      date: 2023-07
+    - name: Llama 3
+      date: 2024-04
+    - name: Llama 4
+      date: 2025-04
+    - name: Muse Spark 1.3
+      date: 2026-09
+- lab:
+    ko: DeepSeek
+  models:
+    - name: V3
+      date: 2024-12
+    - name: R1
+      date: 2025-01
+    - name: V4
+      date: 2026-04
+- lab:
+    ko: xAI · SpaceXAI
+  models:
+    - name: Grok
+      date: 2023-11
+    - name: Grok 4
+      date: 2025-07
+    - name: Grok 4.7
+      date: 2026-09

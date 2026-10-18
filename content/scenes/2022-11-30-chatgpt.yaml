@@ -1,0 +1,22 @@
+id: 2022-11-chatgpt
+date: 2022-11-30
+span:
+  from: 2022-11-30
+added: 2026-10-05
+print:
+  pattern: h
+  motif: rays
+  glyph: ChatGPT
+items:
+  - date: 2022-12-05
+    ko: 공개 닷새 만에 사용자 100만 명을 넘었다.
+  - date: 2022-12-21
+    ko: 구글 경영진이 검색 사업 위협에 ‘코드 레드’를 선언했다는 보도.
+  - date: 2023-01
+    ko: 두 달 만에 월간 사용자 1억 명 추정(UBS). 당시 가장 빨리 성장한 소비자 앱.
+  - date: 2023-01-23
+    ko: 마이크로소프트, OpenAI에 수년간 수십억 달러 추가 투자 발표.
+ko:
+  kicker: 출발점
+  title: ChatGPT 공개
+  lede: OpenAI가 GPT-3.5 기반 대화형 챗봇을 연구 프리뷰로 무료 공개했다. 입력창에 질문을 쓰는 일이 곧 AI를 쓰는 일이 됐다.

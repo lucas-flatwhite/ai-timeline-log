@@ -1,0 +1,23 @@
+id: 2025-05-coding-agents
+date: 2025-05-22
+span:
+  from: 2025-05
+added: 2026-10-05
+print:
+  pattern: d
+  angle: 10
+  motif: grid
+  glyph: 에이전트
+items:
+  - date: 2025-05-16
+    ko: OpenAI, 클라우드에서 일하는 코딩 에이전트 Codex 공개.
+  - date: 2025-05-20
+    ko: 구글 I/O, 소리까지 함께 만드는 영상 모델 Veo 3와 코딩 에이전트 Jules 공개.
+  - date: 2025-05-21
+    ko: OpenAI, 조니 아이브의 하드웨어 스타트업 io 인수(약 65억 달러).
+  - date: 2025-05-22
+    ko: Anthropic, Claude Opus 4·Sonnet 4 공개. Claude Code 정식 출시.
+ko:
+  kicker: 에이전트
+  title: 코딩 에이전트의 시대
+  lede: 일주일 사이에 세 회사가 코딩 에이전트와 새 모델을 내놓았다. AI가 몇 시간짜리 개발 작업을 혼자 하기 시작했다.

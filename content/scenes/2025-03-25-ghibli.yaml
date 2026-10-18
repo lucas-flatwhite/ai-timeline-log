@@ -1,0 +1,22 @@
+id: 2025-03-ghibli
+date: 2025-03-25
+span:
+  from: 2025-03
+added: 2026-10-05
+print:
+  pattern: c
+  motif: disc
+  glyph: 지브리
+items:
+  - date: 2025-03-06
+    ko: 범용 AI 에이전트 마누스 공개. 초대 코드를 구하려는 사람이 몰렸다.
+  - date: 2025-03-25
+    ko: GPT-4o 이미지 생성 공개. 올트먼은 사용량이 몰려 GPU가 녹고 있다고 했다.
+  - date: 2025-03-25
+    ko: 같은 날 구글, Gemini 2.5 Pro 공개.
+  - date: 2025-03-31
+    ko: OpenAI, 400억 달러 투자 유치(기업가치 3,000억 달러). ChatGPT 주간 사용자 5억 명.
+ko:
+  kicker: 대중화
+  title: 지브리 열풍
+  lede: ChatGPT에 새 이미지 생성이 붙자 사진을 지브리풍 그림으로 바꾸는 놀이가 전 세계로 번졌다.

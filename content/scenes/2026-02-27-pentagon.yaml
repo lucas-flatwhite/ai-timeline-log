@@ -1,0 +1,23 @@
+id: 2026-02-pentagon
+date: 2026-02-27
+span:
+  from: 2026-02
+  to: 2026-03
+added: 2026-10-05
+print:
+  pattern: h
+  motif: none
+  glyph: "2.27"
+items:
+  - date: 2026-02-24
+    ko: 국방부, 27일까지 조건을 거두라고 통보. Anthropic은 받아들이지 않았다.
+  - date: 2026-02-27
+    ko: 트럼프 대통령, 연방기관에 Anthropic 사용 중단 지시. 같은 날 OpenAI는 국방부 기밀망 계약을 발표.
+  - date: 2026-03-03
+    ko: 미국 기업으로는 처음 공급망 위험 기업으로 공식 지정. Claude 앱 다운로드가 처음 ChatGPT를 앞섰다.
+  - date: 2026-03-26
+    ko: 캘리포니아 연방법원, Anthropic 가처분 인용. 9월 25일 워싱턴 항소법원은 별도 근거의 지정을 2대 1로 유지.
+ko:
+  kicker: 국가와 기업
+  title: 미 국방부와 Anthropic
+  lede: 국내 대량 감시와 완전 자율무기에는 쓰지 않는다는 사용 조건을 두고 미 국방부와 Anthropic이 맞섰다. 국방부는 모든 합법적 사용을 허용하라고 요구했다.

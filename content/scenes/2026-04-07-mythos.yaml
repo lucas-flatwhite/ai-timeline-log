@@ -1,0 +1,23 @@
+id: 2026-04-mythos
+date: 2026-04-07
+span:
+  from: 2026-03
+  to: 2026-05
+added: 2026-10-05
+print:
+  pattern: c
+  motif: disc
+  glyph: Mythos
+items:
+  - date: 2026-03-26
+    ko: 블로그 초안이 유출되며 Mythos라는 이름이 먼저 알려졌다.
+  - date: 2026-04-07
+    ko: 프로젝트 글래스윙 출범. AWS·애플·구글·MS·엔비디아 등 12개 창립사가 주요 OS·브라우저의 고위험 취약점 수천 건을 고친다.
+  - date: 2026-04-16
+    ko: 열흘 사이 Claude Opus 4.7, GPT-5.5(23일), 딥시크 V4(24일)가 잇달아 나왔다.
+  - date: 2026-05-07
+    ko: OpenAI도 보안 특화 GPT-5.5-Cyber를 검증된 보안팀에만 제한 공개.
+ko:
+  kicker: 보안
+  title: 공개하지 않은 모델
+  lede: Anthropic은 소프트웨어 취약점을 찾는 능력이 너무 강하다며 Claude Mythos Preview를 일반에 공개하지 않고 방어용 컨소시엄에만 제공했다.

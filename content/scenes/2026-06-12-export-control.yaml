@@ -1,0 +1,22 @@
+id: 2026-06-export-control
+date: 2026-06-12
+span:
+  from: 2026-06
+added: 2026-10-05
+print:
+  pattern: h
+  motif: none
+  glyph: 19일
+items:
+  - date: 2026-06-02
+    ko: 트럼프 대통령, 첨단 AI 혁신과 안보 행정명령. 사이버 능력을 기준으로 프런티어 모델을 지정하는 절차를 만들었다.
+  - date: 2026-06-09
+    ko: Anthropic, Claude Fable 5(일반 공개)와 Mythos 5(검증된 파트너용) 출시. 같은 모델에 다른 안전장치.
+  - date: 2026-06-12
+    ko: 상무부, 외국 국적자 접근을 막으라고 지시. Anthropic은 몇 시간 만에 두 모델 접근을 전면 중단.
+  - date: 2026-06-30
+    ko: 통제 해제. 7월 1일 새 보안 분류기를 붙여 다시 열었다.
+ko:
+  kicker: 수출통제
+  title: 출시 사흘 만에 멈춘 모델
+  lede: 미 상무부가 Claude Fable 5와 Mythos 5를 수출통제로 묶었다. 두 모델의 서비스가 19일 동안 멈췄다.

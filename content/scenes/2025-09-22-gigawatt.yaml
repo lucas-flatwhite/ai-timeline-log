@@ -1,0 +1,23 @@
+id: 2025-09-gigawatt
+date: 2025-09-22
+span:
+  from: 2025-09
+  to: 2025-10
+added: 2026-10-05
+print:
+  pattern: h
+  motif: rise
+  glyph: 10GW
+items:
+  - date: 2025-09-05
+    ko: Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대.
+  - date: 2025-09-22
+    ko: 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약.
+  - date: 2025-09-30
+    ko: OpenAI, Sora 2와 영상 소셜 앱 Sora 출시.
+  - date: 2025-10-29
+    ko: 엔비디아, 세계 최초로 시가총액 5조 달러.
+ko:
+  kicker: 계산력
+  title: 기가와트 단위 계약
+  lede: 모델 경쟁이 전력과 칩 확보 경쟁으로 번졌다. 데이터센터 계약이 기가와트 단위로 체결됐다.
