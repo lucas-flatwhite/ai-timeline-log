@@ -1,0 +1,4 @@
+@media (prefers-reduced-motion:reduce){
+  .cue::after{animation:none}
+  .cuts li,.cuts time::before,.bar,.rail,.numtext{transition:none}
+}

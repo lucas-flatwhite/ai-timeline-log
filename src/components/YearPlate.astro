@@ -1,0 +1,5 @@
+---
+import type { YearView } from '../lib/view.ts';
+const { year: y } = Astro.props as { year: YearView };
+---
+<section class="yr" data-y={y.year} data-bar={y.bar} data-p={String(y.p)} aria-labelledby={`y${y.year}`}><canvas aria-hidden="true"></canvas><div class="yr-text"><p class="yr-eyebrow">{y.year}</p><h2 id={`y${y.year}`}>{y.title}</h2><p>{y.body}</p><p class="count">{y.countLine}</p></div></section>

@@ -1,0 +1,19 @@
+---
+import type { PageView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+---
+<header class="hero" id="hero">
+  <div class="hero-stage" id="heroStage">
+    <canvas class="rays" id="rays" aria-hidden="true"></canvas>
+    <canvas class="nums" id="nums" aria-hidden="true"></canvas>
+    <div class="hero-top">
+      <p class="hero-name">{view.heroName}</p>
+      <p class="hero-range">{view.heroRange}</p>
+    </div>
+    <h1 class="numtext" id="numtext" data-wide={view.heroWide} data-tall={view.heroTall}><span class="sr">{view.heroSr}</span>{view.heroLines.map(l => <span>{l}</span>)}</h1>
+    <div class="hero-foot">
+      <p class="hero-lede">{view.lede}</p>
+      <p class="cue">{view.cue}</p>
+    </div>
+  </div>
+</header>

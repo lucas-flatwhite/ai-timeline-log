@@ -1,0 +1,9 @@
+/* ── 연도 판 ──────────────────────────────────── */
+.yr{position:relative;min-height:calc(var(--avail) * 1.15);background:var(--ink);color:var(--paper);display:flex;align-items:flex-end;padding-inline:16px;padding-block:0 12svh;overflow:hidden}
+.yr canvas{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.yr-text{position:relative;z-index:1;max-width:32rem;background:var(--ink);border:1px solid var(--paper);padding:16px 18px 14px}
+.yr-eyebrow{margin:0;font:500 12px/1.4 var(--mono);letter-spacing:.08em}
+.yr h2{margin:6px 0 10px;font:400 clamp(28px,5.4vw,52px)/1.1 var(--display);text-wrap:balance}
+.yr p{margin:0;font-size:15px;line-height:1.65;max-width:38ch;text-wrap:pretty}
+.yr .count{margin-top:12px;font:500 11.5px/1.4 var(--mono);letter-spacing:.04em}
+@media (min-width:900px){.yr{padding-inline:5vw}.yr p{font-size:16px}}

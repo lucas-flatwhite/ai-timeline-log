@@ -1,4 +1,20 @@
 ---
+import Page from '../layouts/Page.astro';
+import Bar from '../components/Bar.astro';
+import Rail from '../components/Rail.astro';
+import Hero from '../components/Hero.astro';
+import YearPlate from '../components/YearPlate.astro';
+import Scene from '../components/Scene.astro';
+import Outro from '../components/Outro.astro';
+import { loadContent } from '../lib/content.ts';
+import { buildView } from '../lib/view.ts';
+
+const view = buildView(loadContent(), 'ko');
 ---
-<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><title>scaffold</title></head><body><p>scaffold</p></body></html>
+<Page view={view}>
+<Bar view={view} />
+<Rail view={view} />
+<Hero view={view} />
+<main id="tl">{view.blocks.map(b => (b.kind === 'year' ? <YearPlate year={b.year} /> : <Scene scene={b.scene} />))}</main>
+<Outro view={view} />
+</Page>

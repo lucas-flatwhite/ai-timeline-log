@@ -1,0 +1,24 @@
+---
+import type { PageView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+const o = view.outro;
+---
+<section class="outro" id="outro" aria-labelledby="outroH" data-bar={o.bar}>
+  <div class="outro-in">
+    <p class="eyebrow">{o.eyebrow}</p>
+    <h2 id="outroH">{o.title}</h2>
+    <ol class="arcs">{o.arcs.map(a => <li><span class="span">{a.span}</span><h3>{a.title}</h3><p>{a.body}</p></li>)}</ol>
+
+    <h2 class="sub">{o.ledgerTitle}</h2>
+    <p class="note">{o.ledgerNote}</p>
+    <div class="ledger" id="ledger">{o.ledger.map(l => <div class="lab"><h3>{l.lab}</h3><ol>{l.models.map(m => <li>{m.name}<time>{m.date}</time></li>)}</ol></div>)}</div>
+
+    <details class="src">
+      <summary>{o.sourcesTitle}</summary>
+      <p>{o.sourcesNote}</p>
+      <ul>{o.sources.map(s => <li><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>)}</ul>
+    </details>
+
+    <p class="end"><span>{o.end[0]}</span><span>{o.end[1]}</span></p>
+  </div>
+</section>

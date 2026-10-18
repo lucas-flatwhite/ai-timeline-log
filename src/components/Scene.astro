@@ -1,0 +1,5 @@
+---
+import type { SceneView } from '../lib/view.ts';
+const { scene: s } = Astro.props as { scene: SceneView };
+---
+<section class="ch" id={s.id} style={`--n:${s.items.length}`} aria-labelledby={`h-${s.id}`} data-glyph={s.glyph} data-pattern={s.pattern} data-angle={s.angle} data-motif={s.motif} data-seed={s.seed} data-bar={s.bar} data-p={String(s.p)}><div class="stage"><canvas class="print" aria-hidden="true"></canvas><article class="plate"><p class="meta"><span class="no">{s.no}</span><span class="when">{s.when}</span><span class="kick">{s.kicker}</span></p><h2 id={`h-${s.id}`}>{s.title}</h2><p class="lede">{s.lede}</p><ol class="cuts">{s.items.map(it => <li><time datetime={it.date}>{it.label}</time><span>{it.text}</span></li>)}</ol></article></div></section>

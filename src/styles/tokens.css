@@ -1,0 +1,16 @@
+/* 레이아웃: 목판 연표. 먹판(표지·연도)과 한지(장면)가 번갈아 찍힌다.
+   장면마다 판이 화면에 고정되고, 설명판의 줄이 하나씩 먹을 입은 뒤 다음 판으로 넘어간다.
+   흑백 단일 톤을 의도한 디자인이라 다크 모드 블록 없이 모든 색을 명시한다. */
+:root{
+  --paper:#E3E1D9;
+  --ink:#111110;
+  --ink-2:#3B3A35;
+  --ghost:#A3A097;
+  --display:"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --body:"Hahmlet","AppleMyungjo","Nanum Myeongjo","Batang","Noto Serif KR",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --top:env(safe-area-inset-top,0px);
+  --bot:env(safe-area-inset-bottom,0px);
+  --avail:calc(100svh - var(--top) - var(--bot));
+  color-scheme:light;
+}

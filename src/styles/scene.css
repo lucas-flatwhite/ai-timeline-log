@@ -1,0 +1,37 @@
+/* ── 장면 ─────────────────────────────────────── */
+.ch{position:relative;background:var(--paper)}
+.stage{position:relative;min-height:var(--avail);display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;padding-inline:16px;padding-block:56px 16px;overflow:hidden}
+.pin .ch:not(.loose){height:calc(var(--avail) + var(--n) * 26svh + 40svh)}
+.pin .ch:not(.loose) .stage{position:sticky;top:var(--top);height:var(--avail);min-height:0}
+.print{position:absolute;left:0;top:0;width:100%;height:100%;display:block;transform-origin:62% 38%;pointer-events:none}
+.plate{position:relative;z-index:1;background:var(--paper);border:2px solid var(--ink);padding:14px 16px 10px;max-width:560px}
+.meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0 0 11px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+.meta .no{font:400 14px/1 var(--display);letter-spacing:.02em}
+.meta .when{font:500 11.5px/1 var(--mono);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.meta .kick{margin-left:auto;font:600 12px/1 var(--body);letter-spacing:.06em}
+.plate h2{margin:0 0 8px;font:400 26px/1.16 var(--display);letter-spacing:-.005em;text-wrap:balance}
+.lede{margin:0 0 11px;color:var(--ink-2);font-size:14.5px;line-height:1.6;text-wrap:pretty}
+.cuts{list-style:none;margin:0;padding:0}
+.cuts li{display:block;padding:7px 0 6px;border-top:1px dotted currentColor;color:var(--ink);transition:color .4s ease}
+.pin .ch:not(.loose) .cuts li:not(.inked){color:var(--ghost)}
+.cuts time{position:relative;display:inline-block;margin-right:8px;padding-left:12px;font:500 11.5px/1 var(--mono);letter-spacing:.02em;font-variant-numeric:tabular-nums;vertical-align:1px}
+.cuts time::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;margin-top:-3px;background:currentColor;transform:scale(1);transition:transform .3s ease}
+.pin .ch:not(.loose) .cuts li:not(.inked) time::before{transform:scale(0)}
+.cuts span{font-size:14px;line-height:1.55}
+.dense .plate{padding:11px 13px 8px}
+.dense .plate h2{font-size:22px;margin-bottom:6px}
+.dense .lede{font-size:13.5px;line-height:1.5;margin-bottom:8px}
+.dense .cuts li{padding:5px 0 4px}
+.dense .cuts span{font-size:13px;line-height:1.48}
+@media (min-width:900px){
+  .stage{align-items:flex-start;padding-inline:5vw;padding-block:84px 7svh}
+  .plate{width:min(560px,44vw);padding:20px 24px 14px}
+  .plate h2{font-size:clamp(30px,3vw,44px)}
+  .lede{font-size:16px}
+  .cuts li{display:grid;grid-template-columns:5.6rem 1fr;gap:12px;align-items:baseline;padding:8px 0 7px}
+  .cuts time{margin:0}
+  .cuts span{font-size:15px;line-height:1.55}
+  .dense .plate h2{font-size:30px}
+  .dense .lede{font-size:14.5px}
+  .dense .cuts span{font-size:14px}
+}

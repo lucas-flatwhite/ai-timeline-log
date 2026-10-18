@@ -1,0 +1,32 @@
+---
+import '@fontsource/black-han-sans/400.css';
+import '@fontsource/hahmlet/400.css';
+import '@fontsource/hahmlet/600.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/base.css';
+import '../styles/tokens.css';
+import '../styles/nav.css';
+import '../styles/hero.css';
+import '../styles/year.css';
+import '../styles/scene.css';
+import '../styles/outro.css';
+import '../styles/motion.css';
+import type { PageView } from '../lib/view.ts';
+
+interface Props { view: PageView }
+const { view } = Astro.props;
+---
+<!doctype html>
+<html lang={view.lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{view.title}</title>
+<meta name="description" content={view.description}>
+<meta property="og:title" content={view.ogTitle}>
+<meta property="og:description" content={view.ogDescription}>
+</head>
+<body>
+<slot />
+</body>
+</html>
