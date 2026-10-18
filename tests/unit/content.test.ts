@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { cpSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { loadContent } from '../../src/lib/content.ts';
@@ -64,5 +64,37 @@ describe('loadContent', () => {
     try { loadContent(dir); } catch (e) { msg = (e as Error).message; }
     expect(msg).toContain(`${SCENE}: items.0.date: Invalid day in "2023-02-30"`);
     expect(msg).toMatch(new RegExp(`${SCENE}: items: `));
+  });
+
+  test('rejects a span that ends before it starts', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace('span: { from: 2023-03-14 }', 'span: { from: 2023-07, to: 2023-05 }'));
+    expect(() => loadContent(dir)).toThrowError(`${SCENE}: span.to: span ends (2023-05) before it starts (2023-07)`);
+  });
+
+  test('accepts a span ending in the month it starts', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace('span: { from: 2023-03-14 }', 'span: { from: 2023-03-14, to: 2023-03 }'));
+    expect(loadContent(dir).scenes[0].span).toEqual({ from: '2023-03-14', to: '2023-03' });
+  });
+
+  test('requires span dates to name at least a month', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace('span: { from: 2023-03-14 }', 'span: { from: 2023, to: 2024 }'));
+    let msg = '';
+    try { loadContent(dir); } catch (e) { msg = (e as Error).message; }
+    expect(msg).toContain(`${SCENE}: span.from: Expected YYYY-MM or YYYY-MM-DD`);
+    expect(msg).toContain(`${SCENE}: span.to: Expected YYYY-MM or YYYY-MM-DD`);
+  });
+
+  test('reports a missing scenes folder alongside other errors', () => {
+    const dir = copyFixture();
+    rmSync(join(dir, 'scenes'), { recursive: true });
+    edit(dir, 'site.yaml', s => s.replace(/^asOf: .*$/m, 'asOf: nope'));
+    let msg = '';
+    try { loadContent(dir); } catch (e) { msg = (e as Error).message; }
+    expect(msg).toContain('Content errors:');
+    expect(msg).toContain('scenes/: folder not found');
+    expect(msg).toContain('site.yaml: asOf');
   });
 });

@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import type { z } from 'astro/zod';
@@ -31,7 +31,10 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
 
   const scenes: Scene[] = [];
   const seen = new Map<string, string>();
-  for (const f of readdirSync(join(dir, 'scenes')).filter(n => n.endsWith('.yaml')).sort()) {
+  const sceneDir = join(dir, 'scenes');
+  if (!existsSync(sceneDir)) errors.push('scenes/: folder not found');
+  const files = existsSync(sceneDir) ? readdirSync(sceneDir).filter(n => n.endsWith('.yaml')).sort() : [];
+  for (const f of files) {
     const where = `scenes/${f}`;
     const s = check(sceneSchema, read(where), where);
     if (!s) continue;

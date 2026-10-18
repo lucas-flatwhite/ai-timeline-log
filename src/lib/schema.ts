@@ -6,6 +6,7 @@ const isoDate = z.union([z.string(), z.number(), z.date()]).transform((v, ctx) =
   catch (e) { ctx.addIssue({ code: 'custom', message: (e as Error).message }); return z.NEVER; }
 });
 const dayDate = isoDate.refine(s => /^\d{4}-\d{2}-\d{2}$/.test(s), 'Expected YYYY-MM-DD');
+const monthDate = isoDate.refine(s => /^\d{4}-\d{2}/.test(s), 'Expected YYYY-MM or YYYY-MM-DD');
 const text = z.string().min(1);
 
 const sceneText = z.object({ kicker: text, title: text, lede: text, glyph: text.optional() });
@@ -13,7 +14,12 @@ const sceneText = z.object({ kicker: text, title: text, lede: text, glyph: text.
 export const sceneSchema = z.object({
   id: z.string().regex(/^\d{4}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Expected YYYY-MM-slug'),
   date: dayDate,
-  span: z.object({ from: isoDate, to: isoDate.optional() }),
+  span: z.object({ from: monthDate, to: monthDate.optional() }).superRefine(({ from, to }, ctx) => {
+    const n = Math.min(from.length, to?.length ?? 0);      // 2023-03-14 ~ 2023-03 처럼 정밀도가 다르면 공통 부분만 비교
+    if (to && to.slice(0, n) < from.slice(0, n)) {
+      ctx.addIssue({ code: 'custom', path: ['to'], message: `span ends (${to}) before it starts (${from})` });
+    }
+  }),
   order: z.number().int().default(0),
   added: dayDate,
   updated: dayDate.optional(),
