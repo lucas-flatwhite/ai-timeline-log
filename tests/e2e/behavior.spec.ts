@@ -4,10 +4,7 @@ const ready = (page: Page) => page.waitForFunction(() => document.documentElemen
 function watchErrors(page: Page) {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
-  page.on('console', m => {
-    // 미리보기 서버에는 favicon이 없다(원본도 없음). 그 404만 무시한다
-    if (m.type() === 'error' && !m.location().url.includes('favicon')) errors.push(`console: ${m.text()}`);
-  });
+  page.on('console', m => { if (m.type() === 'error') errors.push(`console: ${m.text()}`); });
   return errors;
 }
 async function pinnedPoint(page: Page, id: string) {

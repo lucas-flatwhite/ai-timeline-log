@@ -39,4 +39,20 @@ test.describe('without JavaScript', () => {
     await page.goto('./');
     expect(await page.content()).not.toContain('fonts.googleapis.com');
   });
+
+  test('tab and home-screen icons come from this site, at the sizes they declare', async ({ page }) => {
+    await page.goto('./');
+    const icons = page.locator('head link[rel="icon"], head link[rel="apple-touch-icon"]');
+    await expect(icons).toHaveCount(3);
+    for (const link of await icons.all()) {
+      const href = (await link.getAttribute('href'))!;
+      // '/favicon.png'처럼 base 없이 쓰면 404가 아니라 메인 사이트 아이콘(Lf)이 대신 뜬다
+      expect(href).toMatch(/^\/ai-timeline-log\//);
+      const res = await page.request.get(href);
+      expect(res.status()).toBe(200);
+      expect(res.headers()['content-type']).toBe('image/png');
+      const png = await res.body();   // IHDR: 16바이트부터 가로, 20바이트부터 세로
+      expect(`${png.readUInt32BE(16)}x${png.readUInt32BE(20)}`).toBe(await link.getAttribute('sizes'));
+    }
+  });
 });

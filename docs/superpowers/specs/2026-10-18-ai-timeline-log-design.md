@@ -67,8 +67,10 @@ src/
   styles/                    tokens.css(언어별 서체 토큰 포함), base, hero, year, scene, outro, nav
 public/
   .nojekyll, og/ko.png, og/en.png
+  favicon-16.png, favicon-32.png, apple-touch-icon.png   먹 사각형에 "AI"를 파낸 도장. scripts/favicon.ts로 생성
 scripts/
   og.ts                      빌드된 표지를 Playwright로 찍어 OG 이미지 생성
+  favicon.ts                 tokens.css 색과 fitGlyph로 아이콘을 크기마다 따로 찍는다 (npm run favicon)
 tests/                       Playwright 테스트, 데이터 검사 단위 테스트
 .github/
   (배포는 Vercel이 main push마다 한다. vercel.json 참고)
