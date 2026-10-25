@@ -1,0 +1,20 @@
+---
+import type { PageView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+const c = view.cover;
+/* 상자의 data-*는 판화 스크립트가 읽는다. 새기기 전에는 .g의 글자가 나무색 바탕 위에 보인다 */
+const data = (b: PageView['boxes'][number]) => ({
+  'data-kind': b.kind, 'data-addr': b.addr, 'data-glyph': b.glyph, 'data-pattern': b.pattern,
+  'data-angle': b.angle, 'data-motif': b.motif, 'data-seed': b.seed, 'data-pic': b.pic, 'data-scene': b.scene,
+});
+---
+<main id="wall" class="wall" aria-label={view.aria.wall} data-live-start={c.start}>
+  <div class="cover">
+    <canvas class="cv" data-kind="days" data-glyph={c.glyph} data-tpl={c.tpl} role="img" aria-label={c.glyph}></canvas>
+    <span class="g" aria-hidden="true" data-live={c.tpl}>{c.glyph}</span>
+    <p class="lede">{c.lede}</p>
+  </div>
+  {view.boxes.map(b => b.off
+    ? <span class={`box ${b.kind} off`} {...data(b)} role="img" aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></span>
+    : <a class={`box ${b.kind}`} href={`#${b.addr}`} {...data(b)} aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></a>)}
+</main>

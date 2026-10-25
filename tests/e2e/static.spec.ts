@@ -1,38 +1,69 @@
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { parse } from 'yaml';
 import { test, expect } from '@playwright/test';
+
+/* content/를 직접 읽는다. src/lib/content.ts는 검사·경고까지 돌리므로 여기서는 쓰지 않는다 */
+const dir = join(process.cwd(), 'content', 'scenes');
+const scenes = readdirSync(dir).filter(f => f.endsWith('.yaml'))
+  .map(f => parse(readFileSync(join(dir, f), 'utf8')) as { ko: { title: string }; items: { ko: string }[] });
 
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('every piece of text is in the HTML', async ({ page }) => {
+  test('every scene title and event sentence is in the HTML', async ({ page }) => {
     await page.goto('./');
     await expect(page).toHaveTitle('AI Timeline Log');
-    await expect(page.locator('section.ch')).toHaveCount(33);
-    await expect(page.locator('section.ch h2')).toHaveCount(33);
-    await expect(page.locator('.cuts li')).toHaveCount(128);
-    await expect(page.locator('section.yr')).toHaveCount(4);
-    await expect(page.locator('.lab')).toHaveCount(6);
-    await expect(page.locator('.src li')).toHaveCount(22);
-    await expect(page.locator('[id="2025-01-deepseek"] h2')).toHaveText('딥시크 쇼크');
-    await expect(page.locator('[id="2022-11-chatgpt"] .cuts time').first()).toHaveText('12.05');
+    const text = (await page.locator('#details').textContent())!;
+    const missing = scenes.flatMap(s => [s.ko.title, ...s.items.map(it => it.ko)]).filter(t => !text.includes(t));
+    expect(missing).toEqual([]);
+    await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(33);
+    await expect(page.locator('#details ol.items > li')).toHaveCount(128);
+    await expect(page.locator('#details article.detail.year')).toHaveCount(4);
   });
 
-  test('glyph data survives YAML → HTML', async ({ page }) => {
+  test('boxes: 166, newest first, links to addresses', async ({ page }) => {
     await page.goto('./');
-    await expect(page.locator('[id="2025-11-gemini-3"]')).toHaveAttribute('data-glyph', 'CODE\nRED');
-    await expect(page.locator('[id="2026-01-ai-basic-act"]')).toHaveAttribute('data-glyph', '1.22');
-    await expect(page.locator('[id="2024-11-computer-use-mcp"]')).toHaveAttribute('data-angle', '-20');
-    await expect(page.locator('#numtext')).toHaveAttribute('data-tall-tpl', '{days}\n일');
-    await expect(page.locator('#numtext')).toHaveAttribute('data-tall', /^[\d,]+\n일$/);   // 빌드한 날 기준. JS가 보는 날로 다시 채운다
+    const boxes = page.locator('.wall .box');
+    await expect(boxes).toHaveCount(166);
+    await expect(page.locator('.wall > :first-child')).toHaveClass(/\bcover\b/);
+    await expect(page.locator('.wall a.box').first()).toHaveAttribute('href', '#year-2026');
+    const glyphs = await boxes.evaluateAll(els => els.map(e => (e as HTMLElement).dataset.glyph ?? ''));
+    expect(glyphs.filter(g => !g)).toEqual([]);
+    await expect(page.locator('a.box[data-addr="2025-11-gemini-3"]')).toHaveAttribute('data-glyph', 'CODE\nRED');
+    await expect(page.locator('a.box[data-addr="2024-11-computer-use-mcp"]')).toHaveAttribute('data-angle', '-20');
+    await expect(page.locator('span.box.year.off')).toHaveAttribute('data-glyph', '2022');
+    // 일수는 빌드한 날 기준. JS가 보는 날로 다시 채운다
+    await expect(page.locator('.cover canvas.cv[data-kind="days"]')).toHaveAttribute('data-tpl', '{days}일');
+    await expect(page.locator('.cover canvas.cv[data-kind="days"]')).toHaveAttribute('data-glyph', /^[\d,]+일$/);
   });
 
-  test('language switch on the cover and at the end: KO is current, EN is not a link yet', async ({ page }) => {
+  test('without JS the details list is visible and box links jump to it', async ({ page }) => {
     await page.goto('./');
-    for (const where of ['.hero-top', '.outro']) {
+    await expect(page.locator('#details')).toBeVisible();
+    await expect(page.locator('#detail')).toBeHidden();
+    await page.locator('a.box[href="#2023-03-gpt-4"]').click();
+    await expect(page.locator('[id="2023-03-gpt-4"]')).toBeInViewport();
+  });
+
+  test('plate font is preloaded', async ({ page }) => {
+    await page.goto('./');
+    expect(await page.locator('link[rel=preload][as=font][href*="plate/ko-"]').count()).toBeGreaterThan(0);
+    for (const link of await page.locator('link[rel=preload][as=font]').all()) {
+      expect(await link.getAttribute('crossorigin')).not.toBeNull();
+      expect((await page.request.get((await link.getAttribute('href'))!)).status()).toBe(200);
+    }
+  });
+
+  test('language switch: KO current, EN disabled for now', async ({ page }) => {
+    await page.goto('./');
+    for (const where of ['header.top', '.outro']) {
       const nav = page.locator(`${where} nav.lang`);
       await expect(nav.locator('a[aria-current="page"]')).toHaveText('KO');
       await expect(nav.locator('[aria-disabled="true"]')).toHaveText('EN');
       await expect(nav.locator('a', { hasText: 'EN' })).toHaveCount(0);
     }
+    await expect(page.locator('header.top a.report')).toHaveAttribute('target', '_blank');
   });
 
   test('no external font service', async ({ page }) => {
@@ -54,5 +85,17 @@ test.describe('without JavaScript', () => {
       const png = await res.body();   // IHDR: 16바이트부터 가로, 20바이트부터 세로
       expect(`${png.readUInt32BE(16)}x${png.readUInt32BE(20)}`).toBe(await link.getAttribute('sizes'));
     }
+  });
+});
+
+test.describe('with JavaScript', () => {
+  test('details list is hidden; the top bar sticks', async ({ page }) => {
+    await page.goto('./');
+    await expect(page.locator('html')).toHaveClass(/\bjs\b/);
+    await expect(page.locator('#details')).toBeHidden();
+    await page.mouse.wheel(0, 2000);
+    await page.waitForFunction(() => scrollY > 1000);
+    await expect(page.locator('header.top')).toBeInViewport();
+    expect(await page.locator('header.top').evaluate(e => getComputedStyle(e).position)).toBe('sticky');
   });
 });

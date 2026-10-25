@@ -1,5 +1,0 @@
----
-import type { PageView } from '../lib/view.ts';
-const { view } = Astro.props as { view: PageView };
----
-<nav class="rail" id="rail" aria-label={view.rail.nav}><div class="ax"></div>{view.rail.labels.map(l => <span class="yl" style={`top:${l.top}`}>{l.text}</span>)}{view.rail.ticks.map(t => <button type="button" data-i={t.i} style={`top:${t.top}`} aria-label={t.aria}></button>)}</nav>

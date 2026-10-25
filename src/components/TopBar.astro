@@ -1,0 +1,10 @@
+---
+import type { PageView } from '../lib/view.ts';
+import LangSwitch from './LangSwitch.astro';
+const { view } = Astro.props as { view: PageView };
+---
+<header class="top">
+  <b class="name">{view.name}</b>
+  <LangSwitch view={view} />
+  <a class="report" href={view.report.href} target="_blank" rel="noopener">{view.report.label} ↗</a>
+</header>

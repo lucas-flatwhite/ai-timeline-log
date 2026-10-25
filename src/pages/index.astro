@@ -1,10 +1,9 @@
 ---
 import Page from '../layouts/Page.astro';
-import Bar from '../components/Bar.astro';
-import Rail from '../components/Rail.astro';
-import Hero from '../components/Hero.astro';
-import YearPlate from '../components/YearPlate.astro';
-import Scene from '../components/Scene.astro';
+import TopBar from '../components/TopBar.astro';
+import Wall from '../components/Wall.astro';
+import Details from '../components/Details.astro';
+import DetailDialog from '../components/DetailDialog.astro';
 import Outro from '../components/Outro.astro';
 import { loadContent } from '../lib/content.ts';
 import { buildView } from '../lib/view.ts';
@@ -12,10 +11,10 @@ import { buildView } from '../lib/view.ts';
 const view = buildView(loadContent(), 'ko');
 ---
 <Page view={view}>
-<Bar view={view} />
-<Rail view={view} />
-<Hero view={view} />
-<main id="tl">{view.blocks.map(b => (b.kind === 'year' ? <YearPlate year={b.year} /> : <Scene scene={b.scene} />))}</main>
+<TopBar view={view} />
+<Wall view={view} />
+<Details view={view} />
 <Outro view={view} />
+<DetailDialog view={view} />
 <script>import '../client/main.ts';</script>
 </Page>

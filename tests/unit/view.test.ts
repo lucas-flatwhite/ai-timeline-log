@@ -24,6 +24,7 @@ describe('buildView(ko)', () => {
     expect(v.report).toEqual({ label: '제보·정정', href: 'https://github.com/lucas-flatwhite/ai-timeline-log/issues' });
     expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '이 사건 정정·제보', sources: '출처' });
     expect(v.pics).toEqual(loadContent().pics);
+    expect(v.aria).toEqual({ wall: 'AI 사건 격자', details: '모든 장면' });
   });
 
   test('canonical, og image and alternates (no en page yet)', () => {
@@ -126,5 +127,7 @@ describe('buildView(ko)', () => {
     expect(v.outro.sourcesNote.startsWith('2026년 10월 18일까지의 각 사 발표와')).toBe(true);
     expect(v.outro.end).toEqual(['판 33장 · 2022.11.30 – 현재', 'AI Timeline Log']);
     expect(v.outro.making).toContain('GitHub 이슈');
+    expect(v.outro.makingTitle).toBe('만든 방법');
+    expect(v.outro.titleTpl).toBe('{days}일 동안 바뀐 것');   // 브라우저가 보는 날로 다시 채우는 틀
   });
 });

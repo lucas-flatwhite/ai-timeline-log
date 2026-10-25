@@ -27,12 +27,15 @@ export interface PageView {
   cover: { glyph: string; tpl: string; start: string; lede: string };
   boxes: BoxView[]; scenes: SceneDetail[]; years: YearDetail[]; pics: Pics;
   dialog: { prev: string; next: string; close: string; fix: string; sources: string };
+  /** 격자(main)와 상세 글 묶음(section)의 이름 */
+  aria: { wall: string; details: string };
   langNav: string; langs: LangView[];
   outro: {
-    bar: string; eyebrow: string; title: string; arcs: { span: string; title: string; body: string }[];
+    /** titleTpl: 일수를 채우기 전 제목 틀({days}) */
+    bar: string; eyebrow: string; title: string; titleTpl: string; arcs: { span: string; title: string; body: string }[];
     ledgerTitle: string; ledgerNote: string; ledger: { lab: string; models: { name: string; date: string }[] }[];
     sourcesTitle: string; sourcesNote: string; sources: { url: string; title: string }[]; end: [string, string];
-    making?: string;
+    making?: string; makingTitle: string;
   };
 }
 
@@ -156,12 +159,13 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars) },
     boxes, scenes, years, pics: c.pics,
     dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources },
+    aria: { wall: t.wall, details: t.details },
     langNav: t.langNav,
     langs: locales.map(l => (ui[l.code] && site[l.code]
       ? { ...l, current: l.code === locale }
       : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
     outro: {
-      bar: t.now, eyebrow: t.now, title: t.outroTitle(days),
+      bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
       arcs: c.arcs.map(a => {
         const at = need(a[locale], `arc.${locale}`);
         return { span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: at.title, body: at.body };
@@ -171,7 +175,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       sourcesTitle: t.sourcesTitle, sourcesNote: fill(st.sourcesNote, vars),
       sources: c.sources.map(s => ({ url: s.url, title: s.title })),
       end: [t.endCount(count, startDot, t.now), title],
-      making: st.making,
+      making: st.making, makingTitle: t.making,
     },
   };
 }
