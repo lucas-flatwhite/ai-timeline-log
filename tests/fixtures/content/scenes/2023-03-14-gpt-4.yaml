@@ -4,7 +4,7 @@ span: { from: 2023-03-14 }
 added: 2026-10-05
 print: { pattern: c, motif: disc, glyph: "GPT-4" }
 items:
-  - { date: 2023-03-15, ko: 항목 하나 }
-  - { date: 2023-03-22, ko: 항목 둘 }
-  - { date: 2023-03-31, ko: 항목 셋 }
+  - { date: 2023-03-15, ko: 항목 하나, glyph: 하나 }
+  - { date: 2023-03-22, ko: 항목 둘, glyph: 둘 }
+  - { date: 2023-03-31, ko: 항목 셋, glyph: 셋 }
 ko: { kicker: 성능 도약, title: GPT-4, lede: 요약 }

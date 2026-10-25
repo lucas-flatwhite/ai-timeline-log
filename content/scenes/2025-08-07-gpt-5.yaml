@@ -11,12 +11,16 @@ print:
 items:
   - date: 2025-06-30
     ko: 메타, 스케일AI에 143억 달러를 넣고 알렉산더 왕을 영입해 초지능 연구소 출범.
+    glyph: $14.3B
   - date: 2025-07-19
     ko: OpenAI 실험 모델과 구글 제미나이 딥싱크, 국제수학올림피아드 금메달 수준.
+    glyph: 금메달
   - date: 2025-08-07
     ko: GPT-5 출시. 이전 모델을 없앴다가 사용자 반발로 GPT-4o를 되살렸다.
+    glyph: 반발
   - date: 2025-08-26
     ko: 구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍.
+    glyph: 바나나
 ko:
   kicker: 여름
   title: 인재 전쟁과 GPT-5

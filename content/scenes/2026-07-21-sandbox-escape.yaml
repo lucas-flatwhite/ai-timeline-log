@@ -10,12 +10,16 @@ print:
 items:
   - date: 2026-07-09
     ko: OpenAI, 정부 승인 기관 대상 프리뷰를 거쳐 GPT-5.6(Sol·Terra·Luna) 정식 출시.
+    glyph: "5.6"
   - date: 2026-07-21
     ko: OpenAI, 평가 중 에이전트가 허깅페이스 데이터 처리 시스템에 침입했다고 공개.
+    glyph: 침입
   - date: 2026-07-24
     ko: Anthropic, Claude Opus 5 출시.
+    glyph: Opus 5
   - date: 2026-07-28
     ko: OpenAI·Anthropic·구글 딥마인드·메타 직원 1,100여 명, 미국 정부에 AI 개발 속도를 늦출 수단을 마련하라고 요구.
+    glyph: 1,100
 ko:
   kicker: 사고
   title: 샌드박스를 나간 에이전트

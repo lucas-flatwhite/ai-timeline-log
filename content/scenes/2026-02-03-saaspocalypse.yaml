@@ -11,12 +11,16 @@ print:
 items:
   - date: 2026-01-30
     ko: Anthropic, 법무·영업·재무 등 업무용 Claude 플러그인 11종을 깃허브에 공개.
+    glyph: 11종
   - date: 2026-02-02
     ko: 스페이스X, xAI 인수. 합산 기업가치 1.25조 달러.
+    glyph: $1.25T
   - date: 2026-02-03
     ko: 소프트웨어·법률정보·금융데이터 주식 급락. 하루 약 2,850억 달러가 사라졌다.
+    glyph: -$285B
   - date: 2026-02-05
     ko: Claude Opus 4.6과 GPT-5.3-Codex가 같은 날 나왔다.
+    glyph: "4.6"
 ko:
   kicker: 시장
   title: SaaS 종말론

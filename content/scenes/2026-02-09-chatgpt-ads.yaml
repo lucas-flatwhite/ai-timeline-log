@@ -18,10 +18,13 @@ sources:
 items:
   - date: 2026-01-16
     ko: OpenAI, 무료·Go 요금제에서 광고를 시험하겠다고 발표. 답변 아래에 ‘스폰서’ 표시를 달아 보여 준다.
+    glyph: 광고
   - date: 2026-02-04
     ko: Anthropic, Claude에는 광고를 넣지 않겠다고 약속. ‘AI에 광고가 온다. Claude에는 아니다’라는 슈퍼볼 광고를 공개했다.
+    glyph: NO AD
   - date: 2026-02-09
     ko: 미국 일부 이용자의 ChatGPT에 광고가 붙기 시작했다. 미성년자와 건강·정치 대화에는 광고를 넣지 않는다.
+    glyph: AD
 ko:
   kicker: 광고
   title: ChatGPT에 광고가 붙다

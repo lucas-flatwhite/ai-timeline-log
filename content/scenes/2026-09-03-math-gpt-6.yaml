@@ -11,12 +11,16 @@ print:
 items:
   - date: 2026-07-20
     ko: Claude Fable 5로 1939년 야코비안 추측의 3차원 반례를 찾았다.
+    glyph: 반례
   - date: 2026-07-23
     ko: 국제수학올림피아드에서 AI가 처음으로 만점(42점).
+    glyph: 42점
   - date: 2026-09-03
     ko: OpenAI, GPT-6 Astra 출시. 자사 위험 평가에서 처음으로 사이버 보안 최고 등급.
+    glyph: GPT-6
   - date: 2026-09-04
     ko: Claude, 페르마의 마지막 정리 전체를 증명 검증 언어 Lean으로 형식화(11일 소요).
+    glyph: Lean
 ko:
   kicker: 수학
   title: 난제가 풀리고, GPT-6가 나오다

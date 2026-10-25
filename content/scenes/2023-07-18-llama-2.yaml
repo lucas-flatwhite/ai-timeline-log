@@ -12,12 +12,16 @@ print:
 items:
   - date: 2023-07-11
     ko: Anthropic, Claude 2 공개. 10만 토큰, 책 한 권 분량을 한 번에 읽는다.
+    glyph: 100K
   - date: 2023-07-12
     ko: 일론 머스크, AI 회사 xAI 설립 발표.
+    glyph: xAI
   - date: 2023-07-18
     ko: 메타, 상업 이용이 가능한 Llama 2를 마이크로소프트와 함께 공개.
+    glyph: Llama 2
   - date: 2023-08-24
     ko: 네이버, 한국어에 특화한 하이퍼클로바X 공개.
+    glyph: 클로바X
 ko:
   kicker: 열린 모델
   title: 라마 2와 하이퍼클로바X

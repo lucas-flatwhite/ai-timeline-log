@@ -30,6 +30,21 @@ describe('loadContent', () => {
     expect(c.years['2023'].ko.title).toBe('경쟁이 시작된 해');
   });
 
+  test('loads every event glyph from the real content', () => {
+    const c = loadContent();
+    const items = c.scenes.flatMap(s => s.items);
+    expect(items.length).toBeGreaterThan(0);
+    expect(items.every(it => it.glyph)).toBe(true);
+    expect(c.scenes[0].items[0].glyph).toBe('100만');
+    expect(c.pics).toEqual({});
+  });
+
+  test('requires a glyph on every event', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace('{ date: 2023-03-15, ko: 항목 하나, glyph: 하나 }', '{ date: 2023-03-15, ko: 항목 하나 }'));
+    expect(() => loadContent(dir)).toThrowError(/items\.0\.glyph/);
+  });
+
   test('names the file and field of a missing value', () => {
     const dir = copyFixture();
     edit(dir, SCENE, s => s.replace('title: GPT-4, ', ''));

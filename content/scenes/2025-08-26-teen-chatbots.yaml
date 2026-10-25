@@ -18,12 +18,16 @@ sources:
 items:
   - date: 2025-08-26
     ko: 16세 애덤 레인의 부모, 아들이 ChatGPT와 나눈 대화를 근거로 OpenAI와 샘 올트먼을 제소.
+    glyph: 16세
   - date: 2025-09-11
     ko: 미국 연방거래위원회, OpenAI·메타·캐릭터AI 등 7개사에 청소년 대상 챗봇 안전 조치 자료 제출 요구.
+    glyph: FTC
   - date: 2025-09-29
     ko: OpenAI, 부모가 자녀 계정을 연결해 관리하는 보호자 기능 출시.
+    glyph: 보호자
   - date: 2025-10-29
     ko: 캐릭터AI, 11월 25일부터 18세 미만의 자유 대화를 막겠다고 발표.
+    glyph: U18
 ko:
   kicker: 위로
   title: AI에게 털어놓은 아이들

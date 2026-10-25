@@ -4,11 +4,11 @@ import { parse } from 'yaml';
 import type { z } from 'astro/zod';
 import { toUTC } from './dates.ts';
 import {
-  sceneSchema, siteSchema, yearsSchema, arcsSchema, ledgerSchema, sourcesSchema,
-  type Scene, type Site, type Years, type Arc, type Lab, type Source,
+  sceneSchema, siteSchema, yearsSchema, arcsSchema, ledgerSchema, sourcesSchema, picsSchema,
+  type Scene, type Site, type Years, type Arc, type Lab, type Source, type Pics,
 } from './schema.ts';
 
-export interface Content { site: Site; scenes: Scene[]; years: Years; arcs: Arc[]; ledger: Lab[]; sources: Source[] }
+export interface Content { site: Site; scenes: Scene[]; years: Years; arcs: Arc[]; ledger: Lab[]; sources: Source[]; pics: Pics }
 
 export function loadContent(dir: string = join(process.cwd(), 'content')): Content {
   const errors: string[] = [];
@@ -28,6 +28,7 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
   const arcs = check(arcsSchema, read('arcs.yaml'), 'arcs.yaml');
   const ledger = check(ledgerSchema, read('ledger.yaml'), 'ledger.yaml');
   const sources = check(sourcesSchema, read('sources.yaml'), 'sources.yaml');
+  const pics = check(picsSchema, read('pics.yaml'), 'pics.yaml');
 
   const scenes: Scene[] = [];
   const seen = new Map<string, string>();
@@ -63,11 +64,11 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
     }
   }
 
-  if (errors.length || !site || !years || !arcs || !ledger || !sources) {
+  if (errors.length || !site || !years || !arcs || !ledger || !sources || !pics) {
     throw new Error(`Content errors:\n- ${errors.join('\n- ')}`);
   }
 
   scenes.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.order - b.order));
   for (const lab of ledger) lab.models.sort((a, b) => toUTC(a.date) - toUTC(b.date));
-  return { site, scenes, years, arcs, ledger, sources };
+  return { site, scenes, years, arcs, ledger, sources, pics };
 }

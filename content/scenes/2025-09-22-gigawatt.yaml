@@ -11,12 +11,16 @@ print:
 items:
   - date: 2025-09-05
     ko: Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대.
+    glyph: $1.5B
   - date: 2025-09-22
     ko: 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약.
+    glyph: $100B
   - date: 2025-09-30
     ko: OpenAI, Sora 2와 영상 소셜 앱 Sora 출시.
+    glyph: Sora 2
   - date: 2025-10-29
     ko: 엔비디아, 세계 최초로 시가총액 5조 달러.
+    glyph: $5T
 ko:
   kicker: 계산력
   title: 기가와트 단위 계약

@@ -10,12 +10,16 @@ print:
 items:
   - date: 2024-05-13
     ko: OpenAI, 실시간 음성 대화 GPT-4o 공개. 스칼렛 요한슨이 목소리가 닮았다고 항의해 해당 음성을 내렸다.
+    glyph: 목소리
   - date: 2024-05-14
     ko: 구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다.
+    glyph: AI 개요
   - date: 2024-05-14
     ko: 일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다.
+    glyph: 퇴사
   - date: 2024-05-21
     ko: AI 서울 정상회의. 16개 기업이 프런티어 AI 안전 서약에 서명.
+    glyph: 서울
 ko:
   kicker: 음성
   title: GPT-4o, 듣고 말하고 보다

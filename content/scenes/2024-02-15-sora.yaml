@@ -11,12 +11,16 @@ print:
 items:
   - date: 2023-12-06
     ko: 구글, 멀티모달 모델 제미나이 1.0 발표. 이듬해 2월 바드도 제미나이로 이름을 바꿨다.
+    glyph: Gemini
   - date: 2023-12-27
     ko: 뉴욕타임스, 기사 무단 학습을 이유로 OpenAI와 마이크로소프트를 제소.
+    glyph: NYT
   - date: 2024-02-15
     ko: Sora 시연. 같은 날 Gemini 1.5 발표, 컨텍스트 100만 토큰.
+    glyph: Sora
   - date: 2024-02-22
     ko: 구글, 제미나이 인물 이미지 생성 중단. 역사 속 인물을 부정확하게 그린다는 비판.
+    glyph: 중단
 ko:
   kicker: 영상
   title: 소라, 문장이 영상이 되다

@@ -9,6 +9,13 @@ const dayDate = isoDate.refine(s => /^\d{4}-\d{2}-\d{2}$/.test(s), 'Expected YYY
 const monthDate = isoDate.refine(s => /^\d{4}-\d{2}/.test(s), 'Expected YYYY-MM or YYYY-MM-DD');
 const text = z.string().min(1);
 
+const source = z.object({ url: z.url(), title: text, publisher: z.string().optional() });
+// 사건 핵심어: 한 문자열이면 두 언어 공통, { ko, en }이면 언어별. 줄바꿈(\n)으로 두 줄을 나눌 수 있다.
+export const glyphSpec = z.union([text, z.object({ ko: text, en: text })]);
+// 사건 그림: 판화 엔진이 그리는 선(d)과 무게중심(cx, cy), 만든 방식 설명(note)
+export const picSchema = z.object({ d: text, cx: z.number(), cy: z.number(), note: text });
+export const picsSchema = z.record(z.string().regex(/^[a-z0-9-]+$/), picSchema);
+
 const sceneText = z.object({ kicker: text, title: text, lede: text, glyph: text.optional() });
 
 export const sceneSchema = z.object({
@@ -30,9 +37,14 @@ export const sceneSchema = z.object({
     motif: z.enum(['rays', 'disc', 'grid', 'fall', 'rise', 'none']),
     glyph: text,
   }),
-  sources: z.array(z.object({ url: z.url(), title: text, publisher: z.string().optional() })).default([]),
+  sources: z.array(source).default([]),
   corrections: z.array(z.object({ date: dayDate, ko: text, en: text.optional() })).default([]),
-  items: z.array(z.object({ date: isoDate, ko: text, en: text.optional() })).min(3).max(4),
+  items: z.array(z.object({
+    date: isoDate, ko: text, en: text.optional(),
+    glyph: glyphSpec,
+    pic: z.string().optional(),
+    sources: z.array(source).default([]),
+  })).min(3).max(4),
   ko: sceneText,
   en: sceneText.optional(),
 });
@@ -61,4 +73,7 @@ export type Site = z.output<typeof siteSchema>;
 export type Years = z.output<typeof yearsSchema>;
 export type Arc = z.output<typeof arcsSchema>[number];
 export type Lab = z.output<typeof ledgerSchema>[number];
+export type GlyphSpec = z.output<typeof glyphSpec>;
+export type Pic = z.output<typeof picSchema>;
+export type Pics = z.output<typeof picsSchema>;
 export type Source = z.output<typeof sourcesSchema>[number];

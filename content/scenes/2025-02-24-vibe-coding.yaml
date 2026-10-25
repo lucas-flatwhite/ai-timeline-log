@@ -10,12 +10,18 @@ print:
 items:
   - date: 2025-02-02
     ko: 안드레이 카파시, ‘바이브 코딩’이라는 말을 처음 썼다.
+    glyph: 바이브
   - date: 2025-02-02
     ko: OpenAI, 웹을 뒤져 보고서를 쓰는 딥 리서치 공개.
+    glyph: 리서치
   - date: 2025-02-11
     ko: 파리 AI 행동 정상회의. 미국과 영국은 공동선언에 서명하지 않았다.
+    glyph: 파리
   - date: 2025-02-24
     ko: Anthropic, Claude 3.7 Sonnet과 코딩 에이전트 Claude Code(연구 프리뷰) 공개.
+    glyph: |-
+      Claude
+      Code
 ko:
   kicker: 코딩
   title: 바이브 코딩

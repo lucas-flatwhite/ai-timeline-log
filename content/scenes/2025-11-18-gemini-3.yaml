@@ -13,12 +13,16 @@ print:
 items:
   - date: 2025-11-18
     ko: 구글, Gemini 3 공개.
+    glyph: Gemini 3
   - date: 2025-11-24
     ko: Anthropic, Claude Opus 4.5 공개.
+    glyph: "4.5"
   - date: 2025-12-01
     ko: 올트먼, 사내에 ‘코드 레드’ 메모. 12월 11일 GPT-5.2를 앞당겨 냈다.
+    glyph: "5.2"
   - date: 2025-12-09
     ko: Anthropic, MCP를 리눅스 재단 산하 에이전틱 AI 재단에 기증.
+    glyph: 기증
 ko:
   kicker: 추월
   title: 제미나이 3와 ‘코드 레드’

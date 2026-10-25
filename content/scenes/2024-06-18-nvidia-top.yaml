@@ -10,12 +10,16 @@ print:
 items:
   - date: 2024-06-10
     ko: 애플, Apple Intelligence 발표. 시리가 어려운 질문은 ChatGPT에 넘긴다.
+    glyph: Siri
   - date: 2024-06-18
     ko: 엔비디아 시가총액 약 3.3조 달러. 마이크로소프트를 제치고 첫 1위.
+    glyph: 1위
   - date: 2024-06-19
     ko: 수츠케버, 안전한 초지능만 만든다는 SSI 설립.
+    glyph: SSI
   - date: 2024-06-20
     ko: Anthropic, Claude 3.5 Sonnet과 결과물을 옆 창에 띄우는 아티팩트 공개.
+    glyph: "3.5"
 ko:
   kicker: 돈의 흐름
   title: 엔비디아, 세계 1위
