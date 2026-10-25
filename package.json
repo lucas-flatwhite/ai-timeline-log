@@ -6,7 +6,9 @@
     "node": ">=22.22.0"
   },
   "scripts": {
+    "predev": "node scripts/plate-font.ts",
     "dev": "astro dev",
+    "prebuild": "node scripts/plate-font.ts",
     "build": "astro build",
     "preview": "astro preview --port 4321",
     "check": "astro check",
@@ -25,6 +27,7 @@
     "@astrojs/check": "0.9.10",
     "@playwright/test": "1.64.1",
     "@types/node": "^22.20.5",
+    "subset-font": "2.9.0",
     "typescript": "^5.9.3",
     "vitest": "^5.0.5"
   }
