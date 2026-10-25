@@ -11,6 +11,9 @@ import {
 
 export interface Content { site: Site; scenes: Scene[]; years: Years; arcs: Arc[]; ledger: Lab[]; sources: Source[]; pics: Pics }
 
+// 같은 경고는 프로세스당 한 번만 출력한다(loadContent를 여러 번 불러도 출력이 조용하도록)
+const warned = new Set<string>();
+
 export function loadContent(dir: string = join(process.cwd(), 'content')): Content {
   const errors: string[] = [];
   const read = (rel: string): unknown => {
@@ -77,6 +80,10 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
   const checked = checkContent(content);
   errors.push(...checked.errors);
   if (errors.length) throw new Error(`Content errors:\n- ${errors.join('\n- ')}`);
-  for (const w of checked.warnings) console.warn(`Content warning: ${w}`);
+  for (const w of checked.warnings) {
+    if (warned.has(w)) continue;
+    warned.add(w);
+    console.warn(`Content warning: ${w}`);
+  }
   return content;
 }

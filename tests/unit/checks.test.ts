@@ -24,6 +24,20 @@ describe('checkContent', () => {
     const errs = errsOf(c => { c.scenes[0].items[0].glyph = { ko: '속도', en: '속도' }; });
     expect(errs).toContainEqual(expect.stringMatching(/items\.0 en glyph/));
   });
+  test('Hangul string keyword on an item that has English text', () => {
+    const errs = errsOf(c => { c.scenes[0].items[0].en = 'An event.'; c.scenes[0].items[0].glyph = '속도'; });
+    expect(errs).toContainEqual(expect.stringMatching(/items\.0 en glyph .*Hangul/));
+    // 영어 글이 없으면 걸리지 않는다
+    expect(errsOf(c => { c.scenes[0].items[0].en = undefined; c.scenes[0].items[0].glyph = '속도'; }).join()).not.toMatch(/Hangul/);
+  });
+  test('scene en without glyph falls back to a Hangul print.glyph', () => {
+    const errs = errsOf(c => {
+      const { glyph: _g, ...rest } = c.scenes[0].ko;
+      c.scenes[0].en = rest;
+      c.scenes[0].print.glyph = '출발';
+    });
+    expect(errs).toContainEqual(expect.stringMatching(/en glyph "출발".*Hangul/));
+  });
   test('unknown picture', () => {
     const errs = errsOf(c => { c.scenes[0].items[0].pic = 'nope'; });
     expect(errs).toContainEqual(expect.stringMatching(/pic "nope"/));
@@ -76,6 +90,26 @@ describe('checkContent', () => {
       c.scenes[0].items[0].sources = [{ url: 'https://example.com/a', title: 'A' }];
     });
     expect(errs.join()).not.toMatch(/needs a source/);
+  });
+  test('a scene with no source anywhere is a warning, not an error', () => {
+    let id = '';
+    const r = broken(c => {
+      id = c.scenes[0].id;
+      c.scenes[0].sources = [];
+      for (const it of c.scenes[0].items) it.sources = [];
+    });
+    expect(r.warnings).toContainEqual(expect.stringMatching(new RegExp(`scene ${id}: .*no source`)));
+    expect(r.errors.join()).not.toMatch(/no source/);
+  });
+  test('a source on one item silences the no-source warning', () => {
+    let id = '';
+    const r = broken(c => {
+      id = c.scenes[0].id;
+      c.scenes[0].sources = [];
+      for (const it of c.scenes[0].items) it.sources = [];
+      c.scenes[0].items[0].sources = [{ url: 'https://example.com/a', title: 'A' }];
+    });
+    expect(r.warnings.join()).not.toContain(`scene ${id}: has no source`);
   });
   test('long small-box keyword is a warning, not an error', () => {
     let id = '';

@@ -64,9 +64,10 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
       add(`${iw} en`, it.en, true);
       if (typeof it.glyph === 'string') add(`${iw} glyph`, it.glyph, false);
       else { add(`${iw} ko glyph`, it.glyph.ko, false); add(`${iw} en glyph`, it.glyph.en, false); }
-      if (typeof it.glyph !== 'string' && hasHangul(it.glyph.en)) {
-        errors.push(`${iw} en glyph "${it.glyph.en}" contains Hangul`);
-      }
+      // 영어로 해석되는 핵심어에 한글이 없어야 한다. 영어 글이 있는 사건은 문자열 핵심어도 영어로 쓰이고,
+      // { ko, en } 꼴의 en은 영어 글이 없어도 영어 핵심어를 뜻한다.
+      const enGlyph = glyphFor(it.glyph, 'en');
+      if ((it.en || typeof it.glyph !== 'string') && hasHangul(enGlyph)) errors.push(`${iw} en glyph "${enGlyph}" contains Hangul`);
       if (it.pic !== undefined && !(it.pic in c.pics)) errors.push(`${iw}: pic "${it.pic}" is not in pics.yaml`);
 
       const longOnes = new Set<string>();
@@ -74,6 +75,10 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
       if (typeof it.glyph !== 'string' && tooLongForSmallBox(it.glyph.en)) longOnes.add(it.glyph.en);
       for (const g of longOnes) warnings.push(`${iw}: glyph "${g.replaceAll('\n', '/')}" is hard to read in a small box`);
     });
+
+    if (s.sources.length === 0 && s.items.every(it => it.sources.length === 0)) {
+      warnings.push(`${sw}: has no source on the scene or on any item`);
+    }
 
     // 첫 판 이후에 더한 장면은 장면이나 사건에 출처가 하나는 있어야 한다.
     if (s.added > c.site.firstEdition && s.sources.length === 0 && s.items.every(it => it.sources.length === 0)) {
