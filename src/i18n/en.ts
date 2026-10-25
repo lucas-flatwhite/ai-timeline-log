@@ -3,15 +3,8 @@ import type { UI } from './ko.ts';
 /* 영어 화면 문구. 키 집합은 ko와 같아야 한다(UI 타입이 지킨다) */
 export const en: UI = {
   now: 'present',
-  cue: 'Scroll',
   langNav: 'Language',
   langSoon: (name) => `${name} coming soon`,
-  plateNo: (n) => `Plate ${n}`,
-  yearCount: (count, first, last) => `${count} scenes · Plate ${first}–${last}`,
-  barScene: (when, n, total) => `${when}  ·  Plate ${n} / ${total}`,
-  barYear: (y, count) => `${y}  ·  ${count} scenes`,
-  railNav: 'Timeline shortcuts',
-  railLabel: (n, when, title) => `Plate ${n} ${when} ${title}`,
   outroTitle: (days) => `What changed in ${days} days`,
   ledgerTitle: 'Major model releases',
   sourcesTitle: 'Sources and basis',

@@ -56,8 +56,9 @@ const siteText = z.object({
   ogDescription: text,
   ledgerNote: text,
   sourcesNote: text,
+  making: text.optional(),
 });
-export const siteSchema = z.object({ name: text, start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText.optional() });
+export const siteSchema = z.object({ name: text, repo: z.url(), start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText.optional() });
 
 const titled = z.object({ title: text, body: text });
 export const yearsSchema = z.record(z.string().regex(/^\d{4}$/), z.object({ ko: titled, en: titled.optional() }));

@@ -19,6 +19,16 @@ describe('화면 문구', () => {
     expect(ko.added('2025-01-02')).toBe('추가 2025-01-02');
     expect(en.added('2025-01-02')).toBe('Added 2025-01-02');
   });
+  it('스크롤판 전용 문구는 ko에 없다', () => {
+    for (const k of ['plateNo', 'railNav', 'cue']) expect(ko).not.toHaveProperty(k);
+  });
+  it('en의 맺음 문구', () => {
+    expect(en.now).toBe('present');
+    expect(en.outroTitle('9')).toBe('What changed in 9 days');
+    expect(en.ledgerTitle).toBe('Major model releases');
+    expect(en.sourcesTitle).toBe('Sources and basis');
+    expect(en.endCount(33, '2022.11.30', 'present')).toBe('33 prints · 2022.11.30 – present');
+  });
   it('ui에 ko와 en이 등록된다', () => {
     expect(ui.ko).toBe(ko);
     expect(ui.en).toBe(en);
