@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { parse } from 'yaml';
 import type { z } from 'astro/zod';
 import { toUTC } from './dates.ts';
+import { checkContent } from './checks.ts';
 import {
   sceneSchema, siteSchema, yearsSchema, arcsSchema, ledgerSchema, sourcesSchema, picsSchema,
   type Scene, type Site, type Years, type Arc, type Lab, type Source, type Pics,
@@ -64,11 +65,18 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
     }
   }
 
-  if (errors.length || !site || !years || !arcs || !ledger || !sources || !pics) {
+  if (!site || !years || !arcs || !ledger || !sources || !pics) {
     throw new Error(`Content errors:\n- ${errors.join('\n- ')}`);
   }
 
   scenes.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.order - b.order));
   for (const lab of ledger) lab.models.sort((a, b) => toUTC(a.date) - toUTC(b.date));
-  return { site, scenes, years, arcs, ledger, sources, pics };
+  const content: Content = { site, scenes, years, arcs, ledger, sources, pics };
+
+  // 스키마 검사를 통과한 뒤의 내용 검사. 오류는 위의 오류와 한데 모아 던지고, 경고는 출력만 한다.
+  const checked = checkContent(content);
+  errors.push(...checked.errors);
+  if (errors.length) throw new Error(`Content errors:\n- ${errors.join('\n- ')}`);
+  for (const w of checked.warnings) console.warn(`Content warning: ${w}`);
+  return content;
 }
