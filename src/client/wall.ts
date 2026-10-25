@@ -1,25 +1,16 @@
-import { carveTile, type TileSpec } from './tiles.ts';
-import type { Pic } from '../engine/pic.ts';
+import { boxSpec, carveTile, readPics, type TileSpec } from './tiles.ts';
 
 /* 새길 판 하나: 표지는 캔버스 자체, 상자는 상자 요소에 .carved를 붙인다 */
 interface Job { el: HTMLElement; cv: HTMLCanvasElement; spec: TileSpec }
 
-function pics(): Record<string, Pic> {
-  try { return JSON.parse(document.getElementById('pics')?.textContent || '{}'); } catch { return {}; }
-}
-
 function jobs(): Job[] {
-  const P = pics(), out: Job[] = [];
+  const P = readPics(), out: Job[] = [];
   const cover = document.querySelector<HTMLCanvasElement>('.cover canvas[data-kind="days"]');
   /* 일수 판의 시드는 시안 그대로(1130) */
   if (cover) out.push({ el: cover, cv: cover, spec: { kind: 'days', glyph: cover.dataset.glyph!, pattern: 'h', angle: 0, motif: 'rays', seed: 1130 } });
   document.querySelectorAll<HTMLElement>('.wall .box').forEach(el => {
-    const d = el.dataset, cv = el.querySelector('canvas');
-    if (!cv) return;
-    out.push({ el, cv, spec: {
-      kind: d.kind as TileSpec['kind'], glyph: d.glyph!, pattern: d.pattern!, angle: +(d.angle || 0),
-      motif: d.motif!, seed: +d.seed!, pic: d.pic ? P[d.pic] : undefined,
-    } });
+    const cv = el.querySelector('canvas');
+    if (cv) out.push({ el, cv, spec: boxSpec(el, P) });
   });
   return out;
 }
@@ -29,8 +20,27 @@ const onScreen = (el: Element) => {
   return r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
 };
 
+/* 같은 장면 강조: 상자에 마우스가 오르거나 키보드 초점이 가면 .wall에 .focus, 같은 장면 상자(장면 상자 포함)에 .rel.
+   터치는 올림 효과 없이 바로 연다. 마우스로 닫은 뒤 상자로 돌아온 초점은 강조하지 않는다(:focus-visible일 때만) */
+function bindHighlight(): void {
+  const wall = document.querySelector<HTMLElement>('.wall');
+  if (!wall) return;
+  const boxes = [...wall.querySelectorAll<HTMLElement>('.box')];
+  const light = (scene?: string) => {
+    wall.classList.toggle('focus', !!scene);
+    boxes.forEach(b => b.classList.toggle('rel', !!scene && b.dataset.scene === scene));
+  };
+  boxes.forEach(b => {
+    b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') light(b.dataset.scene); });
+    b.addEventListener('pointerleave', () => light());
+    b.addEventListener('focusin', () => { if (b.matches(':focus-visible')) light(b.dataset.scene); });
+    b.addEventListener('focusout', () => light());
+  });
+}
+
 /* 화면 가까이(위아래 300px) 온 판만 새긴다. 한 프레임에 8ms 안에서, 지금 화면 안의 판부터 */
 export function initWall(): { ready: Promise<void> } {
+  bindHighlight();
   const all = jobs(), byEl = new Map(all.map(j => [j.el as Element, j]));
   const first = new Set(all.filter(j => onScreen(j.el)));
   let done!: () => void;

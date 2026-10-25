@@ -9,6 +9,20 @@ import { INK, PAPER, PLATE } from './env.ts';
 
 export type TileSpec = { kind: 'scene' | 'item' | 'year' | 'days'; glyph: string; pattern: string; angle: number; motif: string; seed: number; pic?: Pic };
 
+/* 그림 밑그림(script#pics). 깨져 있으면 그림 없이 새긴다 */
+export function readPics(): Record<string, Pic> {
+  try { return JSON.parse(document.getElementById('pics')?.textContent || '{}'); } catch { return {}; }
+}
+
+/* 상자의 data-*에서 판 설정을 읽는다(격자와 상세 창이 함께 쓴다) */
+export function boxSpec(el: HTMLElement, pics: Record<string, Pic>): TileSpec {
+  const d = el.dataset;
+  return {
+    kind: d.kind as TileSpec['kind'], glyph: d.glyph!, pattern: d.pattern!, angle: +(d.angle || 0),
+    motif: d.motif!, seed: +d.seed!, pic: d.pic ? pics[d.pic] : undefined,
+  };
+}
+
 const TAU = 6.2832;
 const box = (w: number, h: number, pad: number): Rect => ({ x: pad, y: pad, w: w - 2 * pad, h: h - 2 * pad });
 
