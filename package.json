@@ -11,9 +11,11 @@
     "prebuild": "node scripts/plate-font.ts",
     "build": "astro build",
     "preview": "astro preview --port 4321",
+    "precheck": "node scripts/plate-font.ts",
     "check": "astro check",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "budget": "node scripts/budget.ts",
     "favicon": "node scripts/favicon.ts"
   },
   "dependencies": {
