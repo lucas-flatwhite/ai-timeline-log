@@ -30,8 +30,14 @@ const plateCss = plates.map(p => `@font-face{font-family:${p.family};src:url(${b
 <meta name="description" content={view.description}>
 <link rel="canonical" href={view.canonical}>
 {view.alternates.map(a => <link rel="alternate" hreflang={a.hreflang} href={a.href}>)}
+<meta property="og:type" content="website">
+<meta property="og:url" content={view.canonical}>
 <meta property="og:title" content={view.ogTitle}>
 <meta property="og:description" content={view.ogDescription}>
+<meta property="og:image" content={view.ogImage}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 {plates.map(p => <link rel="preload" as="font" type="font/woff2" href={base + p.file} crossorigin>)}
 <style is:inline set:html={plateCss}></style>
 <link rel="icon" type="image/png" sizes="32x32" href={`${base}favicon-32.png`}>

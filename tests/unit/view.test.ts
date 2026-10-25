@@ -17,9 +17,9 @@ describe('buildView(ko)', () => {
   test('head, cover and report link', () => {
     expect(v.title).toBe('AI Timeline Log');
     expect(v.name).toBe('AI Timeline Log');
-    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지 생성형 AI의 주요 장면 33개를 흑백 목판화 스타일로 찍어 스크롤로 넘겨 보는 연표.');
+    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지, 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 33개의 자세한 내용이 열립니다.');
     expect(v.ogTitle).toBe('AI Timeline Log');
-    expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 장면 33개를 목판화로 찍은 스크롤 연표.');
+    expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다.');
     expect(v.cover).toEqual({ glyph: '1,425일', tpl: '{days}일', start: '2022-11-30', lede: 'ChatGPT가 공개된 2022년 11월 30일부터 현재까지, AI가 지나온 장면들을 기록합니다.' });
     expect(v.report).toEqual({ label: '제보·정정', href: 'https://github.com/lucas-flatwhite/ai-timeline-log/issues' });
     expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '이 사건 정정·제보', sources: '출처' });
