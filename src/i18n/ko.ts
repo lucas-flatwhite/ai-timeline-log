@@ -1,4 +1,5 @@
 /* 고정된 화면 문구. 편집자가 고치는 문장은 content/site.yaml에 둔다 */
+/* 스크롤판 전용 키(cue, plateNo, yearCount, barScene, barYear, railNav, railLabel)는 view.ts를 다시 쓰는 Task 4에서 지운다 */
 export const ko = {
   now: '현재',
   cue: '아래로',
@@ -14,5 +15,17 @@ export const ko = {
   ledgerTitle: '주요 모델 판본',
   sourcesTitle: '출처와 기준',
   endCount: (count: number, start: string, now: string) => `판 ${count}장 · ${start} – ${now}`,
+  report: '제보·정정',
+  fix: '이 사건 정정·제보',
+  fixTitle: (date: string, text: string) => `[정정] ${date} ${text}`,
+  sceneOf: (title: string) => `‘${title}’ 장면의 사건`,
+  added: (date: string) => `추가 ${date}`,
+  prev: '← 이전 사건',
+  next: '다음 사건 →',
+  close: '닫기',
+  sources: '출처',
+  wall: 'AI 사건 격자',
+  details: '모든 장면',
+  making: '만든 방법',
 };
 export type UI = typeof ko;
