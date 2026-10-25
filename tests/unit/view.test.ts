@@ -79,7 +79,30 @@ describe('buildView(ko)', () => {
     expect(d.fix).toContain('https://github.com/lucas-flatwhite/ai-timeline-log/issues/new?template=correction.yml&title=');
     expect(decodeURIComponent(d.fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/#2026-07-sandbox-escape&');
     expect(scene('2025-01-deepseek').items[0]).toMatchObject({ addr: '2025-01-deepseek~20250120', date: '20250120', text: '딥시크, 추론 모델 R1을 MIT 라이선스로 공개.' });
-    expect(scene('2024-11-computer-use-mcp').aliases).toEqual(expect.any(Array));
+    expect(scene('2025-01-deepseek').aliases).toEqual([]);
+  });
+
+  test('only the scenes added on the latest date are marked as recently added', () => {
+    const marked = v.scenes.filter(s => s.meta.includes('추가'));
+    expect(marked).toHaveLength(5);
+    expect(marked.every(s => s.meta.endsWith(' · 추가 2026.10.18'))).toBe(true);
+    expect(marked.map(s => s.id)).toContain('2026-03-sora-shutdown');
+    expect(scene('2025-01-deepseek').meta).not.toContain('추가');
+    expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(28);
+  });
+
+  test('item sources: its own when it has some, else the scene sources', () => {
+    const c = structuredClone(loadContent());
+    const s = c.scenes.find(x => x.id === '2025-01-deepseek')!;
+    s.aliases = ['2025-01-r1'];
+    s.sources = [{ url: 'https://example.com/scene', title: '장면 출처' }];
+    s.items[0].sources = [{ url: 'https://example.com/item', title: '사건 출처' }];
+    s.items[1].sources = [];
+    const d = buildView(c, 'ko', '2026-10-25').scenes.find(x => x.id === s.id)!;
+    expect(d.items[0].sources).toEqual([{ url: 'https://example.com/item', title: '사건 출처' }]);
+    expect(d.items[1].sources).toEqual([{ url: 'https://example.com/scene', title: '장면 출처' }]);
+    expect(d.sources).toEqual([{ url: 'https://example.com/scene', title: '장면 출처' }]);
+    expect(d.aliases).toEqual(['2025-01-r1']);
   });
 
   test('details follow the wall order, newest first', () => {
