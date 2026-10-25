@@ -25,11 +25,16 @@ const VIEWS = [
   { width: 1440, height: 900, target: 2000 },
 ];
 
-const args = process.argv.slice(2);
-const opt = (name: string) => { const i = args.indexOf(name); return i < 0 ? undefined : args[i + 1]; };
-const locale = opt('--locale') ?? 'ko';
-const h2 = args.includes('--h2');
-if (locale !== 'ko' && locale !== 'en') { console.error(`--locale은 ko 또는 en입니다: ${locale}`); process.exit(2); }
+/* 인자: --locale ko|en, --h2. 모르는 인자는 받지 않는다(--locale=en처럼 잘못 쓰면 조용히 ko를 재게 된다) */
+const USAGE = '사용: node scripts/perf.ts [--locale ko|en] [--h2]';
+let locale = 'ko', h2 = false;
+for (let i = 2; i < process.argv.length; i++) {
+  const a = process.argv[i]!;
+  if (a === '--h2') h2 = true;
+  else if (a === '--locale' && i + 1 < process.argv.length) locale = process.argv[++i]!;
+  else { console.error(`모르는 인자: ${a}\n${USAGE}`); process.exit(2); }
+}
+if (locale !== 'ko' && locale !== 'en') { console.error(`--locale은 ko 또는 en입니다: ${locale}\n${USAGE}`); process.exit(2); }
 
 const root = new URL('..', import.meta.url);
 const dist = fileURLToPath(new URL('dist/', root));   // 끝이 /로 끝난다
@@ -48,13 +53,20 @@ const MIME: Record<string, string> = {
   '.woff': 'font/woff', '.png': 'image/png', '.svg': 'image/svg+xml', '.json': 'application/json', '.ico': 'image/x-icon',
 };
 const TEXT = new Set(['.html', '.js', '.css', '.json', '.svg']);
-function serveH2(): { server: Http2SecureServer; cleanup: () => void } {
+function serveH2(): Http2SecureServer {
   if (!existsSync(join(dist, 'index.html'))) { console.error('dist/가 없습니다. 먼저 npm run build를 실행하세요.'); process.exit(2); }
+  /* 인증서는 메모리로 읽자마자 임시 폴더를 지운다. openssl이 실패해도, 뒤에서 멈추거나 끊겨도 키가 남지 않는다 */
   const dir = mkdtempSync(join(tmpdir(), 'perf-h2-'));
-  const key = join(dir, 'key.pem'), cert = join(dir, 'cert.pem');
-  execFileSync('openssl', ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', key, '-out', cert, '-days', '1',
-    '-subj', '/CN=localhost', '-addext', 'subjectAltName=DNS:localhost'], { stdio: 'ignore' });
-  const server = createSecureServer({ key: readFileSync(key), cert: readFileSync(cert) }, (req, res) => {
+  let tls: { key: Buffer; cert: Buffer } | undefined, err: unknown;
+  try {
+    const key = join(dir, 'key.pem'), cert = join(dir, 'cert.pem');
+    execFileSync('openssl', ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', key, '-out', cert, '-days', '1',
+      '-subj', '/CN=localhost', '-addext', 'subjectAltName=DNS:localhost'], { stdio: 'ignore' });
+    tls = { key: readFileSync(key), cert: readFileSync(cert) };
+  } catch (e) { err = e; }
+  rmSync(dir, { recursive: true, force: true });       // process.exit는 finally를 건너뛰므로 여기서 먼저 지운다
+  if (!tls) { console.error(`자체 서명 인증서를 만들지 못했습니다(openssl 필요): ${(err as Error).message}`); process.exit(2); }
+  return createSecureServer(tls, (req, res) => {
     const miss = () => { res.writeHead(404); res.end(); };
     let url: string;
     try { url = decodeURIComponent((req.url ?? '/').split('?')[0]!); } catch { return miss(); }
@@ -67,7 +79,6 @@ function serveH2(): { server: Http2SecureServer; cleanup: () => void } {
     res.writeHead(200, { 'content-type': MIME[extname(f)] ?? 'application/octet-stream', 'cache-control': 'no-store', ...(gz && { 'content-encoding': 'gzip' }) });
     res.end(gz ? gzipSync(readFileSync(f)) : readFileSync(f));
   });
-  return { server, cleanup: () => rmSync(dir, { recursive: true, force: true }) };
 }
 
 interface Run { first: number; ready: number; bytes: number; font: number; proto: string; gzip: boolean }
@@ -86,15 +97,17 @@ function stamp(): void {
   }).observe(document, { subtree: true, attributes: true, attributeFilter: ['class', 'data-ready'] });
 }
 
-/* 화면 안 .box:not(.off)가 있고 모두 새겨졌으면, 그중 가장 늦게 새겨진 시각을 낸다 */
+/* 화면 안 .box:not(.off)가 있고 모두 새겨졌으면, 그중 가장 늦게 새겨진 시각을 낸다.
+   화면 안 집합은 준비된 뒤 한 번만 잰다(폴링마다 재면 새기는 동안 레이아웃을 강제해 측정을 흐린다) */
 function firstScreen(): { first: number; ready: number; bytes: number; font: number; proto: string; gzip: boolean } | false {
-  const w = window as unknown as { __carved: Map<Element, number>; __ready: number };
+  const w = window as unknown as { __carved: Map<Element, number>; __ready: number; __on?: Element[] };
   if (document.documentElement.dataset.ready !== '1') return false;
-  const on = [...document.querySelectorAll('.box:not(.off)')].filter(el => {
+  const on = w.__on ??= [...document.querySelectorAll('.box:not(.off)')].filter(el => {
     const r = el.getBoundingClientRect();
     return r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
   });
-  if (!on.length || !on.every(el => w.__carved.has(el))) return false;
+  if (!on.length) { delete w.__on; return false; }
+  if (!on.every(el => w.__carved.has(el))) return false;
   const first = Math.max(...on.map(el => w.__carved.get(el)!));
   const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
   const res = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
@@ -122,11 +135,14 @@ async function measure(b: Browser, url: string, v: { width: number; height: numb
 const s = (ms: number) => (ms / 1000).toFixed(2) + 's';
 const med = (a: number[]) => a.slice().sort((x, y) => x - y)[a.length >> 1]!;
 
-let h2srv: ReturnType<typeof serveH2> | undefined;
+let h2srv: Http2SecureServer | undefined;
 let origin = PREVIEW;
 if (h2) {
-  h2srv = serveH2();
-  await new Promise<void>(r => h2srv!.server.listen(H2_PORT, r));
+  const srv = h2srv = serveH2();
+  await new Promise<void>(r => {
+    srv.once('error', e => { console.error(`HTTP/2 서버를 열지 못했습니다(localhost:${H2_PORT}): ${e.message}`); process.exit(2); });
+    srv.listen(H2_PORT, 'localhost', r);
+  });
   origin = `https://localhost:${H2_PORT}`;
 } else {
   const up = await fetch(PREVIEW + BASE).then(r => r.ok, () => false);
@@ -157,5 +173,5 @@ try {
   }
 } finally {
   await b.close();
-  if (h2srv) { h2srv.server.close(); h2srv.cleanup(); }
+  h2srv?.close();
 }
