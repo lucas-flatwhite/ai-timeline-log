@@ -7,13 +7,11 @@ const sheetReady = (l: HTMLLinkElement) => l.sheet ? Promise.resolve() : new Pro
 await Promise.all([...document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]')].map(sheetReady));
 
 export const root = document.documentElement;
-export const reduce = typeof window.matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cs = getComputedStyle(root);
 export const INK = cs.getPropertyValue('--ink').trim() || '#111110';
 export const PAPER = cs.getPropertyValue('--paper').trim() || '#E3E1D9';
-/* 원본은 FONT 상수로 --display를 중복 정의했다. 이제 CSS 토큰이 유일한 출처다 */
-export const FONT = cs.getPropertyValue('--display').trim() || 'sans-serif';
-export const BODY = cs.getPropertyValue('--body').trim() || 'serif';
-export const MONO = cs.getPropertyValue('--mono').trim() || 'monospace';
-/* 레이아웃 상태 (원본의 W, wide, stickyTop, heroLen, ready) */
-export const L = { W: 0, wide: false, stickyTop: 0, heroLen: 1, ready: false };
+/* 판 글꼴(PlateL, PlateK) 뒤에 --display가 이어진다. 토큰이 비면 --display, 그것도 비면 sans-serif */
+const DISPLAY = cs.getPropertyValue('--display').trim();
+export const PLATE = cs.getPropertyValue('--plate').trim() || DISPLAY || 'sans-serif';
+/* 기다릴 것은 판 글꼴뿐이다. --display까지 넘기면 document.fonts.load가 Black Han Sans 조각도 받고 기다린다 */
+export const PLATE_ONLY = (DISPLAY && PLATE.endsWith(DISPLAY) && PLATE.slice(0, -DISPLAY.length).replace(/,\s*$/, '')) || PLATE;
