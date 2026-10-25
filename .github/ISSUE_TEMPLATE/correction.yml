@@ -1,0 +1,48 @@
+name: Correction
+description: |
+  Report a wrong date, claim or translation on an event or scene. 사건이나 장면의 날짜, 내용, 번역이 틀렸다면 알려 주세요.
+title: "[Correction] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the timeline accurate. Fields below are prefilled when you come from the "Report a correction" link on an event.
+        연표를 바로잡는 데 도움을 주셔서 감사합니다. 사건의 정정 링크로 오셨다면 아래 항목이 미리 채워져 있습니다.
+  - type: input
+    id: event
+    attributes:
+      label: Event address
+      description: |
+        The page address of the event, including the part after "#". 사건의 주소입니다. "#" 뒤의 부분까지 넣어 주세요.
+      placeholder: https://lucasflatwhite.com/ai-timeline-log/#scene-id~20250101
+    validations:
+      required: false
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: |
+        Say what is incorrect and what it should be. 무엇이 틀렸고 어떻게 고쳐야 하는지 적어 주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence links
+      description: |
+        Links to primary sources, one per line. 근거가 되는 1차 자료 링크를 한 줄에 하나씩 적어 주세요.
+      placeholder: https://
+    validations:
+      required: false
+  - type: dropdown
+    id: lang
+    attributes:
+      label: Language of the page
+      description: |
+        Which language version has the problem. 문제가 있는 언어판을 골라 주세요.
+      options:
+        - ko
+        - en
+      default: 0
+    validations:
+      required: true
