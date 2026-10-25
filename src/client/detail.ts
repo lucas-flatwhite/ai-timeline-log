@@ -16,7 +16,8 @@ export function initDetail(): void {
   const alias = new Map<string, string>();
   document.querySelectorAll<HTMLElement>('#details article[data-aliases]').forEach(a =>
     a.dataset.aliases!.split(/\s+/).filter(Boolean).forEach(k => alias.set(k, a.dataset.addr!)));
-  let cur: string | null = null;
+  /* cur: 지금 보이는 주소. opener: 창을 연 상자(앞뒤로 옮겨 다녀도 바뀌지 않는다. 닫으면 여기로 초점을 돌린다) */
+  let cur: string | null = null, opener: HTMLElement | undefined;
 
   /* 주소를 글(장면·연도 article, 사건이면 그 li)로 바꾼다. 모르는 주소면 null */
   function resolve(addr: string): { article: HTMLElement; li?: HTMLElement } | null {
@@ -28,6 +29,8 @@ export function initDetail(): void {
   }
   /* 언어 링크가 지금 연 주소를 들고 간다 */
   const syncLang = (h: string) => langs.forEach(a => a.setAttribute('href', a.getAttribute('href')!.replace(/#.*$/, '') + h));
+  /* Safari는 replaceState를 너무 자주 부르면 SecurityError를 던진다. 주소만 못 바꾸고 창은 그대로 둔다 */
+  const setUrl = (u: string) => { try { history.replaceState(null, '', u); } catch { /* 무시 */ } };
 
   function show(addr: string): boolean {
     const r = resolve(addr);
@@ -40,10 +43,17 @@ export function initDetail(): void {
     c.querySelectorAll('.src').forEach(e => e.remove());
     const h = c.querySelector('h2');
     if (h) h.id = 'detail-title';
-    c.querySelectorAll<HTMLElement>('ol.items > li').forEach(x => x.classList.toggle('hl', !!li && x.dataset.addr === at));
+    /* 목록의 사건은 키보드로도 고를 수 있다(Tab, Enter·Space) */
+    c.querySelectorAll<HTMLElement>('ol.items > li').forEach(x => {
+      x.classList.toggle('hl', !!li && x.dataset.addr === at);
+      x.tabIndex = 0;
+    });
     const meta = c.querySelector('.meta');
     if (li && meta) meta.textContent = li.dataset.meta!;
+    /* 다시 그리면 초점이 있던 목록 항목이 사라지므로, 새 글의 같은 항목으로 옮긴다 */
+    const was = body.contains(document.activeElement) ? (document.activeElement as HTMLElement).dataset.addr : undefined;
     body.replaceChildren(c);
+    if (was) [...c.querySelectorAll<HTMLElement>('ol.items > li')].find(x => x.dataset.addr === was)?.focus();
     /* 출처: 사건 출처가 있으면 그것, 없으면 장면 출처, 둘 다 없으면 비워서 숨긴다(:empty) */
     const from = (li && [...article.querySelectorAll<HTMLElement>('p.src[data-for]')].find(p => p.dataset.for === at))
       || article.querySelector<HTMLElement>('p.src:not([data-for])');
@@ -60,9 +70,9 @@ export function initDetail(): void {
       try { carveTile(cv, boxSpec(box, pics), 280, 280); } catch (e) { console.error(e); }
     }
     cur = at;
-    history.replaceState(null, '', '#' + at);
+    setUrl('#' + at);
     syncLang('#' + at);
-    if (!dlg!.open) dlg!.showModal();
+    if (!dlg!.open) { opener = box; dlg!.showModal(); }
     return true;
   }
   const step = (d: number) => {
@@ -75,9 +85,11 @@ export function initDetail(): void {
     const b = (e.target as Element).closest<HTMLElement>('a.box');
     if (b && show(b.dataset.addr!)) e.preventDefault();
   });
-  body.addEventListener('click', e => {
-    const li = (e.target as Element).closest<HTMLElement>('ol.items > li');
-    if (li?.dataset.addr) show(li.dataset.addr);
+  const itemOf = (e: Event) => (e.target as Element).closest<HTMLElement>('ol.items > li')?.dataset.addr;
+  body.addEventListener('click', e => { const a = itemOf(e); if (a) show(a); });
+  body.addEventListener('keydown', e => {
+    const a = itemOf(e);
+    if (a && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); show(a); }
   });
   prev.addEventListener('click', () => step(1));
   next.addEventListener('click', () => step(-1));
@@ -94,12 +106,12 @@ export function initDetail(): void {
     const r = dlg.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
   });
-  /* Esc·×·바깥 클릭이 모두 여기로 온다. 주소를 지우고 지금 보던 상자로 초점을 돌린다 */
+  /* Esc·×·바깥 클릭이 모두 여기로 온다. 주소를 지우고 창을 연 상자로 초점을 돌린다 */
   dlg.addEventListener('close', () => {
-    history.replaceState(null, '', location.pathname + location.search);
+    setUrl(location.pathname + location.search);
     syncLang('');
-    const b = cur === null ? undefined : boxOf.get(cur);
-    cur = null;
+    const b = opener;
+    cur = null; opener = undefined;
     b?.focus();
   });
 

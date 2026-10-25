@@ -102,6 +102,39 @@ test.describe('desktop', () => {
     await hashIs(page, '');
   });
 
+  test('focus returns to the box that opened the dialog, even after moving', async ({ page }) => {
+    await visit(page);
+    const all = await order(page);
+    const at = all.findIndex(a => a.includes('~'));
+    await page.locator(`a.box[data-addr="${all[at]}"]`).click();
+    await expect(dlg(page)).toHaveAttribute('open', '');
+    await page.keyboard.press('ArrowLeft');
+    await hashIs(page, '#' + all[at + 1]);
+    await page.locator('#detail .dbody ol.items > li').first().click();
+    await page.keyboard.press('Escape');
+    await expect(dlg(page)).not.toHaveAttribute('open', '');
+    await hashIs(page, '');
+    expect(await page.evaluate(() => (document.activeElement as HTMLElement).dataset.addr)).toBe(all[at]);
+  });
+
+  test('list items work from the keyboard', async ({ page }) => {
+    await visit(page, '#2023-03-gpt-4');
+    const items = page.locator('#detail .dbody ol.items > li');
+    await expect(items.first()).toHaveAttribute('tabindex', '0');
+    const addrs = await items.evaluateAll(els => els.map(e => (e as HTMLElement).dataset.addr!));
+    await items.nth(0).focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('#detail .dbody li.hl')).toHaveAttribute('data-addr', addrs[0]);
+    await hashIs(page, '#' + addrs[0]);
+    // 다시 그린 뒤에도 초점은 같은 항목에 있다. Tab으로 다음 항목에 가서 Space
+    expect(await page.evaluate(() => (document.activeElement as HTMLElement).dataset.addr)).toBe(addrs[0]);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press(' ');
+    await expect(page.locator('#detail .dbody li.hl')).toHaveAttribute('data-addr', addrs[1]);
+    await hashIs(page, '#' + addrs[1]);
+    await expect(dlg(page)).toHaveAttribute('open', '');
+  });
+
   test('closing with × or the backdrop also returns focus', async ({ page }) => {
     await visit(page);
     await page.locator('a.box[href="#2023-03-gpt-4"]').click();
