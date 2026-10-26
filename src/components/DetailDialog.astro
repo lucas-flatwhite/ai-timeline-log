@@ -1,0 +1,23 @@
+---
+import type { PageView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+const d = view.dialog;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+/* 창이 열리면(showModal) 위 막대·맺음의 언어 링크는 누를 수 없다. 창 안에 다른 언어 링크를 따로 둔다(syncLang이 주소를 붙인다) */
+const others = view.langs.filter(l => !l.current && l.path !== null);
+/* 빈 틀. 상세 스크립트가 #details의 글을 .dbody에 복제하고, 제목 h2에 id="detail-title"을 붙인다 */
+---
+<dialog id="detail" aria-labelledby="detail-title">
+  <button class="x" type="button" aria-label={d.close}>×</button>
+  <canvas class="dcv"></canvas>
+  <div class="dtext">
+    <div class="dbody"></div>
+    <p class="dsrc" data-label={d.sources}></p>
+    <div class="dact">
+      <a class="fix" href={view.report.href} target="_blank" rel="noopener">{d.fix} ↗</a>
+      {others.length > 0 && <nav class="lang" aria-label={view.langNav}>{others.map(l =>
+        <a lang={l.code} hreflang={l.code} href={base + l.path} title={l.name}>{l.label}</a>)}</nav>}
+    </div>
+    <div class="dnav"><button class="prev" type="button">{d.prev}</button><button class="next" type="button">{d.next}</button></div>
+  </div>
+</dialog>

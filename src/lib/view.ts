@@ -1,34 +1,45 @@
 import type { Content } from './content.ts';
 import {
-  daysBetween, fraction, formatSpan, formatItemDate, formatDot, formatLong, formatMonthLong,
-  formatYYMM, formatDate, todayISO, type Locale,
+  daysBetween, formatDate, formatDot, formatLong, formatMonthLong, formatYYMM, todayISO, type Locale,
 } from './dates.ts';
+import { glyphFor, hashSeed, itemAddresses, sortWall, ymd, type WallEntry } from './grid.ts';
+import type { Pics } from './schema.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
 
-export interface ItemView { date: string; label: string; text: string }
-export interface SceneView {
-  id: string; index: number; no: string; when: string; kicker: string; title: string; lede: string;
-  items: ItemView[]; glyph: string; pattern: string; angle?: number; motif: string; seed: number;
-  bar: string; p: number; year: string; aria: string;
+/** 격자의 상자 하나. 날짜는 `YYYYMMDD`(월까지만 있으면 `YYYYMM`, 연도 판은 `YYYY`) */
+export interface BoxView {
+  kind: 'scene' | 'item' | 'year'; addr: string; date: string; glyph: string; pattern: string; angle?: number;
+  motif: string; seed: number; pic?: string; scene?: string; label: string; off: boolean;
 }
-export interface YearView { year: string; title: string; body: string; countLine: string; bar: string; p: number }
-export type Block = { kind: 'year'; year: YearView } | { kind: 'scene'; scene: SceneView };
+export interface SourceView { url: string; title: string }
+export interface ItemDetail { addr: string; date: string; text: string; meta: string; fix: string; sources: SourceView[] }
+export interface SceneDetail {
+  id: string; aliases: string[]; meta: string; title: string; lede: string; items: ItemDetail[];
+  corrections: string[]; sources: SourceView[]; fix: string;
+}
+export interface YearDetail { addr: string; year: string; title: string; body: string }
 export interface LangView { code: Locale; label: string; name: string; path: string | null; current: boolean; soon?: string }
 export interface PageView {
   lang: Locale; title: string; description: string; ogTitle: string; ogDescription: string;
-  barTitle: string; barStart: string; heroName: string; heroRange: string; heroSr: string;
-  heroWide: string; heroTall: string; heroLines: string[]; lede: string; cue: string;
-  /** 브라우저가 오늘 날짜로 일수를 다시 채울 때 쓰는 시작일과 틀({days}) */
-  live: { start: string; wide: string; tall: string; outroTitle: string };
+  canonical: string; ogImage: string; alternates: { hreflang: string; href: string }[];
+  name: string; report: { label: string; href: string };
+  /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
+  cover: { glyph: string; tpl: string; start: string; lede: string };
+  boxes: BoxView[]; scenes: SceneDetail[]; years: YearDetail[]; pics: Pics;
+  dialog: { prev: string; next: string; close: string; fix: string; sources: string };
+  /** 격자(main)와 상세 글 묶음(section)의 이름 */
+  aria: { wall: string; details: string };
   langNav: string; langs: LangView[];
-  blocks: Block[]; scenes: SceneView[];
-  rail: { nav: string; labels: { text: string; top: string }[]; ticks: { i: number; top: string; aria: string }[] };
   outro: {
-    bar: string; eyebrow: string; title: string; arcs: { span: string; title: string; body: string }[];
+    /** titleTpl: 일수를 채우기 전 제목 틀({days}) */
+    bar: string; eyebrow: string; title: string; titleTpl: string; arcs: { span: string; title: string; body: string }[];
     ledgerTitle: string; ledgerNote: string; ledger: { lab: string; models: { name: string; date: string }[] }[];
     sourcesTitle: string; sourcesNote: string; sources: { url: string; title: string }[]; end: [string, string];
+    making?: string; makingTitle: string;
   };
 }
+
+const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
 
 export function fill(tpl: string, vars: Record<string, string>): string {
   return tpl.replace(/\{(\w+)\}/g, (_, k: string) => {
@@ -42,13 +53,17 @@ function need<T>(v: T | undefined, what: string): T {
   return v;
 }
 
-const pct = (x: number) => (x * 100).toFixed(2) + '%';
+const enc = encodeURIComponent;
+/** 이슈 제목 길이를 120자로 자른다(서로게이트 쌍을 가르지 않도록 코드 포인트 단위) */
+const clip = (s: string) => [...s].slice(0, 120).join('');
+
+type Entry = WallEntry & { box: BoxView };
 
 /** today: 일수를 셀 날. 빌드 때는 빌드한 날이 들어가고, 브라우저가 보는 날로 다시 채운다 */
 export function buildView(c: Content, locale: Locale, today: string = todayISO()): PageView {
   const t = uiFor(locale);
   const { site } = c;
-  const st = need(site[locale], `site.${locale}`);
+  const st = site[locale];
   const days = daysBetween(site.start, today).toLocaleString('en-US');
   const count = c.scenes.length;
   const startDot = formatDot(site.start), asOfDot = formatDot(site.asOf);
@@ -57,83 +72,111 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     startLong: formatLong(locale, site.start), asOfLong: formatLong(locale, site.asOf),
     asOfMonthLong: formatMonthLong(locale, site.asOf),
   };
-  const fr = (d: string) => fraction(d, site.start, site.asOf);
 
-  const scenes: SceneView[] = c.scenes.map((s, i) => {
-    const text = need(s[locale], `${s.id}.${locale}`);
-    const when = formatSpan(locale, s.span);
-    const year = s.date.slice(0, 4);
-    return {
-      id: s.id, index: i, no: t.plateNo(i + 1), when,
-      kicker: text.kicker, title: text.title, lede: text.lede,
-      items: s.items.map((it, k) => ({
-        date: it.date,
-        label: formatItemDate(locale, it.date, +year),
-        text: need(it[locale], `${s.id}.items.${k}.${locale}`),
-      })),
-      glyph: text.glyph ?? s.print.glyph, pattern: s.print.pattern, angle: s.print.angle, motif: s.print.motif,
-      seed: i,                                   // 1단계: 원본과 같은 순번 시드 (스펙 6절)
-      bar: t.barScene(when, i + 1, count), p: fr(s.date), year,
-      aria: t.railLabel(i + 1, when, text.title.replace(/"/g, '')),
-    };
+  const canonical = ORIGIN + need(locales.find(l => l.code === locale), `locale ${locale}`).path;
+  const fix = (addr: string, date: string, text: string) =>
+    `${site.repo}/issues/new?template=correction.yml&title=${enc(clip(t.fixTitle(date, text)))}`
+    + `&event=${enc(canonical + '#' + addr)}&lang=${locale}`;
+
+  // 최근 추가 장면: added의 최댓값이 첫 판보다 늦을 때, 그 날짜에 추가된 장면들
+  const lastAdded = c.scenes.reduce((m, s) => (s.added > m ? s.added : m), '');
+  const recent = lastAdded > site.firstEdition ? lastAdded : null;
+
+  const entries: Entry[] = [];
+  const scenes: SceneDetail[] = [];
+
+  c.scenes.forEach((s, i) => {
+    const text = s[locale];
+    const sceneDate = ymd(s.date);
+    const sources = s.sources.map(x => ({ url: x.url, title: x.title }));
+    // 최근 추가 표시: 장면 날짜 줄과 그 사건들의 날짜 줄 끝에 똑같이 붙인다
+    const mark = recent && s.added === recent ? ` · ${t.added(formatDot(s.added))}` : '';
+    entries.push({
+      kind: 'scene', date: s.date, order: s.order, seq: i * 100,
+      box: {
+        kind: 'scene', addr: s.id, date: sceneDate, glyph: text.glyph ?? s.print.glyph,
+        pattern: s.print.pattern, angle: s.print.angle, motif: s.print.motif, seed: hashSeed(s.id),
+        scene: s.id, label: `${sceneDate} · ${text.title}`, off: false,
+      },
+    });
+
+    const addrs = itemAddresses(s.id, s.items.map(it => it.date));
+    const items: ItemDetail[] = s.items.map((it, k) => {
+      const addr = addrs[k], date = ymd(it.date);
+      const body = it[locale];
+      entries.push({
+        kind: 'item', date: it.date, order: s.order, seq: i * 100 + k + 1,
+        box: {
+          kind: 'item', addr, date, glyph: glyphFor(it.glyph, locale),
+          pattern: s.print.pattern === 'c' ? 'h' : s.print.pattern, angle: s.print.angle, motif: 'none',
+          seed: hashSeed(addr), pic: it.pic, scene: s.id, label: `${date} · ${body}`, off: false,
+        },
+      });
+      return {
+        addr, date, text: body, meta: `${date} · ${text.kicker} · ${t.sceneOf(text.title)}${mark}`,
+        fix: fix(addr, date, body),
+        // 사건 출처가 있으면 그것, 없으면 장면 출처
+        sources: (it.sources.length ? it.sources : s.sources).map(x => ({ url: x.url, title: x.title })),
+      };
+    });
+
+    scenes.push({
+      id: s.id, aliases: s.aliases,
+      meta: `${sceneDate} · ${text.kicker}${mark}`,
+      title: text.title, lede: text.lede, items,
+      corrections: s.corrections.map(x => `${formatDot(x.date)} ${need(x[locale], `${s.id}.corrections.${locale}`)}`),
+      sources, fix: fix(s.id, sceneDate, text.title),
+    });
   });
 
-  const blocks: Block[] = [];
-  const seen = new Set<string>();
-  for (const s of scenes) {
-    if (!seen.has(s.year)) {
-      seen.add(s.year);
-      const yt = c.years[s.year]?.[locale];
-      if (yt) {
-        const list = scenes.filter(x => x.year === s.year);
-        blocks.push({ kind: 'year', year: {
-          year: s.year, title: yt.title, body: yt.body,
-          countLine: t.yearCount(list.length, list[0].index + 1, list[list.length - 1].index + 1),
-          bar: t.barYear(s.year, list.length), p: fr(`${s.year}-01-01`),
-        } });
-      }
-    }
-    blocks.push({ kind: 'scene', scene: s });
+  // 연도 판: 장면이 있는 모든 연도. 요약이 없는 연도(시작 연도)는 누를 수 없다
+  const years: YearDetail[] = [];
+  for (const y of new Set(c.scenes.map(s => s.date.slice(0, 4)))) {
+    const yt = c.years[y]?.[locale];
+    entries.push({
+      kind: 'year', date: y, order: 0, seq: +y,
+      box: {
+        kind: 'year', addr: `year-${y}`, date: y, glyph: y, pattern: 'd', angle: +y % 2 ? -22 : 22,
+        motif: 'none', seed: +y, label: yt ? `${y} · ${yt.title}` : y, off: !yt,
+      },
+    });
+    if (yt) years.push({ addr: `year-${y}`, year: y, title: yt.title, body: yt.body });
   }
+  years.reverse();
 
-  const startYear = site.start.slice(0, 4);
-  const railYears = [...new Set(scenes.map(s => s.year))].filter(y => y > startYear);
-  const heroWide = fill(st.heroGlyph.wide, vars), heroTall = fill(st.heroGlyph.tall, vars);
+  const boxes = sortWall(entries).map(e => e.box);
+  const order = new Map(boxes.filter(b => b.kind === 'scene').map((b, n) => [b.addr, n]));
+  scenes.sort((a, b) => order.get(a.id)! - order.get(b.id)!);   // 격자와 같은 최신순
+
   const title = site.name;
-
   return {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
-    barTitle: title, barStart: startDot,
-    heroName: site.name, heroRange: `${startDot} → ${t.now}`, heroSr: `${site.name} `,
-    heroWide, heroTall, heroLines: heroTall.split('\n'),
-    lede: fill(st.lede, vars), cue: t.cue,
-    live: { start: site.start, wide: st.heroGlyph.wide, tall: st.heroGlyph.tall, outroTitle: t.outroTitle('{days}') },
+    canonical, ogImage: `${ORIGIN}og/${locale}.png`,
+    alternates: [
+      ...locales.filter(l => ui[l.code]).map(l => ({ hreflang: l.code, href: ORIGIN + l.path })),
+      { hreflang: 'x-default', href: ORIGIN },
+    ],
+    name: site.name, report: { label: t.report, href: `${site.repo}/issues` },
+    cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars) },
+    boxes, scenes, years, pics: c.pics,
+    dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources },
+    aria: { wall: t.wall, details: t.details },
     langNav: t.langNav,
-    langs: locales.map(l => (ui[l.code] && site[l.code]
+    langs: locales.map(l => (ui[l.code]
       ? { ...l, current: l.code === locale }
       : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
-    blocks, scenes,
-    rail: {
-      nav: t.railNav,
-      labels: [
-        { text: formatYYMM(site.start), top: '0' },
-        ...railYears.map(y => ({ text: y, top: pct(fr(`${y}-01-01`)) })),
-        { text: formatYYMM(site.asOf), top: '100%' },
-      ],
-      ticks: scenes.map(s => ({ i: s.index, top: pct(s.p), aria: s.aria })),
-    },
     outro: {
-      bar: t.now, eyebrow: t.now, title: t.outroTitle(days),
-      arcs: c.arcs.map(a => {
-        const at = need(a[locale], `arc.${locale}`);
-        return { span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: at.title, body: at.body };
-      }),
+      bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
+      arcs: c.arcs.map(a => ({
+        span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: a[locale].title, body: a[locale].body,
+      })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
-      ledger: c.ledger.map(l => ({ lab: need(l.lab[locale], `ledger.lab.${locale}`), models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
+      ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
       sourcesTitle: t.sourcesTitle, sourcesNote: fill(st.sourcesNote, vars),
       sources: c.sources.map(s => ({ url: s.url, title: s.title })),
       end: [t.endCount(count, startDot, t.now), title],
+      making: st.making, makingTitle: t.making,
     },
   };
 }

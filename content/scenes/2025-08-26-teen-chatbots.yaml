@@ -18,13 +18,26 @@ sources:
 items:
   - date: 2025-08-26
     ko: 16세 애덤 레인의 부모, 아들이 ChatGPT와 나눈 대화를 근거로 OpenAI와 샘 올트먼을 제소.
+    en: "The parents of 16-year-old Adam Raine sue OpenAI and Sam Altman, citing their son’s conversations with ChatGPT."
+    glyph: { ko: "16세", en: "AGE 16" }
   - date: 2025-09-11
     ko: 미국 연방거래위원회, OpenAI·메타·캐릭터AI 등 7개사에 청소년 대상 챗봇 안전 조치 자료 제출 요구.
+    en: "The U.S. Federal Trade Commission orders seven companies, including OpenAI, Meta and Character.AI, to report on their safety measures for chatbots used by teenagers."
+    glyph: FTC
   - date: 2025-09-29
     ko: OpenAI, 부모가 자녀 계정을 연결해 관리하는 보호자 기능 출시.
+    en: "OpenAI launches parental controls that let parents link and manage their children’s accounts."
+    glyph: { ko: "보호자", en: "PARENTS" }
   - date: 2025-10-29
     ko: 캐릭터AI, 11월 25일부터 18세 미만의 자유 대화를 막겠다고 발표.
+    en: "Character.AI announces that from November 25 it will block open-ended chat for users under 18."
+    glyph: U18
 ko:
   kicker: 위로
   title: AI에게 털어놓은 아이들
   lede: 챗봇에게 마음을 털어놓던 십대의 죽음이 법정으로 갔다. 회사들은 미성년자 보호 장치를 서둘러 내놓았다.
+en:
+  kicker: "Comfort"
+  title: "The Children Who Confided in AI"
+  lede: "The death of a teenager who had been pouring his heart out to a chatbot went to court. Companies rushed out protections for minors."
+  glyph: "TEENS"

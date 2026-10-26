@@ -1,0 +1,24 @@
+import type { UI } from './ko.ts';
+
+/* 영어 화면 문구. 키 집합은 ko와 같아야 한다(UI 타입이 지킨다) */
+export const en: UI = {
+  now: 'present',
+  langNav: 'Language',
+  langSoon: (name) => `${name} coming soon`,
+  outroTitle: (days) => `What changed in ${days} days`,
+  ledgerTitle: 'Major model releases',
+  sourcesTitle: 'Sources and basis',
+  endCount: (count, start, now) => `${count} prints · ${start} – ${now}`,
+  report: 'Report',
+  fix: 'Report a correction',
+  fixTitle: (date, text) => `[Correction] ${date} ${text}`,
+  sceneOf: (title) => `Part of “${title}”`,
+  added: (date) => `Added ${date}`,
+  prev: '← Earlier',
+  next: 'Later →',
+  close: 'Close',
+  sources: 'Sources',
+  wall: 'Wall of AI events',
+  details: 'All scenes',
+  making: 'How this was made',
+};

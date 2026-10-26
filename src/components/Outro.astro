@@ -4,10 +4,10 @@ import LangSwitch from './LangSwitch.astro';
 const { view } = Astro.props as { view: PageView };
 const o = view.outro;
 ---
-<section class="outro" id="outro" aria-labelledby="outroH" data-bar={o.bar}>
+<section class="outro" id="outro" aria-labelledby="outroH">
   <div class="outro-in">
     <p class="eyebrow">{o.eyebrow}</p>
-    <h2 id="outroH" data-live={view.live.outroTitle}>{o.title}</h2>
+    <h2 id="outroH" data-live={o.titleTpl}>{o.title}</h2>
     <ol class="arcs">{o.arcs.map(a => <li><span class="span">{a.span}</span><h3>{a.title}</h3><p>{a.body}</p></li>)}</ol>
 
     <h2 class="sub">{o.ledgerTitle}</h2>
@@ -19,6 +19,12 @@ const o = view.outro;
       <p>{o.sourcesNote}</p>
       <ul>{o.sources.map(s => <li><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>)}</ul>
     </details>
+
+    {o.making && <section class="making" aria-labelledby="makingH">
+      <h2 class="sub" id="makingH">{o.makingTitle}</h2>
+      <p>{o.making}</p>
+      <p><a href={view.report.href} target="_blank" rel="noopener">{view.report.label} ↗</a></p>
+    </section>}
 
     <p class="end"><span>{o.end[0]}</span><span>{o.end[1]}</span></p>
     <LangSwitch view={view} />

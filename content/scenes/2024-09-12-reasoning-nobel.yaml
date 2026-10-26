@@ -8,16 +8,38 @@ print:
   pattern: c
   motif: disc
   glyph: o1
+sources:
+  - url: https://openai.com/index/introducing-openai-o1-preview/
+    title: Introducing OpenAI o1-preview
+    publisher: OpenAI
+  - url: https://www.nobelprize.org/prizes/physics/2024/press-release/
+    title: "Press release: The Nobel Prize in Physics 2024"
+    publisher: NobelPrize.org
+  - url: https://www.nobelprize.org/prizes/chemistry/2024/press-release/
+    title: "Press release: The Nobel Prize in Chemistry 2024"
+    publisher: NobelPrize.org
 items:
   - date: 2024-09-12
     ko: OpenAI, 추론 모델 o1 프리뷰 공개. 수학·코딩 문제에서 큰 폭으로 앞섰다.
+    en: "OpenAI releases a preview of its reasoning model o1, which pulls far ahead on math and coding problems."
+    glyph: o1
   - date: 2024-10-02
     ko: OpenAI, 66억 달러 투자 유치. 기업가치 1,570억 달러.
+    en: "OpenAI raises $6.6 billion at a valuation of $157 billion."
+    glyph: $6.6B
   - date: 2024-10-08
     ko: 노벨 물리학상, 인공신경망의 기초를 놓은 존 홉필드와 제프리 힌턴.
+    en: "The Nobel Prize in Physics goes to John Hopfield and Geoffrey Hinton, who laid the foundations of artificial neural networks."
+    glyph: { ko: "노벨\n물리", en: "NOBEL\nPHYSICS" }
   - date: 2024-10-09
     ko: 노벨 화학상, 알파폴드의 데미스 허사비스·존 점퍼와 단백질 설계의 데이비드 베이커.
+    en: "The Nobel Prize in Chemistry goes to Demis Hassabis and John Jumper for AlphaFold and to David Baker for protein design."
+    glyph: { ko: "노벨\n화학", en: "NOBEL\nCHEM" }
 ko:
   kicker: 추론
   title: 생각하는 모델, 두 개의 노벨상
   lede: 답하기 전에 길게 생각하도록 훈련한 추론 모델이 나왔다. 한 달 뒤 노벨상 두 개가 AI 연구에 돌아갔다.
+en:
+  kicker: "Reasoning"
+  title: "Models That Think, and Two Nobel Prizes"
+  lede: "A reasoning model trained to think at length before answering arrived. A month later, two Nobel Prizes went to AI research."

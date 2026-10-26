@@ -1,5 +1,0 @@
----
-import type { PageView } from '../lib/view.ts';
-const { view } = Astro.props as { view: PageView };
----
-<div class="bar" id="bar" aria-hidden="true" data-start={view.barStart}><b>{view.barTitle}</b><span id="barT">{view.barStart}</span><i></i></div>

@@ -7,16 +7,40 @@ print:
   pattern: h
   motif: rise
   glyph: $3.3T
+sources:
+  - url: https://www.foxbusiness.com/markets/nvidia-topples-microsoft-worlds-most-valuable-company
+    title: Nvidia topples Microsoft as world’s most valuable company
+    publisher: Fox Business
+  - url: https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/
+    title: "Introducing Apple Intelligence for iPhone, iPad, and Mac"
+    publisher: Apple
+  - url: https://www.anthropic.com/news/claude-3-5-sonnet
+    title: Introducing Claude 3.5 Sonnet
+    publisher: Anthropic
 items:
   - date: 2024-06-10
     ko: 애플, Apple Intelligence 발표. 시리가 어려운 질문은 ChatGPT에 넘긴다.
+    en: "Apple announces Apple Intelligence, and Siri passes hard questions to ChatGPT."
+    glyph: Siri
   - date: 2024-06-18
     ko: 엔비디아 시가총액 약 3.3조 달러. 마이크로소프트를 제치고 첫 1위.
+    en: "NVIDIA’s market value reaches about $3.3 trillion, passing Microsoft to rank first for the first time."
+    glyph: { ko: "1위", en: "No.1" }
   - date: 2024-06-19
     ko: 수츠케버, 안전한 초지능만 만든다는 SSI 설립.
+    en: "Sutskever founds SSI, which says it will build only safe superintelligence."
+    glyph: SSI
   - date: 2024-06-20
     ko: Anthropic, Claude 3.5 Sonnet과 결과물을 옆 창에 띄우는 아티팩트 공개.
+    en: "Anthropic releases Claude 3.5 Sonnet, along with Artifacts, which shows results in a window beside the chat."
+    glyph: |-
+      3.5
+      Sonnet
 ko:
   kicker: 돈의 흐름
   title: 엔비디아, 세계 1위
   lede: AI 칩 수요가 몰리며 엔비디아가 처음으로 시가총액 세계 1위에 올랐다. 애플은 아이폰에 생성형 AI를 넣겠다고 했다.
+en:
+  kicker: "Where the Money Went"
+  title: "NVIDIA, Number One in the World"
+  lede: "As demand for AI chips piled up, NVIDIA became the world’s most valuable company for the first time. Apple said it would bring generative AI to the iPhone."

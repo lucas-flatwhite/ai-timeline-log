@@ -8,16 +8,38 @@ print:
   angle: -18
   motif: fall
   glyph: $285B
+sources:
+  - url: https://github.com/anthropics/knowledge-work-plugins
+    title: anthropics/knowledge-work-plugins
+    publisher: Anthropic (GitHub)
+  - url: https://techstartups.com/2026/02/05/anthropics-claude-plugins-spark-285-billion-software-stock-selloff-as-ai-targets-entire-saas-workflows/
+    title: Anthropic’s Claude plugins spark $285 billion software stock selloff as AI targets entire SaaS workflows
+    publisher: Tech Startups
+  - url: https://www.cnbc.com/2026/02/03/musk-xai-spacex-biggest-merger-ever.html
+    title: "Musk’s xAI, SpaceX combo is the biggest merger of all time, valued at $1.25 trillion"
+    publisher: CNBC
 items:
   - date: 2026-01-30
     ko: Anthropic, 법무·영업·재무 등 업무용 Claude 플러그인 11종을 깃허브에 공개.
+    en: "Anthropic publishes 11 Claude plugins for work such as legal, sales and finance on GitHub."
+    glyph: { ko: "11종", en: "11\nPLUGINS" }
   - date: 2026-02-02
     ko: 스페이스X, xAI 인수. 합산 기업가치 1.25조 달러.
+    en: "SpaceX acquires xAI, for a combined valuation of $1.25 trillion."
+    glyph: $1.25T
   - date: 2026-02-03
     ko: 소프트웨어·법률정보·금융데이터 주식 급락. 하루 약 2,850억 달러가 사라졌다.
+    en: "Software, legal information and financial data stocks plunge, erasing about $285 billion in a day."
+    glyph: -$285B
   - date: 2026-02-05
     ko: Claude Opus 4.6과 GPT-5.3-Codex가 같은 날 나왔다.
+    en: "Claude Opus 4.6 and GPT-5.3-Codex come out on the same day."
+    glyph: Opus 4.6
 ko:
   kicker: 시장
   title: SaaS 종말론
   lede: AI 에이전트가 소프트웨어 구독 좌석을 대체할 수 있다는 공포에 소프트웨어 주식이 한꺼번에 떨어졌다.
+en:
+  kicker: "Markets"
+  title: "The SaaSpocalypse"
+  lede: "Fear that AI agents could replace the seats in software subscriptions sent software stocks down all at once."

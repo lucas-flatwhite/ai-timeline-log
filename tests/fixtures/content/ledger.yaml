@@ -1,4 +1,4 @@
-- lab: { ko: OpenAI }
+- lab: { ko: OpenAI, en: OpenAI }
   models:
     - { name: GPT-4, date: 2023-03 }
     - { name: ChatGPT, date: 2022-11 }

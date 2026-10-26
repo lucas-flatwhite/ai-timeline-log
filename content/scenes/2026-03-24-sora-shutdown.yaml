@@ -18,13 +18,27 @@ sources:
 items:
   - date: 2025-12-11
     ko: 디즈니, OpenAI에 10억 달러 투자 계약. 소라에서 디즈니 캐릭터 200여 개를 쓸 수 있게 하기로 했다.
+    en: "Disney agrees to invest $1 billion in OpenAI and to let some 200 Disney characters be used in Sora."
+    glyph: { ko: "디즈니", en: "DISNEY" }
   - date: 2026-03-24
     ko: OpenAI, 소라 앱과 API를 닫고 로봇용 세계 시뮬레이션 연구에 집중한다고 발표. 디즈니 투자는 집행되지 않고 무산됐다.
+    en: "OpenAI announces that it will close the Sora app and API to focus on world-simulation research for robots, and Disney’s investment falls through without being made."
+    glyph: { ko: "로봇", en: "ROBOTS" }
+    pic: robot
   - date: 2026-04-26
     ko: 소라 앱 서비스 종료. 영상 소셜 앱으로 출시한 지 7개월 만이다.
+    en: "The Sora app shuts down, seven months after its launch as a social video app."
+    glyph: { ko: "7개월", en: "7 MONTHS" }
   - date: 2026-09-24
     ko: 소라 API까지 종료되며 개발자 접근도 끝났다.
+    en: "The Sora API shuts down as well, ending developer access."
+    glyph: API
 ko:
   kicker: 퇴장
   title: 소라가 문을 닫다
   lede: 문장을 영상으로 바꿔 세상을 놀라게 한 소라가 2년 만에 문을 닫았다. OpenAI는 영상 서비스보다 연구에 계산력을 몰기로 했다.
+en:
+  kicker: "Exit"
+  title: "Sora Shuts Down"
+  lede: "Sora, which had surprised the world by turning sentences into video, shut down after two years. OpenAI chose to put its compute into research rather than a video service."
+  glyph: "CLOSED"

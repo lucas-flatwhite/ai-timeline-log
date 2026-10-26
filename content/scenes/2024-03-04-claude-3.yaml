@@ -8,16 +8,38 @@ print:
   angle: 18
   motif: rays
   glyph: Claude 3
+sources:
+  - url: https://www.anthropic.com/news/claude-3-family
+    title: Introducing the next generation of Claude
+    publisher: Anthropic
+  - url: https://cognition.com/blog/introducing-devin
+    title: "Introducing Devin, the first AI software engineer"
+    publisher: Cognition
+  - url: https://www.europarl.europa.eu/news/en/press-room/20240308IPR19015/artificial-intelligence-act-meps-adopt-landmark-law
+    title: "Artificial Intelligence Act: MEPs adopt landmark law"
+    publisher: European Parliament
 items:
   - date: 2024-03-04
     ko: Anthropic, Claude 3 제품군(Opus·Sonnet·Haiku) 공개.
+    en: "Anthropic releases the Claude 3 model family: Opus, Sonnet and Haiku."
+    glyph: Claude 3
   - date: 2024-03-12
     ko: 코그니션, ‘AI 소프트웨어 엔지니어’ 데빈 시연.
+    en: "Cognition demonstrates Devin, an “AI software engineer.”"
+    glyph: Devin
   - date: 2024-03-13
     ko: 유럽의회, 세계 첫 포괄적 AI 규제법(AI Act) 가결.
+    en: "The European Parliament passes the AI Act, the world’s first comprehensive law regulating AI."
+    glyph: AI Act
   - date: 2024-03-18
     ko: 엔비디아, 차세대 GPU 블랙웰 발표.
+    en: "NVIDIA announces Blackwell, its next-generation GPU."
+    glyph: { ko: "블랙웰", en: "BLACK\nWELL" }
 ko:
   kicker: 경쟁 구도
   title: Claude 3와 ‘AI 개발자’
   lede: Claude 3가 여러 벤치마크에서 GPT-4와 대등하거나 앞섰다. 혼자 코드를 짜는 에이전트 시연이 개발자들을 흔들었다.
+en:
+  kicker: "Rivalry"
+  title: "Claude 3 and the “AI Developer”"
+  lede: "Claude 3 matched or beat GPT-4 on several benchmarks. A demo of an agent that writes code on its own unsettled developers."

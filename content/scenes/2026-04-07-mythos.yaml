@@ -8,16 +8,39 @@ print:
   pattern: c
   motif: disc
   glyph: Mythos
+sources:
+  - url: https://www.anthropic.com/glasswing
+    title: "Project Glasswing: Securing critical software for the AI era"
+    publisher: Anthropic
+  - url: https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/
+    title: "Exclusive: Anthropic ‘Mythos’ AI model representing ‘step change’ in power revealed in data leak"
+    publisher: Fortune
+  - url: https://openai.com/index/introducing-gpt-5-5/
+    title: Introducing GPT-5.5
+    publisher: OpenAI
 items:
   - date: 2026-03-26
     ko: 블로그 초안이 유출되며 Mythos라는 이름이 먼저 알려졌다.
+    en: "A draft blog post leaks, and the name Mythos becomes known ahead of any announcement."
+    glyph: { ko: "유출", en: "LEAK" }
   - date: 2026-04-07
     ko: 프로젝트 글래스윙 출범. AWS·애플·구글·MS·엔비디아 등 12개 창립사가 주요 OS·브라우저의 고위험 취약점 수천 건을 고친다.
+    en: "Project Glasswing launches with 12 founding companies, including AWS, Apple, Google, Microsoft and NVIDIA, to fix thousands of high-severity vulnerabilities in major operating systems and browsers."
+    glyph: { ko: "취약점", en: "FLAWS" }
+    pic: bug
   - date: 2026-04-16
     ko: 열흘 사이 Claude Opus 4.7, GPT-5.5(23일), 딥시크 V4(24일)가 잇달아 나왔다.
+    en: "Within ten days, Claude Opus 4.7, GPT-5.5 (April 23) and DeepSeek V4 (April 24) come out one after another."
+    glyph: { ko: "열흘", en: "10 DAYS" }
   - date: 2026-05-07
     ko: OpenAI도 보안 특화 GPT-5.5-Cyber를 검증된 보안팀에만 제한 공개.
+    en: "OpenAI also releases GPT-5.5-Cyber, a model specialized for security, only to vetted security teams."
+    glyph: Cyber
 ko:
   kicker: 보안
   title: 공개하지 않은 모델
   lede: Anthropic은 소프트웨어 취약점을 찾는 능력이 너무 강하다며 Claude Mythos Preview를 일반에 공개하지 않고 방어용 컨소시엄에만 제공했다.
+en:
+  kicker: "Security"
+  title: "The Model That Was Kept Back"
+  lede: "Anthropic said Claude Mythos Preview was too capable at finding software vulnerabilities, so it did not release the model to the public and offered it only to a defensive consortium."

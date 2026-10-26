@@ -9,16 +9,38 @@ print:
   angle: 12
   motif: none
   glyph: Llama 2
+sources:
+  - url: https://about.fb.com/news/2023/07/llama-2/
+    title: Meta and Microsoft Introduce the Next Generation of Llama
+    publisher: Meta
+  - url: https://www.anthropic.com/news/claude-2
+    title: Claude 2
+    publisher: Anthropic
+  - url: https://biz.newdaily.co.kr/site/data/html/2023/08/24/2023082400046.html
+    title: "네이버, ‘하이퍼클로바X’ 공개... “모두를 위한 AI 시대” 활짝"
+    publisher: 뉴데일리
 items:
   - date: 2023-07-11
     ko: Anthropic, Claude 2 공개. 10만 토큰, 책 한 권 분량을 한 번에 읽는다.
+    en: "Anthropic releases Claude 2, which reads 100,000 tokens, about a book’s worth, in one go."
+    glyph: 100K
   - date: 2023-07-12
     ko: 일론 머스크, AI 회사 xAI 설립 발표.
+    en: "Elon Musk announces the founding of the AI company xAI."
+    glyph: xAI
   - date: 2023-07-18
     ko: 메타, 상업 이용이 가능한 Llama 2를 마이크로소프트와 함께 공개.
+    en: "Meta releases Llama 2, open to commercial use, together with Microsoft."
+    glyph: Llama 2
   - date: 2023-08-24
     ko: 네이버, 한국어에 특화한 하이퍼클로바X 공개.
+    en: "NAVER unveils HyperCLOVA X, a model specialized for Korean."
+    glyph: { ko: "클로바X", en: "CLOVA X" }
 ko:
   kicker: 열린 모델
   title: 라마 2와 하이퍼클로바X
   lede: 메타가 상업적으로 쓸 수 있는 모델을 공개하며 오픈 모델 진영이 커졌다. 한국에서도 자체 초거대 모델이 나왔다.
+en:
+  kicker: "Open Models"
+  title: "Llama 2 and HyperCLOVA X"
+  lede: "Meta released a model that could be used commercially, and the open-model camp grew. Korea produced a hyperscale model of its own."

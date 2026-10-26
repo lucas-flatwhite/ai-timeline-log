@@ -9,16 +9,39 @@ print:
   angle: -20
   motif: grid
   glyph: MCP
+sources:
+  - url: https://www.anthropic.com/news/3-5-models-and-computer-use
+    title: "Computer use, Claude 3.5 Sonnet, and Claude 3.5 Haiku"
+    publisher: Anthropic
+  - url: https://www.anthropic.com/news/model-context-protocol
+    title: Introducing the Model Context Protocol
+    publisher: Anthropic
+  - url: https://arcprize.org/blog/oai-o3-pub-breakthrough
+    title: OpenAI o3 Breakthrough High Score on ARC-AGI-Pub
+    publisher: ARC Prize
 items:
   - date: 2024-10-22
     ko: Anthropic, 화면을 보고 마우스·키보드를 조작하는 컴퓨터 사용 기능 베타.
+    en: "Anthropic launches a beta of computer use, a feature that looks at the screen and works the mouse and keyboard."
+    glyph: { ko: "마우스", en: "MOUSE" }
+    pic: mouse
   - date: 2024-11-25
     ko: Anthropic, AI와 데이터·도구를 잇는 개방형 표준 MCP 공개.
+    en: "Anthropic releases MCP, an open standard that connects AI to data and tools."
+    glyph: MCP
   - date: 2024-12-20
     ko: OpenAI, o3 발표. 추상 추론 시험 ARC-AGI에서 최고 87.5%.
+    en: "OpenAI announces o3, which scores up to 87.5% on ARC-AGI, a test of abstract reasoning."
+    glyph: 87.5%
   - date: 2024-12-26
     ko: 딥시크 V3 공개(훈련비 약 560만 달러 주장). 같은 날 국회는 인공지능 기본법을 통과시켰다.
+    en: "DeepSeek releases V3, claiming a training cost of about $5.6 million; the same day, Korea’s National Assembly passes the AI Basic Act."
+    glyph: $5.6M
 ko:
   kicker: 에이전트의 손
   title: 화면을 보는 AI, 그리고 o3
   lede: AI가 화면을 보고 마우스를 움직이고, 표준 규격으로 외부 도구와 연결되기 시작했다. 연말에는 추론 모델이 한 번 더 뛰었다.
+en:
+  kicker: "The Agent’s Hands"
+  title: "AI That Sees the Screen, and o3"
+  lede: "AI began to look at the screen, move the mouse and connect to outside tools through a standard protocol. At the end of the year, reasoning models took another leap."

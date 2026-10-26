@@ -1,0 +1,180 @@
+# 고유명사의 공식 영문명과 확인한 출처. 영어 글은 이 표기를 그대로 쓴다. 빌드 검사 대상은 아니다.
+# 출처는 이름을 정한 곳의 1차 출처(발표문, 공식 사이트)를 먼저 적고, 없으면 이 저장소가 이미 쓰는 보도 출처를 적는다.
+
+# 회사·기관
+- { ko: "OpenAI", en: "OpenAI", source: "https://openai.com/" }
+- { ko: "Anthropic", en: "Anthropic", source: "https://www.anthropic.com/" }
+- { ko: "구글", en: "Google", source: "https://about.google/" }
+- { ko: "구글 딥마인드", en: "Google DeepMind", source: "https://deepmind.google/" }
+- { ko: "알파벳", en: "Alphabet", source: "https://abc.xyz/" }
+- { ko: "마이크로소프트", en: "Microsoft", source: "https://www.microsoft.com/" }
+- { ko: "메타", en: "Meta", source: "https://about.meta.com/" }
+- { ko: "엔비디아", en: "NVIDIA", source: "https://www.nvidia.com/" }
+- { ko: "애플", en: "Apple", source: "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" }
+- { ko: "아마존", en: "Amazon", source: "https://www.aboutamazon.com/" }
+- { ko: "AWS", en: "AWS (Amazon Web Services)", source: "https://www.anthropic.com/glasswing" }
+- { ko: "딥시크", en: "DeepSeek", source: "https://github.com/deepseek-ai/DeepSeek-R1" }
+- { ko: "xAI", en: "xAI", source: "https://x.ai/news/xai-joins-spacex" }
+- { ko: "스페이스X", en: "SpaceX", source: "https://x.ai/news/xai-joins-spacex" }
+- { ko: "SpaceXAI", en: "SpaceXAI", source: "https://x.ai/news/xai-joins-spacex" }   # 회사 표기는 SpaceXAI LLC
+- { ko: "네이버", en: "NAVER", source: "https://www.navercorp.com/en" }
+- { ko: "네이버클라우드", en: "NAVER Cloud", source: "https://www.navercloudcorp.com/" }
+- { ko: "삼성전자", en: "Samsung Electronics", source: "https://news.samsung.com/global/" }
+- { ko: "삼성", en: "Samsung", source: "https://news.samsung.com/global/" }
+- { ko: "SK", en: "SK", source: "https://www.sk.com/" }
+- { ko: "현대차그룹", en: "Hyundai Motor Group", source: "https://www.hyundaimotorgroup.com/" }
+- { ko: "코그니션", en: "Cognition", source: "https://cognition.ai/blog/introducing-devin" }
+- { ko: "소프트뱅크", en: "SoftBank", source: "https://group.softbank/en" }
+- { ko: "오라클", en: "Oracle", source: "https://www.oracle.com/" }
+- { ko: "AMD", en: "AMD", source: "https://www.amd.com/" }
+- { ko: "브로드컴", en: "Broadcom", source: "https://www.broadcom.com/" }
+- { ko: "스케일AI", en: "Scale AI", source: "https://scale.com/" }
+- { ko: "미드저니", en: "Midjourney", source: "https://www.midjourney.com/" }
+- { ko: "캐릭터AI", en: "Character.AI", source: "https://character.ai/" }
+- { ko: "유니버설뮤직", en: "Universal Music Group", source: "https://www.universalmusic.com/" }
+- { ko: "워너뮤직", en: "Warner Music Group", source: "https://www.wmg.com/" }
+- { ko: "유디오", en: "Udio", source: "https://www.udio.com/" }
+- { ko: "수노", en: "Suno", source: "https://suno.com/" }
+- { ko: "블록", en: "Block", source: "https://block.xyz/" }
+- { ko: "디즈니", en: "Disney", source: "https://thewaltdisneycompany.com/" }
+- { ko: "허깅페이스", en: "Hugging Face", source: "https://huggingface.co/" }
+- { ko: "리눅스 재단", en: "Linux Foundation", source: "https://www.linuxfoundation.org/" }
+- { ko: "에이전틱 AI 재단", en: "Agentic AI Foundation", source: "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation" }
+- { ko: "SSI", en: "SSI (Safe Superintelligence)", source: "https://ssi.inc/" }
+- { ko: "io", en: "io", source: "https://openai.com/sam-and-jony/" }
+- { ko: "뉴욕타임스", en: "The New York Times", source: "https://www.nytimes.com/" }
+- { ko: "UBS", en: "UBS", source: "https://www.ubs.com/" }
+- { ko: "미국 작가조합", en: "Writers Guild of America", source: "https://www.wga.org/" }
+- { ko: "스탠퍼드 연구진", en: "Stanford Digital Economy Lab", source: "https://digitaleconomy.stanford.edu/" }
+- { ko: "빌보드", en: "Billboard", source: "https://www.billboard.com/" }
+
+# 정부·국제기구·행사
+- { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
+- { ko: "미국 연방거래위원회", en: "Federal Trade Commission (FTC)", source: "https://www.ftc.gov/" }
+- { ko: "미 국방부", en: "the Pentagon", source: "https://www.npr.org/2026/03/06/g-s1-112713/pentagon-labels-ai-company-anthropic-a-supply-chain-risk" }   # 공식 명칭(Department of Defense/War) 대신 중립 표기. 국방부 사이트는 자동 접속을 막아(403) 보도 출처를 둔다
+- { ko: "상무부", en: "Commerce Department", source: "https://www.commerce.gov/" }
+- { ko: "백악관", en: "White House", source: "https://www.whitehouse.gov/" }
+- { ko: "이탈리아 개인정보 당국", en: "Italy’s data protection authority (Garante per la protezione dei dati personali)", source: "https://www.garanteprivacy.it/" }
+- { ko: "유럽의회", en: "European Parliament", source: "https://www.europarl.europa.eu/" }
+- { ko: "국회", en: "National Assembly", source: "https://www.assembly.go.kr/" }
+- { ko: "블레츨리 파크 AI 안전 정상회의", en: "AI Safety Summit (Bletchley Park)", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
+- { ko: "AI 서울 정상회의", en: "AI Seoul Summit", source: "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024" }
+- { ko: "프런티어 AI 안전 서약", en: "Frontier AI Safety Commitments", source: "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024" }
+- { ko: "파리 AI 행동 정상회의", en: "AI Action Summit", source: "https://www.elysee.fr/en/sommet-pour-l-action-sur-l-ia" }
+- { ko: "APEC 정상회의", en: "APEC summit", source: "https://www.apec.org/" }
+- { ko: "국제수학올림피아드", en: "International Mathematical Olympiad", source: "https://www.imo-official.org/" }
+- { ko: "노벨 물리학상", en: "Nobel Prize in Physics", source: "https://www.nobelprize.org/prizes/physics/2024/summary/" }
+- { ko: "노벨 화학상", en: "Nobel Prize in Chemistry", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
+- { ko: "프로젝트 글래스윙", en: "Project Glasswing", source: "https://www.anthropic.com/glasswing" }
+- { ko: "스타게이트", en: "Stargate", source: "https://openai.com/index/announcing-the-stargate-project/" }
+
+# 법·행정명령·성명
+- { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
+- { ko: "인공지능 기본법", en: "AI Basic Act", source: "https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&mPid=2&bbsSeqNo=42&nttSeqNo=1071" }   # 정식 영문명 Basic Act on the Development of Artificial Intelligence and the Establishment of Foundation for Trustworthiness
+- { ko: "AI 행정명령(2023)", en: "executive order on AI (Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence)", source: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence" }
+- { ko: "첨단 AI 혁신과 안보 행정명령(2026)", en: "executive order on advanced AI innovation and security (Promoting Advanced AI Innovation and Security)", source: "https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/" }   # Executive Order 14409
+- { ko: "6개월 중단 공개서한", en: "open letter calling for a six-month pause (Pause Giant AI Experiments)", source: "https://futureoflife.org/open-letter/pause-giant-ai-experiments/" }
+- { ko: "멸종 위험 한 문장 성명", en: "Statement on AI Risk", source: "https://www.safe.ai/work/statement-on-ai-risk" }
+- { ko: "We Must Pace the Frontier", en: "We Must Pace the Frontier", source: "https://www.darioamodei.com/post/we-must-pace-the-frontier" }
+
+# 모델·제품
+- { ko: "ChatGPT", en: "ChatGPT", source: "https://openai.com/index/chatgpt/" }
+- { ko: "GPT-3.5", en: "GPT-3.5", source: "https://openai.com/index/chatgpt/" }
+- { ko: "GPT-4", en: "GPT-4", source: "https://openai.com/index/gpt-4-research/" }
+- { ko: "GPT-4o", en: "GPT-4o", source: "https://openai.com/index/hello-gpt-4o/" }
+- { ko: "빙", en: "Bing", source: "https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/" }
+- { ko: "시드니", en: "Sydney", source: "https://fortune.com/2023/02/24/microsoft-artificial-intelligence-ai-chatbot-sydney-rattled-users-before-chatgpt-fueled-bing/" }   # 1차 출처 없음: Microsoft 발표문에는 Sydney가 나오지 않는다. Microsoft 대변인이 코드명이라고 확인한 말을 실은 보도
+- { ko: "바드", en: "Bard", source: "https://blog.google/technology/ai/bard-google-ai-search-updates/" }
+- { ko: "LLaMA", en: "LLaMA", source: "https://ai.meta.com/blog/large-language-model-llama-meta-ai/" }
+- { ko: "라마 2", en: "Llama 2", source: "https://ai.meta.com/llama/" }
+- { ko: "하이퍼클로바X", en: "HyperCLOVA X", source: "https://clova.ai/en/hyperclova" }
+- { ko: "Claude 2", en: "Claude 2", source: "https://www.anthropic.com/news/claude-2" }
+- { ko: "Claude 3", en: "Claude 3 (Opus, Sonnet, Haiku)", source: "https://www.anthropic.com/news/claude-3-family" }
+- { ko: "Claude 3.5 Sonnet", en: "Claude 3.5 Sonnet", source: "https://www.anthropic.com/news/claude-3-5-sonnet" }
+- { ko: "아티팩트", en: "Artifacts", source: "https://www.anthropic.com/news/claude-3-5-sonnet" }
+- { ko: "컴퓨터 사용", en: "computer use", source: "https://www.anthropic.com/news/3-5-models-and-computer-use" }
+- { ko: "MCP", en: "MCP (Model Context Protocol)", source: "https://www.anthropic.com/news/model-context-protocol" }
+- { ko: "Claude 3.7 Sonnet", en: "Claude 3.7 Sonnet", source: "https://www.anthropic.com/news/claude-3-7-sonnet" }
+- { ko: "Claude Code", en: "Claude Code", source: "https://www.anthropic.com/news/claude-3-7-sonnet" }
+- { ko: "Claude Opus 4·Sonnet 4", en: "Claude Opus 4 and Claude Sonnet 4", source: "https://www.anthropic.com/news/claude-4" }
+- { ko: "Claude Opus 4.5", en: "Claude Opus 4.5", source: "https://www.anthropic.com/news/claude-opus-4-5" }
+- { ko: "Claude Opus 4.6", en: "Claude Opus 4.6", source: "https://www.anthropic.com/news/claude-opus-4-6" }
+- { ko: "Claude Mythos Preview", en: "Claude Mythos Preview", source: "https://www.anthropic.com/glasswing" }
+- { ko: "Claude Fable 5", en: "Claude Fable 5", source: "https://www.anthropic.com/news/fable-mythos-access" }   # 발표문 본문은 Fable 5, 주소는 claude-fable-5
+- { ko: "Mythos 5", en: "Mythos 5", source: "https://www.anthropic.com/news/fable-mythos-access" }
+- { ko: "Claude Opus 4.7", en: "Claude Opus 4.7", source: "https://www.anthropic.com/news/claude-opus-4-7" }
+- { ko: "Claude Opus 5", en: "Claude Opus 5", source: "https://www.anthropic.com/news/claude-opus-5" }
+- { ko: "Claude Opus 5.5", en: "Claude Opus 5.5", source: "https://www.anthropic.com/news/claude-opus-5-5" }
+- { ko: "Claude Sonnet 5.5", en: "Claude Sonnet 5.5", source: "https://www.anthropic.com/news/claude-sonnet-5-5" }
+- { ko: "Claude", en: "Claude", source: "https://www.anthropic.com/" }
+- { ko: "제미나이", en: "Gemini", source: "https://blog.google/technology/ai/google-gemini-ai/" }
+- { ko: "제미나이 1.0", en: "Gemini 1.0", source: "https://blog.google/technology/ai/google-gemini-ai/" }
+- { ko: "Gemini 1.5", en: "Gemini 1.5", source: "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/" }
+- { ko: "Gemini 2.5 Pro", en: "Gemini 2.5 Pro", source: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/" }
+- { ko: "제미나이 딥싱크", en: "Gemini Deep Think", source: "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/" }
+- { ko: "나노 바나나", en: "Nano Banana (Gemini 2.5 Flash Image)", source: "https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/" }
+- { ko: "Gemini 3", en: "Gemini 3", source: "https://blog.google/products/gemini/gemini-3/" }
+- { ko: "Gemini 4 Argon", en: "Gemini 4 Argon", source: "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/" }
+- { ko: "AI 개요", en: "AI Overviews", source: "https://blog.google/products/search/generative-ai-google-search-may-2024/" }
+- { ko: "Veo 3", en: "Veo 3", source: "https://deepmind.google/models/veo/" }
+- { ko: "Jules", en: "Jules", source: "https://jules.google/" }
+- { ko: "알파폴드", en: "AlphaFold", source: "https://deepmind.google/technologies/alphafold/" }
+- { ko: "Sora", en: "Sora", source: "https://openai.com/index/sora/" }
+- { ko: "Sora 2", en: "Sora 2", source: "https://openai.com/index/sora-2/" }
+- { ko: "o1", en: "o1", source: "https://openai.com/index/introducing-openai-o1-preview/" }
+- { ko: "o3", en: "o3", source: "https://arcprize.org/blog/oai-o3-pub-breakthrough" }
+- { ko: "ARC-AGI", en: "ARC-AGI", source: "https://arcprize.org/blog/oai-o3-pub-breakthrough" }
+- { ko: "오퍼레이터", en: "Operator", source: "https://openai.com/index/introducing-operator/" }
+- { ko: "딥 리서치", en: "deep research", source: "https://openai.com/index/introducing-deep-research/" }
+- { ko: "Codex", en: "Codex", source: "https://openai.com/index/introducing-codex/" }
+- { ko: "GPT-5", en: "GPT-5", source: "https://openai.com/index/introducing-gpt-5/" }
+- { ko: "gpt-oss", en: "gpt-oss", source: "https://openai.com/index/introducing-gpt-oss/" }
+- { ko: "GPT-5.5", en: "GPT-5.5", source: "https://openai.com/index/introducing-gpt-5-5/" }
+- { ko: "GPT-5.6(Sol·Terra·Luna)", en: "GPT-5.6 (Sol, Terra and Luna)", source: "https://openai.com/index/previewing-gpt-5-6-sol/" }
+- { ko: "GPT-5.2", en: "GPT-5.2", source: "https://openai.com/index/introducing-gpt-5-2/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-5.3-Codex", en: "GPT-5.3-Codex", source: "https://openai.com/index/introducing-gpt-5-3-codex/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-5.5-Cyber", en: "GPT-5.5-Cyber", source: "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-6 Astra", en: "GPT-6 Astra", source: "https://openai.com/index/gpt-6-astra/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-6 Sol·Luna", en: "GPT-6 Sol and Luna", source: "https://openai.com/index/introducing-gpt-6-sol-and-luna/" }   # 2026-09-22 발표 "Introducing GPT-6 Sol and Luna". openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "슈퍼얼라인먼트 팀", en: "Superalignment team", source: "https://openai.com/index/introducing-superalignment/" }
+- { ko: "데빈", en: "Devin", source: "https://cognition.ai/blog/introducing-devin" }
+- { ko: "블랙웰", en: "Blackwell", source: "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" }
+- { ko: "Apple Intelligence", en: "Apple Intelligence", source: "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" }
+- { ko: "시리", en: "Siri", source: "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" }
+- { ko: "딥시크 V3", en: "DeepSeek V3", source: "https://github.com/deepseek-ai/DeepSeek-V3" }
+- { ko: "R1", en: "R1", source: "https://github.com/deepseek-ai/DeepSeek-R1" }
+- { ko: "딥시크 V4", en: "DeepSeek V4", source: "https://api-docs.deepseek.com/news/news260424/" }
+- { ko: "그록", en: "Grok", source: "https://x.ai/grok" }
+- { ko: "마누스", en: "Manus", source: "https://manus.im/" }
+- { ko: "몰트북", en: "Moltbook", source: "https://www.moltbook.com/" }
+- { ko: "Clawdbot", en: "Clawdbot", source: "https://openclaw.ai/blog/introducing-openclaw" }   # 이 글은 첫 이름을 Clawd로 적는다. 저장소·보도에서 널리 쓴 이름은 Clawdbot
+- { ko: "OpenClaw", en: "OpenClaw", source: "https://openclaw.ai/blog/introducing-openclaw" }
+- { ko: "Lean", en: "Lean", source: "https://lean-lang.org/" }
+- { ko: "미드저니 v5", en: "Midjourney v5", source: "https://docs.midjourney.com/hc/en-us/articles/33329788681101-Legacy-Features" }   # 공식 문서는 Version 5로 적는다. 자동 접속을 막아(403) 검색 결과로 확인
+- { ko: "깃허브", en: "GitHub", source: "https://github.com/" }
+- { ko: "MIT 라이선스", en: "MIT license", source: "https://github.com/deepseek-ai/DeepSeek-R1" }
+- { ko: "EU", en: "EU", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
+
+# 사람
+- { ko: "샘 올트먼", en: "Sam Altman", source: "https://openai.com/" }
+- { ko: "일론 머스크", en: "Elon Musk", source: "https://x.ai/news/xai-joins-spacex" }
+- { ko: "스티브 워즈니악", en: "Steve Wozniak", source: "https://futureoflife.org/open-letter/pause-giant-ai-experiments/" }
+- { ko: "제프리 힌턴", en: "Geoffrey Hinton", source: "https://www.nobelprize.org/prizes/physics/2024/summary/" }
+- { ko: "존 홉필드", en: "John Hopfield", source: "https://www.nobelprize.org/prizes/physics/2024/summary/" }
+- { ko: "데미스 허사비스", en: "Demis Hassabis", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
+- { ko: "존 점퍼", en: "John Jumper", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
+- { ko: "데이비드 베이커", en: "David Baker", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
+- { ko: "일리야 수츠케버", en: "Ilya Sutskever", source: "https://ssi.inc/" }
+- { ko: "스칼렛 요한슨", en: "Scarlett Johansson", source: "https://openai.com/index/how-the-voices-for-chatgpt-were-chosen/" }
+- { ko: "안드레이 카파시", en: "Andrej Karpathy", source: "https://karpathy.ai/" }
+- { ko: "알렉산더 왕", en: "Alexandr Wang", source: "https://scale.com/" }
+- { ko: "조니 아이브", en: "Jony Ive", source: "https://openai.com/sam-and-jony/" }
+- { ko: "젠슨 황", en: "Jensen Huang", source: "https://www.nvidia.com/" }
+- { ko: "이재용", en: "Jay Y. Lee", source: "https://news.samsung.com/global/" }   # 삼성 영문 보도자료 표기. 직함 Executive Chairman
+- { ko: "정의선", en: "Euisun Chung", source: "https://www.hyundaimotorgroup.com/" }   # 현대차그룹 영문 표기. 직함 Executive Chair
+- { ko: "애덤 레인", en: "Adam Raine", source: "https://techjusticelaw.org/press-releases/from-homework-help-to-suicide-planning-family-sues-openai-and-samuel-altman-alleging-chatgpt-coached-teen-son-to-suicide/" }   # 원고 측 대리인(Tech Justice Law Project) 보도자료. 소장 원문 주소는 찾지 못함
+- { ko: "브레이킹 러스트", en: "Breaking Rust", source: "https://www.theregister.com/2025/11/10/ai_country_artist_hits_number_one/" }   # 1차 출처를 찾지 못해 보도 출처를 둔다
+- { ko: "잭 도시", en: "Jack Dorsey", source: "https://fortune.com/2026/02/27/block-jack-dorsey-ceo-xyz-stock-square-4000-ai-layoffs/" }   # Block 사이트에서 이름을 찾지 못해 보도 출처를 둔다
+- { ko: "다리오 아모데이", en: "Dario Amodei", source: "https://www.anthropic.com/" }
+- { ko: "도널드 트럼프", en: "Donald Trump", source: "https://www.whitehouse.gov/" }
+- { ko: "조 바이든", en: "Joe Biden", source: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence" }

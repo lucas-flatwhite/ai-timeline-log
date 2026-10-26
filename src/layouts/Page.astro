@@ -5,31 +5,46 @@ import '@fontsource/hahmlet/600.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/base.css';
 import '../styles/tokens.css';
-import '../styles/nav.css';
-import '../styles/hero.css';
-import '../styles/year.css';
-import '../styles/scene.css';
+import '../styles/wall.css';
+import '../styles/detail.css';
 import '../styles/outro.css';
-import '../styles/motion.css';
+import plateJson from '../generated/plate.json';
 import type { PageView } from '../lib/view.ts';
 
 interface Props { view: PageView }
 const { view } = Astro.props;
 // 아이콘도 base 아래에 둔다. '/favicon.png'로 쓰면 메인 사이트 아이콘이 대신 뜬다 (scripts/favicon.ts로 생성)
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+/* 판 글꼴: 이 언어의 판에 새길 글자만 담은 조각(scripts/plate-font.ts). 글자가 대체 서체로 새겨지지 않도록 block */
+const plates = (plateJson as Record<string, { family: string; file: string }[]>)[view.lang] ?? [];
+const plateCss = plates.map(p => `@font-face{font-family:${p.family};src:url(${base}${p.file}) format("woff2");font-display:block}`).join('')
+  + `:root{--plate:${[...plates.map(p => p.family), 'var(--display)'].join(', ')}}`;
 ---
 <!doctype html>
 <html lang={view.lang}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script is:inline>document.documentElement.classList.add('js')</script>
 <title>{view.title}</title>
 <meta name="description" content={view.description}>
+<link rel="canonical" href={view.canonical}>
+{view.alternates.map(a => <link rel="alternate" hreflang={a.hreflang} href={a.href}>)}
+<meta property="og:type" content="website">
+<meta property="og:url" content={view.canonical}>
 <meta property="og:title" content={view.ogTitle}>
 <meta property="og:description" content={view.ogDescription}>
+<meta property="og:image" content={view.ogImage}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+{plates.map(p => <link rel="preload" as="font" type="font/woff2" href={base + p.file} crossorigin>)}
+<style is:inline set:html={plateCss}></style>
 <link rel="icon" type="image/png" sizes="32x32" href={`${base}favicon-32.png`}>
 <link rel="icon" type="image/png" sizes="16x16" href={`${base}favicon-16.png`}>
 <link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`}>
+{/* 모듈 스크립트는 문서를 다 읽은 뒤에 돈다. 머리에 두는 것은 일찍 받기 위해서다(긴 본문 끝에 두면 본문 글꼴과 대역을 다투다 늦게 온다) */}
+<script>import '../client/main.ts';</script>
 </head>
 <body>
 <slot />

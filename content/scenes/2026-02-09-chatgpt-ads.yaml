@@ -18,11 +18,22 @@ sources:
 items:
   - date: 2026-01-16
     ko: OpenAI, 무료·Go 요금제에서 광고를 시험하겠다고 발표. 답변 아래에 ‘스폰서’ 표시를 달아 보여 준다.
+    en: "OpenAI announces that it will test ads on its Free and Go plans, shown below answers with a “Sponsored” label."
+    glyph: { ko: "스폰서", en: "SPONSOR" }
   - date: 2026-02-04
     ko: Anthropic, Claude에는 광고를 넣지 않겠다고 약속. ‘AI에 광고가 온다. Claude에는 아니다’라는 슈퍼볼 광고를 공개했다.
+    en: "Anthropic pledges to keep ads out of Claude and releases a Super Bowl commercial saying “Ads are coming to AI. But not to Claude.”"
+    glyph: NO AD
   - date: 2026-02-09
     ko: 미국 일부 이용자의 ChatGPT에 광고가 붙기 시작했다. 미성년자와 건강·정치 대화에는 광고를 넣지 않는다.
+    en: "Ads begin to appear in ChatGPT for some U.S. users, with none shown to minors or in conversations about health or politics."
+    glyph: AD
+    pic: megaphone
 ko:
   kicker: 광고
   title: ChatGPT에 광고가 붙다
   lede: 주간 사용자 수억 명의 ChatGPT가 광고로 돈을 벌기 시작했다. 경쟁사는 광고가 없다는 점을 슈퍼볼 광고로 내세웠다.
+en:
+  kicker: "Ads"
+  title: "Ads Come to ChatGPT"
+  lede: "ChatGPT, with hundreds of millions of weekly users, began to make money from ads. A rival made its lack of ads the point of a Super Bowl commercial."

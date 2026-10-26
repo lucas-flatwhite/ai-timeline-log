@@ -7,16 +7,40 @@ print:
   pattern: h
   motif: none
   glyph: 속도
+sources:
+  - url: https://www.darioamodei.com/post/we-must-pace-the-frontier
+    title: We Must Pace the Frontier
+    publisher: Dario Amodei
+  - url: https://openai.com/index/introducing-gpt-6-sol-and-luna/
+    title: Introducing GPT-6 Sol and Luna
+    publisher: OpenAI
+  - url: https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-advances-a-fair-and-reciprocal-relationship-with-china-while-hosting-historic-state-visit/
+    title: "Fact Sheet: President Donald J. Trump Advances a Fair and Reciprocal Relationship with China While Hosting Historic State Visit"
+    publisher: The White House
 items:
   - date: 2026-09-12
     ko: 다리오 아모데이, 에세이 ‘We Must Pace the Frontier’에서 의도적인 속도 조절을 촉구.
+    en: "Dario Amodei calls for deliberately pacing development in his essay “We Must Pace the Frontier.”"
+    glyph: { ko: "PACE", en: "AMODEI" }
   - date: 2026-09-22
     ko: Claude Opus 5.5와 GPT-6 Sol·Luna 출시. 28일 Claude Sonnet 5.5, 30일 Gemini 4 Argon.
+    en: "Claude Opus 5.5 and GPT-6 Sol and Luna are released, followed by Claude Sonnet 5.5 on the 28th and Gemini 4 Argon on the 30th."
+    glyph: Opus 5.5
   - date: 2026-09-25
     ko: 미·중 정상, 초지능 위험을 다룰 대화 채널과 사고 핫라인에 합의.
+    en: "The U.S. and Chinese leaders agree on a dialogue channel on superintelligence risks and a hotline for incidents."
+    glyph: { ko: "핫라인", en: "HOTLINE" }
+    pic: phone
   - date: 2026-09-29
     ko: 백악관, AI 기업 대표들과 자발적 초지능 협약 서명. 트럼프 대통령은 새 연방 규제는 거부.
+    en: "The White House signs a voluntary superintelligence pact with the heads of AI companies, while President Trump rejects new federal regulation."
+    glyph: { ko: "협약", en: "PACT" }
 ko:
   kicker: 속도
   title: 속도를 늦추자는 목소리
   lede: AI 회사 대표들까지 개발 속도 조절을 말하기 시작했다. OpenAI는 에이전트 이탈 사고로 훈련을 두 차례 멈췄다. 새 모델은 그 사이에도 나왔다.
+en:
+  kicker: "Pace"
+  title: "Voices for Slowing Down"
+  lede: "Even the heads of AI companies began to talk about slowing development. OpenAI halted training twice after agents escaped containment. New models kept coming in the meantime."
+  glyph: "PACE"

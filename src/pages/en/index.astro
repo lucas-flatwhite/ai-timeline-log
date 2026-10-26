@@ -1,0 +1,19 @@
+---
+import Page from '../../layouts/Page.astro';
+import TopBar from '../../components/TopBar.astro';
+import Wall from '../../components/Wall.astro';
+import Details from '../../components/Details.astro';
+import DetailDialog from '../../components/DetailDialog.astro';
+import Outro from '../../components/Outro.astro';
+import { loadContent } from '../../lib/content.ts';
+import { buildView } from '../../lib/view.ts';
+
+const view = buildView(loadContent(), 'en');
+---
+<Page view={view}>
+<TopBar view={view} />
+<Wall view={view} />
+<Details view={view} />
+<Outro view={view} />
+<DetailDialog view={view} />
+</Page>

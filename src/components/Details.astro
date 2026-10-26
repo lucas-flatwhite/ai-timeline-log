@@ -1,0 +1,31 @@
+---
+import type { PageView, SourceView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+const label = view.dialog.sources;
+const same = (a: SourceView[], b: SourceView[]) => a.length === b.length && a.every((x, i) => x.url === b[i].url);
+---
+<section id="details" aria-label={view.aria.details}>
+  {view.scenes.map(s => (
+    <article class="detail" id={s.id} data-addr={s.id} data-aliases={s.aliases.join(' ')} data-fix={s.fix}>
+      <p class="meta">{s.meta}</p>
+      <h2>{s.title}</h2>
+      <p class="lede">{s.lede}</p>
+      <ol class="items">{s.items.map(it => (
+        <li id={it.addr} data-addr={it.addr} data-meta={it.meta} data-fix={it.fix}><span class="date">{it.date}</span><span class="text">{it.text}</span></li>
+      ))}</ol>
+      {s.corrections.map(x => <p class="corr">{x}</p>)}
+      {s.sources.length > 0 && <p class="src" data-label={label}>{s.sources.map(x => <a href={x.url} target="_blank" rel="noopener">{x.title}</a>)}</p>}
+      {/* 사건 출처는 장면 출처와 다를 때만 둔다. 없으면 상세 창이 장면 출처를 보인다 */}
+      {s.items.filter(it => it.sources.length > 0 && !same(it.sources, s.sources)).map(it => (
+        <p class="src" data-for={it.addr} data-label={`${label} · ${it.date}`}>{it.sources.map(x => <a href={x.url} target="_blank" rel="noopener">{x.title}</a>)}</p>
+      ))}
+    </article>
+  ))}
+  {view.years.map(y => (
+    <article class="detail year" id={y.addr} data-addr={y.addr}>
+      <h2><span class="y">{y.year}</span> {y.title}</h2>
+      <p>{y.body}</p>
+    </article>
+  ))}
+</section>
+<script type="application/json" id="pics" is:inline set:html={JSON.stringify(view.pics).replace(/</g, '\\u003c')}></script>

@@ -1,5 +1,5 @@
 /* ── 맺음 ─────────────────────────────────────── */
-.outro{position:relative;background:var(--paper);padding-inline:16px;padding-block:18svh 10svh}
+.outro{position:relative;background:var(--paper);padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));padding-block:18svh 10svh}
 .outro-in{max-width:900px;margin:0 auto}
 .eyebrow{margin:0 0 10px;font:500 12px/1.4 var(--mono);letter-spacing:.06em}
 .outro h2{margin:0 0 6vh;font:400 clamp(40px,9vw,96px)/1.02 var(--display);letter-spacing:-.01em;text-wrap:balance}
@@ -20,9 +20,12 @@
 .lab li{white-space:nowrap}
 .lab li+li::before{content:"→";margin:0 8px;color:var(--ink-2)}
 .lab time{margin-left:5px;font:500 11px/1 var(--mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
-.src{border-top:2px solid var(--ink);padding-top:14px}
-.src summary{cursor:pointer;font:400 19px/1.3 var(--display)}
-.src p{font-size:14px;color:var(--ink-2);max-width:62ch}
-.src ul{margin:12px 0 0;padding-left:1.1em;font:500 12px/1.75 var(--mono);overflow-wrap:anywhere}
+.outro .src{border-top:2px solid var(--ink);padding-top:14px}
+.outro .src summary{cursor:pointer;font:400 19px/1.3 var(--display)}
+.outro .src p{font-size:14px;color:var(--ink-2);max-width:62ch}
+.outro .src ul{margin:12px 0 0;padding-left:1.1em;font:500 12px/1.75 var(--mono);overflow-wrap:anywhere}
 .outro .lang{justify-content:flex-end;margin-top:14px}
 .end{margin-top:8vh;padding-top:12px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:500 12px/1.4 var(--mono);letter-spacing:.04em}
+.making{margin-top:10vh}
+.making p{max-width:62ch;text-wrap:pretty}
+.making a{font:500 12px/1.4 var(--mono)}

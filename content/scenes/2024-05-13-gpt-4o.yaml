@@ -7,16 +7,39 @@ print:
   pattern: c
   motif: disc
   glyph: 4o
+sources:
+  - url: https://openai.com/index/hello-gpt-4o/
+    title: Hello GPT-4o
+    publisher: OpenAI
+  - url: https://openai.com/index/how-the-voices-for-chatgpt-were-chosen/
+    title: How the voices for ChatGPT were chosen
+    publisher: OpenAI
+  - url: https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024
+    title: "Frontier AI Safety Commitments, AI Seoul Summit 2024"
+    publisher: GOV.UK
 items:
   - date: 2024-05-13
     ko: OpenAI, 실시간 음성 대화 GPT-4o 공개. 스칼렛 요한슨이 목소리가 닮았다고 항의해 해당 음성을 내렸다.
+    en: "OpenAI releases GPT-4o for real-time voice conversation, then pulls one voice after Scarlett Johansson objects that it sounds like hers."
+    glyph: { ko: "목소리", en: "VOICE" }
+    pic: microphone
   - date: 2024-05-14
     ko: 구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다.
+    en: "At Google I/O, Google puts AI summaries (AI Overviews) at the top of search results."
+    glyph: { ko: "AI 개요", en: "OVER\nVIEWS" }
   - date: 2024-05-14
     ko: 일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다.
+    en: "Ilya Sutskever leaves OpenAI, and the Superalignment team in charge of long-term safety is disbanded."
+    glyph: { ko: "일리야", en: "ILYA" }
   - date: 2024-05-21
     ko: AI 서울 정상회의. 16개 기업이 프런티어 AI 안전 서약에 서명.
+    en: "At the AI Seoul Summit, 16 companies sign the Frontier AI Safety Commitments."
+    glyph: { ko: "서울", en: "SEOUL" }
 ko:
   kicker: 음성
   title: GPT-4o, 듣고 말하고 보다
   lede: 말을 끊고 웃으며 대화하는 음성 AI가 시연됐다. 서울에서는 두 번째 AI 정상회의가 열렸다.
+en:
+  kicker: "Voice"
+  title: "GPT-4o Hears, Speaks and Sees"
+  lede: "A voice AI was demonstrated that could be interrupted mid-sentence and could laugh as it talked. Seoul hosted the second AI summit."

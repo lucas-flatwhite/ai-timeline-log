@@ -30,6 +30,49 @@ describe('loadContent', () => {
     expect(c.years['2023'].ko.title).toBe('경쟁이 시작된 해');
   });
 
+  test('loads every event glyph from the real content', () => {
+    const c = loadContent();
+    const items = c.scenes.flatMap(s => s.items);
+    expect(items.length).toBeGreaterThan(0);
+    expect(items.every(it => it.glyph)).toBe(true);
+    expect(c.scenes[0].items[0].glyph).toEqual({ ko: '100만', en: '1M' });
+  });
+
+  test('picture boxes: at least 10 closed outlines, each used by an event', () => {
+    const c = loadContent();
+    const names = Object.keys(c.pics), used = new Set(c.scenes.flatMap(s => s.items).flatMap(it => it.pic ? [it.pic] : []));
+    expect(names.length).toBeGreaterThanOrEqual(10);
+    expect([...used].sort()).toEqual([...names].sort());   // 쓰이지 않는 그림이 없다
+    for (const [name, p] of Object.entries(c.pics)) {
+      // 조각마다 닫혀 있다(M 수 = Z 수), 기준점은 100×100 안
+      expect(p.d.trim(), name).toMatch(/^M[\s\S]*Z$/);
+      expect((p.d.match(/[Mm]/g) ?? []).length, name).toBe((p.d.match(/[Zz]/g) ?? []).length);
+      for (const v of [p.cx, p.cy]) { expect(v, name).toBeGreaterThanOrEqual(0); expect(v, name).toBeLessThanOrEqual(100); }
+    }
+  });
+
+  test('requires a glyph on every event', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace(', glyph: { ko: 하나, en: ONE } }', ' }'));
+    expect(() => loadContent(dir)).toThrowError(/items\.0\.glyph/);
+  });
+
+  test('requires English on every scene, event, year, arc, lab and the site', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace(/^en: .*\n/m, ''));
+    expect(() => loadContent(dir)).toThrow(/en: .*Required|expected object/);
+    edit(dir, SCENE, s => s.replace(', en: Item one', ''));
+    edit(dir, 'site.yaml', s => s.replace(/^en:[\s\S]*$/m, ''));
+    edit(dir, 'years.yaml', s => s.replace(/^  en: .*\n/m, ''));
+    edit(dir, 'arcs.yaml', s => s.replace(/^  en: .*\n/m, ''));
+    edit(dir, 'ledger.yaml', s => s.replace(', en: OpenAI', ''));
+    let msg = '';
+    try { loadContent(dir); } catch (e) { msg = (e as Error).message; }
+    for (const field of [`${SCENE}: en`, `${SCENE}: items.0.en`, 'site.yaml: en', 'years.yaml: 2023.en', 'arcs.yaml: 0.en', 'ledger.yaml: 0.lab.en']) {
+      expect(msg).toContain(field);
+    }
+  });
+
   test('names the file and field of a missing value', () => {
     const dir = copyFixture();
     edit(dir, SCENE, s => s.replace('title: GPT-4, ', ''));

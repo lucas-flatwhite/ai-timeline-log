@@ -7,16 +7,39 @@ print:
   pattern: h
   motif: fall
   glyph: -17%
+sources:
+  - url: https://api-docs.deepseek.com/news/news250120/
+    title: DeepSeek-R1 Release
+    publisher: DeepSeek
+  - url: https://openai.com/index/announcing-the-stargate-project/
+    title: Announcing The Stargate Project
+    publisher: OpenAI
+  - url: https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html
+    title: "Nvidia sheds almost $600 billion in market cap, biggest one-day loss in U.S. history"
+    publisher: CNBC
 items:
   - date: 2025-01-20
     ko: 딥시크, 추론 모델 R1을 MIT 라이선스로 공개.
+    en: "DeepSeek releases its reasoning model R1 under the MIT license."
+    glyph: R1
   - date: 2025-01-21
     ko: 트럼프 대통령, OpenAI·소프트뱅크·오라클의 5,000억 달러 데이터센터 사업 스타게이트 발표.
+    en: "President Trump announces Stargate, a $500 billion data center venture of OpenAI, SoftBank and Oracle."
+    glyph: $500B
   - date: 2025-01-23
     ko: OpenAI, 웹 브라우저를 대신 조작하는 에이전트 오퍼레이터 공개.
+    en: "OpenAI releases Operator, an agent that works a web browser on the user’s behalf."
+    glyph: { ko: "클릭", en: "CLICK" }
+    pic: cursor
   - date: 2025-01-27
     ko: 딥시크 앱 미국 앱스토어 1위. 엔비디아 주가가 하루 17% 떨어져 시가총액 약 5,890억 달러 증발.
+    en: "The DeepSeek app tops the U.S. App Store, and NVIDIA shares fall 17% in a day, erasing about $589 billion in market value."
+    glyph: -$589B
 ko:
   kicker: 충격
   title: 딥시크 쇼크
   lede: 중국의 작은 연구소가 o1급 추론 모델을 가중치까지 공개했다. 미국 증시가 흔들렸다.
+en:
+  kicker: "Shock"
+  title: "The DeepSeek Shock"
+  lede: "A small Chinese lab released an o1-class reasoning model, weights and all. U.S. stock markets were shaken."

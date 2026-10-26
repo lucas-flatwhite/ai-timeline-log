@@ -2,15 +2,27 @@
   ko:
     title: 경쟁이 시작된 해
     body: ChatGPT를 본 빅테크가 일제히 챗봇을 내놓았다. 모델 가중치가 풀리며 누구나 언어모델을 돌리기 시작했고, AI를 만든 사람들이 위험을 경고했다.
+  en:
+    title: "The Year the Race Began"
+    body: "Having seen ChatGPT, Big Tech rushed out chatbots of its own. As model weights were released, anyone could run a language model, and the people who built AI warned of its risks."
 "2024":
   ko:
     title: 감각과 추론의 해
     body: AI가 영상을 만들고 목소리로 대화하고, 답하기 전에 생각하기 시작했다. 노벨상 두 개가 AI 연구에 돌아갔고, 연말엔 AI가 컴퓨터 화면을 직접 다뤘다.
+  en:
+    title: "The Year of Senses and Reasoning"
+    body: "AI began to make video, hold spoken conversations and think before answering. Two Nobel Prizes went to AI research, and at the end of the year AI took direct control of the computer screen."
 "2025":
   ko:
     title: 에이전트와 계산력의 해
     body: 딥시크 충격으로 시작해 코딩 에이전트가 개발 방식을 바꿨다. 데이터센터 계약은 기가와트 단위로 커졌고, 한국에는 GPU 26만 장 공급이 약속됐다.
+  en:
+    title: "The Year of Agents and Compute"
+    body: "It opened with the DeepSeek shock, and coding agents changed how software gets built. Data center deals grew to the gigawatt scale, and Korea was promised 260,000 GPUs."
 "2026":
   ko:
     title: 위임과 통제의 해
     body: AI에 일을 맡기기 시작하자 주식시장과 정부가 반응했다. 모델의 사이버 능력이 안보 문제가 되었고, 하반기에는 속도 조절이 정면 의제가 됐다.
+  en:
+    title: "The Year of Delegation and Control"
+    body: "As people began handing work to AI, stock markets and governments reacted. The cyber abilities of models became a security issue, and in the second half, slowing the pace moved to the top of the agenda."
