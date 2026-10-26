@@ -11,17 +11,26 @@ print:
 items:
   - date: 2025-05-16
     ko: OpenAI, 클라우드에서 일하는 코딩 에이전트 Codex 공개.
+    en: "OpenAI releases Codex, a coding agent that works in the cloud."
     glyph: Codex
   - date: 2025-05-20
     ko: 구글 I/O, 소리까지 함께 만드는 영상 모델 Veo 3와 코딩 에이전트 Jules 공개.
+    en: "At Google I/O, Google unveils Veo 3, a video model that makes sound as well, and Jules, a coding agent."
     glyph: Veo 3
   - date: 2025-05-21
     ko: OpenAI, 조니 아이브의 하드웨어 스타트업 io 인수(약 65억 달러).
+    en: "OpenAI acquires io, Jony Ive’s hardware startup, for about $6.5 billion."
     glyph: io
   - date: 2025-05-22
     ko: Anthropic, Claude Opus 4·Sonnet 4 공개. Claude Code 정식 출시.
+    en: "Anthropic releases Claude Opus 4 and Claude Sonnet 4, and Claude Code becomes generally available."
     glyph: Opus 4
 ko:
   kicker: 에이전트
   title: 코딩 에이전트의 시대
   lede: 일주일 사이에 세 회사가 코딩 에이전트와 새 모델을 내놓았다. AI가 몇 시간짜리 개발 작업을 혼자 하기 시작했다.
+en:
+  kicker: "Agents"
+  title: "The Age of Coding Agents"
+  lede: "Within a week, three companies released coding agents and new models. AI began to do hours-long development work on its own."
+  glyph: "AGENTS"

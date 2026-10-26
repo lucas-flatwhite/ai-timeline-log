@@ -10,14 +10,21 @@ print:
 items:
   - date: 2023-03-15
     ko: 미드저니 v5 공개. 며칠 뒤 ‘패딩 입은 교황’ 합성 사진이 진짜처럼 퍼졌다.
-    glyph: 교황
+    en: "Midjourney releases v5; days later a fake image of the pope in a puffer jacket spreads as if it were real."
+    glyph: { ko: "교황", en: "POPE" }
   - date: 2023-03-22
     ko: 머스크·워즈니악 등이 GPT-4보다 강한 AI의 훈련을 6개월 멈추자는 공개서한에 서명.
-    glyph: 6개월
+    en: "Elon Musk, Steve Wozniak and others sign an open letter calling for a six-month pause in training AI more powerful than GPT-4."
+    glyph: { ko: "6개월", en: "PAUSE" }
   - date: 2023-03-31
     ko: 이탈리아 개인정보 당국, ChatGPT 접속 차단. 약 한 달 뒤 풀렸다.
-    glyph: 차단
+    en: "Italy’s data protection authority blocks access to ChatGPT; the block is lifted about a month later."
+    glyph: { ko: "차단", en: "BLOCKED" }
 ko:
   kicker: 성능 도약
   title: GPT-4
   lede: 이미지를 읽고 미국 모의 변호사시험에서 상위 10% 점수를 낸 GPT-4가 나왔다. 같은 날 Anthropic이 첫 Claude를 공개했다.
+en:
+  kicker: "Leap in Capability"
+  title: "GPT-4"
+  lede: "GPT-4 arrived, reading images and scoring in the top 10% on a simulated U.S. bar exam. The same day, Anthropic released its first Claude."

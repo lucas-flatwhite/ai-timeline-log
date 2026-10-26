@@ -18,17 +18,25 @@ sources:
 items:
   - date: 2025-08-26
     ko: 스탠퍼드 연구진, AI 노출이 큰 직종에서 22~25세 고용이 상대적으로 13% 줄었다고 발표. 경력자 고용은 그대로였다.
+    en: "Stanford researchers report that employment of 22- to 25-year-olds in the occupations most exposed to AI fell 13% in relative terms, while employment of experienced workers held steady."
     glyph: -13%
   - date: 2025-10-28
     ko: 아마존, 사무직 약 1만 4,000명 감원. AI로 회사를 더 가볍게 운영하겠다고 설명했다.
-    glyph: 아마존
+    en: "Amazon cuts about 14,000 corporate jobs, saying it will use AI to run the company leaner."
+    glyph: { ko: "아마존", en: "AMAZON" }
   - date: 2026-02-26
     ko: 블록, 직원 1만여 명 가운데 4,000명 이상을 줄인다고 발표. 잭 도시는 사업이 탄탄하다며 AI 도구가 회사 운영 방식을 바꿨다고 설명했다.
+    en: "Block announces that it will cut more than 4,000 of its roughly 10,000 employees, and Jack Dorsey says the business is strong and AI tools have changed how the company runs."
     glyph: 4,000
   - date: 2026-02-26
     ko: 블록 주가, 발표 직후 시간외 거래에서 25% 넘게 올랐다.
+    en: "Block shares rise more than 25% in after-hours trading right after the announcement."
     glyph: +25%
 ko:
   kicker: 일자리
   title: 직원 40%를 줄인 블록
   lede: 실적이 좋은 회사가 AI를 이유로 직원 40%를 내보냈고, 주가는 올랐다. 신입 자리부터 줄고 있다는 연구도 나왔다.
+en:
+  kicker: "Jobs"
+  title: "Block Cuts 40% of Its Staff"
+  lede: "A company with strong results let 40% of its staff go, citing AI, and its stock rose. Research also suggested that entry-level jobs were the first to shrink."

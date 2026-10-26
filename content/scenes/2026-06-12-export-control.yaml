@@ -10,19 +10,26 @@ print:
 items:
   - date: 2026-06-02
     ko: 트럼프 대통령, 첨단 AI 혁신과 안보 행정명령. 사이버 능력을 기준으로 프런티어 모델을 지정하는 절차를 만들었다.
-    glyph: |-
-      행정
-      명령
+    en: "President Trump signs an executive order on advanced AI innovation and security, setting up a process to designate frontier models by their cyber capabilities."
+    glyph: { ko: "행정\n명령", en: "EXEC\nORDER" }
   - date: 2026-06-09
     ko: Anthropic, Claude Fable 5(일반 공개)와 Mythos 5(검증된 파트너용) 출시. 같은 모델에 다른 안전장치.
+    en: "Anthropic releases Claude Fable 5 for general use and Mythos 5 for vetted partners: the same model with different safeguards."
     glyph: Fable
   - date: 2026-06-12
     ko: 상무부, 외국 국적자 접근을 막으라고 지시. Anthropic은 몇 시간 만에 두 모델 접근을 전면 중단.
-    glyph: 차단
+    en: "The Commerce Department orders that foreign nationals be blocked from access, and within hours Anthropic suspends all access to both models."
+    glyph: { ko: "차단", en: "CUT OFF" }
   - date: 2026-06-30
     ko: 통제 해제. 7월 1일 새 보안 분류기를 붙여 다시 열었다.
-    glyph: 해제
+    en: "The controls are lifted, and on July 1 the models reopen with a new security classifier."
+    glyph: { ko: "해제", en: "LIFTED" }
 ko:
   kicker: 수출통제
   title: 출시 사흘 만에 멈춘 모델
   lede: 미 상무부가 Claude Fable 5와 Mythos 5를 수출통제로 묶었다. 두 모델의 서비스가 19일 동안 멈췄다.
+en:
+  kicker: "Export Controls"
+  title: "The Models Halted Three Days After Launch"
+  lede: "The U.S. Commerce Department placed Claude Fable 5 and Mythos 5 under export controls. Service for both models stopped for 19 days."
+  glyph: "19 DAYS"

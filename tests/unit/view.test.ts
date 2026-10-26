@@ -27,20 +27,21 @@ describe('buildView(ko)', () => {
     expect(v.aria).toEqual({ wall: 'AI 사건 격자', details: '모든 장면' });
   });
 
-  test('canonical, og image and alternates (no en page yet)', () => {
+  test('canonical, og image and alternates', () => {
     expect(v.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/');
     expect(v.ogImage).toBe('https://lucasflatwhite.com/ai-timeline-log/og/ko.png');
     expect(v.alternates).toEqual([
       { hreflang: 'ko', href: 'https://lucasflatwhite.com/ai-timeline-log/' },
+      { hreflang: 'en', href: 'https://lucasflatwhite.com/ai-timeline-log/en/' },
       { hreflang: 'x-default', href: 'https://lucasflatwhite.com/ai-timeline-log/' },
     ]);
   });
 
-  test('language switch lists every locale; one without a page is not a link yet', () => {
+  test('language switch lists every locale, each with its page', () => {
     expect(v.langNav).toBe('언어');
     expect(v.langs).toEqual([
       { code: 'ko', label: 'KO', name: '한국어', path: '', current: true },
-      { code: 'en', label: 'EN', name: 'English', path: null, current: false, soon: 'English 준비 중' },
+      { code: 'en', label: 'EN', name: 'English', path: 'en/', current: false },
     ]);
   });
 
@@ -129,5 +130,24 @@ describe('buildView(ko)', () => {
     expect(v.outro.making).toContain('GitHub 이슈');
     expect(v.outro.makingTitle).toBe('만든 방법');
     expect(v.outro.titleTpl).toBe('{days}일 동안 바뀐 것');   // 브라우저가 보는 날로 다시 채우는 틀
+  });
+});
+
+describe('buildView(en)', () => {
+  const e = buildView(loadContent(), 'en', '2026-10-25');
+
+  test('cover, canonical and language switch', () => {
+    expect(e.cover).toEqual({
+      glyph: '1,425 days', tpl: '{days} days', start: '2022-11-30',
+      lede: 'A record of the moments AI has passed through, from ChatGPT’s launch on November 30, 2022 to the present.',
+    });
+    expect(e.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/en/');
+    expect(e.langs.map(l => [l.label, l.current])).toEqual([['KO', false], ['EN', true]]);
+  });
+
+  test('every box and detail is in English', () => {
+    expect(e.boxes).toHaveLength(v.boxes.length);
+    expect(e.boxes.filter(b => /[가-힣]/.test(b.glyph + b.label))).toEqual([]);
+    expect(e.scenes.find(s => s.id === '2025-01-deepseek')!.items[0].text).toBe('DeepSeek releases its reasoning model R1 under the MIT license.');
   });
 });

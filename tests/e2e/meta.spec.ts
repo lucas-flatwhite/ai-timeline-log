@@ -9,7 +9,8 @@ test('canonical, hreflang and social meta, each tag exactly once', async ({ page
   await expect(meta(page, 'link[rel="canonical"]')).toHaveCount(1);
   await expect(meta(page, 'link[rel="alternate"][hreflang="ko"]')).toHaveAttribute('href', ORIGIN);
   await expect(meta(page, 'link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute('href', ORIGIN);
-  await expect(meta(page, 'link[rel="alternate"][hreflang="en"]')).toHaveCount(0);   // en 판이 나오면 늘어난다
+  await expect(meta(page, 'link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', `${ORIGIN}en/`);
+  await expect(meta(page, 'link[rel="alternate"]')).toHaveCount(3);
 
   await expect(meta(page, 'meta[property="og:type"]')).toHaveAttribute('content', 'website');
   await expect(meta(page, 'meta[property="og:url"]')).toHaveAttribute('content', ORIGIN);

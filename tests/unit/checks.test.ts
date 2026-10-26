@@ -113,7 +113,7 @@ describe('checkContent', () => {
   });
   test('long small-box keyword is a warning, not an error', () => {
     let id = '';
-    const r = broken(c => { id = c.scenes[0].id; c.scenes[0].items[0].glyph = '행정명령'; });
+    const r = broken(c => { id = c.scenes[0].id; c.scenes[0].items[0].glyph = { ko: '행정명령', en: 'ORDER' }; });   // 영어 글이 있는 사건이라 en도 둔다
     expect(r.errors).toEqual([]);
     expect(r.warnings).toContainEqual(expect.stringContaining(`scene ${id}: items.0: glyph "행정명령"`));
   });

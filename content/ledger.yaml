@@ -1,5 +1,6 @@
 - lab:
     ko: OpenAI
+    en: "OpenAI"
   models:
     - name: ChatGPT (GPT-3.5)
       date: 2022-11
@@ -25,6 +26,7 @@
       date: 2026-09
 - lab:
     ko: Anthropic
+    en: "Anthropic"
   models:
     - name: Claude
       date: 2023-03
@@ -58,6 +60,7 @@
       date: 2026-09
 - lab:
     ko: Google
+    en: "Google"
   models:
     - name: Bard
       date: 2023-03
@@ -77,6 +80,7 @@
       date: 2026-09
 - lab:
     ko: Meta
+    en: "Meta"
   models:
     - name: LLaMA
       date: 2023-02
@@ -92,6 +96,7 @@
       date: 2026-10
 - lab:
     ko: DeepSeek
+    en: "DeepSeek"
   models:
     - name: V3
       date: 2024-12
@@ -101,6 +106,7 @@
       date: 2026-04
 - lab:
     ko: xAI · SpaceXAI
+    en: "xAI · SpaceXAI"
   models:
     - name: Grok
       date: 2023-11

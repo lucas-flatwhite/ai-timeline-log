@@ -11,17 +11,26 @@ print:
 items:
   - date: 2023-10-30
     ko: 바이든 대통령, AI 행정명령 서명. 대형 모델 개발사에 안전 시험 결과 공유 의무.
-    glyph: 바이든
+    en: "President Biden signs an executive order on AI that requires developers of large models to share safety test results."
+    glyph: { ko: "바이든", en: "BIDEN" }
   - date: 2023-11-01
     ko: 영국 블레츨리 파크에서 첫 AI 안전 정상회의. 28개국과 EU가 공동선언.
-    glyph: 영국
+    en: "The first AI Safety Summit is held at Bletchley Park in the United Kingdom, where 28 countries and the EU sign a joint declaration."
+    glyph: { ko: "영국", en: "UK" }
   - date: 2023-11-17
     ko: OpenAI 이사회, 올트먼 해임. 직원 대다수가 집단 퇴사를 예고하는 서한에 서명.
-    glyph: 해임
+    en: "OpenAI’s board removes Altman, and most employees sign a letter warning that they will resign en masse."
+    glyph: { ko: "해임", en: "FIRED" }
   - date: 2023-11-21
     ko: 올트먼 복귀 합의. 이사회가 새로 꾸려졌다.
-    glyph: 복귀
+    en: "Altman’s return is agreed, and a new board is formed."
+    glyph: { ko: "복귀", en: "RETURN" }
 ko:
   kicker: 규칙과 혼란
   title: 해임, 그리고 닷새
   lede: 각국이 AI 규칙을 만들기 시작한 가을, OpenAI 이사회가 샘 올트먼을 해임했다가 닷새 만에 되돌렸다.
+en:
+  kicker: "Rules and Turmoil"
+  title: "The Firing, and Five Days"
+  lede: "In an autumn when countries began writing rules for AI, OpenAI’s board fired Sam Altman and reversed course five days later."
+  glyph: "5 DAYS"

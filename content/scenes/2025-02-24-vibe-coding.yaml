@@ -10,15 +10,19 @@ print:
 items:
   - date: 2025-02-02
     ko: 안드레이 카파시, ‘바이브 코딩’이라는 말을 처음 썼다.
-    glyph: 바이브
+    en: "Andrej Karpathy coins the term “vibe coding.”"
+    glyph: { ko: "바이브", en: "VIBE" }
   - date: 2025-02-02
     ko: OpenAI, 웹을 뒤져 보고서를 쓰는 딥 리서치 공개.
-    glyph: 리서치
+    en: "OpenAI releases deep research, which searches the web and writes reports."
+    glyph: { ko: "리서치", en: "DEEP" }
   - date: 2025-02-11
     ko: 파리 AI 행동 정상회의. 미국과 영국은 공동선언에 서명하지 않았다.
-    glyph: 파리
+    en: "At the AI Action Summit in Paris, the United States and the United Kingdom do not sign the joint declaration."
+    glyph: { ko: "파리", en: "PARIS" }
   - date: 2025-02-24
     ko: Anthropic, Claude 3.7 Sonnet과 코딩 에이전트 Claude Code(연구 프리뷰) 공개.
+    en: "Anthropic releases Claude 3.7 Sonnet and the coding agent Claude Code as a research preview."
     glyph: |-
       Claude
       Code
@@ -26,3 +30,7 @@ ko:
   kicker: 코딩
   title: 바이브 코딩
   lede: 코드를 읽지 않고 AI에게 말로 시키는 개발 방식에 이름이 붙었다. 터미널에서 일하는 코딩 에이전트가 나왔다.
+en:
+  kicker: "Coding"
+  title: "Vibe Coding"
+  lede: "A way of building software by telling AI what to do, without reading the code, got a name. A coding agent that works in the terminal arrived."

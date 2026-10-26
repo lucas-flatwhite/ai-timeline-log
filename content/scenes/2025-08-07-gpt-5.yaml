@@ -11,17 +11,25 @@ print:
 items:
   - date: 2025-06-30
     ko: 메타, 스케일AI에 143억 달러를 넣고 알렉산더 왕을 영입해 초지능 연구소 출범.
+    en: "Meta puts $14.3 billion into Scale AI, hires Alexandr Wang and launches a superintelligence lab."
     glyph: $14.3B
   - date: 2025-07-19
     ko: OpenAI 실험 모델과 구글 제미나이 딥싱크, 국제수학올림피아드 금메달 수준.
-    glyph: 금메달
+    en: "An experimental OpenAI model and Google’s Gemini Deep Think reach gold-medal level at the International Mathematical Olympiad."
+    glyph: { ko: "금메달", en: "GOLD" }
   - date: 2025-08-07
     ko: GPT-5 출시. 이전 모델을 없앴다가 사용자 반발로 GPT-4o를 되살렸다.
-    glyph: 반발
+    en: "GPT-5 launches, and OpenAI, which had removed its earlier models, brings GPT-4o back after users push back."
+    glyph: { ko: "반발", en: "OUTCRY" }
   - date: 2025-08-26
     ko: 구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍.
-    glyph: 바나나
+    en: "Google releases Nano Banana (Gemini 2.5 Flash Image), setting off a photo-editing craze."
+    glyph: { ko: "바나나", en: "BANANA" }
 ko:
   kicker: 여름
   title: 인재 전쟁과 GPT-5
   lede: 메타가 거액으로 연구자를 끌어모았고, AI가 수학 올림피아드 금메달 점수를 냈다. 8월 OpenAI는 GPT-5와 6년 만의 가중치 공개 모델 gpt-oss를 냈다.
+en:
+  kicker: "Summer"
+  title: "The Talent War and GPT-5"
+  lede: "Meta spent heavily to lure researchers, and AI posted gold-medal scores at the math olympiad. In August, OpenAI released GPT-5 and gpt-oss, its first open-weight model in six years."

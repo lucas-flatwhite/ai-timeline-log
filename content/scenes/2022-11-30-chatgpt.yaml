@@ -10,19 +10,25 @@ print:
 items:
   - date: 2022-12-05
     ko: 공개 닷새 만에 사용자 100만 명을 넘었다.
-    glyph: 100만
+    en: "ChatGPT passes one million users five days after launch."
+    glyph: { ko: "100만", en: "1M" }
   - date: 2022-12-21
     ko: 구글 경영진이 검색 사업 위협에 ‘코드 레드’를 선언했다는 보도.
-    glyph: |-
-      코드
-      레드
+    en: "Google executives are reported to have declared a “code red” over the threat to the search business."
+    glyph: { ko: "코드\n레드", en: "CODE\nRED" }
   - date: 2023-01
     ko: 두 달 만에 월간 사용자 1억 명 추정(UBS). 당시 가장 빨리 성장한 소비자 앱.
-    glyph: 1억
+    en: "UBS estimates 100 million monthly users two months in, the fastest-growing consumer app at the time."
+    glyph: { ko: "1억", en: "100M" }
   - date: 2023-01-23
     ko: 마이크로소프트, OpenAI에 수년간 수십억 달러 추가 투자 발표.
+    en: "Microsoft announces a further multiyear, multibillion-dollar investment in OpenAI."
     glyph: MS
 ko:
   kicker: 출발점
   title: ChatGPT 공개
   lede: OpenAI가 GPT-3.5 기반 대화형 챗봇을 연구 프리뷰로 무료 공개했다. 입력창에 질문을 쓰는 일이 곧 AI를 쓰는 일이 됐다.
+en:
+  kicker: "Starting Point"
+  title: "The Launch of ChatGPT"
+  lede: "OpenAI released a conversational chatbot built on GPT-3.5 as a free research preview. Typing a question into a box became what it meant to use AI."

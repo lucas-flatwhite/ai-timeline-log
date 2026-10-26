@@ -10,17 +10,25 @@ print:
 items:
   - date: 2026-01-09
     ko: xAI, 성적 딥페이크 논란으로 그록 이미지 생성 제한. 이어 인도네시아·말레이시아가 접속을 막았다.
-    glyph: 그록
+    en: "xAI restricts Grok’s image generation over sexual deepfakes, and Indonesia and Malaysia then block access."
+    glyph: { ko: "그록", en: "GROK" }
   - date: 2026-01-22
     ko: 인공지능 기본법 시행. 생성형 AI 결과물 표시 의무, 과태료는 최소 1년 유예.
-    glyph: 시행
+    en: "Korea’s AI Basic Act takes effect, requiring labels on generative AI output, with fines deferred for at least a year."
+    glyph: { ko: "시행", en: "IN FORCE" }
   - date: 2026-01-28
     ko: AI 에이전트만 글을 쓰는 SNS 몰트북 개설. 며칠 만에 수십만 에이전트가 가입했다.
-    glyph: 몰트북
+    en: "Moltbook, a social network where only AI agents post, opens, and hundreds of thousands of agents join within days."
+    glyph: { ko: "몰트북", en: "MOLT\nBOOK" }
   - date: 2026-01-30
     ko: 개인 에이전트 Clawdbot이 이름을 두 번 바꿔 OpenClaw로 정착. 깃허브 별 10만 개를 넘었다.
+    en: "The personal agent Clawdbot settles on the name OpenClaw after two renames and passes 100,000 stars on GitHub."
     glyph: 100K
 ko:
   kicker: 법과 에이전트
   title: AI 기본법, 그리고 에이전트들의 SNS
   lede: 한국이 포괄적 AI 법을 세계에서 가장 먼저 전면 시행했다. 같은 달 오픈소스 개인 에이전트가 폭발적으로 퍼졌다.
+en:
+  kicker: "Law and Agents"
+  title: "The AI Basic Act, and a Social Network for Agents"
+  lede: "Korea became the first country in the world to put a comprehensive AI law fully into effect. The same month, an open-source personal agent spread rapidly."

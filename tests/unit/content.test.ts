@@ -35,7 +35,7 @@ describe('loadContent', () => {
     const items = c.scenes.flatMap(s => s.items);
     expect(items.length).toBeGreaterThan(0);
     expect(items.every(it => it.glyph)).toBe(true);
-    expect(c.scenes[0].items[0].glyph).toBe('100만');
+    expect(c.scenes[0].items[0].glyph).toEqual({ ko: '100만', en: '1M' });
     expect(c.pics).toEqual({});
   });
 

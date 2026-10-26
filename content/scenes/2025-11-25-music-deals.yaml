@@ -21,17 +21,25 @@ sources:
 items:
   - date: 2025-10-29
     ko: 유니버설뮤직, 유디오와 소송을 끝내고 라이선스 음악 플랫폼을 함께 만들기로 합의. 유디오는 곡 다운로드를 막아 이용자 반발을 샀다.
+    en: "Universal Music Group settles its lawsuit with Udio and agrees to build a licensed music platform together, while Udio angers users by blocking song downloads."
     glyph: UMG
   - date: 2025-11-08
     ko: AI 가수 브레이킹 러스트의 ‘Walk My Walk’, 빌보드 컨트리 디지털 송 세일즈 1위. AI 곡의 첫 빌보드 차트 1위로 보도됐다.
-    glyph: 빌보드
+    en: "AI singer Breaking Rust’s “Walk My Walk” reaches No. 1 on Billboard’s Country Digital Song Sales chart, reported as the first AI song to top a Billboard chart."
+    glyph: { ko: "빌보드", en: "CHART" }
   - date: 2025-11-19
     ko: 워너뮤직, 유디오와 합의. 같은 날 수노는 기업가치 24.5억 달러로 2억 5,000만 달러를 유치했다.
+    en: "Warner Music Group settles with Udio; the same day, Suno raises $250 million at a $2.45 billion valuation."
     glyph: $2.45B
   - date: 2025-11-25
     ko: 워너뮤직, 수노와도 합의하고 라이선스를 받은 음악 모델을 함께 만들기로 했다.
-    glyph: 수노
+    en: "Warner Music Group also settles with Suno and agrees to build licensed music models together."
+    glyph: { ko: "수노", en: "SUNO" }
 ko:
   kicker: 음악
   title: 소송 대신 계약
   lede: AI가 만든 노래가 차트 1위에 올랐다. AI 작곡 서비스를 고소했던 음반사들은 소송을 접고 라이선스 계약을 맺었다.
+en:
+  kicker: "Music"
+  title: "Deals Instead of Lawsuits"
+  lede: "A song made by AI reached No. 1 on a chart. Record labels that had sued AI music services dropped their suits and signed licensing deals."

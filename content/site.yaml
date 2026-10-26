@@ -15,3 +15,13 @@ ko:
   ledgerNote: "연구소별 대표 모델의 공개 시점입니다. 날짜는 연.월 기준이며, Mythos 계열처럼 제한 공개된 모델도 포함했습니다."
   sourcesNote: "{asOfLong}까지의 각 사 발표와 언론 보도를 바탕으로 정리했습니다. 2026년 하반기 일부 사건은 조사와 소송이 진행 중이어서 이후 사실관계가 달라질 수 있습니다."
   making: "이 연표는 AI의 도움을 받아 조사하고 썼습니다. 각 사의 공식 발표와 논문, 소송 문서 같은 1차 출처를 먼저 확인하고, 언론 보도는 그것을 보완하는 데 썼습니다. 틀린 곳이나 빠진 사건을 발견하면 GitHub 이슈로 알려 주세요. 근거와 함께 보내 주시면 확인한 뒤 고치고, 고친 내용은 장면에 기록합니다."
+en:
+  heroGlyph:
+    wide: "{days} days"
+    tall: "{days}\ndays"
+  lede: "A record of the moments AI has passed through, from ChatGPT’s launch on {startLong} to the present."
+  description: "A wall of generative AI events from ChatGPT’s launch ({startDot}) to the present, printed as black-and-white woodcut boxes and set out newest first. Open a box to read the details of the {count} scenes."
+  ogDescription: "Generative AI events from ChatGPT’s launch to the present, printed as woodcut boxes and set out newest first. Open a box to read the details."
+  ledgerNote: "When each lab released its major models. Dates are given by year and month, and models released only on a limited basis, such as the Mythos line, are included."
+  sourcesNote: "Compiled from company announcements and news reports up to {asOfLong}. Some events from the second half of 2026 are still under investigation or in litigation, so the facts may change."
+  making: "This timeline was researched and written with help from AI. Primary sources such as company announcements, papers and court filings were checked first, and news reports were used to fill them out. If you find a mistake or a missing event, please let us know in a GitHub issue. Send it with evidence and we will check it, fix it and record the correction in the scene."

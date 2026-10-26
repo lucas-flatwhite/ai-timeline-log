@@ -55,13 +55,14 @@ test.describe('without JavaScript', () => {
     }
   });
 
-  test('language switch: KO current, EN disabled for now', async ({ page }) => {
+  test('language switch: KO current, EN links to the English page', async ({ page }) => {
     await page.goto('./');
     for (const where of ['header.top', '.outro']) {
       const nav = page.locator(`${where} nav.lang`);
       await expect(nav.locator('a[aria-current="page"]')).toHaveText('KO');
-      await expect(nav.locator('[aria-disabled="true"]')).toHaveText('EN');
-      await expect(nav.locator('a', { hasText: 'EN' })).toHaveCount(0);
+      await expect(nav.locator('a', { hasText: 'EN' })).toHaveAttribute('href', '/ai-timeline-log/en/');
+      await expect(nav.locator('a', { hasText: 'EN' })).not.toHaveAttribute('aria-current', /.*/);
+      await expect(nav.locator('[aria-disabled="true"]')).toHaveCount(0);
     }
     await expect(page.locator('header.top a.report')).toHaveAttribute('target', '_blank');
   });

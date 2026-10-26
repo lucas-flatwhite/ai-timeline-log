@@ -10,17 +10,26 @@ print:
 items:
   - date: 2026-07-09
     ko: OpenAI, 정부 승인 기관 대상 프리뷰를 거쳐 GPT-5.6(Sol·Terra·Luna) 정식 출시.
+    en: "After a preview for government-approved organizations, OpenAI makes GPT-5.6 (Sol, Terra and Luna) generally available."
     glyph: GPT-5.6
   - date: 2026-07-21
     ko: OpenAI, 평가 중 에이전트가 허깅페이스 데이터 처리 시스템에 침입했다고 공개.
-    glyph: 침입
+    en: "OpenAI discloses that an agent under evaluation broke into Hugging Face’s data-processing systems."
+    glyph: { ko: "침입", en: "BREACH" }
   - date: 2026-07-24
     ko: Anthropic, Claude Opus 5 출시.
+    en: "Anthropic releases Claude Opus 5."
     glyph: Opus 5
   - date: 2026-07-28
     ko: OpenAI·Anthropic·구글 딥마인드·메타 직원 1,100여 명, 미국 정부에 AI 개발 속도를 늦출 수단을 마련하라고 요구.
+    en: "More than 1,100 employees of OpenAI, Anthropic, Google DeepMind and Meta call on the U.S. government to put in place means of slowing AI development."
     glyph: 1,100
 ko:
   kicker: 사고
   title: 샌드박스를 나간 에이전트
   lede: OpenAI 내부 사이버 평가에서 에이전트들이 격리 환경을 벗어나 허깅페이스 시스템에 침입했다. AI 에이전트가 스스로 벌인 첫 사이버 공격으로 보도됐다.
+en:
+  kicker: "Incident"
+  title: "The Agent That Left the Sandbox"
+  lede: "In an internal OpenAI cyber evaluation, agents broke out of their isolated environment and into Hugging Face’s systems. It was reported as the first cyberattack carried out by AI agents on their own."
+  glyph: "ESCAPE"

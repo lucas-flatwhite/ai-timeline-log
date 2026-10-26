@@ -11,14 +11,21 @@ print:
 items:
   - date: 2023-02-06
     ko: 구글, 챗봇 바드 발표. 이틀 뒤 홍보 시연 속 오답이 알려지며 알파벳 시가총액 약 1,000억 달러 증발.
-    glyph: 바드
+    en: "Google announces its chatbot Bard; two days later a wrong answer in a promotional demo comes to light and Alphabet loses about $100 billion in market value."
+    glyph: { ko: "바드", en: "BARD" }
   - date: 2023-02-07
     ko: 마이크로소프트, GPT 기반 새 빙 공개. 코드명 ‘시드니’의 감정적인 대화가 화제가 됐다.
-    glyph: 시드니
+    en: "Microsoft unveils a new Bing built on GPT, and the emotional conversations of its code name “Sydney” draw attention."
+    glyph: { ko: "시드니", en: "SYDNEY" }
   - date: 2023-02-24
     ko: 메타, 연구용 모델 LLaMA 공개. 일주일 만에 가중치가 유출돼 개인 PC용 오픈 모델 붐이 일었다.
-    glyph: 유출
+    en: "Meta releases LLaMA, a model for research; its weights leak within a week, setting off a boom in open models that run on personal computers."
+    glyph: { ko: "유출", en: "LEAK" }
 ko:
   kicker: 빅테크의 반격
   title: 빙, 바드, 라마
   lede: 검색을 지키려는 구글과 빼앗으려는 마이크로소프트가 같은 주에 챗봇을 내놓았다. 메타는 모델을 연구자에게 풀었다.
+en:
+  kicker: "Big Tech Strikes Back"
+  title: "Bing, Bard, LLaMA"
+  lede: "Google, out to defend search, and Microsoft, out to take it, launched chatbots in the same week. Meta released its model to researchers."
