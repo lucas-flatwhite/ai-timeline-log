@@ -8,6 +8,16 @@ print:
   angle: -18
   motif: fall
   glyph: $285B
+sources:
+  - url: https://github.com/anthropics/knowledge-work-plugins
+    title: anthropics/knowledge-work-plugins
+    publisher: Anthropic (GitHub)
+  - url: https://techstartups.com/2026/02/05/anthropics-claude-plugins-spark-285-billion-software-stock-selloff-as-ai-targets-entire-saas-workflows/
+    title: Anthropic’s Claude plugins spark $285 billion software stock selloff as AI targets entire SaaS workflows
+    publisher: Tech Startups
+  - url: https://www.cnbc.com/2026/02/03/musk-xai-spacex-biggest-merger-ever.html
+    title: "Musk’s xAI, SpaceX combo is the biggest merger of all time, valued at $1.25 trillion"
+    publisher: CNBC
 items:
   - date: 2026-01-30
     ko: Anthropic, 법무·영업·재무 등 업무용 Claude 플러그인 11종을 깃허브에 공개.

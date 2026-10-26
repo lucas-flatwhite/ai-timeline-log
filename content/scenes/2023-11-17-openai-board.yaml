@@ -8,6 +8,16 @@ print:
   pattern: c
   motif: none
   glyph: 5일
+sources:
+  - url: https://openai.com/index/openai-announces-leadership-transition/
+    title: OpenAI announces leadership transition
+    publisher: OpenAI
+  - url: https://openai.com/index/sam-altman-returns-as-ceo-openai-has-a-new-initial-board/
+    title: "Sam Altman returns as CEO, OpenAI has a new initial board"
+    publisher: OpenAI
+  - url: https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration/the-bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023
+    title: "The Bletchley Declaration by Countries Attending the AI Safety Summit, 1-2 November 2023"
+    publisher: GOV.UK
 items:
   - date: 2023-10-30
     ko: 바이든 대통령, AI 행정명령 서명. 대형 모델 개발사에 안전 시험 결과 공유 의무.

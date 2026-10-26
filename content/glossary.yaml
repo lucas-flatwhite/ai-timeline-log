@@ -51,7 +51,7 @@
 # 정부·국제기구·행사
 - { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
 - { ko: "미국 연방거래위원회", en: "Federal Trade Commission (FTC)", source: "https://www.ftc.gov/" }
-- { ko: "미 국방부", en: "the Pentagon", source: "https://www.npr.org/2026/03/06/g-s1-112713/pentagon-labels-ai-company-anthropic-a-supply-chain-risk" }   # 공식 명칭(Department of Defense/War) 대신 중립 표기
+- { ko: "미 국방부", en: "the Pentagon", source: "https://www.npr.org/2026/03/06/g-s1-112713/pentagon-labels-ai-company-anthropic-a-supply-chain-risk" }   # 공식 명칭(Department of Defense/War) 대신 중립 표기. 국방부 사이트는 자동 접속을 막아(403) 보도 출처를 둔다
 - { ko: "상무부", en: "Commerce Department", source: "https://www.commerce.gov/" }
 - { ko: "백악관", en: "White House", source: "https://www.whitehouse.gov/" }
 - { ko: "이탈리아 개인정보 당국", en: "Italy’s data protection authority (Garante per la protezione dei dati personali)", source: "https://www.garanteprivacy.it/" }
@@ -72,10 +72,10 @@
 - { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
 - { ko: "인공지능 기본법", en: "AI Basic Act", source: "https://www.msit.go.kr/eng/bbs/view.do?sCode=eng&mId=4&mPid=2&bbsSeqNo=42&nttSeqNo=1071" }   # 정식 영문명 Basic Act on the Development of Artificial Intelligence and the Establishment of Foundation for Trustworthiness
 - { ko: "AI 행정명령(2023)", en: "executive order on AI (Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence)", source: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence" }
-- { ko: "첨단 AI 혁신과 안보 행정명령(2026)", en: "executive order on advanced AI innovation and security (Promoting Advanced AI Innovation and Security)", source: "https://www.dlapiper.com/en-us/insights/publications/2026/06/promoting-advanced-ai-innovation-and-security-executive-order-top-points" }
+- { ko: "첨단 AI 혁신과 안보 행정명령(2026)", en: "executive order on advanced AI innovation and security (Promoting Advanced AI Innovation and Security)", source: "https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/" }   # Executive Order 14409
 - { ko: "6개월 중단 공개서한", en: "open letter calling for a six-month pause (Pause Giant AI Experiments)", source: "https://futureoflife.org/open-letter/pause-giant-ai-experiments/" }
 - { ko: "멸종 위험 한 문장 성명", en: "Statement on AI Risk", source: "https://www.safe.ai/work/statement-on-ai-risk" }
-- { ko: "We Must Pace the Frontier", en: "We Must Pace the Frontier", source: "https://postcutoff.com/ai" }   # 에세이 원문 주소는 확인하지 못함
+- { ko: "We Must Pace the Frontier", en: "We Must Pace the Frontier", source: "https://www.darioamodei.com/post/we-must-pace-the-frontier" }
 
 # 모델·제품
 - { ko: "ChatGPT", en: "ChatGPT", source: "https://openai.com/index/chatgpt/" }
@@ -83,7 +83,7 @@
 - { ko: "GPT-4", en: "GPT-4", source: "https://openai.com/index/gpt-4-research/" }
 - { ko: "GPT-4o", en: "GPT-4o", source: "https://openai.com/index/hello-gpt-4o/" }
 - { ko: "빙", en: "Bing", source: "https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/" }
-- { ko: "시드니", en: "Sydney", source: "https://en.wikipedia.org/wiki/Microsoft_Copilot" }
+- { ko: "시드니", en: "Sydney", source: "https://fortune.com/2023/02/24/microsoft-artificial-intelligence-ai-chatbot-sydney-rattled-users-before-chatgpt-fueled-bing/" }   # 1차 출처 없음: Microsoft 발표문에는 Sydney가 나오지 않는다. Microsoft 대변인이 코드명이라고 확인한 말을 실은 보도
 - { ko: "바드", en: "Bard", source: "https://blog.google/technology/ai/bard-google-ai-search-updates/" }
 - { ko: "LLaMA", en: "LLaMA", source: "https://ai.meta.com/blog/large-language-model-llama-meta-ai/" }
 - { ko: "라마 2", en: "Llama 2", source: "https://ai.meta.com/llama/" }
@@ -131,11 +131,11 @@
 - { ko: "gpt-oss", en: "gpt-oss", source: "https://openai.com/index/introducing-gpt-oss/" }
 - { ko: "GPT-5.5", en: "GPT-5.5", source: "https://openai.com/index/introducing-gpt-5-5/" }
 - { ko: "GPT-5.6(Sol·Terra·Luna)", en: "GPT-5.6 (Sol, Terra and Luna)", source: "https://openai.com/index/previewing-gpt-5-6-sol/" }
-- { ko: "GPT-5.2", en: "GPT-5.2", source: "https://en.wikipedia.org/wiki/GPT-5.2" }   # OpenAI 발표문 주소는 자동 접속이 막혀 확인하지 못함
-- { ko: "GPT-5.3-Codex", en: "GPT-5.3-Codex", source: "https://en.wikipedia.org/wiki/GPT-5.3-Codex" }   # OpenAI 발표문 주소는 자동 접속이 막혀 확인하지 못함
-- { ko: "GPT-5.5-Cyber", en: "GPT-5.5-Cyber", source: "https://en.wikipedia.org/wiki/GPT-5.5" }   # OpenAI 발표문 주소는 자동 접속이 막혀 확인하지 못함
-- { ko: "GPT-6 Astra", en: "GPT-6 Astra", source: "https://postcutoff.com/ai" }
-- { ko: "GPT-6 Sol·Luna", en: "GPT-6 Sol and Luna", source: "https://postcutoff.com/ai" }   # 확인하지 못한 이름. 이 페이지에는 GPT-5.6 Sol만 있다(검토 문서 2절)
+- { ko: "GPT-5.2", en: "GPT-5.2", source: "https://openai.com/index/introducing-gpt-5-2/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-5.3-Codex", en: "GPT-5.3-Codex", source: "https://openai.com/index/introducing-gpt-5-3-codex/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-5.5-Cyber", en: "GPT-5.5-Cyber", source: "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-6 Astra", en: "GPT-6 Astra", source: "https://openai.com/index/gpt-6-astra/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-6 Sol·Luna", en: "GPT-6 Sol and Luna", source: "https://openai.com/index/introducing-gpt-6-sol-and-luna/" }   # 2026-09-22 발표 "Introducing GPT-6 Sol and Luna". openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
 - { ko: "슈퍼얼라인먼트 팀", en: "Superalignment team", source: "https://openai.com/index/introducing-superalignment/" }
 - { ko: "데빈", en: "Devin", source: "https://cognition.ai/blog/introducing-devin" }
 - { ko: "블랙웰", en: "Blackwell", source: "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" }
@@ -143,14 +143,14 @@
 - { ko: "시리", en: "Siri", source: "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" }
 - { ko: "딥시크 V3", en: "DeepSeek V3", source: "https://github.com/deepseek-ai/DeepSeek-V3" }
 - { ko: "R1", en: "R1", source: "https://github.com/deepseek-ai/DeepSeek-R1" }
-- { ko: "딥시크 V4", en: "DeepSeek V4", source: "https://www.yottalabs.ai/post/deepseek-v4-release-date-specs-how-to-access-2026" }
+- { ko: "딥시크 V4", en: "DeepSeek V4", source: "https://api-docs.deepseek.com/news/news260424/" }
 - { ko: "그록", en: "Grok", source: "https://x.ai/grok" }
 - { ko: "마누스", en: "Manus", source: "https://manus.im/" }
-- { ko: "몰트북", en: "Moltbook", source: "https://www.techtarget.com/searchcio/feature/OpenClaw-and-Moltbook-explained-The-latest-AI-agent-craze" }
-- { ko: "Clawdbot", en: "Clawdbot", source: "https://www.techtarget.com/searchcio/feature/OpenClaw-and-Moltbook-explained-The-latest-AI-agent-craze" }
-- { ko: "OpenClaw", en: "OpenClaw", source: "https://www.techtarget.com/searchcio/feature/OpenClaw-and-Moltbook-explained-The-latest-AI-agent-craze" }
+- { ko: "몰트북", en: "Moltbook", source: "https://www.moltbook.com/" }
+- { ko: "Clawdbot", en: "Clawdbot", source: "https://openclaw.ai/blog/introducing-openclaw" }   # 이 글은 첫 이름을 Clawd로 적는다. 저장소·보도에서 널리 쓴 이름은 Clawdbot
+- { ko: "OpenClaw", en: "OpenClaw", source: "https://openclaw.ai/blog/introducing-openclaw" }
 - { ko: "Lean", en: "Lean", source: "https://lean-lang.org/" }
-- { ko: "미드저니 v5", en: "Midjourney v5", source: "https://en.wikipedia.org/wiki/Midjourney" }
+- { ko: "미드저니 v5", en: "Midjourney v5", source: "https://docs.midjourney.com/hc/en-us/articles/33329788681101-Legacy-Features" }   # 공식 문서는 Version 5로 적는다. 자동 접속을 막아(403) 검색 결과로 확인
 - { ko: "깃허브", en: "GitHub", source: "https://github.com/" }
 - { ko: "MIT 라이선스", en: "MIT license", source: "https://github.com/deepseek-ai/DeepSeek-R1" }
 - { ko: "EU", en: "EU", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
@@ -165,16 +165,16 @@
 - { ko: "존 점퍼", en: "John Jumper", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
 - { ko: "데이비드 베이커", en: "David Baker", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
 - { ko: "일리야 수츠케버", en: "Ilya Sutskever", source: "https://ssi.inc/" }
-- { ko: "스칼렛 요한슨", en: "Scarlett Johansson", source: "https://en.wikipedia.org/wiki/GPT-4o" }
+- { ko: "스칼렛 요한슨", en: "Scarlett Johansson", source: "https://openai.com/index/how-the-voices-for-chatgpt-were-chosen/" }
 - { ko: "안드레이 카파시", en: "Andrej Karpathy", source: "https://karpathy.ai/" }
 - { ko: "알렉산더 왕", en: "Alexandr Wang", source: "https://scale.com/" }
 - { ko: "조니 아이브", en: "Jony Ive", source: "https://openai.com/sam-and-jony/" }
 - { ko: "젠슨 황", en: "Jensen Huang", source: "https://www.nvidia.com/" }
 - { ko: "이재용", en: "Jay Y. Lee", source: "https://news.samsung.com/global/" }   # 삼성 영문 보도자료 표기. 직함 Executive Chairman
 - { ko: "정의선", en: "Euisun Chung", source: "https://www.hyundaimotorgroup.com/" }   # 현대차그룹 영문 표기. 직함 Executive Chair
-- { ko: "애덤 레인", en: "Adam Raine", source: "https://en.wikipedia.org/wiki/2025_in_artificial_intelligence" }
-- { ko: "브레이킹 러스트", en: "Breaking Rust", source: "https://www.theregister.com/2025/11/10/ai_country_artist_hits_number_one/" }
-- { ko: "잭 도시", en: "Jack Dorsey", source: "https://fortune.com/2026/02/27/block-jack-dorsey-ceo-xyz-stock-square-4000-ai-layoffs/" }
+- { ko: "애덤 레인", en: "Adam Raine", source: "https://techjusticelaw.org/press-releases/from-homework-help-to-suicide-planning-family-sues-openai-and-samuel-altman-alleging-chatgpt-coached-teen-son-to-suicide/" }   # 원고 측 대리인(Tech Justice Law Project) 보도자료. 소장 원문 주소는 찾지 못함
+- { ko: "브레이킹 러스트", en: "Breaking Rust", source: "https://www.theregister.com/2025/11/10/ai_country_artist_hits_number_one/" }   # 1차 출처를 찾지 못해 보도 출처를 둔다
+- { ko: "잭 도시", en: "Jack Dorsey", source: "https://fortune.com/2026/02/27/block-jack-dorsey-ceo-xyz-stock-square-4000-ai-layoffs/" }   # Block 사이트에서 이름을 찾지 못해 보도 출처를 둔다
 - { ko: "다리오 아모데이", en: "Dario Amodei", source: "https://www.anthropic.com/" }
 - { ko: "도널드 트럼프", en: "Donald Trump", source: "https://www.whitehouse.gov/" }
 - { ko: "조 바이든", en: "Joe Biden", source: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence" }

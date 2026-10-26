@@ -8,6 +8,16 @@ print:
   pattern: c
   motif: disc
   glyph: Mythos
+sources:
+  - url: https://www.anthropic.com/glasswing
+    title: "Project Glasswing: Securing critical software for the AI era"
+    publisher: Anthropic
+  - url: https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/
+    title: "Exclusive: Anthropic ‘Mythos’ AI model representing ‘step change’ in power revealed in data leak"
+    publisher: Fortune
+  - url: https://openai.com/index/introducing-gpt-5-5/
+    title: Introducing GPT-5.5
+    publisher: OpenAI
 items:
   - date: 2026-03-26
     ko: 블로그 초안이 유출되며 Mythos라는 이름이 먼저 알려졌다.

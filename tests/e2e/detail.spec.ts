@@ -42,7 +42,9 @@ test.describe('desktop', () => {
     // 복제한 글에 id가 겹치지 않는다
     expect(await page.locator('#detail .dbody [id]').evaluateAll(els => els.map(e => e.id))).toEqual(['detail-title']);
     await expect(page.locator('#detail .dbody li.hl')).toHaveCount(0);
-    await expect(page.locator('#detail .dsrc')).toBeHidden();   // 장면에도 사건에도 출처가 없으면 줄을 숨긴다
+    // 장면 출처가 상세 창 아래 줄에 모인다
+    await expect(page.locator('#detail .dsrc')).toBeVisible();
+    await expect(page.locator('#detail .dsrc a').first()).toHaveAttribute('href', 'https://openai.com/index/gpt-4-research/');
 
     const li = page.locator('#detail .dbody ol.items > li').nth(1);
     const addr = (await li.getAttribute('data-addr'))!;
@@ -231,7 +233,7 @@ test.describe('desktop', () => {
   });
 
   test('sources: the event\'s own, else the scene\'s', async ({ page }) => {
-    // 내용에는 아직 사건 출처가 없어서 시험용 출처를 소라 장면에 넣는다
+    // 소라 장면에는 사건 출처가 없어서 시험용 출처를 넣는다
     const addr = '2026-03-sora-shutdown~20260924';
     await rewrite(page, /(id="2026-03-sora-shutdown"[^]*?)(<p class="src")/,
       `$1<p class="src" data-for="${addr}" data-label="출처 · 20260924"><a href="https://example.org/api">api</a></p>$2`);

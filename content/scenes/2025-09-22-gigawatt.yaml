@@ -8,6 +8,16 @@ print:
   pattern: h
   motif: rise
   glyph: 10GW
+sources:
+  - url: https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems
+    title: OpenAI and NVIDIA Announce Strategic Partnership to Deploy 10 Gigawatts of NVIDIA Systems
+    publisher: NVIDIA
+  - url: https://www.nbcnews.com/tech/tech-news/anthropic-settlement-lawsuit-authors-rcna229422
+    title: AI company Anthropic agrees to pay $1.5B to settle lawsuit with authors
+    publisher: NBC News
+  - url: https://openai.com/index/sora-2/
+    title: Sora 2 is here
+    publisher: OpenAI
 items:
   - date: 2025-09-05
     ko: Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대.

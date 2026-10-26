@@ -7,11 +7,25 @@ print:
   pattern: h
   motif: none
   glyph: 19일
+sources:
+  - url: https://www.anthropic.com/news/fable-mythos-access
+    title: Statement on the directive to suspend Fable 5 access
+    publisher: Anthropic
+  - url: https://www.anthropic.com/news/redeploying-fable-5
+    title: Redeploying Claude Fable 5
+    publisher: Anthropic
+  - url: https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html
+    title: Anthropic says Trump admin has lifted export controls on Claude Fable 5 and Mythos 5
+    publisher: CNBC
 items:
   - date: 2026-06-02
     ko: 트럼프 대통령, 첨단 AI 혁신과 안보 행정명령. 사이버 능력을 기준으로 프런티어 모델을 지정하는 절차를 만들었다.
     en: "President Trump signs an executive order on advanced AI innovation and security, setting up a process to designate frontier models by their cyber capabilities."
     glyph: { ko: "행정\n명령", en: "EXEC\nORDER" }
+    sources:
+      - url: https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/
+        title: Promoting Advanced Artificial Intelligence Innovation and Security
+        publisher: The White House
   - date: 2026-06-09
     ko: Anthropic, Claude Fable 5(일반 공개)와 Mythos 5(검증된 파트너용) 출시. 같은 모델에 다른 안전장치.
     en: "Anthropic releases Claude Fable 5 for general use and Mythos 5 for vetted partners: the same model with different safeguards."

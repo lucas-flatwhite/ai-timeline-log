@@ -7,6 +7,16 @@ print:
   pattern: c
   motif: disc
   glyph: 지브리
+sources:
+  - url: https://openai.com/index/introducing-4o-image-generation/
+    title: Introducing 4o Image Generation
+    publisher: OpenAI
+  - url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/
+    title: "Gemini 2.5: Our most intelligent AI model"
+    publisher: Google
+  - url: https://openai.com/index/march-funding-updates/
+    title: New funding to build towards AGI
+    publisher: OpenAI
 items:
   - date: 2025-03-06
     ko: 범용 AI 에이전트 마누스 공개. 초대 코드를 구하려는 사람이 몰렸다.

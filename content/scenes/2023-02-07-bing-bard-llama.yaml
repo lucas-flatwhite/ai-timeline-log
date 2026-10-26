@@ -8,6 +8,16 @@ print:
   angle: -14
   motif: fall
   glyph: -$100B
+sources:
+  - url: https://blog.google/innovation-and-ai/technology/ai/bard-google-ai-search-updates/
+    title: An important next step on our AI journey
+    publisher: Google
+  - url: https://blogs.microsoft.com/blog/2023/02/07/reinventing-search-with-a-new-ai-powered-microsoft-bing-and-edge-your-copilot-for-the-web/
+    title: "Reinventing search with a new AI-powered Microsoft Bing and Edge, your copilot for the web"
+    publisher: Microsoft
+  - url: https://ai.meta.com/blog/large-language-model-llama-meta-ai/
+    title: "Introducing LLaMA: A foundational, 65-billion-parameter language model"
+    publisher: Meta
 items:
   - date: 2023-02-06
     ko: 구글, 챗봇 바드 발표. 이틀 뒤 홍보 시연 속 오답이 알려지며 알파벳 시가총액 약 1,000억 달러 증발.

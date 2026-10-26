@@ -7,6 +7,16 @@ print:
   pattern: c
   motif: disc
   glyph: GPT-4
+sources:
+  - url: https://openai.com/index/gpt-4-research/
+    title: GPT-4
+    publisher: OpenAI
+  - url: https://www.anthropic.com/news/introducing-claude
+    title: Introducing Claude
+    publisher: Anthropic
+  - url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/
+    title: "Pause Giant AI Experiments: An Open Letter"
+    publisher: Future of Life Institute
 items:
   - date: 2023-03-15
     ko: 미드저니 v5 공개. 며칠 뒤 ‘패딩 입은 교황’ 합성 사진이 진짜처럼 퍼졌다.

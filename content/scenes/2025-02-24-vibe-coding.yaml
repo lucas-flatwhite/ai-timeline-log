@@ -7,6 +7,16 @@ print:
   pattern: w
   motif: none
   glyph: VIBE
+sources:
+  - url: https://x.com/karpathy/status/1886192184808149383
+    title: There’s a new kind of coding I call “vibe coding”
+    publisher: Andrej Karpathy (X)
+  - url: https://openai.com/index/introducing-deep-research/
+    title: Introducing deep research
+    publisher: OpenAI
+  - url: https://www.anthropic.com/news/claude-3-7-sonnet
+    title: Claude 3.7 Sonnet and Claude Code
+    publisher: Anthropic
 items:
   - date: 2025-02-02
     ko: 안드레이 카파시, ‘바이브 코딩’이라는 말을 처음 썼다.

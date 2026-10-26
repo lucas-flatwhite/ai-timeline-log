@@ -8,6 +8,16 @@ print:
   angle: 18
   motif: rays
   glyph: Claude 3
+sources:
+  - url: https://www.anthropic.com/news/claude-3-family
+    title: Introducing the next generation of Claude
+    publisher: Anthropic
+  - url: https://cognition.com/blog/introducing-devin
+    title: "Introducing Devin, the first AI software engineer"
+    publisher: Cognition
+  - url: https://www.europarl.europa.eu/news/en/press-room/20240308IPR19015/artificial-intelligence-act-meps-adopt-landmark-law
+    title: "Artificial Intelligence Act: MEPs adopt landmark law"
+    publisher: European Parliament
 items:
   - date: 2024-03-04
     ko: Anthropic, Claude 3 제품군(Opus·Sonnet·Haiku) 공개.

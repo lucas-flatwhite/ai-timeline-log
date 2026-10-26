@@ -7,6 +7,16 @@ print:
   pattern: c
   motif: none
   glyph: "1.22"
+sources:
+  - url: https://www.fnnews.com/news/202601211823243681
+    title: “규제보다 진흥” AI기본법 시대… 계도기간 주고 컨설팅 지원
+    publisher: 파이낸셜뉴스
+  - url: https://openclaw.ai/blog/introducing-openclaw
+    title: Introducing OpenClaw
+    publisher: OpenClaw
+  - url: https://www.techtarget.com/it-strategy/feature/OpenClaw-and-Moltbook-explained-The-latest-AI-agent-craze
+    title: "OpenClaw and Moltbook explained: The latest AI agent craze"
+    publisher: TechTarget
 items:
   - date: 2026-01-09
     ko: xAI, 성적 딥페이크 논란으로 그록 이미지 생성 제한. 이어 인도네시아·말레이시아가 접속을 막았다.

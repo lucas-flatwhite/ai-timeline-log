@@ -9,6 +9,16 @@ print:
   angle: 12
   motif: none
   glyph: Llama 2
+sources:
+  - url: https://about.fb.com/news/2023/07/llama-2/
+    title: Meta and Microsoft Introduce the Next Generation of Llama
+    publisher: Meta
+  - url: https://www.anthropic.com/news/claude-2
+    title: Claude 2
+    publisher: Anthropic
+  - url: https://biz.newdaily.co.kr/site/data/html/2023/08/24/2023082400046.html
+    title: "네이버, ‘하이퍼클로바X’ 공개... “모두를 위한 AI 시대” 활짝"
+    publisher: 뉴데일리
 items:
   - date: 2023-07-11
     ko: Anthropic, Claude 2 공개. 10만 토큰, 책 한 권 분량을 한 번에 읽는다.

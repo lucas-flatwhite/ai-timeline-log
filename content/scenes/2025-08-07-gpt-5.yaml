@@ -8,6 +8,16 @@ print:
   pattern: c
   motif: rays
   glyph: GPT-5
+sources:
+  - url: https://openai.com/index/introducing-gpt-5/
+    title: Introducing GPT-5
+    publisher: OpenAI
+  - url: https://openai.com/index/introducing-gpt-oss/
+    title: Introducing gpt-oss
+    publisher: OpenAI
+  - url: https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/
+    title: Advanced version of Gemini with Deep Think officially achieves gold-medal standard at the International Mathematical Olympiad
+    publisher: Google DeepMind
 items:
   - date: 2025-06-30
     ko: 메타, 스케일AI에 143억 달러를 넣고 알렉산더 왕을 영입해 초지능 연구소 출범.

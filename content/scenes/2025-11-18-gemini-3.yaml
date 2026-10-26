@@ -10,6 +10,16 @@ print:
   glyph: |-
     CODE
     RED
+sources:
+  - url: https://blog.google/products-and-platforms/products/gemini/gemini-3/
+    title: A new era of intelligence with Gemini 3
+    publisher: Google
+  - url: https://fortune.com/2025/12/02/sam-altman-declares-code-red-google-gemini-ceo-sundar-pichai/
+    title: Sam Altman declares ‘Code Red’ as Google’s Gemini surges—three years after ChatGPT caused Google CEO Sundar Pichai to do the same
+    publisher: Fortune
+  - url: https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation
+    title: Donating MCP to the Agentic AI Foundation
+    publisher: Anthropic
 items:
   - date: 2025-11-18
     ko: 구글, Gemini 3 공개.

@@ -7,6 +7,16 @@ print:
   pattern: h
   motif: fall
   glyph: -17%
+sources:
+  - url: https://api-docs.deepseek.com/news/news250120/
+    title: DeepSeek-R1 Release
+    publisher: DeepSeek
+  - url: https://openai.com/index/announcing-the-stargate-project/
+    title: Announcing The Stargate Project
+    publisher: OpenAI
+  - url: https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html
+    title: "Nvidia sheds almost $600 billion in market cap, biggest one-day loss in U.S. history"
+    publisher: CNBC
 items:
   - date: 2025-01-20
     ko: 딥시크, 추론 모델 R1을 MIT 라이선스로 공개.

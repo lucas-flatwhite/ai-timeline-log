@@ -8,6 +8,16 @@ print:
   pattern: c
   motif: disc
   glyph: o1
+sources:
+  - url: https://openai.com/index/introducing-openai-o1-preview/
+    title: Introducing OpenAI o1-preview
+    publisher: OpenAI
+  - url: https://www.nobelprize.org/prizes/physics/2024/press-release/
+    title: "Press release: The Nobel Prize in Physics 2024"
+    publisher: NobelPrize.org
+  - url: https://www.nobelprize.org/prizes/chemistry/2024/press-release/
+    title: "Press release: The Nobel Prize in Chemistry 2024"
+    publisher: NobelPrize.org
 items:
   - date: 2024-09-12
     ko: OpenAI, 추론 모델 o1 프리뷰 공개. 수학·코딩 문제에서 큰 폭으로 앞섰다.

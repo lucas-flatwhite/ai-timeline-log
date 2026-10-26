@@ -7,6 +7,16 @@ print:
   pattern: w
   motif: rays
   glyph: 탈출
+sources:
+  - url: https://openai.com/index/hugging-face-model-evaluation-security-incident/
+    title: OpenAI and Hugging Face partner to address security incident during model evaluation
+    publisher: OpenAI
+  - url: https://huggingface.co/blog/agent-intrusion-technical-timeline
+    title: "Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident"
+    publisher: Hugging Face
+  - url: https://www.pacingthefrontier.com/
+    title: Pacing the Frontier
+    publisher: Pacing the Frontier
 items:
   - date: 2026-07-09
     ko: OpenAI, 정부 승인 기관 대상 프리뷰를 거쳐 GPT-5.6(Sol·Terra·Luna) 정식 출시.

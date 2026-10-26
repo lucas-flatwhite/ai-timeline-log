@@ -7,6 +7,13 @@ print:
   pattern: w
   motif: grid
   glyph: 260,000
+sources:
+  - url: https://nvidianews.nvidia.com/news/south-korea-ai-infrastructure
+    title: "NVIDIA, South Korea Government and Industrial Giants Build AI Infrastructure and Ecosystem to Fuel Korea Innovation, Industries and Jobs"
+    publisher: NVIDIA
+  - url: https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01679366642362768
+    title: "젠슨 황 덕에 한숨 돌린 정부…“AI 적기투자 필요, 예산증액·추경도”"
+    publisher: 이데일리
 items:
   - date: 2025-10-30
     ko: 서울 삼성동 치킨집에서 이재용 삼성전자 회장, 정의선 현대차그룹 회장과 ‘치맥 회동’.

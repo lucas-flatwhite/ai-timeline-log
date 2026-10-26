@@ -9,6 +9,16 @@ print:
   angle: -20
   motif: grid
   glyph: MCP
+sources:
+  - url: https://www.anthropic.com/news/3-5-models-and-computer-use
+    title: "Computer use, Claude 3.5 Sonnet, and Claude 3.5 Haiku"
+    publisher: Anthropic
+  - url: https://www.anthropic.com/news/model-context-protocol
+    title: Introducing the Model Context Protocol
+    publisher: Anthropic
+  - url: https://arcprize.org/blog/oai-o3-pub-breakthrough
+    title: OpenAI o3 Breakthrough High Score on ARC-AGI-Pub
+    publisher: ARC Prize
 items:
   - date: 2024-10-22
     ko: Anthropic, 화면을 보고 마우스·키보드를 조작하는 컴퓨터 사용 기능 베타.

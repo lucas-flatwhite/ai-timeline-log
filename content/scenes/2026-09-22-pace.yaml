@@ -7,6 +7,16 @@ print:
   pattern: h
   motif: none
   glyph: 속도
+sources:
+  - url: https://www.darioamodei.com/post/we-must-pace-the-frontier
+    title: We Must Pace the Frontier
+    publisher: Dario Amodei
+  - url: https://openai.com/index/introducing-gpt-6-sol-and-luna/
+    title: Introducing GPT-6 Sol and Luna
+    publisher: OpenAI
+  - url: https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-advances-a-fair-and-reciprocal-relationship-with-china-while-hosting-historic-state-visit/
+    title: "Fact Sheet: President Donald J. Trump Advances a Fair and Reciprocal Relationship with China While Hosting Historic State Visit"
+    publisher: The White House
 items:
   - date: 2026-09-12
     ko: 다리오 아모데이, 에세이 ‘We Must Pace the Frontier’에서 의도적인 속도 조절을 촉구.

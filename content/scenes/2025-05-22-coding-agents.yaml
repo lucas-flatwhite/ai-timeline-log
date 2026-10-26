@@ -8,6 +8,16 @@ print:
   angle: 10
   motif: grid
   glyph: 에이전트
+sources:
+  - url: https://openai.com/index/introducing-codex/
+    title: Introducing Codex
+    publisher: OpenAI
+  - url: https://blog.google/innovation-and-ai/technology/ai/io-2025-keynote/
+    title: "Google I/O 2025: From research to reality"
+    publisher: Google
+  - url: https://www.anthropic.com/news/claude-4
+    title: Introducing Claude 4
+    publisher: Anthropic
 items:
   - date: 2025-05-16
     ko: OpenAI, 클라우드에서 일하는 코딩 에이전트 Codex 공개.

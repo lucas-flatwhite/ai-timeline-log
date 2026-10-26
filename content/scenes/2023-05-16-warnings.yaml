@@ -7,6 +7,16 @@ print:
   pattern: w
   motif: none
   glyph: 경고
+sources:
+  - url: https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/
+    title: Geoffrey Hinton tells us why he’s now scared of the tech he helped build
+    publisher: MIT Technology Review
+  - url: https://openai.com/global-affairs/testimony-of-sam-altman-before-the-us-senate/
+    title: Testimony before the U.S. Senate
+    publisher: OpenAI
+  - url: https://safe.ai/work/statement-on-ai-extinction-risk
+    title: Statement on AI Extinction Risk
+    publisher: Center for AI Safety
 items:
   - date: 2023-05-01
     ko: 제프리 힌턴, AI 위험을 자유롭게 말하겠다며 10년 일한 구글을 떠났다.

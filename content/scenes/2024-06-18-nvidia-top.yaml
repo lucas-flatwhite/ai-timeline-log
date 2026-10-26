@@ -7,6 +7,16 @@ print:
   pattern: h
   motif: rise
   glyph: $3.3T
+sources:
+  - url: https://www.foxbusiness.com/markets/nvidia-topples-microsoft-worlds-most-valuable-company
+    title: Nvidia topples Microsoft as world’s most valuable company
+    publisher: Fox Business
+  - url: https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/
+    title: "Introducing Apple Intelligence for iPhone, iPad, and Mac"
+    publisher: Apple
+  - url: https://www.anthropic.com/news/claude-3-5-sonnet
+    title: Introducing Claude 3.5 Sonnet
+    publisher: Anthropic
 items:
   - date: 2024-06-10
     ko: 애플, Apple Intelligence 발표. 시리가 어려운 질문은 ChatGPT에 넘긴다.

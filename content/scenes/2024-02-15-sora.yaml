@@ -8,6 +8,16 @@ print:
   pattern: w
   motif: none
   glyph: Sora
+sources:
+  - url: https://openai.com/index/sora/
+    title: "Sora: Creating video from text"
+    publisher: OpenAI
+  - url: https://blog.google/innovation-and-ai/products/google-gemini-next-generation-model-february-2024/
+    title: "Our next-generation model: Gemini 1.5"
+    publisher: Google
+  - url: https://nytco-assets.nytimes.com/2023/12/NYT_Complaint_Dec2023.pdf
+    title: "Complaint, The New York Times Company v. Microsoft Corporation et al., Case 1:23-cv-11195 (S.D.N.Y. Dec. 27, 2023)"
+    publisher: The New York Times
 items:
   - date: 2023-12-06
     ko: 구글, 멀티모달 모델 제미나이 1.0 발표. 이듬해 2월 바드도 제미나이로 이름을 바꿨다.

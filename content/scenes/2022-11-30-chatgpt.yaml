@@ -7,6 +7,16 @@ print:
   pattern: h
   motif: rays
   glyph: ChatGPT
+sources:
+  - url: https://openai.com/index/chatgpt/
+    title: Introducing ChatGPT
+    publisher: OpenAI
+  - url: https://www.theguardian.com/technology/2023/feb/02/chatgpt-100-million-users-open-ai-fastest-growing-app
+    title: ChatGPT reaches 100 million users two months after launch
+    publisher: The Guardian
+  - url: https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/
+    title: Microsoft and OpenAI extend partnership
+    publisher: Microsoft
 items:
   - date: 2022-12-05
     ko: 공개 닷새 만에 사용자 100만 명을 넘었다.
