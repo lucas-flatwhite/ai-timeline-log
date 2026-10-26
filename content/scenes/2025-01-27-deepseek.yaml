@@ -20,6 +20,7 @@ items:
     ko: OpenAI, 웹 브라우저를 대신 조작하는 에이전트 오퍼레이터 공개.
     en: "OpenAI releases Operator, an agent that works a web browser on the user’s behalf."
     glyph: { ko: "클릭", en: "CLICK" }
+    pic: cursor
   - date: 2025-01-27
     ko: 딥시크 앱 미국 앱스토어 1위. 엔비디아 주가가 하루 17% 떨어져 시가총액 약 5,890억 달러 증발.
     en: "The DeepSeek app tops the U.S. App Store, and NVIDIA shares fall 17% in a day, erasing about $589 billion in market value."

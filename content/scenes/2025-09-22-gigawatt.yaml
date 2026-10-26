@@ -13,10 +13,12 @@ items:
     ko: Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대.
     en: "Anthropic agrees to a $1.5 billion settlement in an authors’ class action, the largest ever in an AI copyright dispute."
     glyph: $1.5B
+    pic: book
   - date: 2025-09-22
     ko: 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약.
     en: "NVIDIA announces its intent to invest up to $100 billion in OpenAI (10 GW), and around the same time, OpenAI also signs large deals with Oracle, AMD and Broadcom."
     glyph: $100B
+    pic: bolt
   - date: 2025-09-30
     ko: OpenAI, Sora 2와 영상 소셜 앱 Sora 출시.
     en: "OpenAI launches Sora 2 and Sora, a social video app."

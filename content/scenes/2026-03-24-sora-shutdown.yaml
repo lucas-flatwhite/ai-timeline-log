@@ -24,6 +24,7 @@ items:
     ko: OpenAI, 소라 앱과 API를 닫고 로봇용 세계 시뮬레이션 연구에 집중한다고 발표. 디즈니 투자는 집행되지 않고 무산됐다.
     en: "OpenAI announces that it will close the Sora app and API to focus on world-simulation research for robots, and Disney’s investment falls through without being made."
     glyph: { ko: "로봇", en: "ROBOTS" }
+    pic: robot
   - date: 2026-04-26
     ko: 소라 앱 서비스 종료. 영상 소셜 앱으로 출시한 지 7개월 만이다.
     en: "The Sora app shuts down, seven months after its launch as a social video app."

@@ -16,6 +16,7 @@ items:
     ko: 미국 작가조합 파업 시작. AI 사용 제한이 핵심 쟁점이 됐다(9월 타결).
     en: "The Writers Guild of America goes on strike, with limits on AI use as a core issue (settled in September)."
     glyph: { ko: "파업", en: "STRIKE" }
+    pic: picket
   - date: 2023-05-16
     ko: 샘 올트먼, 미 상원 청문회에서 강력한 모델에 정부 면허제를 두자고 제안.
     en: "Sam Altman proposes a government licensing regime for powerful models at a U.S. Senate hearing."

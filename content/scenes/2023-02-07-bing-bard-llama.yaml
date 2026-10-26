@@ -21,6 +21,7 @@ items:
     ko: 메타, 연구용 모델 LLaMA 공개. 일주일 만에 가중치가 유출돼 개인 PC용 오픈 모델 붐이 일었다.
     en: "Meta releases LLaMA, a model for research; its weights leak within a week, setting off a boom in open models that run on personal computers."
     glyph: { ko: "유출", en: "LEAK" }
+    pic: drop
 ko:
   kicker: 빅테크의 반격
   title: 빙, 바드, 라마

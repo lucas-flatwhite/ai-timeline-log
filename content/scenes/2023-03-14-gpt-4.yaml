@@ -20,6 +20,7 @@ items:
     ko: 이탈리아 개인정보 당국, ChatGPT 접속 차단. 약 한 달 뒤 풀렸다.
     en: "Italy’s data protection authority blocks access to ChatGPT; the block is lifted about a month later."
     glyph: { ko: "차단", en: "BLOCKED" }
+    pic: padlock
 ko:
   kicker: 성능 도약
   title: GPT-4

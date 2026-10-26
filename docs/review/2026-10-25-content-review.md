@@ -183,7 +183,7 @@
   - `PACE`(장면 2026-09-pace)는 같은 장면의 사건 `PACE`와 같습니다.
   - `VIBE`(사건)는 장면 핵심어 `VIBE`와 같습니다.
   - 사건끼리 같은 영어 핵심어는 없습니다(1절의 정책과 같습니다).
-- 날짜형 장면 핵심어(`1.22`, `2.27`)와 숫자·이름 공용 핵심어는 이번에 손대지 않았습니다(15번 작업 범위).
+- 날짜형 장면 핵심어(`1.22`, `2.27`)는 15번 작업에서 `JAN 22`, `FEB 27`을 붙였습니다(3절). 숫자·이름 공용 핵심어는 두 언어에서 같아 그대로입니다.
 
 표: 79개(장면 10, 사건 69). 장면 행은 사건 날짜 칸에 `장면`이라고 적었습니다.
 
@@ -385,7 +385,7 @@
 | --- | --- | --- |
 | kicker | 음성 | Voice |
 | title | GPT-4o, 듣고 말하고 보다 | GPT-4o Hears, Speaks and Sees |
-| lede | 말을 끊고 웃으며 대화하는 음성 AI가 시연됐다. 서울에서는 두 번째 AI 정상회의가 열렸다. | A voice AI was demonstrated that could be interrupted mid-sentence and laughed as it talked. Seoul hosted the second AI summit. |
+| lede | 말을 끊고 웃으며 대화하는 음성 AI가 시연됐다. 서울에서는 두 번째 AI 정상회의가 열렸다. | A voice AI was demonstrated that could be interrupted mid-sentence and could laugh as it talked. Seoul hosted the second AI summit. |
 | 2024-05-13 | OpenAI, 실시간 음성 대화 GPT-4o 공개. 스칼렛 요한슨이 목소리가 닮았다고 항의해 해당 음성을 내렸다. | OpenAI releases GPT-4o for real-time voice conversation, then pulls one voice after Scarlett Johansson objects that it sounds like hers. |
 | 2024-05-14 | 구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다. | At Google I/O, Google puts AI summaries (AI Overviews) at the top of search results. |
 | 2024-05-14 | 일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다. | Ilya Sutskever leaves OpenAI, and the Superalignment team in charge of long-term safety is disbanded. |
@@ -830,7 +830,7 @@
 
 핵심어와 함께 영어 글 몇 곳을 한국어 원문에 더 가깝게 고쳤습니다. 번역을 고친 것이라 `corrections`나 `updated`는 두지 않았습니다. 2절의 표에도 같은 고침을 반영했습니다.
 
-- 2024-05-gpt-4o lede: "A voice AI was demonstrated that could be interrupted mid-sentence and laughed as it talked." (어순이 꼬였던 문장)
+- 2024-05-gpt-4o lede: "A voice AI was demonstrated that could be interrupted mid-sentence and could laugh as it talked." (어순이 꼬였던 문장)
 - 2025-09-22 엔비디아 투자: 오라클·AMD·브로드컴 계약의 주어를 OpenAI로 밝힘("…, and around the same time, OpenAI also signs large deals with Oracle, AMD and Broadcom.")
 - kicker: 2024-06-nvidia-top `Follow the Money` → `Where the Money Went`, 2025-11-gemini-3 `Overtaken` → `Overtaking`(원문 `추월`)
 - "got loose": 2023 연도 요약 `were released`(가중치가 풀리며), 2026-09-pace lede `escaped containment`(이탈)
@@ -840,3 +840,55 @@
 - 2023-05-warnings lede: `helped open up deep learning` → `pioneered deep learning`(딥러닝을 연)
 - 2023-03-15 미드저니: `fake image` → `AI-generated image`(합성 사진)
 - 그 밖에: 2절 슈퍼볼 광고 문구 확인을 닫았고, 1절에서 `-$285B`를 장면과 같은 핵심어로 적은 것을 고쳤습니다. 단위 테스트 이름 "every box and detail is in English"를 검사하는 내용대로 바꿨습니다.
+
+## 4. 그림 상자
+
+사건 20개에 그림을 붙였습니다(`content/pics.yaml`, 사건의 `pic`). 그림 상자는 위 60%에 그림, 아래 37%에 핵심어를 새깁니다. 핵심어는 그대로 두 언어 모두 그림 아래에 나옵니다.
+
+- 고른 기준
+  - 물건·장소·행위가 한눈에 떠오르는 사건만 골랐습니다(목소리 → 마이크, 금메달 → 메달, GPU → 칩, 치맥 → 닭다리, 파리 → 에펠탑). 숫자 핵심어 사건은 그 숫자가 가리키는 물건이 분명할 때만 붙였습니다(`$1.5B` 작가 소송 → 책, `$100B`(10GW) → 번개).
+  - 로고·상표·실존 인물의 얼굴은 그리지 않았습니다. 디즈니, 몰트북·OpenClaw(바닷가재 마스코트), 회사·모델 이름 사건은 건너뛰었습니다. 바나나는 처음 그린 모양이 운동화 상표의 곡선처럼 보여, 굵고 양 끝이 뭉툭한 초승달에 꼭지를 단 모양으로 다시 그렸습니다.
+  - 두 줄 핵심어 사건은 피했습니다. 그림 밑 핵심어 자리(상자의 37%)가 좁아 두 줄이면 글자가 너무 작아집니다.
+- 그리는 법
+  - 칠한 실루엣만 씁니다(가는 외곽선은 칼선에서 사라집니다). 64px 상자에서 그림은 약 34px이고 칼선은 그림을 가로질러 22줄쯤입니다. 그래서 덩어리는 대개 10단위 이상으로 굵게 그렸고, 벌레 다리·자물쇠 열쇠 구멍·마우스 단추 틈처럼 가는 곳만 5~7단위입니다.
+  - `d` 하나에 여러 조각(subpath)을 담습니다. 칠하기 규칙이 nonzero라서 실선은 시계 방향, 구멍(메달의 별, 자물쇠 열쇠 구멍, 로봇 눈, 전화 다이얼)은 반시계 방향으로 그렸습니다.
+  - `cx`·`cy`는 그림 경계 상자의 가운데입니다. 판에서 −0.12 rad 기울이므로 그림은 대략 12~88 안에 둡니다.
+- 뺀 것: 삼각 플라스크(2024-10-09 노벨 화학, 핵심어가 `노벨/화학` 두 줄이라 64px에서 읽히지 않음), 정지 표지판(2026-02-27 사용 중단, 작은 판에서 팔각형이 지도 핀처럼 보임).
+- 특히 봐 주실 곳
+  - `chip`(2025-10-31): 장면이 물결 칼선이라 64px에서 다리가 털처럼 번집니다. 다리 둘·가운데 구멍도 해 봤는데 `#`이나 톱니바퀴처럼 보여 다리 셋을 남겼습니다.
+  - `picket`(파업), `gavel`(가처분), `gift`(기증): 핵심어와 함께 보면 읽히지만 그림만으로는 약합니다. 빼도 되는 후보입니다.
+
+| 장면 | 날짜 | 사건 | 그림 이름 | 뜻(note) |
+| --- | --- | --- | --- | --- |
+| 2023-02-bing-bard-llama | 2023-02-24 | 유출 / LEAK · 메타, 연구용 모델 LLaMA 공개. 일주일 만에 가중치가 유출돼 개인 PC용 오픈 모델 붐이 일었다. | `drop` | 물방울. 새어 나감 |
+| 2023-03-gpt-4 | 2023-03-31 | 차단 / BLOCKED · 이탈리아 개인정보 당국, ChatGPT 접속 차단. 약 한 달 뒤 풀렸다. | `padlock` | 자물쇠. 접속 차단 |
+| 2023-05-warnings | 2023-05-02 | 파업 / STRIKE · 미국 작가조합 파업 시작. AI 사용 제한이 핵심 쟁점이 됐다(9월 타결). | `picket` | 손팻말. 파업 |
+| 2024-05-gpt-4o | 2024-05-13 | 목소리 / VOICE · OpenAI, 실시간 음성 대화 GPT-4o 공개. 스칼렛 요한슨이 목소리가 닮았다고 항의해 해당 음성을 내렸다. | `microphone` | 마이크. 목소리로 대화하는 AI |
+| 2024-11-computer-use-mcp | 2024-10-22 | 마우스 / MOUSE · Anthropic, 화면을 보고 마우스·키보드를 조작하는 컴퓨터 사용 기능 베타. | `mouse` | 컴퓨터 마우스. 화면을 보고 마우스를 쓰는 AI |
+| 2025-01-deepseek | 2025-01-23 | 클릭 / CLICK · OpenAI, 웹 브라우저를 대신 조작하는 에이전트 오퍼레이터 공개. | `cursor` | 화살표 커서. 웹 브라우저를 대신 누르는 에이전트 |
+| 2025-02-vibe-coding | 2025-02-11 | 파리 / PARIS · 파리 AI 행동 정상회의. 미국과 영국은 공동선언에 서명하지 않았다. | `tower` | 에펠탑. 파리 |
+| 2025-08-gpt-5 | 2025-07-19 | 금메달 / GOLD · OpenAI 실험 모델과 구글 제미나이 딥싱크, 국제수학올림피아드 금메달 수준. | `medal` | 리본에 매단 메달. 금메달 |
+| 2025-08-gpt-5 | 2025-08-26 | 바나나 / BANANA · 구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍. | `banana` | 바나나 |
+| 2025-09-gigawatt | 2025-09-05 | $1.5B · Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대. | `book` | 펼친 책. 저자들의 책 |
+| 2025-09-gigawatt | 2025-09-22 | $100B · 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약. | `bolt` | 번개. 전력(기가와트) |
+| 2025-10-gyeongju-gpu | 2025-10-30 | 치맥 / CHICKEN · 서울 삼성동 치킨집에서 이재용 삼성전자 회장, 정의선 현대차그룹 회장과 ‘치맥 회동’. | `drumstick` | 닭다리. 치킨 |
+| 2025-10-gyeongju-gpu | 2025-10-31 | 5만 장 / 50,000 · 정부와 삼성·SK·현대차에 각 5만 장, 네이버클라우드에 6만 장. | `chip` | 다리가 달린 반도체 칩. GPU |
+| 2025-11-gemini-3 | 2025-12-09 | 기증 / DONATE · Anthropic, MCP를 리눅스 재단 산하 에이전틱 AI 재단에 기증. | `gift` | 선물 상자. 기증 |
+| 2025-11-music-deals | 2025-11-08 | 빌보드 / CHART · AI 가수 브레이킹 러스트의 ‘Walk My Walk’, 빌보드 컨트리 디지털 송 세일즈 1위. AI 곡의 첫 빌보드 차트 1위로 보도됐다. | `note` | 음표. 노래 |
+| 2026-02-chatgpt-ads | 2026-02-09 | AD · 미국 일부 이용자의 ChatGPT에 광고가 붙기 시작했다. 미성년자와 건강·정치 대화에는 광고를 넣지 않는다. | `megaphone` | 확성기. 광고 |
+| 2026-02-pentagon | 2026-03-26 | 가처분 / RULINGS · 캘리포니아 연방법원, Anthropic 가처분 인용. 9월 25일 워싱턴 항소법원은 별도 근거의 지정을 2대 1로 유지. | `gavel` | 판사봉. 법원 결정 |
+| 2026-03-sora-shutdown | 2026-03-24 | 로봇 / ROBOTS · OpenAI, 소라 앱과 API를 닫고 로봇용 세계 시뮬레이션 연구에 집중한다고 발표. 디즈니 투자는 집행되지 않고 무산됐다. | `robot` | 로봇 머리 |
+| 2026-04-mythos | 2026-04-07 | 취약점 / FLAWS · 프로젝트 글래스윙 출범. AWS·애플·구글·MS·엔비디아 등 12개 창립사가 주요 OS·브라우저의 고위험 취약점 수천 건을 고친다. | `bug` | 벌레. 보안 취약점(버그) |
+| 2026-09-pace | 2026-09-25 | 핫라인 / HOTLINE · 미·중 정상, 초지능 위험을 다룰 대화 채널과 사고 핫라인에 합의. | `phone` | 탁상 전화기. 핫라인 |
+
+64px 상자, 기기 화소 2배(휴대폰과 같은 선명도). 그림마다 위가 한국어, 아래가 영어입니다.
+
+![64px 상자, 2배](pics/boxes-64-2x.png)
+
+64px 상자, 기기 화소 1배.
+
+![64px 상자, 1배](pics/boxes-64-1x.png)
+
+상세 창의 280px 판(2배로 찍어 1배 크기로 줄여 보임). 상세 창도 칼선 간격이 상자 크기에 비례해서 64px 상자보다 세부가 늘지 않습니다.
+
+![상세 창 280px](pics/detail-280.png)

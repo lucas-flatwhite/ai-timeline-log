@@ -17,6 +17,7 @@ items:
     ko: 프로젝트 글래스윙 출범. AWS·애플·구글·MS·엔비디아 등 12개 창립사가 주요 OS·브라우저의 고위험 취약점 수천 건을 고친다.
     en: "Project Glasswing launches with 12 founding companies, including AWS, Apple, Google, Microsoft and NVIDIA, to fix thousands of high-severity vulnerabilities in major operating systems and browsers."
     glyph: { ko: "취약점", en: "FLAWS" }
+    pic: bug
   - date: 2026-04-16
     ko: 열흘 사이 Claude Opus 4.7, GPT-5.5(23일), 딥시크 V4(24일)가 잇달아 나왔다.
     en: "Within ten days, Claude Opus 4.7, GPT-5.5 (April 23) and DeepSeek V4 (April 24) come out one after another."

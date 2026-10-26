@@ -36,7 +36,14 @@ describe('loadContent', () => {
     expect(items.length).toBeGreaterThan(0);
     expect(items.every(it => it.glyph)).toBe(true);
     expect(c.scenes[0].items[0].glyph).toEqual({ ko: '100만', en: '1M' });
-    expect(c.pics).toEqual({});
+  });
+
+  test('picture boxes: at least 10 closed outlines, each used by an event', () => {
+    const c = loadContent();
+    const names = Object.keys(c.pics), used = new Set(c.scenes.flatMap(s => s.items).flatMap(it => it.pic ? [it.pic] : []));
+    expect(names.length).toBeGreaterThanOrEqual(10);
+    expect([...used].sort()).toEqual([...names].sort());   // 쓰이지 않는 그림이 없다
+    for (const p of Object.values(c.pics)) expect(p.d.trim()).toMatch(/^M[\s\S]*Z$/);
   });
 
   test('requires a glyph on every event', () => {

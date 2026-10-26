@@ -27,6 +27,7 @@ items:
     ko: Anthropic, MCP를 리눅스 재단 산하 에이전틱 AI 재단에 기증.
     en: "Anthropic donates MCP to the Agentic AI Foundation under the Linux Foundation."
     glyph: { ko: "기증", en: "DONATE" }
+    pic: gift
 ko:
   kicker: 추월
   title: 제미나이 3와 ‘코드 레드’

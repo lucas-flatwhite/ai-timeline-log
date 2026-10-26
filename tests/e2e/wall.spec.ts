@@ -128,3 +128,30 @@ test.describe('live day count', () => {
     expect(days).toEqual(['1,462일']);
   });
 });
+
+test.describe('picture boxes', () => {
+  test.use({ viewport: { width: 390, height: 780 } });
+
+  test('a picture box carves its outline', async ({ page }) => {
+    // 칠한 윤곽선을 기록한다: 그림 이름이 없으면 그림 없이 조용히 새기므로 .carved만으로는 모자란다
+    await page.addInitScript(() => {
+      const w = window as unknown as { __paths: string[] };
+      w.__paths = [];
+      const P = window.Path2D;
+      window.Path2D = class extends P { constructor(d?: string | Path2D) { super(d as string); if (typeof d === 'string') w.__paths.push(d); } };
+    });
+    await page.goto('./');
+    await ready(page);
+    const names = await page.evaluate(() => {
+      const pics = JSON.parse(document.getElementById('pics')!.textContent!);
+      return [...document.querySelectorAll<HTMLElement>('.box[data-pic]')].map(b => [b.dataset.pic!, b.dataset.pic! in pics]);
+    });
+    expect(names.length).toBeGreaterThanOrEqual(10);
+    expect(names.filter(([, known]) => !known)).toEqual([]);
+    const box = page.locator('.box[data-pic]').first();
+    await box.scrollIntoViewIfNeeded();
+    await expect(box).toHaveClass(/\bcarved\b/);
+    const d = await page.evaluate(n => JSON.parse(document.getElementById('pics')!.textContent!)[n!].d, await box.getAttribute('data-pic'));
+    expect(await page.evaluate(() => (window as unknown as { __paths: string[] }).__paths)).toContain(d);
+  });
+});

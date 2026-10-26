@@ -27,6 +27,7 @@ items:
     ko: AI 가수 브레이킹 러스트의 ‘Walk My Walk’, 빌보드 컨트리 디지털 송 세일즈 1위. AI 곡의 첫 빌보드 차트 1위로 보도됐다.
     en: "AI singer Breaking Rust’s “Walk My Walk” reaches No. 1 on Billboard’s Country Digital Song Sales chart, reported as the first AI song to top a Billboard chart."
     glyph: { ko: "빌보드", en: "CHART" }
+    pic: note
   - date: 2025-11-19
     ko: 워너뮤직, 유디오와 합의. 같은 날 수노는 기업가치 24.5억 달러로 2억 5,000만 달러를 유치했다.
     en: "Warner Music Group settles with Udio; the same day, Suno raises $250 million at a $2.45 billion valuation."
