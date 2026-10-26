@@ -3,7 +3,7 @@ body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
 *,*::before,*::after{box-sizing:border-box}
-html{background:var(--ink)}
+html{background:var(--ink);scroll-padding-top:48px}   /* 초점이 간 상자·주소의 글이 위 막대(40px)에 가리지 않게 */
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 a{color:inherit}

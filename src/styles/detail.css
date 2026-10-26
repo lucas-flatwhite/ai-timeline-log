@@ -1,8 +1,8 @@
 /* ── 상세 글: 장면·연도마다 하나. JS가 있으면 숨기고 상세 창이 이 글을 복제해 쓴다.
    JS가 없으면 격자 아래 목록으로 보이고, 상자 링크가 여기로 이동한다 ── */
 html.js #details { display: none }
-#details{max-width:900px;margin:0 auto;padding:10vh 16px 0}
-#details .detail,#details li{scroll-margin-top:56px}   /* 위 막대 아래로 오게 */
+#details{max-width:900px;margin:0 auto;padding:10vh 0 0;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
+#details .detail,#details li{scroll-margin-top:8px}   /* html의 scroll-padding-top(위 막대)에 더해진다 */
 #details .detail{padding:28px 0;border-top:2px solid var(--ink)}
 .detail .meta{margin:0 0 8px;font:500 11.5px/1.4 var(--mono);letter-spacing:.05em;color:var(--ink-2)}
 .detail h2{margin:0 0 12px;font:400 30px/1.15 var(--display);text-wrap:balance}
@@ -20,7 +20,7 @@ html.js #details { display: none }
 .detail .src a,#detail .dsrc a{color:var(--ink)}
 
 /* ── 상세 창: 데스크톱은 가운데 카드(왼쪽 280px 판화 + 오른쪽 글), 720px 이하는 화면 전체 ── */
-#detail{width:min(820px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:26px;border:0;background:var(--paper);color:var(--ink);overflow:auto}
+#detail{width:min(820px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:26px;border:0;background:var(--paper);color:var(--ink);overflow:auto;overscroll-behavior:contain}   /* 끝까지 굴려도 뒤 페이지가 따라 굴지 않게 */
 #detail[open]{display:grid;grid-template-columns:280px 1fr;gap:26px;align-items:start}
 #detail::backdrop{background:rgba(17,17,16,.6)}
 #detail .dcv{width:280px;height:280px;display:block;background:var(--wood)}
@@ -30,12 +30,20 @@ html.js #details { display: none }
 #detail .dbody .items li{cursor:pointer}
 #detail .dbody .items li:not(.hl):hover{background:var(--wood)}
 #detail .dsrc:empty{display:none}
-#detail .fix{display:inline-block;margin:12px 0 0;font:500 12px/1.4 var(--mono);color:var(--ink)}
+#detail .dact{display:flex;align-items:center;gap:12px;margin:12px 0 0}
+#detail .fix{display:inline-block;font:500 12px/1.4 var(--mono);color:var(--ink)}
+#detail .dact .lang{margin-left:auto}
 #detail .dnav{display:flex;justify-content:space-between;gap:12px;margin:18px 0 0;padding:12px 0 0;border-top:1px solid var(--ghost);font:500 12px/1.4 var(--mono)}
 #detail .dnav button{padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}
 #detail .dnav button:disabled{color:var(--ghost);cursor:default}
 @media (max-width: 720px){
-  #detail{inset:0;width:100%;height:100%;max-height:none;margin:0;padding:48px 16px calc(24px + var(--bot))}
+  #detail{inset:0;width:100%;height:100%;max-height:none;margin:0;padding:calc(48px + var(--top)) 0 calc(24px + var(--bot));padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
   #detail[open]{grid-template-columns:1fr;align-content:start}
   #detail .dcv{margin:0 auto}
+  #detail .x{top:calc(10px + var(--top));right:max(14px,env(safe-area-inset-right))}
+  /* 손가락으로 누르는 자리는 44px 이상 */
+  #detail .dact{margin-top:4px}
+  #detail .fix,#detail .dact .lang a,#detail .dnav button{display:inline-flex;align-items:center;min-height:44px}
+  #detail .dact .lang a{margin:0;padding:0 8px}
+  #detail .dnav{margin-top:8px;padding-top:0}
 }

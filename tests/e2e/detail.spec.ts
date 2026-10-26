@@ -286,6 +286,91 @@ for (const path of ['./', './en/']) {
       await page.keyboard.press('Escape');
       await expect.poll(() => page.locator('nav.lang a').evaluateAll(els => els.map(e => e.getAttribute('href')!).filter(h => h.includes('#')))).toEqual([]);
     });
+
+    test('the language link inside the dialog opens the same event in the other language', async ({ page }) => {
+      // 창이 열려 있으면 위 막대·맺음의 언어 링크는 누를 수 없다(showModal). 창 안의 링크로 간다
+      const [olang, opath] = lang === 'ko' ? ['en', '/ai-timeline-log/en/'] : ['ko', '/ai-timeline-log/'];
+      const addr = '2026-07-sandbox-escape~20260721';
+      await visit(page, path);
+      await page.locator(`a.box[data-addr="${addr}"]`).click();
+      await expect(dlg(page)).toHaveAttribute('open', '');
+      const link = page.locator('#detail nav.lang a');
+      await expect(link).toHaveCount(1);
+      await expect(link).toHaveText(olang.toUpperCase());
+      await expect(link).toHaveAttribute('hreflang', olang);
+      await expect(link).toHaveAttribute('lang', olang);
+      await link.click();
+      await page.waitForURL(u => u.pathname === opath);
+      await ready(page);
+      expect(await hash(page)).toBe('#' + addr);
+      await expect(page.locator('html')).toHaveAttribute('lang', olang);
+      await expect(dlg(page)).toHaveAttribute('open', '');
+      await expect(page.locator('#detail-title')).toHaveText(sandbox[olang as 'ko' | 'en'].title);
+      await expect(page.locator('#detail .dbody li.hl')).toHaveAttribute('data-addr', addr);
+      // 닫으면 주소를 들고 가지 않는다
+      await page.locator('#detail .x').click();
+      await expect(page.locator('#detail nav.lang a')).toHaveAttribute('href', path === './' ? '/ai-timeline-log/' : '/ai-timeline-log/en/');
+    });
+
+    test('a hand-edited hash opens, switches and closes the dialog', async ({ page }) => {
+      const errors = watchErrors(page);
+      await visit(page, path);
+      const go = (h: string) => page.evaluate(x => { location.hash = x; }, h);
+      await go('#2023-03-gpt-4');
+      await expect(dlg(page)).toHaveAttribute('open', '');
+      await expect(page.locator('#detail-title')).toHaveText(gpt4);
+      await go('#2026-07-sandbox-escape~20260721');
+      await expect(page.locator('#detail .dbody li.hl')).toHaveAttribute('data-addr', '2026-07-sandbox-escape~20260721');
+      // 모르는 주소는 무시한다(창은 그대로)
+      await go('#없는-id');
+      await page.waitForTimeout(100);
+      await expect(dlg(page)).toHaveAttribute('open', '');
+      await expect(page.locator('#detail .dbody li.hl')).toHaveAttribute('data-addr', '2026-07-sandbox-escape~20260721');
+      // 주소를 비우면 닫는다
+      await go('');
+      await expect(dlg(page)).not.toHaveAttribute('open', '');
+      await hashIs(page, '');
+      expect(errors).toEqual([]);
+    });
+
+    test('a drag that ends on the backdrop does not close the dialog', async ({ page }) => {
+      await visit(page, path);
+      await page.locator('a.box[href="#2023-03-gpt-4"]').click();
+      await expect(dlg(page)).toHaveAttribute('open', '');
+      // 글을 고르다가 바깥에서 손을 뗀다
+      const r = (await page.locator('#detail .dbody .lede').boundingBox())!;
+      await page.mouse.move(r.x + 4, r.y + r.height / 2);
+      await page.mouse.down();
+      await page.mouse.move(8, 8, { steps: 4 });
+      await page.mouse.up();
+      await page.waitForTimeout(100);
+      await expect(dlg(page)).toHaveAttribute('open', '');
+      // 바깥에서 누르고 바깥에서 떼면 닫는다
+      await page.mouse.click(8, 8);
+      await expect(dlg(page)).not.toHaveAttribute('open', '');
+    });
+
+    test('focus stays in the dialog when arrows cross into another scene', async ({ page }) => {
+      await visit(page, path);
+      const all = await order(page);
+      const sceneOf = (a: string) => a.split('~')[0];
+      // 사건 → 다른 장면의 사건, 사건 → 장면 상자, 두 경우
+      const toItem = all.findIndex((a, i) => a.includes('~') && all[i + 1]?.includes('~') && sceneOf(all[i + 1]) !== sceneOf(a));
+      const toScene = all.findIndex((a, i) => a.includes('~') && all[i + 1] !== undefined && !all[i + 1].includes('~') && all[i + 1] !== sceneOf(a));
+      expect(toItem).toBeGreaterThanOrEqual(0);
+      expect(toScene).toBeGreaterThanOrEqual(0);
+      for (const [at, want] of [[toItem, 'li.hl'], [toScene, 'h2']] as const) {
+        await visit(page, path, '#' + all[at]);
+        await page.locator('#detail .dbody li.hl').focus();
+        await page.keyboard.press('ArrowLeft');
+        await hashIs(page, '#' + all[at + 1]);
+        expect(await page.evaluate(() => {
+          const a = document.activeElement as HTMLElement | null;
+          return a?.closest('#detail .dbody') ? (a.matches('li.hl') ? 'li.hl' : a.tagName.toLowerCase()) : String(a?.tagName);
+        })).toBe(want);
+        if (want === 'li.hl') expect(await page.evaluate(() => (document.activeElement as HTMLElement).dataset.addr)).toBe(all[at + 1]);
+      }
+    });
   });
 
   test.describe(`${lang}: phone`, () => {
@@ -298,6 +383,10 @@ for (const path of ['./', './en/']) {
       await expect(dlg(page)).toHaveAttribute('open', '');
       const r = (await dlg(page).boundingBox())!;
       expect([r.x, r.y, r.width]).toEqual([0, 0, 390]);
+      // 누르는 자리는 44px 이상
+      for (const sel of ['#detail .prev', '#detail .next', '#detail a.fix', '#detail nav.lang a']) {
+        expect((await page.locator(sel).boundingBox())!.height, sel).toBeGreaterThanOrEqual(44);
+      }
       await page.locator('#detail .x').click();
       await expect(dlg(page)).not.toHaveAttribute('open', '');
       await hashIs(page, '');

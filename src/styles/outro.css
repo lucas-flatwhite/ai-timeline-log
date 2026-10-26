@@ -1,5 +1,5 @@
 /* ── 맺음 ─────────────────────────────────────── */
-.outro{position:relative;background:var(--paper);padding-inline:16px;padding-block:18svh 10svh}
+.outro{position:relative;background:var(--paper);padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));padding-block:18svh 10svh}
 .outro-in{max-width:900px;margin:0 auto}
 .eyebrow{margin:0 0 10px;font:500 12px/1.4 var(--mono);letter-spacing:.06em}
 .outro h2{margin:0 0 6vh;font:400 clamp(40px,9vw,96px)/1.02 var(--display);letter-spacing:-.01em;text-wrap:balance}

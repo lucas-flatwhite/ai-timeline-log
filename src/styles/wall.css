@@ -1,5 +1,5 @@
 /* ── 위 막대: 이름, 언어 전환, 제보 링크. 내려도 위에 붙어 있다 ── */
-.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;height:40px;padding:0 16px;background:var(--paper);border-bottom:1px solid var(--ink)}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;height:40px;padding:0;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));background:var(--paper);border-bottom:1px solid var(--ink)}
 .top .name{font:400 16px/1 var(--display);white-space:nowrap}
 .top .lang{margin-left:auto}
 .top .report{font:500 12px/1 var(--mono);letter-spacing:.04em;text-decoration:none;white-space:nowrap}
@@ -15,7 +15,7 @@
 .lang [aria-disabled]{opacity:.35;cursor:default}
 
 /* ── 격자: 칸 64px, 간격 4px. 큰 상자가 남긴 구멍은 뒤의 작은 상자가 채운다 ── */
-.wall{display:grid;grid-template-columns:repeat(auto-fill,64px);grid-auto-rows:64px;gap:4px;grid-auto-flow:row dense;justify-content:center;padding:14px 16px 0}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,64px);grid-auto-rows:64px;gap:4px;grid-auto-flow:row dense;justify-content:center;padding:14px 0 0;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
 
 /* 표지: 4칸×3칸. 위 4×2는 일수 판화, 아래 4×1은 소개 문장. 누를 수 없다 */
 .cover{grid-column:span 4;grid-row:span 3;display:grid;grid-template-rows:132px 1fr;gap:4px}

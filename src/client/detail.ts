@@ -27,7 +27,7 @@ export function initDetail(): void {
     if (el.matches('ol.items > li')) return { article: el.closest<HTMLElement>('article')!, li: el };
     return null;
   }
-  /* 언어 링크가 지금 연 주소를 들고 간다 */
+  /* 언어 링크(위 막대·맺음·창 안)가 지금 연 주소를 들고 간다 */
   const syncLang = (h: string) => langs.forEach(a => a.setAttribute('href', a.getAttribute('href')!.replace(/#.*$/, '') + h));
   /* Safari는 replaceState를 너무 자주 부르면 SecurityError를 던진다. 주소만 못 바꾸고 창은 그대로 둔다 */
   const setUrl = (u: string) => { try { history.replaceState(null, '', u); } catch { /* 무시 */ } };
@@ -41,8 +41,8 @@ export function initDetail(): void {
     c.removeAttribute('id');
     c.querySelectorAll('[id]').forEach(e => e.removeAttribute('id'));
     c.querySelectorAll('.src').forEach(e => e.remove());
-    const h = c.querySelector('h2');
-    if (h) h.id = 'detail-title';
+    const h = c.querySelector<HTMLElement>('h2');
+    if (h) { h.id = 'detail-title'; h.tabIndex = -1; }   // 초점을 둘 곳이 없을 때 제목으로 옮긴다
     /* 목록의 사건은 키보드로도 고를 수 있다(Tab, Enter·Space) */
     c.querySelectorAll<HTMLElement>('ol.items > li').forEach(x => {
       x.classList.toggle('hl', !!li && x.dataset.addr === at);
@@ -50,10 +50,12 @@ export function initDetail(): void {
     });
     const meta = c.querySelector('.meta');
     if (li && meta) meta.textContent = li.dataset.meta!;
-    /* 다시 그리면 초점이 있던 목록 항목이 사라지므로, 새 글의 같은 항목으로 옮긴다 */
-    const was = body.contains(document.activeElement) ? (document.activeElement as HTMLElement).dataset.addr : undefined;
+    /* 다시 그리면 초점이 있던 글이 사라진다. 새 글의 같은 항목, 없으면(다른 장면) 강조한 항목, 그것도 없으면 제목으로 옮긴다 */
+    const act = document.activeElement as HTMLElement | null;
+    const had = !!act && body.contains(act), was = had ? act!.dataset.addr : undefined;
     body.replaceChildren(c);
-    if (was) [...c.querySelectorAll<HTMLElement>('ol.items > li')].find(x => x.dataset.addr === was)?.focus();
+    if (had) ((was && [...c.querySelectorAll<HTMLElement>('ol.items > li')].find(x => x.dataset.addr === was))
+      || c.querySelector<HTMLElement>('li.hl') || h)?.focus();
     /* 출처: 사건 출처가 있으면 그것, 없으면 장면 출처, 둘 다 없으면 비워서 숨긴다(:empty) */
     const from = (li && [...article.querySelectorAll<HTMLElement>('p.src[data-for]')].find(p => p.dataset.for === at))
       || article.querySelector<HTMLElement>('p.src:not([data-for])');
@@ -100,11 +102,18 @@ export function initDetail(): void {
     if (e.key === 'ArrowLeft') { e.preventDefault(); step(1); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); step(-1); }
   });
-  /* 바깥(배경) 클릭. 카드 안쪽 여백도 target이 dialog라서 좌표로 가린다 */
-  dlg.addEventListener('click', e => {
-    if (e.target !== dlg) return;
+  /* 바깥(배경) 클릭. 카드 안쪽 여백도 target이 dialog라서 좌표로 가린다.
+     글을 고르다 바깥에서 손을 떼도 click이 dialog로 오므로, 누른 곳도 바깥이어야 닫는다 */
+  const outside = (e: MouseEvent) => {
+    if (e.target !== dlg) return false;
     const r = dlg.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+    return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+  };
+  let downOut = false;
+  dlg.addEventListener('pointerdown', e => { downOut = outside(e); });
+  dlg.addEventListener('click', e => {
+    if (downOut && outside(e)) dlg.close();
+    downOut = false;
   });
   /* Esc·×·바깥 클릭이 모두 여기로 온다. 주소를 지우고 창을 연 상자로 초점을 돌린다 */
   dlg.addEventListener('close', () => {
@@ -115,8 +124,14 @@ export function initDetail(): void {
     b?.focus();
   });
 
-  /* 주소로 들어왔으면 연다. 디코딩에 실패하거나 모르는 주소면 무시한다 */
-  let start = '';
-  try { start = decodeURIComponent(location.hash.slice(1)); } catch { /* 무시 */ }
-  if (start) show(start);
+  /* 주소로 들어왔거나 주소를 손으로 고치면 연다. 디코딩에 실패하거나 모르는 주소면 무시하고, 주소를 비우면 닫는다.
+     replaceState는 hashchange를 부르지 않는다 */
+  const fromHash = () => {
+    let h = '';
+    try { h = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    if (h) show(h);
+    else if (dlg.open) dlg.close();
+  };
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 }
