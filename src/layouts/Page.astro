@@ -43,6 +43,8 @@ const plateCss = plates.map(p => `@font-face{font-family:${p.family};src:url(${b
 <link rel="icon" type="image/png" sizes="32x32" href={`${base}favicon-32.png`}>
 <link rel="icon" type="image/png" sizes="16x16" href={`${base}favicon-16.png`}>
 <link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`}>
+{/* 모듈 스크립트는 문서를 다 읽은 뒤에 돈다. 머리에 두는 것은 일찍 받기 위해서다(긴 본문 끝에 두면 본문 글꼴과 대역을 다투다 늦게 온다) */}
+<script>import '../client/main.ts';</script>
 </head>
 <body>
 <slot />
