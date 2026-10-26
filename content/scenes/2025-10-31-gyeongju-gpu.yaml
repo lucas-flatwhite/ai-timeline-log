@@ -17,7 +17,6 @@ items:
     ko: 정부와 삼성·SK·현대차에 각 5만 장, 네이버클라우드에 6만 장.
     en: "The government, Samsung, SK and Hyundai Motor Group get 50,000 each, and NAVER Cloud gets 60,000."
     glyph: { ko: "5만 장", en: "50,000" }
-    pic: chip
   - date: 2025-10-31
     ko: 황 CEO는 한국이 미국·중국 다음으로 GPU를 많이 가진 나라가 된다고 했다.
     en: "Huang says Korea will have the most GPUs of any country after the United States and China."

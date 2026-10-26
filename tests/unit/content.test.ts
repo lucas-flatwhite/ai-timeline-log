@@ -43,7 +43,12 @@ describe('loadContent', () => {
     const names = Object.keys(c.pics), used = new Set(c.scenes.flatMap(s => s.items).flatMap(it => it.pic ? [it.pic] : []));
     expect(names.length).toBeGreaterThanOrEqual(10);
     expect([...used].sort()).toEqual([...names].sort());   // 쓰이지 않는 그림이 없다
-    for (const p of Object.values(c.pics)) expect(p.d.trim()).toMatch(/^M[\s\S]*Z$/);
+    for (const [name, p] of Object.entries(c.pics)) {
+      // 조각마다 닫혀 있다(M 수 = Z 수), 기준점은 100×100 안
+      expect(p.d.trim(), name).toMatch(/^M[\s\S]*Z$/);
+      expect((p.d.match(/[Mm]/g) ?? []).length, name).toBe((p.d.match(/[Zz]/g) ?? []).length);
+      for (const v of [p.cx, p.cy]) { expect(v, name).toBeGreaterThanOrEqual(0); expect(v, name).toBeLessThanOrEqual(100); }
+    }
   });
 
   test('requires a glyph on every event', () => {
