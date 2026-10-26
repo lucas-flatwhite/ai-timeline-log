@@ -1,9 +1,13 @@
 /* 용량 예산을 검사한다: 언어별 판 글꼴 합계와 클라이언트 JS 합계(압축 전, 바이트).
    빌드 결과(dist/)를 읽으므로 npm run build 뒤에 돈다. 넘으면 종료 코드 1.
+   사이트 글(site.yaml의 <언어>)이 있는 언어에 판 글꼴 파일이 하나도 없어도 종료 코드 1이다(조용히 통과하지 않게).
    시험할 때는 BUDGET_FONT, BUDGET_JS 환경 변수로 한도를 바꾼다. */
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { parse } from 'yaml';
 
 const dist = new URL('../dist/', import.meta.url);
+const site = parse(readFileSync(new URL('../content/site.yaml', import.meta.url), 'utf8')) as Record<string, unknown>;
+const EXPECTED = ['ko', 'en'].filter(l => site[l]);   // 판 글꼴이 있어야 하는 언어
 const limit = (name: string, fallback: number): number => {
   const v = process.env[name];
   if (v === undefined || v === '') return fallback;
@@ -35,6 +39,7 @@ for (const f of fonts) {
   byLocale.set(locale, (byLocale.get(locale) ?? 0) + f.size);
 }
 for (const [locale, size] of byLocale) rows.push({ label: `판 글꼴 ${locale}`, size, limit: FONT });
+const missing = EXPECTED.filter(l => !byLocale.has(l));
 rows.push({ label: '클라이언트 JS', size: js.reduce((n, f) => n + f.size, 0), limit: JS });
 
 const w = Math.max(...rows.map(r => r.label.length));
@@ -44,5 +49,9 @@ for (const r of rows) {
   const ok = r.size <= r.limit;
   if (!ok) failed = true;
   console.log(`${r.label.padEnd(w)}  ${(r.size + 'B').padStart(8)}  ${(r.limit + 'B').padStart(8)}  ${ok ? '통과' : '초과'}`);
+}
+for (const l of missing) {
+  failed = true;
+  console.error(`판 글꼴 ${l}: dist/plate/${l}-*.woff2가 없습니다(site.yaml에 ${l} 글이 있음)`);
 }
 process.exit(failed ? 1 : 0);

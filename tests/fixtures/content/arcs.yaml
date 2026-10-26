@@ -1,3 +1,4 @@
 - from: 2022-11
   to: 2023
   ko: { title: 묻고 답하기, body: 본문 }
+  en: { title: Ask and answer, body: Body }

@@ -139,7 +139,7 @@ describe('buildView(en)', () => {
   test('cover, canonical and language switch', () => {
     expect(e.cover).toEqual({
       glyph: '1,425 days', tpl: '{days} days', start: '2022-11-30',
-      lede: 'A record of the moments AI has passed through, from ChatGPT’s launch on November 30, 2022 to the present.',
+      lede: 'A record of the moments AI has passed through, from ChatGPT’s launch on November 30, 2022, to the present.',
     });
     expect(e.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/en/');
     expect(e.langs.map(l => [l.label, l.current])).toEqual([['KO', false], ['EN', true]]);

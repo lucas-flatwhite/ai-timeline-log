@@ -12,3 +12,10 @@ ko:
   ogDescription: "공유 {count}"
   ledgerNote: 계보 메모
   sourcesNote: "{asOfLong}까지의 보도."
+en:
+  heroGlyph: { wide: "{days} days", tall: "{days}\ndays" }
+  lede: "From {startLong} to {asOfLong}: {count} scenes."
+  description: "Description {count}"
+  ogDescription: "Share {count}"
+  ledgerNote: Lineage note
+  sourcesNote: "Reports up to {asOfLong}."

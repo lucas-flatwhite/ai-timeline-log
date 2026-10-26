@@ -40,13 +40,13 @@ export const sceneSchema = z.object({
   sources: z.array(source).default([]),
   corrections: z.array(z.object({ date: dayDate, ko: text, en: text.optional() })).default([]),
   items: z.array(z.object({
-    date: isoDate, ko: text, en: text.optional(),
+    date: isoDate, ko: text, en: text,
     glyph: glyphSpec,
     pic: z.string().optional(),
     sources: z.array(source).default([]),
   })).min(3).max(4),
   ko: sceneText,
-  en: sceneText.optional(),
+  en: sceneText,
 });
 
 const siteText = z.object({
@@ -58,13 +58,13 @@ const siteText = z.object({
   sourcesNote: text,
   making: text.optional(),
 });
-export const siteSchema = z.object({ name: text, repo: z.url(), start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText.optional() });
+export const siteSchema = z.object({ name: text, repo: z.url(), start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText });
 
 const titled = z.object({ title: text, body: text });
-export const yearsSchema = z.record(z.string().regex(/^\d{4}$/), z.object({ ko: titled, en: titled.optional() }));
-export const arcsSchema = z.array(z.object({ from: isoDate, to: isoDate.optional(), ko: titled, en: titled.optional() }));
+export const yearsSchema = z.record(z.string().regex(/^\d{4}$/), z.object({ ko: titled, en: titled }));
+export const arcsSchema = z.array(z.object({ from: isoDate, to: isoDate.optional(), ko: titled, en: titled }));
 export const ledgerSchema = z.array(z.object({
-  lab: z.object({ ko: text, en: text.optional() }),
+  lab: z.object({ ko: text, en: text }),
   models: z.array(z.object({ name: text, date: isoDate })).min(1),
 }));
 export const sourcesSchema = z.array(z.object({ url: z.url(), title: text }));

@@ -8,10 +8,7 @@ import Outro from '../../components/Outro.astro';
 import { loadContent } from '../../lib/content.ts';
 import { buildView } from '../../lib/view.ts';
 
-// 영어 사이트 글(site.en)이 생기기 전에는 한국어 페이지로 보낸다
-const c = loadContent();
-if (!c.site.en) return Astro.redirect(import.meta.env.BASE_URL.replace(/\/?$/, '/'));
-const view = buildView(c, 'en');
+const view = buildView(loadContent(), 'en');
 ---
 <Page view={view}>
 <TopBar view={view} />

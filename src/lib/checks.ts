@@ -41,15 +41,12 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
   for (const s of c.scenes) {
     const sw = `scene ${s.id}`;
 
-    // 영어로 해석되는 핵심어에는 한글이 없어야 한다(번역을 빠뜨린 경우). 영어 글이 아직 없으면 건너뛴다.
-    if (s.en) {
-      const g = s.en.glyph ?? s.print.glyph;
-      if (hasHangul(g)) errors.push(`${sw}: en glyph "${g}" contains Hangul`);
-    }
+    // 영어로 해석되는 핵심어에는 한글이 없어야 한다(번역을 빠뜨린 경우)
+    const g = s.en.glyph ?? s.print.glyph;
+    if (hasHangul(g)) errors.push(`${sw}: en glyph "${g}" contains Hangul`);
 
     for (const loc of ['ko', 'en'] as const) {
       const t = s[loc];
-      if (!t) continue;
       add(`${sw}: ${loc}.kicker`, t.kicker, true);
       add(`${sw}: ${loc}.title`, t.title, true);
       add(`${sw}: ${loc}.lede`, t.lede, true);
@@ -64,10 +61,9 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
       add(`${iw} en`, it.en, true);
       if (typeof it.glyph === 'string') add(`${iw} glyph`, it.glyph, false);
       else { add(`${iw} ko glyph`, it.glyph.ko, false); add(`${iw} en glyph`, it.glyph.en, false); }
-      // 영어로 해석되는 핵심어에 한글이 없어야 한다. 영어 글이 있는 사건은 문자열 핵심어도 영어로 쓰이고,
-      // { ko, en } 꼴의 en은 영어 글이 없어도 영어 핵심어를 뜻한다.
+      // 영어로 해석되는 핵심어(문자열이면 그대로, { ko, en }이면 en)에 한글이 없어야 한다
       const enGlyph = glyphFor(it.glyph, 'en');
-      if ((it.en || typeof it.glyph !== 'string') && hasHangul(enGlyph)) errors.push(`${iw} en glyph "${enGlyph}" contains Hangul`);
+      if (hasHangul(enGlyph)) errors.push(`${iw} en glyph "${enGlyph}" contains Hangul`);
       if (it.pic !== undefined && !(it.pic in c.pics)) errors.push(`${iw}: pic "${it.pic}" is not in pics.yaml`);
 
       const longOnes = new Set<string>();
@@ -88,20 +84,19 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
 
   for (const [y, v] of Object.entries(c.years)) {
     for (const loc of ['ko', 'en'] as const) {
-      add(`years.yaml ${y}.${loc}.title`, v[loc]?.title, true);
-      add(`years.yaml ${y}.${loc}.body`, v[loc]?.body, true);
+      add(`years.yaml ${y}.${loc}.title`, v[loc].title, true);
+      add(`years.yaml ${y}.${loc}.body`, v[loc].body, true);
     }
   }
   c.arcs.forEach((a, i) => {
     for (const loc of ['ko', 'en'] as const) {
-      add(`arcs.yaml ${i}.${loc}.title`, a[loc]?.title, true);
-      add(`arcs.yaml ${i}.${loc}.body`, a[loc]?.body, true);
+      add(`arcs.yaml ${i}.${loc}.title`, a[loc].title, true);
+      add(`arcs.yaml ${i}.${loc}.body`, a[loc].body, true);
     }
   });
   // 사이트 소개글은 "현재까지"처럼 상대 시간을 써도 된다(relative=false)
   for (const loc of ['ko', 'en'] as const) {
     const t = c.site[loc];
-    if (!t) continue;
     for (const [k, v] of Object.entries(t)) {
       if (typeof v === 'string') add(`site.yaml ${loc}.${k}`, v, false);
       else for (const [k2, v2] of Object.entries(v)) add(`site.yaml ${loc}.${k}.${k2}`, v2 as string, false);

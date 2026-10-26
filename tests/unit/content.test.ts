@@ -53,8 +53,24 @@ describe('loadContent', () => {
 
   test('requires a glyph on every event', () => {
     const dir = copyFixture();
-    edit(dir, SCENE, s => s.replace('{ date: 2023-03-15, ko: 항목 하나, glyph: 하나 }', '{ date: 2023-03-15, ko: 항목 하나 }'));
+    edit(dir, SCENE, s => s.replace(', glyph: { ko: 하나, en: ONE } }', ' }'));
     expect(() => loadContent(dir)).toThrowError(/items\.0\.glyph/);
+  });
+
+  test('requires English on every scene, event, year, arc, lab and the site', () => {
+    const dir = copyFixture();
+    edit(dir, SCENE, s => s.replace(/^en: .*\n/m, ''));
+    expect(() => loadContent(dir)).toThrow(/en: .*Required|expected object/);
+    edit(dir, SCENE, s => s.replace(', en: Item one', ''));
+    edit(dir, 'site.yaml', s => s.replace(/^en:[\s\S]*$/m, ''));
+    edit(dir, 'years.yaml', s => s.replace(/^  en: .*\n/m, ''));
+    edit(dir, 'arcs.yaml', s => s.replace(/^  en: .*\n/m, ''));
+    edit(dir, 'ledger.yaml', s => s.replace(', en: OpenAI', ''));
+    let msg = '';
+    try { loadContent(dir); } catch (e) { msg = (e as Error).message; }
+    for (const field of [`${SCENE}: en`, `${SCENE}: items.0.en`, 'site.yaml: en', 'years.yaml: 2023.en', 'arcs.yaml: 0.en', 'ledger.yaml: 0.lab.en']) {
+      expect(msg).toContain(field);
+    }
   });
 
   test('names the file and field of a missing value', () => {

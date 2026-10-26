@@ -63,7 +63,7 @@ type Entry = WallEntry & { box: BoxView };
 export function buildView(c: Content, locale: Locale, today: string = todayISO()): PageView {
   const t = uiFor(locale);
   const { site } = c;
-  const st = need(site[locale], `site.${locale}`);
+  const st = site[locale];
   const days = daysBetween(site.start, today).toLocaleString('en-US');
   const count = c.scenes.length;
   const startDot = formatDot(site.start), asOfDot = formatDot(site.asOf);
@@ -86,7 +86,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   const scenes: SceneDetail[] = [];
 
   c.scenes.forEach((s, i) => {
-    const text = need(s[locale], `${s.id}.${locale}`);
+    const text = s[locale];
     const sceneDate = ymd(s.date);
     const sources = s.sources.map(x => ({ url: x.url, title: x.title }));
     entries.push({
@@ -101,7 +101,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     const addrs = itemAddresses(s.id, s.items.map(it => it.date));
     const items: ItemDetail[] = s.items.map((it, k) => {
       const addr = addrs[k], date = ymd(it.date);
-      const body = need(it[locale], `${s.id}.items.${k}.${locale}`);
+      const body = it[locale];
       entries.push({
         kind: 'item', date: it.date, order: s.order, seq: i * 100 + k + 1,
         box: {
@@ -152,7 +152,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
     canonical, ogImage: `${ORIGIN}og/${locale}.png`,
     alternates: [
-      ...locales.filter(l => ui[l.code] && site[l.code]).map(l => ({ hreflang: l.code, href: ORIGIN + l.path })),
+      ...locales.filter(l => ui[l.code]).map(l => ({ hreflang: l.code, href: ORIGIN + l.path })),
       { hreflang: 'x-default', href: ORIGIN },
     ],
     name: site.name, report: { label: t.report, href: `${site.repo}/issues` },
@@ -161,17 +161,16 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources },
     aria: { wall: t.wall, details: t.details },
     langNav: t.langNav,
-    langs: locales.map(l => (ui[l.code] && site[l.code]
+    langs: locales.map(l => (ui[l.code]
       ? { ...l, current: l.code === locale }
       : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
     outro: {
       bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
-      arcs: c.arcs.map(a => {
-        const at = need(a[locale], `arc.${locale}`);
-        return { span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: at.title, body: at.body };
-      }),
+      arcs: c.arcs.map(a => ({
+        span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: a[locale].title, body: a[locale].body,
+      })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
-      ledger: c.ledger.map(l => ({ lab: need(l.lab[locale], `ledger.lab.${locale}`), models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
+      ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
       sourcesTitle: t.sourcesTitle, sourcesNote: fill(st.sourcesNote, vars),
       sources: c.sources.map(s => ({ url: s.url, title: s.title })),
       end: [t.endCount(count, startDot, t.now), title],

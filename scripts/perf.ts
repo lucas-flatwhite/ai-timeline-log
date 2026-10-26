@@ -3,6 +3,7 @@
    기기 배율은 2다(휴대폰은 2배 이상이고 판은 기기 화소로 새긴다). 목표를 넘으면 OVER를 적되 종료 코드는 0이다.
    기본은 미리보기 서버(npx astro preview --port 4321, HTTP/1.1)를 잰다.
    --h2: dist/를 자체 서명 인증서의 HTTP/2 서버로 직접 내주고 잰다(실제 호스팅처럼). 인증서는 임시 폴더에 만들고 지운다.
+   기본은 두 언어(ko, en)를 모두 잰다(언어 2 × 폭 2 = 4줄). --locale로 한 언어만 잴 수 있다.
    사용: node scripts/perf.ts [--locale ko|en] [--h2] */
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
@@ -25,26 +26,20 @@ const VIEWS = [
   { width: 1440, height: 900, target: 2000 },
 ];
 
-/* 인자: --locale ko|en, --h2. 모르는 인자는 받지 않는다(--locale=en처럼 잘못 쓰면 조용히 ko를 재게 된다) */
+/* 인자: --locale ko|en, --h2. 모르는 인자는 받지 않는다(--locale=en처럼 잘못 쓰면 조용히 엉뚱한 것을 재게 된다) */
 const USAGE = '사용: node scripts/perf.ts [--locale ko|en] [--h2]';
-let locale = 'ko', h2 = false;
+let only: string | undefined, h2 = false;
 for (let i = 2; i < process.argv.length; i++) {
   const a = process.argv[i]!;
   if (a === '--h2') h2 = true;
-  else if (a === '--locale' && i + 1 < process.argv.length) locale = process.argv[++i]!;
+  else if (a === '--locale' && i + 1 < process.argv.length) only = process.argv[++i]!;
   else { console.error(`모르는 인자: ${a}\n${USAGE}`); process.exit(2); }
 }
-if (locale !== 'ko' && locale !== 'en') { console.error(`--locale은 ko 또는 en입니다: ${locale}\n${USAGE}`); process.exit(2); }
+if (only !== undefined && only !== 'ko' && only !== 'en') { console.error(`--locale은 ko 또는 en입니다: ${only}\n${USAGE}`); process.exit(2); }
+const LOCALES = only ? [only] : ['ko', 'en'];
 
 const root = new URL('..', import.meta.url);
 const dist = fileURLToPath(new URL('dist/', root));   // 끝이 /로 끝난다
-
-/* 영어 사이트 글이 아직 없으면 /en/은 한국어로 보내는 페이지일 뿐이다. 잴 것이 없다 */
-if (locale === 'en') {
-  const plate = new URL('src/generated/plate.json', root);
-  const has = existsSync(plate) && 'en' in JSON.parse(readFileSync(plate, 'utf8'));
-  if (!has) { console.log('en 판 글꼴이 없습니다(site.en 없음). /en/은 한국어로 보내기만 하므로 재지 않습니다.'); process.exit(0); }
-}
 
 /* --h2: base 경로를 벗겨 dist/의 파일로 매핑한다. 폴더는 index.html, dist 밖으로 나가는 경로는 404.
    실제 호스팅과 미리보기 서버처럼 글(html·js·css·json·svg)은 gzip으로 보낸다 */
@@ -148,26 +143,28 @@ if (h2) {
   const up = await fetch(PREVIEW + BASE).then(r => r.ok, () => false);
   if (!up) { console.error(`미리보기 서버가 없습니다: ${PREVIEW + BASE}\nnpm run build && npx astro preview --port 4321 --ignore-lock`); process.exit(2); }
 }
-const url = origin + BASE + (locale === 'en' ? 'en/' : '');
 
 const b = await chromium.launch();
 try {
-  const rows: { v: (typeof VIEWS)[number]; runs: Run[] }[] = [];
-  for (const v of VIEWS) {
-    const runs: Run[] = [];
-    for (let i = 0; i < RUNS; i++) runs.push(await measure(b, url, v));
-    rows.push({ v, runs });
+  const rows: { locale: string; v: (typeof VIEWS)[number]; runs: Run[] }[] = [];
+  for (const locale of LOCALES) {
+    const url = origin + BASE + (locale === 'en' ? 'en/' : '');
+    for (const v of VIEWS) {
+      const runs: Run[] = [];
+      for (let i = 0; i < RUNS; i++) runs.push(await measure(b, url, v));
+      rows.push({ locale, v, runs });
+    }
   }
   const { proto, gzip } = rows[0]!.runs[0]!, packed = gzip ? '압축 gzip' : '압축 없음';
   console.log(h2
     ? `로컬 HTTP/2 서버(자체 서명 인증서, dist/를 직접)로 쟀다. 관측: ${proto || '?'}, ${packed}.`
     : `미리보기 서버는 HTTP/1.1이라 실제 호스팅(HTTP/2)보다 불리하다. 관측: ${proto || '?'}, ${packed}.`);
-  console.log(`${url}  locale ${locale}  dpr ${DPR}  CPU ${CPU}x  지연 ${NET.latency}ms  ${NET.downloadThroughput * 8 / 1e6}Mbps  ${RUNS}회 중앙값`);
-  console.log(['폭', '첫 화면', '각 회', '준비', '판 글꼴 도착', '그때까지 받은 양', '목표', ''].join('\t'));
-  for (const { v, runs } of rows) {
+  console.log(`${origin + BASE}  dpr ${DPR}  CPU ${CPU}x  지연 ${NET.latency}ms  ${NET.downloadThroughput * 8 / 1e6}Mbps  ${RUNS}회 중앙값`);
+  console.log(['언어', '폭', '첫 화면', '각 회', '준비', '판 글꼴 도착', '그때까지 받은 양', '목표', ''].join('\t'));
+  for (const { locale, v, runs } of rows) {
     const first = med(runs.map(r => r.first));
     console.log([
-      v.width, s(first), runs.map(r => s(r.first)).join('/'), s(med(runs.map(r => r.ready))),
+      locale, v.width, s(first), runs.map(r => s(r.first)).join('/'), s(med(runs.map(r => r.ready))),
       s(med(runs.map(r => r.font))), Math.round(med(runs.map(r => r.bytes)) / 1024) + 'KB', s(v.target), first > v.target ? 'OVER' : 'ok',
     ].join('\t'));
   }

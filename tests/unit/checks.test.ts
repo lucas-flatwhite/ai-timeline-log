@@ -27,8 +27,6 @@ describe('checkContent', () => {
   test('Hangul string keyword on an item that has English text', () => {
     const errs = errsOf(c => { c.scenes[0].items[0].en = 'An event.'; c.scenes[0].items[0].glyph = '속도'; });
     expect(errs).toContainEqual(expect.stringMatching(/items\.0 en glyph .*Hangul/));
-    // 영어 글이 없으면 걸리지 않는다
-    expect(errsOf(c => { c.scenes[0].items[0].en = undefined; c.scenes[0].items[0].glyph = '속도'; }).join()).not.toMatch(/Hangul/);
   });
   test('scene en without glyph falls back to a Hangul print.glyph', () => {
     const errs = errsOf(c => {
