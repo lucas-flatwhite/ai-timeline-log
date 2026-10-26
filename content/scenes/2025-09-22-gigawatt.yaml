@@ -15,7 +15,7 @@ items:
     glyph: $1.5B
   - date: 2025-09-22
     ko: 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약.
-    en: "NVIDIA announces its intent to invest up to $100 billion in OpenAI (10 GW), around the same time as large deals with Oracle, AMD and Broadcom."
+    en: "NVIDIA announces its intent to invest up to $100 billion in OpenAI (10 GW), and around the same time, OpenAI also signs large deals with Oracle, AMD and Broadcom."
     glyph: $100B
   - date: 2025-09-30
     ko: OpenAI, Sora 2와 영상 소셜 앱 Sora 출시.

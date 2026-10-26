@@ -11,7 +11,7 @@ items:
   - date: 2025-02-02
     ko: 안드레이 카파시, ‘바이브 코딩’이라는 말을 처음 썼다.
     en: "Andrej Karpathy coins the term “vibe coding.”"
-    glyph: { ko: "바이브", en: "VIBE" }
+    glyph: { ko: "바이브", en: "COINED" }
   - date: 2025-02-02
     ko: OpenAI, 웹을 뒤져 보고서를 쓰는 딥 리서치 공개.
     en: "OpenAI releases deep research, which searches the web and writes reports."

@@ -12,7 +12,7 @@
   - 그 장면 어디에나 맞는 일반어: 투자, 중단, 퇴사, 광고, 지정, 인용
   - 어느 회사 모델인지 모르는 번호만 있음: 3.5, 4.5, 5.2, 4.6, 5.6, 5.5
   - 같은 장면 안에서 비슷해 보이는 숫자: 14,000(바로 옆 사건이 4,000)
-- 장면의 대표 사건이 장면 상자와 같은 핵심어를 쓰는 경우(Llama 2, Sora, Claude 3, o1, MCP, AD, -$285B)는 그대로 두었습니다. "겹치지 않음"은 사건끼리의 규칙으로 읽었습니다. 이런 상자도 다른 말로 바꾸기를 원하시면 알려 주세요.
+- 장면의 대표 사건이 장면 상자와 같은 핵심어를 쓰는 경우(Llama 2, Sora, Claude 3, o1, MCP, AD)는 그대로 두었습니다. `-$285B`는 장면 핵심어 `$285B`와 부호가 달라 같은 핵심어가 아닙니다. "겹치지 않음"은 사건끼리의 규칙으로 읽었습니다. 이런 상자도 다른 말로 바꾸기를 원하시면 알려 주세요.
 - 특히 봐 주실 곳
   - `클릭`(오퍼레이터): 이름이 다섯 자라 한 줄에 들어가지 않고, 낱말 경계에서 나눌 수도 없습니다. 그래서 브라우저를 대신 눌러 주는 동작을 골랐습니다.
   - `영국`(블레츨리): 다른 정상회의 사건이 개최지 이름(`서울`, `파리`)을 쓰는 것에 맞췄습니다.
@@ -179,6 +179,7 @@
   - 장면: 한글 `print.glyph` 10개에 `en.glyph`를 더했습니다.
 - 모두 한 줄 라틴 7자 이내이고, 같은 장면의 사건끼리 겹치지 않습니다.
 - 15번 작업이 아래 표 전부를 다시 봅니다.
+  - 15번 작업에서 다시 봤습니다. 확정한 영어 핵심어는 3절의 표가 이 표를 대신합니다. 아래 `PACE`·`VIBE` 겹침도 3절에서 풀었습니다.
   - `PACE`(장면 2026-09-pace)는 같은 장면의 사건 `PACE`와 같습니다.
   - `VIBE`(사건)는 장면 핵심어 `VIBE`와 같습니다.
   - 사건끼리 같은 영어 핵심어는 없습니다(1절의 정책과 같습니다).
@@ -277,7 +278,7 @@
 - 2026-06-09 `Claude Fable 5`: Anthropic 성명 본문은 `Fable 5`, `Mythos 5`로 적습니다(주소에는 `claude-fable-5`). 원문 표기를 따랐습니다.
 - 2026-09-22 "GPT-6 Sol·Luna": 확인할 출처를 찾지 못했습니다. Post-Cutoff 정리 페이지에는 `GPT-5.6 Sol`만 나옵니다. 이름을 다시 확인할 필요가 있습니다. 같은 사건의 `Claude Sonnet 5.5`는 Anthropic 발표문으로 확인했습니다.
 - 2026-02-02 "합산 기업가치 1.25조 달러": xAI 발표문(`xai-joins-spacex`)에는 가치 평가가 없습니다. 보도 기준 수치로 보입니다.
-- 2026-02-04 슈퍼볼 광고 문구 ‘AI에 광고가 온다. Claude에는 아니다’: 영어 원문을 확인하지 못해 "Ads are coming to AI. But not to Claude."로 되옮겼습니다. 광고 원문과 맞춰 봐야 합니다.
+- 2026-02-04 슈퍼볼 광고 문구 ‘AI에 광고가 온다. Claude에는 아니다’: "Ads are coming to AI. But not to Claude."로 옮겼습니다. 15번 작업에서 닫음: 장면 출처 MacRumors 기사(`macrumors.com/2026/02/04/anthropic-clause-no-ads`)의 광고 문구와 글자 그대로 같습니다.
 - 2026-01-22 "세계에서 가장 먼저 전면 시행": 한국 정부의 설명입니다. EU AI Act가 단계적으로 먼저 시행 중이라 "전면"의 기준에 따라 다르게 읽힐 수 있습니다. 영어도 "fully into effect"로 같은 단서를 살렸습니다.
 
 ### 장면별 ko | en
@@ -314,7 +315,7 @@
 | kicker | 성능 도약 | Leap in Capability |
 | title | GPT-4 | GPT-4 |
 | lede | 이미지를 읽고 미국 모의 변호사시험에서 상위 10% 점수를 낸 GPT-4가 나왔다. 같은 날 Anthropic이 첫 Claude를 공개했다. | GPT-4 arrived, reading images and scoring in the top 10% on a simulated U.S. bar exam. The same day, Anthropic released its first Claude. |
-| 2023-03-15 | 미드저니 v5 공개. 며칠 뒤 ‘패딩 입은 교황’ 합성 사진이 진짜처럼 퍼졌다. | Midjourney releases v5; days later a fake image of the pope in a puffer jacket spreads as if it were real. |
+| 2023-03-15 | 미드저니 v5 공개. 며칠 뒤 ‘패딩 입은 교황’ 합성 사진이 진짜처럼 퍼졌다. | Midjourney releases v5; days later an AI-generated image of the pope in a puffer jacket spreads as if it were real. |
 | 2023-03-22 | 머스크·워즈니악 등이 GPT-4보다 강한 AI의 훈련을 6개월 멈추자는 공개서한에 서명. | Elon Musk, Steve Wozniak and others sign an open letter calling for a six-month pause in training AI more powerful than GPT-4. |
 | 2023-03-31 | 이탈리아 개인정보 당국, ChatGPT 접속 차단. 약 한 달 뒤 풀렸다. | Italy’s data protection authority blocks access to ChatGPT; the block is lifted about a month later. |
 
@@ -324,7 +325,7 @@
 | --- | --- | --- |
 | kicker | 경고 | Warning |
 | title | 만든 사람들의 경고 | Warnings from the Builders |
-| lede | 딥러닝을 연 연구자와 AI 회사 대표가 직접 위험을 말하기 시작했다. 규제가 정치 의제가 됐다. | A researcher who helped open up deep learning and the heads of AI companies began to speak about the risks themselves. Regulation became a political issue. |
+| lede | 딥러닝을 연 연구자와 AI 회사 대표가 직접 위험을 말하기 시작했다. 규제가 정치 의제가 됐다. | A researcher who pioneered deep learning and the heads of AI companies began to speak about the risks themselves. Regulation became a political issue. |
 | 2023-05-01 | 제프리 힌턴, AI 위험을 자유롭게 말하겠다며 10년 일한 구글을 떠났다. | Geoffrey Hinton leaves Google after ten years, saying he wants to speak freely about the risks of AI. |
 | 2023-05-02 | 미국 작가조합 파업 시작. AI 사용 제한이 핵심 쟁점이 됐다(9월 타결). | The Writers Guild of America goes on strike, with limits on AI use as a core issue (settled in September). |
 | 2023-05-16 | 샘 올트먼, 미 상원 청문회에서 강력한 모델에 정부 면허제를 두자고 제안. | Sam Altman proposes a government licensing regime for powerful models at a U.S. Senate hearing. |
@@ -384,7 +385,7 @@
 | --- | --- | --- |
 | kicker | 음성 | Voice |
 | title | GPT-4o, 듣고 말하고 보다 | GPT-4o Hears, Speaks and Sees |
-| lede | 말을 끊고 웃으며 대화하는 음성 AI가 시연됐다. 서울에서는 두 번째 AI 정상회의가 열렸다. | A voice AI that could be cut off mid-sentence and laughed as it talked was demonstrated. Seoul hosted the second AI summit. |
+| lede | 말을 끊고 웃으며 대화하는 음성 AI가 시연됐다. 서울에서는 두 번째 AI 정상회의가 열렸다. | A voice AI was demonstrated that could be interrupted mid-sentence and laughed as it talked. Seoul hosted the second AI summit. |
 | 2024-05-13 | OpenAI, 실시간 음성 대화 GPT-4o 공개. 스칼렛 요한슨이 목소리가 닮았다고 항의해 해당 음성을 내렸다. | OpenAI releases GPT-4o for real-time voice conversation, then pulls one voice after Scarlett Johansson objects that it sounds like hers. |
 | 2024-05-14 | 구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다. | At Google I/O, Google puts AI summaries (AI Overviews) at the top of search results. |
 | 2024-05-14 | 일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다. | Ilya Sutskever leaves OpenAI, and the Superalignment team in charge of long-term safety is disbanded. |
@@ -394,7 +395,7 @@
 
 | 칸 | ko | en |
 | --- | --- | --- |
-| kicker | 돈의 흐름 | Follow the Money |
+| kicker | 돈의 흐름 | Where the Money Went |
 | title | 엔비디아, 세계 1위 | NVIDIA, Number One in the World |
 | lede | AI 칩 수요가 몰리며 엔비디아가 처음으로 시가총액 세계 1위에 올랐다. 애플은 아이폰에 생성형 AI를 넣겠다고 했다. | As demand for AI chips piled up, NVIDIA became the world’s most valuable company for the first time. Apple said it would bring generative AI to the iPhone. |
 | 2024-06-10 | 애플, Apple Intelligence 발표. 시리가 어려운 질문은 ChatGPT에 넘긴다. | Apple announces Apple Intelligence, and Siri passes hard questions to ChatGPT. |
@@ -494,7 +495,7 @@
 | title | AI에게 털어놓은 아이들 | The Children Who Confided in AI |
 | lede | 챗봇에게 마음을 털어놓던 십대의 죽음이 법정으로 갔다. 회사들은 미성년자 보호 장치를 서둘러 내놓았다. | The death of a teenager who had been pouring his heart out to a chatbot went to court. Companies rushed out protections for minors. |
 | 2025-08-26 | 16세 애덤 레인의 부모, 아들이 ChatGPT와 나눈 대화를 근거로 OpenAI와 샘 올트먼을 제소. | The parents of 16-year-old Adam Raine sue OpenAI and Sam Altman, citing their son’s conversations with ChatGPT. |
-| 2025-09-11 | 미국 연방거래위원회, OpenAI·메타·캐릭터AI 등 7개사에 청소년 대상 챗봇 안전 조치 자료 제출 요구. | The U.S. Federal Trade Commission asks seven companies, including OpenAI, Meta and Character.AI, for information on their safety measures for chatbots used by teenagers. |
+| 2025-09-11 | 미국 연방거래위원회, OpenAI·메타·캐릭터AI 등 7개사에 청소년 대상 챗봇 안전 조치 자료 제출 요구. | The U.S. Federal Trade Commission orders seven companies, including OpenAI, Meta and Character.AI, to report on their safety measures for chatbots used by teenagers. |
 | 2025-09-29 | OpenAI, 부모가 자녀 계정을 연결해 관리하는 보호자 기능 출시. | OpenAI launches parental controls that let parents link and manage their children’s accounts. |
 | 2025-10-29 | 캐릭터AI, 11월 25일부터 18세 미만의 자유 대화를 막겠다고 발표. | Character.AI announces that from November 25 it will block open-ended chat for users under 18. |
 
@@ -506,7 +507,7 @@
 | title | 기가와트 단위 계약 | Deals by the Gigawatt |
 | lede | 모델 경쟁이 전력과 칩 확보 경쟁으로 번졌다. 데이터센터 계약이 기가와트 단위로 체결됐다. | The race for models spread into a race for power and chips. Data center deals were signed by the gigawatt. |
 | 2025-09-05 | Anthropic, 작가 집단소송에서 15억 달러 합의. AI 저작권 분쟁 사상 최대. | Anthropic agrees to a $1.5 billion settlement in an authors’ class action, the largest ever in an AI copyright dispute. |
-| 2025-09-22 | 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약. | NVIDIA announces its intent to invest up to $100 billion in OpenAI (10 GW), around the same time as large deals with Oracle, AMD and Broadcom. |
+| 2025-09-22 | 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약. | NVIDIA announces its intent to invest up to $100 billion in OpenAI (10 GW), and around the same time, OpenAI also signs large deals with Oracle, AMD and Broadcom. |
 | 2025-09-30 | OpenAI, Sora 2와 영상 소셜 앱 Sora 출시. | OpenAI launches Sora 2 and Sora, a social video app. |
 | 2025-10-29 | 엔비디아, 세계 최초로 시가총액 5조 달러. | NVIDIA becomes the first company in the world worth $5 trillion. |
 
@@ -525,12 +526,12 @@
 
 | 칸 | ko | en |
 | --- | --- | --- |
-| kicker | 추월 | Overtaken |
+| kicker | 추월 | Overtaking |
 | title | 제미나이 3와 ‘코드 레드’ | Gemini 3 and “Code Red” |
 | lede | 구글 제미나이 3가 주요 벤치마크 선두에 서자 OpenAI 안에 비상이 걸렸다. | When Google’s Gemini 3 took the lead on major benchmarks, OpenAI went on alert internally. |
 | 2025-11-18 | 구글, Gemini 3 공개. | Google releases Gemini 3. |
 | 2025-11-24 | Anthropic, Claude Opus 4.5 공개. | Anthropic releases Claude Opus 4.5. |
-| 2025-12-01 | 올트먼, 사내에 ‘코드 레드’ 메모. 12월 11일 GPT-5.2를 앞당겨 냈다. | Altman sends a “code red” memo to staff, and GPT-5.2 is brought forward to December 11. |
+| 2025-12-01 | 올트먼, 사내에 ‘코드 레드’ 메모. 12월 11일 GPT-5.2를 앞당겨 냈다. | Altman sends a “code red” memo to staff, and GPT-5.2’s release is moved up to December 11. |
 | 2025-12-09 | Anthropic, MCP를 리눅스 재단 산하 에이전틱 AI 재단에 기증. | Anthropic donates MCP to the Agentic AI Foundation under the Linux Foundation. |
 
 #### 2025-11-music-deals
@@ -670,7 +671,7 @@
 | --- | --- | --- |
 | kicker | 속도 | Pace |
 | title | 속도를 늦추자는 목소리 | Voices for Slowing Down |
-| lede | AI 회사 대표들까지 개발 속도 조절을 말하기 시작했다. OpenAI는 에이전트 이탈 사고로 훈련을 두 차례 멈췄다. 새 모델은 그 사이에도 나왔다. | Even the heads of AI companies began to talk about slowing development. OpenAI halted training twice after agents got loose. New models kept coming in the meantime. |
+| lede | AI 회사 대표들까지 개발 속도 조절을 말하기 시작했다. OpenAI는 에이전트 이탈 사고로 훈련을 두 차례 멈췄다. 새 모델은 그 사이에도 나왔다. | Even the heads of AI companies began to talk about slowing development. OpenAI halted training twice after agents escaped containment. New models kept coming in the meantime. |
 | 2026-09-12 | 다리오 아모데이, 에세이 ‘We Must Pace the Frontier’에서 의도적인 속도 조절을 촉구. | Dario Amodei calls for deliberately pacing development in his essay “We Must Pace the Frontier.” |
 | 2026-09-22 | Claude Opus 5.5와 GPT-6 Sol·Luna 출시. 28일 Claude Sonnet 5.5, 30일 Gemini 4 Argon. | Claude Opus 5.5 and GPT-6 Sol and Luna are released, followed by Claude Sonnet 5.5 on the 28th and Gemini 4 Argon on the 30th. |
 | 2026-09-25 | 미·중 정상, 초지능 위험을 다룰 대화 채널과 사고 핫라인에 합의. | The U.S. and Chinese leaders agree on a dialogue channel on superintelligence risks and a hotline for incidents. |
@@ -681,7 +682,7 @@
 | 연도 | 칸 | ko | en |
 | --- | --- | --- | --- |
 | 2023 | title | 경쟁이 시작된 해 | The Year the Race Began |
-| 2023 | body | ChatGPT를 본 빅테크가 일제히 챗봇을 내놓았다. 모델 가중치가 풀리며 누구나 언어모델을 돌리기 시작했고, AI를 만든 사람들이 위험을 경고했다. | Having seen ChatGPT, Big Tech rushed out chatbots of its own. As model weights got loose, anyone could run a language model, and the people who built AI warned of its risks. |
+| 2023 | body | ChatGPT를 본 빅테크가 일제히 챗봇을 내놓았다. 모델 가중치가 풀리며 누구나 언어모델을 돌리기 시작했고, AI를 만든 사람들이 위험을 경고했다. | Having seen ChatGPT, Big Tech rushed out chatbots of its own. As model weights were released, anyone could run a language model, and the people who built AI warned of its risks. |
 | 2024 | title | 감각과 추론의 해 | The Year of Senses and Reasoning |
 | 2024 | body | AI가 영상을 만들고 목소리로 대화하고, 답하기 전에 생각하기 시작했다. 노벨상 두 개가 AI 연구에 돌아갔고, 연말엔 AI가 컴퓨터 화면을 직접 다뤘다. | AI began to make video, hold spoken conversations and think before answering. Two Nobel Prizes went to AI research, and at the end of the year AI took direct control of the computer screen. |
 | 2025 | title | 에이전트와 계산력의 해 | The Year of Agents and Compute |
@@ -722,4 +723,120 @@
 | ogDescription | ChatGPT 공개부터 현재까지, 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다. | Generative AI events from ChatGPT’s launch to the present, printed as woodcut boxes and set out newest first. Open a box to read the details. |
 | ledgerNote | 연구소별 대표 모델의 공개 시점입니다. 날짜는 연.월 기준이며, Mythos 계열처럼 제한 공개된 모델도 포함했습니다. | When each lab released its major models. Dates are given by year and month, and models released only on a limited basis, such as the Mythos line, are included. |
 | sourcesNote | {asOfLong}까지의 각 사 발표와 언론 보도를 바탕으로 정리했습니다. 2026년 하반기 일부 사건은 조사와 소송이 진행 중이어서 이후 사실관계가 달라질 수 있습니다. | Compiled from company announcements and news reports up to {asOfLong}. Some events from the second half of 2026 are still under investigation or in litigation, so the facts may change. |
-| making | 이 연표는 AI의 도움을 받아 조사하고 썼습니다. 각 사의 공식 발표와 논문, 소송 문서 같은 1차 출처를 먼저 확인하고, 언론 보도는 그것을 보완하는 데 썼습니다. 틀린 곳이나 빠진 사건을 발견하면 GitHub 이슈로 알려 주세요. 근거와 함께 보내 주시면 확인한 뒤 고치고, 고친 내용은 장면에 기록합니다. | This timeline was researched and written with help from AI. Primary sources such as company announcements, papers and court filings were checked first, and news reports were used to fill them out. If you find a mistake or a missing event, please let us know in a GitHub issue. Send it with evidence and we will check it, fix it and record the correction in the scene. |
+| making | 이 연표는 AI의 도움을 받아 조사하고 썼습니다. 각 사의 공식 발표와 논문, 소송 문서 같은 1차 출처를 먼저 확인하고, 언론 보도는 그것을 보완하는 데 썼습니다. 틀린 곳이나 빠진 사건을 발견하면 GitHub 이슈로 알려 주세요. 근거와 함께 보내 주시면 확인한 뒤 고치고, 고친 내용은 장면에 기록합니다. | This timeline was researched and written with help from AI. Primary sources such as company announcements, papers and court filings were checked first, and news reports were used to supplement them. If you find a mistake or a missing event, please let us know in a GitHub issue. Send it with evidence and we will check it, fix it and record the correction in the scene. |
+
+## 3. 영어 핵심어
+
+2절의 임시 영어 핵심어 79개(장면 10, 사건 69)를 모두 다시 보고, 장면 2개와 사건 1개에 영어 핵심어를 새로 붙였습니다. 영어 페이지(`/en/`)의 상자에 새기는 말입니다.
+
+- 기준
+  - 대문자 위주의 짧은 말. 사건 상자(작은 판)는 한 줄에 라틴 7자 이내이고, 두 줄까지 씁니다.
+  - 영어 독자가 그 사건을 떠올릴 수 있는 말. 같은 장면 안의 사건끼리 겹치지 않습니다.
+  - 장면 핵심어와 사건 핵심어가 영어에서만 겹치는 곳은 사건 쪽을 바꿨습니다(`PACE`, `VIBE`, `FEB 27`). 1절에서 두 언어 모두 같은 말로 남긴 대표 사건(Llama 2, Sora, Claude 3, o1, MCP, AD)은 그대로입니다.
+  - 숫자와 모델 이름(`$5T`, `GPT-6`, `Opus 5.5`)은 두 언어 공용 문자열 그대로라 이 표에 없습니다.
+- 두 줄로 나누는 규칙: 8자 이상인 이름은 두 쪽이 모두 영어 낱말일 때만 그 경계에서 나눕니다(`BLACK/WELL`, `OVER/VIEWS`, `MOLT/BOOK`, `COUNTER/EXAMPLE`). 낱말 가운데를 하이픈으로 끊지 않습니다. 그렇게 나눌 수 없는 이름(Operator, Karpathy, Billboard, deep research)은 다른 말을 골랐습니다.
+- 날짜형 장면 핵심어는 10-18 문서의 예(`1.22` → `JAN 22`)를 따라 `JAN 22`, `FEB 27`로 붙였습니다. `5일`과 `19일`은 날짜가 아니라 기간이라(lede의 "닷새 만에", "19일 동안") `5 DAYS`, `19 DAYS` 그대로 둡니다.
+- 특히 봐 주실 곳
+  - `RULINGS`(2026-03-26 가처분): 가처분 인용과 항소심 판단이 한 사건에 함께 있어 어느 쪽의 승리로도 읽히지 않는 말을 골랐습니다. 아직 이 표에서 가장 약한 핵심어입니다.
+  - `COINED`(카파시), `AMODEI`(아모데이 에세이), `REFUSED`(국방부 시한): 장면 핵심어와 겹치지 않게 바꾼 말입니다.
+- 표: 82행(장면 12, 사건 70), 바뀐 것 12개(임시에서 바뀐 9개, 새 행 3개). 바뀐 행은 영어 핵심어를 굵게 적고 `비고`에 임시 핵심어를 적었습니다. 장면 행은 날짜 칸에 `장면`이라고 적었습니다. 두 줄 핵심어는 `/`로 줄을 나눠 적었습니다.
+
+| 장면 | 날짜 | ko 핵심어 | en 핵심어 | 비고 |
+| --- | --- | --- | --- | --- |
+| 2022-11-chatgpt | 2022-12-05 | 100만 | 1M |  |
+| 2022-11-chatgpt | 2022-12-21 | 코드/레드 | CODE/RED |  |
+| 2022-11-chatgpt | 2023-01 | 1억 | 100M |  |
+| 2023-02-bing-bard-llama | 2023-02-06 | 바드 | BARD |  |
+| 2023-02-bing-bard-llama | 2023-02-07 | 시드니 | SYDNEY |  |
+| 2023-02-bing-bard-llama | 2023-02-24 | 유출 | LEAK |  |
+| 2023-03-gpt-4 | 2023-03-15 | 교황 | POPE |  |
+| 2023-03-gpt-4 | 2023-03-22 | 6개월 | PAUSE |  |
+| 2023-03-gpt-4 | 2023-03-31 | 차단 | BLOCKED |  |
+| 2023-05-warnings | 장면 | 경고 | WARNING |  |
+| 2023-05-warnings | 2023-05-01 | 힌턴 | HINTON |  |
+| 2023-05-warnings | 2023-05-02 | 파업 | STRIKE |  |
+| 2023-05-warnings | 2023-05-16 | 청문회 | HEARING |  |
+| 2023-05-warnings | 2023-05-30 | 멸종 | EXTINCT |  |
+| 2023-07-llama-2 | 2023-08-24 | 클로바X | CLOVA X |  |
+| 2023-11-openai-board | 장면 | 5일 | 5 DAYS | 날짜가 아니라 기간(해임에서 복귀까지 닷새, lede 그대로)이라 날짜형으로 바꾸지 않음 |
+| 2023-11-openai-board | 2023-10-30 | 바이든 | BIDEN |  |
+| 2023-11-openai-board | 2023-11-01 | 영국 | UK |  |
+| 2023-11-openai-board | 2023-11-17 | 해임 | FIRED |  |
+| 2023-11-openai-board | 2023-11-21 | 복귀 | RETURN |  |
+| 2024-02-sora | 2024-02-22 | 인물 | PEOPLE |  |
+| 2024-03-claude-3 | 2024-03-18 | 블랙웰 | **BLACK/WELL** | 임시 GPU. GPU는 어느 사건인지 모름. Blackwell은 9자라 두 낱말(BLACK·WELL) 경계에서 나눔 |
+| 2024-05-gpt-4o | 2024-05-13 | 목소리 | VOICE |  |
+| 2024-05-gpt-4o | 2024-05-14 | AI 개요 | **OVER/VIEWS** | 임시 SUMMARY. SUMMARY는 일반어. 제품명 AI Overviews를 두 낱말(OVER·VIEWS) 경계에서 나눔 |
+| 2024-05-gpt-4o | 2024-05-14 | 일리야 | ILYA |  |
+| 2024-05-gpt-4o | 2024-05-21 | 서울 | SEOUL |  |
+| 2024-06-nvidia-top | 2024-06-18 | 1위 | No.1 |  |
+| 2024-09-reasoning-nobel | 2024-10-08 | 노벨/물리 | NOBEL/PHYSICS |  |
+| 2024-09-reasoning-nobel | 2024-10-09 | 노벨/화학 | NOBEL/CHEM |  |
+| 2024-11-computer-use-mcp | 2024-10-22 | 마우스 | MOUSE |  |
+| 2025-01-deepseek | 2025-01-23 | 클릭 | CLICK | 그대로 둠. OPERATOR는 8자라 한국어 쪽과 같은 이유로 동작을 고름 |
+| 2025-02-vibe-coding | 2025-02-02 | 바이브 | **COINED** | 임시 VIBE. 장면 핵심어 VIBE와 겹침. 카파시가 말을 처음 만든 일이라 COINED(KARPATHY는 8자) |
+| 2025-02-vibe-coding | 2025-02-02 | 리서치 | DEEP | 그대로 둠. 제품명 deep research의 앞말. RESEARCH는 8자 |
+| 2025-02-vibe-coding | 2025-02-11 | 파리 | PARIS |  |
+| 2025-03-ghibli | 장면 | 지브리 | GHIBLI | 설계 문서의 예 그대로 |
+| 2025-03-ghibli | 2025-03-06 | 마누스 | MANUS |  |
+| 2025-03-ghibli | 2025-03-25 | 이미지 | IMAGE |  |
+| 2025-05-coding-agents | 장면 | 에이전트 | AGENTS |  |
+| 2025-08-gpt-5 | 2025-07-19 | 금메달 | GOLD |  |
+| 2025-08-gpt-5 | 2025-08-07 | 반발 | OUTCRY |  |
+| 2025-08-gpt-5 | 2025-08-26 | 바나나 | BANANA |  |
+| 2025-08-teen-chatbots | 장면 | 18세 | **TEENS** | 임시 UNDER 18. 같은 장면 사건 U18과 같은 뜻이라 장면은 TEENS로 바꿈 |
+| 2025-08-teen-chatbots | 2025-08-26 | 16세 | AGE 16 |  |
+| 2025-08-teen-chatbots | 2025-09-29 | 보호자 | PARENTS |  |
+| 2025-10-gyeongju-gpu | 2025-10-30 | 치맥 | **CHICKEN** | 임시 CHIMAEK. 영어 독자에게 낯선 말. 사건 문장(chicken and beer)과 맞춤 |
+| 2025-10-gyeongju-gpu | 2025-10-31 | 5만 장 | 50,000 |  |
+| 2025-10-gyeongju-gpu | 2025-10-31 | 3위 | No.3 |  |
+| 2025-11-gemini-3 | 2025-12-09 | 기증 | DONATE |  |
+| 2025-11-music-deals | 2025-11-08 | 빌보드 | CHART | 그대로 둠. BILLBOARD는 9자 |
+| 2025-11-music-deals | 2025-11-25 | 수노 | SUNO |  |
+| 2026-01-ai-basic-act | 장면 | 1.22 | **JAN 22** | 새 행. 10-18 문서의 예(1.22 → JAN 22) 그대로 |
+| 2026-01-ai-basic-act | 2026-01-09 | 그록 | GROK |  |
+| 2026-01-ai-basic-act | 2026-01-22 | 시행 | IN FORCE |  |
+| 2026-01-ai-basic-act | 2026-01-28 | 몰트북 | MOLT/BOOK |  |
+| 2026-02-saaspocalypse | 2026-01-30 | 11종 | **11/PLUGINS** | 임시 11. 숫자만으로는 무엇인지 모름. 플러그인 11종 |
+| 2026-02-chatgpt-ads | 2026-01-16 | 스폰서 | SPONSOR |  |
+| 2026-02-block-layoffs | 2025-10-28 | 아마존 | AMAZON | 13번 검토에서 영어가 필요하다고 한 곳. 이미 { ko, en } |
+| 2026-02-pentagon | 장면 | 2.27 | **FEB 27** | 새 행. 날짜형 장면 핵심어를 영어 날짜로 |
+| 2026-02-pentagon | 2026-02-24 | 27일 | **REFUSED** | 임시 FEB 27. 장면 핵심어 FEB 27과 겹침. 시한을 거절한 일로(DEADLINE은 8자) |
+| 2026-02-pentagon | 2026-02-27 | 중단 | STOP |  |
+| 2026-02-pentagon | 2026-03-03 | 공급망 | SUPPLY/CHAIN |  |
+| 2026-02-pentagon | 2026-03-26 | 가처분 | **RULINGS** | 임시 COURT. COURT는 일반어. 가처분 인용과 항소심 판단 두 결정을 담되 어느 쪽 승리로도 읽히지 않는 말. 여전히 이 표에서 가장 약한 핵심어 |
+| 2026-03-sora-shutdown | 장면 | 종료 | CLOSED |  |
+| 2026-03-sora-shutdown | 2025-12-11 | 디즈니 | DISNEY |  |
+| 2026-03-sora-shutdown | 2026-03-24 | 로봇 | ROBOTS |  |
+| 2026-03-sora-shutdown | 2026-04-26 | 7개월 | 7 MONTHS |  |
+| 2026-04-mythos | 2026-03-26 | 유출 | LEAK |  |
+| 2026-04-mythos | 2026-04-07 | 취약점 | FLAWS | 그대로 둠(ko 취약점과 같은 뜻). GLASS/WING도 후보 |
+| 2026-04-mythos | 2026-04-16 | 열흘 | 10 DAYS |  |
+| 2026-06-export-control | 장면 | 19일 | 19 DAYS | 날짜가 아니라 기간(서비스가 멈춘 19일, lede 그대로)이라 날짜형으로 바꾸지 않음 |
+| 2026-06-export-control | 2026-06-02 | 행정/명령 | EXEC/ORDER |  |
+| 2026-06-export-control | 2026-06-12 | 차단 | CUT OFF |  |
+| 2026-06-export-control | 2026-06-30 | 해제 | LIFTED |  |
+| 2026-07-sandbox-escape | 장면 | 탈출 | ESCAPE | 설계 문서의 예 그대로 |
+| 2026-07-sandbox-escape | 2026-07-21 | 침입 | BREACH | 설계 문서의 예 그대로 |
+| 2026-09-math-gpt-6 | 장면 | 페르마 | FERMAT |  |
+| 2026-09-math-gpt-6 | 2026-07-20 | 반례 | **COUNTER/EXAMPLE** | 임시 COUNTER. COUNTER만으로는 뜻이 모호. 두 줄 COUNTER/EXAMPLE(7자·7자) |
+| 2026-09-math-gpt-6 | 2026-07-23 | 42점 | 42/42 |  |
+| 2026-09-pace | 장면 | 속도 | PACE | 설계 문서의 예 그대로. 사건 쪽을 바꿔 겹침을 풂 |
+| 2026-09-pace | 2026-09-12 | PACE | **AMODEI** | 새 행. 장면 핵심어 PACE와 겹침(한국어는 장면 속도, 사건 PACE라 겹치지 않음). ko는 PACE 그대로, en만 에세이를 쓴 사람 이름 |
+| 2026-09-pace | 2026-09-25 | 핫라인 | HOTLINE |  |
+| 2026-09-pace | 2026-09-29 | 협약 | PACT |  |
+
+### 영어 글 고침 (14번 검토에서 넘어온 것)
+
+핵심어와 함께 영어 글 몇 곳을 한국어 원문에 더 가깝게 고쳤습니다. 번역을 고친 것이라 `corrections`나 `updated`는 두지 않았습니다. 2절의 표에도 같은 고침을 반영했습니다.
+
+- 2024-05-gpt-4o lede: "A voice AI was demonstrated that could be interrupted mid-sentence and laughed as it talked." (어순이 꼬였던 문장)
+- 2025-09-22 엔비디아 투자: 오라클·AMD·브로드컴 계약의 주어를 OpenAI로 밝힘("…, and around the same time, OpenAI also signs large deals with Oracle, AMD and Broadcom.")
+- kicker: 2024-06-nvidia-top `Follow the Money` → `Where the Money Went`, 2025-11-gemini-3 `Overtaken` → `Overtaking`(원문 `추월`)
+- "got loose": 2023 연도 요약 `were released`(가중치가 풀리며), 2026-09-pace lede `escaped containment`(이탈)
+- `site.yaml` making: `fill them out` → `supplement them`(보완)
+- 2025-09-11 FTC: `asks … for information` → `orders … to report`(자료 제출 요구)
+- 2025-12-01 코드 레드: `GPT-5.2’s release is moved up to December 11`
+- 2023-05-warnings lede: `helped open up deep learning` → `pioneered deep learning`(딥러닝을 연)
+- 2023-03-15 미드저니: `fake image` → `AI-generated image`(합성 사진)
+- 그 밖에: 2절 슈퍼볼 광고 문구 확인을 닫았고, 1절에서 `-$285B`를 장면과 같은 핵심어로 적은 것을 고쳤습니다. 단위 테스트 이름 "every box and detail is in English"를 검사하는 내용대로 바꿨습니다.

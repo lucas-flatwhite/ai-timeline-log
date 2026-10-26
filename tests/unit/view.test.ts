@@ -145,7 +145,7 @@ describe('buildView(en)', () => {
     expect(e.langs.map(l => [l.label, l.current])).toEqual([['KO', false], ['EN', true]]);
   });
 
-  test('every box and detail is in English', () => {
+  test('box glyphs and labels have no Hangul, and an item reads in English', () => {
     expect(e.boxes).toHaveLength(v.boxes.length);
     expect(e.boxes.filter(b => /[가-힣]/.test(b.glyph + b.label))).toEqual([]);
     expect(e.scenes.find(s => s.id === '2025-01-deepseek')!.items[0].text).toBe('DeepSeek releases its reasoning model R1 under the MIT license.');

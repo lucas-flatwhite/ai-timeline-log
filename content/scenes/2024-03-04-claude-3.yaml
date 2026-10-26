@@ -24,7 +24,7 @@ items:
   - date: 2024-03-18
     ko: 엔비디아, 차세대 GPU 블랙웰 발표.
     en: "NVIDIA announces Blackwell, its next-generation GPU."
-    glyph: { ko: "블랙웰", en: "GPU" }
+    glyph: { ko: "블랙웰", en: "BLACK\nWELL" }
 ko:
   kicker: 경쟁 구도
   title: Claude 3와 ‘AI 개발자’

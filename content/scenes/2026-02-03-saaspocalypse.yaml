@@ -12,7 +12,7 @@ items:
   - date: 2026-01-30
     ko: Anthropic, 법무·영업·재무 등 업무용 Claude 플러그인 11종을 깃허브에 공개.
     en: "Anthropic publishes 11 Claude plugins for work such as legal, sales and finance on GitHub."
-    glyph: { ko: "11종", en: "11" }
+    glyph: { ko: "11종", en: "11\nPLUGINS" }
   - date: 2026-02-02
     ko: 스페이스X, xAI 인수. 합산 기업가치 1.25조 달러.
     en: "SpaceX acquires xAI, for a combined valuation of $1.25 trillion."

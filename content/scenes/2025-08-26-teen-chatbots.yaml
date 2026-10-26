@@ -22,7 +22,7 @@ items:
     glyph: { ko: "16세", en: "AGE 16" }
   - date: 2025-09-11
     ko: 미국 연방거래위원회, OpenAI·메타·캐릭터AI 등 7개사에 청소년 대상 챗봇 안전 조치 자료 제출 요구.
-    en: "The U.S. Federal Trade Commission asks seven companies, including OpenAI, Meta and Character.AI, for information on their safety measures for chatbots used by teenagers."
+    en: "The U.S. Federal Trade Commission orders seven companies, including OpenAI, Meta and Character.AI, to report on their safety measures for chatbots used by teenagers."
     glyph: FTC
   - date: 2025-09-29
     ko: OpenAI, 부모가 자녀 계정을 연결해 관리하는 보호자 기능 출시.
@@ -40,4 +40,4 @@ en:
   kicker: "Comfort"
   title: "The Children Who Confided in AI"
   lede: "The death of a teenager who had been pouring his heart out to a chatbot went to court. Companies rushed out protections for minors."
-  glyph: "UNDER 18"
+  glyph: "TEENS"

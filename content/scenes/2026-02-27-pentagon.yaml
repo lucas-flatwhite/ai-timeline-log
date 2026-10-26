@@ -12,7 +12,7 @@ items:
   - date: 2026-02-24
     ko: 국방부, 27일까지 조건을 거두라고 통보. Anthropic은 받아들이지 않았다.
     en: "The Pentagon tells Anthropic to drop its conditions by February 27, and Anthropic refuses."
-    glyph: { ko: "27일", en: "FEB 27" }
+    glyph: { ko: "27일", en: "REFUSED" }
   - date: 2026-02-27
     ko: 트럼프 대통령, 연방기관에 Anthropic 사용 중단 지시. 같은 날 OpenAI는 국방부 기밀망 계약을 발표.
     en: "President Trump orders federal agencies to stop using Anthropic; the same day, OpenAI announces a contract for the Pentagon’s classified network."
@@ -24,7 +24,7 @@ items:
   - date: 2026-03-26
     ko: 캘리포니아 연방법원, Anthropic 가처분 인용. 9월 25일 워싱턴 항소법원은 별도 근거의 지정을 2대 1로 유지.
     en: "A federal court in California grants Anthropic a preliminary injunction; on September 25, an appeals court in Washington upholds, 2 to 1, a designation made on separate grounds."
-    glyph: { ko: "가처분", en: "COURT" }
+    glyph: { ko: "가처분", en: "RULINGS" }
 ko:
   kicker: 국가와 기업
   title: 미 국방부와 Anthropic
@@ -33,3 +33,4 @@ en:
   kicker: "State and Company"
   title: "The Pentagon and Anthropic"
   lede: "The Pentagon and Anthropic clashed over Anthropic’s usage terms, which ruled out mass domestic surveillance and fully autonomous weapons. The Pentagon demanded that every lawful use be allowed."
+  glyph: "FEB 27"

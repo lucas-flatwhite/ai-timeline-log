@@ -21,7 +21,7 @@ items:
     glyph: Opus 4.5
   - date: 2025-12-01
     ko: 올트먼, 사내에 ‘코드 레드’ 메모. 12월 11일 GPT-5.2를 앞당겨 냈다.
-    en: "Altman sends a “code red” memo to staff, and GPT-5.2 is brought forward to December 11."
+    en: "Altman sends a “code red” memo to staff, and GPT-5.2’s release is moved up to December 11."
     glyph: GPT-5.2
   - date: 2025-12-09
     ko: Anthropic, MCP를 리눅스 재단 산하 에이전틱 AI 재단에 기증.
@@ -32,6 +32,6 @@ ko:
   title: 제미나이 3와 ‘코드 레드’
   lede: 구글 제미나이 3가 주요 벤치마크 선두에 서자 OpenAI 안에 비상이 걸렸다.
 en:
-  kicker: "Overtaken"
+  kicker: "Overtaking"
   title: "Gemini 3 and “Code Red”"
   lede: "When Google’s Gemini 3 took the lead on major benchmarks, OpenAI went on alert internally."

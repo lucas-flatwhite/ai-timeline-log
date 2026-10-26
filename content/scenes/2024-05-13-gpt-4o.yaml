@@ -15,7 +15,7 @@ items:
   - date: 2024-05-14
     ko: 구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다.
     en: "At Google I/O, Google puts AI summaries (AI Overviews) at the top of search results."
-    glyph: { ko: "AI 개요", en: "SUMMARY" }
+    glyph: { ko: "AI 개요", en: "OVER\nVIEWS" }
   - date: 2024-05-14
     ko: 일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다.
     en: "Ilya Sutskever leaves OpenAI, and the Superalignment team in charge of long-term safety is disbanded."
@@ -31,4 +31,4 @@ ko:
 en:
   kicker: "Voice"
   title: "GPT-4o Hears, Speaks and Sees"
-  lede: "A voice AI that could be cut off mid-sentence and laughed as it talked was demonstrated. Seoul hosted the second AI summit."
+  lede: "A voice AI was demonstrated that could be interrupted mid-sentence and laughed as it talked. Seoul hosted the second AI summit."

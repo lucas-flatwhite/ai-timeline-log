@@ -11,7 +11,7 @@ items:
   - date: 2026-09-12
     ko: 다리오 아모데이, 에세이 ‘We Must Pace the Frontier’에서 의도적인 속도 조절을 촉구.
     en: "Dario Amodei calls for deliberately pacing development in his essay “We Must Pace the Frontier.”"
-    glyph: PACE
+    glyph: { ko: "PACE", en: "AMODEI" }
   - date: 2026-09-22
     ko: Claude Opus 5.5와 GPT-6 Sol·Luna 출시. 28일 Claude Sonnet 5.5, 30일 Gemini 4 Argon.
     en: "Claude Opus 5.5 and GPT-6 Sol and Luna are released, followed by Claude Sonnet 5.5 on the 28th and Gemini 4 Argon on the 30th."
@@ -31,5 +31,5 @@ ko:
 en:
   kicker: "Pace"
   title: "Voices for Slowing Down"
-  lede: "Even the heads of AI companies began to talk about slowing development. OpenAI halted training twice after agents got loose. New models kept coming in the meantime."
+  lede: "Even the heads of AI companies began to talk about slowing development. OpenAI halted training twice after agents escaped containment. New models kept coming in the meantime."
   glyph: "PACE"
