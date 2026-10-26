@@ -10,7 +10,9 @@ print:
 items:
   - date: 2026-06-02
     ko: 트럼프 대통령, 첨단 AI 혁신과 안보 행정명령. 사이버 능력을 기준으로 프런티어 모델을 지정하는 절차를 만들었다.
-    glyph: 행정명령
+    glyph: |-
+      행정
+      명령
   - date: 2026-06-09
     ko: Anthropic, Claude Fable 5(일반 공개)와 Mythos 5(검증된 파트너용) 출시. 같은 모델에 다른 안전장치.
     glyph: Fable

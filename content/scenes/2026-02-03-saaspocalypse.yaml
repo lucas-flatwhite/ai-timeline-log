@@ -20,7 +20,7 @@ items:
     glyph: -$285B
   - date: 2026-02-05
     ko: Claude Opus 4.6과 GPT-5.3-Codex가 같은 날 나왔다.
-    glyph: "4.6"
+    glyph: Opus 4.6
 ko:
   kicker: 시장
   title: SaaS 종말론

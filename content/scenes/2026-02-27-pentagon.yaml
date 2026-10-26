@@ -17,10 +17,10 @@ items:
     glyph: 중단
   - date: 2026-03-03
     ko: 미국 기업으로는 처음 공급망 위험 기업으로 공식 지정. Claude 앱 다운로드가 처음 ChatGPT를 앞섰다.
-    glyph: 지정
+    glyph: 공급망
   - date: 2026-03-26
     ko: 캘리포니아 연방법원, Anthropic 가처분 인용. 9월 25일 워싱턴 항소법원은 별도 근거의 지정을 2대 1로 유지.
-    glyph: 인용
+    glyph: 가처분
 ko:
   kicker: 국가와 기업
   title: 미 국방부와 Anthropic

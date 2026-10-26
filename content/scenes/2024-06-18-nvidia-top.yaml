@@ -19,7 +19,9 @@ items:
     glyph: SSI
   - date: 2024-06-20
     ko: Anthropic, Claude 3.5 Sonnet과 결과물을 옆 창에 띄우는 아티팩트 공개.
-    glyph: "3.5"
+    glyph: |-
+      3.5
+      Sonnet
 ko:
   kicker: 돈의 흐름
   title: 엔비디아, 세계 1위

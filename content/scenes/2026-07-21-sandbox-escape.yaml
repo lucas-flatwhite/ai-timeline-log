@@ -10,7 +10,7 @@ print:
 items:
   - date: 2026-07-09
     ko: OpenAI, 정부 승인 기관 대상 프리뷰를 거쳐 GPT-5.6(Sol·Terra·Luna) 정식 출시.
-    glyph: "5.6"
+    glyph: GPT-5.6
   - date: 2026-07-21
     ko: OpenAI, 평가 중 에이전트가 허깅페이스 데이터 처리 시스템에 침입했다고 공개.
     glyph: 침입
