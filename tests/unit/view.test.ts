@@ -93,6 +93,15 @@ describe('buildView(ko)', () => {
     expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(28);
   });
 
+  test('events in a recently added scene carry the same mark, after the scene name', () => {
+    const sora = scene('2026-03-sora-shutdown');
+    expect(sora.items.length).toBeGreaterThan(0);
+    for (const it of sora.items) expect(it.meta).toMatch(/^\d{6,8} · .+ · ‘.+’ 장면의 사건 · 추가 2026\.10\.18$/);
+    const marked = v.scenes.filter(s => s.meta.endsWith(' · 추가 2026.10.18')).flatMap(s => s.items);
+    expect(v.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · 추가 2026.10.18'))).toEqual(marked);
+    expect(scene('2025-01-deepseek').items.every(it => !it.meta.endsWith(' · 추가 2026.10.18'))).toBe(true);
+  });
+
   test('item sources: its own when it has some, else the scene sources', () => {
     const c = structuredClone(loadContent());
     const s = c.scenes.find(x => x.id === '2025-01-deepseek')!;
@@ -149,5 +158,13 @@ describe('buildView(en)', () => {
     expect(e.boxes).toHaveLength(v.boxes.length);
     expect(e.boxes.filter(b => /[가-힣]/.test(b.glyph + b.label))).toEqual([]);
     expect(e.scenes.find(s => s.id === '2025-01-deepseek')!.items[0].text).toBe('DeepSeek releases its reasoning model R1 under the MIT license.');
+  });
+
+  test('recently added scenes and their events carry the English mark', () => {
+    const sora = e.scenes.find(s => s.id === '2026-03-sora-shutdown')!;
+    expect(sora.meta.endsWith(' · Added 2026.10.18')).toBe(true);
+    expect(sora.items.every(it => it.meta.endsWith(' · Added 2026.10.18'))).toBe(true);
+    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.10.18'))).toHaveLength(
+      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.10.18')).flatMap(s => s.items).length);
   });
 });

@@ -89,6 +89,8 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     const text = s[locale];
     const sceneDate = ymd(s.date);
     const sources = s.sources.map(x => ({ url: x.url, title: x.title }));
+    // 최근 추가 표시: 장면 날짜 줄과 그 사건들의 날짜 줄 끝에 똑같이 붙인다
+    const mark = recent && s.added === recent ? ` · ${t.added(formatDot(s.added))}` : '';
     entries.push({
       kind: 'scene', date: s.date, order: s.order, seq: i * 100,
       box: {
@@ -111,7 +113,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
         },
       });
       return {
-        addr, date, text: body, meta: `${date} · ${text.kicker} · ${t.sceneOf(text.title)}`,
+        addr, date, text: body, meta: `${date} · ${text.kicker} · ${t.sceneOf(text.title)}${mark}`,
         fix: fix(addr, date, body),
         // 사건 출처가 있으면 그것, 없으면 장면 출처
         sources: (it.sources.length ? it.sources : s.sources).map(x => ({ url: x.url, title: x.title })),
@@ -120,7 +122,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
 
     scenes.push({
       id: s.id, aliases: s.aliases,
-      meta: `${sceneDate} · ${text.kicker}` + (recent && s.added === recent ? ` · ${t.added(formatDot(s.added))}` : ''),
+      meta: `${sceneDate} · ${text.kicker}${mark}`,
       title: text.title, lede: text.lede, items,
       corrections: s.corrections.map(x => `${formatDot(x.date)} ${need(x[locale], `${s.id}.corrections.${locale}`)}`),
       sources, fix: fix(s.id, sceneDate, text.title),
