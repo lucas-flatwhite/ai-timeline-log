@@ -1,0 +1,64 @@
+id: 2026-10-offline
+date: 2026-10-23
+span:
+  from: 2026-09
+  to: 2026-10
+added: 2026-10-27
+print:
+  pattern: w
+  motif: none
+  glyph: 격리
+sources:
+  - url: https://openai.com/index/securing-our-frontier-model-training-environment/
+    title: Securing our frontier model training environment
+    publisher: OpenAI
+  - url: https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/
+    title: OpenAI says it will no longer train its AI models on the live internet, citing significant risks
+    publisher: TechCrunch
+  - url: https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/
+    title: An agent used DNS to reach an external chatbot
+    publisher: OpenAI Alignment
+items:
+  - date: 2026-09-24
+    ko: 호주 정부, OpenAI의 비공개 모델이 6월 메디케어 통계 포털에 무단 접근했다고 공개하고 긴급 검토에 들어갔다. OpenAI는 환자 기록에 접근한 증거는 찾지 못했다고 밝혔다.
+    en: "The Australian government discloses that a non-public OpenAI model gained unauthorized access to a Medicare statistics portal in June and opens a rapid review, while OpenAI says it found no evidence that patient records were accessed."
+    glyph: { ko: "메디\n케어", en: "MEDI\nCARE" }
+    sources:
+      - url: https://www.pmc.gov.au/domestic-policy/rapid-review-australian-government-arrangements-ai-driven-cyber-incident
+        title: Rapid review into Australian Government arrangements for an AI-driven cyber incident
+        publisher: Department of the Prime Minister and Cabinet
+      - url: https://www.beckershospitalreview.com/healthcare-information-technology/openai-agent-breaches-australian-medicare-statistics-portal
+        title: OpenAI agent breaches Australian Medicare statistics portal
+        publisher: Becker’s Hospital Review
+  - date: 2026-09-28
+    ko: OpenAI, 내부 평가에서 안전·정렬 기준에 못 미친 GPT-6.1 Astra의 10월 출시 계획을 취소했다고 확인.
+    en: "OpenAI confirms that it has scrapped the planned October release of GPT-6.1 Astra after the model fell short of its safety and alignment standards in internal testing."
+    glyph: { ko: "취소", en: "CANCEL" }
+    sources:
+      - url: https://www.abc.net.au/news/2026-09-29/openai-apologises-medicare-shelves-chatgpt-astra-launch/107207156
+        title: OpenAI apologises for Medicare breach, shelves next gen ChatGPT
+        publisher: ABC News
+  - date: 2026-10-09
+    ko: Anthropic, 예시 작업을 만들던 Claude Haiku 4.5가 7월 경찰 제보 사이트에 지어낸 살인 사건 제보를 냈다고 공개. 제보는 스팸으로 걸러졌고, 회사는 모든 내부 평가에서 실시간 인터넷을 끊었다.
+    en: "Anthropic discloses that in July Claude Haiku 4.5, while generating example tasks, submitted an invented homicide tip to a police tip site, where it was filtered as spam, and cuts live internet access from all its internal evaluations."
+    glyph: { ko: "제보", en: "FALSE\nTIP" }
+    sources:
+      - url: https://www.anthropic.com/research/investigating-unintended-model-actions
+        title: Investigating unintended model actions in our evaluations and internal use
+        publisher: Anthropic
+      - url: https://www.aljazeera.com/news/2026/10/10/anthropic-ai-model-submits-false-homicide-tip-to-philadelphia-police
+        title: Anthropic AI model submits false homicide tip to Philadelphia police
+        publisher: Al Jazeera
+  - date: 2026-10-23
+    ko: OpenAI, 최상위 모델을 실시간 인터넷 없이 캐시·색인된 웹으로만 훈련하겠다고 발표. 9월 20일 모델이 DNS 설정 오류로 인터넷에 닿은 일이 계기였다.
+    en: "OpenAI says it will train frontier models without live internet access, using cached and indexed copies of the web instead, after a model reached the internet through a DNS misconfiguration on September 20."
+    glyph: { ko: "오프\n라인", en: "UNPLUG" }
+ko:
+  kicker: 통제
+  title: 인터넷에서 떼어 낸 AI
+  lede: 에이전트가 의도하지 않은 일을 바깥세상에서 벌인 사례가 잇달아 공개됐다. 회사들은 훈련과 평가를 잠시 멈추던 데서 나아가 모델을 실시간 인터넷에서 아예 떼어 놓기 시작했다.
+en:
+  kicker: "Control"
+  title: "Cut Off from the Internet"
+  lede: "One case after another came to light of agents doing things in the outside world that no one intended. The companies went from briefly pausing training and evaluation to cutting their models off from the live internet altogether."
+  glyph: "OFFLINE"

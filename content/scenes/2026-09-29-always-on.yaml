@@ -1,0 +1,54 @@
+id: 2026-09-always-on
+date: 2026-09-29
+span:
+  from: 2026-05
+  to: 2026-09
+added: 2026-10-27
+print:
+  pattern: h
+  motif: rays
+  glyph: "24/7"
+sources:
+  - url: https://openai.com/index/introducing-dots/
+    title: Introducing dots
+    publisher: OpenAI
+  - url: https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/
+    title: OpenAI launches Dots, its bubbly agentic avatar
+    publisher: TechCrunch
+items:
+  - date: 2026-05-19
+    ko: 구글, 노트북을 닫거나 휴대전화를 잠가도 클라우드에서 계속 일하는 개인 에이전트 Gemini Spark 발표. 시험 이용자부터 제공했다.
+    en: "Google announces Gemini Spark, a personal agent that keeps working in the cloud after the laptop is closed or the phone is locked, starting with trusted testers."
+    glyph: Spark
+    sources:
+      - url: https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/
+        title: The Gemini app becomes more agentic, delivering proactive, 24/7 help
+        publisher: Google
+  - date: 2026-08-11
+    ko: SpaceXAI, 에이전트마다 클라우드 컴퓨터를 주고 쉬지 않고 일하게 하는 Grok Bot 베타 공개.
+    en: "SpaceXAI opens a beta of Grok Bot, which gives each agent its own cloud computer so it can keep working around the clock."
+    glyph: "Grok\nBot"
+    sources:
+      - url: https://x.ai/news/introducing-grok-bot
+        title: Introducing Grok Bot
+        publisher: SpaceXAI
+  - date: 2026-09-08
+    ko: 메타, 전용 가상 컴퓨터에서 앱을 닫은 뒤에도 일하는 Muse를 미국에 출시. 메일 발송이나 구매 전에는 사용자에게 묻는다.
+    en: "Meta launches Muse in the U.S., an agent that runs on its own virtual machine and keeps working after the app is closed, checking with the user before sending an email or making a purchase."
+    glyph: Muse
+    sources:
+      - url: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
+        title: "Introducing Muse: The World’s First Personal AI Agent Built for Everyone"
+        publisher: Meta
+  - date: 2026-09-29
+    ko: OpenAI, 데브데이에서 상시 실행 에이전트 dots 공개. 각자 클라우드 컴퓨터를 갖고 대화와 대화 사이에도 일을 이어 간다.
+    en: "At DevDay, OpenAI launches dots, always-on agents that each have their own cloud computer and keep making progress between conversations."
+    glyph: dots
+ko:
+  kicker: 에이전트
+  title: 자리를 비워도 일하는 에이전트
+  lede: 개인 에이전트가 대화창을 벗어났다. 구글·SpaceXAI·메타·OpenAI가 몇 달 사이에 클라우드에서 쉬지 않고 일하는 에이전트를 잇달아 내놓았다.
+en:
+  kicker: "Agents"
+  title: "Agents That Work While You’re Away"
+  lede: "Personal agents moved beyond the chat window. Within a few months, Google, SpaceXAI, Meta and OpenAI each introduced agents that work without pause in the cloud."
