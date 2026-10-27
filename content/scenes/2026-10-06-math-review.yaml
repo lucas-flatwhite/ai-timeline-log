@@ -41,7 +41,7 @@ items:
   - date: 2026-10-06
     ko: OpenAI, 내부 모델이 쓴 수학 원고 722편을 깃허브에 한꺼번에 공개. 이튿날 부호 오류로 3편을 철회했다.
     en: "OpenAI publishes 722 mathematics manuscripts written by an internal model on GitHub in a single batch, and withdraws three of them the next day over a sign error."
-    glyph: "722"
+    glyph: { ko: "원고", en: "PAPERS" }
   - date: 2026-10-15
     ko: 사이먼스재단, Anthropic·OpenAI와 1,500만 달러 규모 사업 발표. 수학자들이 AI가 낸 결과를 검토하고 함께 쓸 기준을 세우도록 돕는다.
     en: "The Simons Foundation announces a $15 million effort with Anthropic and OpenAI to help mathematicians assess AI-assisted results and develop shared standards."

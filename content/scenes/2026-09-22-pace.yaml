@@ -34,7 +34,7 @@ items:
   - date: 2026-09-25
     ko: 미·중 정상, 초지능(SI) 대화를 열고 SI 사고 때 쓸 양자 연락 채널을 두기로 합의.
     en: "The U.S. and Chinese leaders set up a dialogue on superintelligence and agree to establish a bilateral communication channel for incidents."
-    glyph: { ko: "채널", en: "CHANNEL" }
+    glyph: { ko: "채널", en: "LINK" }
     pic: phone
   - date: 2026-09-29
     ko: 백악관, AI 기업 대표들과 자발적 초지능 협약 서명. 트럼프 대통령은 새 연방 규제는 거부.

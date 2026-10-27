@@ -25,7 +25,7 @@ items:
   - date: 2026-06-16
     ko: Z.ai, 100만 토큰 문맥을 다루는 GLM-5.2의 가중치를 MIT 라이선스로 공개.
     en: "Z.ai releases the weights of GLM-5.2, a model with a one-million-token context window, under the MIT license."
-    glyph: GLM-5.2
+    glyph: MIT
     sources:
       - url: https://docs.z.ai/release-notes/new-released
         title: New Released
@@ -36,7 +36,7 @@ items:
   - date: 2026-09-03
     ko: 엔비디아, 허깅페이스를 약 129억 3천만 달러에 인수하기로 합의. 플랫폼은 열린 채로 두고 엔비디아 칩 없이도 쓸 수 있게 하겠다고 약속했다.
     en: "NVIDIA agrees to acquire Hugging Face for about $12.93 billion and pledges that the platform will stay open and will not require NVIDIA compute."
-    glyph: $12.9B
+    glyph: { ko: "인수", en: "DEAL" }
   - date: 2026-10-15
     ko: 메타, Muse Spark Open의 가중치 공개. 상업 이용 조건을 붙인 자체 라이선스를 따른다.
     en: "Meta releases the weights of Muse Spark Open under its own license with limited commercial terms."

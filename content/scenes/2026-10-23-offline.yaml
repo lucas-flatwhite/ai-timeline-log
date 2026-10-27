@@ -33,7 +33,7 @@ items:
   - date: 2026-09-28
     ko: OpenAI, 내부 평가에서 안전·정렬 기준에 못 미친 GPT-6.1 Astra의 10월 출시 계획을 취소했다고 확인.
     en: "OpenAI confirms that it has scrapped the planned October release of GPT-6.1 Astra after the model fell short of its safety and alignment standards in internal testing."
-    glyph: GPT-6.1
+    glyph: { ko: "취소", en: "CANCEL" }
     sources:
       - url: https://www.abc.net.au/news/2026-09-29/openai-apologises-medicare-shelves-chatgpt-astra-launch/107207156
         title: OpenAI apologises for Medicare breach, shelves next gen ChatGPT
@@ -52,7 +52,7 @@ items:
   - date: 2026-10-23
     ko: OpenAI, 최상위 모델을 실시간 인터넷 없이 캐시·색인된 웹으로만 훈련하겠다고 발표. 9월 20일 모델이 DNS 설정 오류로 인터넷에 닿은 일이 계기였다.
     en: "OpenAI says it will train frontier models without live internet access, using cached and indexed copies of the web instead, after a model reached the internet through a DNS misconfiguration on September 20."
-    glyph: { ko: "오프\n라인", en: "OFFLINE" }
+    glyph: { ko: "오프\n라인", en: "UNPLUG" }
 ko:
   kicker: 통제
   title: 인터넷에서 떼어 낸 AI
