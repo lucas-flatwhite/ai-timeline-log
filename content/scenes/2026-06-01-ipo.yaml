@@ -1,0 +1,55 @@
+id: 2026-06-ipo
+date: 2026-06-01
+span:
+  from: 2026-05
+  to: 2026-06
+added: 2026-10-27
+print:
+  pattern: d
+  motif: rise
+  glyph: 상장
+sources:
+  - url: https://www.anthropic.com/news/confidential-draft-s1-sec
+    title: Anthropic confidentially submits draft S-1
+    publisher: Anthropic
+  - url: https://openai.com/index/openai-submits-confidential-s-1/
+    title: Confidential submission of draft S-1 to the SEC
+    publisher: OpenAI
+  - url: https://www.eweek.com/news/openai-confidential-ipo-filing-sec/
+    title: OpenAI Files Confidentially for IPO, Joins Anthropic in Race to Wall Street
+    publisher: eWeek
+items:
+  - date: 2026-05-18
+    ko: 머스크가 OpenAI의 비영리 약속 위반을 주장한 소송에서 배심원단이 제소 시한이 지났다고 판단했다. 약속 위반 여부는 다루지 않았고, 머스크는 항소하겠다고 밝혔다.
+    en: "A federal jury finds that Elon Musk waited too long to sue OpenAI and Sam Altman over a promise to keep the company a nonprofit, without ruling on whether the promise was broken, and Musk says he will appeal."
+    glyph: { ko: "시효", en: "LAPSED" }
+    pic: gavel
+    sources:
+      - url: https://www.cnbc.com/2026/05/18/musk-altman-openai-trial-verdict.html
+        title: Musk slams Altman trial verdict as a ‘technicality,’ vows to appeal
+        publisher: CNBC
+  - date: 2026-05-28
+    ko: Anthropic, 시리즈 H에서 650억 달러 유치. 투자 후 기업가치는 9,650억 달러이고, 유치액에는 클라우드 기업들이 앞서 약정한 150억 달러가 들어 있다.
+    en: "Anthropic raises $65 billion in a Series H at a post-money valuation of $965 billion, a sum that includes $15 billion previously committed by cloud providers."
+    glyph: $65B
+    sources:
+      - url: https://www.anthropic.com/news/series-h
+        title: Anthropic raises $65B Series H at $965B valuation
+        publisher: Anthropic
+  - date: 2026-06-01
+    ko: Anthropic, 상장 등록서(S-1) 초안을 미국 증권거래위원회에 비공개 제출. 공모 주식 수와 가격은 정하지 않았다.
+    en: "Anthropic confidentially submits a draft S-1 registration statement to the U.S. Securities and Exchange Commission, with the number of shares and the price not yet set."
+    glyph: S-1
+  - date: 2026-06-08
+    ko: OpenAI도 S-1을 비공개로 냈다고 밝혔다. 상장 시기는 정하지 않았다.
+    en: "OpenAI announces that it too has confidentially submitted an S-1, without setting a date to go public."
+    glyph: OpenAI
+ko:
+  kicker: 자본
+  title: 상장을 준비하는 연구소들
+  lede: Anthropic과 OpenAI가 일주일 사이에 차례로 상장 준비를 알렸다. 그 직전 Anthropic은 650억 달러를 모았고, OpenAI의 비영리 약속을 문제 삼은 머스크의 소송은 1심에서 제소 시한에 걸렸다.
+en:
+  kicker: "Capital"
+  title: "The Labs Prepare to Go Public"
+  lede: "Within a week, Anthropic and OpenAI each revealed that they were preparing to go public. Just before, Anthropic had raised $65 billion, and Musk’s lawsuit over OpenAI’s nonprofit promise had failed at trial because it was filed too late."
+  glyph: "IPO"

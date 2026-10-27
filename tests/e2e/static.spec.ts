@@ -23,15 +23,15 @@ for (const path of ['./', './en/']) {
       const text = (await page.locator('#details').textContent())!;
       const missing = scenes.flatMap(s => [s[lang].title, ...s.items.map(it => it[lang])]).filter(t => !text.includes(t));
       expect(missing).toEqual([]);
-      await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(33);
-      await expect(page.locator('#details ol.items > li')).toHaveCount(128);
+      await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(38);
+      await expect(page.locator('#details ol.items > li')).toHaveCount(148);
       await expect(page.locator('#details article.detail.year')).toHaveCount(4);
     });
 
-    test('boxes: 166, newest first, links to addresses', async ({ page }) => {
+    test('boxes: 191, newest first, links to addresses', async ({ page }) => {
       await page.goto(path);
       const boxes = page.locator('.wall .box');
-      await expect(boxes).toHaveCount(166);
+      await expect(boxes).toHaveCount(191);
       await expect(page.locator('.wall > :first-child')).toHaveClass(/\bcover\b/);
       await expect(page.locator('.wall a.box').first()).toHaveAttribute('href', '#year-2026');
       const glyphs = await boxes.evaluateAll(els => els.map(e => (e as HTMLElement).dataset.glyph ?? ''));

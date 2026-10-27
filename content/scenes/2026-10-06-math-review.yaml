@@ -1,0 +1,57 @@
+id: 2026-10-math-review
+date: 2026-10-06
+span:
+  from: 2026-05
+  to: 2026-10
+added: 2026-10-27
+print:
+  pattern: c
+  motif: grid
+  glyph: "722"
+sources:
+  - url: https://openai.com/index/sharing-ai-progress-in-mathematics/
+    title: Sharing AI progress in mathematics
+    publisher: OpenAI
+  - url: https://retractionwatch.com/2026/10/08/openai-withdraws-preprints-722-manuscripts-unsolved-math-problems/
+    title: OpenAI withdraws three preprints a day after releasing 722 manuscripts on unsolved math problems
+    publisher: Retraction Watch
+items:
+  - date: 2026-05-20
+    ko: OpenAI의 범용 추론 모델이 에르되시의 평면 단위거리 추측을 반증했다. 외부 수학자들이 증명을 검증해 논문으로 정리했다.
+    en: "An OpenAI general-purpose reasoning model disproves Erdős’s planar unit distance conjecture, and outside mathematicians check the proof and write it up."
+    glyph: Erdős
+    sources:
+      - url: https://openai.com/index/model-disproves-discrete-geometry-conjecture/
+        title: An OpenAI model has disproved a central conjecture in discrete geometry
+        publisher: OpenAI
+      - url: https://arxiv.org/abs/2605.20695
+        title: Remarks on the disproof of the unit distance conjecture
+        publisher: arXiv
+  - date: 2026-09-08
+    ko: OpenAI, 내부 에이전트 시스템이 외력이 있는 조건에서 나비에–스토크스 방정식의 해가 유한 시간에 무너질 수 있음을 증명했다고 발표. 상금은 청구하지 않겠다고 했고, 수학자들 사이에서는 발표가 성급했다는 우려가 나왔다.
+    en: "OpenAI announces that an internal multi-agent system has proved that solutions to the Navier–Stokes equations with a forcing term can blow up in finite time, says it will not claim the Millennium Prize, and draws concern from mathematicians that the announcement was rushed."
+    glyph: { ko: "유체", en: "FLUID" }
+    sources:
+      - url: https://openai.com/index/navier-stokes-solution/
+        title: On the Navier–Stokes Millennium Prize Problem
+        publisher: OpenAI
+  - date: 2026-10-06
+    ko: OpenAI, 내부 모델이 쓴 수학 원고 722편을 깃허브에 한꺼번에 공개. 이튿날 부호 오류로 3편을 철회했다.
+    en: "OpenAI publishes 722 mathematics manuscripts written by an internal model on GitHub in a single batch, and withdraws three of them the next day over a sign error."
+    glyph: "722"
+  - date: 2026-10-15
+    ko: 사이먼스재단, Anthropic·OpenAI와 1,500만 달러 규모 사업 발표. 수학자들이 AI가 낸 결과를 검토하고 함께 쓸 기준을 세우도록 돕는다.
+    en: "The Simons Foundation announces a $15 million effort with Anthropic and OpenAI to help mathematicians assess AI-assisted results and develop shared standards."
+    glyph: $15M
+    sources:
+      - url: https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/
+        title: Simons Foundation Launches $15M Effort To Help Mathematicians Navigate AI Era
+        publisher: Simons Foundation
+ko:
+  kicker: 수학
+  title: 검증이 따라가지 못한 증명들
+  lede: AI가 내놓는 수학 결과가 수학자들이 읽고 검증하는 속도를 넘어섰다. 원고 수백 편이 한꺼번에 공개되자 검토 절차를 새로 세우는 일이 과제가 됐다.
+en:
+  kicker: "Mathematics"
+  title: "Proofs That Outran Their Reviewers"
+  lede: "AI began producing mathematical results faster than mathematicians could read and check them. When hundreds of manuscripts were released at once, building a new review process became the pressing task."

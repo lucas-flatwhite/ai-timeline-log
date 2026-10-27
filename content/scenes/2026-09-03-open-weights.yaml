@@ -1,0 +1,56 @@
+id: 2026-09-open-weights
+date: 2026-09-03
+order: 1
+span:
+  from: 2026-06
+  to: 2026-10
+added: 2026-10-27
+print:
+  pattern: d
+  motif: grid
+  glyph: 가중치
+sources:
+  - url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/
+    title: NVIDIA to Acquire Hugging Face
+    publisher: NVIDIA
+items:
+  - date: 2026-06-04
+    ko: 엔비디아, 에이전트 작업용 Nemotron 3 Ultra를 공개하며 가중치와 학습 데이터를 함께 내놓았다.
+    en: "NVIDIA releases Nemotron 3 Ultra, a model for agentic work, together with its weights and training data."
+    glyph: { ko: "데이터", en: "DATA" }
+    sources:
+      - url: https://research.nvidia.com/labs/nemotron/Nemotron-3-Ultra/
+        title: NVIDIA Nemotron 3 Ultra
+        publisher: NVIDIA
+  - date: 2026-06-16
+    ko: Z.ai, 100만 토큰 문맥을 다루는 GLM-5.2의 가중치를 MIT 라이선스로 공개.
+    en: "Z.ai releases the weights of GLM-5.2, a model with a one-million-token context window, under the MIT license."
+    glyph: GLM-5.2
+    sources:
+      - url: https://docs.z.ai/release-notes/new-released
+        title: New Released
+        publisher: Z.ai
+      - url: https://huggingface.co/zai-org/GLM-5.2
+        title: zai-org/GLM-5.2
+        publisher: Hugging Face
+  - date: 2026-09-03
+    ko: 엔비디아, 허깅페이스를 약 129억 3천만 달러에 인수하기로 합의. 플랫폼은 열린 채로 두고 엔비디아 칩 없이도 쓸 수 있게 하겠다고 약속했다.
+    en: "NVIDIA agrees to acquire Hugging Face for about $12.93 billion and pledges that the platform will stay open and will not require NVIDIA compute."
+    glyph: $12.9B
+  - date: 2026-10-15
+    ko: 메타, Muse Spark Open의 가중치 공개. 상업 이용 조건을 붙인 자체 라이선스를 따른다.
+    en: "Meta releases the weights of Muse Spark Open under its own license with limited commercial terms."
+    glyph: { ko: "공개", en: "OPEN" }
+    sources:
+      - url: https://research.meta.ai/blog/muse-spark-open
+        title: Introducing Muse Spark Open, The Most Capable US Open‑Weight Model to Date
+        publisher: Meta
+ko:
+  kicker: 공개 모델
+  title: 공개 가중치와 허깅페이스
+  lede: 최상위 모델의 접근이 막히고 좁아지는 사이에도, 누구나 내려받아 직접 돌릴 수 있는 모델이 계속 나왔다. 그런 모델이 모이는 허깅페이스를 엔비디아가 사기로 했다.
+en:
+  kicker: "Open Models"
+  title: "Open Weights and Hugging Face"
+  lede: "Even as access to frontier models was cut off and narrowed, models that anyone could download and run kept coming. NVIDIA then agreed to buy Hugging Face, where such models gather."
+  glyph: "WEIGHTS"
