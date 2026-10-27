@@ -7,7 +7,7 @@ function jobs(): Job[] {
   const P = readPics(), out: Job[] = [];
   const cover = document.querySelector<HTMLCanvasElement>('.cover canvas[data-kind="days"]');
   /* 일수 판의 시드는 시안 그대로(1130) */
-  if (cover) out.push({ el: cover, cv: cover, spec: { kind: 'days', glyph: cover.dataset.glyph!, pattern: 'h', angle: 0, motif: 'rays', seed: 1130 } });
+  if (cover) out.push({ el: cover, cv: cover, spec: { kind: 'days', glyph: cover.dataset.glyph!, pattern: 'h', angle: 0, motif: 'none', seed: 1130 } });
   document.querySelectorAll<HTMLElement>('.wall .box').forEach(el => {
     const cv = el.querySelector('canvas');
     if (cv) out.push({ el, cv, spec: boxSpec(el, P) });

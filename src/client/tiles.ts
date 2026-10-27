@@ -59,14 +59,13 @@ function cutYear(t: TileSpec, w: number, h: number, s: number): PathLike[] {
   return engrave({ w, h, s, src: smp, mode: 'lines', ang: t.angle * Math.PI / 180, maxR: 0.86, seed: yy, sweep: yy % 2 ? 0.4 : 2.6 });
 }
 
-/* 일수 판(시안 renderDays). 먹 바탕에 햇살 */
+/* 일수 판(시안 renderDays). 먹 바탕에 무늬 없이 가로 칼선만 새긴다 */
 function cutDays(t: TileSpec, w: number, h: number, s: number): PathLike[] {
-  const rng = mulberry(t.seed), R = box(w, h, Math.min(w, h) * 0.13);
+  const R = box(w, h, Math.min(w, h) * 0.13);
   let at: Rect = R;
   const smp = compose(w, h, g => {
     g.fillStyle = 'rgba(0,0,0,.05)'; g.fillRect(0, 0, w, h); vignette(g, w, h, 0.12);
-    const fit = fitGlyph(g, t.glyph, R, 0.96, PLATE); at = fit.box; motif(g, 'rays', fit.box, R, w, h, rng);
-    g.fillStyle = 'rgba(255,255,255,.45)'; g.fillRect(0, 0, w, h);
+    const fit = fitGlyph(g, t.glyph, R, 0.96, PLATE); at = fit.box;
     g.fillStyle = '#000'; drawGlyph(g, fit, PLATE); frame(g, w, h, s);
   });
   return engrave({ w, h, s, src: smp, mode: 'lines', ang: 0, cx: at.x + at.w / 2, cy: at.y + at.h / 2, maxR: 0.9, seed: t.seed + 1, sweep: 1.3 });
