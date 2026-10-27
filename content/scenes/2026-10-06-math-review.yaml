@@ -35,6 +35,9 @@ items:
       - url: https://openai.com/index/navier-stokes-solution/
         title: On the Navier–Stokes Millennium Prize Problem
         publisher: OpenAI
+      - url: https://retractionwatch.com/2026/10/08/openai-withdraws-preprints-722-manuscripts-unsolved-math-problems/
+        title: OpenAI withdraws three preprints a day after releasing 722 manuscripts on unsolved math problems
+        publisher: Retraction Watch
   - date: 2026-10-06
     ko: OpenAI, 내부 모델이 쓴 수학 원고 722편을 깃허브에 한꺼번에 공개. 이튿날 부호 오류로 3편을 철회했다.
     en: "OpenAI publishes 722 mathematics manuscripts written by an internal model on GitHub in a single batch, and withdraws three of them the next day over a sign error."

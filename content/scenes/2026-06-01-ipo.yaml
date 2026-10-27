@@ -20,8 +20,8 @@ sources:
     publisher: eWeek
 items:
   - date: 2026-05-18
-    ko: 머스크가 OpenAI의 비영리 약속 위반을 주장한 소송에서 배심원단이 제소 시한이 지났다고 판단했다. 약속 위반 여부는 다루지 않았고, 머스크는 항소하겠다고 밝혔다.
-    en: "A federal jury finds that Elon Musk waited too long to sue OpenAI and Sam Altman over a promise to keep the company a nonprofit, without ruling on whether the promise was broken, and Musk says he will appeal."
+    ko: 머스크가 OpenAI의 비영리 약속 위반을 주장한 소송에서 자문 배심원단이 제소 시한이 지났다고 판단했고, 판사가 이를 그대로 받아들였다. 약속 위반 여부는 다루지 않았고, 머스크는 항소하겠다고 밝혔다.
+    en: "An advisory jury finds, and the judge adopts, that Elon Musk waited too long to sue OpenAI and Sam Altman over a promise to keep the company a nonprofit, without ruling on whether the promise was broken, and Musk says he will appeal."
     glyph: { ko: "시효", en: "LAPSED" }
     pic: gavel
     sources:

@@ -41,7 +41,7 @@ items:
     glyph: { ko: "차단", en: "CUT OFF" }
   - date: 2026-06-30
     ko: 통제 해제. 7월 1일 새 보안 분류기를 붙여 Fable 5를 다시 열었다. Mythos 5는 6월 26일 일부 미국 기관부터 다시 열렸다.
-    en: "The controls are lifted, and on July 1 Fable 5 reopens with a new security classifier, after Mythos 5 had already reopened to some U.S. organizations on June 26."
+    en: "The controls are lifted, and on July 1 Fable 5 reopens with a new security classifier, while Mythos 5 has been open to some U.S. organizations since June 26."
     glyph: { ko: "해제", en: "LIFTED" }
 ko:
   kicker: 수출통제
