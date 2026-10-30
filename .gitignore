@@ -40,3 +40,6 @@ Thumbs.db
 # 빌드 때 만드는 판 글꼴
 public/plate/
 src/generated/
+
+# Superpowers docs
+docs/superpowers/
