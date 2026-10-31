@@ -139,6 +139,25 @@ test.describe('exported files', () => {
     await expect(page.locator('head link[rel=alternate][type="application/json"]')).toHaveAttribute('href', '/ai-timeline-log/timeline.json');
   });
 
+  test('take section', async ({ page }) => {
+    await page.goto('./');
+    const take = page.locator('#outro .take');
+    const hrefs = await take.locator('a').evaluateAll(as => as.map(a => (a as HTMLAnchorElement).getAttribute('href')!));
+    expect(hrefs).toEqual([
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.png',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases',
+      '/ai-timeline-log/feed.xml',
+      'https://lucasflatwhite.com/ai-timeline-log/llms-full.txt',
+      'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
+    ]);
+    for (const a of await take.locator('a[href^="https://github.com"]').all()) {
+      await expect(a).toHaveAttribute('target', '_blank');
+      await expect(a).toHaveAttribute('rel', 'noopener');
+    }
+    await expect(take.locator('h3').first()).toHaveText('포스터 · 제 4판 · 2026.10.31');
+  });
+
   test('feeds are served', async ({ request, page }) => {
     for (const p of ['feed.xml', 'en/feed.xml']) {
       const r = await request.get(p);

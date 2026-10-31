@@ -1,7 +1,7 @@
 import type { Content } from './content.ts';
 import type { Locale } from './dates.ts';
 import { newestFirst, releaseUrl, sceneUrl } from './export.ts';
-import { ORIGIN } from './view.ts';
+import { ORIGIN } from './origin.ts';
 import { uiFor } from '../i18n/index.ts';
 
 /** RSS 2.0 피드. 항목: 첫 판(하나로 묶음), 첫 판 뒤에 더한 장면, 정정, 포스터가 있는 판. updated만 바뀐 것은 넣지 않는다 */

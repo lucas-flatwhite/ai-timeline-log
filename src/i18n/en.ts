@@ -31,4 +31,13 @@ export const en: UI = {
   newLine: '{n} new since your last visit',
   newShow: 'Show',
   newLabel: 'added since your last visit',
+  take: 'Take It With You',
+  posterLabel: (n, date) => `Poster · Edition ${n} · ${date}`,
+  posterNote: 'The whole wall on one A2 sheet',
+  posterAll: 'Past editions',
+  feedLabel: 'Feed',
+  feedNote: 'New scenes and corrections by RSS',
+  aiLabel: 'Hand It to an AI',
+  aiNote: 'Paste this address into an AI chat and it can answer with sources.',
+  takeLicense: (license, name) => `Content is licensed under ${license}. Credit: ${name}`,
 };

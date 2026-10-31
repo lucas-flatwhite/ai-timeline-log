@@ -29,5 +29,14 @@ export const ko = {
   newLine: '지난 방문 이후 새 상자 {n}개',
   newShow: '보기',
   newLabel: '지난 방문 이후 추가',
+  take: '가져가기',
+  posterLabel: (n: number, date: string) => `포스터 · 제 ${n}판 · ${date}`,
+  posterNote: '벽 전체를 A2 한 장에',
+  posterAll: '지난 판',
+  feedLabel: '피드',
+  feedNote: '새 장면과 정정을 RSS로 받기',
+  aiLabel: 'AI에게 건네기',
+  aiNote: '이 주소를 AI 채팅에 붙이면 출처를 달아 답할 수 있습니다.',
+  takeLicense: (license: string, name: string) => `내용은 ${license}을 따릅니다. 출처: ${name}`,
 };
 export type UI = typeof ko;

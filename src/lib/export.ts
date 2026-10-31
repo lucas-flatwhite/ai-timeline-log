@@ -3,7 +3,7 @@ import { formatDot, type Locale } from './dates.ts';
 import { glyphFor, itemAddresses } from './grid.ts';
 import { hasHangul } from './checks.ts';
 import type { Edition, Scene, Topics } from './schema.ts';
-import { ORIGIN } from './view.ts';
+import { ORIGIN } from './origin.ts';
 
 /** 연표를 사이트 밖으로 내보내는 모양들(timeline.json, llms.txt). 사실은 Content 하나에서만 온다. */
 

@@ -4,6 +4,8 @@ import {
 } from './dates.ts';
 import { glyphFor, hashSeed, itemAddresses, sortWall, ymd, type WallEntry } from './grid.ts';
 import type { Pics } from './schema.ts';
+import { ORIGIN } from './origin.ts';
+import { LICENSE, latestPosterEdition, posterUrl } from './export.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
 
 /** 격자의 상자 하나. 날짜는 `YYYYMMDD`(월까지만 있으면 `YYYYMM`, 연도 판은 `YYYY`) */
@@ -48,10 +50,18 @@ export interface PageView {
     ledgerTitle: string; ledgerNote: string; ledger: { lab: string; models: { name: string; date: string }[] }[];
     sourcesTitle: string; sourcesNote: string; sources: { url: string; title: string }[]; end: [string, string];
     making?: string; makingTitle: string;
+    /** 가져가기: 포스터(포스터가 있는 마지막 판), 피드, AI에게 건네기. llms·json은 붙여 넣을 정식 주소 */
+    take: {
+      title: string;
+      poster?: { label: string; note: string; pdf: string; png: string; all: string; allLabel: string };
+      feed: { label: string; note: string; href: string };
+      ai: { label: string; note: string; llms: string; json: string };
+      license: string;
+    };
   };
 }
 
-export const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
+export { ORIGIN };
 
 export function fill(tpl: string, vars: Record<string, string>): string {
   return tpl.replace(/\{(\w+)\}/g, (_, k: string) => {
@@ -162,6 +172,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   scenes.sort((a, b) => order.get(a.id)! - order.get(b.id)!);   // 격자와 같은 최신순
 
   const title = site.name;
+  const poster = latestPosterEdition(c);
   return {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
@@ -194,6 +205,17 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       sources: c.sources.map(s => ({ url: s.url, title: s.title })),
       end: [t.endCount(count, startDot, t.now), title],
       making: st.making, makingTitle: t.making,
+      take: {
+        title: t.take,
+        poster: poster && {
+          label: t.posterLabel(poster.n, formatDot(poster.date)), note: t.posterNote,
+          pdf: posterUrl(site.repo, poster.n, locale, 'pdf'), png: posterUrl(site.repo, poster.n, locale, 'png'),
+          all: `${site.repo}/releases`, allLabel: t.posterAll,
+        },
+        feed: { label: t.feedLabel, note: t.feedNote, href: `${new URL(canonical).pathname}feed.xml` },
+        ai: { label: t.aiLabel, note: t.aiNote, llms: `${canonical}llms-full.txt`, json: `${ORIGIN}timeline.json` },
+        license: t.takeLicense(LICENSE.name, site.name),
+      },
     },
   };
 }
