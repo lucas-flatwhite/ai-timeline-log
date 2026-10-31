@@ -1,0 +1,57 @@
+id: 2026-10-companion-rules
+date: 2026-10-12
+span:
+  from: 2026-10-12
+  to: 2026-10-28
+added: 2026-10-31
+print:
+  pattern: w
+  motif: none
+  glyph: 동반자
+sources:
+  - url: https://www.streetinsider.com/Business%2BWire/Character.ai%2BInitiates%2BVoluntary%2BChapter%2B11%2BProceeding%2Bto%2BFacilitate%2BValue-Maximizing%2BSale%2BProcess/27175607.html
+    title: Character.ai Initiates Voluntary Chapter 11 Proceeding to Facilitate Value-Maximizing Sale Process
+    publisher: Character Technologies Inc. / Business Wire
+  - url: https://ag.ny.gov/press-release/2026/attorney-general-james-urges-court-protect-children-and-consumers-characterai
+    title: Attorney General James Urges Court to Protect Children and Consumers in Character.AI Bankruptcy
+    publisher: Office of the New York Attorney General
+  - url: https://www.governor.ny.gov/news/governor-hochul-signs-nation-leading-legislation-protect-kids-ai-chatbots-and-ensure-baby
+    title: Governor Hochul Signs Nation-Leading Legislation to Protect Kids From AI Chatbots and to Ensure Baby Monitor Safety
+    publisher: New York State
+items:
+  - date: 2026-10-12
+    ko: Character.AI, 자발적 Chapter 11 신청과 법원 감독 아래 매각 절차 추진을 발표. Disney가 일부 지식재산 등의 비독점 영구 라이선스에 2천만 달러를 제안했으며, 절차 중 서비스는 계속 운영한다고 밝혔다.
+    en: "Character.AI announces a voluntary Chapter 11 filing and court-supervised sale process, with Disney offering $20 million for a non-exclusive perpetual license to certain intellectual property and other assets while the platform continues operating during the process."
+    glyph: { ko: 회생, en: CH.11 }
+    sources:
+      - url: https://www.streetinsider.com/Business%2BWire/Character.ai%2BInitiates%2BVoluntary%2BChapter%2B11%2BProceeding%2Bto%2BFacilitate%2BValue-Maximizing%2BSale%2BProcess/27175607.html
+        title: Character.ai Initiates Voluntary Chapter 11 Proceeding to Facilitate Value-Maximizing Sale Process
+        publisher: Character Technologies Inc. / Business Wire
+  - date: 2026-10-14
+    ko: 뉴욕주 법무장관과 다른 39명의 법무장관, Character.AI 매각 과정에서 아동과 소비자를 보호하라고 요구. 민감한 대화 데이터의 사용과 이전에도 보호 장치가 필요하다고 밝혔다.
+    en: "New York’s attorney general and 39 other attorneys general call for protections for children and consumers in the Character.AI sale, including safeguards for the use and transfer of sensitive conversation data."
+    glyph: { ko: 대화, en: CHATS }
+    sources:
+      - url: https://ag.ny.gov/press-release/2026/attorney-general-james-urges-court-protect-children-and-consumers-characterai
+        title: Attorney General James Urges Court to Protect Children and Consumers in Character.AI Bankruptcy
+        publisher: Office of the New York Attorney General
+  - date: 2026-10-28
+    ko: 뉴욕주지사, 미성년자에게 위험한 AI 동반자 기능을 금지하는 법에 서명. 사람인 척하거나 자해를 부추기는 기능 등을 제한하며, 2027년 1월 1일부터 시행한다.
+    en: "New York’s governor signs a law prohibiting unsafe AI companion features for minors, including pretending to be human or encouraging self-harm, with the law taking effect on January 1, 2027."
+    glyph: { ko: 보호, en: SAFE }
+    sources:
+      - url: https://www.governor.ny.gov/news/governor-hochul-signs-nation-leading-legislation-protect-kids-ai-chatbots-and-ensure-baby
+        title: Governor Hochul Signs Nation-Leading Legislation to Protect Kids From AI Chatbots and to Ensure Baby Monitor Safety
+        publisher: New York State
+      - url: https://www.nysenate.gov/legislation/bills/2025/S9051/amendment/B
+        title: Senate Bill S9051B — Signed October 28, 2026
+        publisher: New York State Senate
+ko:
+  kicker: 동반자 챗봇
+  title: AI 친구의 파산, 대화의 행방
+  lede: 동반자 챗봇의 책임 문제가 회사의 매각과 이용자 데이터 보호로 이어졌다. 10월 말 보도 기준, Character.AI의 매각은 진행 중이며 서비스 종료나 대화 데이터 이전이 확정된 것은 아니다. 뉴욕주는 미성년자에게 제공할 수 있는 기능의 경계를 법으로 정했다.
+en:
+  kicker: Companion Chatbots
+  title: Bankruptcy and the Fate of Private Chats
+  lede: "Questions about companion chatbot accountability extended to company sales and the protection of user data. As reported by late October, Character.AI’s sale process remained underway, with neither a shutdown nor a transfer of conversation data settled. New York set legal limits on the features that minors could be offered."
+  glyph: BONDS

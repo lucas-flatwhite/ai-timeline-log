@@ -1,0 +1,59 @@
+id: 2026-10-cyber-defense
+date: 2026-10-21
+span:
+  from: 2026-10-21
+  to: 2026-10-29
+added: 2026-10-31
+print:
+  pattern: d
+  angle: -18
+  motif: none
+  glyph: 방어
+sources:
+  - url: https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/
+    title: "Patch the Planet: global response coordination as agents uncover critical vulnerabilities"
+    publisher: OpenAI
+  - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/
+    title: "Gemini 4 Carbon: our next frontier model"
+    publisher: Google
+  - url: https://mistral.ai/news/mistral-large-4-oss/
+    title: "Mistral Large 4 (Le Chonk): Built for Coders, Trusted by Defenders"
+    publisher: Mistral AI
+items:
+  - date: 2026-10-21
+    ko: PHP, 인증 없이 원격 코드를 실행할 수 있는 중대 취약점 2개의 수정 버전 공개. OpenAI는 Calif가 GPT-5.6 Sol로 결함을 찾았고 Wiz도 독립 발견했으며, 유지관리자들과 공개 전 대응을 준비했다고 밝혔다.
+    en: "PHP releases fixes for two critical vulnerabilities allowing unauthenticated remote code execution, while OpenAI says Calif used GPT-5.6 Sol to find a flaw, Wiz independently discovered the vulnerabilities, and maintainers and partners prepared protections before disclosure."
+    glyph: PHP
+    pic: bug
+    sources:
+      - url: https://www.php.net/archive/2026.php
+        title: "PHP: News Archive — October 21, 2026 security releases"
+        publisher: PHP
+      - url: https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/
+        title: "Patch the Planet: global response coordination as agents uncover critical vulnerabilities"
+        publisher: OpenAI
+  - date: 2026-10-28
+    ko: 구글, 사이버 보안 능력을 높인 Gemini 4 Carbon 발표. 일부 사이버 방어 담당자부터 제공하고, 안전장치를 보완하며 접근을 넓히겠다고 밝혔다.
+    en: "Google announces Gemini 4 Carbon with stronger cybersecurity capabilities and says access will begin with selected cyber defenders before expanding as safeguards are refined."
+    glyph: { ko: 제한, en: GATE }
+    sources:
+      - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/
+        title: "Gemini 4 Carbon: our next frontier model"
+        publisher: Google
+  - date: 2026-10-29
+    ko: Mistral, 코딩과 사이버 방어를 내세운 Large 4의 가중치 공개. 조직이 자체 인프라에서 운영할 수 있게 하고, 악성 사이버 요청을 거부하는 안전장치도 설명했다.
+    en: "Mistral releases the weights of Large 4 for coding and cyber defense, enabling organizations to run it on their own infrastructure and describing safeguards that reject malicious cyber requests."
+    glyph: { ko: 가중치, en: OPEN }
+    sources:
+      - url: https://mistral.ai/news/mistral-large-4-oss/
+        title: "Mistral Large 4 (Le Chonk): Built for Coders, Trusted by Defenders"
+        publisher: Mistral AI
+ko:
+  kicker: 사이버 보안
+  title: AI가 찾은 결함, 방어에 주어진 시간
+  lede: AI가 널리 쓰이는 소프트웨어의 결함을 찾자, 공개 전에 수정책을 준비하는 일이 중요해졌다. 구글은 단계적인 모델 제공을 예고하고 Mistral은 가중치를 공개하며, 방어자가 능력을 확보하는 서로 다른 길을 제시했다.
+en:
+  kicker: Cybersecurity
+  title: AI Finds the Flaws, Defenders Need Time
+  lede: "As AI found flaws in widely used software, preparing fixes before disclosure became essential. Google announced plans for phased access while Mistral released weights, offering different ways for defenders to obtain those capabilities."
+  glyph: DEFEND
