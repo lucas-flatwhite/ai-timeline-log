@@ -4,6 +4,7 @@ span:
   from: 2023-12
   to: 2024-02
 added: 2026-10-05
+topics: [models]
 print:
   pattern: w
   motif: none

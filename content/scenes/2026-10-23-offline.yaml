@@ -4,6 +4,7 @@ span:
   from: 2026-09
   to: 2026-10
 added: 2026-10-27
+topics: [agents, safety]
 print:
   pattern: w
   motif: none

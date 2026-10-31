@@ -5,6 +5,7 @@ span:
   from: 2026-06
   to: 2026-10
 added: 2026-10-27
+topics: [open]
 print:
   pattern: d
   motif: grid

@@ -3,6 +3,7 @@ date: 2024-06-18
 span:
   from: 2024-06
 added: 2026-10-05
+topics: [compute]
 print:
   pattern: h
   motif: rise

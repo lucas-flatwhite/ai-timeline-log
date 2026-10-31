@@ -4,6 +4,7 @@ span:
   from: 2026-01
   to: 2026-02
 added: 2026-10-18
+topics: [society]
 print:
   pattern: h
   motif: grid

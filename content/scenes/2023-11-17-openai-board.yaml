@@ -4,6 +4,7 @@ span:
   from: 2023-10
   to: 2023-11
 added: 2026-10-05
+topics: [rules]
 print:
   pattern: c
   motif: none

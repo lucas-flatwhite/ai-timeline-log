@@ -1,4 +1,18 @@
+# 판 기록. 장면이 추가·정정된 의미 있는 시점마다 한 판. poster: true인 판은 edition-<n> 태그로 포스터 Release가 있다.
 - n: 1
   date: 2026-10-05
   ko: 첫 판. ChatGPT 공개부터 장면 28개를 찍었다.
   en: First edition, with 28 scenes from the launch of ChatGPT onward.
+- n: 2
+  date: 2026-10-18
+  ko: ChatGPT 광고, 챗봇에 털어놓은 아이들, 음악 계약, 블록의 감원, 소라 종료까지 장면 5개를 더했다.
+  en: Adds five scenes, from ads in ChatGPT, teens confiding in chatbots and music licensing deals to Block’s layoffs and the end of Sora.
+- n: 3
+  date: 2026-10-27
+  ko: 연구소 상장 준비, 공개 가중치, 자리를 비워도 일하는 에이전트, 증명 검증, 인터넷에서 떼어 낸 AI까지 장면 5개를 더하고 2개를 정정했다.
+  en: Adds five scenes on labs preparing to go public, open weights, always-on agents, verifying AI proofs and taking AI offline, and corrects two.
+- n: 4
+  date: 2026-10-31
+  poster: true
+  ko: 동반자 챗봇 규칙, 사이버 방어, ETH 반증 검토까지 장면 3개를 더하고 모델 계보를 보강했다. 포스터로 찍은 첫 판.
+  en: Adds three scenes on companion chatbot rules, cyber defense and the review of the ETH refutations, fills out the model ledger, and is the first edition printed as a poster.

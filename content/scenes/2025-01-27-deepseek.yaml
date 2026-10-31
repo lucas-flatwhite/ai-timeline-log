@@ -3,6 +3,7 @@ date: 2025-01-27
 span:
   from: 2025-01
 added: 2026-10-05
+topics: [compute, open]
 print:
   pattern: h
   motif: fall

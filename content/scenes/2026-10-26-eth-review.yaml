@@ -4,6 +4,7 @@ span:
   from: 2026-10-26
   to: 2026-10-27
 added: 2026-10-31
+topics: [science]
 print:
   pattern: c
   motif: grid

@@ -1,1 +1,10 @@
-{}
+# 주제: 여러 장면을 가로지르는 흐름. 장면의 topics가 이 id를 가리킨다. 새 주제는 장면이 셋 이상일 때만 만든다.
+agents: { ko: 에이전트, en: Agents }
+compute: { ko: 계산력과 자본, en: Compute & Capital }
+rules: { ko: 법과 정부, en: Law & Government }
+safety: { ko: 안전과 보안, en: Safety & Security }
+open: { ko: 공개 모델, en: Open Models }
+science: { ko: 과학과 수학, en: Science & Math }
+society: { ko: 일상과 일, en: Everyday Life & Work }
+models: { ko: 모델 경쟁, en: Model Race }
+korea: { ko: 한국, en: Korea }

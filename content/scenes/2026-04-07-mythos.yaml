@@ -4,6 +4,7 @@ span:
   from: 2026-03
   to: 2026-05
 added: 2026-10-05
+topics: [safety]
 print:
   pattern: c
   motif: disc

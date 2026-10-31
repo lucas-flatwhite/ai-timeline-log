@@ -4,6 +4,7 @@ span:
   from: 2026-10-21
   to: 2026-10-29
 added: 2026-10-31
+topics: [safety, open]
 print:
   pattern: d
   angle: -18

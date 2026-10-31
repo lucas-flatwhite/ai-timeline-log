@@ -3,6 +3,7 @@ date: 2025-05-22
 span:
   from: 2025-05
 added: 2026-10-05
+topics: [agents]
 print:
   pattern: d
   angle: 10
