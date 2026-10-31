@@ -28,6 +28,16 @@ for (const path of ['./', './en/']) {
       await expect(page.locator('#details article.detail.year')).toHaveCount(4);
     });
 
+    test('topic menu and since line stay out of the way without JS', async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('.tp')).toBeHidden();
+      await expect(page.locator('.cover .since')).toBeHidden();
+      const box = page.locator('.wall a.box.item').first();
+      await expect(box).toHaveAttribute('data-topics', /\S/);
+      await expect(box).toHaveAttribute('data-added', /^\d{4}-\d{2}-\d{2}$/);
+      await expect(page.locator('#wall')).toHaveAttribute('data-latest', '2026-10-31');
+    });
+
     test('boxes: 203, newest first, links to addresses', async ({ page }) => {
       await page.goto(path);
       const boxes = page.locator('.wall .box');
@@ -110,3 +120,51 @@ for (const path of ['./', './en/']) {
     });
   });
 }
+
+test.describe('exported files', () => {
+  test('data files are served', async ({ request }) => {
+    const json = await request.get('timeline.json');
+    expect(json.status()).toBe(200);
+    expect(json.headers()['content-type']).toMatch(/json/);
+    expect((await json.json()).scenes).toHaveLength(41);
+    for (const p of ['llms.txt', 'llms-full.txt', 'en/llms-full.txt']) {
+      const r = await request.get(p);
+      expect(r.status(), p).toBe(200);
+      expect((await r.text()).length, p).toBeGreaterThan(100);
+    }
+  });
+
+  test('pages point to the data file', async ({ page }) => {
+    await page.goto('./');
+    await expect(page.locator('head link[rel=alternate][type="application/json"]')).toHaveAttribute('href', '/ai-timeline-log/timeline.json');
+  });
+
+  test('take section', async ({ page }) => {
+    await page.goto('./');
+    const take = page.locator('#outro .take');
+    const hrefs = await take.locator('a').evaluateAll(as => as.map(a => (a as HTMLAnchorElement).getAttribute('href')!));
+    expect(hrefs).toEqual([
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.png',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases',
+      '/ai-timeline-log/feed.xml',
+      'https://lucasflatwhite.com/ai-timeline-log/llms-full.txt',
+      'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
+    ]);
+    for (const a of await take.locator('a[href^="https://github.com"]').all()) {
+      await expect(a).toHaveAttribute('target', '_blank');
+      await expect(a).toHaveAttribute('rel', 'noopener');
+    }
+    await expect(take.locator('h3').first()).toHaveText('포스터 · 제 4판 · 2026.10.31');
+  });
+
+  test('feeds are served', async ({ request, page }) => {
+    for (const p of ['feed.xml', 'en/feed.xml']) {
+      const r = await request.get(p);
+      expect(r.status(), p).toBe(200);
+      expect(await r.text(), p).toContain('<rss version="2.0">');
+    }
+    await page.goto('./en/');
+    await expect(page.locator('head link[rel=alternate][type="application/rss+xml"]')).toHaveAttribute('href', '/ai-timeline-log/en/feed.xml');
+  });
+});

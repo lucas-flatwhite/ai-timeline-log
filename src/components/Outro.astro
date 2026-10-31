@@ -14,6 +14,26 @@ const o = view.outro;
     <p class="note">{o.ledgerNote}</p>
     <div class="ledger" id="ledger">{o.ledger.map(l => <div class="lab"><h3>{l.lab}</h3><ol>{l.models.map(m => <li>{m.name}<time>{m.date}</time></li>)}</ol></div>)}</div>
 
+    {/* 가져가기: 포스터(GitHub Releases), 피드, AI에게 건네기 */}
+    <section class="take" id="take" aria-labelledby="takeH">
+      <h2 class="sub" id="takeH">{o.take.title}</h2>
+      <ul>
+        {o.take.poster && <li>
+          <h3>{o.take.poster.label}</h3><p>{o.take.poster.note}</p>
+          <p class="links"><a href={o.take.poster.pdf} target="_blank" rel="noopener">PDF</a><a href={o.take.poster.png} target="_blank" rel="noopener">PNG</a><a href={o.take.poster.all} target="_blank" rel="noopener">{o.take.poster.allLabel} ↗</a></p>
+        </li>}
+        <li>
+          <h3>{o.take.feed.label}</h3><p>{o.take.feed.note}</p>
+          <p class="links"><a href={o.take.feed.href}>RSS</a></p>
+        </li>
+        <li>
+          <h3>{o.take.ai.label}</h3><p>{o.take.ai.note}</p>
+          <p class="links"><a href={o.take.ai.llms}>{o.take.ai.llms}</a><a href={o.take.ai.json}>timeline.json</a></p>
+        </li>
+      </ul>
+      <p class="note">{o.take.license}</p>
+    </section>
+
     <details class="src">
       <summary>{o.sourcesTitle}</summary>
       <p>{o.sourcesNote}</p>

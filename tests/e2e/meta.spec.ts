@@ -15,7 +15,9 @@ for (const path of ['./', './en/']) {
       await expect(meta(page, 'link[rel="alternate"][hreflang="ko"]')).toHaveAttribute('href', ORIGIN);
       await expect(meta(page, 'link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute('href', ORIGIN);
       await expect(meta(page, 'link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', `${ORIGIN}en/`);
-      await expect(meta(page, 'link[rel="alternate"]')).toHaveCount(3);
+      await expect(meta(page, 'link[rel="alternate"][hreflang]')).toHaveCount(3);
+      // 언어 대체 링크 외에 내보내기 파일 두 개(timeline.json, 언어별 feed.xml)를 가리킨다
+      await expect(meta(page, 'link[rel="alternate"][type]')).toHaveCount(2);
 
       await expect(meta(page, 'meta[property="og:type"]')).toHaveAttribute('content', 'website');
       await expect(meta(page, 'meta[property="og:url"]')).toHaveAttribute('content', canonical);

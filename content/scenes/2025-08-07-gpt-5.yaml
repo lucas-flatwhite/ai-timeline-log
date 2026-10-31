@@ -4,6 +4,7 @@ span:
   from: 2025-06
   to: 2025-08
 added: 2026-10-05
+topics: [models]
 print:
   pattern: c
   motif: rays

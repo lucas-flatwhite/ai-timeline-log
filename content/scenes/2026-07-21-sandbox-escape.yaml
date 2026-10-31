@@ -3,6 +3,7 @@ date: 2026-07-21
 span:
   from: 2026-07
 added: 2026-10-05
+topics: [agents, safety]
 print:
   pattern: w
   motif: rays

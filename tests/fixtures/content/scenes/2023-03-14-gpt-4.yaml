@@ -2,6 +2,7 @@ id: 2023-03-gpt-4
 date: 2023-03-14
 span: { from: 2023-03-14 }
 added: 2026-10-05
+topics: [models]
 print: { pattern: c, motif: disc, glyph: "GPT-4" }
 items:
   - { date: 2023-03-15, ko: 항목 하나, en: Item one, glyph: { ko: 하나, en: ONE } }

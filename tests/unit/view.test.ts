@@ -168,3 +168,66 @@ describe('buildView(en)', () => {
       e.scenes.filter(s => s.meta.endsWith(' · Added 2026.10.31')).flatMap(s => s.items).length);
   });
 });
+
+describe('topics and visits on the wall', () => {
+  const e = buildView(loadContent(), 'en', '2026-10-25');
+
+  test('boxes carry topics and added', () => {
+    const it = v.boxes.find(b => b.addr === '2026-10-eth-review~20261026')!;
+    expect(it.topics).toEqual(['science']);
+    expect(it.added).toBe('2026-10-31');
+    const sc = v.boxes.find(b => b.addr === '2024-11-computer-use-mcp')!;
+    expect(sc.topics).toEqual(['agents']);
+    const y = v.boxes.find(b => b.kind === 'year')!;
+    expect(y.topics).toEqual([]);
+    expect(y.added).toBeUndefined();
+  });
+
+  test('topics list follows topics.yaml with scene counts', () => {
+    expect(v.topics.map(t => [t.id, t.count])).toEqual([
+      ['agents', 8], ['compute', 6], ['rules', 5], ['safety', 6], ['open', 5], ['science', 4], ['society', 7], ['models', 9], ['korea', 3],
+    ]);
+    expect(v.topics[0].name).toBe('에이전트');
+    expect(e.topics[0].name).toBe('Agents');
+  });
+
+  test('latestAdded is the newest added', () => {
+    expect(v.latestAdded).toBe('2026-10-31');
+  });
+
+  test('wall ui strings', () => {
+    expect(v.ui).toEqual({
+      topic: '주제', topicAll: '모두', topicClear: '주제 해제',
+      newLine: '지난 방문 이후 새 상자 {n}개', newShow: '보기', newLabel: '지난 방문 이후 추가',
+    });
+    expect(e.ui.newLine).toBe('{n} new since your last visit');
+  });
+});
+
+describe('take-it-with-you section', () => {
+  const e = buildView(loadContent(), 'en', '2026-10-25');
+  const REL = 'https://github.com/lucas-flatwhite/ai-timeline-log/releases';
+
+  test('take section links poster 4, feed and data', () => {
+    expect(v.outro.take.title).toBe('가져가기');
+    expect(v.outro.take.poster).toEqual({
+      label: '포스터 · 제 4판 · 2026.10.31', note: '벽 전체를 A2 한 장에',
+      pdf: `${REL}/download/edition-4/poster-ko.pdf`, png: `${REL}/download/edition-4/poster-ko.png`,
+      all: REL, allLabel: '지난 판',
+    });
+    expect(e.outro.take.poster!.png).toBe(`${REL}/download/edition-4/poster-en.png`);
+    expect(e.outro.take.poster!.label).toBe('Poster · Edition 4 · 2026.10.31');
+    expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/feed.xml' });
+    expect(e.outro.take.feed.href).toBe('/ai-timeline-log/en/feed.xml');
+    expect(v.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/llms-full.txt');
+    expect(e.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/en/llms-full.txt');
+    expect(v.outro.take.ai.json).toBe('https://lucasflatwhite.com/ai-timeline-log/timeline.json');
+    expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
+    expect(e.outro.take.ai.label).toBe('Hand It to an AI');
+  });
+
+  test('no poster edition, no poster row', () => {
+    const f = buildView(loadContent('tests/fixtures/content'), 'ko', '2026-10-25');
+    expect(f.outro.take.poster).toBeUndefined();
+  });
+});

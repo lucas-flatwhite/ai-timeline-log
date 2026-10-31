@@ -5,6 +5,14 @@ const { view } = Astro.props as { view: PageView };
 ---
 <header class="top">
   <b class="name">{view.name}</b>
+  {/* 주제 고르기. 스크립트가 있을 때만 보인다(html.js) */}
+  <div class="tp" data-label={view.ui.topic} data-clear={view.ui.topicClear}>
+    <button class="tp-btn" type="button" aria-expanded="false" aria-controls="tp-list">{view.ui.topic}</button>
+    <ul id="tp-list" class="tp-list" hidden>
+      <li><button type="button" data-topic="">{view.ui.topicAll}</button></li>
+      {view.topics.map(t => <li><button type="button" data-topic={t.id} data-name={t.name}>{t.name} <span>{t.count}</span></button></li>)}
+    </ul>
+  </div>
   <LangSwitch view={view} />
   <a class="report" href={view.report.href} target="_blank" rel="noopener">{view.report.label} ↗</a>
 </header>

@@ -1,4 +1,5 @@
 import { boxSpec, carveTile, readPics } from './tiles.ts';
+import { pickedSeq } from './pick.ts';
 
 /* 상세 창. 글은 #details의 article을 복제해 쓴다(문구는 모두 빌드 때 마크업에 들어 있다).
    주소: 장면 id, 사건 주소(li id), year-YYYY, 장면 별칭. 열면 주소를 바꾸고 닫으면 지운다(방문 기록은 쌓지 않는다) */
@@ -13,6 +14,11 @@ export function initDetail(): void {
   const boxOf = new Map([...wall.querySelectorAll<HTMLElement>('a.box')].map(b => [b.dataset.addr!, b]));
   /* 앞뒤 순서는 격자의 DOM 순서(최신이 앞, 연도 판 제외). 앞(이전 인덱스)이 다음 사건, 뒤가 이전(과거) 사건 */
   const seq = [...wall.querySelectorAll<HTMLElement>('.box:not(.year)')].map(b => b.dataset.addr!);
+  /* 주제·새 상자 강조가 켜져 있고 지금 주소가 그 안에 있으면 그 상자들 사이에서만 움직인다. 밖이면 전체 순서 */
+  const orderFor = (addr: string) => {
+    const p = pickedSeq();
+    return p && p.includes(addr) ? p : seq;
+  };
   const alias = new Map<string, string>();
   document.querySelectorAll<HTMLElement>('#details article[data-aliases]').forEach(a =>
     a.dataset.aliases!.split(/\s+/).filter(Boolean).forEach(k => alias.set(k, a.dataset.addr!)));
@@ -64,8 +70,8 @@ export function initDetail(): void {
     /* 정정 링크·앞뒤: 연도 판에는 없다 */
     fix.hidden = year;
     if (!year) fix.href = (li ?? article).dataset.fix!;
-    const i = year ? -1 : seq.indexOf(at);
-    prev.disabled = i < 0 || i >= seq.length - 1;
+    const order = orderFor(at), i = year ? -1 : order.indexOf(at);
+    prev.disabled = i < 0 || i >= order.length - 1;
     next.disabled = i <= 0;
     const box = boxOf.get(at);
     if (box) {
@@ -78,8 +84,9 @@ export function initDetail(): void {
     return true;
   }
   const step = (d: number) => {
-    const i = cur === null ? -1 : seq.indexOf(cur);
-    if (i >= 0 && seq[i + d]) show(seq[i + d]);
+    if (cur === null) return;
+    const order = orderFor(cur), i = order.indexOf(cur);
+    if (i >= 0 && order[i + d]) show(order[i + d]);
   };
 
   wall.addEventListener('click', e => {
