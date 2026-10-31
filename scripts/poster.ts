@@ -9,8 +9,7 @@ import { chromium, type Browser } from '@playwright/test';
 import QRCode from 'qrcode';
 import { loadContent } from '../src/lib/content.ts';
 import { formatDot, type Locale } from '../src/lib/dates.ts';
-import { ORIGIN } from '../src/lib/origin.ts';
-import { A_RATIO, editionFor, pickColumns, posterFiles, posterScale } from '../src/lib/poster.ts';
+import { A_RATIO, editionFor, pickColumns, posterFiles, posterScale, posterSiteUrl } from '../src/lib/poster.ts';
 import type { Edition } from '../src/lib/schema.ts';
 
 const SITE = process.env.SITE ?? 'http://localhost:4321/ai-timeline-log/';
@@ -25,7 +24,8 @@ const CSS = `html,body{background:var(--paper)!important}
   #poster .wall{padding:0!important;justify-content:start}
   #poster .band{margin-top:28px;background:var(--ink);color:var(--paper);display:flex;align-items:center;gap:28px;padding:26px 32px}
   #poster .band .nm{font:400 56px/1 var(--display)}
-  #poster .band .mono{font:500 15px/1.5 'IBM Plex Mono',var(--mono)}
+  #poster .band .mono{font:500 15px/1.5 'IBM Plex Mono','Hahmlet',var(--body)}`   /* 한글은 저장소에 묶인 Hahmlet으로(CI의 시스템 글꼴로 바뀌지 않게) */
+  + `
   #poster .band .ed{font:400 30px/1 var(--display);margin-bottom:8px}
   #poster .band .qr{width:88px;height:88px;flex:none}
   #poster .band .qr svg{display:block;width:100%;height:100%}`;
@@ -56,7 +56,7 @@ async function open(browser: Browser, ed: Edition, locale: Locale, scale: number
   const band = {
     name: loadContent().site.name,
     sub: `${formatDot(loadContent().site.start)} → ${formatDot(ed.date)} · ${BAND[locale].counts(scenes, items, days)}`,
-    edition: BAND[locale].edition(ed.n), url: ORIGIN.replace(/^https:\/\//, '').replace(/\/$/, ''),
+    edition: BAND[locale].edition(ed.n), url: posterSiteUrl(locale).replace(/^https:\/\//, '').replace(/\/$/, ''),
   };
   const sizes: Size[] = await page.evaluate(({ band, qr, css }) => {
     const wall = document.querySelector<HTMLElement>('.wall')!;
@@ -93,12 +93,13 @@ let edition: Edition;
 try { edition = editionFor(loadContent().editions, opts.edition); } catch (e) { console.error((e as Error).message); process.exit(1); }
 if (opts.check) { console.log(`edition ${edition.n} (${edition.date}) has a poster`); process.exit(0); }
 
-const qr = await QRCode.toString(ORIGIN, { type: 'svg', margin: 2, color: { dark: '#111110', light: '#E3E1D9' } });
 mkdirSync(opts.out, { recursive: true });
 const browser = await chromium.launch();
 try {
   for (const locale of opts.locales) {
     const files = posterFiles(locale);
+    /* QR은 그 언어의 페이지로(영어 포스터는 /en/) */
+    const qr = await QRCode.toString(posterSiteUrl(locale), { type: 'svg', margin: 2, color: { dark: '#111110', light: '#E3E1D9' } });
     /* 1) 배율 1로 칸 수와 크기를 정한다 2) A2 300dpi가 되는 배율로 다시 열어 찍는다(캔버스는 배율에 맞춰 새로 새겨진다) */
     const first = await open(browser, edition, locale, 1, qr);
     await first.page.close();

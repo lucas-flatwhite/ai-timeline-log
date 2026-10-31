@@ -1,5 +1,6 @@
 import type { Locale } from './dates.ts';
 import type { Edition } from './schema.ts';
+import { ORIGIN } from './origin.ts';
 
 /** 판 포스터의 배치와 파일 이름. 찍는 일은 scripts/poster.ts가, 올리는 일은 .github/workflows/poster.yml이 한다 */
 
@@ -18,6 +19,11 @@ export function pickColumns(sizes: { n: number; w: number; h: number }[], ratio:
 /** css 너비를 종이 너비(mm)·해상도(dpi)에 맞추는 배율. A2 너비 420mm, 300dpi면 4961px */
 export function posterScale(cssWidth: number, mm = 420, dpi = 300): number {
   return Math.ceil(mm / 25.4 * dpi) / cssWidth;
+}
+
+/** 포스터의 QR과 먹 띠 주소: 그 언어의 페이지(영어 포스터는 /en/) */
+export function posterSiteUrl(locale: Locale): string {
+  return ORIGIN + (locale === 'en' ? 'en/' : '');
 }
 
 export function posterFiles(locale: Locale): { pdf: string; png: string; web: string } {

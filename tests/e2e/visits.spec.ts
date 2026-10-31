@@ -41,6 +41,16 @@ test('returning visitor', async ({ page, request }) => {
   await expect(page.locator('.wall .box.new')).toHaveCount(n);
 });
 
+test('the wall does not move when the since line appears', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('atl:seen', '2026-10-27'));
+  await ready(page);
+  await expect(page.locator('.cover .since')).toBeVisible();
+  // 표지는 첫 방문과 같은 4칸×3칸(64px 칸 3개 + 간격 2개)이다. 표지가 길어지면 뒤의 상자가 모두 다시 놓인다
+  expect((await page.locator('.cover').boundingBox())!.height).toBe(200);
+  const lede = page.locator('.cover .lede');
+  expect((await lede.boundingBox())?.height ?? 0).toBeLessThanOrEqual(64);
+});
+
 test('storage that throws', async ({ page }) => {
   const errors: string[] = [];
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
