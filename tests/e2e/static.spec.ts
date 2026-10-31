@@ -110,3 +110,22 @@ for (const path of ['./', './en/']) {
     });
   });
 }
+
+test.describe('exported files', () => {
+  test('data files are served', async ({ request }) => {
+    const json = await request.get('timeline.json');
+    expect(json.status()).toBe(200);
+    expect(json.headers()['content-type']).toMatch(/json/);
+    expect((await json.json()).scenes).toHaveLength(41);
+    for (const p of ['llms.txt', 'llms-full.txt', 'en/llms-full.txt']) {
+      const r = await request.get(p);
+      expect(r.status(), p).toBe(200);
+      expect((await r.text()).length, p).toBeGreaterThan(100);
+    }
+  });
+
+  test('pages point to the data file', async ({ page }) => {
+    await page.goto('./');
+    await expect(page.locator('head link[rel=alternate][type="application/json"]')).toHaveAttribute('href', '/ai-timeline-log/timeline.json');
+  });
+});

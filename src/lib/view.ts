@@ -22,6 +22,8 @@ export interface LangView { code: Locale; label: string; name: string; path: str
 export interface PageView {
   lang: Locale; title: string; description: string; ogTitle: string; ogDescription: string;
   canonical: string; ogImage: string; alternates: { hreflang: string; href: string }[];
+  /** 내보내기 파일의 주소(base 아래 절대 경로). rss는 언어별, json은 하나 */
+  feeds: { rss: string; json: string };
   name: string; report: { label: string; href: string };
   /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
   cover: { glyph: string; tpl: string; start: string; lede: string };
@@ -39,7 +41,7 @@ export interface PageView {
   };
 }
 
-const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
+export const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
 
 export function fill(tpl: string, vars: Record<string, string>): string {
   return tpl.replace(/\{(\w+)\}/g, (_, k: string) => {
@@ -157,6 +159,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       ...locales.filter(l => ui[l.code]).map(l => ({ hreflang: l.code, href: ORIGIN + l.path })),
       { hreflang: 'x-default', href: ORIGIN },
     ],
+    feeds: { rss: `${new URL(canonical).pathname}feed.xml`, json: `${new URL(ORIGIN).pathname}timeline.json` },
     name: site.name, report: { label: t.report, href: `${site.repo}/issues` },
     cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars) },
     boxes, scenes, years, pics: c.pics,
