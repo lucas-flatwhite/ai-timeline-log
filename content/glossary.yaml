@@ -17,6 +17,7 @@
 - { ko: "xAI", en: "xAI", source: "https://x.ai/news/xai-joins-spacex" }
 - { ko: "스페이스X", en: "SpaceX", source: "https://x.ai/news/xai-joins-spacex" }
 - { ko: "SpaceXAI", en: "SpaceXAI", source: "https://x.ai/news/xai-joins-spacex" }   # 회사 표기는 SpaceXAI LLC
+- { ko: "SpaceXSI", en: "SpaceXSI", source: "https://x.ai/news/grok-4-7" }
 - { ko: "네이버", en: "NAVER", source: "https://www.navercorp.com/en" }
 - { ko: "네이버클라우드", en: "NAVER Cloud", source: "https://www.navercloudcorp.com/" }
 - { ko: "삼성전자", en: "Samsung Electronics", source: "https://news.samsung.com/global/" }
@@ -122,7 +123,7 @@
 - { ko: "제미나이 딥싱크", en: "Gemini Deep Think", source: "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/" }
 - { ko: "나노 바나나", en: "Nano Banana (Gemini 2.5 Flash Image)", source: "https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/" }
 - { ko: "Gemini 3", en: "Gemini 3", source: "https://blog.google/products/gemini/gemini-3/" }
-- { ko: "Gemini 4 Argon", en: "Gemini 4 Argon", source: "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/" }
+- { ko: "Gemini 4 Argon", en: "Gemini 4 Argon", source: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" }
 - { ko: "AI 개요", en: "AI Overviews", source: "https://blog.google/products/search/generative-ai-google-search-may-2024/" }
 - { ko: "Veo 3", en: "Veo 3", source: "https://deepmind.google/models/veo/" }
 - { ko: "Jules", en: "Jules", source: "https://jules.google/" }
@@ -144,6 +145,32 @@
 - { ko: "GPT-5.5-Cyber", en: "GPT-5.5-Cyber", source: "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
 - { ko: "GPT-6 Astra", en: "GPT-6 Astra", source: "https://openai.com/index/gpt-6-astra/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
 - { ko: "GPT-6 Sol·Luna", en: "GPT-6 Sol and Luna", source: "https://openai.com/index/introducing-gpt-6-sol-and-luna/" }   # 2026-09-22 발표 "Introducing GPT-6 Sol and Luna". openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "GPT-6.1 Sol", en: "GPT-6.1 Sol", source: "https://deploymentsafety.openai.com/gpt-6-1-sol" }
+- { ko: "GPT-6.1 Terra", en: "GPT-6.1 Terra", source: "https://deploymentsafety.openai.com/gpt-6-1-terra" }
+- { ko: "Claude Sonnet 5", en: "Claude Sonnet 5", source: "https://www.anthropic.com/system-cards" }
+- { ko: "Mythos 5.1", en: "Mythos 5.1", source: "https://www.anthropic.com/system-cards" }
+- { ko: "Claude Haiku 5.5", en: "Claude Haiku 5.5", source: "https://www.anthropic.com/claude/haiku" }
+- { ko: "Gemini 4 Carbon", en: "Gemini 4 Carbon", source: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" }
+- { ko: "Muse Wonder", en: "Muse Wonder", source: "https://research.meta.ai/blog/muse-wonder" }
+- { ko: "딥시크 V4.1 Flash", en: "DeepSeek V4.1 Flash", source: "https://api-docs.deepseek.com/news/news260910/" }
+- { ko: "딥시크 V4.1 Flash 1017", en: "DeepSeek V4.1 Flash 1017", source: "https://api-docs.deepseek.com/news/news261017/" }
+- { ko: "미스트랄 AI", en: "Mistral AI", source: "https://mistral.ai/news/announcing-mistral-7b/" }
+- { ko: "Mistral 7B", en: "Mistral 7B", source: "https://mistral.ai/news/announcing-mistral-7b/" }
+- { ko: "Mistral Large", en: "Mistral Large", source: "https://mistral.ai/news/mistral-large/" }
+- { ko: "Mistral Large 2", en: "Mistral Large 2", source: "https://mistral.ai/news/mistral-large-2407/" }
+- { ko: "Mistral Large 3", en: "Mistral Large 3", source: "https://mistral.ai/news/mistral-3/" }
+- { ko: "Mistral Large 4", en: "Mistral Large 4", source: "https://mistral.ai/news/mistral-large-4-oss/" }
+- { ko: "지수 시간 가설(ETH)", en: "Exponential Time Hypothesis (ETH)", source: "https://openai.com/index/building-scientific-understanding-with-academic-communities/" }
+- { ko: "국소 평활화 추측", en: "local smoothing conjecture", source: "https://openai.com/index/building-scientific-understanding-with-academic-communities/" }
+- { ko: "Kakeya 추측", en: "Kakeya conjecture", source: "https://openai.com/index/building-scientific-understanding-with-academic-communities/" }
+- { ko: "3-SAT", en: "3-SAT", source: "https://github.com/anthropics/formal-math/tree/main/eth" }
+- { ko: "PHP", en: "PHP", source: "https://www.php.net/" }
+- { ko: "Calif", en: "Calif", source: "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/" }
+- { ko: "Wiz", en: "Wiz", source: "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/" }
+- { ko: "Patch the Planet", en: "Patch the Planet", source: "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/" }
+- { ko: "Chapter 11", en: "Chapter 11", source: "https://www.streetinsider.com/Business%2BWire/Character.ai%2BInitiates%2BVoluntary%2BChapter%2B11%2BProceeding%2Bto%2BFacilitate%2BValue-Maximizing%2BSale%2BProcess/27175607.html" }
+- { ko: "뉴욕주", en: "New York State", source: "https://www.governor.ny.gov/news/governor-hochul-signs-nation-leading-legislation-protect-kids-ai-chatbots-and-ensure-baby" }
+- { ko: "S.9051B/A.10379C", en: "S.9051B/A.10379C", source: "https://www.nysenate.gov/legislation/bills/2025/S9051/amendment/B" }
 - { ko: "GPT-6.1 Astra", en: "GPT-6.1 Astra", source: "https://www.abc.net.au/news/2026-09-29/openai-apologises-medicare-shelves-chatgpt-astra-launch/107207156" }   # 출시가 취소돼 1차 발표문이 없다. OpenAI 확인을 전한 보도 출처
 - { ko: "dots", en: "dots", source: "https://openai.com/index/introducing-dots/" }   # 공식 표기는 소문자 dots(제목 "Introducing dots"). 보도는 Dots로도 쓴다. openai.com은 자동 접속을 막아(403) 검색 결과로 확인
 - { ko: "Claude Haiku 4.5", en: "Claude Haiku 4.5", source: "https://www.anthropic.com/research/investigating-unintended-model-actions" }

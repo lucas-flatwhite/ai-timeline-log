@@ -1,0 +1,54 @@
+id: 2026-10-eth-review
+date: 2026-10-26
+span:
+  from: 2026-10-26
+  to: 2026-10-27
+added: 2026-10-31
+print:
+  pattern: c
+  motif: grid
+  glyph: 검증
+sources:
+  - url: https://openai.com/index/building-scientific-understanding-with-academic-communities/
+    title: Working with academic communities to build scientific understanding
+    publisher: OpenAI
+  - url: https://github.com/anthropics/formal-math/tree/main/eth
+    title: A 2^o(n) Time Algorithm for 3-SAT
+    publisher: Anthropic
+items:
+  - date: 2026-10-26
+    ko: OpenAI, 내부 모델이 지수 시간 가설(ETH)을 반증했다고 발표. 원고와 Lean 형식 증명을 공개하고, 가설 제안자 등이 이끄는 외부 연구진과 검토를 시작했다.
+    en: "OpenAI announces that an internal model has refuted the Exponential Time Hypothesis (ETH), releases the manuscript and Lean formalization, and begins an external review led by researchers including the hypothesis’s original proposers."
+    glyph: ETH
+    sources:
+      - url: https://openai.com/index/building-scientific-understanding-with-academic-communities/
+        title: Working with academic communities to build scientific understanding
+        publisher: OpenAI
+  - date: 2026-10-26
+    ko: OpenAI, 모든 차원의 국소 평활화 추측을 증명했다고 발표하며 원고와 Lean 형식 증명을 공개. 이 결과가 모든 차원의 Kakeya 추측도 해결한다고 주장했다.
+    en: "OpenAI releases a manuscript and Lean formalization claiming a proof of the local smoothing conjecture in every dimension, which it says also resolves the Kakeya conjecture in all dimensions."
+    glyph: { ko: 파동, en: WAVE }
+    sources:
+      - url: https://openai.com/index/building-scientific-understanding-with-academic-communities/
+        title: Working with academic communities to build scientific understanding
+        publisher: OpenAI
+  - date: 2026-10-27
+    ko: Anthropic, Claude가 찾은 별도 ETH 반증 알고리즘과 Lean 형식화를 공개. 실용적인 SAT 문제 풀이 성능을 뜻하지 않으며, 형식 명제가 논문과 일치하는지는 사람이 확인해야 한다고 밝혔다.
+    en: "Anthropic publishes a separate ETH-refuting algorithm discovered by Claude and its Lean formalization, noting that the result says nothing about practical SAT solving and that people must check whether the formal statements match the paper."
+    glyph: 3-SAT
+    sources:
+      - url: https://github.com/anthropics/formal-math/tree/main/eth
+        title: A 2^o(n) Time Algorithm for 3-SAT
+        publisher: Anthropic
+      - url: https://github.com/anthropics/formal-math/commit/16a5ce41304fcdaea4e0be7c132e1c361dc26da5
+        title: "Add eth: paper and Lean 4 formalization (October 27, 2026 UTC)"
+        publisher: Anthropic
+ko:
+  kicker: 수학과 검증
+  title: AI의 증명, 학계의 검토
+  lede: 두 연구소가 같은 난제의 반증을 잇달아 내놓았다. 10월 말 공개 자료 기준, 외부 검토는 진행 중이다. 형식 증명을 검사하는 일과 그 명제가 원래 문제를 제대로 옮겼는지 확인하는 일은 달랐다.
+en:
+  kicker: Mathematics and Verification
+  title: AI Proofs Meet Academic Review
+  lede: "Two labs put forward refutations of the same conjecture in quick succession, with external review still underway according to announcements available by October 31. Checking a formal proof and checking that its statement faithfully captures the original problem were different tasks."
+  glyph: VERIFY

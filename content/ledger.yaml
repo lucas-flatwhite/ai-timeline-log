@@ -1,3 +1,6 @@
+# 대표 범용 모델의 최초 공개 시점(제한 공개·프리뷰 포함).
+# 전문 음성·영상 모델과 같은 이름의 서비스 업데이트는 별도 항목으로 세지 않는다.
+# 2026-10-31 확인 근거와 선정 범위: docs/review/2026-10-31-events-and-lineage.md
 - lab:
     ko: OpenAI
     en: "OpenAI"
@@ -24,6 +27,17 @@
       date: 2026-07
     - name: GPT-6 Astra
       date: 2026-09
+    # https://openai.com/index/introducing-gpt-6-sol-and-luna/ (2026-09-22)
+    - name: GPT-6 Sol
+      date: 2026-09
+    - name: GPT-6 Luna
+      date: 2026-09
+    # https://deploymentsafety.openai.com/gpt-6-1-sol (2026-09-29)
+    - name: GPT-6.1 Sol
+      date: 2026-09
+    # https://deploymentsafety.openai.com/gpt-6-1-terra (2026-10-26)
+    - name: GPT-6.1 Terra
+      date: 2026-10
 - lab:
     ko: Anthropic
     en: "Anthropic"
@@ -52,12 +66,24 @@
       date: 2026-05
     - name: Fable 5
       date: 2026-06
+    # https://www.anthropic.com/system-cards (공개 월)
+    - name: Mythos 5
+      date: 2026-06
+    - name: Sonnet 5
+      date: 2026-06
     - name: Opus 5
       date: 2026-07
     - name: Fable 5.1
       date: 2026-09
+    - name: Mythos 5.1
+      date: 2026-09
     - name: Opus 5.5
       date: 2026-09
+    - name: Sonnet 5.5
+      date: 2026-09
+    # https://www.anthropic.com/claude/haiku (2026-10-07)
+    - name: Haiku 5.5
+      date: 2026-10
 - lab:
     ko: Google
     en: "Google"
@@ -76,8 +102,14 @@
       date: 2025-11
     - name: Gemini 3.1 Pro
       date: 2026-02
+    # https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/
+    # 2026-09-30 제한 공개, 2026-10-13 일반 공개 확대.
     - name: Gemini 4 Argon
       date: 2026-09
+    # https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/
+    # 2026-10-28 발표, 사이버 방어 담당자부터 제한 공개.
+    - name: Gemini 4 Carbon
+      date: 2026-10
 - lab:
     ko: Meta
     en: "Meta"
@@ -94,6 +126,9 @@
       date: 2026-09
     - name: Muse Wonder
       date: 2026-10
+    # https://research.meta.ai/blog/muse-spark-open (2026-10-15)
+    - name: Muse Spark Open
+      date: 2026-10
 - lab:
     ko: DeepSeek
     en: "DeepSeek"
@@ -104,9 +139,36 @@
       date: 2025-01
     - name: V4
       date: 2026-04
+    # https://api-docs.deepseek.com/news/news260910/
+    - name: V4.1 Flash
+      date: 2026-09
+    # https://api-docs.deepseek.com/news/news261017/
+    - name: V4.1 Flash 1017
+      date: 2026-10
 - lab:
-    ko: xAI · SpaceXAI
-    en: "xAI · SpaceXAI"
+    ko: Mistral AI
+    en: "Mistral AI"
+  models:
+    # https://mistral.ai/news/announcing-mistral-7b/
+    - name: Mistral 7B
+      date: 2023-09
+    # https://mistral.ai/news/mistral-large/
+    - name: Mistral Large
+      date: 2024-02
+    # https://mistral.ai/news/mistral-large-2407/
+    - name: Mistral Large 2
+      date: 2024-07
+    # https://mistral.ai/news/mistral-3/
+    - name: Mistral Large 3
+      date: 2025-12
+    # https://mistral.ai/news/mistral-large-4/ (2026-10-06 프리뷰)
+    # https://mistral.ai/news/mistral-large-4-oss/ (2026-10-29 가중치 공개)
+    - name: Mistral Large 4
+      date: 2026-10
+- lab:
+    # https://x.ai/news/grok-4-7 (공식 사이트의 SpaceXSI 표기)
+    ko: xAI · SpaceXSI
+    en: "xAI · SpaceXSI"
   models:
     - name: Grok
       date: 2023-11

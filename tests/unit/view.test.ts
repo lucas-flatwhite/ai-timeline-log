@@ -17,7 +17,7 @@ describe('buildView(ko)', () => {
   test('head, cover and report link', () => {
     expect(v.title).toBe('AI Timeline Log');
     expect(v.name).toBe('AI Timeline Log');
-    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지, 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 38개의 자세한 내용이 열립니다.');
+    expect(v.description).toBe('ChatGPT 공개(2022.11.30)부터 현재까지, 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 41개의 자세한 내용이 열립니다.');
     expect(v.ogTitle).toBe('AI Timeline Log');
     expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다.');
     expect(v.cover).toEqual({ glyph: '1,425일', tpl: '{days}일', start: '2022-11-30', lede: 'ChatGPT가 공개된 2022년 11월 30일부터 현재까지, AI가 지나온 장면들을 기록합니다.' });
@@ -46,7 +46,7 @@ describe('buildView(ko)', () => {
   });
 
   test('the wall is newest first, with a year box per year', () => {
-    expect(v.boxes.length).toBe(38 + 148 + 5);
+    expect(v.boxes.length).toBe(41 + 157 + 5);
     expect(v.boxes[0]).toMatchObject({ kind: 'year', addr: 'year-2026', date: '2026', off: false });
     expect(v.boxes.at(-1)).toMatchObject({ kind: 'scene', addr: '2022-11-chatgpt', date: '20221130' });   // 가장 오래된 상자
     expect(v.boxes.filter(b => b.kind === 'year').map(b => b.addr)).toEqual(['year-2026', 'year-2025', 'year-2024', 'year-2023', 'year-2022']);
@@ -86,20 +86,20 @@ describe('buildView(ko)', () => {
 
   test('only the scenes added on the latest date are marked as recently added', () => {
     const marked = v.scenes.filter(s => s.meta.includes('추가'));
-    expect(marked).toHaveLength(5);
-    expect(marked.every(s => s.meta.endsWith(' · 추가 2026.10.27'))).toBe(true);
-    expect(marked.map(s => s.id)).toContain('2026-10-offline');
+    expect(marked).toHaveLength(3);
+    expect(marked.every(s => s.meta.endsWith(' · 추가 2026.10.31'))).toBe(true);
+    expect(marked.map(s => s.id).sort()).toEqual(['2026-10-companion-rules', '2026-10-cyber-defense', '2026-10-eth-review']);
     expect(scene('2025-01-deepseek').meta).not.toContain('추가');
-    expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(33);
+    expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(38);
   });
 
   test('events in a recently added scene carry the same mark, after the scene name', () => {
-    const fresh = scene('2026-10-offline');
+    const fresh = scene('2026-10-eth-review');
     expect(fresh.items.length).toBeGreaterThan(0);
-    for (const it of fresh.items) expect(it.meta).toMatch(/^\d{6,8} · .+ · ‘.+’ 장면의 사건 · 추가 2026\.10\.27$/);
-    const marked = v.scenes.filter(s => s.meta.endsWith(' · 추가 2026.10.27')).flatMap(s => s.items);
-    expect(v.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · 추가 2026.10.27'))).toEqual(marked);
-    expect(scene('2025-01-deepseek').items.every(it => !it.meta.endsWith(' · 추가 2026.10.27'))).toBe(true);
+    for (const it of fresh.items) expect(it.meta).toMatch(/^\d{6,8} · .+ · ‘.+’ 장면의 사건 · 추가 2026\.10\.31$/);
+    const marked = v.scenes.filter(s => s.meta.endsWith(' · 추가 2026.10.31')).flatMap(s => s.items);
+    expect(v.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · 추가 2026.10.31'))).toEqual(marked);
+    expect(scene('2025-01-deepseek').items.every(it => !it.meta.endsWith(' · 추가 2026.10.31'))).toBe(true);
   });
 
   test('item sources: its own when it has some, else the scene sources', () => {
@@ -117,7 +117,7 @@ describe('buildView(ko)', () => {
   });
 
   test('details follow the wall order, newest first', () => {
-    expect(v.scenes).toHaveLength(38);
+    expect(v.scenes).toHaveLength(41);
     expect(v.scenes[0].id).toBe(v.boxes.find(b => b.kind === 'scene')!.addr);
     expect(v.scenes.at(-1)!.id).toBe('2022-11-chatgpt');
   });
@@ -134,8 +134,8 @@ describe('buildView(ko)', () => {
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '22.11' });
     expect(v.outro.sourcesTitle).toBe('출처와 기준');
-    expect(v.outro.sourcesNote.startsWith('2026년 10월 27일까지의 각 사 발표와')).toBe(true);
-    expect(v.outro.end).toEqual(['판 38장 · 2022.11.30 – 현재', 'AI Timeline Log']);
+    expect(v.outro.sourcesNote.startsWith('2026년 10월 31일까지의 각 사 발표와')).toBe(true);
+    expect(v.outro.end).toEqual(['판 41장 · 2022.11.30 – 현재', 'AI Timeline Log']);
     expect(v.outro.making).toContain('GitHub 이슈');
     expect(v.outro.makingTitle).toBe('만든 방법');
     expect(v.outro.titleTpl).toBe('{days}일 동안 바뀐 것');   // 브라우저가 보는 날로 다시 채우는 틀
@@ -161,10 +161,10 @@ describe('buildView(en)', () => {
   });
 
   test('recently added scenes and their events carry the English mark', () => {
-    const fresh = e.scenes.find(s => s.id === '2026-10-offline')!;
-    expect(fresh.meta.endsWith(' · Added 2026.10.27')).toBe(true);
-    expect(fresh.items.every(it => it.meta.endsWith(' · Added 2026.10.27'))).toBe(true);
-    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.10.27'))).toHaveLength(
-      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.10.27')).flatMap(s => s.items).length);
+    const fresh = e.scenes.find(s => s.id === '2026-10-eth-review')!;
+    expect(fresh.meta.endsWith(' · Added 2026.10.31')).toBe(true);
+    expect(fresh.items.every(it => it.meta.endsWith(' · Added 2026.10.31'))).toBe(true);
+    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.10.31'))).toHaveLength(
+      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.10.31')).flatMap(s => s.items).length);
   });
 });
