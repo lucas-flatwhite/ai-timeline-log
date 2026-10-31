@@ -75,7 +75,7 @@ async function open(browser: Browser, ed: Edition, locale: Locale, scale: number
     b.append(left, right, q);
     poster.append(b);
     scrollTo(0, 0);
-    const out = [];
+    const out: { n: number; w: number; h: number }[] = [];
     for (let k = 10; k <= 26; k++) {
       wall.style.gridTemplateColumns = `repeat(${k},64px)`;
       const r = poster.getBoundingClientRect();

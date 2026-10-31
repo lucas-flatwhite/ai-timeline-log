@@ -5,7 +5,8 @@
 ## 구조
 
 - `content/scenes/<날짜>-<슬러그>.yaml`: 장면 하나가 파일 하나입니다. 파일명은 `date`와 `id`에서 정해집니다(`id`가 `2025-01-deepseek`, `date`가 `2025-01-27`이면 `2025-01-27-deepseek.yaml`).
-- `content/years.yaml` 연도 요약, `content/arcs.yaml` 시기 구분, `content/ledger.yaml` 연구소 계보, `content/site.yaml` 사이트 문구와 `asOf`, `content/pics.yaml` 그림 윤곽선.
+- `content/years.yaml` 연도 요약, `content/arcs.yaml` 시기 구분, `content/ledger.yaml` 연구소 계보, `content/site.yaml` 사이트 문구와 `asOf`, `content/pics.yaml` 그림 윤곽선, `content/topics.yaml` 주제(여러 장면을 잇는 흐름), `content/editions.yaml` 판 기록.
+- 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `en/llms-full.txt`, `feed.xml`, `en/feed.xml`)은 빌드가 `src/lib/export.ts`와 `src/lib/feed.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
 - 사실(날짜, 수치, 판화 설정, 출처)은 한 번만 적고 글만 `ko`/`en`으로 나란히 둡니다.
 - 스키마는 `src/lib/schema.ts`, 빌드 검사는 `src/lib/checks.ts`입니다. 오류는 빌드를 멈추고 경고는 출력만 합니다.
 
@@ -14,10 +15,22 @@
 1. **리서치**: 무슨 일이 언제 있었는지 찾습니다. 장면 선정 기준은 "흐름을 바꾼 사건"입니다. 연도별 분량을 맞추려고 넣지 않습니다.
 2. **출처 확인**: 1차 출처(각 사 발표, 논문, 소송 문서)를 먼저 확인하고 언론 보도는 보완으로 씁니다. 진행 중인 사건은 "보도 기준"임을 글에 밝히고, 민감한 사안은 양쪽 입장만 적습니다. 첫 판(`firstEdition`) 이후 추가하는 장면은 출처가 하나 이상 있어야 합니다.
 3. **ko·en 작성**: 한국어와 영어를 함께 씁니다. 영어는 아래 "영어 문장 원칙"을 따릅니다.
-4. **해당 연도 요약 다시 읽기**: `content/years.yaml`의 그 연도 요약(`ko`, `en`)이 새 장면과 맞는지 다시 읽고, 어긋나면 고칩니다. 장면이 있는 연도에는 연도 요약이 반드시 있어야 합니다.
-5. **`asOf` 갱신**: `content/site.yaml`의 `asOf`를 작업한 날로 바꿉니다. `date`, 사건 날짜, `added`는 `asOf`보다 늦을 수 없습니다. 새 장면의 `added`는 작업한 날이고, 고친 장면에는 `updated`를 적습니다.
-6. **검사·테스트**: 아래 "검사 명령"을 모두 돌립니다.
-7. **PR**: 브랜치를 따서 PR을 엽니다. 본문에 바뀐 장면과 근거 링크를 적습니다. 직접 `main`에 올리지 않습니다.
+4. **주제 달기**: 장면에 `topics: [..]`를 하나 이상 답니다(`content/topics.yaml`의 id). 모르는 id는 빌드 오류, 주제가 없는 장면은 경고입니다. 새 주제는 장면이 3개 이상일 때만 만듭니다.
+5. **해당 연도 요약 다시 읽기**: `content/years.yaml`의 그 연도 요약(`ko`, `en`)이 새 장면과 맞는지 다시 읽고, 어긋나면 고칩니다. 장면이 있는 연도에는 연도 요약이 반드시 있어야 합니다.
+6. **`asOf` 갱신**: `content/site.yaml`의 `asOf`를 작업한 날로 바꿉니다. `date`, 사건 날짜, `added`는 `asOf`보다 늦을 수 없습니다. 새 장면의 `added`는 작업한 날이고, 고친 장면에는 `updated`를 적습니다.
+7. **검사·테스트**: 아래 "검사 명령"을 모두 돌립니다.
+8. **PR**: 브랜치를 따서 PR을 엽니다. 본문에 바뀐 장면과 근거 링크를 적습니다. 직접 `main`에 올리지 않습니다.
+
+### 판 기록과 포스터
+
+의미 있는 시점마다 "판"을 찍습니다. 판마다 벽 전체를 A2 포스터(ko/en, PDF·PNG)로 찍어 GitHub Releases에 올립니다.
+
+1. 콘텐츠 PR에서 `content/editions.yaml`에 다음 판을 적습니다: `{ n, date, poster: true, ko, en }`. `ko`/`en`은 그 판을 찍은 이유 한 줄입니다. 번호는 빠짐없이 이어지고, 날짜는 앞 판보다 늦고 `asOf` 이하여야 합니다(빌드가 검사합니다). `asOf`를 판 날짜에 맞춥니다.
+2. 머지한 커밋에 태그를 답니다: `git tag edition-N <커밋> && git push origin edition-N`.
+3. Actions의 `poster` 워크플로가 포스터를 찍어 `edition-N` Release에 올렸는지 확인합니다. 실패하면 Actions에서 판 번호를 넣어 다시 돌립니다(`workflow_dispatch`).
+
+- 사이트의 "가져가기" 구역과 피드는 `poster: true`인 마지막 판의 Release를 가리킵니다. 태그를 올려 Release가 생긴 뒤 배포해야 링크가 비지 않습니다.
+- 포스터 미리보기: `npm run build && npx astro preview --port 4321 --ignore-lock &` 뒤 `npm run poster -- --edition N --locale ko --out out`.
 
 ### 정정
 
@@ -79,6 +92,8 @@ npx playwright test --project=chromium   # 브라우저 테스트(빌드와 미�
 - 외부 런타임 리소스, 분석 도구, Google Fonts를 넣지 않습니다.
 - `src/generated/`, `public/plate/`는 빌드가 만드는 파일이라 커밋하지 않습니다.
 - 공유 이미지(`public/og/`)는 내용이 크게 바뀌면 `scripts/og.ts`로 다시 찍어 커밋합니다.
+- 포스터 파일은 커밋하지 않고 사이트에도 두지 않습니다. GitHub Releases에만 올립니다(Vercel 비용을 지지 않기 위해서).
+- 방문자 정보를 서버로 보내지 않습니다. "지난 방문 이후 새 상자"는 브라우저 저장소(`atl:seen`, `atl:since`)만 씁니다.
 
 ## 라이선스
 
