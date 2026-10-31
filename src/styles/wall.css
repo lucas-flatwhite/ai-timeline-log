@@ -66,6 +66,9 @@ html:not(.js) .tp{display:none}
   .wall.focus .box:not(.rel) canvas { opacity: .25 }
   .wall.focus .box:not(.rel) .g{opacity:.25}
 }
+/* 지난 방문 이후 새 상자: 오른쪽 위에 작은 먹 삼각형 */
+.box.new::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 10px 10px 0;border-color:transparent var(--ink) transparent transparent;pointer-events:none}
+.box.scene.new::after{border-width:0 14px 14px 0}
 /* 주제·새 상자 강조: 고른 상자(.on)만 두고 나머지를 흐리게. 터치 기기에서도 보이도록 hover 밖에 둔다.
    같은 장면 강조(.focus .rel)가 켜져 있으면 그쪽이 우선한다 */
 .wall.pick .box:not(.on) canvas,.wall.pick .box:not(.on) .g{opacity:.25}
