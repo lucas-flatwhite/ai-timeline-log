@@ -5,11 +5,21 @@ import type { z } from 'astro/zod';
 import { toUTC } from './dates.ts';
 import { checkContent } from './checks.ts';
 import {
-  sceneSchema, siteSchema, yearsSchema, arcsSchema, ledgerSchema, sourcesSchema, picsSchema,
-  type Scene, type Site, type Years, type Arc, type Lab, type Source, type Pics,
+  sceneSchema, siteSchema, yearsSchema, arcsSchema, ledgerSchema, sourcesSchema, picsSchema, topicsSchema, editionsSchema,
+  type Scene, type Site, type Years, type Arc, type Lab, type Source, type Pics, type Topics, type Edition,
 } from './schema.ts';
 
-export interface Content { site: Site; scenes: Scene[]; years: Years; arcs: Arc[]; ledger: Lab[]; sources: Source[]; pics: Pics }
+export interface Content {
+  site: Site; scenes: Scene[]; years: Years; arcs: Arc[]; ledger: Lab[]; sources: Source[]; pics: Pics;
+  topics: Topics; editions: Edition[];
+}
+
+/** 용어집의 한 줄(고유명사의 공식 영문명). 빌드 검사 대상은 아니다 */
+export interface GlossaryEntry { ko: string; en: string; source?: string }
+
+export function loadGlossary(dir: string = join(process.cwd(), 'content')): GlossaryEntry[] {
+  return parse(readFileSync(join(dir, 'glossary.yaml'), 'utf8')) as GlossaryEntry[];
+}
 
 // 같은 경고는 프로세스당 한 번만 출력한다(loadContent를 여러 번 불러도 출력이 조용하도록)
 const warned = new Set<string>();
@@ -33,6 +43,8 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
   const ledger = check(ledgerSchema, read('ledger.yaml'), 'ledger.yaml');
   const sources = check(sourcesSchema, read('sources.yaml'), 'sources.yaml');
   const pics = check(picsSchema, read('pics.yaml'), 'pics.yaml');
+  const topics = check(topicsSchema, read('topics.yaml'), 'topics.yaml');
+  const editions = check(editionsSchema, read('editions.yaml'), 'editions.yaml');
 
   const scenes: Scene[] = [];
   const seen = new Map<string, string>();
@@ -68,13 +80,13 @@ export function loadContent(dir: string = join(process.cwd(), 'content')): Conte
     }
   }
 
-  if (!site || !years || !arcs || !ledger || !sources || !pics) {
+  if (!site || !years || !arcs || !ledger || !sources || !pics || !topics || !editions) {
     throw new Error(`Content errors:\n- ${errors.join('\n- ')}`);
   }
 
   scenes.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.order - b.order));
   for (const lab of ledger) lab.models.sort((a, b) => toUTC(a.date) - toUTC(b.date));
-  const content: Content = { site, scenes, years, arcs, ledger, sources, pics };
+  const content: Content = { site, scenes, years, arcs, ledger, sources, pics, topics, editions };
 
   // 스키마 검사를 통과한 뒤의 내용 검사. 오류는 위의 오류와 한데 모아 던지고, 경고는 출력만 한다.
   const checked = checkContent(content);

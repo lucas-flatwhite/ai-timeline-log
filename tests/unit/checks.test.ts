@@ -125,3 +125,56 @@ describe('checkContent', () => {
     expect(own({ ko: '속도', en: 'Blenheim' })).toContainEqual(expect.stringMatching(/Blenheim/));
   });
 });
+
+describe('topics and editions', () => {
+  const firstId = loadContent().scenes[0].id;
+  const withTopics = (c: ReturnType<typeof loadContent>) => {
+    c.topics = { a: { ko: '가', en: 'A' } };
+    c.scenes.forEach(s => { s.topics = ['a']; });
+  };
+  test('unknown topic id', () => {
+    const errs = errsOf(c => { withTopics(c); c.scenes[0].topics = ['nope']; });
+    expect(errs).toContainEqual(`scene ${firstId}: topic "nope" is not in topics.yaml`);
+  });
+  test('scene without a topic warns', () => {
+    const r = broken(c => { withTopics(c); c.scenes[0].topics = []; });
+    expect(r.warnings).toContainEqual(`scene ${firstId}: has no topic`);
+  });
+  test('no topic warning while topics.yaml is empty', () => {
+    const r = broken(c => { c.topics = {}; c.scenes.forEach(s => { s.topics = []; }); });
+    expect(r.warnings.join()).not.toMatch(/has no topic/);
+  });
+  test('topic with fewer than three scenes warns', () => {
+    const r = broken(c => { withTopics(c); c.topics.b = { ko: '나', en: 'B' }; c.scenes[0].topics = ['a', 'b']; });
+    expect(r.warnings).toContainEqual('topics.yaml: b has only 1 scene(s)');
+  });
+  const ed = (n: number, date: string, poster = false) => ({ n, date, poster, ko: '판.', en: 'Edition.' });
+  test('editions numbered 1..N', () => {
+    const errs = errsOf(c => { c.editions = [ed(1, '2026-10-05'), ed(3, '2026-10-18')]; });
+    expect(errs).toContainEqual('editions.yaml: editions must be numbered 1..2 in order');
+  });
+  test('edition dates ascend', () => {
+    const errs = errsOf(c => { c.editions = [ed(1, '2026-10-05'), ed(2, '2026-10-05')]; });
+    expect(errs).toContainEqual('editions.yaml: edition 2 date 2026-10-05 is not after edition 1');
+  });
+  test('edition after asOf', () => {
+    const errs = errsOf(c => { c.editions = [ed(1, '2026-10-05'), ed(2, '2099-01-01')]; });
+    expect(errs).toContainEqual(expect.stringMatching(/^editions\.yaml: edition 2 date 2099-01-01 is after asOf /));
+  });
+  test('first edition is dated firstEdition', () => {
+    const errs = errsOf(c => { c.editions = [ed(1, '2026-10-04')]; });
+    expect(errs).toContainEqual('editions.yaml: edition 1 must be dated firstEdition 2026-10-05');
+  });
+  test('no edition without a poster after one had a poster', () => {
+    const errs = errsOf(c => { c.editions = [ed(1, '2026-10-05', true), ed(2, '2026-10-18')]; });
+    expect(errs).toContainEqual('editions.yaml: edition 2 has no poster after edition 1 had one');
+  });
+  test('edition and topic text follow the style rules', () => {
+    const errs = errsOf(c => {
+      c.editions = [{ ...ed(1, '2026-10-05'), ko: '오늘 찍은 판.' }];
+      c.topics = { a: { ko: '놀라운 것', en: 'A' } };
+    });
+    expect(errs).toContainEqual(expect.stringMatching(/editions\.yaml 1\.ko: relative time "오늘"/));
+    expect(errs).toContainEqual(expect.stringMatching(/topics\.yaml a\.ko: forbidden "놀라운"/));
+  });
+});

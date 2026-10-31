@@ -2,7 +2,7 @@ import { describe, test, expect } from 'vitest';
 import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { loadContent } from '../../src/lib/content.ts';
+import { loadContent, loadGlossary } from '../../src/lib/content.ts';
 
 const FIXTURE = 'tests/fixtures/content';
 const SCENE = 'scenes/2023-03-14-gpt-4.yaml';
@@ -140,5 +140,24 @@ describe('loadContent', () => {
     expect(msg).toContain('Content errors:');
     expect(msg).toContain('scenes/: folder not found');
     expect(msg).toContain('site.yaml: asOf');
+  });
+});
+
+describe('topics, editions and glossary', () => {
+  test('loads topics, editions and scene topics', () => {
+    const c = loadContent(FIXTURE);
+    expect(c.topics.models.ko).toBe('모델 경쟁');
+    expect(c.editions[0]).toMatchObject({ n: 1, date: '2026-10-05', poster: false });
+    expect(c.scenes[0].topics).toEqual(['models']);
+  });
+
+  test('missing topics.yaml is an error', () => {
+    const dir = copyFixture();
+    rmSync(join(dir, 'topics.yaml'));
+    expect(() => loadContent(dir)).toThrowError(/topics\.yaml/);
+  });
+
+  test('loadGlossary reads the glossary', () => {
+    expect(loadGlossary()[0]).toMatchObject({ ko: 'OpenAI', en: 'OpenAI' });
   });
 });

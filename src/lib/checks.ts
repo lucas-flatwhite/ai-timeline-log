@@ -76,6 +76,10 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
       warnings.push(`${sw}: has no source on the scene or on any item`);
     }
 
+    // 주제: 모르는 id는 오류, 주제가 없는 장면은 경고(주제 목록이 비어 있으면 묻지 않는다)
+    for (const t of s.topics) if (!(t in c.topics)) errors.push(`${sw}: topic "${t}" is not in topics.yaml`);
+    if (s.topics.length === 0 && Object.keys(c.topics).length > 0) warnings.push(`${sw}: has no topic`);
+
     // 첫 판 이후에 더한 장면은 장면이나 사건에 출처가 하나는 있어야 한다.
     if (s.added > c.site.firstEdition && s.sources.length === 0 && s.items.every(it => it.sources.length === 0)) {
       errors.push(`${sw}: added ${s.added} after firstEdition ${c.site.firstEdition}, so it needs a source (scene or item)`);
@@ -94,6 +98,27 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
       add(`arcs.yaml ${i}.${loc}.body`, a[loc].body, true);
     }
   });
+  // 주제는 장면이 셋 이상일 때 흐름이 된다
+  for (const [id, v] of Object.entries(c.topics)) {
+    const n = c.scenes.filter(s => s.topics.includes(id)).length;
+    if (n < 3) warnings.push(`topics.yaml: ${id} has only ${n} scene(s)`);
+    for (const loc of ['ko', 'en'] as const) add(`topics.yaml ${id}.${loc}`, v[loc], true);
+  }
+
+  // 판 기록: 1부터 빠짐없이, 날짜는 오름차순이고 asOf를 넘지 않는다. 첫 판은 firstEdition.
+  // 한 번 포스터를 낸 뒤의 판은 모두 포스터가 있어야 한다(기록한 판에 포스터가 없는 일이 없게)
+  const eds = c.editions;
+  if (eds.some((e, i) => e.n !== i + 1)) errors.push(`editions.yaml: editions must be numbered 1..${eds.length} in order`);
+  if (eds[0] && eds[0].date !== c.site.firstEdition) errors.push(`editions.yaml: edition 1 must be dated firstEdition ${c.site.firstEdition}`);
+  let posterFrom: number | undefined;
+  eds.forEach((e, i) => {
+    if (i > 0 && e.date <= eds[i - 1].date) errors.push(`editions.yaml: edition ${e.n} date ${e.date} is not after edition ${eds[i - 1].n}`);
+    if (e.date > c.site.asOf) errors.push(`editions.yaml: edition ${e.n} date ${e.date} is after asOf ${c.site.asOf}`);
+    if (e.poster) posterFrom ??= e.n;
+    else if (posterFrom !== undefined) errors.push(`editions.yaml: edition ${e.n} has no poster after edition ${posterFrom} had one`);
+    for (const loc of ['ko', 'en'] as const) add(`editions.yaml ${e.n}.${loc}`, e[loc], true);
+  });
+
   // 사이트 소개글은 "현재까지"처럼 상대 시간을 써도 된다(relative=false)
   for (const loc of ['ko', 'en'] as const) {
     const t = c.site[loc];

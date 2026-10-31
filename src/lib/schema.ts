@@ -31,6 +31,7 @@ export const sceneSchema = z.object({
   added: dayDate,
   updated: dayDate.optional(),
   aliases: z.array(z.string()).default([]),
+  topics: z.array(z.string()).default([]),
   print: z.object({
     pattern: z.enum(['h', 'd', 'w', 'c']),
     angle: z.number().optional(),
@@ -68,6 +69,12 @@ export const ledgerSchema = z.array(z.object({
   models: z.array(z.object({ name: text, date: isoDate })).min(1),
 }));
 export const sourcesSchema = z.array(z.object({ url: z.url(), title: text }));
+// 주제: 여러 장면을 가로지르는 흐름. 장면의 topics가 이 id를 가리킨다
+export const topicsSchema = z.record(z.string().regex(/^[a-z0-9-]+$/), z.object({ ko: text, en: text }));
+// 판 기록: 의미 있는 시점마다 한 판. poster: true인 판은 edition-<n> 태그로 포스터 Release가 있다
+export const editionsSchema = z.array(z.object({
+  n: z.number().int().positive(), date: dayDate, poster: z.boolean().default(false), ko: text, en: text,
+})).min(1);
 
 export type Scene = z.output<typeof sceneSchema>;
 export type Site = z.output<typeof siteSchema>;
@@ -78,3 +85,5 @@ export type GlyphSpec = z.output<typeof glyphSpec>;
 export type Pic = z.output<typeof picSchema>;
 export type Pics = z.output<typeof picsSchema>;
 export type Source = z.output<typeof sourcesSchema>[number];
+export type Topics = z.output<typeof topicsSchema>;
+export type Edition = z.output<typeof editionsSchema>[number];
