@@ -10,6 +10,10 @@ import { ui, uiFor, locales } from '../i18n/index.ts';
 export interface BoxView {
   kind: 'scene' | 'item' | 'year'; addr: string; date: string; glyph: string; pattern: string; angle?: number;
   motif: string; seed: number; pic?: string; scene?: string; label: string; off: boolean;
+  /** 장면의 주제(사건 상자는 장면 것을 물려받는다). 연도 판은 [] */
+  topics: string[];
+  /** 장면이 추가된 날. 지난 방문 이후 새 상자 표시에 쓴다. 연도 판에는 없다 */
+  added?: string;
 }
 export interface SourceView { url: string; title: string }
 export interface ItemDetail { addr: string; date: string; text: string; meta: string; fix: string; sources: SourceView[] }
@@ -28,6 +32,12 @@ export interface PageView {
   /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
   cover: { glyph: string; tpl: string; start: string; lede: string };
   boxes: BoxView[]; scenes: SceneDetail[]; years: YearDetail[]; pics: Pics;
+  /** 주제 목록(topics.yaml 순서)과 장면 수 */
+  topics: { id: string; name: string; count: number }[];
+  /** 가장 늦은 장면 추가일. 브라우저가 지난 방문과 비교한다 */
+  latestAdded: string;
+  /** 주제 단추와 새 상자 줄의 문구. newLine은 {n} 틀 */
+  ui: { topic: string; topicAll: string; topicClear: string; newLine: string; newShow: string; newLabel: string };
   dialog: { prev: string; next: string; close: string; fix: string; sources: string };
   /** 격자(main)와 상세 글 묶음(section)의 이름 */
   aria: { wall: string; details: string };
@@ -98,7 +108,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       box: {
         kind: 'scene', addr: s.id, date: sceneDate, glyph: text.glyph ?? s.print.glyph,
         pattern: s.print.pattern, angle: s.print.angle, motif: s.print.motif, seed: hashSeed(s.id),
-        scene: s.id, label: `${sceneDate} · ${text.title}`, off: false,
+        scene: s.id, label: `${sceneDate} · ${text.title}`, off: false, topics: s.topics, added: s.added,
       },
     });
 
@@ -112,6 +122,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
           kind: 'item', addr, date, glyph: glyphFor(it.glyph, locale),
           pattern: s.print.pattern === 'c' ? 'h' : s.print.pattern, angle: s.print.angle, motif: 'none',
           seed: hashSeed(addr), pic: it.pic, scene: s.id, label: `${date} · ${body}`, off: false,
+          topics: s.topics, added: s.added,
         },
       });
       return {
@@ -139,7 +150,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       kind: 'year', date: y, order: 0, seq: +y,
       box: {
         kind: 'year', addr: `year-${y}`, date: y, glyph: y, pattern: 'd', angle: +y % 2 ? -22 : 22,
-        motif: 'none', seed: +y, label: yt ? `${y} · ${yt.title}` : y, off: !yt,
+        motif: 'none', seed: +y, label: yt ? `${y} · ${yt.title}` : y, off: !yt, topics: [],
       },
     });
     if (yt) years.push({ addr: `year-${y}`, year: y, title: yt.title, body: yt.body });
@@ -163,6 +174,9 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     name: site.name, report: { label: t.report, href: `${site.repo}/issues` },
     cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars) },
     boxes, scenes, years, pics: c.pics,
+    topics: Object.entries(c.topics).map(([id, v]) => ({ id, name: v[locale], count: c.scenes.filter(s => s.topics.includes(id)).length })),
+    latestAdded: lastAdded,
+    ui: { topic: t.topic, topicAll: t.topicAll, topicClear: t.topicClear, newLine: t.newLine, newShow: t.newShow, newLabel: t.newLabel },
     dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources },
     aria: { wall: t.wall, details: t.details },
     langNav: t.langNav,

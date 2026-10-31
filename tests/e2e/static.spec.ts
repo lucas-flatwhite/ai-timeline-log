@@ -28,6 +28,16 @@ for (const path of ['./', './en/']) {
       await expect(page.locator('#details article.detail.year')).toHaveCount(4);
     });
 
+    test('topic menu and since line stay out of the way without JS', async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('.tp')).toBeHidden();
+      await expect(page.locator('.cover .since')).toBeHidden();
+      const box = page.locator('.wall a.box.item').first();
+      await expect(box).toHaveAttribute('data-topics', /\S/);
+      await expect(box).toHaveAttribute('data-added', /^\d{4}-\d{2}-\d{2}$/);
+      await expect(page.locator('#wall')).toHaveAttribute('data-latest', '2026-10-31');
+    });
+
     test('boxes: 203, newest first, links to addresses', async ({ page }) => {
       await page.goto(path);
       const boxes = page.locator('.wall .box');

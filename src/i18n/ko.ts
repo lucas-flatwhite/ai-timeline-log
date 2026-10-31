@@ -23,5 +23,11 @@ export const ko = {
   feedCorrection: (title: string) => `정정: ${title}`,
   feedCorrectionFallback: '정정했습니다.',
   feedPoster: (n: number) => `제 ${n}판 포스터`,
+  topic: '주제',
+  topicAll: '모두',
+  topicClear: '주제 해제',
+  newLine: '지난 방문 이후 새 상자 {n}개',
+  newShow: '보기',
+  newLabel: '지난 방문 이후 추가',
 };
 export type UI = typeof ko;

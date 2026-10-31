@@ -168,3 +168,38 @@ describe('buildView(en)', () => {
       e.scenes.filter(s => s.meta.endsWith(' · Added 2026.10.31')).flatMap(s => s.items).length);
   });
 });
+
+describe('topics and visits on the wall', () => {
+  const e = buildView(loadContent(), 'en', '2026-10-25');
+
+  test('boxes carry topics and added', () => {
+    const it = v.boxes.find(b => b.addr === '2026-10-eth-review~20261026')!;
+    expect(it.topics).toEqual(['science']);
+    expect(it.added).toBe('2026-10-31');
+    const sc = v.boxes.find(b => b.addr === '2024-11-computer-use-mcp')!;
+    expect(sc.topics).toEqual(['agents']);
+    const y = v.boxes.find(b => b.kind === 'year')!;
+    expect(y.topics).toEqual([]);
+    expect(y.added).toBeUndefined();
+  });
+
+  test('topics list follows topics.yaml with scene counts', () => {
+    expect(v.topics.map(t => [t.id, t.count])).toEqual([
+      ['agents', 8], ['compute', 6], ['rules', 5], ['safety', 6], ['open', 5], ['science', 4], ['society', 7], ['models', 9], ['korea', 3],
+    ]);
+    expect(v.topics[0].name).toBe('에이전트');
+    expect(e.topics[0].name).toBe('Agents');
+  });
+
+  test('latestAdded is the newest added', () => {
+    expect(v.latestAdded).toBe('2026-10-31');
+  });
+
+  test('wall ui strings', () => {
+    expect(v.ui).toEqual({
+      topic: '주제', topicAll: '모두', topicClear: '주제 해제',
+      newLine: '지난 방문 이후 새 상자 {n}개', newShow: '보기', newLabel: '지난 방문 이후 추가',
+    });
+    expect(e.ui.newLine).toBe('{n} new since your last visit');
+  });
+});

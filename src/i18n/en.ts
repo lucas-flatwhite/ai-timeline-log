@@ -25,4 +25,10 @@ export const en: UI = {
   feedCorrection: (title) => `Correction: ${title}`,
   feedCorrectionFallback: 'A correction was made.',
   feedPoster: (n) => `Edition ${n} poster`,
+  topic: 'Topics',
+  topicAll: 'All',
+  topicClear: 'Clear topic',
+  newLine: '{n} new since your last visit',
+  newShow: 'Show',
+  newLabel: 'added since your last visit',
 };
