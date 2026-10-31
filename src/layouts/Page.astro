@@ -31,6 +31,7 @@ const plateCss = plates.map(p => `@font-face{font-family:${p.family};src:url(${b
 <link rel="canonical" href={view.canonical}>
 {view.alternates.map(a => <link rel="alternate" hreflang={a.hreflang} href={a.href}>)}
 <link rel="alternate" type="application/json" title={view.name} href={view.feeds.json}>
+<link rel="alternate" type="application/rss+xml" title={view.name} href={view.feeds.rss}>
 <meta property="og:type" content="website">
 <meta property="og:url" content={view.canonical}>
 <meta property="og:title" content={view.ogTitle}>

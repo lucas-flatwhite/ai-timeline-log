@@ -128,4 +128,14 @@ test.describe('exported files', () => {
     await page.goto('./');
     await expect(page.locator('head link[rel=alternate][type="application/json"]')).toHaveAttribute('href', '/ai-timeline-log/timeline.json');
   });
+
+  test('feeds are served', async ({ request, page }) => {
+    for (const p of ['feed.xml', 'en/feed.xml']) {
+      const r = await request.get(p);
+      expect(r.status(), p).toBe(200);
+      expect(await r.text(), p).toContain('<rss version="2.0">');
+    }
+    await page.goto('./en/');
+    await expect(page.locator('head link[rel=alternate][type="application/rss+xml"]')).toHaveAttribute('href', '/ai-timeline-log/en/feed.xml');
+  });
 });

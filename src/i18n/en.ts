@@ -21,4 +21,8 @@ export const en: UI = {
   wall: 'Wall of AI events',
   details: 'All scenes',
   making: 'How this was made',
+  feedFirst: (n) => `First edition: ${n} scenes`,
+  feedCorrection: (title) => `Correction: ${title}`,
+  feedCorrectionFallback: 'A correction was made.',
+  feedPoster: (n) => `Edition ${n} poster`,
 };

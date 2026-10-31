@@ -19,5 +19,9 @@ export const ko = {
   wall: 'AI 사건 격자',
   details: '모든 장면',
   making: '만든 방법',
+  feedFirst: (n: number) => `첫 판: 장면 ${n}개`,
+  feedCorrection: (title: string) => `정정: ${title}`,
+  feedCorrectionFallback: '정정했습니다.',
+  feedPoster: (n: number) => `제 ${n}판 포스터`,
 };
 export type UI = typeof ko;
