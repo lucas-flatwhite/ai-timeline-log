@@ -8,7 +8,7 @@
 - `content/years.yaml` 연도 요약, `content/arcs.yaml` 시기 구분, `content/ledger.yaml` 연구소 계보, `content/site.yaml` 사이트 문구와 `asOf`, `content/pics.yaml` 그림 윤곽선, `content/topics.yaml` 주제(여러 장면을 잇는 흐름), `content/editions.yaml` 판 기록.
 - 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `ko/llms-full.txt`, `feed.xml`, `ko/feed.xml`)은 빌드가 `src/lib/export.ts`와 `src/lib/feed.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
 - 언어 주소: 영어가 기본이라 `/ai-timeline-log/`에 있고, 한국어는 `/ai-timeline-log/ko/`에 있습니다(`src/i18n/index.ts`의 `locales`, `localePath`). 예전 `en/` 주소는 `vercel.json`(이 저장소와 lucasflatwhite-com 둘 다)이 영구 이동으로 돌려보냅니다.
-- 고른 언어는 브라우저 저장소 `lucas-flatwhite:locale`(`LOCALE_KEY`)에 적습니다. 사이트 전체(아케이드 게임 포함)가 같은 키를 씁니다. 언어 링크를 누를 때만 적고, 기본 주소로 들어왔을 때만 그 언어로 옮깁니다. `ko/`를 직접 열면 저장된 값과 상관없이 한국어입니다(`src/layouts/Page.astro`의 인라인 스크립트, `tests/e2e/lang.spec.ts`).
+- 보여 줄 언어는 고른 언어 → 브라우저의 첫 언어 → 영어 순서입니다. 고른 언어는 브라우저 저장소 `lucas-flatwhite:locale`(`LOCALE_KEY`)에 적고, 사이트 전체(아케이드 게임 포함)가 같은 키를 씁니다. 언어 링크를 누를 때만 적고(브라우저 언어로 보여 준 것은 적지 않습니다), 기본 주소로 들어왔을 때만 옮깁니다. `ko/`를 직접 열면 저장된 값과 상관없이 한국어입니다(`src/layouts/Page.astro`의 인라인 스크립트, `tests/e2e/lang.spec.ts`). 브라우저 테스트는 `en-US` 브라우저로 돕니다(`playwright.config.ts`).
 - 사실(날짜, 수치, 판화 설정, 출처)은 한 번만 적고 글만 `ko`/`en`으로 나란히 둡니다.
 - 스키마는 `src/lib/schema.ts`, 빌드 검사는 `src/lib/checks.ts`입니다. 오류는 빌드를 멈추고 경고는 출력만 합니다.
 

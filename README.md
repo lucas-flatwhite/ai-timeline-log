@@ -17,7 +17,7 @@ npm run favicon    # 탭·홈 화면 아이콘을 public/에 다시 찍기 (색�
 npm run poster -- --edition 4 --locale ko --out out   # 판 포스터 미리보기 (미리보기 서버가 떠 있어야 한다)
 ```
 
-영어판이 기본 주소(`/ai-timeline-log/`)에, 한국어판이 `/ai-timeline-log/ko/`에 있습니다. 위 막대의 KO·EN으로 고른 언어는 이 브라우저에 기억되어, 다음에 기본 주소로 들어오면 그 언어로 열립니다.
+영어판이 기본 주소(`/ai-timeline-log/`)에, 한국어판이 `/ai-timeline-log/ko/`에 있습니다. 기본 주소로 들어오면 브라우저의 첫 언어가 한국어일 때 한국어판으로, 그 밖에는 영어판으로 열립니다. 위 막대의 KO·EN으로 고른 언어는 이 브라우저에 기억되어 브라우저 언어보다 앞섭니다.
 
 사이트는 빌드 때 연표를 `timeline.json`, `llms.txt`, `llms-full.txt`, `feed.xml`로도 내보냅니다. 판 포스터는 `edition-N` 태그를 올리면 GitHub Actions가 찍어 Releases에 올립니다.
 

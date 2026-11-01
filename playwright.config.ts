@@ -3,7 +3,8 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: 'tests/e2e',
   timeout: 60_000,
-  use: { baseURL: 'http://localhost:4321/ai-timeline-log/' },
+  /* 브라우저 언어에 따라 첫 화면이 달라진다. 시험은 이 컴퓨터의 언어와 상관없이 영어 브라우저로 돌린다(한국어는 test.use로) */
+  use: { baseURL: 'http://localhost:4321/ai-timeline-log/', locale: 'en-US' },
   projects: [
     { name: 'chromium', use: devices['Desktop Chrome'] },
     { name: 'webkit', use: devices['Desktop Safari'] },   // iOS Safari와 같은 엔진
