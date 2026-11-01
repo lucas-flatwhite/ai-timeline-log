@@ -9,8 +9,8 @@ const dir = join(process.cwd(), 'content', 'scenes');
 const scenes = readdirSync(dir).filter(f => f.endsWith('.yaml'))
   .map(f => parse(readFileSync(join(dir, f), 'utf8')) as Record<'ko' | 'en', { title: string }> & { items: Record<'ko' | 'en', string>[] });
 
-for (const path of ['./', './en/']) {
-  const lang = path === './' ? 'ko' : 'en';
+for (const path of ['./ko/', './']) {
+  const lang = path === './' ? 'en' : 'ko';
   const days = { ko: { tpl: '{days}일', glyph: /^[\d,]+일$/ }, en: { tpl: '{days} days', glyph: /^\d{1,3}(,\d{3})* days$/ } }[lang];
 
   test.describe(`${lang}: without JavaScript`, () => {
@@ -73,7 +73,7 @@ for (const path of ['./', './en/']) {
     });
 
     test('language switch: this language current, the other links to its page', async ({ page }) => {
-      const [cur, other] = lang === 'ko' ? ['KO', { label: 'EN', href: '/ai-timeline-log/en/' }] : ['EN', { label: 'KO', href: '/ai-timeline-log/' }];
+      const [cur, other] = lang === 'ko' ? ['KO', { label: 'EN', href: '/ai-timeline-log/' }] : ['EN', { label: 'KO', href: '/ai-timeline-log/ko/' }];
       await page.goto(path);
       for (const where of ['header.top', '.outro']) {
         const nav = page.locator(`${where} nav.lang`);
@@ -127,7 +127,7 @@ test.describe('exported files', () => {
     expect(json.status()).toBe(200);
     expect(json.headers()['content-type']).toMatch(/json/);
     expect((await json.json()).scenes).toHaveLength(41);
-    for (const p of ['llms.txt', 'llms-full.txt', 'en/llms-full.txt']) {
+    for (const p of ['llms.txt', 'llms-full.txt', 'ko/llms-full.txt']) {
       const r = await request.get(p);
       expect(r.status(), p).toBe(200);
       expect((await r.text()).length, p).toBeGreaterThan(100);
@@ -140,15 +140,15 @@ test.describe('exported files', () => {
   });
 
   test('take section', async ({ page }) => {
-    await page.goto('./');
+    await page.goto('./ko/');
     const take = page.locator('#outro .take');
     const hrefs = await take.locator('a').evaluateAll(as => as.map(a => (a as HTMLAnchorElement).getAttribute('href')!));
     expect(hrefs).toEqual([
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf',
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.png',
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases',
-      '/ai-timeline-log/feed.xml',
-      'https://lucasflatwhite.com/ai-timeline-log/llms-full.txt',
+      '/ai-timeline-log/ko/feed.xml',
+      'https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt',
       'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
     ]);
     for (const a of await take.locator('a[href^="https://github.com"]').all()) {
@@ -159,12 +159,12 @@ test.describe('exported files', () => {
   });
 
   test('feeds are served', async ({ request, page }) => {
-    for (const p of ['feed.xml', 'en/feed.xml']) {
+    for (const p of ['feed.xml', 'ko/feed.xml']) {
       const r = await request.get(p);
       expect(r.status(), p).toBe(200);
       expect(await r.text(), p).toContain('<rss version="2.0">');
     }
-    await page.goto('./en/');
-    await expect(page.locator('head link[rel=alternate][type="application/rss+xml"]')).toHaveAttribute('href', '/ai-timeline-log/en/feed.xml');
+    await page.goto('./ko/');
+    await expect(page.locator('head link[rel=alternate][type="application/rss+xml"]')).toHaveAttribute('href', '/ai-timeline-log/ko/feed.xml');
   });
 });

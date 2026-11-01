@@ -11,8 +11,8 @@ const SITE = process.env.OG_SITE ?? 'http://localhost:4321/ai-timeline-log/';
 const W = 1200, H = 630;
 const name = (parse(readFileSync(new URL('content/site.yaml', root), 'utf8')) as { name: string }).name;
 const LOCALES: Record<string, { path: string; since: string }> = {
-  ko: { path: '', since: '2022.11.30 → 현재' },
-  en: { path: 'en/', since: 'Since Nov 30, 2022' },
+  ko: { path: 'ko/', since: '2022.11.30 → 현재' },
+  en: { path: '', since: 'Since Nov 30, 2022' },
 };
 
 const locales = process.argv.slice(2);

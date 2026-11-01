@@ -11,8 +11,8 @@ const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
 
 describe('urls', () => {
   test('scene, poster and release urls', () => {
-    expect(sceneUrl('ko', '2026-10-eth-review')).toBe(`${ORIGIN}#2026-10-eth-review`);
-    expect(sceneUrl('en', '2026-10-eth-review')).toBe(`${ORIGIN}en/#2026-10-eth-review`);
+    expect(sceneUrl('ko', '2026-10-eth-review')).toBe(`${ORIGIN}ko/#2026-10-eth-review`);
+    expect(sceneUrl('en', '2026-10-eth-review')).toBe(`${ORIGIN}#2026-10-eth-review`);
     expect(posterUrl(c.site.repo, 4, 'ko', 'pdf'))
       .toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf');
     expect(releaseUrl(c.site.repo, 4)).toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/tag/edition-4');
@@ -36,8 +36,8 @@ describe('buildTimeline', () => {
   test('timeline items carry addresses and urls', () => {
     const s = t.scenes[0];
     expect(s.items[0].addr).toBe('2026-10-eth-review~20261026');
-    expect(s.url.en).toBe(`${ORIGIN}en/#2026-10-eth-review`);
-    expect(s.items[0].url.ko).toBe(`${ORIGIN}#2026-10-eth-review~20261026`);
+    expect(s.url.en).toBe(`${ORIGIN}#2026-10-eth-review`);
+    expect(s.items[0].url.ko).toBe(`${ORIGIN}ko/#2026-10-eth-review~20261026`);
     expect(s.topics).toEqual(['science']);
   });
 
@@ -52,7 +52,7 @@ describe('llms', () => {
   test('llms index links the full files', () => {
     const s = buildLlmsIndex(c);
     expect(s).toMatch(/^# AI Timeline Log\n\n> /);
-    for (const x of [`${ORIGIN}llms-full.txt`, `${ORIGIN}en/llms-full.txt`, `${ORIGIN}timeline.json`, 'CC BY 4.0', SCOPE.en]) {
+    for (const x of [`${ORIGIN}llms-full.txt`, `${ORIGIN}ko/llms-full.txt`, `${ORIGIN}feed.xml`, `${ORIGIN}timeline.json`, 'CC BY 4.0', SCOPE.en]) {
       expect(s).toContain(x);
     }
   });

@@ -28,11 +28,11 @@ describe('buildView(ko)', () => {
   });
 
   test('canonical, og image and alternates', () => {
-    expect(v.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/');
+    expect(v.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/');
     expect(v.ogImage).toBe('https://lucasflatwhite.com/ai-timeline-log/og/ko.png');
     expect(v.alternates).toEqual([
-      { hreflang: 'ko', href: 'https://lucasflatwhite.com/ai-timeline-log/' },
-      { hreflang: 'en', href: 'https://lucasflatwhite.com/ai-timeline-log/en/' },
+      { hreflang: 'ko', href: 'https://lucasflatwhite.com/ai-timeline-log/ko/' },
+      { hreflang: 'en', href: 'https://lucasflatwhite.com/ai-timeline-log/' },
       { hreflang: 'x-default', href: 'https://lucasflatwhite.com/ai-timeline-log/' },
     ]);
   });
@@ -40,8 +40,8 @@ describe('buildView(ko)', () => {
   test('language switch lists every locale, each with its page', () => {
     expect(v.langNav).toBe('언어');
     expect(v.langs).toEqual([
-      { code: 'ko', label: 'KO', name: '한국어', path: '', current: true },
-      { code: 'en', label: 'EN', name: 'English', path: 'en/', current: false },
+      { code: 'ko', label: 'KO', name: '한국어', path: 'ko/', current: true },
+      { code: 'en', label: 'EN', name: 'English', path: '', current: false },
     ]);
   });
 
@@ -75,11 +75,11 @@ describe('buildView(ko)', () => {
     const d = scene('2026-07-sandbox-escape');
     expect(d.meta.startsWith('20260721 · ')).toBe(true);
     expect(d.items[1].meta).toBe('20260721 · 사고 · ‘샌드박스를 나간 에이전트’ 장면의 사건');
-    expect(decodeURIComponent(d.items[1].fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/#2026-07-sandbox-escape~20260721');
+    expect(decodeURIComponent(d.items[1].fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/ko/#2026-07-sandbox-escape~20260721');
     expect(decodeURIComponent(d.items[1].fix)).toContain('title=[정정] 20260721 ');
     expect(d.items[1].fix).toContain('&lang=ko');
     expect(d.fix).toContain('https://github.com/lucas-flatwhite/ai-timeline-log/issues/new?template=correction.yml&title=');
-    expect(decodeURIComponent(d.fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/#2026-07-sandbox-escape&');
+    expect(decodeURIComponent(d.fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/ko/#2026-07-sandbox-escape&');
     expect(scene('2025-01-deepseek').items[0]).toMatchObject({ addr: '2025-01-deepseek~20250120', date: '20250120', text: '딥시크, 추론 모델 R1을 MIT 라이선스로 공개.' });
     expect(scene('2025-01-deepseek').aliases).toEqual([]);
   });
@@ -150,7 +150,7 @@ describe('buildView(en)', () => {
       glyph: '1,425 days', tpl: '{days} days', start: '2022-11-30',
       lede: 'A record of the moments AI has passed through, from ChatGPT’s launch on November 30, 2022, to the present.',
     });
-    expect(e.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/en/');
+    expect(e.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/');
     expect(e.langs.map(l => [l.label, l.current])).toEqual([['KO', false], ['EN', true]]);
   });
 
@@ -217,10 +217,10 @@ describe('take-it-with-you section', () => {
     });
     expect(e.outro.take.poster!.png).toBe(`${REL}/download/edition-4/poster-en.png`);
     expect(e.outro.take.poster!.label).toBe('Poster · Edition 4 · 2026.10.31');
-    expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/feed.xml' });
-    expect(e.outro.take.feed.href).toBe('/ai-timeline-log/en/feed.xml');
-    expect(v.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/llms-full.txt');
-    expect(e.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/en/llms-full.txt');
+    expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/ko/feed.xml' });
+    expect(e.outro.take.feed.href).toBe('/ai-timeline-log/feed.xml');
+    expect(v.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt');
+    expect(e.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/llms-full.txt');
     expect(v.outro.take.ai.json).toBe('https://lucasflatwhite.com/ai-timeline-log/timeline.json');
     expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
     expect(e.outro.take.ai.label).toBe('Hand It to an AI');

@@ -3,18 +3,18 @@ import { test, expect } from '@playwright/test';
 const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
 const meta = (page: import('@playwright/test').Page, sel: string) => page.locator(`head ${sel}`);
 
-for (const path of ['./', './en/']) {
-  const lang = path === './' ? 'ko' : 'en';
-  const canonical = ORIGIN + (lang === 'en' ? 'en/' : '');
+for (const path of ['./ko/', './']) {
+  const lang = path === './' ? 'en' : 'ko';
+  const canonical = ORIGIN + (lang === 'ko' ? 'ko/' : '');
 
   test.describe(lang, () => {
     test('canonical, hreflang and social meta, each tag exactly once', async ({ page, request }) => {
       await page.goto(path);
       await expect(meta(page, 'link[rel="canonical"]')).toHaveAttribute('href', canonical);
       await expect(meta(page, 'link[rel="canonical"]')).toHaveCount(1);
-      await expect(meta(page, 'link[rel="alternate"][hreflang="ko"]')).toHaveAttribute('href', ORIGIN);
+      await expect(meta(page, 'link[rel="alternate"][hreflang="ko"]')).toHaveAttribute('href', `${ORIGIN}ko/`);
       await expect(meta(page, 'link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute('href', ORIGIN);
-      await expect(meta(page, 'link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', `${ORIGIN}en/`);
+      await expect(meta(page, 'link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', ORIGIN);
       await expect(meta(page, 'link[rel="alternate"][hreflang]')).toHaveCount(3);
       // 언어 대체 링크 외에 내보내기 파일 두 개(timeline.json, 언어별 feed.xml)를 가리킨다
       await expect(meta(page, 'link[rel="alternate"][type]')).toHaveCount(2);

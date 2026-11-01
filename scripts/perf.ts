@@ -148,7 +148,7 @@ const b = await chromium.launch();
 try {
   const rows: { locale: string; v: (typeof VIEWS)[number]; runs: Run[] }[] = [];
   for (const locale of LOCALES) {
-    const url = origin + BASE + (locale === 'en' ? 'en/' : '');
+    const url = origin + BASE + (locale === 'ko' ? 'ko/' : '');
     for (const v of VIEWS) {
       const runs: Run[] = [];
       for (let i = 0; i < RUNS; i++) runs.push(await measure(b, url, v));

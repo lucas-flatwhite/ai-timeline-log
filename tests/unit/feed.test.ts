@@ -17,7 +17,7 @@ describe('feedItems', () => {
   });
 
   test('later scenes, corrections and posters', () => {
-    expect(byGuid('scene:2026-10-eth-review:2026-10-31')?.link).toBe('https://lucasflatwhite.com/ai-timeline-log/#2026-10-eth-review');
+    expect(byGuid('scene:2026-10-eth-review:2026-10-31')?.link).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/#2026-10-eth-review');
     expect(byGuid(`correction:${exportControl}:2026-10-27`)).toBeDefined();
     expect(byGuid('poster:4:2026-10-31')?.link).toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/tag/edition-4');
     expect(ko.filter(i => i.guid.startsWith('poster:'))).toHaveLength(1);
@@ -58,7 +58,7 @@ describe('renderRss', () => {
 
   test('english channel', () => {
     const xml = renderRss(c, 'en');
-    expect(xml).toContain('<link>https://lucasflatwhite.com/ai-timeline-log/en/</link>');
+    expect(xml).toContain('<link>https://lucasflatwhite.com/ai-timeline-log/</link>');
     expect(xml).toContain('<title>Edition 4 poster</title>');
   });
 });

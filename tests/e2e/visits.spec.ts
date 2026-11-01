@@ -2,7 +2,7 @@ import { test, expect, type Page, type APIRequestContext } from '@playwright/tes
 
 /* 지난 방문 이후 새 상자: localStorage에 마지막으로 본 판의 날짜를 두고, 그 뒤에 추가된 상자를 표시한다 */
 
-async function ready(page: Page, path = './') {
+async function ready(page: Page, path = './ko/') {
   await page.goto(path);
   await page.waitForFunction(() => document.documentElement.dataset.ready === '1');
 }

@@ -24,8 +24,8 @@ const scrollThrough = (page: Page) => page.evaluate(async () => {
   scrollTo(0, document.documentElement.scrollHeight);
 });
 
-for (const path of ['./', './en/']) {
-  const lang = path === './' ? 'ko' : 'en';
+for (const path of ['./ko/', './']) {
+  const lang = path === './' ? 'en' : 'ko';
   /* 언어마다 받는 판 글꼴: 영어 판에는 한글이 없어 PlateL만 있다 */
   const faces = lang === 'ko' ? ['PlateK:loaded', 'PlateL:loaded'] : ['PlateL:loaded'];
   const daysText = (n: string) => (lang === 'ko' ? `${n}일` : `${n} days`);

@@ -6,7 +6,9 @@
 
 - `content/scenes/<날짜>-<슬러그>.yaml`: 장면 하나가 파일 하나입니다. 파일명은 `date`와 `id`에서 정해집니다(`id`가 `2025-01-deepseek`, `date`가 `2025-01-27`이면 `2025-01-27-deepseek.yaml`).
 - `content/years.yaml` 연도 요약, `content/arcs.yaml` 시기 구분, `content/ledger.yaml` 연구소 계보, `content/site.yaml` 사이트 문구와 `asOf`, `content/pics.yaml` 그림 윤곽선, `content/topics.yaml` 주제(여러 장면을 잇는 흐름), `content/editions.yaml` 판 기록.
-- 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `en/llms-full.txt`, `feed.xml`, `en/feed.xml`)은 빌드가 `src/lib/export.ts`와 `src/lib/feed.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
+- 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `ko/llms-full.txt`, `feed.xml`, `ko/feed.xml`)은 빌드가 `src/lib/export.ts`와 `src/lib/feed.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
+- 언어 주소: 영어가 기본이라 `/ai-timeline-log/`에 있고, 한국어는 `/ai-timeline-log/ko/`에 있습니다(`src/i18n/index.ts`의 `locales`, `localePath`). 예전 `en/` 주소는 `vercel.json`(이 저장소와 lucasflatwhite-com 둘 다)이 영구 이동으로 돌려보냅니다.
+- 고른 언어는 브라우저 저장소 `lucas-flatwhite:locale`(`LOCALE_KEY`)에 적습니다. 사이트 전체(아케이드 게임 포함)가 같은 키를 씁니다. 언어 링크를 누를 때만 적고, 기본 주소로 들어왔을 때만 그 언어로 옮깁니다. `ko/`를 직접 열면 저장된 값과 상관없이 한국어입니다(`src/layouts/Page.astro`의 인라인 스크립트, `tests/e2e/lang.spec.ts`).
 - 사실(날짜, 수치, 판화 설정, 출처)은 한 번만 적고 글만 `ko`/`en`으로 나란히 둡니다.
 - 스키마는 `src/lib/schema.ts`, 빌드 검사는 `src/lib/checks.ts`입니다. 오류는 빌드를 멈추고 경고는 출력만 합니다.
 
@@ -94,7 +96,7 @@ npx playwright test --project=chromium   # 브라우저 테스트(빌드와 미�
 - `src/generated/`, `public/plate/`는 빌드가 만드는 파일이라 커밋하지 않습니다.
 - 공유 이미지(`public/og/`)는 내용이 크게 바뀌면 `scripts/og.ts`로 다시 찍어 커밋합니다.
 - 포스터 파일은 커밋하지 않고 사이트에도 두지 않습니다. GitHub Releases에만 올립니다(Vercel 비용을 지지 않기 위해서).
-- 방문자 정보를 서버로 보내지 않습니다. "지난 방문 이후 새 상자"는 브라우저 저장소(`atl:seen`, `atl:since`)만 씁니다.
+- 방문자 정보를 서버로 보내지 않습니다. "지난 방문 이후 새 상자"는 브라우저 저장소(`atl:seen`, `atl:since`)만, 고른 언어는 `lucas-flatwhite:locale`만 씁니다.
 
 ## 라이선스
 

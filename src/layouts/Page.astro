@@ -10,6 +10,7 @@ import '../styles/detail.css';
 import '../styles/outro.css';
 import plateJson from '../generated/plate.json';
 import type { PageView } from '../lib/view.ts';
+import { DEFAULT_LOCALE, LOCALE_KEY } from '../i18n/index.ts';
 
 interface Props { view: PageView }
 const { view } = Astro.props;
@@ -19,12 +20,24 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const plates = (plateJson as Record<string, { family: string; file: string }[]>)[view.lang] ?? [];
 const plateCss = plates.map(p => `@font-face{font-family:${p.family};src:url(${base}${p.file}) format("woff2");font-display:block}`).join('')
   + `:root{--plate:${[...plates.map(p => p.family), 'var(--display)'].join(', ')}}`;
+/* 고른 언어 기억(LOCALE_KEY, 사이트 전체가 함께 쓴다).
+   - 언어 링크를 누르면 그 언어를 적는다. 모듈 스크립트보다 먼저 돌도록 머리의 인라인 스크립트로 둔다
+   - 기본 언어 주소(base)로 들어왔을 때만, 다른 언어를 고른 적이 있으면 그 주소로 옮긴다. 그리기 전에 옮겨서 다른 언어가 비치지 않는다.
+     ko/처럼 언어 주소를 직접 열면 그 주소를 따른다(받은 링크는 받은 대로 보인다) */
+const k = JSON.stringify(LOCALE_KEY);
+const remember = `document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('nav.lang a[hreflang]');if(a)try{localStorage.setItem(${k},a.hreflang)}catch(x){}},true)`;
+const away = Object.fromEntries(view.langs.filter(l => !l.current && l.path !== null).map(l => [l.code, base + l.path]));
+const follow = view.lang === DEFAULT_LOCALE
+  ? `try{var m=${JSON.stringify(away)},v=localStorage.getItem(${k});if(v&&Object.prototype.hasOwnProperty.call(m,v))location.replace(m[v]+location.search+location.hash)}catch(x){}`
+  : '';
 ---
 <!doctype html>
 <html lang={view.lang}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{follow && <script is:inline set:html={follow}></script>}
+<script is:inline set:html={remember}></script>
 <script is:inline>document.documentElement.classList.add('js')</script>
 <title>{view.title}</title>
 <meta name="description" content={view.description}>

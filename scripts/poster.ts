@@ -13,7 +13,7 @@ import { A_RATIO, editionFor, pickColumns, posterFiles, posterScale, posterSiteU
 import type { Edition } from '../src/lib/schema.ts';
 
 const SITE = process.env.SITE ?? 'http://localhost:4321/ai-timeline-log/';
-const PAGE: Record<Locale, string> = { ko: '', en: 'en/' };
+const PAGE: Record<Locale, string> = { ko: 'ko/', en: '' };
 const BAND: Record<Locale, { edition: (n: number) => string; counts: (s: number, i: number, days: string) => string }> = {
   ko: { edition: n => `제 ${n}판`, counts: (s, i, d) => `장면 ${s} · 사건 ${i} · ${d}` },
   en: { edition: n => `Edition ${n}`, counts: (s, i, d) => `${s} scenes · ${i} events · ${d}` },
@@ -98,7 +98,7 @@ const browser = await chromium.launch();
 try {
   for (const locale of opts.locales) {
     const files = posterFiles(locale);
-    /* QR은 그 언어의 페이지로(영어 포스터는 /en/) */
+    /* QR은 그 언어의 페이지로(한국어 포스터는 /ko/) */
     const qr = await QRCode.toString(posterSiteUrl(locale), { type: 'svg', margin: 2, color: { dark: '#111110', light: '#E3E1D9' } });
     /* 1) 배율 1로 칸 수와 크기를 정한다 2) A2 300dpi가 되는 배율로 다시 열어 찍는다(캔버스는 배율에 맞춰 새로 새겨진다) */
     const first = await open(browser, edition, locale, 1, qr);
