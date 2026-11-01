@@ -59,8 +59,9 @@ jobs:
             const { parse } = require("yaml");
             const e = parse(require("fs").readFileSync("content/editions.yaml", "utf8")).find(x => x.n === Number(process.argv[1]));
             const [y, m, d] = String(e.date instanceof Date ? e.date.toISOString().slice(0, 10) : e.date).split("-");
-            require("fs").writeFileSync("title.txt", `제 ${e.n}판 · ${y}.${m}.${d} / Edition ${e.n}`);
-            require("fs").writeFileSync("notes.md", `${e.ko}\n\n${e.en}\n`);
+            // 사이트처럼 Release도 영어가 기본이다. 한국어 포스터 파일은 그대로 함께 올린다
+            require("fs").writeFileSync("title.txt", `Edition ${e.n} · ${y}.${m}.${d}`);
+            require("fs").writeFileSync("notes.md", `${e.en}\n`);
           ' "${{ steps.ed.outputs.n }}"
           if gh release view "$TAG" > /dev/null 2>&1; then
             gh release upload "$TAG" out/* --clobber
