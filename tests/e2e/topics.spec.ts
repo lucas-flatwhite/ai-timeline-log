@@ -14,7 +14,7 @@ async function boxCount(request: APIRequestContext, topic: string): Promise<numb
 const onAddrs = (page: Page) => page.locator('.wall .box.on').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
 
 test('menu highlights a topic', async ({ page, request }) => {
-  await ready(page, './');
+  await ready(page, './ko/');
   const btn = page.locator('.top .tp-btn');
   await btn.click();
   await expect(btn).toHaveAttribute('aria-expanded', 'true');
@@ -28,7 +28,7 @@ test('menu highlights a topic', async ({ page, request }) => {
 });
 
 test('topic from the address', async ({ page }) => {
-  await ready(page, './?topic=science');
+  await ready(page, './ko/?topic=science');
   await expect(page.locator('.wall.pick')).toHaveCount(1);
   await expect(page.locator('.top .tp-btn')).toContainText('과학과 수학');
 });
@@ -37,14 +37,14 @@ test('ignores an unknown topic', async ({ page }) => {
   const errors: string[] = [];
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
   page.on('pageerror', e => errors.push(e.message));
-  await ready(page, './?topic=nope');
+  await ready(page, './ko/?topic=nope');
   await expect(page.locator('.wall.pick')).toHaveCount(0);
   await expect(page.locator('.top .tp-btn')).toHaveAttribute('aria-pressed', 'false');
   expect(errors).toEqual([]);
 });
 
 test('arrows stay inside the topic', async ({ page }) => {
-  await ready(page, './?topic=korea');
+  await ready(page, './ko/?topic=korea');
   const allowed = new Set(await onAddrs(page));
   await page.locator('.wall .box.on').first().click();
   await expect(page.locator('#detail')).toBeVisible();
@@ -61,7 +61,7 @@ test('arrows stay inside the topic', async ({ page }) => {
 });
 
 test('falls back to the full order', async ({ page }) => {
-  await ready(page, './?topic=korea');
+  await ready(page, './ko/?topic=korea');
   const all = await page.locator('.wall .box:not(.year)').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
   const allowed = new Set(await onAddrs(page));
   const outside = all.find(a => !allowed.has(a))!;
@@ -74,7 +74,7 @@ test('falls back to the full order', async ({ page }) => {
 });
 
 test('clearing removes the query and the highlight', async ({ page }) => {
-  await ready(page, './?topic=agents');
+  await ready(page, './ko/?topic=agents');
   await page.locator('.top .tp-btn').click();
   await page.locator('.tp-list button[data-topic=""]').click();
   await expect(page.locator('.wall.pick')).toHaveCount(0);
@@ -83,7 +83,7 @@ test('clearing removes the query and the highlight', async ({ page }) => {
 });
 
 test('escape closes the menu and returns focus', async ({ page }) => {
-  await ready(page, './');
+  await ready(page, './ko/');
   const btn = page.locator('.top .tp-btn');
   await btn.click();
   await expect(page.locator('#tp-list')).toBeVisible();
@@ -93,7 +93,7 @@ test('escape closes the menu and returns focus', async ({ page }) => {
 });
 
 test('language link carries the topic', async ({ page }) => {
-  await ready(page, './');
+  await ready(page, './ko/');
   await page.locator('.top .tp-btn').click();
   await page.locator('.tp-list button[data-topic="agents"]').click();
   await expect(page.locator('header.top nav.lang a[lang=en]')).toHaveAttribute('href', /\?topic=agents/);
@@ -102,7 +102,7 @@ test('language link carries the topic', async ({ page }) => {
 test.describe('touch', () => {
   test.use({ hasTouch: true, isMobile: true, viewport: { width: 390, height: 844 } });
   test('touch devices see the highlight', async ({ page }) => {
-    await ready(page, './?topic=agents');
+    await ready(page, './ko/?topic=agents');
     await expect.poll(() => page.locator('.wall .box:not(.on):not(.year) canvas').first()
       .evaluate(c => getComputedStyle(c).opacity)).toBe('0.25');
   });

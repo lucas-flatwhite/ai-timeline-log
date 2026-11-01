@@ -1,6 +1,7 @@
 import type { Locale } from './dates.ts';
 import type { Edition } from './schema.ts';
 import { ORIGIN } from './origin.ts';
+import { localePath } from '../i18n/index.ts';
 
 /** 판 포스터의 배치와 파일 이름. 찍는 일은 scripts/poster.ts가, 올리는 일은 .github/workflows/poster.yml이 한다 */
 
@@ -21,9 +22,9 @@ export function posterScale(cssWidth: number, mm = 420, dpi = 300): number {
   return Math.ceil(mm / 25.4 * dpi) / cssWidth;
 }
 
-/** 포스터의 QR과 먹 띠 주소: 그 언어의 페이지(영어 포스터는 /en/) */
+/** 포스터의 QR과 먹 띠 주소: 그 언어의 페이지(한국어 포스터는 /ko/) */
 export function posterSiteUrl(locale: Locale): string {
-  return ORIGIN + (locale === 'en' ? 'en/' : '');
+  return ORIGIN + localePath(locale);
 }
 
 export function posterFiles(locale: Locale): { pdf: string; png: string; web: string } {

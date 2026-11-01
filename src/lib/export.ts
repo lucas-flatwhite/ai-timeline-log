@@ -4,6 +4,7 @@ import { glyphFor, itemAddresses } from './grid.ts';
 import { hasHangul } from './checks.ts';
 import type { Edition, Scene, Topics } from './schema.ts';
 import { ORIGIN } from './origin.ts';
+import { localePath } from '../i18n/index.ts';
 
 /** 연표를 사이트 밖으로 내보내는 모양들(timeline.json, llms.txt). 사실은 Content 하나에서만 온다. */
 
@@ -14,7 +15,7 @@ export const SCOPE = {
 };
 const ATTRIBUTION = 'AI Timeline Log (https://lucasflatwhite.com/ai-timeline-log/), CC BY 4.0';
 
-const pagePath = (locale: Locale) => ORIGIN + (locale === 'en' ? 'en/' : '');
+const pagePath = (locale: Locale) => ORIGIN + localePath(locale);
 export function sceneUrl(locale: Locale, id: string): string {
   return `${pagePath(locale)}#${id}`;
 }
@@ -88,13 +89,13 @@ export function buildLlmsIndex(c: Content): string {
     '',
     '## Timeline',
     '',
-    `- [Full timeline in English](${ORIGIN}en/llms-full.txt): every scene and event with dates and source links`,
-    `- [Full timeline in Korean](${ORIGIN}llms-full.txt): the same in Korean`,
+    `- [Full timeline in English](${ORIGIN}llms-full.txt): every scene and event with dates and source links`,
+    `- [Full timeline in Korean](${ORIGIN}ko/llms-full.txt): the same in Korean`,
     `- [timeline.json](${ORIGIN}timeline.json): structured data in both languages, with topics, eras, model releases and a glossary of official English names`,
     '',
     '## Optional',
     '',
-    `- [RSS feed (English)](${ORIGIN}en/feed.xml): new scenes, corrections and poster editions`,
+    `- [RSS feed (English)](${ORIGIN}feed.xml): new scenes, corrections and poster editions`,
     `- [Website](${ORIGIN}): the timeline as a wall of woodcut boxes`,
     `- [Corrections](${c.site.repo}/issues): report mistakes with evidence`,
     '',

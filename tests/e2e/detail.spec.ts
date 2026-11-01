@@ -29,15 +29,15 @@ const dlg = (page: Page) => page.locator('#detail');
 const order = (page: Page) => page.locator('.wall .box:not(.year)').evaluateAll(els => els.map(e => (e as HTMLElement).dataset.addr!));
 /* 시험용으로만 HTML을 고친다(내용에는 아직 별칭·사건 출처가 없다). 바꿀 곳이 없으면 시험이 헛돌지 않게 실패한다 */
 async function rewrite(page: Page, from: string | RegExp, to: string) {
-  await page.route(/\/ai-timeline-log\/(en\/)?(#.*)?$/, async r => {
+  await page.route(/\/ai-timeline-log\/(ko\/)?(#.*)?$/, async r => {
     const res = await r.fetch(), html = await res.text(), body = html.replace(from, to);
     if (body === html) throw new Error(`fixture: not found: ${from}`);
     await r.fulfill({ response: res, body });
   });
 }
 
-for (const path of ['./', './en/']) {
-  const lang = path === './' ? 'ko' : 'en';
+for (const path of ['./ko/', './']) {
+  const lang = path === './' ? 'en' : 'ko';
   const t = ui[lang]!;
   const gpt4 = sceneYaml('2023-03-14-gpt-4.yaml')[lang].title;
   const faces = lang === 'ko' ? ['PlateK:loaded', 'PlateL:loaded'] : ['PlateL:loaded'];
@@ -289,7 +289,7 @@ for (const path of ['./', './en/']) {
 
     test('the language link inside the dialog opens the same event in the other language', async ({ page }) => {
       // 창이 열려 있으면 위 막대·맺음의 언어 링크는 누를 수 없다(showModal). 창 안의 링크로 간다
-      const [olang, opath] = lang === 'ko' ? ['en', '/ai-timeline-log/en/'] : ['ko', '/ai-timeline-log/'];
+      const [olang, opath] = lang === 'ko' ? ['en', '/ai-timeline-log/'] : ['ko', '/ai-timeline-log/ko/'];
       const addr = '2026-07-sandbox-escape~20260721';
       await visit(page, path);
       await page.locator(`a.box[data-addr="${addr}"]`).click();
@@ -309,7 +309,7 @@ for (const path of ['./', './en/']) {
       await expect(page.locator('#detail .dbody li.hl')).toHaveAttribute('data-addr', addr);
       // 닫으면 주소를 들고 가지 않는다
       await page.locator('#detail .x').click();
-      await expect(page.locator('#detail nav.lang a')).toHaveAttribute('href', path === './' ? '/ai-timeline-log/' : '/ai-timeline-log/en/');
+      await expect(page.locator('#detail nav.lang a')).toHaveAttribute('href', path === './' ? '/ai-timeline-log/' : '/ai-timeline-log/ko/');
     });
 
     test('a hand-edited hash opens, switches and closes the dialog', async ({ page }) => {

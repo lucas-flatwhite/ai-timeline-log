@@ -2,7 +2,7 @@ import type { Content } from './content.ts';
 import type { Locale } from './dates.ts';
 import { newestFirst, releaseUrl, sceneUrl } from './export.ts';
 import { ORIGIN } from './origin.ts';
-import { uiFor } from '../i18n/index.ts';
+import { localePath, uiFor } from '../i18n/index.ts';
 
 /** RSS 2.0 피드. 항목: 첫 판(하나로 묶음), 첫 판 뒤에 더한 장면, 정정, 포스터가 있는 판. updated만 바뀐 것은 넣지 않는다 */
 
@@ -16,7 +16,7 @@ export function feedItems(c: Content, locale: Locale): FeedItem[] {
   const ed1 = c.editions.find(e => e.date === first);
   items.push({
     guid: `first:${first}`, date: first, title: t.feedFirst(firstCount),
-    link: ORIGIN + (locale === 'en' ? 'en/' : ''), description: ed1?.[locale] ?? t.feedFirst(firstCount),
+    link: ORIGIN + localePath(locale), description: ed1?.[locale] ?? t.feedFirst(firstCount),
   });
   for (const s of newestFirst(c.scenes)) {
     const st = s[locale];
@@ -52,7 +52,7 @@ function rfc822(iso: string): string {
 
 export function renderRss(c: Content, locale: Locale): string {
   const items = feedItems(c, locale);
-  const home = ORIGIN + (locale === 'en' ? 'en/' : '');
+  const home = ORIGIN + localePath(locale);
   const out = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<rss version="2.0">',

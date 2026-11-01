@@ -34,3 +34,21 @@ describe('화면 문구', () => {
     expect(ui.en).toBe(en);
   });
 });
+
+describe('언어 주소', () => {
+  it('영어가 기본이고 base 바로 아래, 한국어는 ko/ 아래에 있다', async () => {
+    const { DEFAULT_LOCALE, localePath, LOCALE_KEY } = await import('../../src/i18n/index.ts');
+    expect(DEFAULT_LOCALE).toBe('en');
+    expect(localePath('en')).toBe('');
+    expect(localePath('ko')).toBe('ko/');
+    expect(LOCALE_KEY).toBe('lucas-flatwhite:locale');
+  });
+  it('예전 en/ 주소는 base로 영구 이동한다', async () => {
+    const { readFileSync } = await import('node:fs');
+    const v = JSON.parse(readFileSync('vercel.json', 'utf8')) as { redirects: { source: string; destination: string; permanent: boolean }[] };
+    expect(v.redirects).toEqual([
+      { source: '/ai-timeline-log/en', destination: '/ai-timeline-log/', permanent: true },
+      { source: '/ai-timeline-log/en/:path*', destination: '/ai-timeline-log/:path*', permanent: true },
+    ]);
+  });
+});

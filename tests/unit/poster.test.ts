@@ -15,8 +15,8 @@ describe('poster layout', () => {
     expect(posterScale(1000, 420, 200)).toBeCloseTo(3308 / 1000, 4);
   });
   test('posterSiteUrl points each poster at its own language page', () => {
-    expect(posterSiteUrl('ko')).toBe('https://lucasflatwhite.com/ai-timeline-log/');
-    expect(posterSiteUrl('en')).toBe('https://lucasflatwhite.com/ai-timeline-log/en/');
+    expect(posterSiteUrl('ko')).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/');
+    expect(posterSiteUrl('en')).toBe('https://lucasflatwhite.com/ai-timeline-log/');
   });
   test('posterFiles', () => {
     expect(posterFiles('en')).toEqual({ pdf: 'poster-en.pdf', png: 'poster-en.png', web: 'poster-en-web.png' });
