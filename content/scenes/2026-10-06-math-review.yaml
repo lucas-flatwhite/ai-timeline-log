@@ -4,6 +4,7 @@ span:
   from: 2026-05
   to: 2026-10
 added: 2026-10-27
+updated: 2026-11-02
 topics: [science]
 print:
   pattern: c
@@ -54,8 +55,8 @@ items:
 ko:
   kicker: 수학
   title: 검증이 따라가지 못한 증명들
-  lede: AI가 내놓는 수학 결과가 수학자들이 읽고 검증하는 속도를 넘어섰다. 원고 수백 편이 한꺼번에 공개되자 검토 절차를 새로 세우는 일이 과제가 됐다.
+  lede: AI가 내놓는 수학 결과가 수학자들이 읽고 검증하는 속도를 넘어섰다. 원고 수백 편이 한꺼번에 공개됐고, 이를 검토할 기준을 세우는 사업이 시작됐다.
 en:
   kicker: "Mathematics"
   title: "Proofs That Outran Their Reviewers"
-  lede: "AI began producing mathematical results faster than mathematicians could read and check them. When hundreds of manuscripts were released at once, building a new review process became the pressing task."
+  lede: "AI began producing mathematical results faster than mathematicians could read and check them. Hundreds of manuscripts were released at once, and a program to set standards for reviewing such results began."

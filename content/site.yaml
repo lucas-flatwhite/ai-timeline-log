@@ -2,6 +2,8 @@
 name: AI Timeline Log
 # 제보·정정을 받는 GitHub 저장소
 repo: https://github.com/lucas-flatwhite/ai-timeline-log
+# 제보를 받는 메일 주소. 제보 안내 창과 '만든 방법'에 쓴다
+email: lucas.flatwhite@gmail.com
 start: 2022-11-30
 asOf: 2026-11-02
 firstEdition: 2026-10-05
@@ -13,8 +15,8 @@ ko:
   description: "ChatGPT 공개({startDot})부터 현재까지, 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 {count}개의 자세한 내용이 열립니다."
   ogDescription: "ChatGPT 공개부터 현재까지, 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다."
   ledgerNote: "연구소별 대표 모델의 공개 시점입니다. 날짜는 연.월 기준이며, Mythos 계열처럼 제한 공개된 모델도 포함했습니다."
-  sourcesNote: "{asOfLong}까지의 각 사 발표와 언론 보도를 바탕으로 정리했습니다. 2026년 하반기 일부 사건은 조사와 소송이 진행 중이어서 이후 사실관계가 달라질 수 있습니다."
-  making: "이 연표는 AI의 도움을 받아 조사하고 썼습니다. 각 사의 공식 발표와 논문, 소송 문서 같은 1차 출처를 먼저 확인하고, 언론 보도는 그것을 보완하는 데 썼습니다. 틀린 곳이나 빠진 사건을 발견하면 GitHub 이슈로 알려 주세요. 근거와 함께 보내 주시면 확인한 뒤 고치고, 고친 내용은 장면에 기록합니다."
+  reportNote: "틀린 곳이나 빠진 사건을 알려 주세요. 보내 주신 내용은 반영하기 전에 따로 더 조사해 확인하고, 그 내용을 새길 상자 디자인도 함께 준비합니다. GitHub 이슈로 남겨 주셔도 좋고, 메일로 편한 형식에 맞춰 보내 주셔도 됩니다. 검토하겠습니다. 감사합니다."
+  making: "사건은 흐름을 바꾼 일인지를 기준으로 고릅니다. 후보가 정해지면 조사를 여러 갈래로 나눠 함께 진행하고, 찾은 내용은 따로 한 번 더 검증합니다. 날짜와 수치, 누가 무엇을 했는지는 각 사의 발표문과 논문, 소송 문서 같은 1차 출처에서 확인하고, 언론 보도는 그것을 보완하는 데만 씁니다. 아직 진행 중인 사건은 어느 시점의 보도를 기준으로 했는지 밝힙니다. 한국어와 영어를 함께 쓰고, 영문 이름은 공식 표기를 용어집에 모아 그대로 씁니다. 사이트를 만들 때마다 날짜 순서와 출처 유무, 과장된 표현과 상대 시간 표현을 자동으로 검사합니다. 틀린 곳이나 빠진 사건을 발견하면 GitHub 이슈나 메일({email})로 알려 주세요. 확인한 뒤 고치고, 사실을 고친 경우에는 그 내용을 장면에 기록합니다."
 en:
   heroGlyph:
     wide: "{days} days"
@@ -23,5 +25,5 @@ en:
   description: "A wall of generative AI events from ChatGPT’s launch ({startDot}) to the present, printed as black-and-white woodcut boxes and set out newest first. Open a box to read the details of the {count} scenes."
   ogDescription: "Generative AI events from ChatGPT’s launch to the present, printed as woodcut boxes and set out newest first. Open a box to read the details."
   ledgerNote: "When each lab released its major models. Dates are given by year and month, and models released only on a limited basis, such as the Mythos line, are included."
-  sourcesNote: "Compiled from company announcements and news reports up to {asOfLong}. Some events from the second half of 2026 are still under investigation or in litigation, so the facts may change."
-  making: "This timeline was researched and written with help from AI. Primary sources such as company announcements, papers and court filings were checked first, and news reports were used to supplement them. If you find a mistake or a missing event, please let us know in a GitHub issue. Send it with evidence and we will check it, fix it and record the correction in the scene."
+  reportNote: "Found a mistake or a missing event? Before anything goes on the wall, I research it further to confirm it and design a box for it. You can open a GitHub issue, or send an email in whatever form suits you. I will review it. Thank you."
+  making: "An event goes on the wall only if it changed the course of things. Once a candidate is chosen, the research is split into several threads that run side by side, and what they find is checked again in a separate pass. Dates, figures and who did what are confirmed against primary sources such as company announcements, papers and court filings, and news reports are used only to fill in around them. For events still unfolding, the text says which reporting it relies on. Every entry is written in Korean and English together, and official English names are kept in a glossary and used exactly as given. Each build automatically checks date order, missing sources, hype words and relative time expressions. If you find a mistake or a missing event, please let me know through a GitHub issue or by email at {email}. I will check it and fix it, and factual corrections are recorded in the scene."

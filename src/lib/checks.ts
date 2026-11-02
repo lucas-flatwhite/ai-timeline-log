@@ -8,6 +8,8 @@ const FORBIDDEN_EN = ['revolutionary', 'game-changer', 'groundbreaking', 'stunni
 const RELATIVE_KO = ['오늘', '최근', '올해', '현재'];
 const RELATIVE_EN = ['today', 'recently', 'this year'];
 
+/** em dash(U+2014). 이 파일에도 글자 자체를 두지 않으려고 이스케이프로 쓴다 */
+export const EM_DASH = '\u2014';
 const HANGUL = /[ᄀ-ᇿㄱ-ㆎ가-힣]/;
 const EMOJI = /\p{Extended_Pictographic}/u;
 
@@ -134,6 +136,14 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
     if (EMOJI.test(p.text)) errors.push(`${p.where}: emoji`);
     if (p.relative) for (const w of findWords(p.text, RELATIVE_KO, RELATIVE_EN)) errors.push(`${p.where}: relative time "${w}"`);
   }
+
+  // em dash는 예외 없이 막는다. 글뿐 아니라 출처 제목, 계보 이름까지 내용의 모든 문자열을 본다
+  const walk = (v: unknown, where: string): void => {
+    if (typeof v === 'string') { if (v.includes(EM_DASH)) errors.push(`${where}: em dash`); }
+    else if (Array.isArray(v)) v.forEach((x, i) => walk(x, `${where}.${i}`));
+    else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) walk(x, where ? `${where}.${k}` : k);
+  };
+  walk(c, '');
 
   return { errors, warnings };
 }

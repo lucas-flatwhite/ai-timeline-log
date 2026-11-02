@@ -56,10 +56,11 @@ const siteText = z.object({
   description: text,
   ogDescription: text,
   ledgerNote: text,
-  sourcesNote: text,
+  /** 제보 안내 창의 본문 */
+  reportNote: text,
   making: text.optional(),
 });
-export const siteSchema = z.object({ name: text, repo: z.url(), start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText });
+export const siteSchema = z.object({ name: text, repo: z.url(), email: z.email(), start: dayDate, asOf: dayDate, firstEdition: dayDate, ko: siteText, en: siteText });
 
 const titled = z.object({ title: text, body: text });
 export const yearsSchema = z.record(z.string().regex(/^\d{4}$/), z.object({ ko: titled, en: titled }));
