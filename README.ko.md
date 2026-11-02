@@ -2,7 +2,7 @@
 
 [English](README.md) | 한국어
 
-ChatGPT가 공개된 2022년 11월 30일부터 생성형 AI의 흐름을 바꾼 장면들을 기록합니다. 흩어진 발표문을 일일이 찾아보지 않아도 사건과 출처를 한곳에서 읽고, 어떤 일이 어떤 순서로 일어났는지 살펴볼 수 있도록 만들었습니다.
+ChatGPT가 공개된 2022년 11월 30일부터 생성형 AI의 사건들을 기록합니다. 사건을 날짜순으로 정리하고 출처를 남겨, 무슨 일이 있었는지 읽고 원문을 확인할 수 있습니다.
 
 [한국어로 읽기](https://www.lucasflatwhite.com/ai-timeline-log/ko/) · [Read in English](https://www.lucasflatwhite.com/ai-timeline-log/)
 
@@ -12,7 +12,7 @@ ChatGPT가 공개된 2022년 11월 30일부터 생성형 AI의 흐름을 바꾼 
 - 같은 사실을 바탕으로 영어판과 한국어판을 함께 씁니다. 사실을 고친 경우에는 해당 장면에 정정 기록을 남깁니다.
 - [Releases](https://github.com/lucas-flatwhite/ai-timeline-log/releases)에서 판별 인쇄용 포스터를 받을 수 있습니다. 다른 곳에서도 읽을 수 있도록 JSON, RSS, 일반 텍스트로 내보냅니다.
 
-사건은 생성형 AI의 흐름을 바꾼 일인지 기준으로 고릅니다. 날짜와 사실은 각 사의 발표문, 논문 등 1차 출처로 확인합니다. 틀린 곳이나 빠진 사건을 발견하면 근거와 함께 [이슈로 알려 주세요](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose).
+생성형 AI의 흐름을 바꾼 사건을 골라 기록합니다. 날짜와 사실은 각 사의 발표문, 논문 등 1차 출처로 확인합니다. 틀린 곳이나 빠진 사건을 발견하면 근거와 함께 [이슈로 알려 주세요](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose).
 
 ## 로컬에서 실행하기
 

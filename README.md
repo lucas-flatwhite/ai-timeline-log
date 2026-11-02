@@ -2,17 +2,17 @@
 
 English | [한국어](README.ko.md)
 
-An ongoing log of the moments that shaped generative AI, starting with ChatGPT's launch on November 30, 2022. It keeps events and their sources in one place, so you can follow how things unfolded without piecing together old announcements.
+A timeline of generative AI since ChatGPT launched on November 30, 2022. Events appear in date order with links to their sources, so you can read what happened and check the original material.
 
 [Read the timeline](https://www.lucasflatwhite.com/ai-timeline-log/) · [한국어로 읽기](https://www.lucasflatwhite.com/ai-timeline-log/ko/)
 
 ## What you'll find
 
 - A wall of black-and-white woodcut boxes, newest first. Open a box for the story and its sources, or follow a topic across scenes.
-- English and Korean editions, written together from the same facts. Factual corrections stay recorded with each scene.
+- Each scene is written in English and Korean. Factual corrections are recorded in the scene.
 - Printable edition posters in [Releases](https://github.com/lucas-flatwhite/ai-timeline-log/releases), plus JSON, RSS and plain-text exports for reading elsewhere.
 
-Events are chosen for how they changed the course of generative AI. Dates and claims are checked against company announcements, papers and other primary sources. Found a mistake or a missing event? [Open an issue](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose) with a source.
+The timeline focuses on events that shaped generative AI. Dates and claims are checked against company announcements, papers and other primary sources. Found a mistake or a missing event? [Open an issue](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose) with a source.
 
 ## Run locally
 
