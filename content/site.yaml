@@ -21,7 +21,7 @@ en:
   heroGlyph:
     wide: "{days} days"
     tall: "{days}\ndays"
-  lede: "A record of the moments AI has passed through, from ChatGPT’s launch on {startLong}, to {todayLong}."
+  lede: "Moments in AI from ChatGPT’s launch on {startLong}, to {todayLong}."
   description: "A wall of generative AI events since ChatGPT’s launch ({startDot}), printed as black-and-white woodcut boxes and set out newest first. Open a box to read the details of the {count} scenes."
   ogDescription: "Generative AI events since ChatGPT’s launch, printed as woodcut boxes and set out newest first. Open a box to read the details."
   ledgerNote: "When each lab released its major models. Dates are given by year and month, and models released only on a limited basis, such as the Mythos line, are included."

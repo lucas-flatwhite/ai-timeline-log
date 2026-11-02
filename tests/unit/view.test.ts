@@ -175,8 +175,8 @@ describe('buildView(en)', () => {
   test('cover, canonical and language switch', () => {
     expect(e.cover).toEqual({
       glyph: '1,425 days', tpl: '{days} days', start: '2022-11-30',
-      lede: 'A record of the moments AI has passed through, from ChatGPT’s launch on November 30, 2022, to October 25, 2026.',
-      ledeTpl: 'A record of the moments AI has passed through, from ChatGPT’s launch on November 30, 2022, to {todayLong}.',
+      lede: 'Moments in AI from ChatGPT’s launch on November 30, 2022, to October 25, 2026.',
+      ledeTpl: 'Moments in AI from ChatGPT’s launch on November 30, 2022, to {todayLong}.',
     });
     expect(e.canonical).toBe('https://lucasflatwhite.com/ai-timeline-log/');
     expect(e.langs.map(l => [l.label, l.current])).toEqual([['KO', false], ['EN', true]]);
