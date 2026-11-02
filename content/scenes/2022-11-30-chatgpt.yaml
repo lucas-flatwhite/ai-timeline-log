@@ -31,10 +31,18 @@ items:
     ko: 두 달 만에 월간 사용자 1억 명 추정(UBS). 당시 가장 빨리 성장한 소비자 앱.
     en: "UBS estimates 100 million monthly users two months in, the fastest-growing consumer app at the time."
     glyph: { ko: "1억", en: "100M" }
+    sources:
+      - url: https://www.theguardian.com/technology/2023/feb/02/chatgpt-100-million-users-open-ai-fastest-growing-app
+        title: ChatGPT reaches 100 million users two months after launch
+        publisher: The Guardian
   - date: 2023-01-23
     ko: 마이크로소프트, OpenAI에 수년간 수십억 달러 추가 투자 발표.
     en: "Microsoft announces a further multiyear, multibillion-dollar investment in OpenAI."
     glyph: MS
+    sources:
+      - url: https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/
+        title: Microsoft and OpenAI extend partnership
+        publisher: Microsoft
 ko:
   kicker: 출발점
   title: ChatGPT 공개

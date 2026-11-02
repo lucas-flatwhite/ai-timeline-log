@@ -21,6 +21,10 @@ items:
     ko: 과학기술정보통신부, 한국 자체 AI 기반 모델을 만들 정예팀 5곳으로 네이버클라우드·SK텔레콤·LG AI연구원·NC AI·업스테이지를 뽑았다.
     en: "The Ministry of Science and ICT picks five teams to build Korea’s own foundation models: NAVER Cloud, SK Telecom, LG AI Research, NC AI and Upstage."
     glyph: "5"
+    sources:
+      - url: https://www.newsis.com/view/NISX20250804_0003277653
+        title: 네이버·SKT·LG·엔씨AI·업스테이지, ‘K-AI 기업’ 문패 단다(종합)
+        publisher: 뉴시스
   - date: 2026-01-15
     ko: 1차 평가에서 네이버클라우드와 NC AI가 떨어졌다.
     en: "NAVER Cloud and NC AI are eliminated in the first evaluation."

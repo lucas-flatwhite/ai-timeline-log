@@ -40,6 +40,13 @@ items:
     ko: 뉴섬 주지사, 거부권 행사. 가장 크고 비싼 모델만 겨냥하면 거짓 안도감을 줄 수 있고, 위험한 환경에 쓰이는지를 따지지 않는다고 했다.
     en: "Governor Newsom vetoes the bill, saying that targeting only the largest, most expensive models could give a false sense of security and ignores whether a system is deployed in high-risk settings."
     glyph: { ko: "거부권", en: "VETO" }
+    sources:
+      - url: https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf
+        title: SB 1047 Veto Message
+        publisher: Office of the Governor of California
+      - url: https://techcrunch.com/2024/09/29/gov-newsom-vetoes-californias-controversial-ai-bill-sb-1047/
+        title: Gov. Newsom vetoes California’s controversial AI bill, SB 1047
+        publisher: TechCrunch
 ko:
   kicker: 주 법
   title: SB 1047 거부권

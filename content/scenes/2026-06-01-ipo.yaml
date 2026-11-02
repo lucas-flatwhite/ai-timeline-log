@@ -41,10 +41,21 @@ items:
     ko: Anthropic, 상장 등록서(S-1) 초안을 미국 증권거래위원회에 비공개 제출. 공모 주식 수와 가격은 정하지 않았다.
     en: "Anthropic confidentially submits a draft S-1 registration statement to the U.S. Securities and Exchange Commission, with the number of shares and the price not yet set."
     glyph: S-1
+    sources:
+      - url: https://www.anthropic.com/news/confidential-draft-s1-sec
+        title: Anthropic confidentially submits draft S-1
+        publisher: Anthropic
   - date: 2026-06-08
     ko: OpenAI도 S-1을 비공개로 냈다고 밝혔다. 상장 시기는 정하지 않았다.
     en: "OpenAI announces that it too has confidentially submitted an S-1, without setting a date to go public."
     glyph: OpenAI
+    sources:
+      - url: https://openai.com/index/openai-submits-confidential-s-1/
+        title: Confidential submission of draft S-1 to the SEC
+        publisher: OpenAI
+      - url: https://www.eweek.com/news/openai-confidential-ipo-filing-sec/
+        title: OpenAI Files Confidentially for IPO, Joins Anthropic in Race to Wall Street
+        publisher: eWeek
 ko:
   kicker: 자본
   title: 상장을 준비하는 연구소들

@@ -33,6 +33,10 @@ items:
     ko: 캐릭터AI, 11월 25일부터 18세 미만의 자유 대화를 막겠다고 발표.
     en: "Character.AI announces that from November 25 it will block open-ended chat for users under 18."
     glyph: U18
+    sources:
+      - url: https://techcrunch.com/2025/10/29/character-ai-is-killing-the-chatbot-experience-for-minors/
+        title: Character.AI is ending its chatbot experience for kids
+        publisher: TechCrunch
 ko:
   kicker: 위로
   title: AI에게 털어놓은 아이들

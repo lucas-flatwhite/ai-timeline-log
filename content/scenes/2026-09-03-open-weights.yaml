@@ -39,6 +39,10 @@ items:
     ko: 엔비디아, 허깅페이스를 약 129억 3천만 달러에 인수하기로 합의. 플랫폼은 열린 채로 두고 엔비디아 칩 없이도 쓸 수 있게 하겠다고 약속했다.
     en: "NVIDIA agrees to acquire Hugging Face for about $12.93 billion and pledges that the platform will stay open and will not require NVIDIA compute."
     glyph: { ko: "인수", en: "DEAL" }
+    sources:
+      - url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/
+        title: NVIDIA to Acquire Hugging Face
+        publisher: NVIDIA
   - date: 2026-10-15
     ko: 메타, Muse Spark Open의 가중치 공개. 상업 이용 조건을 붙인 자체 라이선스를 따른다.
     en: "Meta releases the weights of Muse Spark Open under its own license with limited commercial terms."

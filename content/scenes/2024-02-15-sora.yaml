@@ -28,10 +28,21 @@ items:
     ko: 뉴욕타임스, 기사 무단 학습을 이유로 OpenAI와 마이크로소프트를 제소.
     en: "The New York Times sues OpenAI and Microsoft, saying they trained on its articles without permission."
     glyph: NYT
+    sources:
+      - url: https://nytco-assets.nytimes.com/2023/12/NYT_Complaint_Dec2023.pdf
+        title: Complaint, The New York Times Company v. Microsoft Corporation et al., Case 1:23-cv-11195 (S.D.N.Y. Dec. 27, 2023)
+        publisher: The New York Times
   - date: 2024-02-15
     ko: Sora 시연. 같은 날 Gemini 1.5 발표, 컨텍스트 100만 토큰.
     en: "OpenAI demonstrates Sora; the same day, Google announces Gemini 1.5, with a context of one million tokens."
     glyph: Sora
+    sources:
+      - url: https://openai.com/index/sora/
+        title: "Sora: Creating video from text"
+        publisher: OpenAI
+      - url: https://blog.google/innovation-and-ai/products/google-gemini-next-generation-model-february-2024/
+        title: "Our next-generation model: Gemini 1.5"
+        publisher: Google
   - date: 2024-02-22
     ko: 구글, 제미나이 인물 이미지 생성 중단. 역사 속 인물을 부정확하게 그린다는 비판.
     en: "Google pauses Gemini’s image generation of people after criticism that it depicted historical figures inaccurately."

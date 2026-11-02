@@ -29,10 +29,18 @@ items:
     en: "An experimental OpenAI model and Google’s Gemini Deep Think reach gold-medal level at the International Mathematical Olympiad."
     glyph: { ko: "금메달", en: "GOLD" }
     pic: medal
+    sources:
+      - url: https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/
+        title: Advanced version of Gemini with Deep Think officially achieves gold-medal standard at the International Mathematical Olympiad
+        publisher: Google DeepMind
   - date: 2025-08-07
     ko: GPT-5 출시. 이전 모델을 없앴다가 사용자 반발로 GPT-4o를 되살렸다.
     en: "GPT-5 launches, and OpenAI, which had removed its earlier models, brings GPT-4o back after users push back."
     glyph: { ko: "반발", en: "OUTCRY" }
+    sources:
+      - url: https://openai.com/index/introducing-gpt-5/
+        title: Introducing GPT-5
+        publisher: OpenAI
   - date: 2025-08-26
     ko: 구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍.
     en: "Google releases Nano Banana (Gemini 2.5 Flash Image), setting off a photo-editing craze."

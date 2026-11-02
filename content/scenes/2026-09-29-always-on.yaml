@@ -45,6 +45,13 @@ items:
     ko: OpenAI, 데브데이에서 상시 실행 에이전트 dots 공개. 각자 클라우드 컴퓨터를 갖고 대화와 대화 사이에도 일을 이어 간다.
     en: "At DevDay, OpenAI launches dots, always-on agents that each have their own cloud computer and keep making progress between conversations."
     glyph: dots
+    sources:
+      - url: https://openai.com/index/introducing-dots/
+        title: Introducing dots
+        publisher: OpenAI
+      - url: https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/
+        title: OpenAI launches Dots, its bubbly agentic avatar
+        publisher: TechCrunch
 ko:
   kicker: 에이전트
   title: 자리를 비워도 일하는 에이전트

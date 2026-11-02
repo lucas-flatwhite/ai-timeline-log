@@ -30,6 +30,10 @@ items:
     en: "At the first World Humanoid Robot Games in Beijing, Unitree’s H1 wins the 1,500 meters in 6:34.40."
     glyph: 1500m
     pic: robot
+    sources:
+      - url: https://www.robotics247.com/article/unitree_h1_earns_two_gold_medals_at_world_humanoid_robot_games
+        title: Unitree H1 earns two gold medals at World Humanoid Robot Games
+        publisher: Robotics 24/7
   - date: 2026-02-16
     ko: 다시 춘완 무대에 오른 유니트리 로봇들이 공중제비와 취권을 선보였다. 다른 회사 로봇들도 콩트와 집안일 장면에 나왔다.
     en: "Back on the Spring Festival Gala, Unitree’s robots perform backflips and drunken-fist kung fu, and robots from other companies appear in a comedy sketch and household scenes."
@@ -42,6 +46,10 @@ items:
     ko: 유니트리, 중국 본토 첫 휴머노이드 로봇 회사 상장. 상하이 과학혁신판 첫날 460% 오른 채 마감했다.
     en: "Unitree becomes the first humanoid robot maker to list in mainland China, closing its first day on Shanghai’s STAR Market up 460%."
     glyph: "+460%"
+    sources:
+      - url: https://www.aljazeera.com/economy/2026/8/19/chinas-unitree-soars-in-market-debut-as-investors-bet-on-humanoid-robots
+        title: China’s Unitree soars in market debut as investors bet on humanoid robots
+        publisher: Al Jazeera
 ko:
   kicker: 로봇
   title: 무대에 선 휴머노이드

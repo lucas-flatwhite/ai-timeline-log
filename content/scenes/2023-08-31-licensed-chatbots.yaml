@@ -28,10 +28,18 @@ items:
     ko: 중국 7개 부처가 함께 낸 생성형 AI 서비스 관리 잠정조치 시행. 사회주의 핵심 가치를 지키게 하고, 여론에 영향을 줄 수 있는 서비스는 보안 평가를 받게 했다.
     en: "China’s Interim Measures for the Administration of Generative AI Services, issued by seven agencies, take effect, requiring services to uphold core socialist values and those able to sway public opinion to pass a security assessment."
     glyph: { ko: "규칙", en: "RULES" }
+    sources:
+      - url: http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm
+        title: 生成式人工智能服务管理暂行办法
+        publisher: 国家互联网信息办公室 (Cyberspace Administration of China)
   - date: 2023-08-31
     ko: 바이두·바이트댄스·센스타임 등이 첫 승인을 받아 챗봇을 일반에 열었다.
     en: "Baidu, ByteDance, SenseTime and others receive the first approvals and open their chatbots to the public."
     glyph: { ko: "승인", en: "CLEARED" }
+    sources:
+      - url: https://technode.com/2023/08/31/11-chinese-tech-companies-granted-permission-to-fully-release-chatgpt-like-tools/
+        title: 11 Chinese tech companies granted permission to fully release ChatGPT-like tools
+        publisher: TechNode
   - date: 2023-08-31
     ko: 어니봇, 일반 공개 12시간 만에 중국 앱스토어 무료 앱 1위.
     en: "Within 12 hours of opening to the public, ERNIE Bot tops the free-app chart on Apple’s App Store in China."

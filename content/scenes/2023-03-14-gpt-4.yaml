@@ -27,6 +27,10 @@ items:
     ko: 머스크·워즈니악 등이 GPT-4보다 강한 AI의 훈련을 6개월 멈추자는 공개서한에 서명.
     en: "Elon Musk, Steve Wozniak and others sign an open letter calling for a six-month pause in training AI more powerful than GPT-4."
     glyph: { ko: "6개월", en: "PAUSE" }
+    sources:
+      - url: https://futureoflife.org/open-letter/pause-giant-ai-experiments/
+        title: "Pause Giant AI Experiments: An Open Letter"
+        publisher: Future of Life Institute
   - date: 2023-03-31
     ko: 이탈리아 개인정보 당국, ChatGPT 접속 차단. 약 한 달 뒤 풀렸다.
     en: "Italy’s data protection authority blocks access to ChatGPT; the block is lifted about a month later."

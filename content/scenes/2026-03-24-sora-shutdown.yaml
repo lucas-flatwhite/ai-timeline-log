@@ -27,6 +27,10 @@ items:
     en: "OpenAI announces that it will close the Sora app and API to focus on world-simulation research for robots, and Disney’s investment falls through without being made."
     glyph: { ko: "로봇", en: "ROBOTS" }
     pic: robot
+    sources:
+      - url: https://decrypt.co/362243/openai-shut-down-sora-derailing-1-billion-deal-disney
+        title: OpenAI shuts down Sora, derailing $1 billion deal with Disney
+        publisher: Decrypt
   - date: 2026-04-26
     ko: 소라 앱 서비스 종료. 영상 소셜 앱으로 출시한 지 7개월 만이다.
     en: "The Sora app shuts down, seven months after its launch as a social video app."
