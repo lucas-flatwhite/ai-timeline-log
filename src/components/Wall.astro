@@ -15,10 +15,10 @@ const data = (b: PageView['boxes'][number]) => ({
     <canvas class="cv" data-kind="days" data-glyph={c.glyph} data-tpl={c.tpl} role="img" aria-label={c.glyph}></canvas>
     <span class="g" aria-hidden="true" data-live={c.tpl}>{c.glyph}</span>
     <p class="lede">{c.lede}</p>
-    {/* 지난 방문 이후 새 상자가 있을 때만 스크립트가 보인다 */}
-    <p class="since" hidden data-tpl={view.ui.newLine} data-label={view.ui.newLabel}><span></span> <button type="button">{view.ui.newShow}</button></p>
   </div>
   {view.boxes.map(b => b.off
     ? <span class={`box ${b.kind} off`} {...data(b)} role="img" aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></span>
     : <a class={`box ${b.kind}`} href={`#${b.addr}`} {...data(b)} aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></a>)}
 </main>
+{/* 지난 방문 이후 새 상자 알림: 화면 아래에 떠 있는 쪽지. 새 상자가 있을 때만 스크립트가 보인다. 표지의 소개 글은 그대로 둔다 */}
+<p class="since" hidden data-tpl={view.ui.newLine} data-label={view.ui.newLabel}><span></span><button type="button" class="since-show">{view.ui.newShow}</button><button type="button" class="since-x" aria-label={view.dialog.close}>×</button></p>

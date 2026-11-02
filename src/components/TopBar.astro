@@ -14,6 +14,8 @@ const u = view.ui;
         <input type="search" enterkeyhint="search" autocomplete="off" spellcheck="false" placeholder={u.findPlaceholder} aria-label={u.findLabel} aria-describedby="tp-n">
         <span id="tp-n" class="tp-n" aria-live="polite"></span>
       </p>
+      {/* 지난 방문 이후 새 상자가 있으면 스크립트가 문구를 채워 보인다(알림 쪽지를 닫은 뒤에도 고를 수 있게) */}
+      <ul class="tp-new" hidden><li><button type="button" data-new></button></li></ul>
       <h3 class="tp-h">{u.eras}</h3>
       <ul>{view.eras.map((e, i) => <li><button type="button" data-era={e.from}><span class="tp-i">{i + 1}</span><span class="tp-t">{e.title}</span><span class="tp-s">{e.span}</span></button></li>)}</ul>
       <h3 class="tp-h">{u.topic}</h3>

@@ -25,13 +25,14 @@ export function initFind(): void {
 
   btn.addEventListener('click', () => open(list.hidden));
   list.addEventListener('click', e => {
-    const b = (e.target as Element).closest<HTMLButtonElement>('button[data-topic], button[data-era]');
+    const b = (e.target as Element).closest<HTMLButtonElement>('button[data-topic], button[data-era], button[data-new]');
     if (!b) return;
     if (b.dataset.topic !== undefined) {
       const id = b.dataset.topic;
       setPick(id ? { kind: 'topic', id } : null);
     }
     close();   // 시기는 문서의 클릭이 이어서 고른다(eras.ts)
+    if (b.dataset.new !== undefined) { setPick({ kind: 'new' }); scrollToPicked(); }
   });
   input.addEventListener('input', () => {
     const q = input.value;
@@ -52,6 +53,7 @@ export function initFind(): void {
     const p = currentPick();
     btn.setAttribute('aria-pressed', String(!!p && p.kind !== 'new'));
     topics.forEach(b => b.setAttribute('aria-current', String(p?.kind === 'topic' && b.dataset.topic === p.id)));
+    list.querySelector('button[data-new]')?.setAttribute('aria-current', String(p?.kind === 'new'));
     list.querySelectorAll<HTMLButtonElement>('button[data-era]').forEach(b =>
       b.setAttribute('aria-current', String(p?.kind === 'era' && b.dataset.era === p.from)));
     if (p?.kind !== 'q') input.value = '';

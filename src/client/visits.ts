@@ -1,16 +1,16 @@
 import { isNew, sinceFor } from '../lib/visits.ts';
-import { currentPick, setPick } from './pick.ts';
+import { scrollToPicked, setPick } from './pick.ts';
 
 /* 지난 방문 이후 새 상자. 저장소는 이 브라우저에만 있고 서버로 보내지 않는다.
    저장소가 막혀 있으면(개인 정보 보호 모드 등) 아무것도 표시하지 않고 지금처럼 동작한다 */
-const LOCAL = 'atl:seen', SESSION = 'atl:since';
+const LOCAL = 'atl:seen', SESSION = 'atl:since', OFF = 'atl:since-off';
 const get = (s: () => Storage, k: string) => { try { return s().getItem(k); } catch { return null; } };
 const put = (s: () => Storage, k: string, v: string | null) => {
   try { if (v === null) s().removeItem(k); else s().setItem(k, v); } catch { /* 막혀 있으면 기억하지 않는다 */ }
 };
 
 export function initVisits(): void {
-  const wall = document.getElementById('wall'), line = document.querySelector<HTMLElement>('.cover .since');
+  const wall = document.getElementById('wall'), line = document.querySelector<HTMLElement>('.since');
   const latest = wall?.dataset.latest;
   if (!wall || !line || !latest) return;
   const { since, session } = sinceFor(get(() => sessionStorage, SESSION), get(() => localStorage, LOCAL), latest);
@@ -24,11 +24,14 @@ export function initVisits(): void {
     b.classList.add('new');
     b.setAttribute('aria-label', (b.getAttribute('aria-label') ?? '') + mark);
   });
-  line.querySelector('span')!.textContent = line.dataset.tpl!.split('{n}').join(String(fresh.length));
+  const text = line.dataset.tpl!.split('{n}').join(String(fresh.length));
+  line.querySelector('span')!.textContent = text;
+  const entry = document.querySelector<HTMLElement>('.tp-new');
+  if (entry) { entry.querySelector('button')!.textContent = text; entry.hidden = false; }
+  /* 알림 쪽지: 이 탭에서 닫았거나(보기, ×) 강조로 넘어간 뒤에는 다시 띄우지 않는다. 상자의 표시(.new)는 남는다 */
+  if (get(() => sessionStorage, OFF) === latest) return;
   line.hidden = false;
-  line.closest('.cover')?.classList.add('has-new');
-  const btn = line.querySelector('button')!;
-  btn.setAttribute('aria-pressed', 'false');
-  btn.addEventListener('click', () => setPick(currentPick()?.kind === 'new' ? null : { kind: 'new' }));
-  document.addEventListener('pick', () => btn.setAttribute('aria-pressed', String(currentPick()?.kind === 'new')));
+  const off = () => { line.hidden = true; put(() => sessionStorage, OFF, latest); };
+  line.querySelector('.since-show')!.addEventListener('click', () => { off(); setPick({ kind: 'new' }); scrollToPicked(); });
+  line.querySelector('.since-x')!.addEventListener('click', off);
 }
