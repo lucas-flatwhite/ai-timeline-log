@@ -1,9 +1,8 @@
 import type { Content } from './content.ts';
-import { formatDot, type Locale } from './dates.ts';
+import type { Locale } from './dates.ts';
 import { newestFirst, releaseUrl, sceneUrl } from './export.ts';
 import { ORIGIN } from './origin.ts';
 import { localePath, uiFor } from '../i18n/index.ts';
-import { fill } from './view.ts';
 
 /** RSS 2.0 피드. 항목: 첫 판(하나로 묶음), 첫 판 뒤에 더한 장면, 정정, 포스터가 있는 판. updated만 바뀐 것은 넣지 않는다 */
 
@@ -60,8 +59,7 @@ export function renderRss(c: Content, locale: Locale): string {
     '<channel>',
     `<title>${esc(c.site.name)}</title>`,
     `<link>${home}</link>`,
-    // 소개글의 {asOfDot}은 마지막으로 고친 날
-    `<description>${esc(fill(c.site[locale].ogDescription, { asOfDot: formatDot(c.site.asOf) }))}</description>`,
+    `<description>${esc(c.site[locale].ogDescription)}</description>`,
     `<language>${locale}</language>`,
     `<lastBuildDate>${rfc822(c.site.asOf)}</lastBuildDate>`,
     ...items.map(i => [

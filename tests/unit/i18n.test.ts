@@ -23,10 +23,10 @@ describe('화면 문구', () => {
     for (const k of ['plateNo', 'railNav', 'cue']) expect(ko).not.toHaveProperty(k);
   });
   it('en의 맺음 문구', () => {
-    expect(en.updated('20261102')).toBe('Updated 20261102');
+    expect(en.updated('2026.11.02')).toBe('Updated 2026.11.02');
     expect(en.outroTitle('9')).toBe('What changed in 9 days');
     expect(en.ledgerTitle).toBe('Major model releases');
-    expect(en.endCount(33, '2022.11.30', '20261102')).toBe('33 prints · 2022.11.30 – 20261102');
+    expect(en.endCount(33, '2022.11.30', '2026.11.02')).toBe('33 prints · 2022.11.30 – 2026.11.02');
   });
   it('ui에 ko와 en이 등록된다', () => {
     expect(ui.ko).toBe(ko);

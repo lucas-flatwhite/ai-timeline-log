@@ -36,6 +36,9 @@ describe('inEra', () => {
     expect(inEra('20230301', '202211', '202302')).toBe(false);
     expect(inEra('20261101', '202609')).toBe(true);
     expect(inEra('20260831', '202609')).toBe(false);
+    // 상자에 보이는 날짜(YYYY.MM.DD, YYYY.MM)도 같다
+    expect(inEra('2023.01.05', '202211', '202302')).toBe(true);
+    expect(inEra('2023.03', '202211', '202302')).toBe(false);
   });
 });
 

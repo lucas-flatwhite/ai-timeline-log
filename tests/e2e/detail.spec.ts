@@ -52,7 +52,7 @@ for (const path of ['./ko/', './']) {
       await page.locator('a.box[href="#2023-03-gpt-4"]').click();
       await expect(dlg(page)).toHaveAttribute('open', '');
       await expect(page.locator('#detail-title')).toHaveText(gpt4);
-      await expect(page.locator('#detail .dbody p.meta')).toHaveText(/^20230314 · /);
+      await expect(page.locator('#detail .dbody p.meta')).toHaveText(/^2023\.03\.14 · /);
       await hashIs(page, '#2023-03-gpt-4');
       // 복제한 글에 id가 겹치지 않는다
       expect(await page.locator('#detail .dbody [id]').evaluateAll(els => els.map(e => e.id))).toEqual(['detail-title']);
@@ -274,13 +274,13 @@ for (const path of ['./ko/', './']) {
         const body = html
           .replace(/<p class="src" data-for="2026-03-sora-shutdown~20(251211|260924)"[^>]*>.*?<\/p>/g, '')
           .replace(/(id="2026-03-sora-shutdown"[^]*?)(<p class="src")/,
-            `$1<p class="src" data-for="${addr}" data-label="${t.sources} · 20260924"><a href="https://example.org/api">api</a></p>$2`);
+            `$1<p class="src" data-for="${addr}" data-label="${t.sources} · 2026.09.24"><a href="https://example.org/api">api</a></p>$2`);
         if (body === html) throw new Error('fixture: sora scene not found');
         await r.fulfill({ response: res, body });
       });
       await visit(page, path, '#' + addr);
       await expect(page.locator('#detail .dsrc a')).toHaveText(['api']);
-      await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', `${t.sources} · 20260924`);
+      await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', `${t.sources} · 2026.09.24`);
       // 사건 출처가 없는 사건은 장면 출처를 빌려 오고, 빌려 왔다고 적는다
       await page.locator('#detail .dbody ol.items > li[data-addr="2026-03-sora-shutdown~20251211"]').click();
       await expect(page.locator('#detail .dsrc a')).toHaveCount(2);
