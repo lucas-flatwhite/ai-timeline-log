@@ -4,6 +4,7 @@ span:
   from: 2026-03
   to: 2026-05
 added: 2026-10-05
+updated: 2026-11-02
 topics: [safety]
 print:
   pattern: c
@@ -49,6 +50,10 @@ items:
     ko: OpenAI도 보안 특화 GPT-5.5-Cyber를 검증된 보안팀에만 제한 공개.
     en: "OpenAI also releases GPT-5.5-Cyber, a model specialized for security, only to vetted security teams."
     glyph: Cyber
+    sources:
+      - url: https://olhardigital.com.br/2026/05/07/inteligencia-artificial/openai-lanca-gpt-5-5-cyber-em-resposta-ao-claude-mythos/
+        title: OpenAI lança GPT-5.5-Cyber em resposta ao Claude Mythos
+        publisher: Olhar Digital
 ko:
   kicker: 보안
   title: 공개하지 않은 모델

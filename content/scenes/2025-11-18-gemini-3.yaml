@@ -4,6 +4,7 @@ span:
   from: 2025-11
   to: 2025-12
 added: 2026-10-05
+updated: 2026-11-02
 topics: [models]
 print:
   pattern: c
@@ -34,6 +35,10 @@ items:
     ko: Anthropic, Claude Opus 4.5 공개.
     en: "Anthropic releases Claude Opus 4.5."
     glyph: Opus 4.5
+    sources:
+      - url: https://www.anthropic.com/news/claude-opus-4-5
+        title: Introducing Claude Opus 4.5
+        publisher: Anthropic
   - date: 2025-12-01
     ko: 올트먼, 사내에 ‘코드 레드’ 메모. 12월 11일 GPT-5.2를 앞당겨 냈다.
     en: "Altman sends a “code red” memo to staff, and GPT-5.2’s release is moved up to December 11."

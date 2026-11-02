@@ -3,6 +3,7 @@ date: 2026-02-03
 span:
   from: 2026-02
 added: 2026-10-05
+updated: 2026-11-02
 topics: [agents]
 print:
   pattern: d
@@ -48,6 +49,13 @@ items:
     ko: Claude Opus 4.6과 GPT-5.3-Codex가 같은 날 나왔다.
     en: "Claude Opus 4.6 and GPT-5.3-Codex come out on the same day."
     glyph: Opus 4.6
+    sources:
+      - url: https://www.anthropic.com/news/claude-opus-4-6
+        title: Claude Opus 4.6
+        publisher: Anthropic
+      - url: https://openai.com/index/introducing-gpt-5-3-codex/
+        title: Introducing GPT-5.3-Codex
+        publisher: OpenAI
 ko:
   kicker: 시장
   title: SaaS 종말론

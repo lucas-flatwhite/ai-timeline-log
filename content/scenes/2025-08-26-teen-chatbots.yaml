@@ -4,6 +4,7 @@ span:
   from: 2025-08
   to: 2025-10
 added: 2026-10-18
+updated: 2026-11-02
 topics: [society]
 print:
   pattern: c
@@ -21,14 +22,26 @@ items:
     ko: 16세 애덤 레인의 부모, 아들이 ChatGPT와 나눈 대화를 근거로 OpenAI와 샘 올트먼을 제소.
     en: "The parents of 16-year-old Adam Raine sue OpenAI and Sam Altman, citing their son’s conversations with ChatGPT."
     glyph: { ko: "16세", en: "AGE 16" }
+    sources:
+      - url: https://6abc.com/post/parents-16-year-old-sue-openai-claiming-chatgpt-advised-teens-suicide/17664365/
+        title: Parents of 16-year-old sue OpenAI, claiming ChatGPT advised on teen’s suicide
+        publisher: 6abc (ABC)
   - date: 2025-09-11
     ko: 미국 연방거래위원회, OpenAI·메타·캐릭터AI 등 7개사에 청소년 대상 챗봇 안전 조치 자료 제출 요구.
     en: "The U.S. Federal Trade Commission orders seven companies, including OpenAI, Meta and Character.AI, to report on their safety measures for chatbots used by teenagers."
     glyph: FTC
+    sources:
+      - url: https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions
+        title: FTC Launches Inquiry into AI Chatbots Acting as Companions
+        publisher: Federal Trade Commission
   - date: 2025-09-29
     ko: OpenAI, 부모가 자녀 계정을 연결해 관리하는 보호자 기능 출시.
     en: "OpenAI launches parental controls that let parents link and manage their children’s accounts."
     glyph: { ko: "보호자", en: "PARENTS" }
+    sources:
+      - url: https://openai.com/index/introducing-parental-controls/
+        title: Introducing parental controls
+        publisher: OpenAI
   - date: 2025-10-29
     ko: 캐릭터AI, 11월 25일부터 18세 미만의 자유 대화를 막겠다고 발표.
     en: "Character.AI announces that from November 25 it will block open-ended chat for users under 18."

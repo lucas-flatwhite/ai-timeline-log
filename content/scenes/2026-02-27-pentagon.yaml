@@ -4,6 +4,7 @@ span:
   from: 2026-02
   to: 2026-03
 added: 2026-10-05
+updated: 2026-11-02
 topics: [rules]
 print:
   pattern: h
@@ -32,6 +33,10 @@ items:
     ko: 트럼프 대통령, 연방기관에 Anthropic 사용 중단 지시. 같은 날 OpenAI는 국방부 기밀망 계약을 발표.
     en: "President Trump orders federal agencies to stop using Anthropic; the same day, OpenAI announces a contract for the Pentagon’s classified network."
     glyph: { ko: "중단", en: "STOP" }
+    sources:
+      - url: https://www.foxbusiness.com/politics/openai-reaches-pentagon-agreement-trump-orders-anthropic-off-federal-systems
+        title: OpenAI reaches Pentagon agreement as Trump orders Anthropic off federal systems
+        publisher: Fox Business
   - date: 2026-03-03
     ko: 미국 기업으로는 처음 공급망 위험 기업으로 공식 지정. Claude 앱 다운로드가 처음 ChatGPT를 앞섰다.
     en: "Anthropic is formally designated a supply chain risk, the first U.S. company to be so labeled, and Claude app downloads pass ChatGPT’s for the first time."

@@ -4,7 +4,7 @@ span:
   from: 2026-09
 added: 2026-10-05
 topics: [safety]
-updated: 2026-10-27
+updated: 2026-11-02
 print:
   pattern: h
   motif: none
@@ -53,6 +53,13 @@ items:
     ko: 백악관, AI 기업 대표들과 자발적 초지능 협약 서명. 트럼프 대통령은 새 연방 규제는 거부.
     en: "The White House signs a voluntary superintelligence pact with the heads of AI companies, while President Trump rejects new federal regulation."
     glyph: { ko: "협약", en: "PACT" }
+    sources:
+      - url: https://www.aljazeera.com/news/2026/9/30/how-does-trumps-white-house-ai-accord-work
+        title: How does Trump’s White House AI accord work?
+        publisher: Al Jazeera
+      - url: https://abc7.com/story/top-ai-leaders-meet-trump-white-house-amid/19886613/
+        title: Trump says AI leaders signed a ‘constitution’ to police themselves during White House meeting
+        publisher: ABC7 (ABC News)
 ko:
   kicker: 속도
   title: 속도를 늦추자는 목소리

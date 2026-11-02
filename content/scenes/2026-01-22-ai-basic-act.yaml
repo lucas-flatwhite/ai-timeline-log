@@ -24,6 +24,13 @@ items:
     ko: xAI, 성적 딥페이크 논란으로 그록 이미지 생성 제한. 이어 인도네시아·말레이시아가 접속을 막았다.
     en: "xAI restricts Grok’s image generation over sexual deepfakes, and Indonesia and Malaysia then block access."
     glyph: { ko: "그록", en: "GROK" }
+    sources:
+      - url: https://www.dawn.com/news/1966000
+        title: Grok to offer image generation only to paid subscribers after backlash
+        publisher: Dawn (AFP)
+      - url: https://www.rnz.co.nz/news/world/583842/musk-s-grok-blocked-by-indonesia-malaysia-over-sexualized-images-in-world-first
+        title: Musk’s Grok blocked by Indonesia, Malaysia over sexualized images in world first
+        publisher: RNZ
   - date: 2026-01-22
     ko: 인공지능 기본법 시행. 생성형 AI 결과물 표시 의무, 과태료는 최소 1년 유예.
     en: "Korea’s AI Basic Act takes effect, requiring labels on generative AI output, with fines deferred for at least a year."

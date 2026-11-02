@@ -4,6 +4,7 @@ span:
   from: 2025-08
   to: 2026-02
 added: 2026-10-18
+updated: 2026-11-02
 topics: [society]
 print:
   pattern: h
@@ -29,6 +30,10 @@ items:
     ko: 아마존, 사무직 약 1만 4,000명 감원. AI로 회사를 더 가볍게 운영하겠다고 설명했다.
     en: "Amazon cuts about 14,000 corporate jobs, saying it will use AI to run the company leaner."
     glyph: { ko: "아마존", en: "AMAZON" }
+    sources:
+      - url: https://www.thenationalnews.com/future/2025/10/28/amazon-to-cut-14000-corporate-jobs-amid-ai-driven-restructuring
+        title: Amazon to cut 14,000 corporate jobs amid AI-driven restructuring
+        publisher: The National
   - date: 2026-02-26
     ko: 블록, 직원 1만여 명 가운데 4,000명 이상을 줄인다고 발표. 잭 도시는 사업이 탄탄하다며 AI 도구가 회사 운영 방식을 바꿨다고 설명했다.
     en: "Block announces that it will cut more than 4,000 of its roughly 10,000 employees, and Jack Dorsey says the business is strong and AI tools have changed how the company runs."

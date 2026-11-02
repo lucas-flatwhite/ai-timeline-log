@@ -3,6 +3,7 @@ date: 2025-02-24
 span:
   from: 2025-02
 added: 2026-10-05
+updated: 2026-11-02
 topics: [agents]
 print:
   pattern: w
@@ -40,6 +41,10 @@ items:
     en: "At the AI Action Summit in Paris, the United States and the United Kingdom do not sign the joint declaration."
     glyph: { ko: "파리", en: "PARIS" }
     pic: tower
+    sources:
+      - url: https://techcrunch.com/2025/02/11/as-us-and-uk-refuse-to-sign-ai-action-summit-statement-countries-fail-to-agree-on-the-basics/
+        title: As US and UK refuse to sign the Paris AI Action Summit statement, other countries commit to developing ‘open, inclusive, ethical’ AI
+        publisher: TechCrunch
   - date: 2025-02-24
     ko: Anthropic, Claude 3.7 Sonnet과 코딩 에이전트 Claude Code(연구 프리뷰) 공개.
     en: "Anthropic releases Claude 3.7 Sonnet and the coding agent Claude Code as a research preview."

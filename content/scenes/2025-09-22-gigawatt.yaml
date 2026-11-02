@@ -4,6 +4,7 @@ span:
   from: 2025-09
   to: 2025-10
 added: 2026-10-05
+updated: 2026-11-02
 topics: [compute]
 print:
   pattern: h
@@ -50,6 +51,10 @@ items:
     ko: 엔비디아, 세계 최초로 시가총액 5조 달러.
     en: "NVIDIA becomes the first company in the world worth $5 trillion."
     glyph: $5T
+    sources:
+      - url: https://www.entrepreneur.com/business-news/nvidia-becomes-the-first-to-pass-5-trillion-in-market-value/498929
+        title: Nvidia Becomes the First Company to Reach a $5 Trillion Market Value, Leaving Apple and Microsoft in the Dust
+        publisher: Entrepreneur
 ko:
   kicker: 계산력
   title: 기가와트 단위 계약

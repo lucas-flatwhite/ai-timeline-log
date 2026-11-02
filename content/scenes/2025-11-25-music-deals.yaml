@@ -4,6 +4,7 @@ span:
   from: 2025-10
   to: 2025-11
 added: 2026-10-18
+updated: 2026-11-02
 topics: [society]
 print:
   pattern: w
@@ -41,10 +42,18 @@ items:
     ko: 워너뮤직, 유디오와 합의. 같은 날 수노는 기업가치 24.5억 달러로 2억 5,000만 달러를 유치했다.
     en: "Warner Music Group settles with Udio; the same day, Suno raises $250 million at a $2.45 billion valuation."
     glyph: $2.45B
+    sources:
+      - url: https://winbuzzer.com/2025/11/20/warner-music-group-and-udio-settle-copyright-lawsuit-as-suno-raises-250m-to-fight-on-xcxwbn/
+        title: "AI Music Generators: Warner Music Group and Udio Settle Copyright Lawsuit as Suno Raises $250M to Fight On"
+        publisher: WinBuzzer
   - date: 2025-11-25
     ko: 워너뮤직, 수노와도 합의하고 라이선스를 받은 음악 모델을 함께 만들기로 했다.
     en: "Warner Music Group also settles with Suno and agrees to build licensed music models together."
     glyph: { ko: "수노", en: "SUNO" }
+    sources:
+      - url: https://www.musicbusinessworldwide.com/warner-music-group-settles-with-suno-strikes-first-of-its-kind-deal-with-ai-song-generator/
+        title: Warner Music Group strikes ‘landmark’ deal with Suno; settles copyright lawsuit against AI music generator
+        publisher: Music Business Worldwide
 ko:
   kicker: 음악
   title: 소송 대신 계약

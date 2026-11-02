@@ -4,6 +4,7 @@ span:
   from: 2025-06
   to: 2025-08
 added: 2026-10-05
+updated: 2026-11-02
 topics: [models]
 print:
   pattern: c
@@ -24,6 +25,13 @@ items:
     ko: 메타, 스케일AI에 143억 달러를 넣고 알렉산더 왕을 영입해 초지능 연구소 출범.
     en: "Meta puts $14.3 billion into Scale AI, hires Alexandr Wang and launches a superintelligence lab."
     glyph: $14.3B
+    sources:
+      - url: https://fortune.com/2025/06/13/meta-scale-ai-alexandr-wang-superintelligence-team/
+        title: Meta ramps up AI efforts by paying $14.3 billion for 49% of Scale and hiring its CEO for ‘superintelligence’ team
+        publisher: Fortune (AP)
+      - url: https://fortune.com/2025/06/30/mark-zuckerberg-overhauled-meta-ai-org-superintelligence-alexandr-wang/
+        title: Mark Zuckerberg overhauled Meta’s entire AI org in a risky, multibillion-dollar bet on ‘superintelligence’
+        publisher: Fortune
   - date: 2025-07-19
     ko: OpenAI 실험 모델과 구글 제미나이 딥싱크, 국제수학올림피아드 금메달 수준.
     en: "An experimental OpenAI model and Google’s Gemini Deep Think reach gold-medal level at the International Mathematical Olympiad."
@@ -46,6 +54,10 @@ items:
     en: "Google releases Nano Banana (Gemini 2.5 Flash Image), setting off a photo-editing craze."
     glyph: { ko: "바나나", en: "BANANA" }
     pic: banana
+    sources:
+      - url: https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/
+        title: Introducing Gemini 2.5 Flash Image, our state-of-the-art image model
+        publisher: Google for Developers
 ko:
   kicker: 여름
   title: 인재 전쟁과 GPT-5

@@ -4,6 +4,7 @@ span:
   from: 2026-07
   to: 2026-09
 added: 2026-10-05
+updated: 2026-11-02
 topics: [science, models]
 print:
   pattern: c
@@ -32,6 +33,10 @@ items:
     ko: 국제수학올림피아드에서 AI가 처음으로 만점(42점).
     en: "AI earns a perfect score (42 points) at the International Mathematical Olympiad for the first time."
     glyph: { ko: "42점", en: "42/42" }
+    sources:
+      - url: https://standardmedia.co.ke/sports/amp/sci-tech/2001553533/ai-catches-up-with-humans-to-score-100pc-at-top-maths-contest
+        title: AI catches up with humans to score 100pc at top maths contest
+        publisher: The Standard (AFP)
   - date: 2026-09-03
     ko: OpenAI, GPT-6 Astra 출시. 자사 위험 평가에서 처음으로 사이버 보안 최고 등급.
     en: "OpenAI releases GPT-6 Astra, the first model to reach the top cybersecurity rating in the company’s own risk assessment."

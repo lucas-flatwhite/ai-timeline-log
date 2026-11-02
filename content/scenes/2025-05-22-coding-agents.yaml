@@ -3,6 +3,7 @@ date: 2025-05-22
 span:
   from: 2025-05
 added: 2026-10-05
+updated: 2026-11-02
 topics: [agents]
 print:
   pattern: d
@@ -40,6 +41,10 @@ items:
     ko: OpenAI, 조니 아이브의 하드웨어 스타트업 io 인수(약 65억 달러).
     en: "OpenAI acquires io, Jony Ive’s hardware startup, for about $6.5 billion."
     glyph: io
+    sources:
+      - url: https://www.bloomberg.com/news/articles/2025-05-21/openai-to-buy-apple-veteran-jony-ive-s-ai-device-startup-in-6-5-billion-deal
+        title: OpenAI to Buy AI Device Startup From Apple Veteran Jony Ive in $6.5 Billion Deal
+        publisher: Bloomberg
   - date: 2025-05-22
     ko: Anthropic, Claude Opus 4·Sonnet 4 공개. Claude Code 정식 출시.
     en: "Anthropic releases Claude Opus 4 and Claude Sonnet 4, and Claude Code becomes generally available."

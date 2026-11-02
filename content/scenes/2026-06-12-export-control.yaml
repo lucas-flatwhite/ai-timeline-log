@@ -4,7 +4,7 @@ span:
   from: 2026-06
 added: 2026-10-05
 topics: [compute, rules]
-updated: 2026-10-27
+updated: 2026-11-02
 print:
   pattern: h
   motif: none
@@ -36,6 +36,10 @@ items:
     ko: Anthropic, Claude Fable 5(일반 공개)와 Mythos 5(검증된 파트너용) 출시. 같은 모델에 다른 안전장치.
     en: "Anthropic releases Claude Fable 5 for general use and Mythos 5 for vetted partners: the same model with different safeguards."
     glyph: Fable
+    sources:
+      - url: https://www.anthropic.com/news/claude-fable-5-mythos-5
+        title: Claude Fable 5 and Claude Mythos 5
+        publisher: Anthropic
   - date: 2026-06-12
     ko: 상무부, 외국 국적자 접근을 막으라고 지시. Anthropic은 몇 시간 만에 두 모델 접근을 전면 중단.
     en: "The Commerce Department orders that foreign nationals be blocked from access, and within hours Anthropic suspends all access to both models."

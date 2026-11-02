@@ -4,6 +4,7 @@ span:
   from: 2026-01
   to: 2026-02
 added: 2026-10-18
+updated: 2026-11-02
 topics: [society]
 print:
   pattern: h
@@ -21,6 +22,10 @@ items:
     ko: OpenAI, 무료·Go 요금제에서 광고를 시험하겠다고 발표. 답변 아래에 ‘스폰서’ 표시를 달아 보여 준다.
     en: "OpenAI announces that it will test ads on its Free and Go plans, shown below answers with a “Sponsored” label."
     glyph: { ko: "스폰서", en: "SPONSOR" }
+    sources:
+      - url: https://openai.com/index/our-approach-to-advertising-and-expanding-access/
+        title: Our approach to advertising and expanding access to ChatGPT
+        publisher: OpenAI
   - date: 2026-02-04
     ko: Anthropic, Claude에는 광고를 넣지 않겠다고 약속. ‘AI에 광고가 온다. Claude에는 아니다’라는 슈퍼볼 광고를 공개했다.
     en: "Anthropic pledges to keep ads out of Claude and releases a Super Bowl commercial saying “Ads are coming to AI. But not to Claude.”"
