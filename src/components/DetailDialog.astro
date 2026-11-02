@@ -12,12 +12,12 @@ const others = view.langs.filter(l => !l.current && l.path !== null);
   <canvas class="dcv"></canvas>
   <div class="dtext">
     <div class="dbody"></div>
-    <p class="dsrc" data-label={d.sources}></p>
+    <p class="dsrc" data-label={d.sources} data-borrowed={d.sceneSources}></p>
     <div class="dact">
       <a class="fix" href={view.report.href} target="_blank" rel="noopener">{d.fix} ↗</a>
       {others.length > 0 && <nav class="lang" aria-label={view.langNav}>{others.map(l =>
         <a lang={l.code} hreflang={l.code} href={base + l.path} title={l.name}>{l.label}</a>)}</nav>}
     </div>
-    <div class="dnav"><button class="prev" type="button">{d.prev}</button><button class="next" type="button">{d.next}</button></div>
+    <div class="dnav"><button class="prev" type="button">{d.prev}</button><span class="pos"></span><button class="next" type="button">{d.next}</button></div>
   </div>
 </dialog>

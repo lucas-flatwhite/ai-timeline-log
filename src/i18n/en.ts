@@ -20,6 +20,7 @@ export const en: UI = {
   next: 'Later →',
   close: 'Close',
   sources: 'Sources',
+  sceneSources: 'Sources for this scene',
   wall: 'Wall of AI events',
   details: 'All scenes',
   making: 'How this was made',

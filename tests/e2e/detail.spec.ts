@@ -25,8 +25,8 @@ const sceneYaml = (file: string) => parse(readFileSync(join(process.cwd(), 'cont
   Record<'ko' | 'en', { title: string }> & { items: ({ date: string } & Record<'ko' | 'en', string>)[] };
 const sandbox = sceneYaml('2026-07-21-sandbox-escape.yaml');
 const dlg = (page: Page) => page.locator('#detail');
-/* 격자의 시간순(연도 판 제외). 앞이 최신 */
-const order = (page: Page) => page.locator('.wall .box:not(.year)').evaluateAll(els => els.map(e => (e as HTMLElement).dataset.addr!));
+/* 앞뒤로 넘기는 순서: 격자의 시간순에서 사건만(장면·연도 판 제외). 앞이 최신 */
+const order = (page: Page) => page.locator('.wall .box.item').evaluateAll(els => els.map(e => (e as HTMLElement).dataset.addr!));
 /* 시험용으로만 HTML을 고친다(내용에는 아직 별칭·사건 출처가 없다). 바꿀 곳이 없으면 시험이 헛돌지 않게 실패한다 */
 async function rewrite(page: Page, from: string | RegExp, to: string) {
   await page.route(/\/ai-timeline-log\/(ko\/)?(#.*)?$/, async r => {
@@ -97,6 +97,25 @@ for (const path of ['./ko/', './']) {
       await page.locator(`a.box[data-addr="${all.at(-1)}"]`).click();
       await expect(page.locator('#detail .prev')).toBeDisabled();
       await expect(page.locator('#detail .next')).toBeEnabled();
+    });
+
+    test('stepping skips scene cards and shows the position', async ({ page }) => {
+      await visit(page, path);
+      const items = await order(page);
+      const boxes = await page.locator('.wall .box:not(.year)').evaluateAll(els => els.map(e => (e as HTMLElement).dataset.addr!));
+      // 장면 상자 바로 앞의 사건에서 과거로 넘기면 장면 카드가 아니라 다음 사건으로 간다
+      const k = boxes.findIndex((a, i) => i > 0 && !a.includes('~') && boxes[i - 1].includes('~'));
+      const from = boxes[k - 1], to = boxes.slice(k + 1).find(a => a.includes('~'))!;
+      await page.locator(`a.box[data-addr="${from}"]`).click();
+      await expect(page.locator('#detail .pos')).toHaveText(`${items.length - items.indexOf(from)} / ${items.length}`);
+      await page.keyboard.press('ArrowLeft');
+      await hashIs(page, '#' + to);
+      // 장면 카드에서 출발하면 위치는 비우고, 넘기면 그 장면 바로 뒤의 사건
+      await page.locator('#detail .x').click();
+      await page.locator(`a.box[data-addr="${boxes[k]}"]`).click();
+      await expect(page.locator('#detail .pos')).toHaveText('');
+      await page.keyboard.press('ArrowLeft');
+      await hashIs(page, '#' + to);
     });
 
     test('Esc closes and returns focus to the box; hash cleared', async ({ page, browserName }) => {
@@ -255,10 +274,14 @@ for (const path of ['./ko/', './']) {
       await visit(page, path, '#' + addr);
       await expect(page.locator('#detail .dsrc a')).toHaveText(['api']);
       await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', `${t.sources} · 20260924`);
-      // 사건 출처가 없는 사건은 장면 출처
+      // 사건 출처가 없는 사건은 장면 출처를 빌려 오고, 빌려 왔다고 적는다
       await page.locator('#detail .dbody ol.items > li').first().click();
       await expect(page.locator('#detail .dsrc a')).toHaveCount(2);
       await expect(page.locator('#detail .dsrc a').first()).toHaveAttribute('href', /decrypt\.co/);
+      await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', t.sceneSources);
+      // 장면 카드는 그냥 '출처'
+      await page.locator('#detail .x').click();
+      await page.locator('a.box[href="#2026-03-sora-shutdown"]').click();
       await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', t.sources);
       // 복제한 글의 출처 줄은 두지 않는다(링크가 두 번 읽히지 않게)
       await expect(page.locator('#detail .dbody .src')).toHaveCount(0);
@@ -294,6 +317,8 @@ for (const path of ['./ko/', './']) {
       await visit(page, path);
       await page.locator(`a.box[data-addr="${addr}"]`).click();
       await expect(dlg(page)).toHaveAttribute('open', '');
+      // 글이 길면 아래에 붙은 앞뒤 단추 줄이 링크를 덮는다. 사람처럼 창을 끝까지 내린다
+      await dlg(page).evaluate(d => { d.scrollTop = d.scrollHeight; });
       const link = page.locator('#detail nav.lang a');
       await expect(link).toHaveCount(1);
       await expect(link).toHaveText(olang.toUpperCase());
@@ -354,12 +379,10 @@ for (const path of ['./ko/', './']) {
       await visit(page, path);
       const all = await order(page);
       const sceneOf = (a: string) => a.split('~')[0];
-      // 사건 → 다른 장면의 사건, 사건 → 장면 상자, 두 경우
-      const toItem = all.findIndex((a, i) => a.includes('~') && all[i + 1]?.includes('~') && sceneOf(all[i + 1]) !== sceneOf(a));
-      const toScene = all.findIndex((a, i) => a.includes('~') && all[i + 1] !== undefined && !all[i + 1].includes('~') && all[i + 1] !== sceneOf(a));
+      // 사건 → 다른 장면의 사건(장면 카드는 넘기는 순서에 없다)
+      const toItem = all.findIndex((a, i) => all[i + 1] !== undefined && sceneOf(all[i + 1]) !== sceneOf(a));
       expect(toItem).toBeGreaterThanOrEqual(0);
-      expect(toScene).toBeGreaterThanOrEqual(0);
-      for (const [at, want] of [[toItem, 'li.hl'], [toScene, 'h2']] as const) {
+      for (const [at, want] of [[toItem, 'li.hl']] as const) {
         await visit(page, path, '#' + all[at]);
         await page.locator('#detail .dbody li.hl').focus();
         await page.keyboard.press('ArrowLeft');

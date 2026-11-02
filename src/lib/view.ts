@@ -41,7 +41,7 @@ export interface PageView {
   latestAdded: string;
   /** 주제 단추와 새 상자 줄의 문구. newLine은 {n} 틀 */
   ui: { topic: string; topicAll: string; topicClear: string; newLine: string; newShow: string; newLabel: string };
-  dialog: { prev: string; next: string; close: string; fix: string; sources: string };
+  dialog: { prev: string; next: string; close: string; fix: string; sources: string; sceneSources: string };
   /** 격자(main)와 상세 글 묶음(section)의 이름 */
   aria: { wall: string; details: string };
   langNav: string; langs: LangView[];
@@ -193,7 +193,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     topics: Object.entries(c.topics).map(([id, v]) => ({ id, name: v[locale], count: c.scenes.filter(s => s.topics.includes(id)).length })),
     latestAdded: lastAdded,
     ui: { topic: t.topic, topicAll: t.topicAll, topicClear: t.topicClear, newLine: t.newLine, newShow: t.newShow, newLabel: t.newLabel },
-    dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources },
+    dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources, sceneSources: t.sceneSources },
     aria: { wall: t.wall, details: t.details },
     langNav: t.langNav,
     langs: locales.map(l => (ui[l.code]

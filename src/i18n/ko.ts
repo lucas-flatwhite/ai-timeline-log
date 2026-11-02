@@ -18,6 +18,7 @@ export const ko = {
   next: '다음 사건 →',
   close: '닫기',
   sources: '출처',
+  sceneSources: '이 장면의 출처',
   wall: 'AI 사건 격자',
   details: '모든 장면',
   making: '만든 방법',

@@ -11,7 +11,8 @@ async function boxCount(request: APIRequestContext, topic: string): Promise<numb
   const t = await (await request.get('timeline.json')).json() as { scenes: { topics: string[]; items: unknown[] }[] };
   return t.scenes.filter(s => s.topics.includes(topic)).reduce((n, s) => n + 1 + s.items.length, 0);
 }
-const onAddrs = (page: Page) => page.locator('.wall .box.on').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
+/* 강조된 사건 상자(앞뒤로 넘기는 곳) */
+const onAddrs = (page: Page) => page.locator('.wall .box.item.on').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
 
 test('menu highlights a topic', async ({ page, request }) => {
   await ready(page, './ko/');
@@ -46,7 +47,7 @@ test('ignores an unknown topic', async ({ page }) => {
 test('arrows stay inside the topic', async ({ page }) => {
   await ready(page, './ko/?topic=korea');
   const allowed = new Set(await onAddrs(page));
-  await page.locator('.wall .box.on').first().click();
+  await page.locator('.wall .box.item.on').first().click();
   await expect(page.locator('#detail')).toBeVisible();
   const prev = page.locator('#detail .prev');
   const seen: string[] = [];
@@ -62,7 +63,7 @@ test('arrows stay inside the topic', async ({ page }) => {
 
 test('falls back to the full order', async ({ page }) => {
   await ready(page, './ko/?topic=korea');
-  const all = await page.locator('.wall .box:not(.year)').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
+  const all = await page.locator('.wall .box.item').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
   const allowed = new Set(await onAddrs(page));
   const outside = all.find(a => !allowed.has(a))!;
   await page.locator('.wall .box.on').first().click();

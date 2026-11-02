@@ -9,15 +9,19 @@ export function initDetail(): void {
   if (!dlg || !wall) return;
   const $ = <T extends Element>(s: string) => dlg.querySelector<T>(s)!;
   const cv = $<HTMLCanvasElement>('.dcv'), body = $<HTMLElement>('.dbody'), src = $<HTMLElement>('.dsrc');
-  const fix = $<HTMLAnchorElement>('a.fix'), prev = $<HTMLButtonElement>('.prev'), next = $<HTMLButtonElement>('.next');
+  const fix = $<HTMLAnchorElement>('a.fix'), prev = $<HTMLButtonElement>('.prev'), next = $<HTMLButtonElement>('.next'), pos = $<HTMLElement>('.pos');
   const pics = readPics(), langs = [...document.querySelectorAll<HTMLAnchorElement>('nav.lang a')];
   const boxOf = new Map([...wall.querySelectorAll<HTMLElement>('a.box')].map(b => [b.dataset.addr!, b]));
-  /* 앞뒤 순서는 격자의 DOM 순서(최신이 앞, 연도 판 제외). 앞(이전 인덱스)이 다음 사건, 뒤가 이전(과거) 사건 */
-  const seq = [...wall.querySelectorAll<HTMLElement>('.box:not(.year)')].map(b => b.dataset.addr!);
-  /* 주제·새 상자 강조가 켜져 있고 지금 주소가 그 안에 있으면 그 상자들 사이에서만 움직인다. 밖이면 전체 순서 */
+  /* 앞뒤 순서는 격자의 DOM 순서(최신이 앞, 연도 판 제외). 앞(이전 인덱스)이 다음 사건, 뒤가 이전(과거) 사건.
+     넘기는 곳은 사건뿐이다. 장면 상자는 같은 글을 한 번 더 보여 줄 뿐이라 건너뛴다(장면 카드에서 출발할 수는 있다) */
+  const all = [...wall.querySelectorAll<HTMLElement>('.box:not(.year)')];
+  const seq = all.map(b => b.dataset.addr!);
+  const items = new Set(all.filter(b => b.dataset.kind === 'item').map(b => b.dataset.addr!));
+  /* 강조(주제·시기·검색·새 상자)가 켜져 있고 지금 주소가 그 안에 있으면 그 사건들 사이에서만 움직인다. 밖이면 전체 순서 */
   const orderFor = (addr: string) => {
-    const p = pickedSeq();
-    return p && p.includes(addr) ? p : seq;
+    const p = pickedSeq(), inPick = !!p && p.includes(addr);
+    const ok = new Set(inPick ? p!.filter(a => items.has(a)) : items);
+    return seq.filter(a => a === addr || ok.has(a));
   };
   const alias = new Map<string, string>();
   document.querySelectorAll<HTMLElement>('#details article[data-aliases]').forEach(a =>
@@ -62,17 +66,21 @@ export function initDetail(): void {
     body.replaceChildren(c);
     if (had) ((was && [...c.querySelectorAll<HTMLElement>('ol.items > li')].find(x => x.dataset.addr === was))
       || c.querySelector<HTMLElement>('li.hl') || h)?.focus();
-    /* 출처: 사건 출처가 있으면 그것, 없으면 장면 출처, 둘 다 없으면 비워서 숨긴다(:empty) */
-    const from = (li && [...article.querySelectorAll<HTMLElement>('p.src[data-for]')].find(p => p.dataset.for === at))
-      || article.querySelector<HTMLElement>('p.src:not([data-for])');
+    /* 출처: 사건 출처가 있으면 그것, 없으면 장면 출처, 둘 다 없으면 비워서 숨긴다(:empty).
+       사건 카드가 장면 출처를 빌려 오면 그 사건의 출처로 읽히지 않게 '이 장면의 출처'라고 적는다 */
+    const own = li && [...article.querySelectorAll<HTMLElement>('p.src[data-for]')].find(p => p.dataset.for === at);
+    const from = own || article.querySelector<HTMLElement>('p.src:not([data-for])');
     src.replaceChildren(...(from ? [...from.children].map(x => x.cloneNode(true)) : []));
-    if (from?.dataset.label) src.dataset.label = from.dataset.label;
+    const label = li && !own ? src.dataset.borrowed : from?.dataset.label;
+    if (label) src.dataset.label = label;
     /* 정정 링크·앞뒤: 연도 판에는 없다 */
     fix.hidden = year;
     if (!year) fix.href = (li ?? article).dataset.fix!;
     const order = orderFor(at), i = year ? -1 : order.indexOf(at);
     prev.disabled = i < 0 || i >= order.length - 1;
     next.disabled = i <= 0;
+    /* 위치: 가장 오래된 사건이 1. 장면·연도 카드에는 적지 않는다 */
+    pos.textContent = items.has(at) ? `${order.length - i} / ${order.length}` : '';
     const box = boxOf.get(at);
     if (box) {
       try { carveTile(cv, boxSpec(box, pics), 280, 280); } catch (e) { console.error(e); }
