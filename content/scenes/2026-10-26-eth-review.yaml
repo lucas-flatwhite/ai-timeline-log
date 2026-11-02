@@ -35,7 +35,7 @@ items:
         publisher: OpenAI
   - date: 2026-10-27
     ko: Anthropic, Claude가 찾은 별도 ETH 반증 알고리즘과 Lean 형식화를 공개. 실용적인 SAT 문제 풀이 성능을 뜻하지 않으며, 형식 명제가 논문과 일치하는지는 사람이 확인해야 한다고 밝혔다.
-    en: "Anthropic publishes a separate ETH-refuting algorithm discovered by Claude and its Lean formalization, noting that the result says nothing about practical SAT solving and that people must check whether the formal statements match the paper."
+    en: "Anthropic publishes a separate ETH-refuting algorithm found by Claude, with a Lean formalization, and cautions that the result does not bear on practical SAT solving and that people must still check whether the formal statements match the paper."
     glyph: 3-SAT
     sources:
       - url: https://github.com/anthropics/formal-math/tree/main/eth
@@ -46,10 +46,10 @@ items:
         publisher: Anthropic
 ko:
   kicker: 수학과 검증
-  title: AI의 증명, 학계의 검토
-  lede: 두 연구소가 같은 난제의 반증을 잇달아 내놓았다. 10월 말 공개 자료 기준, 외부 검토는 진행 중이다. 형식 증명을 검사하는 일과 그 명제가 원래 문제를 제대로 옮겼는지 확인하는 일은 달랐다.
+  title: 검토를 기다리는 반증
+  lede: 두 연구소가 같은 난제를 반증했다고 잇달아 발표했다. 10월 말 공개 자료 기준으로 외부 검토는 진행 중이다. 형식 증명이 맞더라도 그 명제가 원래 문제를 제대로 옮겼는지는 따로 확인해야 했다.
 en:
   kicker: Mathematics and Verification
-  title: AI Proofs Meet Academic Review
-  lede: "Two labs put forward refutations of the same conjecture in quick succession, with external review still underway according to announcements available by October 31. Checking a formal proof and checking that its statement faithfully captures the original problem were different tasks."
+  title: "Refutations Awaiting Review"
+  lede: "Two labs announced, one after the other, that they had refuted the same conjecture. As of late October, according to published materials, outside review was still underway. A formal proof could check out while its statement still missed the original problem, so the two had to be verified separately."
   glyph: VERIFY

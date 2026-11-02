@@ -29,7 +29,7 @@ export function latestPosterEdition(c: Content): Edition | undefined {
   return c.editions.filter(e => e.poster).at(-1);
 }
 
-/** 최신순(날짜 내림차순, 같은 날이면 order 오름차순, 그다음 원래 순서) — 벽과 같은 순서 */
+/** 최신순(날짜 내림차순, 같은 날이면 order 오름차순, 그다음 원래 순서). 벽과 같은 순서 */
 export function newestFirst(scenes: Scene[]): Scene[] {
   return scenes.map((s, i) => ({ s, i }))
     .sort((a, b) => (a.s.date === b.s.date ? a.s.order - b.s.order || a.i - b.i : a.s.date < b.s.date ? 1 : -1))
@@ -97,7 +97,7 @@ export function buildLlmsIndex(c: Content): string {
     '',
     `- [RSS feed (English)](${ORIGIN}feed.xml): new scenes, corrections and poster editions`,
     `- [Website](${ORIGIN}): the timeline as a wall of woodcut boxes`,
-    `- [Corrections](${c.site.repo}/issues): report mistakes with evidence`,
+    `- [Corrections](${c.site.repo}/issues): report mistakes with evidence, as a GitHub issue or by email to ${c.site.email}`,
     '',
   ].join('\n');
 }

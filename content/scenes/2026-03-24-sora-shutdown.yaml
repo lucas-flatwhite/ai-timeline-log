@@ -37,9 +37,9 @@ items:
 ko:
   kicker: 퇴장
   title: 소라가 문을 닫다
-  lede: 문장을 영상으로 바꿔 세상을 놀라게 한 소라가 2년 만에 문을 닫았다. OpenAI는 영상 서비스보다 연구에 계산력을 몰기로 했다.
+  lede: 문장을 영상으로 바꿔 주던 소라가 첫 시연 2년 만에 문을 닫았다. OpenAI는 영상 서비스보다 연구에 계산력을 몰기로 했다.
 en:
   kicker: "Exit"
   title: "Sora Shuts Down"
-  lede: "Sora, which had surprised the world by turning sentences into video, shut down after two years. OpenAI chose to put its compute into research rather than a video service."
+  lede: "Sora, which turned sentences into video, shut down two years after it was first shown. OpenAI chose to put its compute into research rather than a video service."
   glyph: "CLOSED"

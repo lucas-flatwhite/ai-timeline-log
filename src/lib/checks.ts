@@ -131,6 +131,7 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
   for (const p of pieces) {
     for (const w of findWords(p.text, FORBIDDEN_KO, FORBIDDEN_EN)) errors.push(`${p.where}: forbidden "${w}"`);
     if (p.text.includes('!')) errors.push(`${p.where}: exclamation mark`);
+    if (p.text.includes('—')) errors.push(`${p.where}: em dash`);
     if (EMOJI.test(p.text)) errors.push(`${p.where}: emoji`);
     if (p.relative) for (const w of findWords(p.text, RELATIVE_KO, RELATIVE_EN)) errors.push(`${p.where}: relative time "${w}"`);
   }
