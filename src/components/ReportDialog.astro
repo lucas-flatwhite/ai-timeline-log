@@ -1,0 +1,19 @@
+---
+import type { PageView } from '../lib/view.ts';
+const { view } = Astro.props as { view: PageView };
+const r = view.report;
+/* 제보 안내 창. [data-report] 링크를 누르면 스크립트(client/report.ts)가 연다.
+   스크립트가 없으면 그 링크가 GitHub 이슈 목록으로 바로 간다.
+   여백은 안쪽 .rin에 둔다. 창 자체(dialog)를 누른 것은 배경을 누른 것으로 보고 닫는다 */
+---
+<dialog id="report" aria-labelledby="report-title">
+  <div class="rin">
+    <form method="dialog"><button class="x" type="submit" aria-label={view.dialog.close}>×</button></form>
+    <h2 id="report-title">{r.label}</h2>
+    <p class="note">{r.note}</p>
+    <ul class="ways">
+      <li><a href={r.href} target="_blank" rel="noopener">{r.issue} ↗</a></li>
+      <li><a href={r.mail}>{r.mailLabel}</a><span class="addr">{r.email}</span></li>
+    </ul>
+  </div>
+</dialog>

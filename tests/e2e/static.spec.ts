@@ -83,7 +83,9 @@ for (const path of ['./ko/', './']) {
         await expect(nav.locator('[aria-disabled="true"]')).toHaveCount(0);
       }
       await expect(page.locator('header.top a.report')).toHaveAttribute('target', '_blank');
-      await expect(page.locator('header.top a.report')).toHaveText(`${ui[lang]!.report} ↗`);
+      await expect(page.locator('header.top a.report')).toHaveText(ui[lang]!.report);
+      // 스크립트가 없으면 제보 링크가 GitHub 이슈 목록으로 바로 간다
+      await expect(page.locator('header.top a.report')).toHaveAttribute('href', 'https://github.com/lucas-flatwhite/ai-timeline-log/issues');
     });
 
     test('no external font service', async ({ page }) => {
@@ -117,6 +119,28 @@ for (const path of ['./ko/', './']) {
       await page.waitForFunction(() => scrollY > 1000);
       await expect(page.locator('header.top')).toBeInViewport();
       expect(await page.locator('header.top').evaluate(e => getComputedStyle(e).position)).toBe('sticky');
+    });
+
+    test('report opens a guide dialog with GitHub and email; Esc and backdrop close it', async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator('html')).toHaveAttribute('data-ready', '1');
+      const dlg = page.locator('dialog#report');
+      await expect(dlg).toBeHidden();
+      await page.locator('header.top a.report').click();
+      await expect(dlg).toBeVisible();
+      expect(page.url()).not.toContain('github.com');   // 새 창이나 이동 없이 창만 연다
+      await expect(dlg.locator('h2')).toHaveText(ui[lang]!.report);
+      await expect(dlg.locator('a[href^="https://github.com/lucas-flatwhite/ai-timeline-log/issues"]')).toHaveText(`${ui[lang]!.reportIssue} ↗`);
+      await expect(dlg.locator('a[href^="mailto:lucas.flatwhite@gmail.com"]')).toHaveText(ui[lang]!.reportMail);
+      await expect(dlg.locator('.addr')).toHaveText('lucas.flatwhite@gmail.com');
+      await page.keyboard.press('Escape');
+      await expect(dlg).toBeHidden();
+      await expect(page.locator('header.top a.report')).toBeFocused();
+      // 맺음의 '만든 방법' 링크도 같은 창을 연다. 창 바깥(배경)을 누르면 닫힌다
+      await page.locator('.making a[data-report]').click();
+      await expect(dlg).toBeVisible();
+      await page.mouse.click(5, 5);
+      await expect(dlg).toBeHidden();
     });
   });
 }

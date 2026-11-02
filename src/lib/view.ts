@@ -30,7 +30,8 @@ export interface PageView {
   canonical: string; ogImage: string; alternates: { hreflang: string; href: string }[];
   /** 내보내기 파일의 주소(base 아래 절대 경로). rss는 언어별, json은 하나 */
   feeds: { rss: string; json: string };
-  name: string; report: { label: string; href: string };
+  /** 제보: href는 GitHub 이슈 목록(스크립트가 없을 때 가는 곳이자 사건 정정 링크의 기본값). 스크립트가 있으면 안내 창을 연다 */
+  name: string; report: { label: string; href: string; note: string; issue: string; mailLabel: string; mail: string; email: string };
   /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
   cover: { glyph: string; tpl: string; start: string; lede: string };
   boxes: BoxView[]; scenes: SceneDetail[]; years: YearDetail[]; pics: Pics;
@@ -48,7 +49,7 @@ export interface PageView {
     /** titleTpl: 일수를 채우기 전 제목 틀({days}) */
     bar: string; eyebrow: string; title: string; titleTpl: string; arcs: { span: string; title: string; body: string }[];
     ledgerTitle: string; ledgerNote: string; ledger: { lab: string; models: { name: string; date: string }[] }[];
-    sourcesTitle: string; sourcesNote: string; sources: { url: string; title: string }[]; end: [string, string];
+    end: [string, string];
     making?: string; makingTitle: string;
     /** 가져가기: 포스터(포스터가 있는 마지막 판), 피드, AI에게 건네기. llms·json은 붙여 넣을 정식 주소 */
     take: {
@@ -90,7 +91,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   const count = c.scenes.length;
   const startDot = formatDot(site.start), asOfDot = formatDot(site.asOf);
   const vars = {
-    days, count: String(count), startDot, asOfDot,
+    days, count: String(count), startDot, asOfDot, email: site.email,
     startLong: formatLong(locale, site.start), asOfLong: formatLong(locale, site.asOf),
     asOfMonthLong: formatMonthLong(locale, site.asOf),
   };
@@ -182,7 +183,11 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       { hreflang: 'x-default', href: ORIGIN },
     ],
     feeds: { rss: `${new URL(canonical).pathname}feed.xml`, json: `${new URL(ORIGIN).pathname}timeline.json` },
-    name: site.name, report: { label: t.report, href: `${site.repo}/issues` },
+    name: site.name,
+    report: {
+      label: t.report, href: `${site.repo}/issues`, note: fill(st.reportNote, vars), issue: t.reportIssue, mailLabel: t.reportMail,
+      mail: `mailto:${site.email}?subject=${enc(t.reportSubject(site.name))}`, email: site.email,
+    },
     cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars) },
     boxes, scenes, years, pics: c.pics,
     topics: Object.entries(c.topics).map(([id, v]) => ({ id, name: v[locale], count: c.scenes.filter(s => s.topics.includes(id)).length })),
@@ -201,10 +206,8 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
       ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
-      sourcesTitle: t.sourcesTitle, sourcesNote: fill(st.sourcesNote, vars),
-      sources: c.sources.map(s => ({ url: s.url, title: s.title })),
       end: [t.endCount(count, startDot, t.now), title],
-      making: st.making, makingTitle: t.making,
+      making: st.making && fill(st.making, vars), makingTitle: t.making,
       take: {
         title: t.take,
         poster: poster && {

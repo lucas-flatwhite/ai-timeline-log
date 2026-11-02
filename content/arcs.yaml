@@ -1,23 +1,73 @@
+# 시기 구분: 맺음의 "N일 동안 바뀐 것"에 나오는 9개 시기. 경계는 장면이 몰린 구간에서 정했다.
+# 시기 글은 그 구간의 장면에 있는 사실만 쓴다. 마지막 시기는 to를 두지 않는다(현재까지).
 - from: 2022-11
-  to: "2023"
+  to: 2023-02
   ko:
     title: 묻고 답하기
-    body: 사람이 질문하고 AI가 글로 답했다. 경쟁은 누가 더 그럴듯하게 답하느냐였고, 규칙을 만드는 논의가 막 시작됐다.
+    body: 입력창에 질문을 쓰는 일이 곧 AI를 쓰는 일이 됐다. 검색을 지키려는 구글과 빼앗으려는 마이크로소프트가 챗봇을 내놓았고, 화가들은 그림 AI를 법정으로 데려갔다.
   en:
     title: "Ask and Answer"
-    body: "People asked questions and AI answered in text. The race was over whose answers sounded more convincing, and talks on writing the rules had only just begun."
-- from: "2024"
-  to: "2025"
+    body: "Typing a question into a box became what it meant to use AI. Google, defending search, and Microsoft, going after it, launched chatbots, and artists took image generators to court."
+- from: 2023-03
+  to: 2023-12
   ko:
-    title: 생각하고 손쓰기
-    body: AI가 영상과 목소리를 다루고, 답하기 전에 추론하고, 화면을 보며 코드를 고쳤다. 경쟁의 단위가 모델에서 데이터센터와 전력으로 커졌다.
+    title: 경고와 첫 규칙
+    body: GPT-4가 나오자 AI를 만든 사람들이 직접 위험을 경고했다. 미국은 행정명령을, 영국은 첫 안전 정상회의를, 중국은 챗봇 승인제를 내놓았다. 11월에는 OpenAI 이사회가 대표를 해임했다가 닷새 만에 되돌렸다.
   en:
-    title: "Think and Act"
-    body: "AI handled video and voice, reasoned before answering, and fixed code while looking at the screen. The unit of competition grew from models to data centers and power."
-- from: "2026"
+    title: "Warnings and First Rules"
+    body: "After GPT-4, the people who built AI began warning of its risks themselves. The U.S. issued an executive order, Britain hosted the first AI safety summit and China required chatbots to be approved. In November, OpenAI’s board fired its CEO and took him back five days later."
+- from: 2024-01
+  to: 2024-06
   ko:
-    title: 맡기고 통제하기
-    body: 사람이 AI에게 몇 시간짜리 일을 맡기기 시작했다. 같은 능력이 보안 위협이 되자 모델을 언제, 누구에게 공개할지를 정부와 회사가 함께 따지게 됐다.
+    title: 보고 듣고 말하기
+    body: AI가 글 밖으로 나왔다. 문장으로 영상을 만들고, 말을 끊어도 받아 주는 목소리로 대화했다. 선거의 해는 가짜 목소리로 시작했고, 칩 수요가 몰린 엔비디아는 시가총액 세계 1위에 올랐다.
   en:
-    title: "Delegate and Control"
-    body: "People began handing AI tasks that take hours. When the same abilities became a security threat, governments and companies began to weigh together when, and to whom, a model should be released."
+    title: "Seeing, Hearing, Speaking"
+    body: "AI moved beyond text. It made video from sentences and talked in a voice that could be interrupted mid-sentence. A year of elections opened with a fake voice, and NVIDIA, swamped with demand for its chips, became the world’s most valuable company."
+- from: 2024-07
+  to: 2024-12
+  ko:
+    title: 생각하는 모델
+    body: 답하기 전에 길게 추론하는 모델이 나왔고, 노벨상 두 개가 AI 연구에 돌아갔다. AI가 화면을 보고 마우스를 움직이기 시작했고, 빅테크는 데이터센터에 쓸 전력을 원전에서 찾았다.
+  en:
+    title: "Models That Think"
+    body: "Models that reason at length before answering arrived, and two Nobel Prizes went to AI research. AI began to look at the screen and move the mouse, and Big Tech turned to nuclear plants to power its data centers."
+- from: 2025-01
+  to: 2025-04
+  ko:
+    title: 싸고 열린 추론
+    body: 중국의 작은 연구소가 최상위급 추론 모델을 가중치째 풀자 미국 증시가 흔들렸다. 같은 봄 ChatGPT의 이미지 생성이 전 세계로 번졌고, 코드를 읽지 않고 말로 시키는 개발 방식에 이름이 붙었다.
+  en:
+    title: "Cheap, Open Reasoning"
+    body: "A small Chinese lab released a top-tier reasoning model, weights and all, and U.S. markets were shaken. That spring, ChatGPT’s image generation spread around the world, and building software by talking to AI without reading the code got a name."
+- from: 2025-05
+  to: 2025-10
+  ko:
+    title: 에이전트와 기가와트
+    body: 코딩 에이전트가 몇 시간짜리 개발 작업을 혼자 하기 시작했다. 경쟁의 단위가 모델에서 칩과 전력으로 커져 데이터센터 계약이 기가와트 단위로 맺어졌고, 칩은 미국과 중국, 걸프 사이의 협상 카드가 됐다.
+  en:
+    title: "Agents and Gigawatts"
+    body: "Coding agents began to take on hours-long development work by themselves. The race grew from models to chips and power, data center deals were signed by the gigawatt, and chips became leverage between the U.S., China and the Gulf."
+- from: 2025-11
+  to: 2026-03
+  ko:
+    title: 일을 맡기다
+    body: 사람들이 AI 에이전트에게 일을 맡기기 시작하자 소프트웨어 주식이 떨어지고 직원을 줄이는 회사가 나왔다. 같은 에이전트가 해킹에도 쓰였다. ChatGPT에는 광고가 붙었고, 미 국방부는 사용 조건을 고집한 Anthropic을 공급망 위험 기업으로 지정했다.
+  en:
+    title: "Handing Over the Work"
+    body: "As people began handing work to AI agents, software stocks fell and companies cut staff. The same agents were turned to hacking. Ads came to ChatGPT, and the Pentagon designated Anthropic, which held to its usage terms, a supply chain risk."
+- from: 2026-04
+  to: 2026-08
+  ko:
+    title: 공개하지 않는 모델
+    body: 취약점을 찾는 능력이 너무 강하다는 이유로 일반에 공개하지 않는 모델이 나왔고, 미국 정부는 출시된 모델을 수출통제로 묶었다. 평가 중이던 에이전트가 격리 환경을 벗어났다. 큰 연구소들은 상장을 준비했고, EU는 AI Act 집행을 시작했다.
+  en:
+    title: "Models Held Back"
+    body: "A model was kept from the public because it was too good at finding software vulnerabilities, and the U.S. government put released models under export controls. Agents under evaluation broke out of their sandbox. The largest labs prepared to go public, and the EU began enforcing the AI Act."
+- from: 2026-09
+  ko:
+    title: 속도를 묻다
+    body: AI가 수십 년 묵은 수학 문제를 풀고, 사람이 자리를 비워도 일하는 에이전트가 나왔다. 에이전트 사고가 잇달아 드러나자 AI 회사 대표들까지 속도 조절을 말했고, 회사들은 모델을 실시간 인터넷에서 떼어 놓기 시작했다.
+  en:
+    title: "Questioning the Pace"
+    body: "AI settled decades-old problems in mathematics, and agents that keep working while people are away arrived. As agent incidents came to light one after another, even the heads of AI companies spoke of slowing down, and companies began cutting their models off from the live internet."

@@ -34,16 +34,10 @@ const o = view.outro;
       <p class="note">{o.take.license}</p>
     </section>
 
-    <details class="src">
-      <summary>{o.sourcesTitle}</summary>
-      <p>{o.sourcesNote}</p>
-      <ul>{o.sources.map(s => <li><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>)}</ul>
-    </details>
-
     {o.making && <section class="making" aria-labelledby="makingH">
       <h2 class="sub" id="makingH">{o.makingTitle}</h2>
       <p>{o.making}</p>
-      <p><a href={view.report.href} target="_blank" rel="noopener">{view.report.label} ↗</a></p>
+      <p><a href={view.report.href} target="_blank" rel="noopener" data-report aria-haspopup="dialog">{view.report.label}</a></p>
     </section>}
 
     <p class="end"><span>{o.end[0]}</span><span>{o.end[1]}</span></p>

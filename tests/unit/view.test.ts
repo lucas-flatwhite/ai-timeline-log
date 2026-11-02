@@ -21,7 +21,11 @@ describe('buildView(ko)', () => {
     expect(v.ogTitle).toBe('AI Timeline Log');
     expect(v.ogDescription).toBe('ChatGPT 공개부터 현재까지, 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다.');
     expect(v.cover).toEqual({ glyph: '1,425일', tpl: '{days}일', start: '2022-11-30', lede: 'ChatGPT가 공개된 2022년 11월 30일부터 현재까지, AI가 지나온 장면들을 기록합니다.' });
-    expect(v.report).toEqual({ label: '제보·정정', href: 'https://github.com/lucas-flatwhite/ai-timeline-log/issues' });
+    expect(v.report).toMatchObject({
+      label: '제보', href: 'https://github.com/lucas-flatwhite/ai-timeline-log/issues', issue: 'GitHub 이슈 열기', mailLabel: '메일 보내기',
+      email: 'lucas.flatwhite@gmail.com', mail: `mailto:lucas.flatwhite@gmail.com?subject=${encodeURIComponent('[AI Timeline Log] 제보')}`,
+    });
+    expect(v.report.note).toContain('GitHub 이슈');
     expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '이 사건 정정·제보', sources: '출처' });
     expect(v.pics).toEqual(loadContent().pics);
     expect(v.aria).toEqual({ wall: 'AI 사건 격자', details: '모든 장면' });
@@ -130,13 +134,15 @@ describe('buildView(ko)', () => {
     expect(v.outro.bar).toBe('현재');
     expect(v.outro.eyebrow).toBe('현재');
     expect(v.outro.title).toBe('1,425일 동안 바뀐 것');
-    expect(v.outro.arcs[0].span).toBe('2022.11 – 2023');
+    expect(v.outro.arcs).toHaveLength(9);
+    expect(v.outro.arcs[0].span).toBe('2022.11 – 2023.02');
+    expect(v.outro.arcs[8].span).toBe('2026.09');
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '22.11' });
-    expect(v.outro.sourcesTitle).toBe('출처와 기준');
-    expect(v.outro.sourcesNote.startsWith('2026년 11월 2일까지의 각 사 발표와')).toBe(true);
+    expect(v.outro).not.toHaveProperty('sources');
     expect(v.outro.end).toEqual(['판 61장 · 2022.11.30 – 현재', 'AI Timeline Log']);
-    expect(v.outro.making).toContain('GitHub 이슈');
+    expect(v.outro.making).toContain('GitHub 이슈나 메일(lucas.flatwhite@gmail.com)');
+    expect(v.outro.making).not.toMatch(/AI의 도움|Claude/);
     expect(v.outro.makingTitle).toBe('만든 방법');
     expect(v.outro.titleTpl).toBe('{days}일 동안 바뀐 것');   // 브라우저가 보는 날로 다시 채우는 틀
   });

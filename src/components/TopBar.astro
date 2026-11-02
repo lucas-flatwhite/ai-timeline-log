@@ -14,5 +14,5 @@ const { view } = Astro.props as { view: PageView };
     </ul>
   </div>
   <LangSwitch view={view} />
-  <a class="report" href={view.report.href} target="_blank" rel="noopener">{view.report.label} ↗</a>
+  <a class="report" href={view.report.href} target="_blank" rel="noopener" data-report aria-haspopup="dialog">{view.report.label}</a>
 </header>
