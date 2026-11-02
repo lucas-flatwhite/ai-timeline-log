@@ -15,7 +15,7 @@ test('first visit', async ({ page }) => {
   await ready(page);
   await expect(page.locator('.wall .box.new')).toHaveCount(0);
   await expect(page.locator('.cover .since')).toBeHidden();
-  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-10-31');
+  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-02');
 });
 
 test('returning visitor', async ({ page, request }) => {
@@ -27,7 +27,7 @@ test('returning visitor', async ({ page, request }) => {
   await expect(page.locator('.cover .since')).toBeVisible();
   await expect(page.locator('.cover .since')).toContainText(`지난 방문 이후 새 상자 ${n}개`);
   await expect(page.locator('.wall .box.new').first()).toHaveAttribute('aria-label', / · 지난 방문 이후 추가$/);
-  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-10-31');
+  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-02');
 
   await page.locator('.cover .since button').click();
   await expect(page.locator('.wall.pick')).toHaveCount(1);

@@ -16,19 +16,19 @@ describe('urls', () => {
     expect(posterUrl(c.site.repo, 4, 'ko', 'pdf'))
       .toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf');
     expect(releaseUrl(c.site.repo, 4)).toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/tag/edition-4');
-    expect(latestPosterEdition(c)?.n).toBe(4);
+    expect(latestPosterEdition(c)?.n).toBe(5);
   });
 });
 
 describe('buildTimeline', () => {
   test('timeline has every scene and event', () => {
-    expect(t.scenes).toHaveLength(41);
-    expect(t.scenes.flatMap(s => s.items)).toHaveLength(157);
-    expect(t.site.asOf).toBe('2026-10-31');
+    expect(t.scenes).toHaveLength(61);
+    expect(t.scenes.flatMap(s => s.items)).toHaveLength(230);
+    expect(t.site.asOf).toBe('2026-11-02');
     expect(t.site.license.name).toBe('CC BY 4.0');
     expect(t.site.scope).toEqual(SCOPE);
     expect(t.topics.agents.en).toBe('Agents');
-    expect(t.editions.at(-1)!.n).toBe(4);
+    expect(t.editions.at(-1)!.n).toBe(5);
     expect(t.scenes[0].id).toBe('2026-10-eth-review');
     expect(t.glossary.length).toBeGreaterThan(0);
   });
@@ -60,7 +60,7 @@ describe('llms', () => {
   test('llms-full (ko) states scope, asOf and sources', () => {
     const s = buildLlmsFull(c, 'ko');
     expect(s).toContain(SCOPE.ko);
-    expect(s).toContain('2026.10.31');
+    expect(s).toContain('2026.11.02');
     const items = c.scenes.flatMap(sc => sc.items);
     expect(items.filter(it => !s.includes(it.ko))).toEqual([]);
     const urls = items.flatMap(it => it.sources.map(x => x.url));

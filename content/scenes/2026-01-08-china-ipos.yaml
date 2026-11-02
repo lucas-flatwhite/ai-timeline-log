@@ -1,0 +1,57 @@
+id: 2026-01-china-ipos
+date: 2026-01-08
+span:
+  from: 2025-12
+  to: 2026-01
+added: 2026-11-02
+topics: [compute]
+print:
+  pattern: w
+  motif: rise
+  glyph: "+693%"
+sources:
+  - url: https://en.jiemian.com/article/13724679.html
+    title: Moore Threads soars 468% in debut as China accelerates its GPU push
+    publisher: Jiemian
+  - url: https://www2.yicaiglobal.com/news/chinese-gpu-maker-metax-surges-nearly-700-on-trading-debut-in-shanghai
+    title: Chinese AI Chipmaker MetaX Skyrockets in Shanghai Stock Market Debut
+    publisher: Yicai Global
+  - url: https://www.chinadailyhk.com/article/626743
+    title: MiniMax jumps 91% in Hong Kong debut after $619m IPO
+    publisher: China Daily Hong Kong
+items:
+  - date: 2025-12-05
+    ko: 미국 수출 통제 아래 중국산 GPU를 만드는 무어스레드, 상하이 과학혁신판에 상장. 첫날 주가가 468% 뛰었다.
+    en: "Moore Threads, which makes GPUs in China under U.S. export controls, lists on Shanghai’s STAR Market and soars 468% on its first day."
+    glyph: "+468%"
+  - date: 2025-12-17
+    ko: 또 다른 중국 GPU 회사 메타X, 상장 첫날 693% 오른 채 마감.
+    en: "MetaX, another Chinese GPU maker, closes its first trading day up 693%."
+    glyph: "+693%"
+  - date: 2026-01-08
+    ko: 즈푸(Z.ai), 중국 ‘AI 6소룡’ 가운데 처음으로 홍콩에 상장. 첫날 13% 올랐다.
+    en: "Zhipu (Z.ai) becomes the first of China’s six “AI tigers” to go public, in Hong Kong, and closes 13% higher on its first day."
+    glyph: { ko: "즈푸", en: "ZHIPU" }
+    sources:
+      - url: https://www.chinadailyhk.com/hk/article/626680
+        title: AI large-model company Zhipu gains more than 13% in HK debut
+        publisher: China Daily Hong Kong
+      - url: https://www.thestar.com.my/aseanplus/aseanplus-news/2026/01/08/startups-go-public-in-litmus-test-for-chinese-ai
+        title: Startups go public in litmus test for Chinese AI
+        publisher: The Star (AFP)
+  - date: 2026-01-09
+    ko: MiniMax, 홍콩 상장 첫날 주가가 두 배가 됐다.
+    en: "MiniMax’s shares double on their first day of trading in Hong Kong."
+    glyph: x2
+    sources:
+      - url: https://uk.marketscreener.com/news/minimax-china-s-second-ai-tiger-to-go-public-doubles-in-value-in-hong-kong-debut-ce7e59d2d988ff27
+        title: MiniMax, China’s second AI tiger to go public, doubles in value in Hong Kong debut
+        publisher: Reuters (via MarketScreener)
+ko:
+  kicker: 중국
+  title: 중국 AI의 상장 물결
+  lede: 미국의 칩 통제 아래 중국 GPU 회사들이 상하이에 상장해 첫날 주가가 몇 배로 뛰었다. 이어 중국 AI 연구소들이 홍콩에 상장했다. 미국 연구소들이 상장 서류를 내기 다섯 달 전이었다.
+en:
+  kicker: "China"
+  title: "China’s AI Listing Wave"
+  lede: "Under U.S. chip controls, Chinese GPU makers listed in Shanghai and saw their shares multiply on day one. Chinese AI labs then listed in Hong Kong, five months before U.S. labs filed to go public."

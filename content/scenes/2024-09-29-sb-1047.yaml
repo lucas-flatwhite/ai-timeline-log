@@ -1,0 +1,50 @@
+id: 2024-09-sb-1047
+date: 2024-09-29
+span:
+  from: 2024-08
+  to: 2024-09
+added: 2026-11-02
+topics: [rules, safety]
+print:
+  pattern: c
+  motif: none
+  glyph: "1047"
+sources:
+  - url: https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf
+    title: SB 1047 Veto Message
+    publisher: Office of the Governor of California
+  - url: https://techcrunch.com/2024/09/29/gov-newsom-vetoes-californias-controversial-ai-bill-sb-1047/
+    title: Gov. Newsom vetoes California’s controversial AI bill, SB 1047
+    publisher: TechCrunch
+items:
+  - date: 2024-08-21
+    ko: OpenAI는 SB 1047이 혁신을 늦춘다며 반대 서한을 냈고, Anthropic은 고친 법안의 이익이 비용보다 클 것 같다는 서한을 냈다.
+    en: "OpenAI writes to oppose SB 1047, saying it would slow innovation, while Anthropic writes that the amended bill’s benefits likely outweigh its costs."
+    glyph: { ko: "찬반", en: "SPLIT" }
+    sources:
+      - url: https://www.bloomberg.com/news/articles/2024-08-21/openai-says-california-s-controversial-ai-bill-will-hurt-innovation
+        title: OpenAI Says California’s Controversial AI Bill Will Hurt Innovation
+        publisher: Bloomberg
+      - url: https://www.investing.com/news/stock-market-news/anthropic-says-california-ai-bills-benefits-likely-outweigh-costs-3584552
+        title: Anthropic says California AI bill’s benefits likely outweigh costs
+        publisher: Reuters (via Investing.com)
+  - date: 2024-08-28
+    ko: 캘리포니아 하원이 법안을 통과시켰고, 이튿날 상원이 최종 승인해 뉴섬 주지사에게 넘겼다.
+    en: "The California Assembly passes the bill, and the Senate gives final approval the next day, sending it to Governor Gavin Newsom."
+    glyph: { ko: "통과", en: "PASSED" }
+    sources:
+      - url: https://news.bloomberglaw.com/artificial-intelligence/ai-public-safety-risk-legislation-sent-to-california-governor
+        title: AI Public Safety Risk Legislation Sent to California Governor
+        publisher: Bloomberg Law
+  - date: 2024-09-29
+    ko: 뉴섬 주지사, 거부권 행사. 가장 크고 비싼 모델만 겨냥하면 거짓 안도감을 줄 수 있고, 위험한 환경에 쓰이는지를 따지지 않는다고 했다.
+    en: "Governor Newsom vetoes the bill, saying that targeting only the largest, most expensive models could give a false sense of security and ignores whether a system is deployed in high-risk settings."
+    glyph: { ko: "거부권", en: "VETO" }
+ko:
+  kicker: 주 법
+  title: SB 1047 거부권
+  lede: 대형 AI 모델 개발사에 재앙적 피해를 막을 안전장치를 의무로 두려던 캘리포니아 법안을 두고 업계가 갈렸다. 주지사는 거부했고, 프런티어 AI를 주 법으로 다룰지를 둘러싼 논쟁은 이어졌다.
+en:
+  kicker: "State Law"
+  title: "The SB 1047 Veto"
+  lede: "A California bill that would have required developers of large AI models to put safeguards against catastrophic harm in place split the industry. The governor vetoed it, and the fight over regulating frontier AI at the state level went on."

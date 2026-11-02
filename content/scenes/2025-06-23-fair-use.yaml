@@ -1,0 +1,54 @@
+id: 2025-06-fair-use
+date: 2025-06-23
+span:
+  from: 2025-02
+  to: 2026-09
+added: 2026-11-02
+topics: [society, rules]
+print:
+  pattern: c
+  motif: none
+  glyph: "6.23"
+sources:
+  - url: https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some
+    title: Two Northern District of California Judges Find Some Copying to Train Generative AI Is Fair Use
+    publisher: Mintz
+  - url: https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98093-meta-wins-ai-copyright-case-but-judge-writes-roadmap-for-authors-revenge.html
+    title: Meta Wins AI Copyright Case, But Judge Writes Roadmap for Authors’ Revenge
+    publisher: Publishers Weekly
+items:
+  - date: 2025-02-11
+    ko: 연방법원, 로스 인텔리전스가 웨스트로의 판례 요약 2,243개로 AI 법률 검색 도구를 만든 것은 공정 이용이 아니라고 판단. 생성형 AI는 아닌 사건이었다.
+    en: "A federal judge rules that ROSS Intelligence’s copying of 2,243 Westlaw headnotes to build an AI legal search tool was not fair use, in a case that did not involve generative AI."
+    glyph: { ko: "불인정", en: "NOT FAIR" }
+    sources:
+      - url: https://ipwatchdog.com/2025/02/12/revised-fair-use-ruling-finds-no-transformative-use-developing-ai-search-tool/
+        title: Revised Fair Use Ruling Finds No Transformative Use in Developing AI Search Tool
+        publisher: IPWatchdog
+  - date: 2025-06-23
+    ko: 알섭 판사, Anthropic이 책으로 Claude를 학습시킨 것은 공정 이용이라고 판단. 해적판 사이트에서 내려받은 책을 모아 둔 것은 공정 이용이 아니라고 봤다.
+    en: "Judge William Alsup rules that Anthropic’s training of Claude on books was fair use, but that keeping pirated copies in a central library was not."
+    glyph: { ko: "공정\n이용", en: "FAIR USE" }
+  - date: 2025-06-25
+    ko: 차브리아 판사, 메타 승소 판결. 다만 원고가 시장 피해를 입증하지 못했기 때문이라며, AI가 비슷한 작품을 쏟아내 시장을 잠식한다는 주장은 이길 수 있다고 했다.
+    en: "Judge Vince Chhabria rules for Meta, but only because the authors failed to show market harm, noting that an argument that AI floods the market with competing works could win."
+    glyph: { ko: "메타", en: "META" }
+  - date: 2026-09-29
+    ko: 제3순회항소법원, 로스 사건의 1심 판단을 유지. AI 학습의 공정 이용을 다룬 첫 연방항소법원 판결이다.
+    en: "The Third Circuit upholds the ROSS ruling, the first federal appeals decision on fair use in AI training."
+    glyph: { ko: "항소심", en: "APPEAL" }
+    sources:
+      - url: https://www.haynesboone.com/news/alerts/third-circuit-rejects-fair-use-for-rosss-copying-of-westlaw-headnotes
+        title: Third Circuit Rejects Fair Use for ROSS’s Copying of Westlaw Headnotes
+        publisher: Haynes Boone
+      - url: https://ipwatchdog.com/2026/09/30/third-circuit-affirms-revised-fair-use-ruling-against-ross-ai-legal-research-platform-in-sealed-opinion/
+        title: Third Circuit Affirms Revised Fair Use Ruling Against ROSS’ AI Legal Research Platform in Sealed Opinion
+        publisher: IPWatchdog
+ko:
+  kicker: 저작권
+  title: 학습은 공정 이용인가
+  lede: 저작물로 AI를 학습시키는 것이 공정 이용인지를 두고 미국 법원의 첫 판단들이 나왔다. 판사마다 무게를 둔 곳이 달랐다.
+en:
+  kicker: "Copyright"
+  title: "Is Training Fair Use?"
+  lede: "U.S. courts issued their first rulings on whether training AI on copyrighted works is fair use. The judges weighed the question differently."

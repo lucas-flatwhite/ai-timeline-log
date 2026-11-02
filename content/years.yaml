@@ -1,28 +1,28 @@
 "2023":
   ko:
     title: 경쟁이 시작된 해
-    body: ChatGPT를 본 빅테크가 일제히 챗봇을 내놓았다. 모델 가중치가 풀리며 누구나 언어모델을 돌리기 시작했고, AI를 만든 사람들이 위험을 경고했다.
+    body: ChatGPT를 본 빅테크가 일제히 챗봇을 내놓았다. 모델 가중치가 풀리며 누구나 언어모델을 돌리기 시작했고, AI를 만든 사람들이 위험을 경고했다. 학습 데이터를 둘러싼 저작권 소송이 시작됐고, 중국은 승인받은 챗봇만 열었으며 미국은 AI 칩 수출 통제를 더 조였다.
   en:
     title: "The Year the Race Began"
-    body: "Having seen ChatGPT, Big Tech rushed out chatbots of its own. As model weights were released, anyone could run a language model, and the people who built AI warned of its risks."
+    body: "Having seen ChatGPT, Big Tech rushed out chatbots of its own. As model weights were released, anyone could run a language model, and the people who built AI warned of its risks. Copyright suits over training data began, China opened only approved chatbots to the public, and the U.S. tightened its controls on AI chip exports."
 "2024":
   ko:
     title: 감각과 추론의 해
-    body: AI가 영상을 만들고 목소리로 대화하고, 답하기 전에 생각하기 시작했다. 노벨상 두 개가 AI 연구에 돌아갔고, 연말엔 AI가 컴퓨터 화면을 직접 다뤘다.
+    body: AI가 영상을 만들고 목소리로 대화하고, 답하기 전에 생각하기 시작했다. 노벨상 두 개가 AI 연구에 돌아갔고, 연말엔 AI가 컴퓨터 화면을 직접 다뤘다. 선거의 해는 가짜 목소리로 시작했고, 중국에서는 모델 가격 전쟁이 벌어졌으며, 빅테크는 데이터센터 전력을 원전에서 찾았다.
   en:
     title: "The Year of Senses and Reasoning"
-    body: "AI began to make video, hold spoken conversations and think before answering. Two Nobel Prizes went to AI research, and at the end of the year AI took direct control of the computer screen."
+    body: "AI began to make video, hold spoken conversations and think before answering. Two Nobel Prizes went to AI research, and at the end of the year AI took direct control of the computer screen. A year of elections began with a fake voice, a price war broke out among China’s models, and Big Tech turned to nuclear plants to power its data centers."
 "2025":
   ko:
     title: 에이전트와 계산력의 해
-    body: 딥시크 충격으로 시작해 코딩 에이전트가 개발 방식을 바꿨다. 데이터센터 계약은 기가와트 단위로 커졌고, 한국에는 GPU 26만 장 공급이 약속됐다.
+    body: 딥시크 충격으로 시작해 코딩 에이전트가 개발 방식을 바꿨다. 데이터센터 계약은 기가와트 단위로 커졌고, 한국에는 GPU 26만 장 공급이 약속됐다. 중국 공개 모델이 앞자리를 다퉜고, 칩은 미국과 중국, 걸프 사이의 협상 카드가 됐다. 법원은 AI 학습의 공정 이용을 처음 판단했고, 미국에서는 주 법과 연방이 맞섰다.
   en:
     title: "The Year of Agents and Compute"
-    body: "It opened with the DeepSeek shock, and coding agents changed how software gets built. Data center deals grew to the gigawatt scale, and Korea was promised 260,000 GPUs."
+    body: "It opened with the DeepSeek shock, and coding agents changed how software gets built. Data center deals grew to the gigawatt scale, and Korea was promised 260,000 GPUs. Chinese open models contended for the lead, and chips became a bargaining chip between the U.S., China and the Gulf. Courts ruled for the first time on whether AI training is fair use, and U.S. states and Washington clashed over who writes the rules."
 "2026":
   ko:
     title: 위임과 통제의 해
-    body: AI에 일을 맡기자 주식시장과 정부가 반응했고, 큰 연구소들은 상장을 준비했다. 사이버 능력과 에이전트 사고로 속도 조절과 격리가 안보 의제가 됐다. AI의 수학 결과를 검증하는 절차와 동반자 챗봇의 아동·대화 데이터 보호도 과제가 됐다.
+    body: AI에 일을 맡기자 주식시장과 정부가 반응했고, 큰 연구소들은 상장을 준비했다. 사이버 능력과 에이전트 사고로 속도 조절과 격리가 안보 의제가 됐다. AI의 수학 결과를 검증하는 절차와 동반자 챗봇의 아동·대화 데이터 보호도 과제가 됐다. 중국 AI 회사들이 잇달아 상장했고 미국과 중국은 증류를 두고 맞섰으며, EU는 AI Act 집행을 시작했다.
   en:
     title: "The Year of Delegation and Control"
-    body: "As people handed work to AI, stock markets and governments reacted, and the largest labs prepared to go public. Cyber capabilities and agent incidents made pacing development and isolating models security priorities. Reviewing AI-generated mathematics and protecting children and private conversations in companion chatbots became pressing tasks as well."
+    body: "As people handed work to AI, stock markets and governments reacted, and the largest labs prepared to go public. Cyber capabilities and agent incidents made pacing development and isolating models security priorities. Reviewing AI-generated mathematics and protecting children and private conversations in companion chatbots became pressing tasks as well. Chinese AI companies went public one after another, the U.S. and China clashed over distillation, and the EU began enforcing the AI Act."
