@@ -2,12 +2,12 @@ import type { UI } from './ko.ts';
 
 /* 영어 화면 문구. 키 집합은 ko와 같아야 한다(UI 타입이 지킨다) */
 export const en: UI = {
-  now: 'present',
+  updated: (date) => `Updated ${date}`,
   langNav: 'Language',
   langSoon: (name) => `${name} coming soon`,
   outroTitle: (days) => `What changed in ${days} days`,
   ledgerTitle: 'Major model releases',
-  endCount: (count, start, now) => `${count} prints · ${start} – ${now}`,
+  endCount: (count, start, end) => `${count} prints · ${start} – ${end}`,
   report: 'Report',
   reportIssue: 'Open a GitHub issue',
   reportMail: 'Send an email',

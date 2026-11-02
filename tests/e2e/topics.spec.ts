@@ -29,6 +29,32 @@ test('menu highlights a topic', async ({ page, request }) => {
   await expect(btn).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('the mouse over other boxes does not replace the topic', async ({ page, request }) => {
+  await ready(page, './ko/?topic=agents');
+  const n = await boxCount(request, 'agents');
+  // 스크롤하다 마우스 아래로 지나가는 상자처럼, 주제 밖 상자에 마우스가 올라와도 강조는 그대로다
+  const off = page.locator('.wall a.box.item:not(.on)').first();
+  await off.scrollIntoViewIfNeeded();
+  await off.hover();
+  await expect(page.locator('.wall.focus')).toHaveCount(0);
+  await expect(page.locator('.wall .box.rel')).toHaveCount(0);
+  await expect(page.locator('.wall .box.on')).toHaveCount(n);
+  // 강조를 끄면 마우스 올림이 다시 같은 장면을 켠다
+  await page.locator('#pickbar .pb-x').click();
+  await page.mouse.move(2, 2);
+  await off.hover();
+  await expect(page.locator('.wall.focus')).toHaveCount(1);
+});
+
+test('turning a topic on clears the hover light', async ({ page }) => {
+  await ready(page, './ko/');
+  await page.locator('.wall a.box.item').first().hover();
+  await expect(page.locator('.wall.focus')).toHaveCount(1);
+  await page.evaluate(() => document.querySelector<HTMLButtonElement>('.tp-list button[data-topic="agents"]')!.click());
+  await expect(page.locator('.wall.pick')).toHaveCount(1);
+  await expect(page.locator('.wall.focus')).toHaveCount(0);
+});
+
 test('topic from the address', async ({ page }) => {
   await ready(page, './ko/?topic=science');
   await expect(page.locator('.wall.pick')).toHaveCount(1);

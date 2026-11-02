@@ -130,6 +130,8 @@ for (const path of ['./ko/', './']) {
       await expect(cv).toHaveClass(/\bcarved\b/);
       await expect(page.locator('.cover .g')).toHaveText(daysText('1,462'));
       await expect(page.locator('#outroH')).toHaveText(ui[lang]!.outroTitle('1,462'));
+      // 소개 글 끝 날짜도 같은 오늘이다(일수와 어긋나지 않게)
+      await expect(page.locator('.cover .lede')).toContainText(lang === 'ko' ? '2026년 12월 1일까지' : 'to December 1, 2026.');
       // 장면 핵심어에도 '19일' 같은 글자가 있으니 네 자리 일수만 본다. 빌드한 날의 일수로 새긴 적이 없어야 한다
       const days = (await page.evaluate(() => (window as unknown as { __drawn: string[] }).__drawn)).filter(t => /^\d,\d{3}( days|일)$/.test(t));
       expect(days).toEqual([daysText('1,462')]);

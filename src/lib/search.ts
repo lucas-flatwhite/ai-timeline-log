@@ -18,9 +18,9 @@ export function hit(hay: string, ts: string[]): boolean {
   return ts.length > 0 && ts.every(t => hay.includes(t));
 }
 
-/** 상자 날짜(YYYYMMDD, YYYYMM)가 시기(YYYYMM부터 YYYYMM까지, 끝이 없으면 현재까지) 안인가 */
+/** 상자 날짜(YYYY.MM.DD, YYYY.MM, 점 없는 꼴도 된다)가 시기(YYYYMM부터 YYYYMM까지, 끝이 없으면 계속) 안인가 */
 export function inEra(date: string, from: string, to?: string): boolean {
-  const ym = date.slice(0, 6);
+  const ym = date.replace(/\D/g, '').slice(0, 6);
   return ym >= from && (!to || ym <= to);
 }
 

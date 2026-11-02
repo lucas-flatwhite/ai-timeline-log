@@ -1,6 +1,6 @@
 import type { Content } from './content.ts';
 import {
-  daysBetween, formatDate, formatDot, formatLong, formatMonthLong, formatYYMM, todayISO, type Locale,
+  daysBetween, formatDot, formatLong, formatMonthLong, todayISO, type Locale,
 } from './dates.ts';
 import { glyphFor, hashSeed, itemAddresses, sortWall, ymd, type WallEntry } from './grid.ts';
 import type { Pics } from './schema.ts';
@@ -8,7 +8,7 @@ import { ORIGIN } from './origin.ts';
 import { LICENSE, latestPosterEdition, posterUrl } from './export.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
 
-/** 격자의 상자 하나. 날짜는 `YYYYMMDD`(월까지만 있으면 `YYYYMM`, 연도 판은 `YYYY`) */
+/** 격자의 상자 하나. 날짜는 `YYYY.MM.DD`(월까지만 있으면 `YYYY.MM`, 연도 판은 `YYYY`). 주소에만 `YYYYMMDD`를 쓴다 */
 export interface BoxView {
   kind: 'scene' | 'item' | 'year'; addr: string; date: string; glyph: string; pattern: string; angle?: number;
   motif: string; seed: number; pic?: string; scene?: string; label: string; off: boolean;
@@ -33,13 +33,13 @@ export interface PageView {
   /** 제보: href는 GitHub 이슈 목록(스크립트가 없을 때 가는 곳이자 사건 정정 링크의 기본값). 스크립트가 있으면 안내 창을 연다 */
   name: string; report: { label: string; href: string; note: string; issue: string; mailLabel: string; mail: string; email: string };
   /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
-  cover: { glyph: string; tpl: string; start: string; lede: string };
+  cover: { glyph: string; tpl: string; start: string; lede: string; ledeTpl: string };
   boxes: BoxView[]; scenes: SceneDetail[]; years: YearDetail[]; pics: Pics;
   /** 주제 목록(topics.yaml 순서)과 장면 수 */
   topics: { id: string; name: string; count: number }[];
   /** 가장 늦은 장면 추가일. 브라우저가 지난 방문과 비교한다 */
   latestAdded: string;
-  /** 시기(arcs.yaml, 오래된 것부터). from·to는 YYYYMM, 마지막 시기는 to가 없다(현재까지) */
+  /** 시기(arcs.yaml, 오래된 것부터). from·to는 YYYYMM, 마지막 시기는 to가 없다(화면에는 asOf까지) */
   eras: { from: string; to?: string; title: string; span: string; body: string }[];
   /** 찾기 창, 새 상자 줄, 강조 띠의 문구. newLine은 {n} 틀, pick.era는 {i}·{n} 틀, pick.boxes는 {n} 틀 */
   ui: {
@@ -88,7 +88,7 @@ const clip = (s: string) => [...s].slice(0, 120).join('');
 
 type Entry = WallEntry & { box: BoxView };
 
-/** today: 일수를 셀 날. 빌드 때는 빌드한 날이 들어가고, 브라우저가 보는 날로 다시 채운다 */
+/** today: 일수와 소개 글 끝 날짜를 셀 날. 빌드 때는 빌드한 날이 들어가고, 브라우저가 보는 날로 다시 채운다 */
 export function buildView(c: Content, locale: Locale, today: string = todayISO()): PageView {
   const t = uiFor(locale);
   const { site } = c;
@@ -98,7 +98,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   const startDot = formatDot(site.start), asOfDot = formatDot(site.asOf);
   const vars = {
     days, count: String(count), startDot, asOfDot, email: site.email,
-    startLong: formatLong(locale, site.start), asOfLong: formatLong(locale, site.asOf),
+    startLong: formatLong(locale, site.start), asOfLong: formatLong(locale, site.asOf), todayLong: formatLong(locale, today),
     asOfMonthLong: formatMonthLong(locale, site.asOf),
   };
 
@@ -116,7 +116,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
 
   c.scenes.forEach((s, i) => {
     const text = s[locale];
-    const sceneDate = ymd(s.date);
+    const sceneDate = formatDot(s.date);
     const sources = s.sources.map(x => ({ url: x.url, title: x.title }));
     // 최근 추가 표시: 장면 날짜 줄과 그 사건들의 날짜 줄 끝에 똑같이 붙인다
     const mark = recent && s.added === recent ? ` · ${t.added(formatDot(s.added))}` : '';
@@ -131,7 +131,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
 
     const addrs = itemAddresses(s.id, s.items.map(it => it.date));
     const items: ItemDetail[] = s.items.map((it, k) => {
-      const addr = addrs[k], date = ymd(it.date);
+      const addr = addrs[k], date = formatDot(it.date);
       const body = it[locale];
       entries.push({
         kind: 'item', date: it.date, order: s.order, seq: i * 100 + k + 1,
@@ -175,14 +175,17 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   years.reverse();
 
   const boxes = sortWall(entries).map(e => e.box);
-  const order = new Map(boxes.filter(b => b.kind === 'scene').map((b, n) => [b.addr, n]));
+  const order = new Map(boxes.map((b, n) => [b.addr, n]));
   scenes.sort((a, b) => order.get(a.id)! - order.get(b.id)!);   // 격자와 같은 최신순
+  // 상세 창의 사건 목록도 격자와 같은 최신순. 주소는 위에서 원래 순서로 이미 정했다
+  scenes.forEach(s => s.items.sort((a, b) => order.get(a.addr)! - order.get(b.addr)!));
 
   const title = site.name;
   const poster = latestPosterEdition(c);
-  // 시기: 주소와 상자 날짜에 맞춰 YYYYMM으로 적는다. 끝이 없는 시기는 '현재'까지
+  // 시기: from·to는 주소(?era=)에 맞춰 YYYYMM. 화면에는 YYYY.MM으로 적고, 끝이 없는 시기는 마지막으로 고친 날(asOf)까지.
+  // '현재'라고만 쓰면 언제 고쳤는지 알 수 없다
   const ym = (d: string) => ymd(d).slice(0, 6);
-  const arcSpan = (a: Content['arcs'][number]) => `${formatDate(locale, a.from)} – ${a.to ? formatDate(locale, a.to) : t.now}`;
+  const arcSpan = (a: Content['arcs'][number]) => `${formatDot(a.from)} – ${a.to ? formatDot(a.to) : asOfDot}`;
   return {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
@@ -197,7 +200,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       label: t.report, href: `${site.repo}/issues`, note: fill(st.reportNote, vars), issue: t.reportIssue, mailLabel: t.reportMail,
       mail: `mailto:${site.email}?subject=${enc(t.reportSubject(site.name))}`, email: site.email,
     },
-    cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars) },
+    cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars), ledeTpl: fill(st.lede, { ...vars, todayLong: '{todayLong}' }) },
     boxes, scenes, years, pics: c.pics,
     topics: Object.entries(c.topics).map(([id, v]) => ({ id, name: v[locale], count: c.scenes.filter(s => s.topics.includes(id)).length })),
     latestAdded: lastAdded,
@@ -217,11 +220,11 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       ? { ...l, current: l.code === locale }
       : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
     outro: {
-      bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
+      bar: t.updated(asOfDot), eyebrow: t.updated(asOfDot), title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
       arcs: c.arcs.map(a => ({ from: ym(a.from), span: arcSpan(a), title: a[locale].title, body: a[locale].body })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
-      ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
-      end: [t.endCount(count, startDot, t.now), title],
+      ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatDot(m.date) })) })),
+      end: [t.endCount(count, startDot, asOfDot), title],
       making: st.making && fill(st.making, vars), makingTitle: t.making,
       take: {
         title: t.take,

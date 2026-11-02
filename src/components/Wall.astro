@@ -14,7 +14,7 @@ const data = (b: PageView['boxes'][number]) => ({
   <div class="cover">
     <canvas class="cv" data-kind="days" data-glyph={c.glyph} data-tpl={c.tpl} role="img" aria-label={c.glyph}></canvas>
     <span class="g" aria-hidden="true" data-live={c.tpl}>{c.glyph}</span>
-    <p class="lede">{c.lede}</p>
+    <p class="lede" data-live={c.ledeTpl}>{c.lede}</p>
   </div>
   {view.boxes.map(b => b.off
     ? <span class={`box ${b.kind} off`} {...data(b)} role="img" aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></span>
