@@ -1,0 +1,51 @@
+id: 2026-09-distillation
+date: 2026-09-08
+span:
+  from: 2026-02
+  to: 2026-09
+added: 2026-11-02
+topics: [safety, rules]
+print:
+  pattern: w
+  motif: grid
+  glyph: 16M
+sources:
+  - url: https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks
+    title: Detecting and preventing distillation attacks
+    publisher: Anthropic
+  - url: https://www.cisa.gov/news-events/news/cisa-nsa-and-fbi-warn-china-based-ai-companies-targeting-us-ai-models-industrial-scale-knowledge
+    title: CISA, NSA and FBI Warn of China-Based AI Companies Targeting US AI Models with Industrial-Scale Knowledge Distillation Campaigns to Shortcut AI Development
+    publisher: CISA
+items:
+  - date: 2026-02-23
+    ko: Anthropic, 딥시크·문샷AI·MiniMax가 가짜 계정 약 2만 4,000개로 Claude와 1,600만 번 넘게 대화하며 능력을 빼 갔다고 발표.
+    en: "Anthropic says DeepSeek, Moonshot AI and MiniMax used about 24,000 fraudulent accounts to hold more than 16 million exchanges with Claude in order to extract its capabilities."
+    glyph: 16M
+  - date: 2026-04-23
+    ko: 백악관 과학기술정책실, 주로 중국에 있는 기관들이 미국 모델을 산업 규모로 베낀다고 경고하는 각서(NSTM-4)를 냈다.
+    en: "The White House Office of Science and Technology Policy issues a memorandum, NSTM-4, warning of industrial-scale campaigns, mainly by entities in China, to copy U.S. models."
+    glyph: NSTM-4
+    sources:
+      - url: https://justsecurity.org/137498/diagnosis-deterrence-us-response-distillation
+        title: The Emerging U.S. Response to Adversarial Distillation
+        publisher: Just Security
+  - date: 2026-09-08
+    ko: CISA·NSA·FBI, 딥시크·문샷AI·알리바바·MiniMax·스텝펀·Z.ai가 중국 정부도 알았을 가능성이 높은 증류 공격을 벌였다는 공동 권고를 냈다.
+    en: "CISA, the NSA and the FBI issue a joint advisory naming DeepSeek, Moonshot AI, Alibaba, MiniMax, StepFun and Z.ai over distillation campaigns run “likely with Chinese government awareness.”"
+    glyph: "6"
+  - date: 2026-09-09
+    ko: 중국 상무부와 외교부, 근거 없는 비난이라고 반박. 증류는 미국 기업도 쓰는 중립적 기술이라며, 이를 구실로 중국 기업을 누르면 대응하겠다고 했다.
+    en: "China’s commerce and foreign ministries reject the claims as groundless, calling distillation a neutral technique that U.S. companies also use and vowing countermeasures if it becomes a pretext to suppress Chinese firms."
+    glyph: { ko: "반박", en: "DENIED" }
+    sources:
+      - url: https://www.news4jax.com/business/2026/09/09/china-hits-back-at-us-claims-of-malicious-ai-distillation-ahead-of-planned-trump-xi-talks/
+        title: China hits back at US claims of ‘malicious’ AI distillation ahead of planned Trump-Xi talks
+        publisher: Associated Press
+ko:
+  kicker: 미·중
+  title: 증류 공방
+  lede: 더 강한 모델의 답을 대량으로 받아 자기 모델을 가르치는 ‘증류’가 미·중 갈등의 쟁점이 됐다. 미국은 중국 연구소들이 미국 모델을 베꼈다고 했고, 중국은 근거 없는 비난이라고 맞섰다.
+en:
+  kicker: "U.S. and China"
+  title: "The Distillation Dispute"
+  lede: "Distillation, training a model on large volumes of a stronger model’s answers, became a flashpoint between the U.S. and China. Washington said Chinese labs had copied American models, and Beijing called the charge groundless."

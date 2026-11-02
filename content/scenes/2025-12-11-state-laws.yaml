@@ -1,0 +1,51 @@
+id: 2025-12-state-laws
+date: 2025-12-11
+span:
+  from: 2025-07
+  to: 2025-12
+added: 2026-11-02
+topics: [rules]
+print:
+  pattern: h
+  motif: none
+  glyph: "12.11"
+sources:
+  - url: https://www.whitehouse.gov/fact-sheets/2025/12/fact-sheet-president-donald-j-trump-ensures-a-national-policy-framework-for-artificial-intelligence/
+    title: "Fact Sheet: President Donald J. Trump Ensures a National Policy Framework for Artificial Intelligence"
+    publisher: White House
+  - url: https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/
+    title: Governor Newsom signs SB 53, advancing California’s world-leading artificial intelligence industry
+    publisher: Office of the Governor of California
+items:
+  - date: 2025-07-01
+    ko: 미 상원, 주 정부의 AI 규제를 10년 동안 막는 조항을 99 대 1로 예산 법안에서 뺐다.
+    en: "The U.S. Senate votes 99 to 1 to strip a 10-year ban on state AI regulation from the budget bill."
+    glyph: 99-1
+    sources:
+      - url: https://www.commerce.senate.gov/2025/7/senate-strikes-ai-moratorium-from-budget-reconciliation-bill-in-overwhelming-99-1-vote/
+        title: Senate Strikes AI Moratorium from Budget Reconciliation Bill in Overwhelming 99-1 Vote
+        publisher: U.S. Senate Committee on Commerce, Science, and Transportation
+  - date: 2025-07-23
+    ko: 백악관, AI 행동계획 발표. 데이터센터 인허가를 앞당기고 미국 AI 기술 수출을 늘리는 행정명령 등 3건에 서명했다.
+    en: "The White House releases America’s AI Action Plan, and the president signs three executive orders, including ones to speed data center permits and promote exports of American AI technology."
+    glyph: { ko: "행동\n계획", en: "PLAN" }
+    sources:
+      - url: https://datamatters.sidley.com/2025/07/30/the-trump-administrations-2025-ai-action-plan-winning-the-race-americas-ai-action-plan-and-related-executive-orders/
+        title: "The Trump Administration’s 2025 AI Action Plan – Winning the Race: America’s AI Action Plan – and Related Executive Orders"
+        publisher: Sidley Austin
+  - date: 2025-09-29
+    ko: 뉴섬 주지사, SB 1047을 거부한 지 1년 만에 SB 53에 서명. 프런티어 AI 개발사가 안전 체계를 공개하고 중대 사고를 보고하게 했다.
+    en: "A year after vetoing SB 1047, Governor Newsom signs SB 53, requiring frontier AI developers to publish safety frameworks and report critical safety incidents."
+    glyph: SB 53
+  - date: 2025-12-11
+    ko: 트럼프 대통령, 주 AI 법에 소송으로 맞설 전담팀을 두고 그런 주의 연방 광대역 보조금 일부를 끊을 수 있게 하는 행정명령에 서명.
+    en: "President Trump signs an executive order that sets up a task force to challenge state AI laws in court and allows some federal broadband funds to be withheld from states with such laws."
+    glyph: { ko: "소송팀", en: "TASK\nFORCE" }
+ko:
+  kicker: 주 법
+  title: 주 법과 연방
+  lede: 의회가 주 AI 법을 막지 않기로 하자 캘리포니아는 프런티어 AI 안전법을 만들었다. 연말 대통령은 행정명령으로 주 법에 맞섰다.
+en:
+  kicker: "State Law"
+  title: "The States and Washington"
+  lede: "After Congress declined to block state AI laws, California passed a frontier AI safety law. At the end of the year, the president moved against state laws by executive order."

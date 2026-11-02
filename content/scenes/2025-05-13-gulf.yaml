@@ -1,0 +1,45 @@
+id: 2025-05-gulf
+date: 2025-05-13
+span:
+  from: 2025-05
+added: 2026-11-02
+topics: [compute, rules]
+print:
+  pattern: d
+  motif: rays
+  glyph: 5GW
+sources:
+  - url: https://www.bis.gov/press-release/department-commerce-rescinds-biden-era-artificial-intelligence-diffusion-rule-strengthens-chip-related
+    title: Department of Commerce Announces Rescission of Biden-Era Artificial Intelligence Diffusion Rule, Strengthens Chip-Related Export Controls
+    publisher: Bureau of Industry and Security
+  - url: https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning
+    title: Saudi Arabia and NVIDIA to Build AI Factories to Power Next Wave of Intelligence for the Age of Reasoning
+    publisher: NVIDIA
+  - url: https://group.softbank/en/news/press/20250522
+    title: Global Tech Alliance Launches Stargate UAE
+    publisher: SoftBank Group
+items:
+  - date: 2025-05-13
+    ko: 미 상무부, 나라를 등급으로 나눠 AI 칩 수출을 제한하려던 바이든 정부의 AI 확산 규칙을 시행 직전에 철회. 화웨이 어센드 칩을 쓰면 미국 수출 통제 위반이 될 수 있다는 지침도 냈다.
+    en: "The Commerce Department rescinds the Biden administration’s AI Diffusion Rule, which would have sorted countries into tiers for AI chip exports, just before it was to take effect, and warns that using Huawei Ascend chips may violate U.S. export controls."
+    glyph: { ko: "철회", en: "REVOKED" }
+  - date: 2025-05-13
+    ko: 트럼프 대통령의 리야드 방문 중 엔비디아가 사우디 국부펀드 소유의 휴메인과 계약. GB300 1만 8,000개 규모 슈퍼컴퓨터로 시작해 5년간 GPU 수십만 개를 공급한다.
+    en: "During President Trump’s visit to Riyadh, NVIDIA agrees to supply HUMAIN, owned by Saudi Arabia’s Public Investment Fund, starting with an 18,000-chip GB300 supercomputer and adding several hundred thousand GPUs over five years."
+    glyph: "18,000"
+    sources:
+      - url: https://www.thenationalnews.com/future/technology/2025/05/14/humain-ai-nvidia-amd-aws
+        title: Nvidia, AWS and AMD announce Humain AI partnerships on Trump’s Saudi visit
+        publisher: The National
+  - date: 2025-05-22
+    ko: G42·OpenAI·오라클·엔비디아·소프트뱅크·시스코, 아부다비에 스타게이트 UAE 발표. 5GW 규모 AI 캠퍼스 안의 1GW 클러스터로, 첫 200MW는 2026년 가동이 목표다.
+    en: "G42, OpenAI, Oracle, NVIDIA, SoftBank and Cisco announce Stargate UAE in Abu Dhabi, a 1 GW cluster within a planned 5 GW AI campus, with the first 200 MW due in 2026."
+    glyph: 5GW
+ko:
+  kicker: 걸프
+  title: 걸프로 간 칩
+  lede: 미국 정부가 AI 칩을 나라별로 묶어 두려던 규칙을 거두자, 대통령의 중동 순방에 맞춰 사우디와 UAE로 가는 대형 칩 계약이 잇달아 나왔다.
+en:
+  kicker: "The Gulf"
+  title: "Chips Head to the Gulf"
+  lede: "Once Washington dropped a rule that would have rationed AI chips by country, large chip deals for Saudi Arabia and the UAE followed during the president’s tour of the Middle East."

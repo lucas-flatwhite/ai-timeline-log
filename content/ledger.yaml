@@ -146,6 +146,59 @@
     - name: V4.1 Flash 1017
       date: 2026-10
 - lab:
+    ko: Alibaba · Qwen
+    en: "Alibaba · Qwen"
+  models:
+    # https://technode.com/2023/04/11/alibaba-to-embed-chatgpt-like-language-model-into-all-of-its-products/ (통의천문, 기업 고객 시험 공개)
+    - name: Tongyi Qianwen
+      date: 2023-04
+    # https://qwenlm.github.io/blog/qwen2/
+    - name: Qwen2
+      date: 2024-06
+    # https://qwenlm.github.io/blog/qwen2.5/
+    - name: Qwen2.5
+      date: 2024-09
+    # https://qwenlm.github.io/blog/qwen3/
+    - name: Qwen3
+      date: 2025-04
+    # https://www.alibabagroup.com/en-US/document-1911884625546838016 (Apsara 2025)
+    - name: Qwen3-Max
+      date: 2025-09
+    # https://huggingface.co/Qwen/Qwen3.5-397B-A17B (2026-02-16)
+    - name: Qwen3.5
+      date: 2026-02
+    # https://huggingface.co/Qwen/Qwen3.6-35B-A3B (Qwen3.6-Plus 2026-04-02)
+    - name: Qwen3.6
+      date: 2026-04
+    # https://rits.shanghai.nyu.edu/ai/qwen3-8-max-preview-alibabas-2-4t-parameter-bid-for-the-frontier/ (2026-07-19 발표, 8월 가중치 공개)
+    - name: Qwen3.8
+      date: 2026-07
+- lab:
+    ko: Moonshot AI
+    en: "Moonshot AI"
+  models:
+    # https://www.scmp.com/tech/big-tech/article/3256109/alibaba-backed-moonshot-ai-claims-breakthrough-expanded-chinese-character-prompt-kimi-chatbot (2023년 10월 Kimi Chat 출시)
+    - name: Kimi
+      date: 2023-10
+    # https://huggingface.co/moonshotai/Kimi-K2-Instruct
+    - name: Kimi K2
+      date: 2025-07
+    # https://huggingface.co/moonshotai/Kimi-K2-Thinking
+    - name: Kimi K2 Thinking
+      date: 2025-11
+    # https://huggingface.co/moonshotai/Kimi-K2.5 (2026-01-27)
+    - name: Kimi K2.5
+      date: 2026-01
+    # https://forum.moonshot.ai/t/meet-kimi-k2-6-advancing-open-source-coding/369 (2026-04-21)
+    - name: Kimi K2.6
+      date: 2026-04
+    # https://huggingface.co/moonshotai/Kimi-K3 (API 2026-07-16, 가중치 2026-07-27)
+    - name: Kimi K3
+      date: 2026-07
+    # https://openrouter.ai/moonshotai/kimi-k3.1-pro (2026-10-23)
+    - name: Kimi K3.1 Pro
+      date: 2026-10
+- lab:
     ko: Mistral AI
     en: "Mistral AI"
   models:

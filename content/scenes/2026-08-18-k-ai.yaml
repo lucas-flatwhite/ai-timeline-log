@@ -1,0 +1,58 @@
+id: 2026-08-k-ai
+date: 2026-08-18
+span:
+  from: 2025-08
+  to: 2026-08
+added: 2026-11-02
+topics: [korea, models]
+print:
+  pattern: d
+  motif: rise
+  glyph: K-AI
+sources:
+  - url: https://www.korea.kr/briefing/policyBriefingView.do?newsId=156774781
+    title: 독자 AI 파운데이션모델 프로젝트 2차 단계평가 결과
+    publisher: 대한민국 정책브리핑(과학기술정보통신부)
+  - url: https://www.newsis.com/view/NISX20250804_0003277653
+    title: 네이버·SKT·LG·엔씨AI·업스테이지, ‘K-AI 기업’ 문패 단다(종합)
+    publisher: 뉴시스
+items:
+  - date: 2025-08-04
+    ko: 과학기술정보통신부, 한국 자체 AI 기반 모델을 만들 정예팀 5곳으로 네이버클라우드·SK텔레콤·LG AI연구원·NC AI·업스테이지를 뽑았다.
+    en: "The Ministry of Science and ICT picks five teams to build Korea’s own foundation models: NAVER Cloud, SK Telecom, LG AI Research, NC AI and Upstage."
+    glyph: "5"
+  - date: 2026-01-15
+    ko: 1차 평가에서 네이버클라우드와 NC AI가 떨어졌다.
+    en: "NAVER Cloud and NC AI are eliminated in the first evaluation."
+    glyph: { ko: "탈락", en: "OUT" }
+    sources:
+      - url: https://www.newsis.com/view/NISX20260115_0003478404
+        title: LG·SKT·업스테이지 K-AI 1차 평가 통과…네이버·엔씨 탈락(종합)
+        publisher: 뉴시스
+  - date: 2026-02-20
+    ko: 모티프테크놀로지스가 추가 정예팀으로 뽑혀 네 팀이 경쟁하게 됐다.
+    en: "Motif Technologies is added as a fourth team."
+    glyph: { ko: "모티프", en: "MOTIF" }
+    sources:
+      - url: https://www.kukinews.com/article/view/kuk202602200203
+        title: 모티프테크놀로지스, ‘독파모’ 추가 정예팀 선정… LG·SKT·업스테이지와 4파전
+        publisher: 쿠키뉴스
+  - date: 2026-08-18
+    ko: 2차 평가에서 SK텔레콤·LG AI연구원·업스테이지가 통과하고 모티프가 떨어졌다. 모티프는 벤치마크 점수가 가장 높았지만 종합 점수에서 밀렸다.
+    en: "SK Telecom, LG AI Research and Upstage pass the second evaluation while Motif is eliminated, despite posting the highest benchmark score."
+    glyph: "3"
+    sources:
+      - url: https://www.fnnews.com/news/202608181111487214
+        title: ‘독자 AI’ 2차 평가, SK·LG·업스테이지 통과…모티프 탈락(종합)
+        publisher: 파이낸셜뉴스
+      - url: https://wowtale.net/2026/08/28/263583/
+        title: ‘독파모’ 2차 평가 세부 결과 공개…SKT 종합 1위-벤치마크는 모티프 1위
+        publisher: 와우테일
+ko:
+  kicker: 한국
+  title: 국가대표 AI 선발전
+  lede: 정부가 GPU와 데이터를 대며 한국 자체 AI 모델을 만들 팀을 골랐다. 반년마다 평가해 팀을 줄여 가는 방식이었다.
+en:
+  kicker: "Korea"
+  title: "Picking Korea’s National AI Team"
+  lede: "The government supplied GPUs and data to teams building Korea’s own AI models, and narrowed the field with an evaluation every six months."
