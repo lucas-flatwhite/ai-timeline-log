@@ -47,6 +47,8 @@ function parseArgs(): { edition: number; locales: Locale[]; out: string; check: 
 async function open(browser: Browser, ed: Edition, locale: Locale, scale: number, qr: string, n?: number) {
   const page = await browser.newPage({ viewport: { width: 1800, height: 2400 }, deviceScaleFactor: scale });
   await page.clock.setFixedTime(new Date(`${ed.date}T12:00:00+09:00`));
+  /* 표지 일수 판은 누르지 않으면 20초마다 저절로 돈다(wall.ts). 찍는 동안 돌지 않도록 동작 줄이기로 연다 */
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(SITE + PAGE[locale]);
   await page.waitForFunction(() => document.documentElement.dataset.ready === '1', null, { timeout: 60_000 });
   await page.waitForFunction(() => [...document.querySelectorAll('.wall .box:not(.off)')].every(b => b.classList.contains('carved')), null, { timeout: 120_000 });
