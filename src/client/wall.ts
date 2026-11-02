@@ -38,10 +38,27 @@ function bindHighlight(): void {
   });
 }
 
+/* 표지 일수 판을 누르면 다시 찍는다. 판이 눌렸다 올라오고, 가장 깊이 눌린 순간 시드를 바꿔 새로 새긴다(새기기는 한 번).
+   동작 줄이기 설정이면 움직이지 않고 다시 새기기만 한다 */
+const PRESS_AT = 130;
+function bindCover(j: Job): void {
+  j.cv.addEventListener('click', () => {
+    if (j.cv.classList.contains('press')) return;
+    j.spec = { ...j.spec, seed: j.spec.seed + 1 };
+    const recarve = () => { try { carveTile(j.cv, j.spec, j.cv.clientWidth, j.cv.clientHeight); } catch (e) { console.error(e); } };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { recarve(); return; }
+    j.cv.classList.add('press');
+    setTimeout(recarve, PRESS_AT);
+    j.cv.addEventListener('animationend', () => j.cv.classList.remove('press'), { once: true });
+  });
+}
+
 /* 화면 가까이(위아래 300px) 온 판만 새긴다. 한 프레임에 8ms 안에서, 지금 화면 안의 판부터 */
 export function initWall(): { ready: Promise<void> } {
   bindHighlight();
   const all = jobs(), byEl = new Map(all.map(j => [j.el as Element, j]));
+  const cover = all.find(j => j.spec.kind === 'days');
+  if (cover) bindCover(cover);
   const first = new Set(all.filter(j => onScreen(j.el)));
   let done!: () => void;
   const ready = new Promise<void>(r => { done = r; });

@@ -134,6 +134,31 @@ for (const path of ['./ko/', './']) {
       const days = (await page.evaluate(() => (window as unknown as { __drawn: string[] }).__drawn)).filter(t => /^\d,\d{3}( days|일)$/.test(t));
       expect(days).toEqual([daysText('1,462')]);
     });
+
+    test('pressing the cover reprints it once with a new grain', async ({ page }) => {
+      await page.goto(path);
+      await ready(page);
+      const cv = page.locator('.cover canvas.cv[data-kind="days"]');
+      await expect(cv).toHaveClass(/\bcarved\b/);
+      const before = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
+      await cv.click();
+      await expect(cv).toHaveClass(/\bpress\b/);
+      await expect(cv).not.toHaveClass(/\bpress\b/);   // 짧게 눌렸다가 돌아온다
+      expect(await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).not.toBe(before);
+      await expect(cv).toHaveAttribute('aria-label', /\d/);   // 읽는 글은 그대로
+    });
+
+    test('with reduced motion the cover reprints without moving', async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.goto(path);
+      await ready(page);
+      const cv = page.locator('.cover canvas.cv[data-kind="days"]');
+      await expect(cv).toHaveClass(/\bcarved\b/);
+      const before = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
+      await cv.click();
+      await expect(cv).not.toHaveClass(/\bpress\b/);
+      expect(await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).not.toBe(before);
+    });
   });
 
   test.describe(`${lang}: picture boxes`, () => {

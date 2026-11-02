@@ -41,6 +41,11 @@ html:not(.js) .tp{display:none}
 .cover .since button{font:inherit;color:var(--paper);background:var(--ink);border:0;padding:4px 8px;cursor:pointer}
 .cover .since button[aria-pressed="true"]{outline:2px solid var(--ink);outline-offset:1px}
 .cover .cv{grid-area:1/1;width:100%;height:100%;display:block;background:var(--wood)}
+/* 표지 판을 누르면 다시 찍는다(client/wall.ts). 눌렸다 올라오는 동안 한 번 새로 새긴다 */
+html.js .cover .cv{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.cover .cv.press{animation:press .45s cubic-bezier(.3,.7,.4,1)}
+@keyframes press{0%{transform:none}29%{transform:translateY(3px) scale(.965);filter:brightness(1.7)}100%{transform:none;filter:none}}
+@media (prefers-reduced-motion:reduce){.cover .cv.press{animation:none}}
 .cover .g{grid-area:1/1;place-self:center;font:400 40px/1 var(--plate);white-space:nowrap}
 .cover.carved .g,.cover .cv.carved~.g{visibility:hidden}
 .cover .lede{margin:0;border:2px solid var(--ink);padding:6px 8px;display:flex;align-items:center;overflow:hidden;font-size:12.5px;line-height:1.45;color:var(--ink-2)}
