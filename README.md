@@ -1,29 +1,39 @@
-# ai-timeline-log
-An ongoing log of the moments that shaped generative AI, since ChatGPT.
+# AI Timeline Log
 
-## 개발
+English | [한국어](README.ko.md)
 
-Node 22.22 이상이 필요합니다.
+An ongoing log of the moments that shaped generative AI, starting with ChatGPT's launch on November 30, 2022. It keeps events and their sources in one place, so you can follow how things unfolded without piecing together old announcements.
 
-```bash
+[Read the timeline](https://www.lucasflatwhite.com/ai-timeline-log/) · [한국어로 읽기](https://www.lucasflatwhite.com/ai-timeline-log/ko/)
+
+## What you'll find
+
+- A wall of black-and-white woodcut boxes, newest first. Open a box for the story and its sources, or follow a topic across scenes.
+- English and Korean editions, written together from the same facts. Factual corrections stay recorded with each scene.
+- Printable edition posters in [Releases](https://github.com/lucas-flatwhite/ai-timeline-log/releases), plus JSON, RSS and plain-text exports for reading elsewhere.
+
+Events are chosen for how they changed the course of generative AI. Dates and claims are checked against company announcements, papers and other primary sources. Found a mistake or a missing event? [Open an issue](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose) with a source.
+
+## Run locally
+
+Built with Astro and TypeScript, with scenes stored as YAML. Requires Node.js 22.22 or later.
+
+```sh
 npm install
-npx playwright install chromium webkit   # 브라우저 테스트용, 처음 한 번
-npm run dev        # http://localhost:4321/ai-timeline-log/
-npm test           # 단위 테스트
-npm run test:e2e   # 브라우저 테스트, Chromium과 WebKit(Safari 엔진) 모두 (빌드 후 미리보기 서버로 실행)
-npm run check      # astro check (판 글꼴 목록을 먼저 만든다)
-npm run budget     # 용량 예산 검사: 언어별 판 글꼴 40KB, 클라이언트 JS 30KB (빌드 뒤에 실행)
-npm run favicon    # 탭·홈 화면 아이콘을 public/에 다시 찍기 (색·서체를 바꿨을 때)
-npm run poster -- --edition 4 --locale ko --out out   # 판 포스터 미리보기 (미리보기 서버가 떠 있어야 한다)
+npm run dev          # http://localhost:4321/ai-timeline-log/
 ```
 
-영어판이 기본 주소(`/ai-timeline-log/`)에, 한국어판이 `/ai-timeline-log/ko/`에 있습니다. 기본 주소로 들어오면 브라우저의 첫 언어가 한국어일 때 한국어판으로, 그 밖에는 영어판으로 열립니다. 위 막대의 KO·EN으로 고른 언어는 이 브라우저에 기억되어 브라우저 언어보다 앞섭니다.
+```sh
+npm run check
+npm test
+npm run build
+npm run budget
+npx playwright install chromium webkit
+npm run test:e2e
+```
 
-사이트는 빌드 때 연표를 `timeline.json`, `llms.txt`, `llms-full.txt`, `feed.xml`로도 내보냅니다. 판 포스터는 `edition-N` 태그를 올리면 GitHub Actions가 찍어 Releases에 올립니다.
+English lives at `/ai-timeline-log/`, Korean at `/ai-timeline-log/ko/`. The site remembers your language choice. GitHub Actions runs the checks and browser tests on PRs. See [CLAUDE.md](CLAUDE.md) for content editing, corrections and poster commands.
 
-PR마다 GitHub Actions(`.github/workflows/check.yml`)가 `check`, `test`, `build`, `budget`과 Chromium 브라우저 테스트를 돌립니다. 장면을 추가하거나 고치는 절차는 `CLAUDE.md`에 있습니다.
+## License
 
-## 라이선스
-
-- 코드: MIT ([`LICENSE`](LICENSE))
-- 내용(`content/`의 장면, 연도·시기 글, 영어·한국어 텍스트): CC BY 4.0 ([`content/LICENSE`](content/LICENSE))
+Code: [MIT](LICENSE). Timeline content in `content/`: [CC BY 4.0](content/LICENSE).
