@@ -267,10 +267,17 @@ for (const path of ['./ko/', './']) {
     });
 
     test('sources: the event\'s own, else the scene\'s', async ({ page }) => {
-      // 소라 장면에는 사건 출처가 없어서 시험용 출처를 넣는다
+      // 시험용으로 한 사건에는 출처를 넣고, 첫 사건(20251211)의 출처는 지워서 장면 출처를 빌려 오게 한다
       const addr = '2026-03-sora-shutdown~20260924';
-      await rewrite(page, /(id="2026-03-sora-shutdown"[^]*?)(<p class="src")/,
-        `$1<p class="src" data-for="${addr}" data-label="${t.sources} · 20260924"><a href="https://example.org/api">api</a></p>$2`);
+      await page.route(/\/ai-timeline-log\/(ko\/)?(#.*)?$/, async r => {
+        const res = await r.fetch(), html = await res.text();
+        const body = html
+          .replace(/<p class="src" data-for="2026-03-sora-shutdown~20(251211|260924)"[^>]*>.*?<\/p>/g, '')
+          .replace(/(id="2026-03-sora-shutdown"[^]*?)(<p class="src")/,
+            `$1<p class="src" data-for="${addr}" data-label="${t.sources} · 20260924"><a href="https://example.org/api">api</a></p>$2`);
+        if (body === html) throw new Error('fixture: sora scene not found');
+        await r.fulfill({ response: res, body });
+      });
       await visit(page, path, '#' + addr);
       await expect(page.locator('#detail .dsrc a')).toHaveText(['api']);
       await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', `${t.sources} · 20260924`);
