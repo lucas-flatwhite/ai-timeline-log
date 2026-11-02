@@ -88,6 +88,15 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('header.top a.report')).toHaveAttribute('href', 'https://github.com/lucas-flatwhite/ai-timeline-log/issues');
     });
 
+    test('the page ends with the author\'s site and X', async ({ page }) => {
+      await page.goto(path);
+      const by = page.locator('.outro .foot .by a');
+      await expect(by).toHaveText(['lucasflatwhite.com', 'X @lucas_flatwhite']);
+      await expect(by.nth(0)).toHaveAttribute('href', 'https://lucasflatwhite.com/');
+      await expect(by.nth(1)).toHaveAttribute('href', 'https://x.com/lucas_flatwhite');
+      await expect(by.nth(1)).toHaveAttribute('target', '_blank');
+    });
+
     test('no external font service', async ({ page }) => {
       await page.goto(path);
       expect(await page.content()).not.toContain('fonts.googleapis.com');

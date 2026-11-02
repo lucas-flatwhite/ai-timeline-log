@@ -42,6 +42,10 @@ const o = view.outro;
     </section>}
 
     <p class="end"><span>{o.end[0]}</span><span>{o.end[1]}</span></p>
-    <LangSwitch view={view} />
+    {/* 맨 아래: 만든 사람의 사이트와 X, 오른쪽에 언어 */}
+    <div class="foot">
+      <p class="by"><a href="https://lucasflatwhite.com/">lucasflatwhite.com</a><a href="https://x.com/lucas_flatwhite" target="_blank" rel="noopener">X @lucas_flatwhite</a></p>
+      <LangSwitch view={view} />
+    </div>
   </div>
 </section>
