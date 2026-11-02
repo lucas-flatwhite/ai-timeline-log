@@ -21,6 +21,10 @@ items:
     ko: EU AI Act 발효. 금지 규정과 범용 AI 규정, 고위험 의무가 해를 나눠 차례로 적용되게 했다.
     en: "The EU AI Act enters into force, with its bans, general-purpose AI rules and high-risk obligations set to apply in stages."
     glyph: { ko: "발효", en: "IN FORCE" }
+    sources:
+      - url: https://commission.europa.eu/news-and-media/news/ai-act-enters-force-2024-08-01_en
+        title: AI Act enters into force
+        publisher: European Commission
   - date: 2025-08-02
     ko: 범용 AI 모델 의무 적용 시작. 직전 메타는 자율 행동강령에 서명하지 않겠다고 했고, OpenAI·Anthropic·구글은 서명하기로 했다.
     en: "Obligations for general-purpose AI models begin to apply, after Meta declines to sign the voluntary code of practice that OpenAI, Anthropic and Google agree to sign."
@@ -44,6 +48,10 @@ items:
     ko: 집행위원회와 각국 당국이 AI Act 집행을 시작. 챗봇은 상대가 AI임을 알려야 하고 딥페이크에는 표시를 달아야 한다.
     en: "The European Commission and national authorities begin enforcing the AI Act, which requires chatbots to tell users they are talking to AI and deepfakes to be labeled."
     glyph: { ko: "집행", en: "ENFORCE" }
+    sources:
+      - url: https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august
+        title: Commission starts enforcing AI Act rules and new transparency requirements on 2 August
+        publisher: European Commission
 ko:
   kicker: EU
   title: AI Act, 집행이 시작되다

@@ -4,6 +4,7 @@ span:
   from: 2025-12
   to: 2026-06
 added: 2026-11-02
+updated: 2026-11-02
 topics: [agents, rules]
 print:
   pattern: c
@@ -24,18 +25,34 @@ items:
     ko: 메타, 중국에서 창업해 싱가포르로 본사를 옮긴 AI 에이전트 회사 마누스를 인수한다고 발표. 인수가는 20억 달러 이상으로 보도됐다.
     en: "Meta agrees to buy Manus, an AI agent company founded in China that moved its headquarters to Singapore, in a deal reported at more than $2 billion."
     glyph: $2B
+    sources:
+      - url: https://www.thestar.com.my/tech/tech-news/2025/12/30/meta-to-acquire-startup-manus-adding-agents-to-bolster-ai-bet
+        title: Meta to acquire startup Manus, adding agents to bolster AI bet
+        publisher: The Star (Reuters)
   - date: 2026-01-08
     ko: 중국 상무부, 이 인수가 수출 통제와 기술 수출입, 해외 투자 규정에 맞는지 심사하겠다고 밝혔다.
     en: "China’s Ministry of Commerce says it will review whether the deal complies with its rules on export controls, technology trade and outbound investment."
     glyph: { ko: "심사", en: "REVIEW" }
+    sources:
+      - url: https://www.caixinglobal.com/2026-01-08/china-to-review-metas-acquisition-of-ai-startup-manus-102401786.html
+        title: China to Review Meta’s Acquisition of AI Startup Manus
+        publisher: Caixin Global
   - date: 2026-04-27
     ko: 중국 국가발전개혁위원회, 외국인 투자 안보 심사를 거쳐 인수를 철회하라고 명령. 메타는 법을 모두 지켰다고 했다.
     en: "China’s National Development and Reform Commission orders the deal withdrawn after a foreign investment security review, while Meta says the transaction fully complied with the law."
     glyph: { ko: "철회", en: "BLOCKED" }
+    sources:
+      - url: https://www.cnbc.com/2026/04/27/meta-manus-china-blocks-acquisition-ai-startup.html
+        title: China blocks Meta’s $2 billion takeover of AI startup Manus
+        publisher: CNBC
   - date: 2026-06-12
     ko: 메타, 마누스를 내부 시스템에서 떼어 내며 인수를 되돌리기 시작.
     en: "Meta begins unwinding the deal, cutting Manus off from its internal systems."
     glyph: { ko: "분리", en: "UNWOUND" }
+    sources:
+      - url: https://www.digitimes.com/news/a20260612PD221.html
+        title: Meta unwinds Manus AI deal after China order, signaling tighter global scrutiny
+        publisher: DIGITIMES
 ko:
   kicker: 중국
   title: 되돌려진 인수

@@ -4,6 +4,7 @@ span:
   from: 2025-06
   to: 2025-08
 added: 2026-10-05
+updated: 2026-11-02
 topics: [models]
 print:
   pattern: c
@@ -24,20 +25,39 @@ items:
     ko: 메타, 스케일AI에 143억 달러를 넣고 알렉산더 왕을 영입해 초지능 연구소 출범.
     en: "Meta puts $14.3 billion into Scale AI, hires Alexandr Wang and launches a superintelligence lab."
     glyph: $14.3B
+    sources:
+      - url: https://fortune.com/2025/06/13/meta-scale-ai-alexandr-wang-superintelligence-team/
+        title: Meta ramps up AI efforts by paying $14.3 billion for 49% of Scale and hiring its CEO for ‘superintelligence’ team
+        publisher: Fortune (AP)
+      - url: https://fortune.com/2025/06/30/mark-zuckerberg-overhauled-meta-ai-org-superintelligence-alexandr-wang/
+        title: Mark Zuckerberg overhauled Meta’s entire AI org in a risky, multibillion-dollar bet on ‘superintelligence’
+        publisher: Fortune
   - date: 2025-07-19
     ko: OpenAI 실험 모델과 구글 제미나이 딥싱크, 국제수학올림피아드 금메달 수준.
     en: "An experimental OpenAI model and Google’s Gemini Deep Think reach gold-medal level at the International Mathematical Olympiad."
     glyph: { ko: "금메달", en: "GOLD" }
     pic: medal
+    sources:
+      - url: https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/
+        title: Advanced version of Gemini with Deep Think officially achieves gold-medal standard at the International Mathematical Olympiad
+        publisher: Google DeepMind
   - date: 2025-08-07
     ko: GPT-5 출시. 이전 모델을 없앴다가 사용자 반발로 GPT-4o를 되살렸다.
     en: "GPT-5 launches, and OpenAI, which had removed its earlier models, brings GPT-4o back after users push back."
     glyph: { ko: "반발", en: "OUTCRY" }
+    sources:
+      - url: https://openai.com/index/introducing-gpt-5/
+        title: Introducing GPT-5
+        publisher: OpenAI
   - date: 2025-08-26
     ko: 구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍.
     en: "Google releases Nano Banana (Gemini 2.5 Flash Image), setting off a photo-editing craze."
     glyph: { ko: "바나나", en: "BANANA" }
     pic: banana
+    sources:
+      - url: https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/
+        title: Introducing Gemini 2.5 Flash Image, our state-of-the-art image model
+        publisher: Google for Developers
 ko:
   kicker: 여름
   title: 인재 전쟁과 GPT-5

@@ -24,14 +24,26 @@ items:
     ko: OpenAI, 영리 자회사를 공익법인(PBC)으로 바꾸되 비영리가 계속 지배하겠다고 발표. 비영리의 통제를 줄이려던 계획을 거뒀다.
     en: "OpenAI says its for-profit arm will become a public benefit corporation but stay under the nonprofit’s control, dropping a plan to loosen that control."
     glyph: { ko: "통제", en: "CONTROL" }
+    sources:
+      - url: https://www.theregister.com/2025/05/05/openai_keep_nonprofit_in_charge/
+        title: OpenAI caves to pressure, keeps nonprofit in charge
+        publisher: The Register
   - date: 2025-10-28
     ko: 구조 개편 완료. 영리 법인은 OpenAI Group PBC가 되고 비영리 OpenAI 재단이 지분 약 26%(약 1,300억 달러)를 갖는다. 캘리포니아와 델라웨어 법무장관은 반대하지 않기로 했다.
     en: "OpenAI completes its recapitalization: the for-profit becomes OpenAI Group PBC, the nonprofit OpenAI Foundation holds about 26%, worth about $130 billion, and the attorneys general of California and Delaware agree not to oppose it."
     glyph: 26%
+    sources:
+      - url: https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/
+        title: OpenAI simplifies corporate structure for easier investment
+        publisher: The Register
   - date: 2025-10-28
     ko: 마이크로소프트, 지분 약 27%(약 1,350억 달러)를 갖는 새 계약. OpenAI가 AGI 도달을 선언하면 독립 전문가 패널이 검증하고, OpenAI는 Azure를 2,500억 달러어치 더 쓰기로 했다.
     en: "Microsoft signs a new agreement giving it about 27%, worth about $135 billion, under which any OpenAI declaration of AGI will be verified by an independent expert panel and OpenAI commits to $250 billion more in Azure services."
     glyph: 27%
+    sources:
+      - url: https://fortune.com/2025/10/28/openai-for-profit-restructuring-microsoft-stake/
+        title: OpenAI completes for-profit restructuring and grants Microsoft a 27% stake
+        publisher: Fortune
 ko:
   kicker: 지배구조
   title: 비영리가 쥔 영리 회사

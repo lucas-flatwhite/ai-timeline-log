@@ -25,14 +25,26 @@ items:
     en: "Constellation signs a 20-year power purchase agreement with Microsoft to restart Three Mile Island Unit 1, shut in 2019, and bring about 835 MW back online by 2028."
     glyph: 835MW
     pic: bolt
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm
+        title: Constellation to Launch Crane Clean Energy Center, Restoring Jobs and Carbon-Free Power to the Grid
+        publisher: Constellation Energy (Form 8-K, Exhibit 99.1)
   - date: 2024-10-14
     ko: 구글, 카이로스 파워와 소형 원자로 여러 기에서 2035년까지 500MW를 받기로 계약. 첫 원자로는 2030년이 목표다.
     en: "Google signs a deal with Kairos Power to buy 500 MW from a fleet of small modular reactors by 2035, with the first planned for 2030."
     glyph: 500MW
+    sources:
+      - url: https://kairospower.com/updates/google-and-kairos-power-partner-to-deploy-500-mw-of-clean-electricity-generation
+        title: Google and Kairos Power Partner to Deploy 500 MW of Clean Electricity Generation
+        publisher: Kairos Power
   - date: 2024-10-16
     ko: 아마존, 소형 원자로 회사 X-energy에 투자하고 2039년까지 5GW가 넘는 원전을 짓는다는 목표를 내놓았다.
     en: "Amazon invests in small modular reactor developer X-energy and sets a goal of bringing more than 5 GW of nuclear power online by 2039."
     glyph: 5GW
+    sources:
+      - url: https://www.utilitydive.com/news/amazon-small-modular-reactor-deals-nuclear-dominion-x-energy-energy-northwest/730022/
+        title: Amazon announces small modular reactor deals with Dominion, X-energy, Energy Northwest
+        publisher: Utility Dive
 ko:
   kicker: 전력
   title: 원전을 찾는 데이터센터

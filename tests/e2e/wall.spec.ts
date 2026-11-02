@@ -135,29 +135,42 @@ for (const path of ['./ko/', './']) {
       expect(days).toEqual([daysText('1,462')]);
     });
 
-    test('pressing the cover reprints it once with a new grain', async ({ page }) => {
+    test('pressing the cover spins through the boxes and opens one', async ({ page }) => {
       await page.goto(path);
       await ready(page);
       const cv = page.locator('.cover canvas.cv[data-kind="days"]');
       await expect(cv).toHaveClass(/\bcarved\b/);
       const before = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
+      const y = await page.evaluate(() => scrollY);
       await cv.click();
-      await expect(cv).toHaveClass(/\bpress\b/);
-      await expect(cv).not.toHaveClass(/\bpress\b/);   // 짧게 눌렸다가 돌아온다
-      expect(await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).not.toBe(before);
+      // 돌아가는 동안 판이 계속 바뀐다
+      await page.waitForTimeout(150);
+      const a = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
+      await page.waitForTimeout(150);
+      const b = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
+      expect(a).not.toBe(before);
+      expect(b).not.toBe(a);
+      // 멈춘 판이 한 번 눌린 뒤 그 상자가 열린다
+      await expect(page.locator('#detail')).toHaveAttribute('open', '', { timeout: 8000 });
+      const addr = decodeURIComponent(new URL(page.url()).hash.slice(1));
+      await expect(page.locator(`.wall a.box[data-addr="${addr}"]`)).toHaveCount(1);
+      // 닫으면 일수 판으로 돌아오고, 그 상자로 내려가지 않는다
+      await page.keyboard.press('Escape');
+      await expect(page.locator('#detail')).not.toHaveAttribute('open', '');
+      expect(await page.evaluate(() => scrollY)).toBe(y);
+      await expect.poll(() => cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).not.toBe(b);
       await expect(cv).toHaveAttribute('aria-label', /\d/);   // 읽는 글은 그대로
     });
 
-    test('with reduced motion the cover reprints without moving', async ({ page }) => {
+    test('with reduced motion the cover opens a box without spinning', async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(path);
       await ready(page);
       const cv = page.locator('.cover canvas.cv[data-kind="days"]');
       await expect(cv).toHaveClass(/\bcarved\b/);
-      const before = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
       await cv.click();
+      await expect(page.locator('#detail')).toHaveAttribute('open', '');
       await expect(cv).not.toHaveClass(/\bpress\b/);
-      expect(await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).not.toBe(before);
     });
   });
 

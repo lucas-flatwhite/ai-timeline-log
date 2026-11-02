@@ -39,10 +39,18 @@ items:
     ko: 알리바바 클라우드, 모델 가격을 최대 97% 내렸다.
     en: "Alibaba Cloud cuts prices on its models by up to 97%."
     glyph: "-97%"
+    sources:
+      - url: https://technode.com/2024/05/22/price-war-in-chinas-ai-field-expanded-as-alibaba-cloud-and-baidu-have-drastically-reduced-model-prices/
+        title: Price war in China’s AI field expanded as Alibaba Cloud and Baidu have drastically reduced model prices
+        publisher: TechNode
   - date: 2024-05-21
     ko: 같은 날 바이두는 ERNIE Lite와 ERNIE Speed를 무료로 풀었다.
     en: "The same day, Baidu makes ERNIE Lite and ERNIE Speed free."
     glyph: { ko: "무료", en: "FREE" }
+    sources:
+      - url: https://technode.com/2024/05/22/price-war-in-chinas-ai-field-expanded-as-alibaba-cloud-and-baidu-have-drastically-reduced-model-prices/
+        title: Price war in China’s AI field expanded as Alibaba Cloud and Baidu have drastically reduced model prices
+        publisher: TechNode
 ko:
   kicker: 중국
   title: 가격 전쟁

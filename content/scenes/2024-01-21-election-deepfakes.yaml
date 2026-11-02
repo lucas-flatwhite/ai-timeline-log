@@ -41,10 +41,21 @@ items:
     ko: 미국 연방통신위원회(FCC), AI로 만든 목소리를 쓴 로보콜을 전화소비자보호법상 불법으로 규정.
     en: "The FCC rules that robocalls using AI-generated voices are illegal under the Telephone Consumer Protection Act."
     glyph: FCC
+    sources:
+      - url: https://www.nbcnews.com/tech/security/fcc-votes-unanimously-ban-unsolicited-ai-robocalls-rcna137950
+        title: FCC votes unanimously to ban unsolicited AI robocalls
+        publisher: NBC News
   - date: 2024-02-16
     ko: 뮌헨안보회의에서 20개 기업이 선거를 속이는 AI 콘텐츠에 함께 대응하겠다는 협약을 발표.
     en: "At the Munich Security Conference, 20 companies announce an accord to combat deceptive AI content in elections."
     glyph: "20"
+    sources:
+      - url: https://news.microsoft.com/source/2024/02/16/technology-industry-to-combat-deceptive-use-of-ai-in-2024-elections/
+        title: Technology industry to combat deceptive use of AI in 2024 elections
+        publisher: Microsoft
+      - url: https://securityconference.org/en/aielectionsaccord
+        title: AI Elections Accord
+        publisher: Munich Security Conference
 ko:
   kicker: 선거
   title: 선거의 해, 가짜 목소리

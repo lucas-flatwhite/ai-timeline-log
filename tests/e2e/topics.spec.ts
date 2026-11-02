@@ -11,7 +11,8 @@ async function boxCount(request: APIRequestContext, topic: string): Promise<numb
   const t = await (await request.get('timeline.json')).json() as { scenes: { topics: string[]; items: unknown[] }[] };
   return t.scenes.filter(s => s.topics.includes(topic)).reduce((n, s) => n + 1 + s.items.length, 0);
 }
-const onAddrs = (page: Page) => page.locator('.wall .box.on').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
+/* 강조된 사건 상자(앞뒤로 넘기는 곳) */
+const onAddrs = (page: Page) => page.locator('.wall .box.item.on').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
 
 test('menu highlights a topic', async ({ page, request }) => {
   await ready(page, './ko/');
@@ -23,14 +24,15 @@ test('menu highlights a topic', async ({ page, request }) => {
   await expect(page.locator('.wall .box.on')).toHaveCount(await boxCount(request, 'agents'));
   await expect(page).toHaveURL(/\?topic=agents$/);
   await expect(btn).toHaveAttribute('aria-expanded', 'false');
-  await expect(btn).toContainText('에이전트');
+  await expect(page.locator('#pickbar')).toBeVisible();
+  await expect(page.locator('#pickbar .pb-name')).toHaveText('에이전트');
   await expect(btn).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('topic from the address', async ({ page }) => {
   await ready(page, './ko/?topic=science');
   await expect(page.locator('.wall.pick')).toHaveCount(1);
-  await expect(page.locator('.top .tp-btn')).toContainText('과학과 수학');
+  await expect(page.locator('#pickbar .pb-name')).toHaveText('과학과 수학');
 });
 
 test('ignores an unknown topic', async ({ page }) => {
@@ -46,7 +48,7 @@ test('ignores an unknown topic', async ({ page }) => {
 test('arrows stay inside the topic', async ({ page }) => {
   await ready(page, './ko/?topic=korea');
   const allowed = new Set(await onAddrs(page));
-  await page.locator('.wall .box.on').first().click();
+  await page.locator('.wall .box.item.on').first().click();
   await expect(page.locator('#detail')).toBeVisible();
   const prev = page.locator('#detail .prev');
   const seen: string[] = [];
@@ -62,7 +64,7 @@ test('arrows stay inside the topic', async ({ page }) => {
 
 test('falls back to the full order', async ({ page }) => {
   await ready(page, './ko/?topic=korea');
-  const all = await page.locator('.wall .box:not(.year)').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
+  const all = await page.locator('.wall .box.item').evaluateAll(bs => bs.map(b => (b as HTMLElement).dataset.addr!));
   const allowed = new Set(await onAddrs(page));
   const outside = all.find(a => !allowed.has(a))!;
   await page.locator('.wall .box.on').first().click();
@@ -79,7 +81,8 @@ test('clearing removes the query and the highlight', async ({ page }) => {
   await page.locator('.tp-list button[data-topic=""]').click();
   await expect(page.locator('.wall.pick')).toHaveCount(0);
   expect(new URL(page.url()).search).toBe('');
-  await expect(page.locator('.top .tp-btn')).toHaveText('주제');
+  await expect(page.locator('.top .tp-btn')).toHaveText('찾기');
+  await expect(page.locator('#pickbar')).toBeHidden();
 });
 
 test('escape closes the menu and returns focus', async ({ page }) => {

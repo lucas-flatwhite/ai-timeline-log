@@ -29,10 +29,21 @@ items:
     ko: 알섭 판사, Anthropic이 책으로 Claude를 학습시킨 것은 공정 이용이라고 판단. 해적판 사이트에서 내려받은 책을 모아 둔 것은 공정 이용이 아니라고 봤다.
     en: "Judge William Alsup rules that Anthropic’s training of Claude on books was fair use, but that keeping pirated copies in a central library was not."
     glyph: { ko: "공정\n이용", en: "FAIR USE" }
+    sources:
+      - url: https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some
+        title: Two Northern District of California Judges Find Some Copying to Train Generative AI Is Fair Use
+        publisher: Mintz
   - date: 2025-06-25
     ko: 차브리아 판사, 메타 승소 판결. 다만 원고가 시장 피해를 입증하지 못했기 때문이라며, AI가 비슷한 작품을 쏟아내 시장을 잠식한다는 주장은 이길 수 있다고 했다.
     en: "Judge Vince Chhabria rules for Meta, but only because the authors failed to show market harm, noting that an argument that AI floods the market with competing works could win."
     glyph: { ko: "메타", en: "META" }
+    sources:
+      - url: https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98093-meta-wins-ai-copyright-case-but-judge-writes-roadmap-for-authors-revenge.html
+        title: Meta Wins AI Copyright Case, But Judge Writes Roadmap for Authors’ Revenge
+        publisher: Publishers Weekly
+      - url: https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some
+        title: Two Northern District of California Judges Find Some Copying to Train Generative AI Is Fair Use
+        publisher: Mintz
   - date: 2026-09-29
     ko: 제3순회항소법원, 로스 사건의 1심 판단을 유지. AI 학습의 공정 이용을 다룬 첫 연방항소법원 판결이다.
     en: "The Third Circuit upholds the ROSS ruling, the first federal appeals decision on fair use in AI training."

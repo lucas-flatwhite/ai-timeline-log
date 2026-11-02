@@ -24,6 +24,10 @@ items:
     ko: 알리바바, Qwen3 공개. Apache 2.0으로 푼 밀집 모델 6종부터 2,350억 파라미터 전문가 혼합 모델까지, 119개 언어와 방언을 다룬다.
     en: "Alibaba releases Qwen3, ranging from six dense models under Apache 2.0 to a 235-billion-parameter mixture-of-experts model, covering 119 languages and dialects."
     glyph: Qwen3
+    sources:
+      - url: https://qwenlm.github.io/blog/qwen3/
+        title: "Qwen3: Think Deeper, Act Faster"
+        publisher: Qwen
   - date: 2025-07-11
     ko: 문샷AI, 파라미터 1조 개의 Kimi K2 가중치 공개. 도구를 쓰는 에이전트 작업에 맞췄다.
     en: "Moonshot AI releases the weights of Kimi K2, a one-trillion-parameter model built for agentic tool use."

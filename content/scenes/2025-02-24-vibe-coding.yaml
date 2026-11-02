@@ -3,6 +3,7 @@ date: 2025-02-24
 span:
   from: 2025-02
 added: 2026-10-05
+updated: 2026-11-02
 topics: [agents]
 print:
   pattern: w
@@ -23,21 +24,37 @@ items:
     ko: 안드레이 카파시, ‘바이브 코딩’이라는 말을 처음 썼다.
     en: "Andrej Karpathy coins the term “vibe coding.”"
     glyph: { ko: "바이브", en: "COINED" }
+    sources:
+      - url: https://x.com/karpathy/status/1886192184808149383
+        title: There’s a new kind of coding I call “vibe coding”
+        publisher: Andrej Karpathy (X)
   - date: 2025-02-02
     ko: OpenAI, 웹을 뒤져 보고서를 쓰는 딥 리서치 공개.
     en: "OpenAI releases deep research, which searches the web and writes reports."
     glyph: { ko: "리서치", en: "DEEP" }
+    sources:
+      - url: https://openai.com/index/introducing-deep-research/
+        title: Introducing deep research
+        publisher: OpenAI
   - date: 2025-02-11
     ko: 파리 AI 행동 정상회의. 미국과 영국은 공동선언에 서명하지 않았다.
     en: "At the AI Action Summit in Paris, the United States and the United Kingdom do not sign the joint declaration."
     glyph: { ko: "파리", en: "PARIS" }
     pic: tower
+    sources:
+      - url: https://techcrunch.com/2025/02/11/as-us-and-uk-refuse-to-sign-ai-action-summit-statement-countries-fail-to-agree-on-the-basics/
+        title: As US and UK refuse to sign the Paris AI Action Summit statement, other countries commit to developing ‘open, inclusive, ethical’ AI
+        publisher: TechCrunch
   - date: 2025-02-24
     ko: Anthropic, Claude 3.7 Sonnet과 코딩 에이전트 Claude Code(연구 프리뷰) 공개.
     en: "Anthropic releases Claude 3.7 Sonnet and the coding agent Claude Code as a research preview."
     glyph: |-
       Claude
       Code
+    sources:
+      - url: https://www.anthropic.com/news/claude-3-7-sonnet
+        title: Claude 3.7 Sonnet and Claude Code
+        publisher: Anthropic
 ko:
   kicker: 코딩
   title: 바이브 코딩

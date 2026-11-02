@@ -31,7 +31,7 @@ for (const path of ['./ko/', './']) {
     test('topic menu and since line stay out of the way without JS', async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('.tp')).toBeHidden();
-      await expect(page.locator('.cover .since')).toBeHidden();
+      await expect(page.locator('.since')).toBeHidden();
       const box = page.locator('.wall a.box.item').first();
       await expect(box).toHaveAttribute('data-topics', /\S/);
       await expect(box).toHaveAttribute('data-added', /^\d{4}-\d{2}-\d{2}$/);

@@ -4,6 +4,7 @@ span:
   from: 2025-09
   to: 2025-10
 added: 2026-10-05
+updated: 2026-11-02
 topics: [compute]
 print:
   pattern: h
@@ -25,19 +26,35 @@ items:
     en: "Anthropic agrees to a $1.5 billion settlement in an authors’ class action, the largest ever in an AI copyright dispute."
     glyph: $1.5B
     pic: book
+    sources:
+      - url: https://www.nbcnews.com/tech/tech-news/anthropic-settlement-lawsuit-authors-rcna229422
+        title: AI company Anthropic agrees to pay $1.5B to settle lawsuit with authors
+        publisher: NBC News
   - date: 2025-09-22
     ko: 엔비디아, OpenAI에 최대 1,000억 달러 투자 의향(10GW). 같은 시기 오라클·AMD·브로드컴과도 대형 계약.
     en: "NVIDIA announces its intent to invest up to $100 billion in OpenAI (10 GW), and around the same time, OpenAI also signs large deals with Oracle, AMD and Broadcom."
     glyph: $100B
     pic: bolt
+    sources:
+      - url: https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems
+        title: OpenAI and NVIDIA Announce Strategic Partnership to Deploy 10 Gigawatts of NVIDIA Systems
+        publisher: NVIDIA
   - date: 2025-09-30
     ko: OpenAI, Sora 2와 영상 소셜 앱 Sora 출시.
     en: "OpenAI launches Sora 2 and Sora, a social video app."
     glyph: Sora 2
+    sources:
+      - url: https://openai.com/index/sora-2/
+        title: Sora 2 is here
+        publisher: OpenAI
   - date: 2025-10-29
     ko: 엔비디아, 세계 최초로 시가총액 5조 달러.
     en: "NVIDIA becomes the first company in the world worth $5 trillion."
     glyph: $5T
+    sources:
+      - url: https://www.entrepreneur.com/business-news/nvidia-becomes-the-first-to-pass-5-trillion-in-market-value/498929
+        title: Nvidia Becomes the First Company to Reach a $5 Trillion Market Value, Leaving Apple and Microsoft in the Dust
+        publisher: Entrepreneur
 ko:
   kicker: 계산력
   title: 기가와트 단위 계약

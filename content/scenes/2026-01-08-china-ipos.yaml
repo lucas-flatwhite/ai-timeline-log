@@ -24,10 +24,18 @@ items:
     ko: 미국 수출 통제 아래 중국산 GPU를 만드는 무어스레드, 상하이 과학혁신판에 상장. 첫날 주가가 468% 뛰었다.
     en: "Moore Threads, which makes GPUs in China under U.S. export controls, lists on Shanghai’s STAR Market and soars 468% on its first day."
     glyph: "+468%"
+    sources:
+      - url: https://en.jiemian.com/article/13724679.html
+        title: Moore Threads soars 468% in debut as China accelerates its GPU push
+        publisher: Jiemian
   - date: 2025-12-17
     ko: 또 다른 중국 GPU 회사 메타X, 상장 첫날 693% 오른 채 마감.
     en: "MetaX, another Chinese GPU maker, closes its first trading day up 693%."
     glyph: "+693%"
+    sources:
+      - url: https://www2.yicaiglobal.com/news/chinese-gpu-maker-metax-surges-nearly-700-on-trading-debut-in-shanghai
+        title: Chinese AI Chipmaker MetaX Skyrockets in Shanghai Stock Market Debut
+        publisher: Yicai Global
   - date: 2026-01-08
     ko: 즈푸(Z.ai), 중국 ‘AI 6소룡’ 가운데 처음으로 홍콩에 상장. 첫날 13% 올랐다.
     en: "Zhipu (Z.ai) becomes the first of China’s six “AI tigers” to go public, in Hong Kong, and closes 13% higher on its first day."

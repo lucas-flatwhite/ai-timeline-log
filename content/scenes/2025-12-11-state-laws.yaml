@@ -37,10 +37,18 @@ items:
     ko: 뉴섬 주지사, SB 1047을 거부한 지 1년 만에 SB 53에 서명. 프런티어 AI 개발사가 안전 체계를 공개하고 중대 사고를 보고하게 했다.
     en: "A year after vetoing SB 1047, Governor Newsom signs SB 53, requiring frontier AI developers to publish safety frameworks and report critical safety incidents."
     glyph: SB 53
+    sources:
+      - url: https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/
+        title: Governor Newsom signs SB 53, advancing California’s world-leading artificial intelligence industry
+        publisher: Office of the Governor of California
   - date: 2025-12-11
     ko: 트럼프 대통령, 주 AI 법에 소송으로 맞설 전담팀을 두고 그런 주의 연방 광대역 보조금 일부를 끊을 수 있게 하는 행정명령에 서명.
     en: "President Trump signs an executive order that sets up a task force to challenge state AI laws in court and allows some federal broadband funds to be withheld from states with such laws."
     glyph: { ko: "소송팀", en: "TASK\nFORCE" }
+    sources:
+      - url: https://www.whitehouse.gov/fact-sheets/2025/12/fact-sheet-president-donald-j-trump-ensures-a-national-policy-framework-for-artificial-intelligence/
+        title: "Fact Sheet: President Donald J. Trump Ensures a National Policy Framework for Artificial Intelligence"
+        publisher: White House
 ko:
   kicker: 주 법
   title: 주 법과 연방

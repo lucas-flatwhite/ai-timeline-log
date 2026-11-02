@@ -26,7 +26,7 @@ describe('buildView(ko)', () => {
       email: 'lucas.flatwhite@gmail.com', mail: `mailto:lucas.flatwhite@gmail.com?subject=${encodeURIComponent('[AI Timeline Log] 제보')}`,
     });
     expect(v.report.note).toContain('GitHub 이슈');
-    expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '이 사건 정정·제보', sources: '출처' });
+    expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '이 사건 정정·제보', sources: '출처', sceneSources: '이 장면의 출처' });
     expect(v.pics).toEqual(loadContent().pics);
     expect(v.aria).toEqual({ wall: 'AI 사건 격자', details: '모든 장면' });
   });
@@ -204,10 +204,17 @@ describe('topics and visits on the wall', () => {
   });
 
   test('wall ui strings', () => {
-    expect(v.ui).toEqual({
+    expect(v.ui).toMatchObject({
       topic: '주제', topicAll: '모두', topicClear: '주제 해제',
       newLine: '지난 방문 이후 새 상자 {n}개', newShow: '보기', newLabel: '지난 방문 이후 추가',
+      find: '찾기', eras: '시기',
+      pick: { era: '시기 {i}/{n}', boxes: '상자 {n}개', box1: '상자 1개', none: '맞는 상자가 없습니다' },
     });
+    expect(e.ui.pick).toMatchObject({ era: 'Era {i} of {n}', boxes: '{n} boxes', box1: '1 box' });
+    // 시기: 오래된 것부터, YYYYMM, 마지막은 끝이 없다
+    expect(v.eras[0]).toMatchObject({ from: '202211', to: '202302' });
+    expect(v.eras.at(-1)!.to).toBeUndefined();
+    expect(v.outro.arcs[0].from).toBe('202211');
     expect(e.ui.newLine).toBe('{n} new since your last visit');
   });
 });

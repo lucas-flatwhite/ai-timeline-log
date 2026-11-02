@@ -3,6 +3,7 @@ date: 2025-03-25
 span:
   from: 2025-03
 added: 2026-10-05
+updated: 2026-11-02
 topics: [society]
 print:
   pattern: c
@@ -23,18 +24,37 @@ items:
     ko: 범용 AI 에이전트 마누스 공개. 초대 코드를 구하려는 사람이 몰렸다.
     en: "Manus, a general-purpose AI agent, is unveiled, and people scramble for invitation codes."
     glyph: { ko: "마누스", en: "MANUS" }
+    sources:
+      - url: https://www.chinadaily.com.cn/a/202503/06/WS67c9ba2fa310c240449d9276.html
+        title: Manus AI launched in China, challenging GPT and DeepSeek
+        publisher: China Daily
+      - url: https://www.aol.com/news/people-listing-invite-codes-chinese-185650711.html
+        title: People are listing invite codes to Chinese AI agent Manus for $1,000 and more on resale sites
+        publisher: Business Insider (via AOL)
   - date: 2025-03-25
     ko: GPT-4o 이미지 생성 공개. 올트먼은 사용량이 몰려 GPU가 녹고 있다고 했다.
     en: "Image generation in GPT-4o is released, and Altman says demand is so heavy that the GPUs are melting."
     glyph: { ko: "이미지", en: "IMAGE" }
+    sources:
+      - url: https://openai.com/index/introducing-4o-image-generation/
+        title: Introducing 4o Image Generation
+        publisher: OpenAI
   - date: 2025-03-25
     ko: 같은 날 구글, Gemini 2.5 Pro 공개.
     en: "The same day, Google releases Gemini 2.5 Pro."
     glyph: 2.5 Pro
+    sources:
+      - url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/
+        title: "Gemini 2.5: Our most intelligent AI model"
+        publisher: Google
   - date: 2025-03-31
     ko: OpenAI, 400억 달러 투자 유치(기업가치 3,000억 달러). ChatGPT 주간 사용자 5억 명.
     en: "OpenAI raises $40 billion at a $300 billion valuation, and ChatGPT reaches 500 million weekly users."
     glyph: $40B
+    sources:
+      - url: https://openai.com/index/march-funding-updates/
+        title: New funding to build towards AGI
+        publisher: OpenAI
 ko:
   kicker: 대중화
   title: 지브리 열풍

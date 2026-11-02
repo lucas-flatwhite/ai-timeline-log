@@ -4,6 +4,7 @@ span:
   from: 2026-07
   to: 2026-09
 added: 2026-10-05
+updated: 2026-11-02
 topics: [science, models]
 print:
   pattern: c
@@ -24,18 +25,34 @@ items:
     ko: Claude Fable 5로 1939년 야코비안 추측의 3차원 반례를 찾았다.
     en: "Claude Fable 5 is used to find a three-dimensional counterexample to the Jacobian conjecture of 1939."
     glyph: { ko: "반례", en: "COUNTER\nEXAMPLE" }
+    sources:
+      - url: https://www.sciencedaily.com/releases/2026/08/260804034634.htm
+        title: Claude Fable 5 AI finds a tiny formula that topples an 87-year-old math conjecture
+        publisher: ScienceDaily
   - date: 2026-07-23
     ko: 국제수학올림피아드에서 AI가 처음으로 만점(42점).
     en: "AI earns a perfect score (42 points) at the International Mathematical Olympiad for the first time."
     glyph: { ko: "42점", en: "42/42" }
+    sources:
+      - url: https://standardmedia.co.ke/sports/amp/sci-tech/2001553533/ai-catches-up-with-humans-to-score-100pc-at-top-maths-contest
+        title: AI catches up with humans to score 100pc at top maths contest
+        publisher: The Standard (AFP)
   - date: 2026-09-03
     ko: OpenAI, GPT-6 Astra 출시. 자사 위험 평가에서 처음으로 사이버 보안 최고 등급.
     en: "OpenAI releases GPT-6 Astra, the first model to reach the top cybersecurity rating in the company’s own risk assessment."
     glyph: GPT-6
+    sources:
+      - url: https://openai.com/index/gpt-6-astra/
+        title: "GPT-6 Astra: A new generation of intelligence"
+        publisher: OpenAI
   - date: 2026-09-04
     ko: Claude, 페르마의 마지막 정리 전체를 증명 검증 언어 Lean으로 형식화(11일 소요).
     en: "Claude formalizes the whole of Fermat’s Last Theorem in Lean, a language for checking proofs, in 11 days."
     glyph: Lean
+    sources:
+      - url: https://www.anthropic.com/research/formalizing-fermats-last-theorem
+        title: Formalizing Fermat’s Last Theorem
+        publisher: Anthropic
 ko:
   kicker: 수학
   title: 난제가 풀리고, GPT-6가 나오다
