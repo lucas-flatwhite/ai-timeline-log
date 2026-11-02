@@ -1,6 +1,7 @@
 # 대표 범용 모델의 최초 공개 시점(제한 공개·프리뷰 포함).
 # 전문 음성·영상 모델과 같은 이름의 서비스 업데이트는 별도 항목으로 세지 않는다.
 # 2026-10-31 확인 근거와 선정 범위: docs/review/2026-10-31-events-and-lineage.md
+# 2026-11-02 장면에 나오지만 빠져 있던 모델과 연구소(엔비디아, 즈푸·Z.ai, MiniMax, 네이버)를 더했다. 근거는 각 항목의 주석
 - lab:
     ko: OpenAI
     en: "OpenAI"
@@ -16,6 +17,9 @@
     - name: o3
       date: 2024-12
     - name: GPT-5
+      date: 2025-08
+    # https://openai.com/index/introducing-gpt-oss/ (2025-08-05, 가중치 공개)
+    - name: gpt-oss
       date: 2025-08
     - name: GPT-5.2
       date: 2025-12
@@ -54,6 +58,12 @@
       date: 2025-02
     - name: Claude 4
       date: 2025-05
+    # https://www.anthropic.com/news/claude-sonnet-4-5 (2025-09-29)
+    - name: Sonnet 4.5
+      date: 2025-09
+    # https://www.anthropic.com/news/claude-haiku-4-5 (2025-10-15)
+    - name: Haiku 4.5
+      date: 2025-10
     - name: Opus 4.5
       date: 2025-11
     - name: Opus 4.6
@@ -130,9 +140,25 @@
     - name: Muse Spark Open
       date: 2026-10
 - lab:
+    ko: 엔비디아
+    en: "NVIDIA"
+  models:
+    # https://research.nvidia.com/labs/nemotron/Nemotron-3 (Nano 2025-12, 기술 보고서 arXiv 2512.20856)
+    - name: Nemotron 3 Nano
+      date: 2025-12
+    # https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 (2026-03-11)
+    - name: Nemotron 3 Super
+      date: 2026-03
+    # https://research.nvidia.com/labs/nemotron/Nemotron-3-Ultra/ (2026-06-04)
+    - name: Nemotron 3 Ultra
+      date: 2026-06
+- lab:
     ko: DeepSeek
     en: "DeepSeek"
   models:
+    # https://github.com/deepseek-ai/DeepSeek-V2 (2024-05, 가중치 공개)
+    - name: V2
+      date: 2024-05
     - name: V3
       date: 2024-12
     - name: R1
@@ -199,6 +225,43 @@
     - name: Kimi K3.1 Pro
       date: 2026-10
 - lab:
+    # 정식 회사명은 Knowledge Atlas Technology(北京智谱华章). 해외 브랜드는 Z.ai
+    ko: 즈푸 · Z.ai
+    en: "Zhipu · Z.ai"
+  models:
+    # https://github.com/THUDM/ChatGLM-6B (2023-03, 가중치 공개)
+    - name: ChatGLM
+      date: 2023-03
+    # https://www.ncsti.gov.cn/kjdt/scyq/jchd/202401/t20240117_147332.html (2024-01-16 즈푸 DevDay)
+    - name: GLM-4
+      date: 2024-01
+    # https://www.bloomberg.com/news/articles/2025-07-28/chinese-openai-challenger-zhipu-to-unveil-new-open-source-model (2025-07-28)
+    - name: GLM-4.5
+      date: 2025-07
+    # https://docs.z.ai/release-notes/new-released (GLM-5 2026-02-12, GLM-5.2 2026-06-16, GLM-5.3 2026-08-18)
+    - name: GLM-5
+      date: 2026-02
+    - name: GLM-5.2
+      date: 2026-06
+    - name: GLM-5.3
+      date: 2026-08
+- lab:
+    ko: MiniMax
+    en: "MiniMax"
+  models:
+    # https://github.com/MiniMax-AI/MiniMax-M1 (가중치 공개, 기술 보고서 arXiv 2506.13585 2025-06-16)
+    - name: MiniMax-M1
+      date: 2025-06
+    # https://huggingface.co/MiniMaxAI/MiniMax-M2 (2025-10-27)
+    - name: MiniMax-M2
+      date: 2025-10
+    # https://huggingface.co/MiniMaxAI/MiniMax-M2.5 (2026-02-12)
+    - name: MiniMax-M2.5
+      date: 2026-02
+    # https://huggingface.co/MiniMaxAI/MiniMax-M3 (2026-06-01 공개, 기술 보고서 arXiv 2606.13392)
+    - name: MiniMax-M3
+      date: 2026-06
+- lab:
     ko: Mistral AI
     en: "Mistral AI"
   models:
@@ -225,7 +288,23 @@
   models:
     - name: Grok
       date: 2023-11
+    # https://x.ai/news/grok-2 (2024-08-13)
+    - name: Grok 2
+      date: 2024-08
+    # https://x.ai/news/grok-3 (2025-02-17)
+    - name: Grok 3
+      date: 2025-02
     - name: Grok 4
       date: 2025-07
     - name: Grok 4.7
       date: 2026-09
+- lab:
+    ko: 네이버
+    en: "NAVER"
+  models:
+    # https://clova.ai/en/hyperclova (2023-08-24 공개)
+    - name: HyperCLOVA X
+      date: 2023-08
+    # https://huggingface.co/naver-hyperclovax/HyperCLOVAX-SEED-Think-32B (라이선스의 Model Release Date 2025-12-29, 가중치 공개)
+    - name: HyperCLOVA X SEED Think 32B
+      date: 2025-12

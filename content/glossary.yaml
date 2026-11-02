@@ -305,6 +305,21 @@
 - { ko: "H1", en: "H1", source: "https://www.robotics247.com/article/unitree_h1_earns_two_gold_medals_at_world_humanoid_robot_games" }
 - { ko: "EU", en: "EU", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
 
+- { ko: "ChatGLM", en: "ChatGLM", source: "https://github.com/THUDM/ChatGLM-6B" }
+- { ko: "GLM-4", en: "GLM-4", source: "https://www.ncsti.gov.cn/kjdt/scyq/jchd/202401/t20240117_147332.html" }
+- { ko: "GLM-4.5", en: "GLM-4.5", source: "https://docs.z.ai/release-notes/new-released" }
+- { ko: "GLM-5", en: "GLM-5", source: "https://docs.z.ai/release-notes/new-released" }
+- { ko: "GLM-5.3", en: "GLM-5.3", source: "https://docs.z.ai/release-notes/new-released" }
+- { ko: "MiniMax-M1", en: "MiniMax-M1", source: "https://github.com/MiniMax-AI/MiniMax-M1" }
+- { ko: "MiniMax-M2", en: "MiniMax-M2", source: "https://huggingface.co/MiniMaxAI/MiniMax-M2" }
+- { ko: "MiniMax-M2.5", en: "MiniMax-M2.5", source: "https://huggingface.co/MiniMaxAI/MiniMax-M2.5" }
+- { ko: "MiniMax-M3", en: "MiniMax-M3", source: "https://huggingface.co/MiniMaxAI/MiniMax-M3" }
+- { ko: "Nemotron 3 Nano", en: "Nemotron 3 Nano", source: "https://research.nvidia.com/labs/nemotron/Nemotron-3" }
+- { ko: "Nemotron 3 Super", en: "Nemotron 3 Super", source: "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4" }
+- { ko: "HyperCLOVA X SEED Think 32B", en: "HyperCLOVA X SEED Think 32B", source: "https://huggingface.co/naver-hyperclovax/HyperCLOVAX-SEED-Think-32B" }
+- { ko: "Grok 2", en: "Grok 2", source: "https://x.ai/news/grok-2" }
+- { ko: "Grok 3", en: "Grok 3", source: "https://x.ai/news/grok-3" }
+
 # 사람
 - { ko: "샘 올트먼", en: "Sam Altman", source: "https://openai.com/" }
 - { ko: "일론 머스크", en: "Elon Musk", source: "https://x.ai/news/xai-joins-spacex" }
