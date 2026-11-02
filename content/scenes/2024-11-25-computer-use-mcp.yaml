@@ -4,6 +4,7 @@ span:
   from: 2024-10
   to: 2024-12
 added: 2026-10-05
+updated: 2026-11-02
 topics: [agents]
 print:
   pattern: d
@@ -50,6 +51,16 @@ items:
     ko: 딥시크 V3 공개(훈련비 약 560만 달러 주장). 같은 날 국회는 인공지능 기본법을 통과시켰다.
     en: "DeepSeek releases V3, claiming a training cost of about $5.6 million; the same day, Korea’s National Assembly passes the AI Basic Act."
     glyph: $5.6M
+    sources:
+      - url: https://api-docs.deepseek.com/news/news1226
+        title: Introducing DeepSeek-V3
+        publisher: DeepSeek
+      - url: https://arxiv.org/abs/2412.19437
+        title: DeepSeek-V3 Technical Report
+        publisher: DeepSeek-AI (arXiv)
+      - url: https://www.foley.com/insights/publications/2025/01/south-korea-national-assembly-passes-new-ai-bill/
+        title: South Korea National Assembly Passes New AI Bill
+        publisher: Foley & Lardner
 ko:
   kicker: 에이전트의 손
   title: 화면을 보는 AI, 그리고 o3

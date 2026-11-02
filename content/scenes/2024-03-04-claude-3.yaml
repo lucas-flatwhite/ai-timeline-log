@@ -3,6 +3,7 @@ date: 2024-03-04
 span:
   from: 2024-03
 added: 2026-10-05
+updated: 2026-11-02
 topics: [models]
 print:
   pattern: d
@@ -48,6 +49,10 @@ items:
     ko: 엔비디아, 차세대 GPU 블랙웰 발표.
     en: "NVIDIA announces Blackwell, its next-generation GPU."
     glyph: { ko: "블랙웰", en: "BLACK\nWELL" }
+    sources:
+      - url: https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing
+        title: NVIDIA Blackwell Platform Arrives to Power a New Era of Computing
+        publisher: NVIDIA
 ko:
   kicker: 경쟁 구도
   title: Claude 3와 ‘AI 개발자’

@@ -3,6 +3,7 @@ date: 2024-05-13
 span:
   from: 2024-05
 added: 2026-10-05
+updated: 2026-11-02
 topics: [models]
 print:
   pattern: c
@@ -35,10 +36,18 @@ items:
     ko: 구글 I/O, 검색 결과 맨 위에 AI 요약(AI 개요)을 넣었다.
     en: "At Google I/O, Google puts AI summaries (AI Overviews) at the top of search results."
     glyph: { ko: "AI 개요", en: "OVER\nVIEWS" }
+    sources:
+      - url: https://blog.google/products/search/generative-ai-google-search-may-2024/
+        title: "Generative AI in Search: Let Google do the searching for you"
+        publisher: Google
   - date: 2024-05-14
     ko: 일리야 수츠케버 OpenAI 퇴사. 장기 안전을 맡던 슈퍼얼라인먼트 팀이 해체됐다.
     en: "Ilya Sutskever leaves OpenAI, and the Superalignment team in charge of long-term safety is disbanded."
     glyph: { ko: "일리야", en: "ILYA" }
+    sources:
+      - url: https://www.bloomberg.com/news/articles/2024-05-17/openai-dissolves-key-safety-team-after-chief-scientist-ilya-sutskever-s-exit
+        title: OpenAI Dissolves High-Profile Safety Team After Chief Scientist Sutskever’s Exit
+        publisher: Bloomberg
   - date: 2024-05-21
     ko: AI 서울 정상회의. 16개 기업이 프런티어 AI 안전 서약에 서명.
     en: "At the AI Seoul Summit, 16 companies sign the Frontier AI Safety Commitments."

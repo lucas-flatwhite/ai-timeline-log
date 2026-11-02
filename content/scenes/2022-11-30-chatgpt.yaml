@@ -3,6 +3,7 @@ date: 2022-11-30
 span:
   from: 2022-11-30
 added: 2026-10-05
+updated: 2026-11-02
 topics: [models]
 print:
   pattern: h
@@ -23,10 +24,18 @@ items:
     ko: 공개 닷새 만에 사용자 100만 명을 넘었다.
     en: "ChatGPT passes one million users five days after launch."
     glyph: { ko: "100만", en: "1M" }
+    sources:
+      - url: https://fortune.com/2022/12/09/ai-chatbot-chatgpt-could-disrupt-google-search-engines-business/
+        title: ChatGPT gained 1 million users in under a week. Here’s why the AI chatbot is primed to disrupt search as we know it
+        publisher: Fortune
   - date: 2022-12-21
     ko: 구글 경영진이 검색 사업 위협에 ‘코드 레드’를 선언했다는 보도.
     en: "Google executives are reported to have declared a “code red” over the threat to the search business."
     glyph: { ko: "코드\n레드", en: "CODE\nRED" }
+    sources:
+      - url: https://siliconangle.com/2022/12/22/reports-say-google-panicking-threat-posed-openais-chatbot/
+        title: Report says Google is panicking over threat posed by OpenAI’s chatbot
+        publisher: SiliconANGLE (citing The New York Times)
   - date: 2023-01
     ko: 두 달 만에 월간 사용자 1억 명 추정(UBS). 당시 가장 빨리 성장한 소비자 앱.
     en: "UBS estimates 100 million monthly users two months in, the fastest-growing consumer app at the time."

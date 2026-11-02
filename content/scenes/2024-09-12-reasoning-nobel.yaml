@@ -4,6 +4,7 @@ span:
   from: 2024-09
   to: 2024-10
 added: 2026-10-05
+updated: 2026-11-02
 topics: [science]
 print:
   pattern: c
@@ -32,6 +33,10 @@ items:
     ko: OpenAI, 66억 달러 투자 유치. 기업가치 1,570억 달러.
     en: "OpenAI raises $6.6 billion at a valuation of $157 billion."
     glyph: $6.6B
+    sources:
+      - url: https://fortune.com/2024/10/02/openai-officially-raises-6-6-billion-funding-deal-157-billion-valuation-sam-altman-thrive-capital/
+        title: OpenAI has raised $6.6 billion in a mega-funding deal that values the ChatGPT maker at $157 billion
+        publisher: Fortune
   - date: 2024-10-08
     ko: 노벨 물리학상, 인공신경망의 기초를 놓은 존 홉필드와 제프리 힌턴.
     en: "The Nobel Prize in Physics goes to John Hopfield and Geoffrey Hinton, who laid the foundations of artificial neural networks."

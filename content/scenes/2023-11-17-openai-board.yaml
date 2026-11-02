@@ -4,6 +4,7 @@ span:
   from: 2023-10
   to: 2023-11
 added: 2026-10-05
+updated: 2026-11-02
 topics: [rules]
 print:
   pattern: c
@@ -24,6 +25,10 @@ items:
     ko: 바이든 대통령, AI 행정명령 서명. 대형 모델 개발사에 안전 시험 결과 공유 의무.
     en: "President Biden signs an executive order on AI that requires developers of large models to share safety test results."
     glyph: { ko: "바이든", en: "BIDEN" }
+    sources:
+      - url: https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-secure-and-trustworthy-artificial-intelligence/
+        title: "FACT SHEET: President Biden Issues Executive Order on Safe, Secure, and Trustworthy Artificial Intelligence"
+        publisher: The White House (archived)
   - date: 2023-11-01
     ko: 영국 블레츨리 파크에서 첫 AI 안전 정상회의. 28개국과 EU가 공동선언.
     en: "The first AI Safety Summit is held at Bletchley Park in the United Kingdom, where 28 countries and the EU sign a joint declaration."
