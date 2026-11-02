@@ -22,8 +22,8 @@ describe('urls', () => {
 
 describe('buildTimeline', () => {
   test('timeline has every scene and event', () => {
-    expect(t.scenes).toHaveLength(48);
-    expect(t.scenes.flatMap(s => s.items)).toHaveLength(182);
+    expect(t.scenes).toHaveLength(55);
+    expect(t.scenes.flatMap(s => s.items)).toHaveLength(206);
     expect(t.site.asOf).toBe('2026-11-02');
     expect(t.site.license.name).toBe('CC BY 4.0');
     expect(t.site.scope).toEqual(SCOPE);

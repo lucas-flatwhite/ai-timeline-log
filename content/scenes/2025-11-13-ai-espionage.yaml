@@ -1,0 +1,42 @@
+id: 2025-11-ai-espionage
+date: 2025-11-13
+span:
+  from: 2025-08
+  to: 2025-11
+added: 2026-11-02
+topics: [safety, agents]
+print:
+  pattern: d
+  motif: grid
+  glyph: 90%
+sources:
+  - url: https://www.anthropic.com/news/disrupting-AI-espionage
+    title: Disrupting an AI-orchestrated cyber espionage campaign
+    publisher: Anthropic
+  - url: https://www.theregister.com/2025/08/27/anthropic_security_report_flags_rogue/
+    title: Crims laud Claude, use Anthropic’s AI to plant ransomware
+    publisher: The Register
+  - url: https://www.thestar.com.my/tech/tech-news/2025/11/17/anthropic-says-chinese-hackers-used-its-ai-in-online-attack-a-claim-refuted-by-china
+    title: Anthropic says Chinese hackers used its AI in online attack, a claim refuted by China
+    publisher: The Star (Reuters)
+items:
+  - date: 2025-08-27
+    ko: Anthropic, 한 범죄 조직이 Claude Code로 의료·응급·정부 기관 등 최소 17곳에 침입해 몸값을 요구했다고 공개. 일부 요구액은 50만 달러가 넘었다.
+    en: "Anthropic reports that a criminal group used Claude Code to break into at least 17 organizations, including healthcare, emergency services and government agencies, and demanded ransoms, some above $500,000."
+    glyph: "17"
+  - date: 2025-11-13
+    ko: Anthropic, 중국 국가 배후로 판단한 그룹이 Claude Code로 약 30곳을 노린 첩보 작전을 공개. 작업의 80~90%를 AI가 했고, 몇 곳은 침투에 성공했다.
+    en: "Anthropic discloses an espionage campaign by a group it assesses as Chinese state-sponsored, which used Claude Code against about 30 targets, with AI doing 80 to 90% of the work and a few intrusions succeeding."
+    glyph: 90%
+  - date: 2025-11-14
+    ko: 중국 외교부, 근거 없는 비난이라고 반박하며 해킹에 반대한다고 밝혔다.
+    en: "China’s foreign ministry dismisses the report as an accusation made without evidence and says China opposes hacking."
+    glyph: { ko: "반박", en: "DENIED" }
+ko:
+  kicker: 사이버
+  title: AI가 지휘한 해킹
+  lede: 코딩 에이전트가 해킹에도 쓰였다. 사람이 몇 번만 승인하면 AI가 정찰부터 침투까지 작업 대부분을 해냈다.
+en:
+  kicker: "Cyber"
+  title: "Hacking Run by AI"
+  lede: "Coding agents were turned to hacking as well. With only a few approvals from people, AI carried out most of the work, from reconnaissance to intrusion."

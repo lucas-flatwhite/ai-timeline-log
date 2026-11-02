@@ -61,6 +61,17 @@
 - { ko: "컨스텔레이션", en: "Constellation", source: "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm" }   # 정식 회사명 Constellation Energy
 - { ko: "카이로스 파워", en: "Kairos Power", source: "https://kairospower.com/updates/google-and-kairos-power-partner-to-deploy-500-mw-of-clean-electricity-generation" }
 - { ko: "X-energy", en: "X-energy", source: "https://x-energy.com/" }
+- { ko: "휴메인", en: "HUMAIN", source: "https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning" }   # 사우디 국부펀드(PIF) 자회사
+- { ko: "사우디 국부펀드", en: "Public Investment Fund", source: "https://www.pif.gov.sa/" }
+- { ko: "G42", en: "G42", source: "https://group.softbank/en/news/press/20250522" }
+- { ko: "시스코", en: "Cisco", source: "https://group.softbank/en/news/press/20250522" }
+- { ko: "화웨이", en: "Huawei", source: "https://www.huawei.com/en/" }
+- { ko: "알리바바", en: "Alibaba", source: "https://www.alibabagroup.com/" }
+- { ko: "문샷AI", en: "Moonshot AI", source: "https://huggingface.co/moonshotai" }
+- { ko: "로스 인텔리전스", en: "ROSS Intelligence", source: "https://www.haynesboone.com/news/alerts/third-circuit-rejects-fair-use-for-rosss-copying-of-westlaw-headnotes" }
+- { ko: "웨스트로", en: "Westlaw", source: "https://www.haynesboone.com/news/alerts/third-circuit-rejects-fair-use-for-rosss-copying-of-westlaw-headnotes" }   # Thomson Reuters의 법률 정보 서비스
+- { ko: "OpenAI 재단", en: "OpenAI Foundation", source: "https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/" }
+- { ko: "OpenAI Group PBC", en: "OpenAI Group PBC", source: "https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/" }
 
 # 정부·국제기구·행사
 - { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
@@ -92,6 +103,10 @@
 - { ko: "캘리포니아 하원", en: "California Assembly", source: "https://www.assembly.ca.gov/" }
 - { ko: "캘리포니아 상원", en: "California Senate", source: "https://www.senate.ca.gov/" }
 - { ko: "수출 제한 목록", en: "Entity List", source: "https://www.bis.gov/press-release/commerce-strengthens-restrictions-advanced-computing-semiconductors-semiconductor-manufacturing-equipment" }   # 미 상무부 산업안보국(BIS)의 목록
+- { ko: "중국 국가인터넷정보판공실", en: "Cyberspace Administration of China", source: "http://www.cac.gov.cn/" }
+- { ko: "중국 외교부", en: "China’s foreign ministry", source: "https://www.thestar.com.my/tech/tech-news/2025/11/17/anthropic-says-chinese-hackers-used-its-ai-in-online-attack-a-claim-refuted-by-china" }
+- { ko: "제3순회항소법원", en: "Third Circuit (U.S. Court of Appeals for the Third Circuit)", source: "https://www.haynesboone.com/news/alerts/third-circuit-rejects-fair-use-for-rosss-copying-of-westlaw-headnotes" }
+- { ko: "캘리포니아·델라웨어 법무장관", en: "attorneys general of California and Delaware", source: "https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/" }
 
 # 법·행정명령·성명
 - { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
@@ -107,6 +122,12 @@
 - { ko: "전화소비자보호법", en: "Telephone Consumer Protection Act", source: "https://www.nbcnews.com/tech/security/fcc-votes-unanimously-ban-unsolicited-ai-robocalls-rcna137950" }   # FCC 사이트는 자동 접속이 불안정해 보도 출처를 둔다
 - { ko: "선거 AI 협약", en: "AI Elections Accord (A Tech Accord to Combat Deceptive Use of AI in 2024 Elections)", source: "https://securityconference.org/en/aielectionsaccord" }
 - { ko: "SB 1047", en: "SB 1047 (Safe and Secure Innovation for Frontier Artificial Intelligence Models Act)", source: "https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf" }
+- { ko: "AI 확산 규칙", en: "AI Diffusion Rule", source: "https://www.bis.gov/press-release/department-commerce-rescinds-biden-era-artificial-intelligence-diffusion-rule-strengthens-chip-related" }
+- { ko: "AI 행동계획", en: "America’s AI Action Plan", source: "https://datamatters.sidley.com/2025/07/30/the-trump-administrations-2025-ai-action-plan-winning-the-race-americas-ai-action-plan-and-related-executive-orders/" }   # 정식 제목 Winning the Race: America’s AI Action Plan
+- { ko: "SB 53", en: "SB 53 (Transparency in Frontier Artificial Intelligence Act)", source: "https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/" }
+- { ko: "주 AI 법 행정명령(2025)", en: "executive order on a national AI policy framework (Ensuring a National Policy Framework for Artificial Intelligence)", source: "https://www.whitehouse.gov/fact-sheets/2025/12/fact-sheet-president-donald-j-trump-ensures-a-national-policy-framework-for-artificial-intelligence/" }   # Executive Order 14365
+- { ko: "공익법인(PBC)", en: "public benefit corporation", source: "https://www.theregister.com/2025/05/05/openai_keep_nonprofit_in_charge/" }
+- { ko: "공정 이용", en: "fair use", source: "https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some" }
 
 # 모델·제품
 - { ko: "ChatGPT", en: "ChatGPT", source: "https://openai.com/index/chatgpt/" }
@@ -231,6 +252,20 @@
 - { ko: "A800·H800", en: "A800 and H800", source: "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000221/nvda-20231023.htm" }
 - { ko: "고대역폭 메모리(HBM)", en: "high-bandwidth memory (HBM)", source: "https://www.bloomberg.com/news/articles/2024-12-02/us-tightens-curbs-on-china-s-access-to-ai-memory-and-chips-tools" }
 - { ko: "스리마일섬 1호기", en: "Three Mile Island Unit 1", source: "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm" }   # 재가동 뒤 이름은 Crane Clean Energy Center
+- { ko: "어센드", en: "Ascend", source: "https://www.rcrwireless.com/20250922/ai-infrastructure/huawei-ai-chips" }
+- { ko: "슈퍼포드", en: "SuperPoD", source: "https://www.rcrwireless.com/20250922/ai-infrastructure/huawei-ai-chips" }
+- { ko: "GB300", en: "GB300", source: "https://nvidianews.nvidia.com/news/saudi-arabia-and-nvidia-to-build-ai-factories-to-power-next-wave-of-intelligence-for-the-age-of-reasoning" }
+- { ko: "H20", en: "H20", source: "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm" }
+- { ko: "MI308", en: "MI308", source: "https://www.ksl.com/article/51358812" }
+- { ko: "RTX Pro 6000D", en: "RTX Pro 6000D", source: "https://www.thestandard.com.hk/innovation/article/311827/China-tells-tech-firms-to-stop-buying-Nvidias-AI-chips-FT-reports" }
+- { ko: "스타게이트 UAE", en: "Stargate UAE", source: "https://group.softbank/en/news/press/20250522" }
+- { ko: "Qwen3", en: "Qwen3", source: "https://qwenlm.github.io/blog/qwen3/" }
+- { ko: "Kimi K2", en: "Kimi K2", source: "https://huggingface.co/moonshotai/Kimi-K2-Instruct" }
+- { ko: "Kimi K2 Thinking", en: "Kimi K2 Thinking", source: "https://huggingface.co/moonshotai/Kimi-K2-Thinking" }
+- { ko: "인류의 마지막 시험", en: "Humanity’s Last Exam", source: "https://huggingface.co/moonshotai/Kimi-K2-Thinking" }
+- { ko: "Claude Sonnet 4.5", en: "Claude Sonnet 4.5", source: "https://www.anthropic.com/news/claude-sonnet-4-5" }
+- { ko: "Azure", en: "Azure", source: "https://azure.microsoft.com/" }
+- { ko: "바이브 해킹", en: "vibe hacking", source: "https://www.theregister.com/2025/08/27/anthropic_security_report_flags_rogue/" }
 - { ko: "EU", en: "EU", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
 
 # 사람
@@ -259,3 +294,5 @@
 - { ko: "개빈 뉴섬", en: "Gavin Newsom", source: "https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf" }
 - { ko: "테일러 스위프트", en: "Taylor Swift", source: "https://www.news4jax.com/business/2024/01/30/x-restores-taylor-swift-searches-after-deepfake-explicit-images-triggered-temporary-block/" }
 - { ko: "보리스 엘다크센", en: "Boris Eldagsen", source: "https://www.engadget.com/german-artist-refuses-award-after-his-ai-image-wins-prestigious-photography-prize-071322551.html" }
+- { ko: "윌리엄 알섭", en: "William Alsup", source: "https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some" }
+- { ko: "빈스 차브리아", en: "Vince Chhabria", source: "https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98093-meta-wins-ai-copyright-case-but-judge-writes-roadmap-for-authors-revenge.html" }

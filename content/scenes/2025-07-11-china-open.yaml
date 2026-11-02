@@ -1,0 +1,50 @@
+id: 2025-07-china-open
+date: 2025-07-11
+span:
+  from: 2025-04
+  to: 2025-11
+added: 2026-11-02
+topics: [open, models]
+print:
+  pattern: w
+  motif: rise
+  glyph: 1T
+sources:
+  - url: https://qwenlm.github.io/blog/qwen3/
+    title: "Qwen3: Think Deeper, Act Faster"
+    publisher: Qwen
+  - url: https://huggingface.co/moonshotai/Kimi-K2-Instruct
+    title: moonshotai/Kimi-K2-Instruct
+    publisher: Moonshot AI (Hugging Face)
+  - url: https://huggingface.co/moonshotai/Kimi-K2-Thinking
+    title: moonshotai/Kimi-K2-Thinking
+    publisher: Moonshot AI (Hugging Face)
+items:
+  - date: 2025-04-29
+    ko: 알리바바, Qwen3 공개. Apache 2.0으로 푼 밀집 모델 6종부터 2,350억 파라미터 전문가 혼합 모델까지, 119개 언어와 방언을 다룬다.
+    en: "Alibaba releases Qwen3, ranging from six dense models under Apache 2.0 to a 235-billion-parameter mixture-of-experts model, covering 119 languages and dialects."
+    glyph: Qwen3
+  - date: 2025-07-11
+    ko: 문샷AI, 파라미터 1조 개의 Kimi K2 가중치 공개. 도구를 쓰는 에이전트 작업에 맞췄다.
+    en: "Moonshot AI releases the weights of Kimi K2, a one-trillion-parameter model built for agentic tool use."
+    glyph: 1T
+    sources:
+      - url: https://simonwillison.net/2025/Jul/11/kimi-k2/
+        title: moonshotai/Kimi-K2-Instruct
+        publisher: Simon Willison’s Weblog
+  - date: 2025-11-06
+    ko: 문샷AI, Kimi K2 Thinking 공개. 도구를 쓰는 ‘인류의 마지막 시험’에서 GPT-5와 Claude Sonnet 4.5를 앞섰다고 밝혔고, 도구 호출을 200~300번 이어 간다.
+    en: "Moonshot AI releases Kimi K2 Thinking, which it says beats GPT-5 and Claude Sonnet 4.5 on Humanity’s Last Exam with tools and can chain 200 to 300 tool calls."
+    glyph: { ko: "생각", en: "THINK" }
+    sources:
+      - url: https://siliconangle.com/2025/11/07/moonshot-launches-open-source-kimi-k2-thinking-ai-trillion-parameters-reasoning-capabilities/
+        title: Moonshot launches open-source ‘Kimi K2 Thinking’ AI with a trillion parameters and reasoning capabilities
+        publisher: SiliconANGLE
+ko:
+  kicker: 공개 모델
+  title: 중국이 연 가중치
+  lede: 딥시크 충격 뒤 알리바바와 문샷AI가 가중치를 연 모델을 잇달아 내놓았다. 가장 성능이 높은 공개 모델 자리를 중국 모델이 다투기 시작했다.
+en:
+  kicker: "Open Models"
+  title: "China Opens Its Weights"
+  lede: "After the DeepSeek shock, Alibaba and Moonshot AI released one open-weight model after another, and Chinese models began to contend for the top spot among open models."

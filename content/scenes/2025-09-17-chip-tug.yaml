@@ -1,0 +1,50 @@
+id: 2025-09-chip-tug
+date: 2025-09-17
+span:
+  from: 2025-04
+  to: 2025-09
+added: 2026-11-02
+topics: [compute, rules]
+print:
+  pattern: h
+  motif: fall
+  glyph: 15%
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm
+    title: NVIDIA Corporation Form 8-K (April 2025)
+    publisher: U.S. Securities and Exchange Commission
+  - url: https://www.ksl.com/article/51358812
+    title: Nvidia, AMD to pay 15% of China chip sale revenues to US, official says
+    publisher: Reuters (via KSL)
+  - url: https://www.thestandard.com.hk/innovation/article/311827/China-tells-tech-firms-to-stop-buying-Nvidias-AI-chips-FT-reports
+    title: China tells tech firms to stop buying Nvidia’s AI chips, FT reports
+    publisher: Reuters (via The Standard)
+items:
+  - date: 2025-04-15
+    ko: 엔비디아, 중국 시장용 H20을 수출하려면 무기한 허가가 필요해졌다고 공시하고 최대 55억 달러 손실을 예고.
+    en: "NVIDIA discloses that exports of its China-market H20 now need a license for the indefinite future and warns of up to $5.5 billion in charges."
+    glyph: H20
+  - date: 2025-08-10
+    ko: 엔비디아와 AMD가 중국 판매 매출의 15%를 미 정부에 내기로 하고 H20과 MI308 수출 허가를 받기 시작했다고 미 정부 관계자가 밝혔다.
+    en: "NVIDIA and AMD agree to pay the U.S. government 15% of their revenue from H20 and MI308 sales in China as export licenses begin to be issued, a U.S. official says."
+    glyph: 15%
+  - date: 2025-09-17
+    ko: 중국 국가인터넷정보판공실, 바이트댄스·알리바바 등에 엔비디아의 중국용 칩 RTX Pro 6000D 시험과 주문을 멈추라고 지시했다고 FT가 보도.
+    en: "China’s Cyberspace Administration tells ByteDance, Alibaba and others to stop testing and ordering NVIDIA’s China-market RTX Pro 6000D, the Financial Times reports."
+    glyph: { ko: "중단", en: "HALT" }
+  - date: 2025-09-18
+    ko: 화웨이, 어센드 칩 로드맵 공개. 2026년 어센드 950부터 해마다 새 칩을 내고, 자체 HBM을 쓰며, 칩 8,192개를 묶는 슈퍼포드를 만든다.
+    en: "Huawei lays out its Ascend roadmap, with a new chip each year starting with the Ascend 950 in 2026, its own HBM and SuperPoDs linking 8,192 chips."
+    glyph: { ko: "어센드", en: "ASCEND" }
+    sources:
+      - url: https://www.rcrwireless.com/20250922/ai-infrastructure/huawei-ai-chips
+        title: Huawei outlines roadmap for Ascend AI chips
+        publisher: RCR Wireless News
+ko:
+  kicker: 칩 통제
+  title: 칩 줄다리기
+  lede: 미국은 엔비디아의 중국용 칩을 막았다가 매출 일부를 받는 조건으로 다시 열었다. 이번에는 중국이 엔비디아 칩을 사지 말라며 자국 칩으로 돌아섰다.
+en:
+  kicker: "Chip Controls"
+  title: "Tug of War Over Chips"
+  lede: "The U.S. blocked NVIDIA’s China-market chip, then reopened sales in exchange for a cut of the revenue. This time China told its companies not to buy NVIDIA chips and turned to its own."
