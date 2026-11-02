@@ -89,7 +89,7 @@
 
 ## 검사 명령
 
-PR 전에 모두 통과해야 합니다. CI(`.github/workflows/check.yml`)도 같은 순서로 돕니다.
+PR 전에 모두 통과해야 합니다. CI(`.github/workflows/check.yml`)도 같은 순서로 돌고, 브라우저 테스트는 Chromium과 WebKit을 나란히 돌립니다.
 
 ```bash
 npm run check        # astro check. precheck가 판 글꼴 목록(src/generated/plate.json)을 먼저 만들어 새로 받은 저장소에서도 돈다
@@ -97,6 +97,7 @@ npm test             # 단위 테스트(콘텐츠 검사 포함)
 npm run build        # 판 글꼴을 만들고 정적 사이트를 빌드. 콘텐츠 오류는 여기서 빌드 실패로 나온다
 npm run budget       # 용량 예산: 언어별 판 글꼴 40KB, 클라이언트 JS 30KB(압축 전) 이하
 npx playwright test --project=chromium   # 브라우저 테스트(빌드와 미리보기 서버를 알아서 띄운다)
+npx playwright test --project=webkit     # Safari 엔진. 마우스로 누른 링크에 초점을 주지 않는 등 Safari에서만 생기는 문제를 잡는다
 ```
 
 빌드의 경고도 읽습니다. 경고가 늘면 이유를 확인합니다.

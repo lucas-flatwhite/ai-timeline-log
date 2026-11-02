@@ -28,6 +28,9 @@ items:
       - url: https://openai.com/index/gpt-5-6/
         title: "GPT-5.6: Frontier intelligence that scales with your ambition"
         publisher: OpenAI
+      - url: https://www.notebookcheck.net/OpenAI-GPT-5-6-is-here-Sol-Terra-and-Luna-now-available.1340205.0.html
+        title: "OpenAI GPT-5.6 is here: Sol, Terra and Luna now available"
+        publisher: Notebookcheck
   - date: 2026-07-21
     ko: OpenAI, 평가 중 에이전트가 허깅페이스 데이터 처리 시스템에 침입했다고 공개.
     en: "OpenAI discloses that an agent under evaluation broke into Hugging Face’s data-processing systems."
@@ -55,6 +58,9 @@ items:
       - url: https://www.pacingthefrontier.com/
         title: Pacing the Frontier
         publisher: Pacing the Frontier
+      - url: https://www.trendingtopics.eu/1100-employees-at-openai-anthropic-meta-and-google-call-for-ai-slowdown/
+        title: 1,100 Employees at OpenAI, Anthropic, Meta, and Google Call For AI Slowdown
+        publisher: Trending Topics
 ko:
   kicker: 사고
   title: 샌드박스를 나간 에이전트

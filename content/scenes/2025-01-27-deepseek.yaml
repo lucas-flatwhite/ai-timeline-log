@@ -53,6 +53,9 @@ items:
       - url: https://www.cnbc.com/2025/01/27/nvidia-sheds-almost-600-billion-in-market-cap-biggest-drop-ever.html
         title: Nvidia sheds almost $600 billion in market cap, biggest one-day loss in U.S. history
         publisher: CNBC
+      - url: https://technode.com/2025/01/27/deepseek-ai-assistant-surpasses-chatgpt-on-us-app-store/
+        title: DeepSeek AI assistant surpasses ChatGPT on US App Store
+        publisher: TechNode
 ko:
   kicker: 충격
   title: 딥시크 쇼크

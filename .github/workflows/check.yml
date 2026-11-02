@@ -23,7 +23,24 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run budget
-      - run: npx playwright install --with-deps chromium
-      - run: npx playwright test --project=chromium
+
+  # 브라우저 테스트: Chromium과 WebKit(Safari 엔진)을 나란히 돌린다. 설정(playwright.config.ts)이 빌드와 미리보기 서버를 띄운다.
+  # WebKit은 Safari에서만 생기는 문제(예: 마우스로 누른 링크에 초점을 주지 않음)를 잡는다
+  browsers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npx playwright test --project=${{ matrix.browser }}
         env:
           CI: 'true'

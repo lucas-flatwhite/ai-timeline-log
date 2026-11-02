@@ -29,6 +29,9 @@ items:
       - url: https://www.anthropic.com/news/statement-comments-secretary-war
         title: Statement on the comments from Secretary of War Pete Hegseth
         publisher: Anthropic
+      - url: https://www.cbsnews.com/news/hegseth-anthropic-full-access-claude-ai-model
+        title: Hegseth demands full military access to Anthropic’s AI model Claude and sets deadline for end of week
+        publisher: CBS News
   - date: 2026-02-27
     ko: 트럼프 대통령, 연방기관에 Anthropic 사용 중단 지시. 같은 날 OpenAI는 국방부 기밀망 계약을 발표.
     en: "President Trump orders federal agencies to stop using Anthropic; the same day, OpenAI announces a contract for the Pentagon’s classified network."

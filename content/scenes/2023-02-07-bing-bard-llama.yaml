@@ -3,6 +3,7 @@ date: 2023-02-07
 span:
   from: 2023-02
 added: 2026-10-05
+updated: 2026-11-02
 topics: [open, models]
 print:
   pattern: d
@@ -28,6 +29,9 @@ items:
       - url: https://blog.google/innovation-and-ai/technology/ai/bard-google-ai-search-updates/
         title: An important next step on our AI journey
         publisher: Google
+      - url: https://www.aljazeera.com/economy/2023/2/8/google-shares-tank-8-as-ai-chatbot-bard-flubs-answer-in-ad
+        title: Google shares tank 8% as AI chatbot Bard flubs answer in ad
+        publisher: Al Jazeera
   - date: 2023-02-07
     ko: 마이크로소프트, GPT 기반 새 빙 공개. 코드명 ‘시드니’의 감정적인 대화가 화제가 됐다.
     en: "Microsoft unveils a new Bing built on GPT, and the emotional conversations of its code name “Sydney” draw attention."
@@ -45,6 +49,9 @@ items:
       - url: https://ai.meta.com/blog/large-language-model-llama-meta-ai/
         title: "Introducing LLaMA: A foundational, 65-billion-parameter language model"
         publisher: Meta
+      - url: https://www.deeplearning.ai/the-batch/how-metas-llama-nlp-model-leaked
+        title: "Runaway LLaMA: How Meta’s LLaMA NLP model leaked"
+        publisher: DeepLearning.AI (The Batch)
 ko:
   kicker: 빅테크의 반격
   title: 빙, 바드, 라마

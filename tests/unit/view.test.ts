@@ -26,7 +26,7 @@ describe('buildView(ko)', () => {
       email: 'lucas.flatwhite@gmail.com', mail: `mailto:lucas.flatwhite@gmail.com?subject=${encodeURIComponent('[AI Timeline Log] 제보')}`,
     });
     expect(v.report.note).toContain('GitHub 이슈');
-    expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '이 사건 정정·제보', sources: '출처', sceneSources: '이 장면의 출처' });
+    expect(v.dialog).toEqual({ prev: '← 이전 사건', next: '다음 사건 →', close: '닫기', fix: '정정·제보', sources: '출처', sceneSources: '이 장면의 출처' });
     expect(v.pics).toEqual(loadContent().pics);
     expect(v.aria).toEqual({ wall: 'AI 사건 격자', details: '모든 장면' });
   });

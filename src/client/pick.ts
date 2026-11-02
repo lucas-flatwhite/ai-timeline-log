@@ -58,6 +58,9 @@ export function scrollToPicked(): void {
   const b = document.querySelector<HTMLElement>('.wall .box.on');
   if (!b) return;
   const over = [...document.querySelectorAll<HTMLElement>('.top, #pickbar')].reduce((h, e) => h + (e.hidden ? 0 : e.offsetHeight), 0);
-  const top = b.getBoundingClientRect().top + scrollY - over - 12;
+  /* 휴대폰에서는 시기 글이 띠 아래에 겹쳐 뜬다(흐름 밖). 그 높이만큼 더 비워 둔다 */
+  const body = document.querySelector<HTMLElement>('#pickbar:not([hidden]) .pb-body');
+  const extra = body && getComputedStyle(body).position === 'absolute' ? body.offsetHeight : 0;
+  const top = b.getBoundingClientRect().top + scrollY - over - extra - 12;
   scrollTo({ top: Math.max(0, top), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 }
