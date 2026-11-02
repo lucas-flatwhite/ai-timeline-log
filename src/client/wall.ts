@@ -38,18 +38,50 @@ function bindHighlight(): void {
   });
 }
 
-/* 표지 일수 판을 누르면 다시 찍는다. 판이 눌렸다 올라오고, 가장 깊이 눌린 순간 시드를 바꿔 새로 새긴다(새기기는 한 번).
-   동작 줄이기 설정이면 움직이지 않고 다시 새기기만 한다 */
-const PRESS_AT = 130;
+/* 표지 뽑기: 일수 판을 누르면 벽의 상자 글자가 판 위에 빠르게 바뀌어 찍히다가 점점 느려져 하나에 멈추고,
+   판이 한 번 눌렸다 올라온 뒤 그 상자를 연다. 창을 닫으면 결이 다른 일수 판으로 돌아온다.
+   동작 줄이기 설정이면 돌리지 않고 바로 하나를 골라 연다 */
+const FAST = 16, FAST_MS = 45, GROW = 1.2, SLOW_MS = 480, HOLD_MS = 600;
+const reels = (() => {
+  const d: number[] = Array(FAST).fill(FAST_MS);
+  for (let t = FAST_MS * GROW; t < SLOW_MS; t *= GROW) d.push(Math.round(t));
+  return d;
+})();
 function bindCover(j: Job): void {
+  const days = j.spec;
+  let busy = false, round = 0;
+  const carve = (t: TileSpec) => { try { carveTile(j.cv, t, j.cv.clientWidth, j.cv.clientHeight); } catch (e) { console.error(e); } };
+  const face = (b: HTMLElement, seed: number): TileSpec => ({ kind: 'days', glyph: b.dataset.glyph!, pattern: 'h', angle: 0, motif: 'none', seed });
+  j.cv.addEventListener('animationend', () => j.cv.classList.remove('press'));
   j.cv.addEventListener('click', () => {
-    if (j.cv.classList.contains('press')) return;
-    j.spec = { ...j.spec, seed: j.spec.seed + 1 };
-    const recarve = () => { try { carveTile(j.cv, j.spec, j.cv.clientWidth, j.cv.clientHeight); } catch (e) { console.error(e); } };
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { recarve(); return; }
-    j.cv.classList.add('press');
-    setTimeout(recarve, PRESS_AT);
-    j.cv.addEventListener('animationend', () => j.cv.classList.remove('press'), { once: true });
+    const pool = [...document.querySelectorAll<HTMLElement>('.wall a.box')];
+    if (busy || !pool.length) return;
+    busy = true;
+    round++;
+    const any = () => pool[Math.floor(Math.random() * pool.length)];
+    const won = any();
+    const open = () => {
+      document.dispatchEvent(new CustomEvent('open-addr', { detail: won.dataset.addr }));
+      const back = () => { j.spec = { ...days, seed: days.seed + round }; carve(j.spec); busy = false; };
+      const dlg = document.getElementById('detail');
+      if (dlg?.hasAttribute('open')) dlg.addEventListener('close', back, { once: true }); else back();
+    };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { carve(face(won, round)); open(); return; }
+    let last: HTMLElement | null = null;
+    const spin = (k: number) => {
+      if (k === reels.length) {
+        carve(face(won, round * 97));
+        j.cv.classList.add('press');
+        setTimeout(open, HOLD_MS);
+        return;
+      }
+      let b = any();
+      for (let n = 0; n < 4 && (b === last || b === won); n++) b = any();
+      last = b;
+      carve(face(b, k + round * 97));
+      setTimeout(() => spin(k + 1), reels[k]);
+    };
+    spin(0);
   });
 }
 

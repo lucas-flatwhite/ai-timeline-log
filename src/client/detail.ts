@@ -42,7 +42,8 @@ export function initDetail(): void {
   /* Safari는 replaceState를 너무 자주 부르면 SecurityError를 던진다. 주소만 못 바꾸고 창은 그대로 둔다 */
   const setUrl = (u: string) => { try { history.replaceState(null, '', u); } catch { /* 무시 */ } };
 
-  function show(addr: string): boolean {
+  /* back: 창을 닫은 뒤 초점을 돌려줄 곳. 주지 않으면 그 주소의 상자, null이면 초점을 옮기지 않는다(표지 뽑기) */
+  function show(addr: string, back?: HTMLElement | null): boolean {
     const r = resolve(addr);
     if (!r) return false;
     const { article, li } = r, at = (li ?? article).dataset.addr!, year = article.classList.contains('year');
@@ -88,7 +89,7 @@ export function initDetail(): void {
     cur = at;
     setUrl('#' + at);
     syncLang('#' + at);
-    if (!dlg!.open) { opener = box; dlg!.showModal(); }
+    if (!dlg!.open) { opener = back === undefined ? box : back ?? undefined; dlg!.showModal(); }
     return true;
   }
   const step = (d: number) => {
@@ -148,5 +149,7 @@ export function initDetail(): void {
     else if (dlg.open) dlg.close();
   };
   window.addEventListener('hashchange', fromHash);
+  /* 다른 모듈이 상자를 열 때(표지 뽑기). 닫아도 그 상자로 내려가지 않게 초점은 옮기지 않는다 */
+  document.addEventListener('open-addr', e => { show((e as CustomEvent<string>).detail, null); });
   fromHash();
 }
