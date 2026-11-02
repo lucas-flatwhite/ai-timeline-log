@@ -30,8 +30,8 @@ items:
         title: Meta rebuffs EU’s AI Code of Practice
         publisher: Euronews
   - date: 2026-05-07
-    ko: EU 이사회와 유럽의회, AI 규칙 간소화에 잠정 합의. 고위험 AI 의무를 2027년 12월로 미루고, 동의 없는 성적 이미지와 아동 성착취물을 만드는 AI는 금지하기로 했다.
-    en: "The Council of the EU and the European Parliament reach a provisional deal to simplify the AI rules, delaying high-risk obligations to December 2027 and banning AI that generates non-consensual sexual imagery or child sexual abuse material."
+    ko: EU 이사회와 유럽의회, AI 규칙 간소화에 잠정 합의. 고위험 AI 의무를 2027년 12월(제품에 들어간 AI는 2028년 8월)로 미루고, 동의 없는 성적 이미지와 아동 성착취물을 만드는 AI는 금지하기로 했다.
+    en: "The Council of the EU and the European Parliament reach a provisional deal to simplify the AI rules, delaying high-risk obligations to December 2027, or August 2028 for AI built into regulated products, and banning AI that generates non-consensual sexual imagery or child sexual abuse material."
     glyph: { ko: "연기", en: "DELAYED" }
     sources:
       - url: https://www.brusselstimes.com/2118758/eu-pushes-back-start-date-for-high-risk-ai-rules-in-surprise-deal
