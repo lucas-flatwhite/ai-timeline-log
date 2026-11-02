@@ -1,0 +1,55 @@
+id: 2024-01-election-deepfakes
+date: 2024-01-21
+span:
+  from: 2024-01
+  to: 2024-02
+added: 2026-11-02
+topics: [safety, rules]
+print:
+  pattern: d
+  motif: none
+  glyph: FAKE
+sources:
+  - url: https://www.nbcnews.com/tech/security/fcc-votes-unanimously-ban-unsolicited-ai-robocalls-rcna137950
+    title: FCC votes unanimously to ban unsolicited AI robocalls
+    publisher: NBC News
+  - url: https://news.microsoft.com/source/2024/02/16/technology-industry-to-combat-deceptive-use-of-ai-in-2024-elections/
+    title: Technology industry to combat deceptive use of AI in 2024 elections
+    publisher: Microsoft
+  - url: https://securityconference.org/en/aielectionsaccord
+    title: AI Elections Accord
+    publisher: Munich Security Conference
+items:
+  - date: 2024-01-21
+    ko: 뉴햄프셔 예비선거 이틀 전, 바이든 대통령 목소리를 흉내 낸 AI 전화가 유권자들에게 표는 11월 본선거에 아껴 두라고 했다.
+    en: "Two days before the New Hampshire primary, robocalls in an AI imitation of President Biden’s voice tell voters to “save your vote for the November election.”"
+    glyph: { ko: "가짜\n목소리", en: "FAKE\nBIDEN" }
+    pic: phone
+    sources:
+      - url: https://www.newsfromthestates.com/article/new-hampshire-robocalls-stir-new-firestorm-over-artificial-intelligence
+        title: New Hampshire robocalls stir up new firestorm over artificial intelligence
+        publisher: States Newsroom
+  - date: 2024-01-28
+    ko: 테일러 스위프트의 성적 딥페이크 이미지가 퍼지자 X가 ‘Taylor Swift’ 검색을 잠시 막았다.
+    en: "As sexually explicit deepfakes of Taylor Swift spread, X temporarily blocks searches for “Taylor Swift.”"
+    glyph: { ko: "검색\n차단", en: "BLOCKED" }
+    sources:
+      - url: https://www.news4jax.com/business/2024/01/30/x-restores-taylor-swift-searches-after-deepfake-explicit-images-triggered-temporary-block/
+        title: X restores Taylor Swift searches after deepfake explicit images triggered temporary block
+        publisher: Associated Press
+  - date: 2024-02-08
+    ko: 미국 연방통신위원회(FCC), AI로 만든 목소리를 쓴 로보콜을 전화소비자보호법상 불법으로 규정.
+    en: "The FCC rules that robocalls using AI-generated voices are illegal under the Telephone Consumer Protection Act."
+    glyph: FCC
+  - date: 2024-02-16
+    ko: 뮌헨안보회의에서 20개 기업이 선거를 속이는 AI 콘텐츠에 함께 대응하겠다는 협약을 발표.
+    en: "At the Munich Security Conference, 20 companies announce an accord to combat deceptive AI content in elections."
+    glyph: "20"
+ko:
+  kicker: 선거
+  title: 선거의 해, 가짜 목소리
+  lede: 세계 곳곳에서 선거가 열린 해가 AI로 만든 가짜 목소리로 시작했다. 몇 주 만에 규제 당국과 기업들이 대응에 나섰다.
+en:
+  kicker: "Elections"
+  title: "A Fake Voice in an Election Year"
+  lede: "A year of elections around the world began with a fake voice made by AI. Within weeks, regulators and companies moved to respond."

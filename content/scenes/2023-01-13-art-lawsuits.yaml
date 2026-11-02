@@ -1,0 +1,50 @@
+id: 2023-01-art-lawsuits
+date: 2023-01-13
+span:
+  from: 2023-01
+  to: 2023-02
+added: 2026-11-02
+topics: [society]
+print:
+  pattern: w
+  motif: none
+  glyph: 12M
+sources:
+  - url: https://news.bloombergtax.com/safety/ai-art-generators-hit-with-copyright-suit-over-artists-images
+    title: AI Art Generators Hit With Copyright Suit Over Artists’ Images
+    publisher: Bloomberg Tax
+  - url: https://newsroom.gettyimages.com/en/getty-images/getty-images-statement
+    title: Getty Images Statement
+    publisher: Getty Images
+  - url: https://www.insurancejournal.com/news/national/2023/02/07/706345.htm
+    title: Getty Images Lawsuit Says Stability AI Misused Photos to Train AI
+    publisher: Insurance Journal (Reuters)
+  - url: https://www.copyright.gov/docs/zarya-of-the-dawn.pdf
+    title: "Zarya of the Dawn (Registration # VAu001480196)"
+    publisher: U.S. Copyright Office
+items:
+  - date: 2023-01-13
+    ko: 화가 세 명, 스태빌리티AI·미드저니·디비언트아트를 상대로 집단소송. 자기 그림이 허락 없이 학습에 쓰였다고 주장했다.
+    en: "Three artists file a class action against Stability AI, Midjourney and DeviantArt, claiming their work was used for training without permission."
+    glyph: { ko: "화가들", en: "ARTISTS" }
+  - date: 2023-01-17
+    ko: 게티이미지, 런던 고등법원에서 스태빌리티AI를 상대로 소송 절차를 시작.
+    en: "Getty Images begins legal proceedings against Stability AI in the High Court in London."
+    glyph: { ko: "런던", en: "LONDON" }
+    pic: gavel
+  - date: 2023-02-03
+    ko: 게티이미지, 미국 델라웨어 연방법원에도 제소. 사진 1,200만 장 이상을 캡션과 함께 무단 복제했다고 주장했다.
+    en: "Getty Images also sues in federal court in Delaware, alleging that Stability AI copied more than 12 million of its photos along with their captions."
+    glyph: 12M
+  - date: 2023-02-21
+    ko: 미국 저작권청, 미드저니로 그린 만화 ‘새벽의 자랴’의 그림은 사람이 만든 것이 아니라며 등록에서 뺐다. 글과 배치는 보호했다.
+    en: "The U.S. Copyright Office finds that the Midjourney-generated images in the comic Zarya of the Dawn are not the product of human authorship, while its text and arrangement stay protected."
+    glyph: { ko: "저작권", en: "AUTHOR" }
+ko:
+  kicker: 저작권
+  title: 그림 AI, 법정에 서다
+  lede: 2022년 여름, 누구나 내려받아 돌릴 수 있는 그림 AI가 나왔다. 반년 뒤 화가들과 사진 회사가 소송을 냈고, 미국 저작권청은 AI가 그린 그림을 사람의 저작물로 보지 않았다.
+en:
+  kicker: "Copyright"
+  title: "Image Generators Go to Court"
+  lede: "In the summer of 2022, an image generator that anyone could download and run was released. Half a year later, artists and a photo agency sued, and the U.S. Copyright Office declined to treat AI-drawn images as human work."

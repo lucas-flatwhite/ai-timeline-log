@@ -1,0 +1,53 @@
+id: 2024-05-price-war
+date: 2024-05-21
+span:
+  from: 2024-05
+added: 2026-11-02
+topics: [open, models]
+print:
+  pattern: w
+  motif: fall
+  glyph: "-97%"
+sources:
+  - url: https://technode.com/2024/05/16/bytedance-surprises-ai-rivals-with-ultra-low-cost-doubao-model/
+    title: ByteDance surprises AI rivals with ultra-low cost Doubao model
+    publisher: TechNode
+  - url: https://technode.com/2024/05/22/price-war-in-chinas-ai-field-expanded-as-alibaba-cloud-and-baidu-have-drastically-reduced-model-prices/
+    title: Price war in China’s AI field expanded as Alibaba Cloud and Baidu have drastically reduced model prices
+    publisher: TechNode
+items:
+  - date: 2024-05-06
+    ko: 딥시크, DeepSeek-V2를 가중치와 함께 공개. API 가격을 100만 토큰당 입력 1위안, 출력 2위안으로 매겼다.
+    en: "DeepSeek releases DeepSeek-V2 with open weights and prices its API at 1 yuan per million input tokens and 2 yuan per million output tokens."
+    glyph: { ko: "1위안", en: "1 YUAN" }
+    sources:
+      - url: https://github.com/deepseek-ai/DeepSeek-V2
+        title: DeepSeek-V2
+        publisher: DeepSeek
+      - url: https://wallstreetcn.com/articles/3714609
+        title: AI“快进”到价格战阶段？从Deepseek-V2定价看大模型降本新风向
+        publisher: 华尔街见闻 (Wallstreetcn)
+  - date: 2024-05-15
+    ko: 바이트댄스, 기업용 모델 더우바오를 1,000토큰당 0.0008위안에 내놓았다. 업계 평균보다 99.3% 싸다고 했다.
+    en: "ByteDance launches its Doubao models for businesses at 0.0008 yuan per thousand tokens, which it says is 99.3% below the industry average."
+    glyph: "99.3%"
+    sources:
+      - url: https://yicaiglobal.com/news/bytedances-volcano-engine-starts-price-war-in-chinas-enterprise-llms-sector
+        title: ByteDance’s Volcano Engine Starts Price War in China’s Enterprise LLMs Sector
+        publisher: Yicai Global
+  - date: 2024-05-21
+    ko: 알리바바 클라우드, 모델 가격을 최대 97% 내렸다.
+    en: "Alibaba Cloud cuts prices on its models by up to 97%."
+    glyph: "-97%"
+  - date: 2024-05-21
+    ko: 같은 날 바이두는 ERNIE Lite와 ERNIE Speed를 무료로 풀었다.
+    en: "The same day, Baidu makes ERNIE Lite and ERNIE Speed free."
+    glyph: { ko: "무료", en: "FREE" }
+ko:
+  kicker: 중국
+  title: 가격 전쟁
+  lede: 딥시크와 바이트댄스가 헐값에 모델을 내놓자 알리바바와 바이두가 며칠 만에 가격을 내렸다. 여덟 달 뒤 같은 딥시크의 R1이 미국 증시를 흔들었다.
+en:
+  kicker: "China"
+  title: "The Price War"
+  lede: "When DeepSeek and ByteDance offered models at rock-bottom prices, Alibaba and Baidu cut theirs within days. Eight months later, the same DeepSeek’s R1 shook U.S. markets."

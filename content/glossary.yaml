@@ -50,6 +50,17 @@
 - { ko: "미국 작가조합", en: "Writers Guild of America", source: "https://www.wga.org/" }
 - { ko: "스탠퍼드 연구진", en: "Stanford Digital Economy Lab", source: "https://digitaleconomy.stanford.edu/" }
 - { ko: "빌보드", en: "Billboard", source: "https://www.billboard.com/" }
+- { ko: "스태빌리티AI", en: "Stability AI", source: "https://stability.ai/" }
+- { ko: "디비언트아트", en: "DeviantArt", source: "https://www.deviantart.com/" }
+- { ko: "게티이미지", en: "Getty Images", source: "https://newsroom.gettyimages.com/en/getty-images/getty-images-statement" }
+- { ko: "바이두", en: "Baidu", source: "https://ir.baidu.com/" }
+- { ko: "바이트댄스", en: "ByteDance", source: "https://www.bytedance.com/" }
+- { ko: "센스타임", en: "SenseTime", source: "https://www.sensetime.com/en" }
+- { ko: "알리바바 클라우드", en: "Alibaba Cloud", source: "https://www.alibabacloud.com/" }
+- { ko: "X", en: "X", source: "https://x.com/" }   # 옛 트위터
+- { ko: "컨스텔레이션", en: "Constellation", source: "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm" }   # 정식 회사명 Constellation Energy
+- { ko: "카이로스 파워", en: "Kairos Power", source: "https://kairospower.com/updates/google-and-kairos-power-partner-to-deploy-500-mw-of-clean-electricity-generation" }
+- { ko: "X-energy", en: "X-energy", source: "https://x-energy.com/" }
 
 # 정부·국제기구·행사
 - { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
@@ -74,6 +85,12 @@
 - { ko: "노벨 화학상", en: "Nobel Prize in Chemistry", source: "https://www.nobelprize.org/prizes/chemistry/2024/summary/" }
 - { ko: "프로젝트 글래스윙", en: "Project Glasswing", source: "https://www.anthropic.com/glasswing" }
 - { ko: "스타게이트", en: "Stargate", source: "https://openai.com/index/announcing-the-stargate-project/" }
+- { ko: "미국 저작권청", en: "U.S. Copyright Office", source: "https://www.copyright.gov/docs/zarya-of-the-dawn.pdf" }
+- { ko: "미국 연방통신위원회(FCC)", en: "FCC (Federal Communications Commission)", source: "https://www.fcc.gov/" }
+- { ko: "뮌헨안보회의", en: "Munich Security Conference", source: "https://securityconference.org/en/aielectionsaccord" }
+- { ko: "캘리포니아 하원", en: "California Assembly", source: "https://www.assembly.ca.gov/" }
+- { ko: "캘리포니아 상원", en: "California Senate", source: "https://www.senate.ca.gov/" }
+- { ko: "수출 제한 목록", en: "Entity List", source: "https://www.bis.gov/press-release/commerce-strengthens-restrictions-advanced-computing-semiconductors-semiconductor-manufacturing-equipment" }   # 미 상무부 산업안보국(BIS)의 목록
 
 # 법·행정명령·성명
 - { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
@@ -85,6 +102,10 @@
 - { ko: "We Must Pace the Frontier", en: "We Must Pace the Frontier", source: "https://www.darioamodei.com/post/we-must-pace-the-frontier" }
 - { ko: "S-1(상장 등록서)", en: "S-1 registration statement", source: "https://www.anthropic.com/news/confidential-draft-s1-sec" }
 - { ko: "초지능(SI) 대화", en: "U.S.-China Super Intelligence (SI) Dialogue", source: "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-advances-a-fair-and-reciprocal-relationship-with-china-while-hosting-historic-state-visit/" }
+- { ko: "생성형 AI 서비스 관리 잠정조치", en: "Interim Measures for the Administration of Generative AI Services", source: "http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" }   # 生成式人工智能服务管理暂行办法. 국가인터넷정보판공실 등 7개 부처
+- { ko: "전화소비자보호법", en: "Telephone Consumer Protection Act", source: "https://www.nbcnews.com/tech/security/fcc-votes-unanimously-ban-unsolicited-ai-robocalls-rcna137950" }   # FCC 사이트는 자동 접속이 불안정해 보도 출처를 둔다
+- { ko: "선거 AI 협약", en: "AI Elections Accord (A Tech Accord to Combat Deceptive Use of AI in 2024 Elections)", source: "https://securityconference.org/en/aielectionsaccord" }
+- { ko: "SB 1047", en: "SB 1047 (Safe and Secure Innovation for Frontier Artificial Intelligence Models Act)", source: "https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf" }
 
 # 모델·제품
 - { ko: "ChatGPT", en: "ChatGPT", source: "https://openai.com/index/chatgpt/" }
@@ -200,6 +221,15 @@
 - { ko: "미드저니 v5", en: "Midjourney v5", source: "https://docs.midjourney.com/hc/en-us/articles/33329788681101-Legacy-Features" }   # 공식 문서는 Version 5로 적는다. 자동 접속을 막아(403) 검색 결과로 확인
 - { ko: "깃허브", en: "GitHub", source: "https://github.com/" }
 - { ko: "MIT 라이선스", en: "MIT license", source: "https://github.com/deepseek-ai/DeepSeek-R1" }
+- { ko: "Stable Diffusion", en: "Stable Diffusion", source: "https://stability.ai/news/celebrating-one-year-of-stable-diffusion" }
+- { ko: "새벽의 자랴", en: "Zarya of the Dawn", source: "https://www.copyright.gov/docs/zarya-of-the-dawn.pdf" }
+- { ko: "어니봇", en: "ERNIE Bot", source: "https://technode.com/2023/08/31/11-chinese-tech-companies-granted-permission-to-fully-release-chatgpt-like-tools/" }
+- { ko: "ERNIE Lite·ERNIE Speed", en: "ERNIE Lite and ERNIE Speed", source: "https://technode.com/2024/05/22/price-war-in-chinas-ai-field-expanded-as-alibaba-cloud-and-baidu-have-drastically-reduced-model-prices/" }
+- { ko: "DeepSeek-V2", en: "DeepSeek-V2", source: "https://github.com/deepseek-ai/DeepSeek-V2" }
+- { ko: "더우바오", en: "Doubao", source: "https://technode.com/2024/05/16/bytedance-surprises-ai-rivals-with-ultra-low-cost-doubao-model/" }
+- { ko: "A800·H800", en: "A800 and H800", source: "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000221/nvda-20231023.htm" }
+- { ko: "고대역폭 메모리(HBM)", en: "high-bandwidth memory (HBM)", source: "https://www.bloomberg.com/news/articles/2024-12-02/us-tightens-curbs-on-china-s-access-to-ai-memory-and-chips-tools" }
+- { ko: "스리마일섬 1호기", en: "Three Mile Island Unit 1", source: "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm" }   # 재가동 뒤 이름은 Crane Clean Energy Center
 - { ko: "EU", en: "EU", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
 
 # 사람
@@ -225,3 +255,5 @@
 - { ko: "다리오 아모데이", en: "Dario Amodei", source: "https://www.anthropic.com/" }
 - { ko: "도널드 트럼프", en: "Donald Trump", source: "https://www.whitehouse.gov/" }
 - { ko: "조 바이든", en: "Joe Biden", source: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence" }
+- { ko: "개빈 뉴섬", en: "Gavin Newsom", source: "https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf" }
+- { ko: "테일러 스위프트", en: "Taylor Swift", source: "https://www.news4jax.com/business/2024/01/30/x-restores-taylor-swift-searches-after-deepfake-explicit-images-triggered-temporary-block/" }

@@ -1,0 +1,48 @@
+id: 2023-10-chip-rules
+date: 2023-10-17
+span:
+  from: 2023-10
+  to: 2024-12
+added: 2026-11-02
+topics: [compute, rules]
+print:
+  pattern: h
+  motif: fall
+  glyph: H800
+sources:
+  - url: https://www.bis.gov/press-release/commerce-strengthens-restrictions-advanced-computing-semiconductors-semiconductor-manufacturing-equipment
+    title: Commerce Strengthens Restrictions on Advanced Computing Semiconductors, Semiconductor Manufacturing Equipment, and Supercomputing Items to Countries of Concern
+    publisher: Bureau of Industry and Security
+  - url: https://www.bis.gov/press-release/bis-updated-public-information-page-export-controls-imposed-advanced-computing-semiconductor
+    title: Updated public information page on export controls imposed on advanced computing and semiconductor manufacturing items to the PRC
+    publisher: Bureau of Industry and Security
+items:
+  - date: 2023-10-17
+    ko: 미 상무부, 2022년 10월에 만든 AI 칩 수출 통제를 고쳤다. 성능 밀도 기준을 더해 우회용 칩을 막고, 다른 무기 금수국과 마카오까지 대상을 넓혔다.
+    en: "The Commerce Department revises the AI chip export controls it set in October 2022, adding a performance-density test to catch workaround chips and extending them to other arms-embargoed countries and Macau."
+    glyph: { ko: "강화", en: "TIGHTER" }
+    pic: padlock
+  - date: 2023-10-23
+    ko: 미 정부, 엔비디아에 새 규칙을 즉시 적용한다고 통보. 중국 시장용으로 만든 A800과 H800도 수출이 막혔다.
+    en: "The U.S. government tells NVIDIA the new rules apply immediately, cutting off the A800 and H800 it had made for the Chinese market."
+    glyph: H800
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1045810/000104581023000221/nvda-20231023.htm
+        title: NVIDIA Corporation Form 8-K (October 2023)
+        publisher: U.S. Securities and Exchange Commission
+  - date: 2024-12-02
+    ko: 미국, 고대역폭 메모리(HBM)와 반도체 장비 수출을 통제하고 140개 기관을 수출 제한 목록에 올렸다.
+    en: "The U.S. puts export controls on high-bandwidth memory (HBM) and chipmaking equipment and adds 140 entities to its Entity List."
+    glyph: HBM
+    sources:
+      - url: https://www.bloomberg.com/news/articles/2024-12-02/us-tightens-curbs-on-china-s-access-to-ai-memory-and-chips-tools
+        title: US Tightens Curbs on China’s Access to AI Memory, Chip Tools
+        publisher: Bloomberg
+ko:
+  kicker: 칩 통제
+  title: 막힌 우회로
+  lede: 미국은 2022년 10월 첨단 AI 칩의 중국 수출을 막았다. 엔비디아가 성능을 낮춘 중국용 칩으로 길을 찾자, 1년 뒤 미국은 그 칩까지 막았다.
+en:
+  kicker: "Chip Controls"
+  title: "Closing the Workaround"
+  lede: "In October 2022, the U.S. barred exports of advanced AI chips to China. When NVIDIA answered with toned-down chips made for China, the U.S. blocked those too a year later."

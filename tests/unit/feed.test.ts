@@ -21,7 +21,7 @@ describe('feedItems', () => {
     expect(byGuid(`correction:${exportControl}:2026-10-27`)).toBeDefined();
     expect(byGuid('poster:4:2026-10-31')?.link).toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/tag/edition-4');
     expect(ko.filter(i => i.guid.startsWith('poster:'))).toHaveLength(1);
-    expect(ko.filter(i => i.guid.startsWith('scene:'))).toHaveLength(13);
+    expect(ko.filter(i => i.guid.startsWith('scene:'))).toHaveLength(20);
     expect(ko.filter(i => i.guid.startsWith('correction:'))).toHaveLength(2);
   });
 
@@ -52,7 +52,7 @@ describe('renderRss', () => {
     expect(xml).toContain('<pubDate>Sat, 31 Oct 2026 00:00:00 +0900</pubDate>');
     expect(xml).toContain('<language>ko</language>');
     const guids = [...xml.matchAll(/<guid isPermaLink="false">([^<]+)<\/guid>/g)].map(m => m[1]);
-    expect(guids.length).toBe(17);
+    expect(guids.length).toBe(24);
     expect(new Set(guids).size).toBe(guids.length);
   });
 
