@@ -88,6 +88,7 @@
 - { ko: "미국 저작권청", en: "U.S. Copyright Office", source: "https://www.copyright.gov/docs/zarya-of-the-dawn.pdf" }
 - { ko: "미국 연방통신위원회(FCC)", en: "FCC (Federal Communications Commission)", source: "https://www.fcc.gov/" }
 - { ko: "뮌헨안보회의", en: "Munich Security Conference", source: "https://securityconference.org/en/aielectionsaccord" }
+- { ko: "소니 월드 포토그래피 어워드", en: "Sony World Photography Awards", source: "https://www.worldphoto.org/sony-world-photography-awards" }
 - { ko: "캘리포니아 하원", en: "California Assembly", source: "https://www.assembly.ca.gov/" }
 - { ko: "캘리포니아 상원", en: "California Senate", source: "https://www.senate.ca.gov/" }
 - { ko: "수출 제한 목록", en: "Entity List", source: "https://www.bis.gov/press-release/commerce-strengthens-restrictions-advanced-computing-semiconductors-semiconductor-manufacturing-equipment" }   # 미 상무부 산업안보국(BIS)의 목록
@@ -257,3 +258,4 @@
 - { ko: "조 바이든", en: "Joe Biden", source: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence" }
 - { ko: "개빈 뉴섬", en: "Gavin Newsom", source: "https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf" }
 - { ko: "테일러 스위프트", en: "Taylor Swift", source: "https://www.news4jax.com/business/2024/01/30/x-restores-taylor-swift-searches-after-deepfake-explicit-images-triggered-temporary-block/" }
+- { ko: "보리스 엘다크센", en: "Boris Eldagsen", source: "https://www.engadget.com/german-artist-refuses-award-after-his-ai-image-wins-prestigious-photography-prize-071322551.html" }

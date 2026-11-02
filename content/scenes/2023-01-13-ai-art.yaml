@@ -1,0 +1,59 @@
+id: 2023-01-ai-art
+date: 2023-01-13
+span:
+  from: 2023-01
+  to: 2023-04
+added: 2026-11-02
+topics: [society]
+print:
+  pattern: w
+  motif: none
+  glyph: 12M
+sources:
+  - url: https://www.cbsnews.com/colorado/news/ai-created-art-exhibit-first-place-colorado-state-fair-causing-controversy-jason-allen/
+    title: Artificial intelligence artwork wins 1st place at Colorado State Fair, causing controversy
+    publisher: CBS Colorado
+  - url: https://news.bloombergtax.com/safety/ai-art-generators-hit-with-copyright-suit-over-artists-images
+    title: AI Art Generators Hit With Copyright Suit Over Artists’ Images
+    publisher: Bloomberg Tax
+  - url: https://newsroom.gettyimages.com/en/getty-images/getty-images-statement
+    title: Getty Images Statement
+    publisher: Getty Images
+  - url: https://www.insurancejournal.com/news/national/2023/02/07/706345.htm
+    title: Getty Images Lawsuit Says Stability AI Misused Photos to Train AI
+    publisher: Insurance Journal (Reuters)
+  - url: https://www.copyright.gov/docs/zarya-of-the-dawn.pdf
+    title: "Zarya of the Dawn (Registration # VAu001480196)"
+    publisher: U.S. Copyright Office
+items:
+  - date: 2023-01-13
+    ko: 화가 세 명, 스태빌리티AI·미드저니·디비언트아트를 상대로 집단소송. 자기 그림이 허락 없이 학습에 쓰였다고 주장했다.
+    en: "Three artists file a class action against Stability AI, Midjourney and DeviantArt, claiming their work was used for training without permission."
+    glyph: { ko: "화가들", en: "ARTISTS" }
+  - date: 2023-02-03
+    ko: 게티이미지, 1월 런던에 이어 미국 델라웨어 연방법원에도 스태빌리티AI를 제소. 사진 1,200만 장 이상을 캡션과 함께 무단 복제했다고 주장했다.
+    en: "After filing in London in January, Getty Images also sues Stability AI in federal court in Delaware, alleging that it copied more than 12 million photos along with their captions."
+    glyph: 12M
+  - date: 2023-02-21
+    ko: 미국 저작권청, 미드저니로 그린 만화 ‘새벽의 자랴’의 그림은 사람이 만든 것이 아니라며 등록에서 뺐다. 글과 배치는 보호했다.
+    en: "The U.S. Copyright Office finds that the Midjourney-generated images in the comic Zarya of the Dawn are not the product of human authorship, while its text and arrangement stay protected."
+    glyph: { ko: "저작권", en: "AUTHOR" }
+  - date: 2023-04-13
+    ko: 독일 작가 보리스 엘다크센, AI로 만든 이미지로 소니 월드 포토그래피 어워드 크리에이티브 부문에서 우승한 뒤 ‘AI는 사진이 아니다’라며 수상을 거부. 주최 측은 그가 AI 사용 정도를 속였다고 했다.
+    en: "German artist Boris Eldagsen refuses the Sony World Photography Awards prize he won in the creative category with an AI-made image, saying “AI is not photography,” while the organizers say he misled them about how much AI was involved."
+    glyph: { ko: "거부", en: "REFUSED" }
+    sources:
+      - url: https://www.irishtimes.com/culture/art/2023/04/18/photographer-refuses-prestigious-award-after-admitting-image-was-ai-generated
+        title: Photographer refuses prestigious award after admitting image was AI-generated
+        publisher: The Irish Times
+      - url: https://www.engadget.com/german-artist-refuses-award-after-his-ai-image-wins-prestigious-photography-prize-071322551.html
+        title: German artist refuses award after his AI image wins prestigious photography prize
+        publisher: Engadget
+ko:
+  kicker: 저작권
+  title: AI 그림은 누구의 것인가
+  lede: 2022년 여름, AI로 만든 그림이 미국 주 박람회 미술전에서 1위를 했고 누구나 내려받아 돌릴 수 있는 그림 AI가 나왔다. 이듬해 화가들과 사진 회사가 소송을 냈고, 미국 저작권청과 사진 대회는 AI가 만든 이미지를 사람의 작품과 같게 보지 않았다.
+en:
+  kicker: "Copyright"
+  title: "Who Owns an AI Image?"
+  lede: "In the summer of 2022, an AI-made picture took first place in an art competition at a U.S. state fair, and an image generator that anyone could download and run was released. The next year, artists and a photo agency sued, and the U.S. Copyright Office and a photography contest declined to treat AI-made images as human work."

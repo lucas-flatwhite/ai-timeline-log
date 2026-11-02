@@ -88,7 +88,7 @@ describe('buildView(ko)', () => {
     const marked = v.scenes.filter(s => s.meta.includes('추가'));
     expect(marked).toHaveLength(7);
     expect(marked.every(s => s.meta.endsWith(' · 추가 2026.11.02'))).toBe(true);
-    expect(marked.map(s => s.id).sort()).toEqual(['2023-01-art-lawsuits', '2023-08-licensed-chatbots', '2023-10-chip-rules', '2024-01-election-deepfakes', '2024-05-price-war', '2024-09-nuclear', '2024-09-sb-1047']);
+    expect(marked.map(s => s.id).sort()).toEqual(['2023-01-ai-art', '2023-08-licensed-chatbots', '2023-10-chip-rules', '2024-01-election-deepfakes', '2024-05-price-war', '2024-09-nuclear', '2024-09-sb-1047']);
     expect(scene('2025-01-deepseek').meta).not.toContain('추가');
     expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(41);
   });
