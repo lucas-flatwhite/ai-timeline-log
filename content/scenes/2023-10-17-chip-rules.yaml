@@ -14,14 +14,13 @@ sources:
     title: Commerce Strengthens Restrictions on Advanced Computing Semiconductors, Semiconductor Manufacturing Equipment, and Supercomputing Items to Countries of Concern
     publisher: Bureau of Industry and Security
   - url: https://www.bis.gov/press-release/bis-updated-public-information-page-export-controls-imposed-advanced-computing-semiconductor
-    title: Updated public information page on export controls imposed on advanced computing and semiconductor manufacturing items to the PRC
+    title: BIS updated public information page on export controls imposed on advanced computing and semiconductor manufacturing items to the People’s Republic of China (PRC)
     publisher: Bureau of Industry and Security
 items:
   - date: 2023-10-17
     ko: 미 상무부, 2022년 10월에 만든 AI 칩 수출 통제를 고쳤다. 성능 밀도 기준을 더해 우회용 칩을 막고, 다른 무기 금수국과 마카오까지 대상을 넓혔다.
     en: "The Commerce Department revises the AI chip export controls it set in October 2022, adding a performance-density test to catch workaround chips and extending them to other arms-embargoed countries and Macau."
     glyph: { ko: "강화", en: "TIGHTER" }
-    pic: padlock
   - date: 2023-10-23
     ko: 미 정부, 엔비디아에 새 규칙을 즉시 적용한다고 통보. 중국 시장용으로 만든 A800과 H800도 수출이 막혔다.
     en: "The U.S. government tells NVIDIA the new rules apply immediately, cutting off the A800 and H800 it had made for the Chinese market."
