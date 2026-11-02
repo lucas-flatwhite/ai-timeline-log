@@ -23,8 +23,8 @@ for (const path of ['./ko/', './']) {
       const text = (await page.locator('#details').textContent())!;
       const missing = scenes.flatMap(s => [s[lang].title, ...s.items.map(it => it[lang])]).filter(t => !text.includes(t));
       expect(missing).toEqual([]);
-      await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(55);
-      await expect(page.locator('#details ol.items > li')).toHaveCount(206);
+      await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(61);
+      await expect(page.locator('#details ol.items > li')).toHaveCount(230);
       await expect(page.locator('#details article.detail.year')).toHaveCount(4);
     });
 
@@ -38,10 +38,10 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('#wall')).toHaveAttribute('data-latest', '2026-11-02');
     });
 
-    test('boxes: 266, newest first, links to addresses', async ({ page }) => {
+    test('boxes: 296, newest first, links to addresses', async ({ page }) => {
       await page.goto(path);
       const boxes = page.locator('.wall .box');
-      await expect(boxes).toHaveCount(266);
+      await expect(boxes).toHaveCount(296);
       await expect(page.locator('.wall > :first-child')).toHaveClass(/\bcover\b/);
       await expect(page.locator('.wall a.box').first()).toHaveAttribute('href', '#year-2026');
       const glyphs = await boxes.evaluateAll(els => els.map(e => (e as HTMLElement).dataset.glyph ?? ''));
@@ -126,7 +126,7 @@ test.describe('exported files', () => {
     const json = await request.get('timeline.json');
     expect(json.status()).toBe(200);
     expect(json.headers()['content-type']).toMatch(/json/);
-    expect((await json.json()).scenes).toHaveLength(55);
+    expect((await json.json()).scenes).toHaveLength(61);
     for (const p of ['llms.txt', 'llms-full.txt', 'ko/llms-full.txt']) {
       const r = await request.get(p);
       expect(r.status(), p).toBe(200);
@@ -144,8 +144,8 @@ test.describe('exported files', () => {
     const take = page.locator('#outro .take');
     const hrefs = await take.locator('a').evaluateAll(as => as.map(a => (a as HTMLAnchorElement).getAttribute('href')!));
     expect(hrefs).toEqual([
-      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf',
-      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.png',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-5/poster-ko.pdf',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-5/poster-ko.png',
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases',
       '/ai-timeline-log/ko/feed.xml',
       'https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt',
@@ -155,7 +155,7 @@ test.describe('exported files', () => {
       await expect(a).toHaveAttribute('target', '_blank');
       await expect(a).toHaveAttribute('rel', 'noopener');
     }
-    await expect(take.locator('h3').first()).toHaveText('포스터 · 제 4판 · 2026.10.31');
+    await expect(take.locator('h3').first()).toHaveText('포스터 · 제 5판 · 2026.11.02');
   });
 
   test('feeds are served', async ({ request, page }) => {

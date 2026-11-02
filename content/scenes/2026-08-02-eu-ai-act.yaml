@@ -1,0 +1,54 @@
+id: 2026-08-eu-ai-act
+date: 2026-08-02
+span:
+  from: 2024-08
+  to: 2026-08
+added: 2026-11-02
+topics: [rules]
+print:
+  pattern: h
+  motif: grid
+  glyph: "8.2"
+sources:
+  - url: https://commission.europa.eu/news-and-media/news/ai-act-enters-force-2024-08-01_en
+    title: AI Act enters into force
+    publisher: European Commission
+  - url: https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august
+    title: Commission starts enforcing AI Act rules and new transparency requirements on 2 August
+    publisher: European Commission
+items:
+  - date: 2024-08-01
+    ko: EU AI Act 발효. 금지 규정과 범용 AI 규정, 고위험 의무가 해를 나눠 차례로 적용되게 했다.
+    en: "The EU AI Act enters into force, with its bans, general-purpose AI rules and high-risk obligations set to apply in stages."
+    glyph: { ko: "발효", en: "IN FORCE" }
+  - date: 2025-08-02
+    ko: 범용 AI 모델 의무 적용 시작. 직전 메타는 자율 행동강령에 서명하지 않겠다고 했고, OpenAI·Anthropic·구글은 서명하기로 했다.
+    en: "Obligations for general-purpose AI models begin to apply, after Meta declines to sign the voluntary code of practice that OpenAI, Anthropic and Google agree to sign."
+    glyph: { ko: "범용", en: "GPAI" }
+    sources:
+      - url: https://www.euronews.com/next/2025/07/18/meta-rebuffs-eus-ai-code-of-practice
+        title: Meta rebuffs EU’s AI Code of Practice
+        publisher: Euronews
+  - date: 2026-05-07
+    ko: EU 이사회와 유럽의회, AI 규칙 간소화에 잠정 합의. 고위험 AI 의무를 2027년 12월로 미루고, 동의 없는 성적 이미지와 아동 성착취물을 만드는 AI는 금지하기로 했다.
+    en: "The Council of the EU and the European Parliament reach a provisional deal to simplify the AI rules, delaying high-risk obligations to December 2027 and banning AI that generates non-consensual sexual imagery or child sexual abuse material."
+    glyph: { ko: "연기", en: "DELAYED" }
+    sources:
+      - url: https://www.brusselstimes.com/2118758/eu-pushes-back-start-date-for-high-risk-ai-rules-in-surprise-deal
+        title: EU pushes back start date for high-risk AI rules in surprise deal
+        publisher: The Brussels Times
+      - url: https://www.whitecase.com/insight-alert/eu-agrees-digital-omnibus-deal-simplify-ai-rules
+        title: EU agrees Digital Omnibus deal to simplify AI rules
+        publisher: White & Case
+  - date: 2026-08-02
+    ko: 집행위원회와 각국 당국이 AI Act 집행을 시작. 챗봇은 상대가 AI임을 알려야 하고 딥페이크에는 표시를 달아야 한다.
+    en: "The European Commission and national authorities begin enforcing the AI Act, which requires chatbots to tell users they are talking to AI and deepfakes to be labeled."
+    glyph: { ko: "집행", en: "ENFORCE" }
+ko:
+  kicker: EU
+  title: AI Act, 집행이 시작되다
+  lede: 세계 첫 포괄적 AI 법은 해를 나눠 시행됐다. 고위험 규정은 늦춰졌지만, 2026년 8월부터 EU는 AI 규칙을 실제로 집행하기 시작했다.
+en:
+  kicker: "EU"
+  title: "The AI Act Starts to Bite"
+  lede: "The world’s first comprehensive AI law took effect in stages. Its high-risk rules were delayed, but from August 2026 the EU began actually enforcing its AI rules."

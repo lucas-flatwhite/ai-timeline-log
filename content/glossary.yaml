@@ -72,6 +72,17 @@
 - { ko: "웨스트로", en: "Westlaw", source: "https://www.haynesboone.com/news/alerts/third-circuit-rejects-fair-use-for-rosss-copying-of-westlaw-headnotes" }   # Thomson Reuters의 법률 정보 서비스
 - { ko: "OpenAI 재단", en: "OpenAI Foundation", source: "https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/" }
 - { ko: "OpenAI Group PBC", en: "OpenAI Group PBC", source: "https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/" }
+- { ko: "무어스레드", en: "Moore Threads", source: "https://en.jiemian.com/article/13724679.html" }
+- { ko: "메타X", en: "MetaX", source: "https://www2.yicaiglobal.com/news/chinese-gpu-maker-metax-surges-nearly-700-on-trading-debut-in-shanghai" }
+- { ko: "즈푸", en: "Zhipu", source: "https://www.chinadailyhk.com/hk/article/626680" }   # 정식 회사명 Knowledge Atlas Technology(北京智谱华章). 해외 브랜드는 Z.ai
+- { ko: "MiniMax", en: "MiniMax", source: "https://www.chinadailyhk.com/article/626743" }
+- { ko: "스텝펀", en: "StepFun", source: "https://www.cisa.gov/news-events/news/cisa-nsa-and-fbi-warn-china-based-ai-companies-targeting-us-ai-models-industrial-scale-knowledge" }
+- { ko: "유니트리", en: "Unitree", source: "https://www.aljazeera.com/economy/2026/8/19/chinas-unitree-soars-in-market-debut-as-investors-bet-on-humanoid-robots" }
+- { ko: "SK텔레콤", en: "SK Telecom", source: "https://www.sktelecom.com/" }
+- { ko: "LG AI연구원", en: "LG AI Research", source: "https://www.lgresearch.ai/" }
+- { ko: "NC AI", en: "NC AI", source: "https://www.newsis.com/view/NISX20250804_0003277653" }
+- { ko: "업스테이지", en: "Upstage", source: "https://www.upstage.ai/" }
+- { ko: "모티프테크놀로지스", en: "Motif Technologies", source: "https://www.kukinews.com/article/view/kuk202602200203" }
 
 # 정부·국제기구·행사
 - { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
@@ -107,6 +118,18 @@
 - { ko: "중국 외교부", en: "China’s foreign ministry", source: "https://www.thestar.com.my/tech/tech-news/2025/11/17/anthropic-says-chinese-hackers-used-its-ai-in-online-attack-a-claim-refuted-by-china" }
 - { ko: "제3순회항소법원", en: "Third Circuit (U.S. Court of Appeals for the Third Circuit)", source: "https://www.haynesboone.com/news/alerts/third-circuit-rejects-fair-use-for-rosss-copying-of-westlaw-headnotes" }
 - { ko: "캘리포니아·델라웨어 법무장관", en: "attorneys general of California and Delaware", source: "https://www.theregister.com/2025/10/28/openai_simplifies_corporate_structure_into/" }
+- { ko: "중국 상무부", en: "China’s Ministry of Commerce", source: "https://www.cnbc.com/2026/04/27/meta-manus-china-blocks-acquisition-ai-startup.html" }
+- { ko: "중국 국가발전개혁위원회", en: "National Development and Reform Commission", source: "https://www.cnbc.com/2026/04/27/meta-manus-china-blocks-acquisition-ai-startup.html" }
+- { ko: "EU 이사회", en: "Council of the EU", source: "https://www.consilium.europa.eu/en/policies/simplification/timeline-simplification-omnibus-packages/" }
+- { ko: "집행위원회", en: "European Commission", source: "https://commission.europa.eu/" }
+- { ko: "과학기술정보통신부", en: "Ministry of Science and ICT", source: "https://www.msit.go.kr/eng/" }
+- { ko: "백악관 과학기술정책실", en: "White House Office of Science and Technology Policy", source: "https://www.whitehouse.gov/ostp/" }
+- { ko: "CISA", en: "CISA (Cybersecurity and Infrastructure Security Agency)", source: "https://www.cisa.gov/" }
+- { ko: "NSA", en: "NSA", source: "https://www.nsa.gov/" }
+- { ko: "FBI", en: "FBI", source: "https://www.fbi.gov/" }
+- { ko: "상하이 과학혁신판", en: "STAR Market", source: "https://www.aljazeera.com/economy/2026/8/19/chinas-unitree-soars-in-market-debut-as-investors-bet-on-humanoid-robots" }
+- { ko: "세계 휴머노이드 로봇 대회", en: "World Humanoid Robot Games", source: "https://www.robotics247.com/article/unitree_h1_earns_two_gold_medals_at_world_humanoid_robot_games" }
+- { ko: "춘완(춘제 갈라쇼)", en: "Spring Festival Gala", source: "https://news.cgtn.com/news/2025-01-28/Tradition-meets-tech-Unitree-robots-dance-at-Spring-Festival-Gala-1Axm5TuIAve/index.html" }
 
 # 법·행정명령·성명
 - { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
@@ -128,6 +151,9 @@
 - { ko: "주 AI 법 행정명령(2025)", en: "executive order on a national AI policy framework (Ensuring a National Policy Framework for Artificial Intelligence)", source: "https://www.whitehouse.gov/fact-sheets/2025/12/fact-sheet-president-donald-j-trump-ensures-a-national-policy-framework-for-artificial-intelligence/" }   # Executive Order 14365
 - { ko: "공익법인(PBC)", en: "public benefit corporation", source: "https://www.theregister.com/2025/05/05/openai_keep_nonprofit_in_charge/" }
 - { ko: "공정 이용", en: "fair use", source: "https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some" }
+- { ko: "범용 AI 행동강령", en: "General-Purpose AI Code of Practice", source: "https://www.euronews.com/next/2025/07/18/meta-rebuffs-eus-ai-code-of-practice" }
+- { ko: "NSTM-4", en: "NSTM-4 (Adversarial Distillation of American AI Models)", source: "https://justsecurity.org/137498/diagnosis-deterrence-us-response-distillation" }
+- { ko: "증류", en: "distillation", source: "https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks" }
 
 # 모델·제품
 - { ko: "ChatGPT", en: "ChatGPT", source: "https://openai.com/index/chatgpt/" }
@@ -266,6 +292,7 @@
 - { ko: "Claude Sonnet 4.5", en: "Claude Sonnet 4.5", source: "https://www.anthropic.com/news/claude-sonnet-4-5" }
 - { ko: "Azure", en: "Azure", source: "https://azure.microsoft.com/" }
 - { ko: "바이브 해킹", en: "vibe hacking", source: "https://www.theregister.com/2025/08/27/anthropic_security_report_flags_rogue/" }
+- { ko: "H1", en: "H1", source: "https://www.robotics247.com/article/unitree_h1_earns_two_gold_medals_at_world_humanoid_robot_games" }
 - { ko: "EU", en: "EU", source: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration" }
 
 # 사람

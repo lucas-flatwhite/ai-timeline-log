@@ -1,0 +1,52 @@
+id: 2026-08-humanoids
+date: 2026-08-19
+span:
+  from: 2025-01
+  to: 2026-08
+added: 2026-11-02
+topics: [society]
+print:
+  pattern: c
+  motif: rise
+  glyph: "+460%"
+sources:
+  - url: https://www.aljazeera.com/economy/2026/8/19/chinas-unitree-soars-in-market-debut-as-investors-bet-on-humanoid-robots
+    title: China’s Unitree soars in market debut as investors bet on humanoid robots
+    publisher: Al Jazeera
+  - url: https://www.robotics247.com/article/unitree_h1_earns_two_gold_medals_at_world_humanoid_robot_games
+    title: Unitree H1 earns two gold medals at World Humanoid Robot Games
+    publisher: Robotics 24/7
+items:
+  - date: 2025-01-28
+    ko: 중국 춘제 전야 TV 갈라쇼(춘완)에서 유니트리의 휴머노이드 로봇들이 손수건을 돌리며 앙가 춤을 췄다.
+    en: "On China’s Spring Festival Gala, Unitree’s humanoid robots perform a yangge folk dance, twirling handkerchiefs."
+    glyph: { ko: "춘완", en: "GALA" }
+    sources:
+      - url: https://news.cgtn.com/news/2025-01-28/Tradition-meets-tech-Unitree-robots-dance-at-Spring-Festival-Gala-1Axm5TuIAve/index.html
+        title: "Tradition meets tech: Unitree robots dance at Spring Festival Gala"
+        publisher: CGTN
+  - date: 2025-08-15
+    ko: 베이징에서 처음 열린 세계 휴머노이드 로봇 대회에서 유니트리 H1이 1,500m를 6분 34초 40에 달려 우승.
+    en: "At the first World Humanoid Robot Games in Beijing, Unitree’s H1 wins the 1,500 meters in 6:34.40."
+    glyph: 1500m
+    pic: robot
+  - date: 2026-02-16
+    ko: 다시 춘완 무대에 오른 유니트리 로봇들이 공중제비와 취권을 선보였다. 다른 회사 로봇들도 콩트와 집안일 장면에 나왔다.
+    en: "Back on the Spring Festival Gala, Unitree’s robots perform backflips and drunken-fist kung fu, and robots from other companies appear in a comedy sketch and household scenes."
+    glyph: { ko: "취권", en: "KUNG FU" }
+    sources:
+      - url: https://news.cgtn.com/news/2026-02-17/China-s-Spring-Festival-Gala-like-Super-Bowl-for-humanoid-robots-1KPGPf2OwX6/p.html
+        title: China’s Spring Festival Gala like Super Bowl for humanoid robots
+        publisher: CGTN
+  - date: 2026-08-19
+    ko: 유니트리, 중국 본토 첫 휴머노이드 로봇 회사 상장. 상하이 과학혁신판 첫날 460% 오른 채 마감했다.
+    en: "Unitree becomes the first humanoid robot maker to list in mainland China, closing its first day on Shanghai’s STAR Market up 460%."
+    glyph: "+460%"
+ko:
+  kicker: 로봇
+  title: 무대에 선 휴머노이드
+  lede: 중국 휴머노이드 로봇이 명절 TV 무대와 경기장에 섰다. 1년 반 뒤 그 로봇을 만든 회사의 주가는 상장 첫날 다섯 배 넘게 뛰었다.
+en:
+  kicker: "Robots"
+  title: "Humanoids Take the Stage"
+  lede: "Chinese humanoid robots appeared on a holiday TV stage and in a sports arena. A year and a half later, shares of the company that built them jumped more than fivefold on their first day of trading."
