@@ -39,15 +39,21 @@ export interface PageView {
   topics: { id: string; name: string; count: number }[];
   /** 가장 늦은 장면 추가일. 브라우저가 지난 방문과 비교한다 */
   latestAdded: string;
-  /** 주제 단추와 새 상자 줄의 문구. newLine은 {n} 틀 */
-  ui: { topic: string; topicAll: string; topicClear: string; newLine: string; newShow: string; newLabel: string };
+  /** 시기(arcs.yaml, 오래된 것부터). from·to는 YYYYMM, 마지막 시기는 to가 없다(현재까지) */
+  eras: { from: string; to?: string; title: string; span: string; body: string }[];
+  /** 찾기 창, 새 상자 줄, 강조 띠의 문구. newLine은 {n} 틀, pick.era는 {i}·{n} 틀, pick.boxes는 {n} 틀 */
+  ui: {
+    topic: string; topicAll: string; topicClear: string; newLine: string; newShow: string; newLabel: string;
+    find: string; findLabel: string; findPlaceholder: string; eras: string; eraShow: string; eraPrev: string; eraNext: string;
+    pick: { era: string; topic: string; find: string; new: string; clear: string; boxes: string; box1: string; none: string };
+  };
   dialog: { prev: string; next: string; close: string; fix: string; sources: string; sceneSources: string };
   /** 격자(main)와 상세 글 묶음(section)의 이름 */
   aria: { wall: string; details: string };
   langNav: string; langs: LangView[];
   outro: {
     /** titleTpl: 일수를 채우기 전 제목 틀({days}) */
-    bar: string; eyebrow: string; title: string; titleTpl: string; arcs: { span: string; title: string; body: string }[];
+    bar: string; eyebrow: string; title: string; titleTpl: string; arcs: { from: string; span: string; title: string; body: string }[];
     ledgerTitle: string; ledgerNote: string; ledger: { lab: string; models: { name: string; date: string }[] }[];
     end: [string, string];
     making?: string; makingTitle: string;
@@ -174,6 +180,9 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
 
   const title = site.name;
   const poster = latestPosterEdition(c);
+  // 시기: 주소와 상자 날짜에 맞춰 YYYYMM으로 적는다. 끝이 없는 시기는 '현재'까지
+  const ym = (d: string) => ymd(d).slice(0, 6);
+  const arcSpan = (a: Content['arcs'][number]) => `${formatDate(locale, a.from)} – ${a.to ? formatDate(locale, a.to) : t.now}`;
   return {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
@@ -192,7 +201,15 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     boxes, scenes, years, pics: c.pics,
     topics: Object.entries(c.topics).map(([id, v]) => ({ id, name: v[locale], count: c.scenes.filter(s => s.topics.includes(id)).length })),
     latestAdded: lastAdded,
-    ui: { topic: t.topic, topicAll: t.topicAll, topicClear: t.topicClear, newLine: t.newLine, newShow: t.newShow, newLabel: t.newLabel },
+    eras: c.arcs.map(a => ({ from: ym(a.from), to: a.to && ym(a.to), title: a[locale].title, span: arcSpan(a), body: a[locale].body })),
+    ui: {
+      topic: t.topic, topicAll: t.topicAll, topicClear: t.topicClear, newLine: t.newLine, newShow: t.newShow, newLabel: t.newLabel,
+      find: t.find, findLabel: t.findLabel, findPlaceholder: t.findPlaceholder, eras: t.eras, eraShow: t.eraShow, eraPrev: t.eraPrev, eraNext: t.eraNext,
+      pick: {
+        era: t.pickEra('{i}', '{n}'), topic: t.pickTopic, find: t.pickFind, new: t.pickNew, clear: t.pickClear,
+        boxes: t.boxes('{n}'), box1: t.boxes('1'), none: t.noBoxes,
+      },
+    },
     dialog: { prev: t.prev, next: t.next, close: t.close, fix: t.fix, sources: t.sources, sceneSources: t.sceneSources },
     aria: { wall: t.wall, details: t.details },
     langNav: t.langNav,
@@ -201,10 +218,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
     outro: {
       bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
-      arcs: c.arcs.map(a => ({
-        // 끝이 없는 시기는 '현재'까지
-        span: `${formatDate(locale, a.from)} – ${a.to ? formatDate(locale, a.to) : t.now}`, title: a[locale].title, body: a[locale].body,
-      })),
+      arcs: c.arcs.map(a => ({ from: ym(a.from), span: arcSpan(a), title: a[locale].title, body: a[locale].body })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
       ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
       end: [t.endCount(count, startDot, t.now), title],

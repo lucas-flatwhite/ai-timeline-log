@@ -2,7 +2,10 @@ import { applyLiveDays } from './live.ts';
 import { PLATE_ONLY, root } from './env.ts';
 import { initWall } from './wall.ts';
 import { initDetail } from './detail.ts';
-import { initTopics } from './topics.ts';
+import { initPickbar } from './pickbar.ts';
+import { initSearch } from './search.ts';
+import { initEras } from './eras.ts';
+import { initFind } from './find.ts';
 import { initVisits } from './visits.ts';
 import { initReport } from './report.ts';
 
@@ -28,8 +31,12 @@ try {
   await step(() => initWall().ready);
   /* 4. 지난 방문 이후 새 상자(.new). 주제보다 먼저 붙여 두어야 새 상자 강조가 이 표시를 읽는다 */
   await step(initVisits);
-  /* 5. 주제 강조(?topic=). 상세 창보다 먼저: 주소에 주제와 사건이 함께 있으면 ←/→가 주제 안에서 움직이게 */
-  await step(initTopics);
+  /* 5. 강조 띠, 찾기(?q=), 시기(?era=), 주제(?topic=). 상세 창보다 먼저: 주소에 강조와 사건이 함께 있으면 ←/→가 그 안에서 움직이게.
+     띠가 먼저 'pick'을 들어야 다른 단계가 고른 강조도 띠에 보인다 */
+  await step(initPickbar);
+  await step(initSearch);
+  await step(initEras);
+  await step(initFind);
   /* 6. 상세 창. 주소로 들어왔으면 글꼴이 준비된 지금 연다 */
   await step(initDetail);
 } finally {

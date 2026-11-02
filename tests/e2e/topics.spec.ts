@@ -24,14 +24,15 @@ test('menu highlights a topic', async ({ page, request }) => {
   await expect(page.locator('.wall .box.on')).toHaveCount(await boxCount(request, 'agents'));
   await expect(page).toHaveURL(/\?topic=agents$/);
   await expect(btn).toHaveAttribute('aria-expanded', 'false');
-  await expect(btn).toContainText('에이전트');
+  await expect(page.locator('#pickbar')).toBeVisible();
+  await expect(page.locator('#pickbar .pb-name')).toHaveText('에이전트');
   await expect(btn).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('topic from the address', async ({ page }) => {
   await ready(page, './ko/?topic=science');
   await expect(page.locator('.wall.pick')).toHaveCount(1);
-  await expect(page.locator('.top .tp-btn')).toContainText('과학과 수학');
+  await expect(page.locator('#pickbar .pb-name')).toHaveText('과학과 수학');
 });
 
 test('ignores an unknown topic', async ({ page }) => {
@@ -80,7 +81,8 @@ test('clearing removes the query and the highlight', async ({ page }) => {
   await page.locator('.tp-list button[data-topic=""]').click();
   await expect(page.locator('.wall.pick')).toHaveCount(0);
   expect(new URL(page.url()).search).toBe('');
-  await expect(page.locator('.top .tp-btn')).toHaveText('주제');
+  await expect(page.locator('.top .tp-btn')).toHaveText('찾기');
+  await expect(page.locator('#pickbar')).toBeHidden();
 });
 
 test('escape closes the menu and returns focus', async ({ page }) => {

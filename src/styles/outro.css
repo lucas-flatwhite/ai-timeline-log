@@ -8,6 +8,8 @@
 .arcs .span{font:500 12px/1.4 var(--mono);letter-spacing:.04em}
 .arcs h3{margin:0;font:400 24px/1.2 var(--display)}
 .arcs p{margin:0;max-width:54ch;text-wrap:pretty}
+.arcs .arc-go{font:500 11.5px/1.4 var(--mono);letter-spacing:.03em;white-space:nowrap;color:inherit}
+html:not(.js) .arcs .arc-go{display:none}
 @media (min-width:760px){.arcs li{grid-template-columns:10rem 12rem 1fr;gap:24px;align-items:baseline}}
 .sub{margin:0 0 14px;font:400 26px/1.2 var(--display)}
 .note{margin:0 0 18px;color:var(--ink-2);font-size:14px;max-width:60ch}

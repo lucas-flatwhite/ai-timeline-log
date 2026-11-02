@@ -8,7 +8,8 @@ const o = view.outro;
   <div class="outro-in">
     <p class="eyebrow">{o.eyebrow}</p>
     <h2 id="outroH" data-live={o.titleTpl}>{o.title}</h2>
-    <ol class="arcs">{o.arcs.map(a => <li><span class="span">{a.span}</span><h3>{a.title}</h3><p>{a.body}</p></li>)}</ol>
+    {/* 시기마다 벽에서 그 기간의 상자만 남기는 링크. 스크립트가 없으면 주소만 바뀐다 */}
+    <ol class="arcs">{o.arcs.map(a => <li><span class="span">{a.span}</span><h3>{a.title}</h3><p>{a.body} <a class="arc-go" href={`?era=${a.from.slice(0, 4)}-${a.from.slice(4)}`} data-era={a.from}>{view.ui.eraShow} ↑</a></p></li>)}</ol>
 
     <h2 class="sub">{o.ledgerTitle}</h2>
     <p class="note">{o.ledgerNote}</p>

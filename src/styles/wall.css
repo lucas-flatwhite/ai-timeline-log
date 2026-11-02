@@ -4,19 +4,45 @@
 .top .lang{margin-left:auto}
 @media (max-width:400px){.top{gap:12px}}
 
-/* 주제 고르기: 스크립트가 있을 때만. 목록은 위 막대 아래로 펼쳐진다 */
+/* 찾기 창: 찾는 말, 시기, 주제. 스크립트가 있을 때만. 위 막대 아래 왼쪽에 펼쳐지고 길면 창 안에서 굴린다 */
 .tp{position:relative;flex:none}
 html:not(.js) .tp{display:none}
-.tp-btn{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--ink);background:none;border:1px solid var(--ink);padding:5px 7px;cursor:pointer;white-space:nowrap;max-width:46vw;overflow:hidden;text-overflow:ellipsis}
+.tp-btn{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--ink);background:none;border:1px solid var(--ink);padding:5px 7px;cursor:pointer;white-space:nowrap}
 .tp-btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .tp-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.tp-list{position:absolute;top:calc(100% + 9px);left:0;z-index:11;list-style:none;margin:0;padding:4px 0;min-width:200px;background:var(--paper);border:2px solid var(--ink)}
+.tp-list{position:fixed;top:48px;left:max(16px,env(safe-area-inset-left));z-index:11;margin:0;padding:12px 0 6px;width:min(380px,calc(100vw - 32px));max-height:calc(100svh - 64px);overflow:auto;overscroll-behavior:contain;background:var(--paper);border:2px solid var(--ink)}
 .tp-list[hidden]{display:none}
-.tp-list button{display:flex;justify-content:space-between;gap:16px;width:100%;padding:8px 12px;font:400 14px/1.2 var(--body);color:var(--ink);background:none;border:0;text-align:left;cursor:pointer}
-.tp-list button span{font:500 11px/1.2 var(--mono);color:var(--ink-2)}
+.tp-list ul{list-style:none;margin:0;padding:0}
+.tp-q{display:flex;align-items:center;gap:10px;margin:0 12px 4px}
+/* 16px 밑으로 내리면 iOS가 입력칸을 누를 때 화면을 키운다 */
+.tp-q input{flex:1;min-width:0;padding:8px 10px;font:400 16px/1.2 var(--body);color:var(--ink);background:var(--paper);border:2px solid var(--ink);border-radius:0;-webkit-appearance:none;appearance:none}
+.tp-q input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tp-n{font:500 11px/1.2 var(--mono);color:var(--ink-2);white-space:nowrap}
+.tp-n:empty{display:none}
+.tp-h{margin:12px 12px 2px;font:500 11px/1.2 var(--mono);letter-spacing:.06em;color:var(--ink-2)}
+.tp-list button{display:flex;align-items:baseline;gap:10px;width:100%;padding:8px 12px;font:400 14px/1.3 var(--body);color:var(--ink);background:none;border:0;text-align:left;cursor:pointer}
+.tp-list button .tp-t{flex:1}
+.tp-list button .tp-i,.tp-list button .tp-s{font:500 11px/1.2 var(--mono);color:var(--ink-2);white-space:nowrap}
+.tp-list button .tp-i{min-width:1.2em}
 .tp-list button:hover,.tp-list button:focus-visible{background:var(--ink);color:var(--paper);outline:none}
 .tp-list button:hover span,.tp-list button:focus-visible span{color:var(--paper)}
-.tp-list button[aria-current="true"]{text-decoration:underline;text-underline-offset:4px}
+.tp-list button[aria-current="true"] .tp-t{text-decoration:underline;text-underline-offset:4px}
+
+/* 강조 띠: 위 막대 바로 아래에 붙어 있다. 시기를 고르면 그 시기 글과 앞뒤 시기 단추까지 */
+.pickbar{position:sticky;top:40px;z-index:9;padding:8px 0 10px;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));background:var(--paper);border-bottom:2px solid var(--ink)}
+.pickbar[hidden]{display:none}
+.pb-row{display:flex;align-items:center;gap:8px}
+.pb-t{flex:1;min-width:0;margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.pb-k{font:500 11.5px/1.4 var(--mono);letter-spacing:.04em;background:var(--ink);color:var(--paper);padding:1px 6px}
+.pb-name{font:600 15px/1.3 var(--body)}
+.pb-n{font:500 11.5px/1.4 var(--mono);color:var(--ink-2)}
+.pickbar button{flex:none;min-width:36px;min-height:36px;padding:0;font:500 18px/1 var(--mono);color:var(--ink);background:var(--paper);border:2px solid var(--ink);cursor:pointer}
+.pickbar button[hidden]{display:none}
+.pickbar button:disabled{color:var(--ghost);border-color:var(--ghost);cursor:default}
+.pickbar button:not(:disabled):hover,.pickbar button:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+.pb-body{margin:6px 0 0;max-width:72ch;font-size:13.5px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
+.pickbar:not(.era) .pb-body{display:none}
+@media (max-width:480px){.pb-name{font-size:14px}.pb-body{font-size:13px}}
 .top .report{font:500 12px/1 var(--mono);letter-spacing:.04em;text-decoration:none;white-space:nowrap}
 .top .report:hover{text-decoration:underline;text-underline-offset:4px}
 
