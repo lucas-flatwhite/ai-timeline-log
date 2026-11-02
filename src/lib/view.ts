@@ -202,7 +202,8 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     outro: {
       bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
       arcs: c.arcs.map(a => ({
-        span: formatDate(locale, a.from) + (a.to ? ' – ' + formatDate(locale, a.to) : ''), title: a[locale].title, body: a[locale].body,
+        // 끝이 없는 시기는 '현재'까지
+        span: `${formatDate(locale, a.from)} – ${a.to ? formatDate(locale, a.to) : t.now}`, title: a[locale].title, body: a[locale].body,
       })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
       ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),

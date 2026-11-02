@@ -136,7 +136,9 @@ describe('buildView(ko)', () => {
     expect(v.outro.title).toBe('1,425일 동안 바뀐 것');
     expect(v.outro.arcs).toHaveLength(9);
     expect(v.outro.arcs[0].span).toBe('2022.11 – 2023.02');
-    expect(v.outro.arcs[8].span).toBe('2026.09');
+    expect(v.outro.arcs[8].span).toBe('2026.09 – 현재');
+    expect(v.outro.arcs[8]).toMatchObject({ title: '속도를 묻다' });
+    for (const a of v.outro.arcs) expect(a.body.length).toBeGreaterThan(20);
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '22.11' });
     expect(v.outro).not.toHaveProperty('sources');
