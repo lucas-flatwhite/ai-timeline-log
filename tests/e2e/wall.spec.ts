@@ -164,6 +164,31 @@ for (const path of ['./ko/', './']) {
       await expect(cv).toHaveAttribute('aria-label', /\d/);   // 읽는 글은 그대로
     });
 
+    test('left alone, the cover spins every 20s and opens nothing', async ({ page }) => {
+      await page.clock.install();
+      await page.addInitScript(() => {
+        const w = window as unknown as { __drawn: string[] };
+        w.__drawn = [];
+        const orig = CanvasRenderingContext2D.prototype.fillText;
+        CanvasRenderingContext2D.prototype.fillText = function (t: string, ...a: [number, number]) { w.__drawn.push(t); return orig.call(this, t, ...a); };
+      });
+      await page.goto(path);
+      await expect.poll(async () => { await page.clock.runFor(200); return page.evaluate(() => document.documentElement.dataset.ready); }).toBe('1');
+      const cv = page.locator('.cover canvas.cv[data-kind="days"]');
+      await expect(cv).toHaveClass(/\bcarved\b/);
+      const glyph = (await cv.getAttribute('data-glyph'))!;
+      const before = await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL());
+      await page.evaluate(() => { (window as unknown as { __drawn: string[] }).__drawn = []; });
+      // 20초가 지나고 돌림(약 3.5초)이 끝날 때까지
+      await page.clock.runFor(25_000);
+      const drawn = await page.evaluate(() => (window as unknown as { __drawn: string[] }).__drawn);
+      expect(drawn.filter(t => t !== glyph).length).toBeGreaterThan(10);   // 상자 글자가 돌았다
+      expect(drawn.at(-1)).toBe(glyph);                                      // 일수 판으로 돌아왔다
+      expect(await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).toBe(before);
+      await expect(page.locator('#detail')).not.toHaveAttribute('open', '');
+      expect(new URL(page.url()).hash).toBe('');
+    });
+
     test('with reduced motion the cover opens a box without spinning', async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(path);
