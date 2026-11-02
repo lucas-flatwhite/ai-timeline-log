@@ -39,7 +39,7 @@ export interface PageView {
   topics: { id: string; name: string; count: number }[];
   /** 가장 늦은 장면 추가일. 브라우저가 지난 방문과 비교한다 */
   latestAdded: string;
-  /** 시기(arcs.yaml, 오래된 것부터). from·to는 YYYYMM, 마지막 시기는 to가 없다(현재까지) */
+  /** 시기(arcs.yaml, 오래된 것부터). from·to는 YYYYMM, 마지막 시기는 to가 없다(asOf까지) */
   eras: { from: string; to?: string; title: string; span: string; body: string }[];
   /** 찾기 창, 새 상자 줄, 강조 띠의 문구. newLine은 {n} 틀, pick.era는 {i}·{n} 틀, pick.boxes는 {n} 틀 */
   ui: {
@@ -175,14 +175,18 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   years.reverse();
 
   const boxes = sortWall(entries).map(e => e.box);
-  const order = new Map(boxes.filter(b => b.kind === 'scene').map((b, n) => [b.addr, n]));
+  const order = new Map(boxes.map((b, n) => [b.addr, n]));
   scenes.sort((a, b) => order.get(a.id)! - order.get(b.id)!);   // 격자와 같은 최신순
+  // 상세 창의 사건 목록도 격자와 같은 최신순. 주소는 위에서 원래 순서로 이미 정했다
+  scenes.forEach(s => s.items.sort((a, b) => order.get(a.addr)! - order.get(b.addr)!));
 
   const title = site.name;
   const poster = latestPosterEdition(c);
-  // 시기: 주소와 상자 날짜에 맞춰 YYYYMM으로 적는다. 끝이 없는 시기는 '현재'까지
+  // 시기: 주소와 상자 날짜에 맞춰 YYYYMM으로 적는다. 끝이 없는 시기는 마지막으로 고친 날(asOf, YYYYMMDD)까지.
+  // '현재'라고만 쓰면 언제 고쳤는지 알 수 없다
   const ym = (d: string) => ymd(d).slice(0, 6);
-  const arcSpan = (a: Content['arcs'][number]) => `${formatDate(locale, a.from)} – ${a.to ? formatDate(locale, a.to) : t.now}`;
+  const asOf = ymd(site.asOf);
+  const arcSpan = (a: Content['arcs'][number]) => `${formatDate(locale, a.from)} – ${a.to ? formatDate(locale, a.to) : asOf}`;
   return {
     lang: locale, title,
     description: fill(st.description, vars), ogTitle: title, ogDescription: fill(st.ogDescription, vars),
@@ -217,11 +221,11 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       ? { ...l, current: l.code === locale }
       : { ...l, path: null, current: false, soon: t.langSoon(l.name) })),
     outro: {
-      bar: t.now, eyebrow: t.now, title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
+      bar: t.updated(asOf), eyebrow: t.updated(asOf), title: t.outroTitle(days), titleTpl: t.outroTitle('{days}'),
       arcs: c.arcs.map(a => ({ from: ym(a.from), span: arcSpan(a), title: a[locale].title, body: a[locale].body })),
       ledgerTitle: t.ledgerTitle, ledgerNote: st.ledgerNote,
       ledger: c.ledger.map(l => ({ lab: l.lab[locale], models: l.models.map(m => ({ name: m.name, date: formatYYMM(m.date) })) })),
-      end: [t.endCount(count, startDot, t.now), title],
+      end: [t.endCount(count, startDot, asOf), title],
       making: st.making && fill(st.making, vars), makingTitle: t.making,
       take: {
         title: t.take,

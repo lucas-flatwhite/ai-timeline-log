@@ -88,11 +88,13 @@ test('an era lights its boxes and steps to the next era', async ({ page }) => {
   await expect(page.locator('.wall.pick')).toHaveCount(0);
 });
 
-test('the last era runs to the present and the outro links pick an era', async ({ page }) => {
+test('the last era runs to the last update and the outro links pick an era', async ({ page }) => {
   await ready(page, './');
   await page.locator('.arcs .arc-go').last().click();
   await expect(page.locator('#pickbar .pb-k')).toHaveText('Era 9 of 9');
   await expect(page.locator('#pickbar .pb-next')).toBeDisabled();
+  // 끝이 없는 시기는 '현재' 대신 마지막으로 고친 날(YYYYMMDD)까지
+  await expect(page.locator('.arcs .span').last()).toHaveText(/ – \d{8}$/);
   // 끝으로 갔던 화면이 그 시기의 첫 상자 쪽으로 올라온다
   await expect.poll(() => page.locator('.wall .box.on').first().evaluate(b => b.getBoundingClientRect().top)).toBeLessThan(400);
 });

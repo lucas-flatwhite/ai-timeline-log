@@ -267,7 +267,7 @@ for (const path of ['./ko/', './']) {
     });
 
     test('sources: the event\'s own, else the scene\'s', async ({ page }) => {
-      // 시험용으로 한 사건에는 출처를 넣고, 첫 사건(20251211)의 출처는 지워서 장면 출처를 빌려 오게 한다
+      // 시험용으로 한 사건에는 출처를 넣고, 가장 오래된 사건(20251211)의 출처는 지워서 장면 출처를 빌려 오게 한다
       const addr = '2026-03-sora-shutdown~20260924';
       await page.route(/\/ai-timeline-log\/(ko\/)?(#.*)?$/, async r => {
         const res = await r.fetch(), html = await res.text();
@@ -282,7 +282,7 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('#detail .dsrc a')).toHaveText(['api']);
       await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', `${t.sources} · 20260924`);
       // 사건 출처가 없는 사건은 장면 출처를 빌려 오고, 빌려 왔다고 적는다
-      await page.locator('#detail .dbody ol.items > li').first().click();
+      await page.locator('#detail .dbody ol.items > li[data-addr="2026-03-sora-shutdown~20251211"]').click();
       await expect(page.locator('#detail .dsrc a')).toHaveCount(2);
       await expect(page.locator('#detail .dsrc a').first()).toHaveAttribute('href', /decrypt\.co/);
       await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', t.sceneSources);
@@ -292,6 +292,15 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('#detail .dsrc')).toHaveAttribute('data-label', t.sources);
       // 복제한 글의 출처 줄은 두지 않는다(링크가 두 번 읽히지 않게)
       await expect(page.locator('#detail .dbody .src')).toHaveCount(0);
+    });
+
+    test('the scene card lists its events newest first', async ({ page }) => {
+      await visit(page, path, '#2025-01-deepseek');
+      const addrs = await page.locator('#detail .dbody ol.items > li').evaluateAll(els => els.map(e => (e as HTMLElement).dataset.addr!));
+      const wall = await order(page);
+      expect(addrs.length).toBeGreaterThan(1);
+      expect(addrs.map(a => wall.indexOf(a))).toEqual(addrs.map(a => wall.indexOf(a)).sort((a, b) => a - b));
+      expect(addrs.indexOf('2025-01-deepseek~20250127')).toBeLessThan(addrs.indexOf('2025-01-deepseek~20250120'));
     });
 
     test('hover lights up the same scene', async ({ page }) => {

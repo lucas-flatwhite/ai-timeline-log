@@ -1,11 +1,11 @@
 /* 고정된 화면 문구. 편집자가 고치는 문장은 content/site.yaml에 둔다 */
 export const ko = {
-  now: '현재',
+  updated: (date: string) => `업데이트 ${date}`,
   langNav: '언어',
   langSoon: (name: string) => `${name} 준비 중`,
   outroTitle: (days: string) => `${days}일 동안 바뀐 것`,
   ledgerTitle: '주요 모델 판본',
-  endCount: (count: number, start: string, now: string) => `판 ${count}장 · ${start} – ${now}`,
+  endCount: (count: number, start: string, end: string) => `판 ${count}장 · ${start} – ${end}`,
   report: '제보',
   reportIssue: 'GitHub 이슈 열기',
   reportMail: '메일 보내기',

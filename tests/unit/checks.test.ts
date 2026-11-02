@@ -87,9 +87,10 @@ describe('checkContent', () => {
     });
     expect(errs).toContainEqual(expect.stringMatching(/relative time "recently"/));
   });
-  test('site lede may say 현재까지', () => {
-    expect(loadContent().site.ko.lede).toMatch(/현재/);
-    expect(checkContent(loadContent()).errors.join()).not.toMatch(/site/);
+  test('site text may use relative time (현재까지)', () => {
+    const c = structuredClone(loadContent());
+    c.site.ko.lede = 'ChatGPT가 공개된 날부터 현재까지 기록합니다.';
+    expect(checkContent(c).errors.join()).not.toMatch(/site/);
   });
   test('scene added after firstEdition needs a source', () => {
     const errs = errsOf(c => {

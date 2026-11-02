@@ -21,7 +21,9 @@ const onScreen = (el: Element) => {
 };
 
 /* 같은 장면 강조: 상자에 마우스가 오르거나 키보드 초점이 가면 .wall에 .focus, 같은 장면 상자(장면 상자 포함)에 .rel.
-   터치는 올림 효과 없이 바로 연다. 마우스로 닫은 뒤 상자로 돌아온 초점은 강조하지 않는다(:focus-visible일 때만) */
+   터치는 올림 효과 없이 바로 연다. 마우스로 닫은 뒤 상자로 돌아온 초점은 강조하지 않는다(:focus-visible일 때만).
+   강조(주제·시기·찾기·새 상자)가 켜져 있으면 마우스 올림으로는 바꾸지 않는다. 스크롤하면 가만히 있는 마우스 아래로
+   상자가 지나가며 올림이 생겨, 고른 상자 대신 그 상자의 장면이 켜지기 때문이다. 키보드 초점은 일부러 옮긴 것이라 그대로 둔다 */
 function bindHighlight(): void {
   const wall = document.querySelector<HTMLElement>('.wall');
   if (!wall) return;
@@ -30,8 +32,10 @@ function bindHighlight(): void {
     wall.classList.toggle('focus', !!scene);
     boxes.forEach(b => b.classList.toggle('rel', !!scene && b.dataset.scene === scene));
   };
+  /* 강조가 켜지는 순간 남아 있던 올림 강조를 끈다 */
+  document.addEventListener('pick', () => { if (wall.classList.contains('focus') && !wall.querySelector('.box:focus-visible')) light(); });
   boxes.forEach(b => {
-    b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') light(b.dataset.scene); });
+    b.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !wall.classList.contains('pick')) light(b.dataset.scene); });
     b.addEventListener('pointerleave', () => light());
     b.addEventListener('focusin', () => { if (b.matches(':focus-visible')) light(b.dataset.scene); });
     b.addEventListener('focusout', () => light());
