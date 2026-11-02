@@ -288,6 +288,16 @@
 - { ko: "Qwen3", en: "Qwen3", source: "https://qwenlm.github.io/blog/qwen3/" }
 - { ko: "Kimi K2", en: "Kimi K2", source: "https://huggingface.co/moonshotai/Kimi-K2-Instruct" }
 - { ko: "Kimi K2 Thinking", en: "Kimi K2 Thinking", source: "https://huggingface.co/moonshotai/Kimi-K2-Thinking" }
+- { ko: "통의천문", en: "Tongyi Qianwen", source: "https://technode.com/2023/04/11/alibaba-to-embed-chatgpt-like-language-model-into-all-of-its-products/" }   # 通义千问. Qwen의 중국어 이름
+- { ko: "Qwen3-Max", en: "Qwen3-Max", source: "https://www.alibabagroup.com/en-US/document-1911884625546838016" }
+- { ko: "Qwen3.5", en: "Qwen3.5", source: "https://huggingface.co/Qwen/Qwen3.5-397B-A17B" }
+- { ko: "Qwen3.6", en: "Qwen3.6", source: "https://huggingface.co/Qwen/Qwen3.6-35B-A3B" }
+- { ko: "Qwen3.8", en: "Qwen3.8", source: "https://rits.shanghai.nyu.edu/ai/qwen3-8-max-preview-alibabas-2-4t-parameter-bid-for-the-frontier/" }
+- { ko: "Kimi", en: "Kimi", source: "https://www.scmp.com/tech/big-tech/article/3256109/alibaba-backed-moonshot-ai-claims-breakthrough-expanded-chinese-character-prompt-kimi-chatbot" }
+- { ko: "Kimi K2.5", en: "Kimi K2.5", source: "https://huggingface.co/moonshotai/Kimi-K2.5" }
+- { ko: "Kimi K2.6", en: "Kimi K2.6", source: "https://forum.moonshot.ai/t/meet-kimi-k2-6-advancing-open-source-coding/369" }
+- { ko: "Kimi K3", en: "Kimi K3", source: "https://huggingface.co/moonshotai/Kimi-K3" }
+- { ko: "Kimi K3.1 Pro", en: "Kimi K3.1 Pro", source: "https://openrouter.ai/moonshotai/kimi-k3.1-pro" }
 - { ko: "인류의 마지막 시험", en: "Humanity’s Last Exam", source: "https://huggingface.co/moonshotai/Kimi-K2-Thinking" }
 - { ko: "Claude Sonnet 4.5", en: "Claude Sonnet 4.5", source: "https://www.anthropic.com/news/claude-sonnet-4-5" }
 - { ko: "Azure", en: "Azure", source: "https://azure.microsoft.com/" }
