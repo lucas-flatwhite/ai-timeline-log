@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { loadContent } from '../../src/lib/content.ts';
 import type { GlyphSpec } from '../../src/lib/schema.ts';
-import { checkContent, hasHangul } from '../../src/lib/checks.ts';
+import { checkContent, hasHangul, EM_DASH } from '../../src/lib/checks.ts';
 
 function broken(fn: (c: ReturnType<typeof loadContent>) => void) {
   const c = structuredClone(loadContent());
@@ -58,18 +58,23 @@ describe('checkContent', () => {
     expect(errs).toContainEqual(expect.stringMatching(/exclamation mark/));
     expect(errs).toContainEqual(expect.stringMatching(/emoji/));
   });
-  test('em dash in prose, not in source titles', () => {
-    const errs = errsOf(c => { c.scenes[0].en.lede += ' — and more.'; c.arcs[0].ko.body += '—'; });
+  test('em dash anywhere in content, source titles included', () => {
+    const errs = errsOf(c => {
+      c.scenes[0].en.lede += ` ${EM_DASH} and more.`;
+      c.arcs[0].ko.body += EM_DASH;
+      c.scenes[0].sources[0].title += ` ${EM_DASH} Part 2`;
+      c.ledger[0].models[0].name += EM_DASH;
+    });
     expect(errs).toContainEqual(expect.stringMatching(/en\.lede: em dash/));
-    expect(errs).toContainEqual(expect.stringMatching(/arcs\.yaml 0\.ko\.body: em dash/));
-    // 출처 제목은 원문 그대로 옮기므로 검사하지 않는다
-    expect(errsOf(c => { c.scenes[0].sources[0].title += ' — Part 2'; }).join()).not.toMatch(/em dash/);
+    expect(errs).toContainEqual(expect.stringMatching(/arcs\.0\.ko\.body: em dash/));
+    expect(errs).toContainEqual(expect.stringMatching(/sources\.0\.title: em dash/));
+    expect(errs).toContainEqual(expect.stringMatching(/ledger\.0\.models\.0\.name: em dash/));
   });
   test('UI strings have no em dash', async () => {
     const { ui } = await import('../../src/i18n/index.ts');
     const strings = (o: object): string[] => Object.values(o).flatMap(v =>
       typeof v === 'string' ? [v] : typeof v === 'function' ? [String(v('X', 'Y', 'Z'))] : []);
-    for (const t of Object.values(ui)) if (t) for (const s of strings(t)) expect(s).not.toContain('—');
+    for (const t of Object.values(ui)) if (t) for (const s of strings(t)) expect(s).not.toContain(EM_DASH);
   });
   test('relative time word in scene text', () => {
     const errs = errsOf(c => { c.scenes[0].ko.lede += ' 최근'; });

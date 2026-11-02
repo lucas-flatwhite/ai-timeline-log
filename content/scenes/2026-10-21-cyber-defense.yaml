@@ -29,7 +29,7 @@ items:
     pic: bug
     sources:
       - url: https://www.php.net/archive/2026.php
-        title: "PHP: News Archive — October 21, 2026 security releases"
+        title: "PHP: News Archive, October 21, 2026 security releases"
         publisher: PHP
       - url: https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/
         title: "Patch the Planet: global response coordination as agents uncover critical vulnerabilities"
