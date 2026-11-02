@@ -49,6 +49,9 @@ items:
       - url: https://openai.com/index/introducing-gpt-5/
         title: Introducing GPT-5
         publisher: OpenAI
+      - url: https://www.storyboard18.com/brand-makers/-78622.htm
+        title: "‘We hear you’: Sam Altman restores GPT-4o for plus subscribers after GPT-5 backlash"
+        publisher: Storyboard18
   - date: 2025-08-26
     ko: 구글 나노 바나나(Gemini 2.5 Flash Image) 공개, 사진 편집 열풍.
     en: "Google releases Nano Banana (Gemini 2.5 Flash Image), setting off a photo-editing craze."

@@ -39,6 +39,9 @@ items:
       - url: https://openai.com/index/introducing-4o-image-generation/
         title: Introducing 4o Image Generation
         publisher: OpenAI
+      - url: https://fortune.com/2025/03/28/sam-altman-chatgpt-gpus-melting-ai-images/
+        title: Sam Altman says ChatGPT’s viral image-generation AI is ‘melting’ OpenAI’s GPUs
+        publisher: Fortune
   - date: 2025-03-25
     ko: 같은 날 구글, Gemini 2.5 Pro 공개.
     en: "The same day, Google releases Gemini 2.5 Pro."
@@ -55,6 +58,9 @@ items:
       - url: https://openai.com/index/march-funding-updates/
         title: New funding to build towards AGI
         publisher: OpenAI
+      - url: https://nairametrics.com/2025/04/01/openai-secures-40-billion-in-record-breaking-funding-round-valuation-hits-300-billion/
+        title: OpenAI secures $40 billion in record-breaking funding round, valuation hits $300 billion
+        publisher: Nairametrics
 ko:
   kicker: 대중화
   title: 지브리 열풍

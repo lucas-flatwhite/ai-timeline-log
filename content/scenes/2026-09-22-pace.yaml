@@ -40,6 +40,15 @@ items:
       - url: https://openai.com/index/introducing-gpt-6-sol-and-luna/
         title: Introducing GPT-6 Sol and Luna
         publisher: OpenAI
+      - url: https://www.anthropic.com/claude-opus-5-5
+        title: Introducing Claude Opus 5.5
+        publisher: Anthropic
+      - url: https://www.anthropic.com/claude-sonnet-5-5
+        title: Introducing Claude Sonnet 5.5
+        publisher: Anthropic
+      - url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/
+        title: "Gemini 4 Argon: our next era of frontier intelligence"
+        publisher: Google
   - date: 2026-09-25
     ko: 미·중 정상, 초지능(SI) 대화를 열고 SI 사고 때 쓸 양자 연락 채널을 두기로 합의.
     en: "The U.S. and Chinese leaders set up a dialogue on superintelligence and agree to establish a bilateral communication channel for incidents."
@@ -60,6 +69,9 @@ items:
       - url: https://abc7.com/story/top-ai-leaders-meet-trump-white-house-amid/19886613/
         title: Trump says AI leaders signed a ‘constitution’ to police themselves during White House meeting
         publisher: ABC7 (ABC News)
+      - url: https://truthout.org/articles/trump-rejects-ai-regulation-as-tech-ceos-sign-voluntary-self-policing-accord/
+        title: Trump Rejects AI Regulation as Tech CEOs Sign Voluntary ‘Self-Policing’ Accord
+        publisher: Truthout
 ko:
   kicker: 속도
   title: 속도를 늦추자는 목소리

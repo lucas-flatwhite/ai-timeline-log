@@ -46,6 +46,12 @@ items:
       - url: https://openai.com/index/introducing-gpt-5-5/
         title: Introducing GPT-5.5
         publisher: OpenAI
+      - url: https://www.anthropic.com/news/claude-opus-4-7
+        title: Introducing Claude Opus 4.7
+        publisher: Anthropic
+      - url: https://api-docs.deepseek.com/news/news260424/
+        title: DeepSeek V4 Preview Release
+        publisher: DeepSeek
   - date: 2026-05-07
     ko: OpenAI도 보안 특화 GPT-5.5-Cyber를 검증된 보안팀에만 제한 공개.
     en: "OpenAI also releases GPT-5.5-Cyber, a model specialized for security, only to vetted security teams."
