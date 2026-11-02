@@ -44,7 +44,7 @@ export interface PageView {
   /** 찾기 창, 새 상자 줄, 강조 띠의 문구. newLine은 {n} 틀, pick.era는 {i}·{n} 틀, pick.boxes는 {n} 틀 */
   ui: {
     topic: string; topicAll: string; topicClear: string; newLine: string; newShow: string; newLabel: string;
-    find: string; findLabel: string; findPlaceholder: string; eras: string; eraShow: string; eraPrev: string; eraNext: string;
+    find: string; findLabel: string; findPlaceholder: string; eras: string; eraShow: string; eraPrev: string; eraNext: string; eraText: string;
     pick: { era: string; topic: string; find: string; new: string; clear: string; boxes: string; box1: string; none: string };
   };
   dialog: { prev: string; next: string; close: string; fix: string; sources: string; sceneSources: string };
@@ -204,7 +204,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     eras: c.arcs.map(a => ({ from: ym(a.from), to: a.to && ym(a.to), title: a[locale].title, span: arcSpan(a), body: a[locale].body })),
     ui: {
       topic: t.topic, topicAll: t.topicAll, topicClear: t.topicClear, newLine: t.newLine, newShow: t.newShow, newLabel: t.newLabel,
-      find: t.find, findLabel: t.findLabel, findPlaceholder: t.findPlaceholder, eras: t.eras, eraShow: t.eraShow, eraPrev: t.eraPrev, eraNext: t.eraNext,
+      find: t.find, findLabel: t.findLabel, findPlaceholder: t.findPlaceholder, eras: t.eras, eraShow: t.eraShow, eraPrev: t.eraPrev, eraNext: t.eraNext, eraText: t.eraText,
       pick: {
         era: t.pickEra('{i}', '{n}'), topic: t.pickTopic, find: t.pickFind, new: t.pickNew, clear: t.pickClear,
         boxes: t.boxes('{n}'), box1: t.boxes('1'), none: t.noBoxes,

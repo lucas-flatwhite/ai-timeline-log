@@ -43,6 +43,16 @@ html:not(.js) .tp{display:none}
 .pb-body{margin:6px 0 0;max-width:72ch;font-size:13.5px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
 .pickbar:not(.era) .pb-body{display:none}
 @media (max-width:480px){.pb-name{font-size:14px}.pb-body{font-size:13px}}
+/* 시기 글 접기: 휴대폰에서만. 넓은 화면은 글이 짧게 들어가서 늘 펴 둔다 */
+.pickbar .pb-more{display:none;font-size:14px;transition:transform .15s}
+@media (max-width:720px){
+  .pickbar.era .pb-more{display:block}
+  /* 글은 띠 아래에 겹쳐 띄운다. 접어도 띠 높이가 그대로라 굴리는 중에 벽이 튀지 않는다 */
+  .pickbar .pb-body{position:absolute;left:0;right:0;top:100%;margin:0;padding:8px max(16px,env(safe-area-inset-left)) 10px;background:var(--paper);border-bottom:2px solid var(--ink)}
+  .pickbar.era.tight .pb-body{display:none}
+  .pickbar .pb-more[aria-expanded="true"]{transform:rotate(180deg)}
+}
+@media (prefers-reduced-motion:reduce){.pickbar .pb-more{transition:none}}
 .top .report{font:500 12px/1 var(--mono);letter-spacing:.04em;text-decoration:none;white-space:nowrap}
 .top .report:hover{text-decoration:underline;text-underline-offset:4px}
 

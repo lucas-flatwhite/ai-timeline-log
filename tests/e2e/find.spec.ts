@@ -111,3 +111,33 @@ test('arrows stay inside the era', async ({ page }) => {
   expect(seen.filter(a => !allowed.has(a))).toEqual([]);
   await expect(page.locator('#detail .pos')).toHaveText(`1 / ${allowed.size}`);
 });
+
+test.describe('phone', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+  test('the era text folds when the wall is scrolled by hand and the strip keeps its height', async ({ page }) => {
+    await ready(page, './ko/');
+    await page.locator('.top .tp-btn').click();
+    await page.locator('.tp-list button[data-era="202511"]').click();
+    const bar = page.locator('#pickbar'), body = page.locator('#pickbar .pb-body'), more = page.locator('#pickbar .pb-more');
+    await expect(body).toBeVisible();
+    await expect(more).toHaveAttribute('aria-expanded', 'true');
+    // 시기 첫 상자가 시기 글 아래에 보인다
+    await expect.poll(async () => {
+      const b = await page.locator('.wall .box.on').first().boundingBox(), g = await body.boundingBox();
+      return b && g ? b.y >= g.y + g.height : false;
+    }).toBe(true);
+    const h = (await bar.boundingBox())!.height;
+    await page.mouse.move(195, 600);
+    await page.mouse.wheel(0, 300);
+    await expect(body).toBeHidden();
+    await expect(more).toHaveAttribute('aria-expanded', 'false');
+    expect((await bar.boundingBox())!.height).toBe(h);   // 띠 높이는 그대로라 굴리는 중에 벽이 튀지 않는다
+    await more.click();
+    await expect(body).toBeVisible();
+    // 다음 시기로 넘기면 다시 펴 둔다
+    await page.mouse.wheel(0, 300);
+    await expect(body).toBeHidden();
+    await page.locator('#pickbar .pb-next').click();
+    await expect(body).toBeVisible();
+  });
+});

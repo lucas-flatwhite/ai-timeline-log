@@ -11,8 +11,10 @@ const p = view.ui.pick;
     <button class="pb-prev" type="button" aria-label={view.ui.eraPrev}>‹</button>
     <p class="pb-t" aria-live="polite"><b class="pb-k"></b><span class="pb-name"></span><span class="pb-n"></span></p>
     <button class="pb-next" type="button" aria-label={view.ui.eraNext}>›</button>
+    {/* 휴대폰에서 접힌 시기 글을 다시 펴는 단추(넓은 화면에서는 숨긴다) */}
+    <button class="pb-more" type="button" aria-expanded="true" aria-controls="pb-body" aria-label={view.ui.eraText}>▾</button>
     <button class="pb-x" type="button" aria-label={p.clear}>×</button>
   </div>
-  <p class="pb-body"></p>
+  <p class="pb-body" id="pb-body"></p>
 </div>
 <script type="application/json" id="eras" is:inline set:html={JSON.stringify(view.eras).replace(/</g, '\\u003c')}></script>
