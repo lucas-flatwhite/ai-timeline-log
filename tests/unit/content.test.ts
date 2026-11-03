@@ -2,6 +2,7 @@ import { describe, test, expect } from 'vitest';
 import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { GUIDE } from '../../src/lib/guide.ts';
 import { loadContent, loadGlossary } from '../../src/lib/content.ts';
 
 const FIXTURE = 'tests/fixtures/content';
@@ -38,9 +39,9 @@ describe('loadContent', () => {
     expect(c.scenes[0].items[0].glyph).toEqual({ ko: '100만', en: '1M' });
   });
 
-  test('picture boxes: at least 10 closed outlines, each used by an event', () => {
+  test('picture boxes: at least 10 closed outlines, each used by an event or the guide', () => {
     const c = loadContent();
-    const names = Object.keys(c.pics), used = new Set(c.scenes.flatMap(s => s.items).flatMap(it => it.pic ? [it.pic] : []));
+    const names = Object.keys(c.pics), used = new Set([...c.scenes.flatMap(s => s.items).flatMap(it => it.pic ? [it.pic] : []), ...GUIDE.map(g => g.pic)]);
     expect(names.length).toBeGreaterThanOrEqual(10);
     expect([...used].sort()).toEqual([...names].sort());   // 쓰이지 않는 그림이 없다
     for (const [name, p] of Object.entries(c.pics)) {

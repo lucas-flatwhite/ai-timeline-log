@@ -8,6 +8,7 @@ import { initEras } from './eras.ts';
 import { initFind } from './find.ts';
 import { initVisits } from './visits.ts';
 import { initReport } from './report.ts';
+import { initGuide } from './guide.ts';
 
 /* 단계마다 오류를 따로 받는다. 어느 단계가 실패해도 다음 단계는 돌고, 끝에는 반드시 data-ready="1"이 된다 */
 async function step(f: () => unknown): Promise<void> {
@@ -39,6 +40,8 @@ try {
   await step(initFind);
   /* 6. 상세 창. 주소로 들어왔으면 글꼴이 준비된 지금 연다 */
   await step(initDetail);
+  /* 7. 맺음의 쓰는 법. 상세 창과 찾기 창이 붙은 뒤에 눌러야 그 창을 연다 */
+  await step(initGuide);
 } finally {
   root.dataset.ready = '1';
 }

@@ -8,7 +8,8 @@ function jobs(): Job[] {
   const cover = document.querySelector<HTMLCanvasElement>('.cover canvas[data-kind="days"]');
   /* 일수 판의 시드는 시안 그대로(1130) */
   if (cover) out.push({ el: cover, cv: cover, spec: { kind: 'days', glyph: cover.dataset.glyph!, pattern: 'h', angle: 0, motif: 'none', seed: 1130 } });
-  document.querySelectorAll<HTMLElement>('.wall .box').forEach(el => {
+  /* 맺음의 쓰는 법 판도 같은 줄에 세운다. 벽의 상자가 아니라서 강조·뽑기·상세 창은 이 판을 모른다 */
+  document.querySelectorAll<HTMLElement>('.wall .box, .guide .gd-plate').forEach(el => {
     const cv = el.querySelector('canvas');
     if (cv) out.push({ el, cv, spec: boxSpec(el, P) });
   });

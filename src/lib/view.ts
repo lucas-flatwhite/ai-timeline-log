@@ -7,6 +7,7 @@ import type { Pics } from './schema.ts';
 import { ORIGIN } from './origin.ts';
 import { LICENSE, latestPosterEdition, posterUrl } from './export.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
+import { GUIDE, type GuideAct } from './guide.ts';
 
 /** 격자의 상자 하나. 날짜는 `YYYY.MM.DD`(월까지만 있으면 `YYYY.MM`, 연도 판은 `YYYY`). 주소에만 `YYYYMMDD`를 쓴다 */
 export interface BoxView {
@@ -65,8 +66,17 @@ export interface PageView {
       ai: { label: string; note: string; llms: string; json: string };
       license: string;
     };
+    /** 쓰는 법: 번호 판과 그림 상자 한 쌍씩 다섯 칸. href는 스크립트가 없을 때 가는 곳, act는 스크립트가 하는 일 */
+    guide: { title: string; steps: GuideStep[] };
   };
 }
+
+/** 쓰는 법의 한 칸. n은 번호 판, glyph·pic은 그림 상자에 새긴다. pattern·angle·seed는 그림 상자의 판 설정(guide.ts) */
+export interface GuideStep {
+  n: string; glyph: string; note: string; pic: string; act: GuideAct; href: string;
+  pattern: string; angle: number; seed: number;
+}
+
 
 export { ORIGIN };
 
@@ -237,6 +247,17 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
         ai: { label: t.aiLabel, note: t.aiNote, llms: `${canonical}llms-full.txt`, json: `${ORIGIN}timeline.json` },
         license: t.takeLicense(LICENSE.name, site.name),
       },
+      guide: { title: t.guideTitle, steps: guideSteps(t, boxes) },
     },
   };
+}
+
+/* 열기(open)는 가장 최신 상자를 연다. 스크립트가 없으면 그 주소로 가서 아래 '모든 장면'의 글을 보인다 */
+function guideSteps(t: ReturnType<typeof uiFor>, boxes: BoxView[]): GuideStep[] {
+  if (t.guide.length !== GUIDE.length) throw new Error(`guide has ${t.guide.length} steps, expected ${GUIDE.length}`);
+  const newest = need(boxes.find(b => b.kind !== 'year' && !b.off), 'a box to open');
+  const href: Record<GuideAct, string> = {
+    look: '#wall', open: `#${newest.addr}`, follow: '#wall', take: '#take', ask: '#take-ai',
+  };
+  return GUIDE.map((g, i) => ({ ...g, n: String(i + 1), glyph: t.guide[i].glyph, note: t.guide[i].note, href: href[g.act] }));
 }

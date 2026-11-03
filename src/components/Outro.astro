@@ -27,7 +27,7 @@ const o = view.outro;
           <h3>{o.take.feed.label}</h3><p>{o.take.feed.note}</p>
           <p class="links"><a href={o.take.feed.href}>RSS</a></p>
         </li>
-        <li>
+        <li id="take-ai">
           <h3>{o.take.ai.label}</h3><p>{o.take.ai.note}</p>
           <p class="links"><a href={o.take.ai.llms}>{o.take.ai.llms}</a><a href={o.take.ai.json}>timeline.json</a></p>
         </li>
@@ -40,6 +40,19 @@ const o = view.outro;
       <p>{o.making}</p>
       <p><a href={view.report.href} target="_blank" rel="noopener" data-report aria-haspopup="dialog">{view.report.label}</a></p>
     </section>}
+
+    {/* 쓰는 법: 번호 판과 그림 상자 한 쌍씩 다섯 칸. 판은 벽과 같은 엔진이 화면 가까이 오면 새긴다(wall.ts).
+       누르면 그 일을 한다(guide.ts). 스크립트가 없으면 href로 간다 */}
+    <section class="guide" id="guide" aria-labelledby="guideH">
+      <h2 class="sub" id="guideH">{o.guide.title}</h2>
+      <ol>{o.guide.steps.map(s => <li><a href={s.href} data-act={s.act}>
+        <span class="gd-pair" aria-hidden="true">
+          <span class="gd-plate" data-kind="year" data-glyph={s.n} data-pattern="d" data-angle={+s.n % 2 ? -22 : 22} data-motif="none" data-seed={s.n}><canvas></canvas><span class="g">{s.n}</span></span>
+          <span class="gd-plate" data-kind="item" data-glyph={s.glyph} data-pic={s.pic} data-pattern={s.pattern} data-angle={s.angle} data-motif="none" data-seed={s.seed}><canvas></canvas><span class="g">{s.glyph}</span></span>
+        </span>
+        <span class="gd-t"><b>{s.glyph}</b><span>{s.note}</span></span>
+      </a></li>)}</ol>
+    </section>
 
     <p class="end"><span>{o.end[0]}</span><span>{o.end[1]}</span></p>
     {/* 맨 아래: 만든 사람의 사이트와 X, 오른쪽에 언어 */}

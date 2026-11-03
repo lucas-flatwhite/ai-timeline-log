@@ -9,6 +9,9 @@ describe('plate fonts', () => {
   test('plate text covers keywords, years and the day count', () => {
     const t = plateText(v);
     for (const ch of ['속', '도', '0', '9', ',', '일', 'G', '$']) expect(t).toContain(ch);
+    // 쓰는 법의 번호와 핵심어도 판에 새긴다
+    for (const ch of '12345보기열흐름포스터묻') expect(t).toContain(ch);
+    expect(plateText(buildView(loadContent(), 'en', '2026-10-25'))).toMatch(/^(?=.*L)(?=.*K)(?=.*F)(?=.*W)/);
     expect(t).not.toMatch(/\s/);
   });
   test('Korean plate fonts fit the 40KB budget', async () => {

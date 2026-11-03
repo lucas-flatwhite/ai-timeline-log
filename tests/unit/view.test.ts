@@ -266,3 +266,36 @@ describe('take-it-with-you section', () => {
     expect(f.outro.take.poster).toBeUndefined();
   });
 });
+
+describe('guide (쓰는 법)', () => {
+  const c = loadContent();
+  for (const loc of ['ko', 'en'] as const) {
+    const g = buildView(c, loc, '2026-10-25').outro.guide;
+    test(`${loc}: five steps in order, each pic in pics.yaml`, () => {
+      expect(g.steps.map(s => s.act)).toEqual(['look', 'open', 'follow', 'take', 'ask']);
+      expect(g.steps.map(s => s.n)).toEqual(['1', '2', '3', '4', '5']);
+      for (const s of g.steps) {
+        expect(c.pics[s.pic]).toBeDefined();
+        expect(s.glyph).not.toBe('');
+        expect(s.note).not.toBe('');
+      }
+    });
+    test(`${loc}: open goes to the newest box, the others to anchors on the page`, () => {
+      const v2 = buildView(c, loc, '2026-10-25');
+      const newest = v2.boxes.find(b => b.kind !== 'year' && !b.off)!;
+      expect(Object.fromEntries(g.steps.map(s => [s.act, s.href]))).toEqual({
+        look: '#wall', open: `#${newest.addr}`, follow: '#wall', take: '#take', ask: '#take-ai',
+      });
+    });
+  }
+  test('titles and keywords: Korean on the Korean page, English on the English page', () => {
+    const ko = buildView(c, 'ko', '2026-10-25').outro.guide, en = buildView(c, 'en', '2026-10-25').outro.guide;
+    expect(ko.title).toBe('쓰는 법');
+    expect(ko.steps.map(s => s.glyph)).toEqual(['보기', '열기', '흐름', '포스터', '묻기']);
+    expect(en.title).toBe('How to use');
+    expect(en.steps.map(s => s.glyph)).toEqual(['LOOK', 'OPEN', 'FOLLOW', 'TAKE', 'ASK']);
+    // 작은 판 규칙: 한글 3자 이내, 영어 핵심어에는 한글이 없다
+    for (const s of ko.steps) expect([...s.glyph].length).toBeLessThanOrEqual(3);
+    for (const s of en.steps) expect(s.glyph).not.toMatch(/[가-힣]/);
+  });
+});

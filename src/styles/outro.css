@@ -41,3 +41,28 @@ html:not(.js) .arcs .arc-go{display:none}
 .making{margin-top:10vh}
 .making p{max-width:62ch;text-wrap:pretty}
 .making a{font:500 12px/1.4 var(--mono)}
+/* 쓰는 법: 위 굵은 줄 하나. 휴대폰은 한 줄에 한 칸(판 쌍 옆에 글), 넓은 화면은 다섯 칸을 한 줄에.
+   맨 아래 줄은 두지 않는다(바로 아래 끝 줄의 선과 겹쳐 보인다) */
+.guide{margin:10vh 0 0}
+.guide+.end{margin-top:5vh}
+.outro .guide h2{margin:0 0 14px;font:400 26px/1.2 var(--display)}
+.guide ol{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.guide li{border-bottom:1px solid var(--ink)}
+.guide li:last-child{border-bottom:0}
+.guide a{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:12px 0;color:inherit;text-decoration:none}
+.guide a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.gd-pair{display:flex;gap:4px}
+.gd-plate{position:relative;display:block;width:64px;height:64px;background:var(--wood)}
+.gd-plate canvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:var(--wood)}
+.gd-plate .g{position:absolute;inset:0;display:grid;place-items:center;font:400 15px/1 var(--plate);white-space:nowrap}
+.gd-plate.carved .g{visibility:hidden}
+.gd-t{display:grid;gap:3px}
+.gd-t b{font:400 17px/1.2 var(--display);letter-spacing:.03em}
+.gd-t span{font:500 12px/1.45 var(--mono);color:var(--ink-2)}
+:lang(ko) .gd-t span{font:400 13.5px/1.5 var(--body);text-wrap:pretty}
+@media (hover:hover){.guide a:hover .gd-t b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}}
+@media (min-width:760px){
+  .guide ol{display:grid;grid-template-columns:repeat(5,1fr);gap:0 14px}
+  .guide li{border-bottom:0}
+  .guide a{grid-template-columns:1fr;gap:10px;padding:16px 0 0}
+}
