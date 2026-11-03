@@ -13,9 +13,10 @@ const SOURCES: { sub: PlateFont['sub']; family: PlateFont['family'] }[] = [
 const sourceUrl = (sub: string) =>
   new URL(`../../node_modules/@fontsource/black-han-sans/files/black-han-sans-${sub}-400-normal.woff2`, import.meta.url);
 
-/** 새길 글자의 고유 집합: 상자 핵심어, 연도, 표지 일수의 숫자와 쉼표. 줄바꿈·공백은 뺀다 */
+/** 새길 글자의 고유 집합: 상자 핵심어, 연도, 표지 일수의 숫자와 쉼표, 쓰는 법의 번호와 핵심어. 줄바꿈·공백은 뺀다 */
 export function plateText(v: PageView): string {
-  const all = v.boxes.map(b => b.glyph).join('') + v.cover.tpl.replaceAll('{days}', '0123456789,');
+  const all = v.boxes.map(b => b.glyph).join('') + v.cover.tpl.replaceAll('{days}', '0123456789,')
+    + v.outro.guide.steps.map(s => s.n + s.glyph).join('');
   return [...new Set([...all].filter(ch => !/\s/.test(ch)))].join('');
 }
 

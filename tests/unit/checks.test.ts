@@ -128,6 +128,10 @@ describe('checkContent', () => {
     });
     expect(r.warnings.join()).not.toContain(`scene ${id}: has no source`);
   });
+  test('a guide picture missing from pics.yaml is an error', () => {
+    const r = broken(c => { delete c.pics.eye; });
+    expect(r.errors).toContainEqual('guide look: pic "eye" is not in pics.yaml');
+  });
   test('long small-box keyword is a warning, not an error', () => {
     let id = '';
     const r = broken(c => { id = c.scenes[0].id; c.scenes[0].items[0].glyph = { ko: '행정명령', en: 'ORDER' }; });   // 영어 글이 있는 사건이라 en도 둔다

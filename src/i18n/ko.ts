@@ -56,5 +56,14 @@ export const ko = {
   aiLabel: 'AI에게 건네기',
   aiNote: '이 주소를 AI 채팅에 붙이면 출처를 달아 답할 수 있습니다.',
   takeLicense: (license: string, name: string) => `내용은 ${license}을 따릅니다. 출처: ${name}`,
+  /* 쓰는 법: 맺음 맨 끝의 다섯 칸. glyph는 작은 판에 새기므로 한글 3자 이내. 순서는 view.ts의 GUIDE와 같다 */
+  guideTitle: '쓰는 법',
+  guide: [
+    { glyph: '보기', note: '최신이 맨 위. 상자 하나에 사건 하나.' },
+    { glyph: '열기', note: '상자를 누르면 장면과 출처.' },
+    { glyph: '흐름', note: '주제를 골라 여러 해를 따라가기.' },
+    { glyph: '포스터', note: '벽 전체를 A2 한 장에.' },
+    { glyph: '묻기', note: 'llms-full.txt를 AI에게 건네기.' },
+  ],
 };
 export type UI = typeof ko;

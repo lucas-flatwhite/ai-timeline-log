@@ -58,4 +58,12 @@ export const en: UI = {
   aiLabel: 'Hand It to an AI',
   aiNote: 'Paste this address into an AI chat and it can answer with sources.',
   takeLicense: (license, name) => `Content is licensed under ${license}. Credit: ${name}`,
+  guideTitle: 'How to use',
+  guide: [
+    { glyph: 'LOOK', note: 'Newest on top. One box, one event.' },
+    { glyph: 'OPEN', note: 'Tap a box. Scene + sources.' },
+    { glyph: 'FOLLOW', note: 'Pick a topic. Trace it across years.' },
+    { glyph: 'TAKE', note: 'The whole wall on one A2 poster.' },
+    { glyph: 'ASK', note: 'Give llms-full.txt to your AI.' },
+  ],
 };

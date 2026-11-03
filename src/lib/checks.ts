@@ -1,5 +1,6 @@
 import type { Content } from './content.ts';
 import { glyphFor } from './grid.ts';
+import { GUIDE } from './guide.ts';
 
 /** 스키마를 통과한 내용에 대한 빌드 검사. 오류는 빌드를 멈추고, 경고는 출력만 한다. */
 
@@ -106,6 +107,8 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
     if (n < 3) warnings.push(`topics.yaml: ${id} has only ${n} scene(s)`);
     for (const loc of ['ko', 'en'] as const) add(`topics.yaml ${id}.${loc}`, v[loc], true);
   }
+  // 쓰는 법의 그림 상자도 pics.yaml의 그림을 새긴다
+  for (const g of GUIDE) if (!(g.pic in c.pics)) errors.push(`guide ${g.act}: pic "${g.pic}" is not in pics.yaml`);
 
   // 판 기록: 1부터 빠짐없이, 날짜는 오름차순이고 asOf를 넘지 않는다. 첫 판은 firstEdition.
   // 한 번 포스터를 낸 뒤의 판은 모두 포스터가 있어야 한다(기록한 판에 포스터가 없는 일이 없게)
