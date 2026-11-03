@@ -1,0 +1,52 @@
+id: 2026-11-research-acceleration
+date: 2026-11-02
+span:
+  from: 2026-10-26
+  to: 2026-11-02
+added: 2026-11-03
+topics:
+  - safety
+  - compute
+print:
+  pattern: h
+  motif: rise
+  glyph: 공시
+sources:
+  - &a1
+    url: https://www.anthropic.com/news/s1-sec
+    title: Anthropic files S-1 with the SEC for proposed initial public offering
+    publisher: Anthropic
+  - &a2
+    url: https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm
+    title: "Anthropic, PBC: Form S-1/A, November 2, 2026"
+    publisher: U.S. Securities and Exchange Commission
+items:
+  - date: 2026-10-26
+    ko: Anthropic, 상장을 위한 S-1 등록서를 공개 제출. 나스닥 거래 기호 ANT를 제시했으며 공모 주식 수와 가격 범위는 정하지 않았다.
+    en: Anthropic publicly files an S-1 for a proposed IPO under the Nasdaq symbol ANT, without setting the number of shares or price range.
+    glyph: ANT
+    sources:
+      - *a1
+  - date: 2026-11-02
+    ko: Anthropic, 수정 공시에서 계산·인프라 중심의 구매·임차 약정 총액을 약 8,954억 달러로 기재. 상당액은 2031~2045년에 걸친 약정이며 일부는 조건부다.
+    en: Anthropic’s amended filing reports about $895.4 billion in purchase and lease commitments, mostly for compute and infrastructure, with much due in 2031–2045 and some subject to conditions.
+    glyph: $895B
+    sources:
+      - *a2
+  - date: 2026-11-02
+    ko: Anthropic, 미래 모델이 AI 연구 가속의 자체 기준에 곧 도달할 수 있다고 공시. 현행 모델이 기준을 넘었다고 지정하지는 않았다.
+    en: Anthropic discloses that future models may soon meet its threshold for AI-driven research acceleration, while stating that no current model has been designated as exceeding it.
+    glyph:
+      ko: 가속
+      en: FASTER
+    sources:
+      - *a2
+ko:
+  kicker: 연구소와 공시
+  title: 공시에 적힌 가속과 비용
+  lede: Anthropic은 공개 상장을 준비하며 계산 인프라 약정과 연구 개발의 위험을 밝혔다. 미래 모델이 연구 가속의 자체 기준에 곧 도달할 수 있다고 했지만, 현행 모델이 그 기준을 넘었다고 지정하지는 않았다.
+en:
+  kicker: Labs and Disclosure
+  title: Acceleration and Costs in the Filing
+  lede: As Anthropic prepared to go public, it disclosed compute commitments and risks in its research and development. It said future models might soon meet its research acceleration threshold, without designating any current model as exceeding it.
+  glyph: FILING

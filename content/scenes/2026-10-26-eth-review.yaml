@@ -2,9 +2,9 @@ id: 2026-10-eth-review
 date: 2026-10-26
 span:
   from: 2026-10-26
-  to: 2026-10-27
+  to: 2026-10-30
 added: 2026-10-31
-updated: 2026-11-02
+updated: 2026-11-03
 topics: [science]
 print:
   pattern: c
@@ -17,6 +17,12 @@ sources:
   - url: https://github.com/anthropics/formal-math/tree/main/eth
     title: A 2^o(n) Time Algorithm for 3-SAT
     publisher: Anthropic
+  - url: https://terrytao.wordpress.com/2026/10/30/__trashed/
+    title: Report of the Summit on Math Research in the Age of AI
+    publisher: Summit organizers, on Terence Tao’s blog
+  - url: https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf
+    title: Report of Summit on Math Research in the Age of AI
+    publisher: Harvard CMSA
 items:
   - date: 2026-10-26
     ko: OpenAI, 내부 모델이 지수 시간 가설(ETH)을 반증했다고 발표. 원고와 Lean 형식 증명을 공개하고, 가설 제안자 등이 이끄는 외부 연구진과 검토를 시작했다.
@@ -45,12 +51,25 @@ items:
       - url: https://github.com/anthropics/formal-math/commit/16a5ce41304fcdaea4e0be7c132e1c361dc26da5
         title: "Add eth: paper and Lean 4 formalization (October 27, 2026 UTC)"
         publisher: Anthropic
+  - date: 2026-10-30
+    ko: Harvard CMSA 수학·AI 정상회의 주최자들, 연구 평가와 공로 인정, 형식 증명 활용에 관한 권고문 공개. 회의에는 수학자 32명이 참여했다.
+    en: Organizers of Harvard CMSA’s summit on mathematics and AI, attended by 32 mathematicians, publish recommendations on research evaluation, scholarly credit and the use of formal proofs.
+    glyph:
+      ko: 기준
+      en: NORMS
+    sources:
+      - url: https://terrytao.wordpress.com/2026/10/30/__trashed/
+        title: Report of the Summit on Math Research in the Age of AI
+        publisher: Summit organizers, on Terence Tao’s blog
+      - url: https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf
+        title: Report of Summit on Math Research in the Age of AI
+        publisher: Harvard CMSA
 ko:
   kicker: 수학과 검증
   title: 검토를 기다리는 반증
-  lede: 두 연구소가 같은 난제를 반증했다고 잇달아 발표했다. 10월 말 공개 자료 기준으로 외부 검토는 진행 중이다. 형식 증명이 맞더라도 그 명제가 원래 문제를 제대로 옮겼는지는 따로 확인해야 했다.
+  lede: 두 연구소가 같은 난제를 반증했다고 잇달아 발표했다. 10월 말 공개 자료 기준으로 외부 검토는 진행 중이다. 수학자들은 AI 결과의 평가와 공로 인정, 형식 증명 활용에 관한 권고문을 공개했다.
 en:
   kicker: Mathematics and Verification
   title: "Refutations Awaiting Review"
-  lede: "Two labs announced, one after the other, that they had refuted the same conjecture. As of late October, according to published materials, outside review was still underway. A formal proof could check out while its statement still missed the original problem, so the two had to be verified separately."
+  lede: "Two labs announced, one after the other, that they had refuted the same conjecture. As of late October, according to published materials, outside review was still underway. Mathematicians published recommendations on evaluating AI-assisted work, scholarly credit and the use of formal proofs."
   glyph: VERIFY

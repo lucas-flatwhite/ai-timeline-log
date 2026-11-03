@@ -2,9 +2,9 @@ id: 2026-10-cyber-defense
 date: 2026-10-21
 span:
   from: 2026-10-21
-  to: 2026-10-29
+  to: 2026-11-03
 added: 2026-10-31
-updated: 2026-11-02
+updated: 2026-11-03
 topics: [safety, open]
 print:
   pattern: d
@@ -21,6 +21,9 @@ sources:
   - url: https://mistral.ai/news/mistral-large-4-oss/
     title: "Mistral Large 4 (Le Chonk): Built for Coders, Trusted by Defenders"
     publisher: Mistral AI
+  - url: https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years
+    title: "Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years"
+    publisher: National Cyber Security Centre
 items:
   - date: 2026-10-21
     ko: PHP, 인증 없이 원격 코드를 실행할 수 있는 중대 취약점 2개를 고친 버전 공개. OpenAI는 Calif가 GPT-5.6 Sol로 결함을 찾았고, Wiz도 따로 찾아냈다고 밝혔다.
@@ -50,12 +53,22 @@ items:
       - url: https://mistral.ai/news/mistral-large-4-oss/
         title: "Mistral Large 4 (Le Chonk): Built for Coders, Trusted by Defenders"
         publisher: Mistral AI
+  - date: 2026-11-03
+    ko: 영국 NCSC, 2028년까지 AI 악성코드가 핵심 국가 기반시설 대상 랜섬웨어 공격에 쓰일 가능성이 매우 높다고 경고.
+    en: The UK NCSC warns that AI-powered malware is highly likely to be used in a ransomware attack on critical national infrastructure by 2028.
+    glyph:
+      ko: 경고
+      en: ALERT
+    sources:
+      - url: https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years
+        title: "Cyber chief: UK facing AI-powered attacks on critical infrastructure within two years"
+        publisher: National Cyber Security Centre
 ko:
   kicker: 사이버 보안
   title: AI가 찾은 결함
-  lede: AI가 널리 쓰이는 소프트웨어의 중대 결함을 찾아냈고, 결함이 알려지기 전에 고친 버전이 먼저 나왔다. 일주일 뒤 구글은 보안 능력을 높인 모델을 방어 담당자에게 먼저 열겠다고 했고, 이튿날 Mistral은 사이버 방어를 내세운 모델을 가중치째 공개했다.
+  lede: AI가 널리 쓰이는 소프트웨어의 중대 결함을 찾아냈고, 고친 버전이 공개됐다. Google은 보안 능력을 높인 모델을 방어 담당자에게 먼저 열겠다고 했고, Mistral은 가중치를 공개했다. 영국 NCSC는 AI 악성코드가 국가 기반시설 공격에 쓰일 위험을 경고했다.
 en:
   kicker: Cybersecurity
   title: "Flaws Found by AI"
-  lede: "AI found critical flaws in widely used software, and fixes shipped before the flaws were made public. A week later, Google said it would give defenders first access to a more cyber-capable model, and the next day Mistral released the weights of a model it pitched for cyber defense."
+  lede: "AI found critical flaws in widely used software, and fixes shipped. Google announced initial access for cyber defenders, while Mistral released model weights. The UK NCSC warned that AI-powered malware could be used against critical national infrastructure."
   glyph: DEFEND

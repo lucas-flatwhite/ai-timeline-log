@@ -1,0 +1,59 @@
+id: 2026-10-rosalind
+date: 2026-10-30
+span:
+  from: 2026-04-16
+  to: 2026-10-30
+added: 2026-11-03
+topics:
+  - science
+  - models
+print:
+  pattern: w
+  motif: none
+  glyph: 생명
+sources:
+  - &a1
+    url: https://openai.com/index/introducing-gpt-rosalind/
+    title: Introducing GPT-Rosalind for life sciences research
+    publisher: OpenAI
+  - &a2
+    url: https://developers.openai.com/api/docs/changelog
+    title: "OpenAI API Changelog: October 30, 2026"
+    publisher: OpenAI
+  - &a3
+    url: https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research
+    title: GPT-Rosalind for life sciences research
+    publisher: OpenAI
+items:
+  - date: 2026-04-16
+    ko: OpenAI, 생물학·신약 연구용 GPT-Rosalind를 미국의 적격 기업 고객 대상 trusted access로 공개. 문헌 검토와 실험 계획 등 연구 작업을 지원한다.
+    en: OpenAI introduces GPT-Rosalind for biology and drug discovery through trusted access for qualified U.S. Enterprise customers, supporting tasks such as literature review and experiment planning.
+    glyph:
+      ko: 모델
+      en: MODEL
+    sources:
+      - *a1
+  - date: 2026-04-16
+    ko: OpenAI, Codex용 Life Sciences Research Plugin 공개. 연구자들이 범용 모델로도 과학 도구와 데이터베이스 50개 이상을 연결해 쓸 수 있도록 했다.
+    en: OpenAI releases the Life Sciences Research Plugin for Codex, connecting more than 50 scientific tools and data sources for use with its general-purpose models.
+    glyph:
+      ko: 도구
+      en: TOOLS
+    sources:
+      - *a1
+  - date: 2026-10-30
+    ko: OpenAI, 생물학 추론과 과학 도구 사용을 결합한 GPT-6 Rosalind 출시. Rosalind Research 승인을 받은 조직과 사용자의 내부 연구로 접근을 제한한다.
+    en: OpenAI releases GPT-6 Rosalind with biological reasoning and scientific tool use, limiting access to authorized internal research at organizations approved for Rosalind Research.
+    glyph: GPT-6
+    sources:
+      - *a2
+      - *a3
+ko:
+  kicker: 생명과학
+  title: 생명과학을 위한 모델
+  lede: 생물학 연구를 위한 전문 모델과 문헌·데이터베이스를 연결하는 도구가 나왔다. GPT-6 Rosalind는 승인된 기관의 내부 연구에 한정해 공개됐다. 모델 접근 승인과 연구 도구 공개는 서로 다른 범위였다.
+en:
+  kicker: Life Sciences
+  title: Models for Life Sciences
+  lede: A specialized model for biology arrived alongside tools connecting literature and scientific databases. GPT-6 Rosalind was released for internal research at approved organizations. Access to the model and availability of the research tools had different limits.
+  glyph: BIO
