@@ -22,19 +22,19 @@ describe('urls', () => {
 
 describe('buildTimeline', () => {
   test('timeline has every scene and event', () => {
-    expect(t.scenes).toHaveLength(61);
-    expect(t.scenes.flatMap(s => s.items)).toHaveLength(230);
-    expect(t.site.asOf).toBe('2026-11-02');
+    expect(t.scenes).toHaveLength(65);
+    expect(t.scenes.flatMap(s => s.items)).toHaveLength(244);
+    expect(t.site.asOf).toBe('2026-11-03');
     expect(t.site.license.name).toBe('CC BY 4.0');
     expect(t.site.scope).toEqual(SCOPE);
     expect(t.topics.agents.en).toBe('Agents');
     expect(t.editions.at(-1)!.n).toBe(5);
-    expect(t.scenes[0].id).toBe('2026-10-eth-review');
+    expect(t.scenes[0].id).toBe('2026-11-research-acceleration');
     expect(t.glossary.length).toBeGreaterThan(0);
   });
 
   test('timeline items carry addresses and urls', () => {
-    const s = t.scenes[0];
+    const s = t.scenes.find(s => s.id === '2026-10-eth-review')!;
     expect(s.items[0].addr).toBe('2026-10-eth-review~20261026');
     expect(s.url.en).toBe(`${ORIGIN}#2026-10-eth-review`);
     expect(s.items[0].url.ko).toBe(`${ORIGIN}ko/#2026-10-eth-review~20261026`);
@@ -60,7 +60,7 @@ describe('llms', () => {
   test('llms-full (ko) states scope, asOf and sources', () => {
     const s = buildLlmsFull(c, 'ko');
     expect(s).toContain(SCOPE.ko);
-    expect(s).toContain('2026.11.02');
+    expect(s).toContain('2026.11.03');
     const items = c.scenes.flatMap(sc => sc.items);
     expect(items.filter(it => !s.includes(it.ko))).toEqual([]);
     const urls = items.flatMap(it => it.sources.map(x => x.url));

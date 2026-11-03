@@ -348,3 +348,19 @@
 - { ko: "보리스 엘다크센", en: "Boris Eldagsen", source: "https://www.engadget.com/german-artist-refuses-award-after-his-ai-image-wins-prestigious-photography-prize-071322551.html" }
 - { ko: "윌리엄 알섭", en: "William Alsup", source: "https://www.mintz.com/insights-center/viewpoints/2231/2025-07-16-two-northern-district-california-judges-find-some" }
 - { ko: "빈스 차브리아", en: "Vince Chhabria", source: "https://www.publishersweekly.com/pw/by-topic/digital/copyright/article/98093-meta-wins-ai-copyright-case-but-judge-writes-roadmap-for-authors-revenge.html" }
+- { ko: "IETF AIPREF", en: "IETF AIPREF", source: "https://developers.google.com/search/blog/2026/10/ai-training-control" }
+- { ko: "Google-Extended", en: "Google-Extended", source: "https://developers.google.com/search/blog/2026/10/ai-training-control" }
+- { ko: "영국 경쟁시장청(CMA)", en: "Competition and Markets Authority (CMA)", source: "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2" }
+- { ko: "Project Suncatcher", en: "Project Suncatcher", source: "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/" }
+- { ko: "Gemma 4", en: "Gemma 4", source: "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/" }
+- { ko: "Planet", en: "Planet", source: "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype/" }
+- { ko: "Transporter-18", en: "Transporter-18", source: "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype/" }
+- { ko: "Marvell", en: "Marvell", source: "https://investor.lumentum.com/financial-news-releases/news-details/2026/Marvell-and-Lumentum-to-Combine-Creating-a-Category-Leader-in-AI-Connectivity/default.aspx" }
+- { ko: "Lumentum", en: "Lumentum", source: "https://investor.lumentum.com/financial-news-releases/news-details/2026/Marvell-and-Lumentum-to-Combine-Creating-a-Category-Leader-in-AI-Connectivity/default.aspx" }
+- { ko: "GPT-Rosalind", en: "GPT-Rosalind", source: "https://openai.com/index/introducing-gpt-rosalind/" }
+- { ko: "GPT-6 Rosalind", en: "GPT-6 Rosalind", source: "https://developers.openai.com/api/docs/changelog" }
+- { ko: "Rosalind Research", en: "Rosalind Research", source: "https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research" }
+- { ko: "Life Sciences Research Plugin", en: "Life Sciences Research Plugin", source: "https://openai.com/index/introducing-gpt-rosalind/" }
+- { ko: "Harvard CMSA", en: "Harvard CMSA", source: "https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf" }
+- { ko: "영국 국가사이버보안센터(NCSC)", en: "National Cyber Security Centre (NCSC)", source: "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years" }
+- { ko: "책임 있는 확장 정책", en: "Responsible Scaling Policy", source: "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm" }

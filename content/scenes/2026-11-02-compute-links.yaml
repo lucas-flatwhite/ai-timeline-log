@@ -1,0 +1,58 @@
+id: 2026-11-compute-links
+date: 2026-11-02
+span:
+  from: 2026-10-01
+  to: 2026-11-02
+added: 2026-11-03
+order: 1
+topics:
+  - compute
+print:
+  pattern: d
+  motif: grid
+  glyph: 연결
+sources:
+  - &a1
+    url: https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-prototype/
+    title: Our Project Suncatcher prototype satellite is in orbit.
+    publisher: Google
+  - &a2
+    url: https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/
+    title: We’ve received our first response from the Project Suncatcher prototype satellite.
+    publisher: Google
+  - &a3
+    url: https://investor.lumentum.com/financial-news-releases/news-details/2026/Marvell-and-Lumentum-to-Combine-Creating-a-Category-Leader-in-AI-Connectivity/default.aspx
+    title: Marvell and Lumentum to Combine, Creating a Category Leader in AI Connectivity
+    publisher: Marvell and Lumentum
+items:
+  - date: 2026-10-01
+    ko: Google, Planet과 만든 Project Suncatcher 시제 위성을 SpaceX Transporter-18로 발사하고 교신 확인. 우주 환경에서 TPU를 시험한다.
+    en: Google launches its Project Suncatcher prototype satellite, built with Planet, on SpaceX’s Transporter-18 and confirms contact to begin testing TPUs in space.
+    glyph:
+      ko: 궤도
+      en: ORBIT
+    sources:
+      - *a1
+  - date: 2026-10-30
+    ko: Google, 시제 위성의 TPU에서 Gemma 4를 실행해 지상으로 응답을 받았다고 발표. 우주 방사선과 열 조건에서의 시험을 이어간다.
+    en: Google reports receiving a response from Gemma 4 running on the prototype satellite’s TPU and plans further tests of radiation exposure and thermal stress.
+    glyph:
+      ko: 응답
+      en: REPLY
+    sources:
+      - *a2
+  - date: 2026-11-02
+    ko: Marvell, Lumentum을 기업가치 1,150억 달러 규모의 주식 교환 방식으로 인수하는 계약 발표. AI 인프라용 전기·광학 연결 기술을 결합하며 주주·규제 승인을 거친다.
+    en: Marvell announces an all-stock agreement to acquire Lumentum at an implied enterprise value of $115 billion, combining electrical and optical AI connectivity technologies subject to shareholder and regulatory approvals.
+    glyph: $115B
+    sources:
+      - *a3
+ko:
+  kicker: 계산 인프라
+  title: AI 계산망의 새 연결
+  lede: Google은 궤도의 TPU에서 AI 응답을 받았다고 발표했다. 지상에서는 Marvell이 광학 연결 기술을 가진 Lumentum을 인수하는 계약을 발표했다. 위성은 실험 단계이고 인수에는 승인이 남아 있었다.
+en:
+  kicker: Compute Infrastructure
+  title: New Links for AI Compute
+  lede: Google reported an AI response from a TPU in orbit. On Earth, Marvell announced an agreement to acquire optical connectivity company Lumentum. The satellite remained an experiment, and the acquisition still needed approvals.
+  glyph: LINKS
