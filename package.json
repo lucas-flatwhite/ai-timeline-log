@@ -18,7 +18,8 @@
     "budget": "node scripts/budget.ts",
     "perf": "node scripts/perf.ts",
     "favicon": "node scripts/favicon.ts",
-    "poster": "node scripts/poster.ts"
+    "poster": "node scripts/poster.ts",
+    "index": "node scripts/index.ts"
   },
   "dependencies": {
     "@fontsource/black-han-sans": "^5.3.0",

@@ -32,7 +32,7 @@ npx playwright install chromium webkit
 npm run test:e2e
 ```
 
-영어판은 `/ai-timeline-log/`, 한국어판은 `/ai-timeline-log/ko/`에 있습니다. 사이트에서 고른 언어는 브라우저에 기억됩니다. PR마다 GitHub Actions가 검사와 브라우저 테스트를 실행합니다. 콘텐츠 편집, 정정, 포스터 생성 방법은 [CLAUDE.md](CLAUDE.md)에 정리했습니다.
+영어판은 `/ai-timeline-log/`, 한국어판은 `/ai-timeline-log/ko/`에 있습니다. 사이트에서 고른 언어는 브라우저에 기억됩니다. PR마다 GitHub Actions가 검사와 브라우저 테스트를 실행합니다. 콘텐츠 편집, 정정, 리서치 방법은 [AGENTS.md](AGENTS.md)에, 포스터와 그림 절차는 `.agents/skills/`에 정리했습니다.
 
 ## 라이선스
 
