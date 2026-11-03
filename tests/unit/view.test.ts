@@ -288,6 +288,14 @@ describe('guide (쓰는 법)', () => {
       });
     });
   }
+  test('ask names the same file the AI row links to', () => {
+    for (const loc of ['ko', 'en'] as const) {
+      const o = buildView(c, loc, '2026-10-25').outro;
+      const file = new URL(o.take.ai.llms).pathname.split('/').pop()!;
+      expect(file).toBe('llms-full.txt');
+      expect(o.guide.steps.find(s => s.act === 'ask')!.note).toContain(file);
+    }
+  });
   test('titles and keywords: Korean on the Korean page, English on the English page', () => {
     const ko = buildView(c, 'ko', '2026-10-25').outro.guide, en = buildView(c, 'en', '2026-10-25').outro.guide;
     expect(ko.title).toBe('쓰는 법');

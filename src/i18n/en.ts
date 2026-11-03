@@ -64,6 +64,6 @@ export const en: UI = {
     { glyph: 'OPEN', note: 'Tap a box. Scene + sources.' },
     { glyph: 'FOLLOW', note: 'Pick a topic. Trace it across years.' },
     { glyph: 'TAKE', note: 'The whole wall on one A2 poster.' },
-    { glyph: 'ASK', note: 'Give llms.txt to your AI.' },
+    { glyph: 'ASK', note: 'Give llms-full.txt to your AI.' },
   ],
 };

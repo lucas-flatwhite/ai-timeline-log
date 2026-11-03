@@ -63,7 +63,7 @@ export const ko = {
     { glyph: '열기', note: '상자를 누르면 장면과 출처.' },
     { glyph: '흐름', note: '주제를 골라 여러 해를 따라가기.' },
     { glyph: '포스터', note: '벽 전체를 A2 한 장에.' },
-    { glyph: '묻기', note: 'llms.txt를 AI에게 건네기.' },
+    { glyph: '묻기', note: 'llms-full.txt를 AI에게 건네기.' },
   ],
 };
 export type UI = typeof ko;
