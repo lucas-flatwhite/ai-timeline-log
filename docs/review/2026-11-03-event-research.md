@@ -55,7 +55,7 @@ Marvell은 Lumentum을 전액 주식 교환 방식으로 인수하는 계약을 
 
 ### 5. 수학·AI 정상회의 보고서 공개, 10월 30일
 
-Harvard CMSA에서 10월 22~23일 열린 정상회의에는 학계·정부·산업계 수학자 32명이 참여했다. 주최자 5명이 10월 30일 Terence Tao의 블로그에 보고서를 소개했다. 보고서는 연구 평가와 채용에서 해설·데이터베이스·형식화 등 다양한 기여를 인정하고, 형식 증명을 기존 수학 실천의 보완으로 사용하며, AI 없이도 기여할 기회를 유지할 것을 권고한다. [주최자 원문, 공개일 확인](https://terrytao.wordpress.com/2026/10/30/__trashed/), [Harvard CMSA 보고서 PDF](https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf)
+Harvard CMSA에서 10월 22~23일 열린 정상회의에는 학계·정부·산업계 수학자 32명이 참여했다. 주최자 5명이 10월 30일 Terence Tao의 블로그에 보고서를 소개했다. 보고서는 연구 평가와 채용에서 해설·데이터베이스·형식화 등 다양한 기여를 인정하고, 형식 증명을 기존 수학 실천의 보완으로 사용하며, AI 없이도 기여할 기회를 유지할 것을 권고한다. [주최자 원문, 공개일 확인](https://wp.me/p3qzP-4Qi), [Harvard CMSA 보고서 PDF](https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf)
 
 기록할 수 있는 문장: “수학자 32명이 참여한 Harvard CMSA 정상회의 주최자들이 AI 시대의 연구 평가와 공로 인정, 형식 증명 활용에 관한 권고문을 공개했다.”
 

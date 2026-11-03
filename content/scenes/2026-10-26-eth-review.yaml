@@ -17,7 +17,7 @@ sources:
   - url: https://github.com/anthropics/formal-math/tree/main/eth
     title: A 2^o(n) Time Algorithm for 3-SAT
     publisher: Anthropic
-  - url: https://terrytao.wordpress.com/2026/10/30/__trashed/
+  - url: https://wp.me/p3qzP-4Qi
     title: Report of the Summit on Math Research in the Age of AI
     publisher: Summit organizers, on Terence Tao’s blog
   - url: https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf
@@ -58,7 +58,7 @@ items:
       ko: 기준
       en: NORMS
     sources:
-      - url: https://terrytao.wordpress.com/2026/10/30/__trashed/
+      - url: https://wp.me/p3qzP-4Qi
         title: Report of the Summit on Math Research in the Age of AI
         publisher: Summit organizers, on Terence Tao’s blog
       - url: https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf

@@ -4,6 +4,7 @@ span:
   from: 2026-04-16
   to: 2026-10-30
 added: 2026-11-03
+updated: 2026-11-03
 topics:
   - science
   - models
@@ -55,5 +56,5 @@ ko:
 en:
   kicker: Life Sciences
   title: Models for Life Sciences
-  lede: A specialized model for biology arrived alongside tools connecting literature and scientific databases. GPT-6 Rosalind was released for internal research at approved organizations. Access to the model and availability of the research tools had different limits.
+  lede: A specialized model for biology arrived alongside tools connecting literature and scientific databases. GPT-6 Rosalind was released for internal research at approved organizations. The research tools were available more broadly than the model.
   glyph: BIO
