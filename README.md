@@ -32,7 +32,7 @@ npx playwright install chromium webkit
 npm run test:e2e
 ```
 
-English lives at `/ai-timeline-log/`, Korean at `/ai-timeline-log/ko/`. The site remembers your language choice. GitHub Actions runs the checks and browser tests on PRs. See [CLAUDE.md](CLAUDE.md) for content editing, corrections and poster commands.
+English lives at `/ai-timeline-log/`, Korean at `/ai-timeline-log/ko/`. The site remembers your language choice. GitHub Actions runs the checks and browser tests on PRs. See [AGENTS.md](AGENTS.md) for content editing, corrections and research, and `.agents/skills/` for the poster and picture steps.
 
 ## License
 
