@@ -192,6 +192,18 @@ describe('topics and editions', () => {
     const errs = errsOf(c => { c.editions = [ed(1, '2026-10-05', true), ed(2, '2026-10-18')]; });
     expect(errs).toContainEqual('editions.yaml: edition 2 has no poster after edition 1 had one');
   });
+  const files = { pdf: 3, png: 2, web: 1, px: [4961, 6961] as [number, number] };
+  test('files only on a poster edition', () => {
+    const errs = errsOf(c => { c.editions = [{ ...ed(1, '2026-10-05'), files: { ko: files, en: files } }]; });
+    expect(errs).toContainEqual('editions.yaml: edition 1 has files but no poster');
+  });
+  test('the last poster edition without files warns until poster:pull', () => {
+    const r = broken(c => { c.editions = [ed(1, '2026-10-05', true)]; });
+    expect(r.errors).toEqual([]);
+    expect(r.warnings).toContainEqual('editions.yaml: edition 1 has no files yet; after the Release run npm run poster:pull -- --edition 1');
+    const ok = broken(c => { c.editions = [{ ...ed(1, '2026-10-05', true), files: { ko: files, en: files } }]; });
+    expect(ok.warnings.join()).not.toMatch(/has no files yet/);
+  });
   test('edition and topic text follow the style rules', () => {
     const errs = errsOf(c => {
       c.editions = [{ ...ed(1, '2026-10-05'), ko: '오늘 찍은 판.' }];

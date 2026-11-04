@@ -37,7 +37,7 @@
 
 ### 판 기록과 포스터
 
-판을 찍고 포스터 Release를 올리는 절차는 `.agents/skills/edition-release/SKILL.md`에 있습니다. 요점: `main`에 머지하면 바로 배포되므로 **Release를 먼저 만들고 머지합니다.**
+판을 찍고 포스터 Release를 올리는 절차는 `.agents/skills/edition-release/SKILL.md`에 있습니다. 요점: `main`에 머지하면 바로 배포되므로 **Release를 먼저 만들고, 미리보기와 용량을 가져온 뒤(`npm run poster:pull`) 머지합니다.**
 
 ### 정정
 
@@ -103,7 +103,7 @@ npx playwright test --project=webkit     # Safari 엔진. 마우스로 누른 �
 - 외부 런타임 리소스, 분석 도구, Google Fonts를 넣지 않습니다.
 - `src/generated/`, `public/plate/`는 빌드가 만드는 파일이라 커밋하지 않습니다.
 - 공유 이미지(`public/og/`)는 내용이 크게 바뀌면 `scripts/og.ts`로 다시 찍어 커밋합니다.
-- 포스터 파일은 커밋하지 않고 사이트에도 두지 않습니다. GitHub Releases에만 올립니다(Vercel 비용을 지지 않기 위해서).
+- 포스터 파일은 커밋하지 않고 사이트에도 두지 않습니다. GitHub Releases에만 올립니다(Vercel 비용을 지지 않기 위해서). 예외는 가져가기 칸의 미리보기뿐입니다. 마지막 포스터 판의 화면용 PNG를 가로 600px AVIF로 줄인 것으로, 언어별 하나씩 100KB 이하로 `public/poster/`에 둡니다. 판마다 덮어써서 쌓이지 않습니다(`npm run poster:pull`이 만들고 `npm run budget`이 검사).
 - 방문자 정보를 서버로 보내지 않습니다. "지난 방문 이후 새 상자"는 브라우저 저장소(`atl:seen`, `atl:since`)만, 고른 언어는 `lucas-flatwhite:locale`만 씁니다.
 
 ## 라이선스

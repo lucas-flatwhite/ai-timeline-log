@@ -31,6 +31,24 @@ export function posterFiles(locale: Locale): { pdf: string; png: string; web: st
   return { pdf: `poster-${locale}.pdf`, png: `poster-${locale}.png`, web: `poster-${locale}-web.png` };
 }
 
+/* 가져가기 칸의 미리보기: 그 판의 화면용 PNG를 줄인 AVIF. 사이트(public/poster/)에는 마지막 포스터 판의 것만 언어별로 하나씩 둔다 */
+export const PREVIEW_WIDTH = 600;
+export const PREVIEW_DIR = 'poster';
+export function previewFile(n: number, locale: Locale): string {
+  return `${PREVIEW_DIR}/edition-${n}-${locale}.avif`;
+}
+/** 미리보기의 픽셀 크기: 가로 PREVIEW_WIDTH, 세로는 포스터 PNG의 비율대로 */
+export function previewSize(px: [number, number]): { w: number; h: number } {
+  return { w: PREVIEW_WIDTH, h: Math.round(PREVIEW_WIDTH * px[1] / px[0]) };
+}
+
+/** 버튼에 적을 파일 크기. MB는 2^20바이트, 10MB 아래는 소수 한 자리. 한국어는 붙여 쓰고 영어는 띄운다 */
+export function formatMB(bytes: number, locale: Locale): string {
+  const mb = bytes / 2 ** 20, tenth = Math.round(mb * 10) / 10;
+  const n = tenth < 10 ? tenth.toFixed(1) : String(Math.round(mb));
+  return locale === 'ko' ? `${n}MB` : `${n} MB`;
+}
+
 /** 포스터를 찍을 판. 판 기록에 없거나 poster가 false면 던진다 */
 export function editionFor(editions: Edition[], n: number): Edition {
   const e = editions.find(x => x.n === n);

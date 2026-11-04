@@ -1,6 +1,8 @@
 import { describe, test, expect } from 'vitest';
 import { loadContent } from '../../src/lib/content.ts';
-import { A_RATIO, editionFor, pickColumns, posterFiles, posterScale, posterSiteUrl } from '../../src/lib/poster.ts';
+import { readdirSync } from 'node:fs';
+import { A_RATIO, editionFor, formatMB, pickColumns, posterFiles, posterScale, posterSiteUrl, previewFile, previewSize, PREVIEW_DIR } from '../../src/lib/poster.ts';
+import { latestPosterEdition } from '../../src/lib/export.ts';
 
 describe('poster layout', () => {
   test('pickColumns takes the ratio closest to A paper', () => {
@@ -29,5 +31,25 @@ describe('editionFor', () => {
   test('an edition without a poster or an unknown one', () => {
     expect(() => editionFor(eds, 3)).toThrow('edition 3 has no poster');
     expect(() => editionFor(eds, 9)).toThrow('edition 9 has no poster');
+  });
+});
+
+describe('take section preview', () => {
+  test('previewFile and previewSize', () => {
+    expect(previewFile(5, 'ko')).toBe('poster/edition-5-ko.avif');
+    expect(previewSize([4961, 6961])).toEqual({ w: 600, h: 842 });
+  });
+  test('formatMB: MiB, one decimal under 10, Korean without a space', () => {
+    expect(formatMB(23076115, 'ko')).toBe('22MB');
+    expect(formatMB(19977260, 'en')).toBe('19 MB');
+    expect(formatMB(7091762, 'ko')).toBe('6.8MB');
+    expect(formatMB(10443817, 'en')).toBe('10 MB');   // 9.96MB는 10.0이 아니라 10으로
+  });
+  // 사이트에는 마지막 포스터 판의 미리보기만 언어별로 하나. 판을 찍을 때마다 바뀌고 쌓이지 않는다
+  // 새 판을 적고 Release를 기다리는 동안(files 없음)은 빌드 경고만 내고 이 검사는 건너뛴다
+  const last = latestPosterEdition(loadContent())!;
+  test.runIf(!!last.files)('public/poster holds exactly the last poster edition previews', () => {
+    const want = (['en', 'ko'] as const).map(l => previewFile(last.n, l).slice(PREVIEW_DIR.length + 1));
+    expect(readdirSync(`public/${PREVIEW_DIR}`).sort()).toEqual(want);
   });
 });

@@ -74,7 +74,8 @@ export function buildTimeline(c: Content, glossary: GlossaryEntry[]): TimelineJs
         })),
       };
     }),
-    years: c.years, arcs: c.arcs, ledger: c.ledger, glossary, editions: c.editions,
+    // 판의 files(포스터 파일 크기)는 사이트의 받기 버튼용이라 내보내지 않는다
+    years: c.years, arcs: c.arcs, ledger: c.ledger, glossary, editions: c.editions.map(({ files: _, ...e }) => e),
   };
 }
 
