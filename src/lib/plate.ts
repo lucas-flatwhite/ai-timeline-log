@@ -13,11 +13,15 @@ const SOURCES: { sub: PlateFont['sub']; family: PlateFont['family'] }[] = [
 const sourceUrl = (sub: string) =>
   new URL(`../../node_modules/@fontsource/black-han-sans/files/black-han-sans-${sub}-400-normal.woff2`, import.meta.url);
 
-/** 새길 글자의 고유 집합: 상자 핵심어, 연도, 표지 일수의 숫자와 쉼표, 쓰는 법의 번호와 핵심어. 줄바꿈·공백은 뺀다 */
+/* 판에 담을 글자인가: 줄바꿈 같은 공백 문자는 빼되 보통 공백(U+0020)은 담는다.
+   공백을 대체 서체가 맡으면 그 서체가 오기 전과 뒤에 잰 글자 폭이 달라져, 같은 판이 다시 새길 때 크기가 바뀐다(영어 표지 '1,434 days') */
+const onPlate = (ch: string) => ch === ' ' || !/\s/.test(ch);
+
+/** 새길 글자의 고유 집합: 상자 핵심어, 연도, 표지 일수의 숫자와 쉼표, 쓰는 법의 번호와 핵심어. 줄바꿈은 빼고 공백은 담는다 */
 export function plateText(v: PageView): string {
   const all = v.boxes.map(b => b.glyph).join('') + v.cover.tpl.replaceAll('{days}', '0123456789,')
     + v.outro.guide.steps.map(s => s.n + s.glyph).join('');
-  return [...new Set([...all].filter(ch => !/\s/.test(ch)))].join('');
+  return [...new Set([...all].filter(onPlate))].join('');
 }
 
 /** sfnt의 maxp.numGlyphs. .notdef 하나뿐이면 1이다 */
@@ -31,7 +35,7 @@ function glyphCount(sfnt: Uint8Array): number {
 }
 
 /** 원본이 실제로 가진 글자만 남긴다: 한 글자씩 뽑아 보고 .notdef 밖의 글리프가 있는지 본다 */
-async function covered(src: Uint8Array, chars: string[]): Promise<string[]> {
+export async function covered(src: Uint8Array, chars: string[]): Promise<string[]> {
   const out: string[] = [];
   for (const ch of chars) {
     if (glyphCount(await subsetFont(Buffer.from(src), ch, { targetFormat: 'sfnt' })) > 1) out.push(ch);
@@ -41,7 +45,7 @@ async function covered(src: Uint8Array, chars: string[]): Promise<string[]> {
 
 /** 글자를 원본 순서(라틴 먼저)대로 나눠 담아 중복 없이 subset한다. 담을 글자가 없는 원본은 건너뛴다 */
 export async function makePlateFonts(text: string): Promise<PlateFont[]> {
-  let rest = [...new Set([...text].filter(ch => !/\s/.test(ch)))];
+  let rest = [...new Set([...text].filter(onPlate))];
   const fonts: PlateFont[] = [];
   for (const { sub, family } of SOURCES) {
     const src = new Uint8Array(await readFile(sourceUrl(sub)));

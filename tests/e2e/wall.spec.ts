@@ -15,6 +15,21 @@ const firstScreen = (page: Page) => page.evaluate(() => [...document.querySelect
     const r = b.getBoundingClientRect(), c = b.querySelector('canvas')!.getBoundingClientRect();
     return { addr: b.dataset.addr, carved: b.classList.contains('carved'), fits: Math.abs(c.width - r.width) < 0.5 && Math.abs(c.height - r.height) < 0.5 };
   }));
+/* 두 판 그림(toDataURL)에서 값이 다른 화소 수. Linux WebKit은 같은 판을 다시 새겨도 칼선 끝 한 화소를 다르게 칠할 때가 있어서
+   정확히 같은지 대신 이 수로 본다. 판 설정이나 글자 크기가 바뀌면 수천 화소가 달라진다 */
+const pixelsOff = (page: Page, a: string, b: string) => page.evaluate(async ([a, b]) => {
+  const read = (u: string) => new Promise<ImageData>((ok, no) => {
+    const i = new Image();
+    i.onload = () => { const c = document.createElement('canvas'); c.width = i.width; c.height = i.height; const g = c.getContext('2d')!; g.drawImage(i, 0, 0); ok(g.getImageData(0, 0, i.width, i.height)); };
+    i.onerror = no;
+    i.src = u;
+  });
+  const [x, y] = [await read(a!), await read(b!)];
+  if (x.width !== y.width || x.height !== y.height) return x.width * x.height;
+  let n = 0;
+  for (let i = 0; i < x.data.length; i += 4) if (x.data[i] !== y.data[i] || x.data[i + 1] !== y.data[i + 1] || x.data[i + 2] !== y.data[i + 2] || x.data[i + 3] !== y.data[i + 3]) n++;
+  return n;
+}, [a, b]);
 /* IntersectionObserver가 모든 상자를 보도록 한 화면씩 내려간다 */
 const scrollThrough = (page: Page) => page.evaluate(async () => {
   for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight * 0.8) {
@@ -184,7 +199,8 @@ for (const path of ['./ko/', './']) {
       const drawn = await page.evaluate(() => (window as unknown as { __drawn: string[] }).__drawn);
       expect(drawn.filter(t => t !== glyph).length).toBeGreaterThan(10);   // 상자 글자가 돌았다
       expect(drawn.at(-1)).toBe(glyph);                                      // 일수 판으로 돌아왔다
-      expect(await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL())).toBe(before);
+      const off = await pixelsOff(page, before, await cv.evaluate((c: HTMLCanvasElement) => c.toDataURL()));
+      expect(off, `${off} pixels differ from the plate before the spin`).toBeLessThanOrEqual(50);
       await expect(page.locator('#detail')).not.toHaveAttribute('open', '');
       expect(new URL(page.url()).hash).toBe('');
     });
