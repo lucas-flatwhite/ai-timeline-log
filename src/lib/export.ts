@@ -13,7 +13,7 @@ export const SCOPE = {
   ko: '흐름을 바꾼 사건을 골라 낸 연표이며, 모든 사건을 모은 것이 아니다. 여기 없다고 중요하지 않은 것은 아니다.',
   en: 'A curated timeline of events that changed the course of generative AI, not a complete record. An event missing here is not thereby unimportant.',
 };
-const ATTRIBUTION = 'AI Timeline Log (https://lucasflatwhite.com/ai-timeline-log/), CC BY 4.0';
+export const ATTRIBUTION = 'AI Timeline Log (https://lucasflatwhite.com/ai-timeline-log/), CC BY 4.0';
 
 const pagePath = (locale: Locale) => ORIGIN + localePath(locale);
 export function sceneUrl(locale: Locale, id: string): string {
@@ -87,6 +87,10 @@ export function buildLlmsIndex(c: Content): string {
     `> A bilingual (Korean and English) timeline of generative AI from the launch of ChatGPT on ${formatDot(c.site.start)} to ${formatDot(c.site.asOf)}. Each event has a date, one sentence and its sources. ${SCOPE.en}`,
     '',
     `Facts are current as of ${c.site.asOf}${last ? ` (edition ${last.n})` : ''}. Content is licensed under ${LICENSE.name} (${LICENSE.url}); credit "${ATTRIBUTION}".`,
+    '',
+    '## Agent setup',
+    '',
+    `- [Agent setup](${ORIGIN}agent.md): paste-ready instructions that install this timeline as an agent skill (Korean: ${ORIGIN}ko/agent.md)`,
     '',
     '## Timeline',
     '',

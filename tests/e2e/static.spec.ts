@@ -180,9 +180,10 @@ test.describe('exported files', () => {
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-5/poster-ko.pdf',
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-5/poster-ko.png',
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases',
-      '/ai-timeline-log/ko/feed.xml',
+      'https://lucasflatwhite.com/ai-timeline-log/ko/agent.md',
       'https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt',
       'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
+      '/ai-timeline-log/ko/feed.xml',
     ]);
     for (const a of await take.locator('a[href^="https://github.com"]').all()) {
       await expect(a).toHaveAttribute('target', '_blank');

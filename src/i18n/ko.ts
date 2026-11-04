@@ -60,7 +60,16 @@ export const ko = {
   feedLabel: '피드',
   feedNote: '새 장면과 정정을 RSS로 받기',
   aiLabel: 'AI에게 건네기',
-  aiNote: '이 주소를 AI 채팅에 붙이면 출처를 달아 답할 수 있습니다.',
+  aiAsOf: (date: string) => `기준일 ${date}`,
+  aiTitle: '쓰는 에이전트에 이 연표를 들여놓기',
+  aiDesc: '한 번 들여놓으면 AI 역사나 모델 출시를 물을 때 에이전트가 이 연표를 찾아 읽고, 날짜와 출처를 달아 답합니다. 장면이 늘어도 다시 할 일은 없습니다.',
+  aiSlipCap: '클립보드에 들어가는 글',
+  aiSlipFoot: 'agent.md가 에이전트마다 할 일을 알려 줍니다. 파일을 저장할 수 있으면 스킬로, 채팅이면 메모리나 프로젝트 지침으로.',
+  aiButton: '에이전트에게 알려 주기',
+  aiCopied: '복사했습니다',
+  aiHint: '이제 에이전트에 붙여 넣으세요.',
+  aiFailed: '직접 복사해 주세요.',
+  aiSteps: ['버튼을 누르면 쪽지의 글이 복사됩니다.', 'Claude Code, Codex, Cursor, OpenCode에 붙여 넣습니다. ChatGPT 같은 채팅도 됩니다.', '일을 맡깁니다.'] as [string, string, string],
   takeLicense: (license: string, name: string) => `내용은 ${license}을 따릅니다. 출처: ${name}`,
   /* 쓰는 법: 맺음 맨 끝의 다섯 칸. glyph는 작은 판에 새기므로 한글 3자 이내. 순서는 view.ts의 GUIDE와 같다 */
   guideTitle: '쓰는 법',
@@ -69,7 +78,7 @@ export const ko = {
     { glyph: '열기', note: '상자를 누르면 장면과 출처.' },
     { glyph: '흐름', note: '주제를 골라 여러 해를 따라가기.' },
     { glyph: '포스터', note: '벽 전체를 A2 한 장에.' },
-    { glyph: '묻기', note: 'llms-full.txt를 AI에게 건네기.' },
+    { glyph: '묻기', note: '버튼 하나로 에이전트에 들여놓기.' },
   ],
 };
 export type UI = typeof ko;

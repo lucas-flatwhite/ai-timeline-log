@@ -1,9 +1,11 @@
 ---
 import type { PageView } from '../lib/view.ts';
 import LangSwitch from './LangSwitch.astro';
+import AgentIcons from './AgentIcons.astro';
 const { view } = Astro.props as { view: PageView };
 const o = view.outro;
 const p = o.take.poster;
+const ai = o.take.ai;
 /* 교정지: 520 너비 좌표에 포스터(가로 300)를 놓고 둘레에 재단선·치수선·맞춤표를 긋는다. 미리보기 그림은 늦게 읽는 img로 그 자리에 얹는다 */
 const pf = p?.proof && (() => {
   const W = 520, X = 110, PW = 300, Y = 72, PH = PW * p.proof.h / p.proof.w, B = Y + PH, MY = Y + PH / 2, H = B + 110;
@@ -28,7 +30,7 @@ const r1 = (n: number) => Math.round(n * 10) / 10;
     <p class="note">{o.ledgerNote}</p>
     <div class="ledger" id="ledger">{o.ledger.map(l => <div class="lab"><h3>{l.lab}</h3><ol>{l.models.map(m => <li>{m.name}<time>{m.date}</time></li>)}</ol></div>)}</div>
 
-    {/* 가져가기: 포스터(파일은 GitHub Releases, 미리보기만 사이트), 피드, AI에게 건네기 */}
+    {/* 가져가기: 포스터(파일은 GitHub Releases, 미리보기만 사이트), AI에게 건네기, 피드 */}
     <section class="take" id="take" aria-labelledby="takeH">
       <h2 class="sub" id="takeH">{o.take.title}</h2>
       {p && <div class:list={['pst', { bare: !pf }]} id="take-poster">
@@ -57,14 +59,38 @@ const r1 = (n: number) => Math.round(n * 10) / 10;
           <p class="from">{p.from}</p>
         </div>
       </div>}
+      {/* AI에게 건네기: 왼쪽 쪽지는 버튼이 복사하는 글 그대로(스크립트가 없으면 손으로 고른다), 오른쪽은 버튼과 세 단계.
+         버튼은 copy.ts가 쪽지의 글을 복사한다. 아이콘은 붙여 넣을 곳의 표시일 뿐이라 읽지 않는다 */}
+      <div class="agt" id="take-ai">
+        <figure class="agt-slip">
+          <figcaption>{ai.slipCap}</figcaption>
+          <pre id="agt-clip">{ai.clip}</pre>
+          <p class="foot">{ai.slipFoot}</p>
+        </figure>
+        <div class="pi">
+          <p class="eyebrow">{ai.eyebrow}</p>
+          <h3>{ai.title}</h3>
+          <p class="d">{ai.desc}</p>
+          <button type="button" class="agt-cp" data-copy="agt-clip" data-copied={ai.copied} data-hint={ai.hint} data-failed={ai.failed}>
+            <svg class="gl cp" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" /><path d="M16 8V4H4v12h4" /></svg>
+            <svg class="gl ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+            <span class="t">{ai.button}</span>
+            <AgentIcons />
+          </button>
+          <p class="agt-hint" id="agt-hint" aria-live="polite"></p>
+          <ol class="agt-steps">
+            <li><b>1</b><span>{ai.steps[0]}</span></li>
+            <li><b>2</b><span>{ai.steps[1]}</span></li>
+            <li><b>3</b><span>{ai.steps[2]}
+              <ul class="agt-ex">{ai.examples.map(x => <li><em>{x.label}</em><q>{x.text}</q></li>)}</ul></span></li>
+          </ol>
+          <p class="links"><a href={ai.links.agent}>agent.md</a><a href={ai.links.llms}>llms-full.txt</a><a href={ai.links.json}>timeline.json</a></p>
+        </div>
+      </div>
       <ul>
         <li>
           <h3>{o.take.feed.label}</h3><p>{o.take.feed.note}</p>
           <p class="links"><a href={o.take.feed.href}>RSS</a></p>
-        </li>
-        <li id="take-ai">
-          <h3>{o.take.ai.label}</h3><p>{o.take.ai.note}</p>
-          <p class="links"><a href={o.take.ai.llms}>{o.take.ai.llms}</a><a href={o.take.ai.json}>timeline.json</a></p>
         </li>
       </ul>
       <p class="note">{o.take.license}</p>

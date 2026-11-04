@@ -16,7 +16,8 @@
 
 - `content/scenes/<날짜>-<슬러그>.yaml`: 장면 하나가 파일 하나입니다. 파일명은 `date`와 `id`에서 정해집니다(`id`가 `2025-01-deepseek`, `date`가 `2025-01-27`이면 `2025-01-27-deepseek.yaml`).
 - `content/years.yaml` 연도 요약, `content/arcs.yaml` 시기 구분, `content/ledger.yaml` 연구소 계보, `content/site.yaml` 사이트 문구와 `asOf`, `content/pics.yaml` 그림 윤곽선, `content/topics.yaml` 주제(여러 장면을 잇는 흐름), `content/editions.yaml` 판 기록.
-- 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `ko/llms-full.txt`, `feed.xml`, `ko/feed.xml`)은 빌드가 `src/lib/export.ts`와 `src/lib/feed.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
+- 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `ko/llms-full.txt`, `feed.xml`, `ko/feed.xml`, `agent.md`, `ko/agent.md`, `.well-known/agent-skills/`)은 빌드가 `src/lib/export.ts`, `src/lib/feed.ts`, `src/lib/agent.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
+- 가져가기의 "에이전트에게 알려 주기" 버튼은 `agent.md`를 읽으라는 글만 복사합니다. 에이전트가 할 일은 `agent.md`에, 설치된 뒤 답하는 법은 `SKILL.md`(영어 하나)에 있습니다. `SKILL.md`에는 기준일을 넣지 않습니다(바뀌면 `index.json`의 digest가 바뀌어 설치한 사람에게 업데이트로 뜹니다).
 - 언어 주소: 영어가 기본이라 `/ai-timeline-log/`에 있고, 한국어는 `/ai-timeline-log/ko/`에 있습니다(`src/i18n/index.ts`의 `locales`, `localePath`). 예전 `en/` 주소는 `vercel.json`(이 저장소와 lucasflatwhite-com 둘 다)이 영구 이동으로 돌려보냅니다.
 - 보여 줄 언어는 고른 언어 → 브라우저의 첫 언어 → 영어 순서입니다. 고른 언어는 브라우저 저장소 `lucas-flatwhite:locale`(`LOCALE_KEY`)에 적고, 사이트 전체(아케이드 게임 포함)가 같은 키를 씁니다. 언어 링크를 누를 때만 적고(브라우저 언어로 보여 준 것은 적지 않습니다), 기본 주소로 들어왔을 때만 옮깁니다. `ko/`를 직접 열면 저장된 값과 상관없이 한국어입니다(`src/layouts/Page.astro`의 인라인 스크립트, `tests/e2e/lang.spec.ts`). 브라우저 테스트는 `en-US` 브라우저로 돕니다(`playwright.config.ts`).
 - 사실(날짜, 수치, 판화 설정, 출처)은 한 번만 적고 글만 `ko`/`en`으로 나란히 둡니다.
@@ -58,7 +59,7 @@
 
 ## `pic` (그림 상자)
 
-사건에 그림을 붙이거나 `content/pics.yaml`에 윤곽선을 그릴 때는 `.agents/skills/draw-pic/SKILL.md`를 먼저 읽습니다. 그림은 일부 사건(10~20개 안팎)에만 쓰고, 로고·상표·실존 인물의 얼굴은 그리지 않습니다.
+사건에 그림을 붙이거나 `content/pics.yaml`에 윤곽선을 그릴 때는 `.agents/skills/draw-pic/SKILL.md`를 먼저 읽습니다. 그림은 일부 사건(10~20개 안팎)에만 쓰고, 로고·상표·실존 인물의 얼굴은 그리지 않습니다. 이 규칙은 그림(`pic`)에 대한 것입니다. 가져가기 버튼의 에이전트 아이콘(Claude, Codex, Cursor, OpenCode)은 "여기에 붙여 넣으면 된다"는 호환 표시로 쓰는 예외이고, lobehub/lobe-icons(MIT)의 SVG를 `src/components/AgentIcons.astro`에 그대로 옮겨 둡니다.
 
 ## 영어 문장 원칙
 

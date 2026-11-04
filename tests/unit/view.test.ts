@@ -3,6 +3,7 @@ import { loadContent } from '../../src/lib/content.ts';
 import { hashSeed, itemAddresses } from '../../src/lib/grid.ts';
 import { buildView, fill } from '../../src/lib/view.ts';
 import { latestPosterEdition } from '../../src/lib/export.ts';
+import { clipText } from '../../src/lib/agent.ts';
 import { formatMB, previewSize } from '../../src/lib/poster.ts';
 
 const v = buildView(loadContent(), 'ko', '2026-10-25');   // 일수는 기준일(asOf)이 아니라 오늘로 센다
@@ -268,11 +269,30 @@ describe('take-it-with-you section', () => {
     expect(ep.proof!.caption).toBe('Edition 5 · 2026.11.02 · A2 · 300 dpi');
     expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/ko/feed.xml' });
     expect(e.outro.take.feed.href).toBe('/ai-timeline-log/feed.xml');
-    expect(v.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt');
-    expect(e.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/llms-full.txt');
-    expect(v.outro.take.ai.json).toBe('https://lucasflatwhite.com/ai-timeline-log/timeline.json');
     expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
-    expect(e.outro.take.ai.label).toBe('Hand It to an AI');
+    expect(v.outro.take.ai).toEqual({
+      eyebrow: 'AI에게 건네기 · 기준일 2026.11.03', title: '쓰는 에이전트에 이 연표를 들여놓기',
+      desc: '한 번 들여놓으면 AI 역사나 모델 출시를 물을 때 에이전트가 이 연표를 찾아 읽고, 날짜와 출처를 달아 답합니다. 장면이 늘어도 다시 할 일은 없습니다.',
+      clip: clipText(loadContent(), 'ko'), slipCap: '클립보드에 들어가는 글',
+      slipFoot: 'agent.md가 에이전트마다 할 일을 알려 줍니다. 파일을 저장할 수 있으면 스킬로, 채팅이면 메모리나 프로젝트 지침으로.',
+      button: '에이전트에게 알려 주기', copied: '복사했습니다', hint: '이제 에이전트에 붙여 넣으세요.', failed: '직접 복사해 주세요.',
+      steps: ['버튼을 누르면 쪽지의 글이 복사됩니다.', 'Claude Code, Codex, Cursor, OpenCode에 붙여 넣습니다. ChatGPT 같은 채팅도 됩니다.', '일을 맡깁니다.'],
+      examples: [
+        { label: '맥락 붙이기', text: '이 기사에 나온 발표가 연표의 어느 흐름에 이어지는지, 앞선 장면을 날짜와 링크로 짚어 주세요.' },
+        { label: '새 소식 챙기기', text: '매주 월요일에 연표의 새 장면과 정정을 확인해서 세 줄로 알려 주세요.' },
+      ],
+      links: {
+        agent: 'https://lucasflatwhite.com/ai-timeline-log/ko/agent.md', llms: 'https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt',
+        json: 'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
+      },
+    });
+    expect(e.outro.take.ai.button).toBe('Onboard your agent');
+    expect(e.outro.take.ai.eyebrow).toBe('Hand It to an AI · As of 2026.11.03');
+    expect(e.outro.take.ai.title).toBe('Onboard your agent to this timeline');
+    expect(e.outro.take.ai.clip).toBe(clipText(loadContent(), 'en'));
+    expect(e.outro.take.ai.links.agent).toBe('https://lucasflatwhite.com/ai-timeline-log/agent.md');
+    expect(e.outro.take.ai.links.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/llms-full.txt');
+    expect(e.outro.take.ai.examples.map(x => x.label)).toEqual(['Add context', 'Keep up']);
   });
 
   test('before poster:pull: links without sizes and no proof sheet', () => {
@@ -311,13 +331,9 @@ describe('guide (쓰는 법)', () => {
       });
     });
   }
-  test('ask names the same file the AI row links to', () => {
-    for (const loc of ['ko', 'en'] as const) {
-      const o = buildView(c, loc, '2026-10-25').outro;
-      const file = new URL(o.take.ai.llms).pathname.split('/').pop()!;
-      expect(file).toBe('llms-full.txt');
-      expect(o.guide.steps.find(s => s.act === 'ask')!.note).toContain(file);
-    }
+  test('ask points to the one-click onboarding', () => {
+    expect(buildView(c, 'ko', '2026-10-25').outro.guide.steps.find(s => s.act === 'ask')!.note).toBe('버튼 하나로 에이전트에 들여놓기.');
+    expect(buildView(c, 'en', '2026-10-25').outro.guide.steps.find(s => s.act === 'ask')!.note).toBe('Onboard your agent in one click.');
   });
   test('titles and keywords: Korean on the Korean page, English on the English page', () => {
     const ko = buildView(c, 'ko', '2026-10-25').outro.guide, en = buildView(c, 'en', '2026-10-25').outro.guide;
