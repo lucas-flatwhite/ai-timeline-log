@@ -6,6 +6,7 @@ import { glyphFor, hashSeed, itemAddresses, sortWall, ymd, type WallEntry } from
 import type { Pics } from './schema.ts';
 import { ORIGIN } from './origin.ts';
 import { LICENSE, latestPosterEdition, posterUrl } from './export.ts';
+import { agentSetupUrl, clipText, EXAMPLES } from './agent.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
 import { GUIDE, type GuideAct } from './guide.ts';
 import { formatMB, previewFile, previewSize } from './poster.ts';
@@ -64,7 +65,12 @@ export interface PageView {
       title: string;
       poster?: PosterView;
       feed: { label: string; note: string; href: string };
-      ai: { label: string; note: string; llms: string; json: string };
+      ai: {
+        eyebrow: string; title: string; desc: string; clip: string; slipCap: string; slipFoot: string;
+        button: string; copied: string; hint: string; failed: string;
+        steps: [string, string, string]; examples: { label: string; text: string }[];
+        links: { agent: string; llms: string; json: string };
+      };
       license: string;
     };
     /** 쓰는 법: 번호 판과 그림 상자 한 쌍씩 다섯 칸. href는 스크립트가 없을 때 가는 곳, act는 스크립트가 하는 일 */
@@ -250,7 +256,13 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
         title: t.take,
         poster: poster && posterView(c, t, locale, poster),
         feed: { label: t.feedLabel, note: t.feedNote, href: `${new URL(canonical).pathname}feed.xml` },
-        ai: { label: t.aiLabel, note: t.aiNote, llms: `${canonical}llms-full.txt`, json: `${ORIGIN}timeline.json` },
+        ai: {
+          eyebrow: `${t.aiLabel} · ${t.aiAsOf(asOfDot)}`, title: t.aiTitle, desc: t.aiDesc,
+          clip: clipText(c, locale), slipCap: t.aiSlipCap, slipFoot: t.aiSlipFoot,
+          button: t.aiButton, copied: t.aiCopied, hint: t.aiHint, failed: t.aiFailed,
+          steps: t.aiSteps, examples: EXAMPLES[locale],
+          links: { agent: agentSetupUrl(locale), llms: `${canonical}llms-full.txt`, json: `${ORIGIN}timeline.json` },
+        },
         license: t.takeLicense(LICENSE.name, site.name),
       },
       guide: { title: t.guideTitle, steps: guideSteps(t, boxes) },
