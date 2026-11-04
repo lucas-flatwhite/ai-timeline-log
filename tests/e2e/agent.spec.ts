@@ -20,9 +20,15 @@ for (const path of ['./ko/', './']) {
       await expect(btn.locator('.t')).toHaveText(t.aiButton);
       await btn.click();
       await btn.click();   // 연달아 눌러도 마지막 누름부터 다시 센다
-      await expect(btn).toHaveAttribute('data-state', 'copied');
-      await expect(btn.locator('.t')).toHaveText(t.aiCopied);
-      await expect(page.locator('#agt-hint')).toHaveText(t.aiHint);
+      /* 클립보드 권한을 줄 수 있는 Chromium에서는 반드시 복사된다. CI의 Linux WebKit은 권한 없이 거부할 수 있어
+         그때는 실패 안내가 맞게 뜨는지만 본다(실패 경로 자체는 아래 fallback 시험이 따로 본다) */
+      await expect(btn).toHaveAttribute('data-state', browserName === 'chromium' ? 'copied' : /^(copied|failed)$/);
+      if (await btn.getAttribute('data-state') === 'copied') {
+        await expect(btn.locator('.t')).toHaveText(t.aiCopied);
+        await expect(page.locator('#agt-hint')).toHaveText(t.aiHint);
+      } else {
+        await expect(page.locator('#agt-hint')).toHaveText(t.aiFailed);
+      }
       await expect(page.locator('#agt-hint')).toHaveAttribute('aria-live', 'polite');
       if (browserName === 'chromium') {
         const clip = await page.evaluate(() => navigator.clipboard.readText());

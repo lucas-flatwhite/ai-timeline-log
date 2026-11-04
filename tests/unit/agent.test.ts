@@ -38,6 +38,14 @@ describe('agent.md', () => {
   });
 });
 
+describe('served as UTF-8', () => {
+  test('vercel.json gives .md files a charset so agents read the Korean setup correctly', async () => {
+    const { readFileSync } = await import('node:fs');
+    const v = JSON.parse(readFileSync('vercel.json', 'utf8')) as { headers?: { source: string; headers: { key: string; value: string }[] }[] };
+    expect(v.headers).toContainEqual({ source: '/(.*)\\.md', headers: [{ key: 'Content-Type', value: 'text/markdown; charset=utf-8' }] });
+  });
+});
+
 describe('SKILL.md', () => {
   test('skill: frontmatter, english only, no asOf', () => {
     const s = buildSkill(c);
