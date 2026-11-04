@@ -44,6 +44,11 @@ describe('served as UTF-8', () => {
     const v = JSON.parse(readFileSync('vercel.json', 'utf8')) as { headers?: { source: string; headers: { key: string; value: string }[] }[] };
     expect(v.headers).toContainEqual({ source: '/(.*)\\.md', headers: [{ key: 'Content-Type', value: 'text/markdown; charset=utf-8' }] });
   });
+  test('the skill index and SKILL.md are open to browser-based agents (CORS)', async () => {
+    const { readFileSync } = await import('node:fs');
+    const v = JSON.parse(readFileSync('vercel.json', 'utf8')) as { headers?: { source: string; headers: { key: string; value: string }[] }[] };
+    expect(v.headers).toContainEqual({ source: '/ai-timeline-log/.well-known/agent-skills/(.*)', headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }] });
+  });
 });
 
 describe('SKILL.md', () => {

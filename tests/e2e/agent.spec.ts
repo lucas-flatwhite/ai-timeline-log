@@ -13,31 +13,38 @@ for (const path of ['./ko/', './']) {
   const t = ui[lang]!;
 
   test.describe(`${lang}: agent onboarding`, () => {
-    test('copy shows copied state', async ({ page, context, browserName }) => {
-      if (browserName === 'chromium') await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    /* 모든 브라우저에서 성공 경로를 본다. Playwright는 WebKit에 클립보드 권한을 줄 수 없어서,
+       받은 글을 적어 두고 성공하는 가짜 writeText로 바꾼다(실제 클립보드는 아래 Chromium 시험이 본다) */
+    test('copy shows copied state', async ({ page }) => {
+      await page.addInitScript(() => {
+        const w = window as unknown as { __copied: string[] };
+        w.__copied = [];
+        Object.defineProperty(navigator, 'clipboard', { value: { writeText: (s: string) => { w.__copied.push(s); return Promise.resolve(); } }, configurable: true });
+      });
       await go(page, path);
       const btn = page.locator('button.agt-cp[data-copy="agt-clip"]');
       await expect(btn.locator('.t')).toHaveText(t.aiButton);
       await btn.click();
       await btn.click();   // 연달아 눌러도 마지막 누름부터 다시 센다
-      /* 클립보드 권한을 줄 수 있는 Chromium에서는 반드시 복사된다. CI의 Linux WebKit은 권한 없이 거부할 수 있어
-         그때는 실패 안내가 맞게 뜨는지만 본다(실패 경로 자체는 아래 fallback 시험이 따로 본다) */
-      await expect(btn).toHaveAttribute('data-state', browserName === 'chromium' ? 'copied' : /^(copied|failed)$/);
-      if (await btn.getAttribute('data-state') === 'copied') {
-        await expect(btn.locator('.t')).toHaveText(t.aiCopied);
-        await expect(page.locator('#agt-hint')).toHaveText(t.aiHint);
-      } else {
-        await expect(page.locator('#agt-hint')).toHaveText(t.aiFailed);
-      }
+      await expect(btn).toHaveAttribute('data-state', 'copied');
+      await expect(btn.locator('.t')).toHaveText(t.aiCopied);
+      await expect(page.locator('#agt-hint')).toHaveText(t.aiHint);
       await expect(page.locator('#agt-hint')).toHaveAttribute('aria-live', 'polite');
-      if (browserName === 'chromium') {
-        const clip = await page.evaluate(() => navigator.clipboard.readText());
-        expect(clip).toBe(await page.locator('#agt-clip').textContent());
-        expect(clip).toContain(lang === 'ko' ? '/ko/agent.md' : 'ai-timeline-log/agent.md');
-      }
+      const note = await page.locator('#agt-clip').textContent();
+      expect(await page.evaluate(() => (window as unknown as { __copied: string[] }).__copied)).toEqual([note, note]);
+      expect(note).toContain(lang === 'ko' ? '/ko/agent.md' : 'ai-timeline-log/agent.md');
       await expect(btn).not.toHaveAttribute('data-state', /./, { timeout: 6000 });
       await expect(btn.locator('.t')).toHaveText(t.aiButton);
       await expect(page.locator('#agt-hint')).toHaveText('');
+    });
+
+    test('copy reaches the real clipboard (Chromium)', async ({ page, context, browserName }) => {
+      test.skip(browserName !== 'chromium', 'only Chromium lets Playwright grant clipboard permissions');
+      await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+      await go(page, path);
+      await page.locator('button.agt-cp').click();
+      await expect(page.locator('button.agt-cp')).toHaveAttribute('data-state', 'copied');
+      expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(await page.locator('#agt-clip').textContent());
     });
 
     test('copy falls back to selecting the note', async ({ page }) => {
