@@ -55,6 +55,7 @@ describe('llms', () => {
     for (const x of [`${ORIGIN}llms-full.txt`, `${ORIGIN}ko/llms-full.txt`, `${ORIGIN}feed.xml`, `${ORIGIN}timeline.json`, 'CC BY 4.0', SCOPE.en]) {
       expect(s).toContain(x);
     }
+    expect(s).toContain(`[Agent setup](${ORIGIN}agent.md)`);
   });
 
   test('llms-full (ko) states scope, asOf and sources', () => {
