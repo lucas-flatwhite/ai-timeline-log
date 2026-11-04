@@ -1,4 +1,4 @@
-/* 판 포스터의 Release가 생긴 뒤, 사이트의 가져가기 칸이 쓸 것을 저장소로 가져온다.
+/* 판 포스터의 Release가 생긴 뒤, 사이트의 포스터와 데이터 칸이 쓸 것을 저장소로 가져온다.
    1) 파일 크기(PDF, PNG, 화면용 PNG)와 PNG의 픽셀 크기를 content/editions.yaml의 그 판 files에 적는다
    2) 화면용 PNG를 가로 600px AVIF로 줄여 public/poster/edition-<n>-<언어>.avif에 둔다. 다른 판의 미리보기는 지운다
    포스터 원본은 지금처럼 Release에만 있다. 실행: npm run poster:pull -- --edition <n> */

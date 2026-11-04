@@ -49,7 +49,7 @@ export const en: UI = {
   newLine: '{n} new since your last visit',
   newShow: 'Show',
   newLabel: 'added since your last visit',
-  take: 'Take It With You',
+  take: 'Poster and data',
   posterLabel: (n, date) => `Poster · Edition ${n} · ${date}`,
   posterNote: 'The whole wall on one A2 sheet',
   posterAll: 'Past editions',
@@ -78,7 +78,7 @@ export const en: UI = {
     { glyph: 'LOOK', note: 'Newest on top. One box, one event.' },
     { glyph: 'OPEN', note: 'Tap a box. Scene + sources.' },
     { glyph: 'FOLLOW', note: 'Pick a topic. Trace it across years.' },
-    { glyph: 'TAKE', note: 'The whole wall on one A2 poster.' },
+    { glyph: 'POSTER', note: 'The whole wall on one A2 sheet.' },
     { glyph: 'ASK', note: 'Onboard your agent in one click.' },
   ],
 };

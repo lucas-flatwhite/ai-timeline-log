@@ -107,6 +107,10 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
     if (n < 3) warnings.push(`topics.yaml: ${id} has only ${n} scene(s)`);
     for (const loc of ['ko', 'en'] as const) add(`topics.yaml ${id}.${loc}`, v[loc], true);
   }
+  // 주요 모델 판본의 연구소 이름은 한국어 화면에서도 영문으로 쓴다
+  c.ledger.forEach((l, i) => {
+    for (const loc of ['ko', 'en'] as const) if (hasHangul(l.lab[loc])) errors.push(`ledger.yaml ${i}.lab.${loc} "${l.lab[loc]}" contains Hangul (lab names are English in both languages)`);
+  });
   // 쓰는 법의 그림 상자도 pics.yaml의 그림을 새긴다
   for (const g of GUIDE) if (!(g.pic in c.pics)) errors.push(`guide ${g.act}: pic "${g.pic}" is not in pics.yaml`);
 
@@ -124,7 +128,7 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
     if (e.files && !e.poster) errors.push(`editions.yaml: edition ${e.n} has files but no poster`);
     for (const loc of ['ko', 'en'] as const) add(`editions.yaml ${e.n}.${loc}`, e[loc], true);
   });
-  // 가져가기의 포스터 칸은 마지막 포스터 판의 files(용량과 미리보기)를 쓴다. Release 전에는 없으므로 경고만 한다
+  // 포스터와 데이터 칸의 포스터 자리은 마지막 포스터 판의 files(용량과 미리보기)를 쓴다. Release 전에는 없으므로 경고만 한다
   const lastPoster = eds.filter(e => e.poster).at(-1);
   if (lastPoster && !lastPoster.files) {
     warnings.push(`editions.yaml: edition ${lastPoster.n} has no files yet; after the Release run npm run poster:pull -- --edition ${lastPoster.n}`);

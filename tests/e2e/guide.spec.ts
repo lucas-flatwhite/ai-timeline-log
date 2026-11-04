@@ -14,7 +14,7 @@ async function toGuide(page: Page) {
 
 for (const [path, title, words] of [
   ['./ko/', '쓰는 법', ['보기', '열기', '흐름', '포스터', '묻기']],
-  ['./', 'How to use', ['LOOK', 'OPEN', 'FOLLOW', 'TAKE', 'ASK']],
+  ['./', 'How to use', ['LOOK', 'OPEN', 'FOLLOW', 'POSTER', 'ASK']],
 ] as const) {
   test(`${path}: five steps after "making", plates carved near the bottom`, async ({ page }) => {
     await ready(page, path);
@@ -48,7 +48,7 @@ test('follow scrolls up and leaves the find panel open', async ({ page }) => {
   expect(await page.evaluate(() => scrollY)).toBe(0);
 });
 
-test('take and ask land on their rows in "Take It With You"; look goes back to the top', async ({ page }) => {
+test('take and ask land on their rows in "Poster and data"; look goes back to the top', async ({ page }) => {
   await ready(page, './');
   await toGuide(page);
   await step(page, 'ask').click();

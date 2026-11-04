@@ -1,7 +1,7 @@
 name: poster
 
 # 판 포스터를 찍어 GitHub Releases에 올린다. 포스터 파일은 저장소와 사이트(Vercel)에 두지 않는다.
-# 가져가기 칸의 작은 미리보기와 용량은 Release 뒤에 npm run poster:pull로 가져와 PR에 커밋한다(edition-release 스킬).
+# 포스터와 데이터 칸의 작은 미리보기와 용량은 Release 뒤에 npm run poster:pull로 가져와 PR에 커밋한다(edition-release 스킬).
 # 판을 찍는 법: content/editions.yaml에 poster: true인 판을 적어 머지한 뒤, 그 커밋에 edition-<n> 태그를 푸시한다.
 on:
   push:

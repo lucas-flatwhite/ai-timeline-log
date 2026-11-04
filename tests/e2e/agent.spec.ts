@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { test, expect, type Page } from '@playwright/test';
 import { ui } from '../../src/i18n/index.ts';
 
-/* 가져가기의 AI 칸: 에이전트에게 알려 주기 버튼(복사), 쪽지, 그리고 그 글이 가리키는 설치 파일들 */
+/* 포스터와 데이터 칸의 AI 자리: 에이전트에게 알려 주기 버튼(복사), 쪽지, 그리고 그 글이 가리키는 설치 파일들 */
 const go = async (page: Page, path: string) => {
   await page.goto(path);
   await page.locator('#take-ai').scrollIntoViewIfNeeded();
@@ -88,6 +88,12 @@ for (const path of ['./ko/', './']) {
         await expect(page.locator('#agt-clip')).toBeVisible();
         const agent = lang === 'ko' ? 'https://lucasflatwhite.com/ai-timeline-log/ko/agent.md' : 'https://lucasflatwhite.com/ai-timeline-log/agent.md';
         await expect(page.locator('#take-ai .links a').first()).toHaveAttribute('href', agent);
+        // 파일 링크 셋은 모두 새 탭에서 연다
+        await expect(page.locator('#take-ai .links a')).toHaveCount(3);
+        for (const a of await page.locator('#take-ai .links a').all()) {
+          await expect(a).toHaveAttribute('target', '_blank');
+          await expect(a).toHaveAttribute('rel', 'noopener');
+        }
         await expect(page.locator('#take-ai .agt-ex li')).toHaveCount(2);
       });
     });

@@ -5,6 +5,8 @@ img{max-width:100%}
 *,*::before,*::after{box-sizing:border-box}
 html{background:var(--ink);scroll-padding-top:48px}   /* 초점이 간 상자·주소의 글이 위 막대(40px)에 가리지 않게 */
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+/* 한국어는 낱말 가운데서 줄을 바꾸지 않는다("모/델" 같은 끊김). 한 줄에 다 안 들어가는 긴 낱말만 쪼갠다. 둘 다 물려받는 속성이라 html에 한 번 둔다 */
+html:lang(ko){word-break:keep-all;overflow-wrap:break-word}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 a{color:inherit}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}

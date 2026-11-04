@@ -24,6 +24,10 @@ describe('checkContent', () => {
     const errs = errsOf(c => { c.scenes[0].items[0].glyph = { ko: '속도', en: '속도' }; });
     expect(errs).toContainEqual(expect.stringMatching(/items\.0 en glyph/));
   });
+  test('Hangul in a lab name, even on the Korean side', () => {
+    const errs = errsOf(c => { c.ledger[0].lab.ko = '엔비디아'; });
+    expect(errs).toContainEqual(expect.stringMatching(/ledger\.yaml 0\.lab\.ko .*Hangul/));
+  });
   test('Hangul string keyword on an item that has English text', () => {
     const errs = errsOf(c => { c.scenes[0].items[0].en = 'An event.'; c.scenes[0].items[0].glyph = '속도'; });
     expect(errs).toContainEqual(expect.stringMatching(/items\.0 en glyph .*Hangul/));

@@ -47,7 +47,7 @@ export const ko = {
   newLine: '지난 방문 이후 새 상자 {n}개',
   newShow: '보기',
   newLabel: '지난 방문 이후 추가',
-  take: '가져가기',
+  take: '포스터와 데이터',
   posterLabel: (n: number, date: string) => `포스터 · 제 ${n}판 · ${date}`,
   posterNote: '벽 전체를 A2 한 장에',
   posterAll: '지난 판',
