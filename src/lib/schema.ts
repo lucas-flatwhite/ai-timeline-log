@@ -72,9 +72,13 @@ export const ledgerSchema = z.array(z.object({
 export const sourcesSchema = z.array(z.object({ url: z.url(), title: text }));
 // 주제: 여러 장면을 가로지르는 흐름. 장면의 topics가 이 id를 가리킨다
 export const topicsSchema = z.record(z.string().regex(/^[a-z0-9-]+$/), z.object({ ko: text, en: text }));
+// 판 포스터 파일 하나의 크기(바이트)와 PNG의 픽셀 크기. Release를 만든 뒤 scripts/poster-pull.ts가 적는다
+const bytes = z.number().int().positive();
+const posterFileSet = z.object({ pdf: bytes, png: bytes, web: bytes, px: z.tuple([bytes, bytes]) });
 // 판 기록: 의미 있는 시점마다 한 판. poster: true인 판은 edition-<n> 태그로 포스터 Release가 있다
 export const editionsSchema = z.array(z.object({
   n: z.number().int().positive(), date: dayDate, poster: z.boolean().default(false), ko: text, en: text,
+  files: z.object({ ko: posterFileSet, en: posterFileSet }).optional(),
 })).min(1);
 
 export type Scene = z.output<typeof sceneSchema>;

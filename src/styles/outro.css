@@ -26,7 +26,31 @@ html:not(.js) .arcs .arc-go{display:none}
 .take{margin:0 0 10vh}
 .take ul{list-style:none;margin:0 0 14px;padding:0;border-top:2px solid var(--ink)}
 .take li{display:grid;gap:4px;padding:14px 0;border-bottom:1px solid var(--ink)}
-@media (min-width:760px){.take li{grid-template-columns:15rem 1fr auto;gap:24px;align-items:baseline}}
+/* 설명 칸에 최소 폭을 줘서 긴 주소(llms-full.txt)가 설명을 밀어내지 않게 한다. 주소는 링크 칸 안에서 줄을 바꾼다 */
+@media (min-width:760px){.take li{grid-template-columns:15rem minmax(16rem,1fr) auto;gap:24px;align-items:baseline}}
+/* 포스터 칸: 왼쪽 교정지(미리보기 + 재단선·치수선), 오른쪽 판 정보와 받기 버튼. 좁으면 위아래로 */
+.pst{display:grid;gap:22px;align-items:center;margin:0 0 44px}
+@media (min-width:760px){.pst{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:44px}.pst.bare{grid-template-columns:minmax(0,34rem)}}
+.proof{position:relative;margin:0;width:100%}
+.proof img{position:absolute;height:auto;display:block;background:var(--paper);box-shadow:0 1.5px 3px rgba(17,17,16,.28)}
+.proof svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--ink)}
+.proof .ln{fill:none;stroke:currentColor;stroke-width:.9}
+.proof text{font:500 13px var(--mono);fill:currentColor}
+.proof text.cap{font-size:11px;fill:var(--ink-2)}
+.proof .st{stroke:currentColor;stroke-width:.8}
+.proof .paper{fill:var(--paper)}.proof .wood{fill:var(--wood)}.proof .ghost{fill:var(--ghost)}.proof .ink-2{fill:var(--ink-2)}.proof .ink{fill:var(--ink)}
+.pi .eyebrow{margin:0 0 10px}
+.take .pi h3{margin:0 0 12px;font:400 clamp(26px,3.4vw,32px)/1.15 var(--display);text-wrap:balance}
+.pi .d{margin:0 0 22px;font-size:14.5px;color:var(--ink-2);max-width:36ch;text-wrap:pretty}
+.pi .dl{display:grid;gap:8px;margin:0 0 16px}
+.pi .btn{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 16px;border:2px solid var(--ink);color:var(--ink);text-decoration:none}
+.pi .btn b{font:400 18px/1.2 var(--display)}
+.pi .btn span{font:500 12px/1 var(--mono);letter-spacing:.03em;white-space:nowrap}
+.pi .btn.p{background:var(--ink);color:var(--paper)}
+.pi .btn:hover b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.pi .btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.pi .links{margin:0 0 8px}
+.pi .from{margin:0;font:500 11px/1.5 var(--mono);color:var(--ink-2)}
 .take h3{margin:0;font:400 17px/1.3 var(--display)}
 .take li p{margin:0;font-size:14.5px;color:var(--ink-2)}
 .take .links{display:flex;flex-wrap:wrap;gap:4px 14px;font:500 12px/1.6 var(--mono);overflow-wrap:anywhere}

@@ -21,3 +21,6 @@
   poster: true
   ko: 2023~2026년의 빈 흐름을 메웠다. 저작권 소송과 공정 이용, 칩 통제와 걸프, 중국의 공개 모델·상장·증류, 주 법과 연방, EU AI Act 집행, 국가대표 AI, 휴머노이드까지 장면 20개를 더했다.
   en: Fills gaps from 2023 to 2026 with 20 scenes, from copyright suits and fair use, chip controls and the Gulf, and China’s open models, listings and distillation to U.S. state laws, EU AI Act enforcement, Korea’s national AI team and humanoid robots.
+  files:
+    ko: { pdf: 23076115, png: 20541055, web: 7091762, px: [ 4961, 6961 ] }
+    en: { pdf: 22400440, png: 19977260, web: 6903045, px: [ 4961, 6961 ] }

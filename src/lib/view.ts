@@ -8,6 +8,7 @@ import { ORIGIN } from './origin.ts';
 import { LICENSE, latestPosterEdition, posterUrl } from './export.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
 import { GUIDE, type GuideAct } from './guide.ts';
+import { formatMB, previewFile, previewSize } from './poster.ts';
 
 /** 격자의 상자 하나. 날짜는 `YYYY.MM.DD`(월까지만 있으면 `YYYY.MM`, 연도 판은 `YYYY`). 주소에만 `YYYYMMDD`를 쓴다 */
 export interface BoxView {
@@ -61,7 +62,7 @@ export interface PageView {
     /** 가져가기: 포스터(포스터가 있는 마지막 판), 피드, AI에게 건네기. llms·json은 붙여 넣을 정식 주소 */
     take: {
       title: string;
-      poster?: { label: string; note: string; pdf: string; png: string; all: string; allLabel: string };
+      poster?: PosterView;
       feed: { label: string; note: string; href: string };
       ai: { label: string; note: string; llms: string; json: string };
       license: string;
@@ -69,6 +70,15 @@ export interface PageView {
     /** 쓰는 법: 번호 판과 그림 상자 한 쌍씩 다섯 칸. href는 스크립트가 없을 때 가는 곳, act는 스크립트가 하는 일 */
     guide: { title: string; steps: GuideStep[] };
   };
+}
+
+/** 가져가기의 포스터 칸. 크기(meta)와 교정지(proof)는 판 기록에 files가 있을 때만(Release 뒤 poster:pull) */
+export interface PosterView {
+  label: string; note: string; all: string; allLabel: string; from: string;
+  desc: string;
+  pdf: { href: string; label: string; meta?: string };
+  png: { href: string; label: string; meta?: string };
+  proof?: { src: string; w: number; h: number; alt: string; width: string; height: string; caption: string };
 }
 
 /** 쓰는 법의 한 칸. n은 번호 판, glyph·pic은 그림 상자에 새긴다. pattern·angle·seed는 그림 상자의 판 설정(guide.ts) */
@@ -238,16 +248,29 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       making: st.making && fill(st.making, vars), makingTitle: t.making,
       take: {
         title: t.take,
-        poster: poster && {
-          label: t.posterLabel(poster.n, formatDot(poster.date)), note: t.posterNote,
-          pdf: posterUrl(site.repo, poster.n, locale, 'pdf'), png: posterUrl(site.repo, poster.n, locale, 'png'),
-          all: `${site.repo}/releases`, allLabel: t.posterAll,
-        },
+        poster: poster && posterView(c, t, locale, poster),
         feed: { label: t.feedLabel, note: t.feedNote, href: `${new URL(canonical).pathname}feed.xml` },
         ai: { label: t.aiLabel, note: t.aiNote, llms: `${canonical}llms-full.txt`, json: `${ORIGIN}timeline.json` },
         license: t.takeLicense(LICENSE.name, site.name),
       },
       guide: { title: t.guideTitle, steps: guideSteps(t, boxes) },
+    },
+  };
+}
+
+/* 포스터 칸: 그 판의 Release 파일. 장면·사건 수는 적지 않는다(판 뒤의 정정으로 지금 내용과 포스터의 수가 달라질 수 있다) */
+function posterView(c: Content, t: ReturnType<typeof uiFor>, locale: Locale, e: Content['editions'][number]): PosterView {
+  const f = e.files?.[locale], sp = locale === 'ko' ? '' : ' ';
+  const date = formatDot(e.date);
+  return {
+    label: t.posterLabel(e.n, date), note: t.posterNote,
+    desc: t.posterDesc,
+    pdf: { href: posterUrl(c.site.repo, e.n, locale, 'pdf'), label: t.posterPdf, meta: f && `A2 · ${formatMB(f.pdf, locale)}` },
+    png: { href: posterUrl(c.site.repo, e.n, locale, 'png'), label: t.posterPng, meta: f && `${f.px[0]}${sp}px · ${formatMB(f.png, locale)}` },
+    all: `${c.site.repo}/releases`, allLabel: t.posterAll, from: t.posterFrom,
+    proof: f && {
+      src: `${new URL(ORIGIN).pathname}${previewFile(e.n, locale)}`, ...previewSize(f.px),
+      alt: t.posterAlt(e.n), width: '420 mm', height: '594 mm', caption: t.posterCaption(e.n, date),
     },
   };
 }

@@ -2,6 +2,8 @@ import { describe, test, expect } from 'vitest';
 import { loadContent } from '../../src/lib/content.ts';
 import { hashSeed, itemAddresses } from '../../src/lib/grid.ts';
 import { buildView, fill } from '../../src/lib/view.ts';
+import { latestPosterEdition } from '../../src/lib/export.ts';
+import { formatMB, previewSize } from '../../src/lib/poster.ts';
 
 const v = buildView(loadContent(), 'ko', '2026-10-25');   // 일수는 기준일(asOf)이 아니라 오늘로 센다
 const scene = (id: string) => v.scenes.find(s => s.id === id)!;
@@ -243,15 +245,27 @@ describe('take-it-with-you section', () => {
   const e = buildView(loadContent(), 'en', '2026-10-25');
   const REL = 'https://github.com/lucas-flatwhite/ai-timeline-log/releases';
 
+  // 용량과 미리보기 크기는 Release 뒤(poster:pull)에야 정해지므로 판 기록의 files에서 읽는다
+  const files = latestPosterEdition(loadContent())!.files!;
   test('take section links poster 5, feed and data', () => {
     expect(v.outro.take.title).toBe('가져가기');
     expect(v.outro.take.poster).toEqual({
       label: '포스터 · 제 5판 · 2026.11.02', note: '벽 전체를 A2 한 장에',
-      pdf: `${REL}/download/edition-5/poster-ko.pdf`, png: `${REL}/download/edition-5/poster-ko.png`,
-      all: REL, allLabel: '지난 판',
+      desc: '420 × 594 mm, 300dpi로 찍은 PDF와 PNG입니다.',
+      pdf: { href: `${REL}/download/edition-5/poster-ko.pdf`, label: 'PDF 받기', meta: `A2 · ${formatMB(files.ko.pdf, 'ko')}` },
+      png: { href: `${REL}/download/edition-5/poster-ko.png`, label: 'PNG 받기', meta: `${files.ko.px[0]}px · ${formatMB(files.ko.png, 'ko')}` },
+      all: REL, allLabel: '지난 판', from: '파일은 GitHub Releases에서 받습니다.',
+      proof: {
+        src: '/ai-timeline-log/poster/edition-5-ko.avif', ...previewSize(files.ko.px), alt: '제 5판 포스터 미리보기',
+        width: '420 mm', height: '594 mm', caption: '제 5판 · 2026.11.02 · A2 · 300dpi',
+      },
     });
-    expect(e.outro.take.poster!.png).toBe(`${REL}/download/edition-5/poster-en.png`);
-    expect(e.outro.take.poster!.label).toBe('Poster · Edition 5 · 2026.11.02');
+    const ep = e.outro.take.poster!;
+    expect(ep.png).toEqual({ href: `${REL}/download/edition-5/poster-en.png`, label: 'Download PNG', meta: `${files.en.px[0]} px · ${formatMB(files.en.png, 'en')}` });
+    expect(ep.pdf.meta).toBe(`A2 · ${formatMB(files.en.pdf, 'en')}`);
+    expect(ep.label).toBe('Poster · Edition 5 · 2026.11.02');
+    expect(ep.proof!.src).toBe('/ai-timeline-log/poster/edition-5-en.avif');
+    expect(ep.proof!.caption).toBe('Edition 5 · 2026.11.02 · A2 · 300 dpi');
     expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/ko/feed.xml' });
     expect(e.outro.take.feed.href).toBe('/ai-timeline-log/feed.xml');
     expect(v.outro.take.ai.llms).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt');
@@ -259,6 +273,15 @@ describe('take-it-with-you section', () => {
     expect(v.outro.take.ai.json).toBe('https://lucasflatwhite.com/ai-timeline-log/timeline.json');
     expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
     expect(e.outro.take.ai.label).toBe('Hand It to an AI');
+  });
+
+  test('before poster:pull: links without sizes and no proof sheet', () => {
+    const c = structuredClone(loadContent());
+    delete c.editions.at(-1)!.files;
+    const p = buildView(c, 'ko', '2026-10-25').outro.take.poster!;
+    expect(p.pdf).toEqual({ href: `${REL}/download/edition-5/poster-ko.pdf`, label: 'PDF 받기', meta: undefined });
+    expect(p.png.meta).toBeUndefined();
+    expect(p.proof).toBeUndefined();
   });
 
   test('no poster edition, no poster row', () => {

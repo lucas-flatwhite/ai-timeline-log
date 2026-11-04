@@ -121,8 +121,14 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
     if (e.date > c.site.asOf) errors.push(`editions.yaml: edition ${e.n} date ${e.date} is after asOf ${c.site.asOf}`);
     if (e.poster) posterFrom ??= e.n;
     else if (posterFrom !== undefined) errors.push(`editions.yaml: edition ${e.n} has no poster after edition ${posterFrom} had one`);
+    if (e.files && !e.poster) errors.push(`editions.yaml: edition ${e.n} has files but no poster`);
     for (const loc of ['ko', 'en'] as const) add(`editions.yaml ${e.n}.${loc}`, e[loc], true);
   });
+  // 가져가기의 포스터 칸은 마지막 포스터 판의 files(용량과 미리보기)를 쓴다. Release 전에는 없으므로 경고만 한다
+  const lastPoster = eds.filter(e => e.poster).at(-1);
+  if (lastPoster && !lastPoster.files) {
+    warnings.push(`editions.yaml: edition ${lastPoster.n} has no files yet; after the Release run npm run poster:pull -- --edition ${lastPoster.n}`);
+  }
 
   // 사이트 소개글은 "현재까지"처럼 상대 시간을 써도 된다(relative=false)
   for (const loc of ['ko', 'en'] as const) {

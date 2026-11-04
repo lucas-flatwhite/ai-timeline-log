@@ -3,6 +3,19 @@ import type { PageView } from '../lib/view.ts';
 import LangSwitch from './LangSwitch.astro';
 const { view } = Astro.props as { view: PageView };
 const o = view.outro;
+const p = o.take.poster;
+/* 교정지: 520 너비 좌표에 포스터(가로 300)를 놓고 둘레에 재단선·치수선·맞춤표를 긋는다. 미리보기 그림은 늦게 읽는 img로 그 자리에 얹는다 */
+const pf = p?.proof && (() => {
+  const W = 520, X = 110, PW = 300, Y = 72, PH = PW * p.proof.h / p.proof.w, B = Y + PH, MY = Y + PH / 2, H = B + 110;
+  const crop = [[X, Y, -1, -1], [X + PW, Y, 1, -1], [X, B, -1, 1], [X + PW, B, 1, 1]]
+    .map(([x, y, sx, sy]) => `M${x + sx * 8} ${y}h${sx * 16}M${x} ${y + sy * 8}v${sy * 16}`).join('');
+  const reg = (x: number, y: number) => `M${x - 12} ${y}h24M${x} ${y - 12}v24`;
+  return {
+    W, H, X, PW, Y, PH, B, MY, crop, reg: reg(60, MY) + reg(W / 2, B + 52),
+    img: `left:${(X / W) * 100}%;top:${(Y / H) * 100}%;width:${(PW / W) * 100}%`,
+  };
+})();
+const r1 = (n: number) => Math.round(n * 10) / 10;
 ---
 <section class="outro" id="outro" aria-labelledby="outroH">
   <div class="outro-in">
@@ -15,14 +28,36 @@ const o = view.outro;
     <p class="note">{o.ledgerNote}</p>
     <div class="ledger" id="ledger">{o.ledger.map(l => <div class="lab"><h3>{l.lab}</h3><ol>{l.models.map(m => <li>{m.name}<time>{m.date}</time></li>)}</ol></div>)}</div>
 
-    {/* 가져가기: 포스터(GitHub Releases), 피드, AI에게 건네기 */}
+    {/* 가져가기: 포스터(파일은 GitHub Releases, 미리보기만 사이트), 피드, AI에게 건네기 */}
     <section class="take" id="take" aria-labelledby="takeH">
       <h2 class="sub" id="takeH">{o.take.title}</h2>
+      {p && <div class:list={['pst', { bare: !pf }]} id="take-poster">
+        {p.proof && pf && <figure class="proof" style={`aspect-ratio:${pf.W}/${r1(pf.H)}`}>
+          <img src={p.proof.src} width={p.proof.w} height={p.proof.h} alt={p.proof.alt} loading="lazy" decoding="async" style={pf.img}>
+          <svg viewBox={`0 0 ${pf.W} ${r1(pf.H)}`} aria-hidden="true">
+            <path class="ln" d={pf.crop + pf.reg} />
+            <circle class="ln" cx="60" cy={r1(pf.MY)} r="8" /><circle class="ln" cx={pf.W / 2} cy={r1(pf.B + 52)} r="8" />
+            <path class="ln" d={`M${pf.X} 34v12M${pf.X + pf.PW} 34v12M${pf.X} 40h${pf.PW / 2 - 36}M${pf.X + pf.PW / 2 + 36} 40h${pf.PW / 2 - 36}`} />
+            <path class="ln" d={`M440 ${pf.Y}h12M440 ${r1(pf.B)}h12M446 ${pf.Y}V${r1(pf.MY - 36)}M446 ${r1(pf.MY + 36)}V${r1(pf.B)}`} />
+            <text x={pf.X + pf.PW / 2} y="44.5" text-anchor="middle">{p.proof.width}</text>
+            <text transform={`translate(446 ${r1(pf.MY)}) rotate(90)`} y="4.5" text-anchor="middle">{p.proof.height}</text>
+            {['paper', 'wood', 'ghost', 'ink-2', 'ink'].map((k, i) => <rect class={`st ${k}`} x={pf.X + i * 16} y={r1(pf.B + 76)} width="16" height="16" />)}
+            <text class="cap" x={pf.X + 92} y={r1(pf.B + 88)}>{p.proof.caption}</text>
+          </svg>
+        </figure>}
+        <div class="pi">
+          <p class="eyebrow">{p.label}</p>
+          <h3>{p.note}</h3>
+          <p class="d">{p.desc}</p>
+          <p class="dl">
+            <a class="btn p" href={p.pdf.href} target="_blank" rel="noopener"><b>{p.pdf.label}</b>{p.pdf.meta && <span>{p.pdf.meta}</span>}</a>
+            <a class="btn" href={p.png.href} target="_blank" rel="noopener"><b>{p.png.label}</b>{p.png.meta && <span>{p.png.meta}</span>}</a>
+          </p>
+          <p class="links"><a href={p.all} target="_blank" rel="noopener">{p.allLabel} ↗</a></p>
+          <p class="from">{p.from}</p>
+        </div>
+      </div>}
       <ul>
-        {o.take.poster && <li>
-          <h3>{o.take.poster.label}</h3><p>{o.take.poster.note}</p>
-          <p class="links"><a href={o.take.poster.pdf} target="_blank" rel="noopener">PDF</a><a href={o.take.poster.png} target="_blank" rel="noopener">PNG</a><a href={o.take.poster.all} target="_blank" rel="noopener">{o.take.poster.allLabel} ↗</a></p>
-        </li>}
         <li>
           <h3>{o.take.feed.label}</h3><p>{o.take.feed.note}</p>
           <p class="links"><a href={o.take.feed.href}>RSS</a></p>
