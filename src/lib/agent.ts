@@ -4,7 +4,7 @@ import { formatDot, type Locale } from './dates.ts';
 import { ATTRIBUTION, LICENSE, SCOPE } from './export.ts';
 import { ORIGIN } from './origin.ts';
 
-/** 에이전트에 연표를 들여놓는 파일들. 가져가기의 버튼이 복사하는 글(clipText)은 agent.md를 읽으라고만 하고,
+/** 에이전트에 연표를 들여놓는 파일들. 포스터와 데이터 칸의 버튼이 복사하는 글(clipText)은 agent.md를 읽으라고만 하고,
     agent.md(언어별)가 에이전트마다 할 일을, SKILL.md(영어 하나)가 설치된 뒤에 답하는 법을 적는다.
     SKILL.md에는 기준일을 넣지 않는다. 장면이 늘 때마다 digest가 바뀌어 다시 설치하라고 뜨지 않게, 기준일은 llms.txt에서 읽게 한다 */
 
@@ -23,7 +23,7 @@ const PATHS: [string, string][] = [
   ['OpenCode', `~/.config/opencode/skills/${SKILL_NAME}/SKILL.md`],
 ];
 
-/** 가져가기의 맥락 붙이기, 새 소식 챙기기 예시. 화면(i18n)과 agent.md가 같은 글을 쓴다 */
+/** 포스터와 데이터 칸의 맥락 붙이기, 새 소식 챙기기 예시. 화면(i18n)과 agent.md가 같은 글을 쓴다 */
 export const EXAMPLES: Record<Locale, { label: string; text: string }[]> = {
   ko: [
     { label: '맥락 붙이기', text: '이 기사에 나온 발표가 연표의 어느 흐름에 이어지는지, 앞선 장면을 날짜와 링크로 짚어 주세요.' },

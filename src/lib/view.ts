@@ -60,7 +60,7 @@ export interface PageView {
     ledgerTitle: string; ledgerNote: string; ledger: { lab: string; models: { name: string; date: string }[] }[];
     end: [string, string];
     making?: string; makingTitle: string;
-    /** 가져가기: 포스터(포스터가 있는 마지막 판), 피드, AI에게 건네기. llms·json은 붙여 넣을 정식 주소 */
+    /** 포스터와 데이터: 포스터(포스터가 있는 마지막 판), 피드, AI에게 건네기. llms·json은 붙여 넣을 정식 주소 */
     take: {
       title: string;
       poster?: PosterView;
@@ -78,7 +78,7 @@ export interface PageView {
   };
 }
 
-/** 가져가기의 포스터 칸. 크기(meta)와 교정지(proof)는 판 기록에 files가 있을 때만(Release 뒤 poster:pull) */
+/** 포스터와 데이터 칸의 포스터 자리. 크기(meta)와 교정지(proof)는 판 기록에 files가 있을 때만(Release 뒤 poster:pull) */
 export interface PosterView {
   label: string; note: string; all: string; allLabel: string; from: string;
   desc: string;

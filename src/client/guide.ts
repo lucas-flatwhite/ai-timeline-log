@@ -2,7 +2,7 @@
    - look: 벽 맨 위로
    - open: 최신 상자를 상세 창으로 연다(표지 뽑기와 같은 open-addr). 닫으면 브라우저가 이 링크로 초점을 돌린다
    - follow: 벽 맨 위로 올라가 찾기 창(시기, 주제)을 연다
-   - take, ask: 가져가기의 포스터 줄, AI 줄로 */
+   - take, ask: 포스터와 데이터 칸의 포스터 줄, AI 줄로 */
 export function initGuide(): void {
   const guide = document.querySelector<HTMLElement>('.guide');
   if (!guide) return;

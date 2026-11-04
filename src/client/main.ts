@@ -19,7 +19,7 @@ async function step(f: () => unknown): Promise<void> {
 try {
   /* 0. 제보 안내 창. 글꼴을 기다리지 않고 바로 붙인다 */
   await step(initReport);
-  /* 0. 가져가기의 복사 버튼. 판과 상관없으니 바로 붙인다 */
+  /* 0. 포스터와 데이터 칸의 복사 버튼. 판과 상관없으니 바로 붙인다 */
   await step(initCopy);
   /* 1. 일수를 보는 날로 다시 채운다(표지 판이 data-glyph를 읽기 전) */
   await step(applyLiveDays);

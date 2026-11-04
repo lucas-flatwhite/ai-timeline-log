@@ -17,7 +17,7 @@ const limit = (name: string, fallback: number): number => {
 };
 const FONT = limit('BUDGET_FONT', 40960);   // 40KB, 언어별
 const JS = limit('BUDGET_JS', 30720);       // 30KB
-const PREVIEW = limit('BUDGET_PREVIEW', 102400);   // 100KB, 가져가기의 포스터 미리보기 한 장
+const PREVIEW = limit('BUDGET_PREVIEW', 102400);   // 100KB, 포스터와 데이터 칸의 포스터 미리보기 한 장
 
 const list = (sub: string, ext: string): { name: string; size: number }[] => {
   const dir = new URL(sub, dist);

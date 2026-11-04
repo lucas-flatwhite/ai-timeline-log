@@ -1,7 +1,8 @@
 # 대표 범용 모델의 최초 공개 시점(제한 공개·프리뷰 포함).
 # 전문 음성·영상 모델과 같은 이름의 서비스 업데이트는 별도 항목으로 세지 않는다.
 # 2026-10-31 확인 근거와 선정 범위: docs/review/2026-10-31-events-and-lineage.md
-# 2026-11-02 장면에 나오지만 빠져 있던 모델과 연구소(엔비디아, 즈푸·Z.ai, MiniMax, 네이버)를 더했다. 근거는 각 항목의 주석
+# 2026-11-02 장면에 나오지만 빠져 있던 모델과 연구소(NVIDIA, Zhipu · Z.ai, MiniMax, NAVER)를 더했다. 근거는 각 항목의 주석
+# 연구소 이름은 두 언어 모두 영문으로 적는다(한글이 있으면 빌드 오류)
 - lab:
     ko: OpenAI
     en: "OpenAI"
@@ -140,7 +141,7 @@
     - name: Muse Spark Open
       date: 2026-10
 - lab:
-    ko: 엔비디아
+    ko: NVIDIA
     en: "NVIDIA"
   models:
     # https://research.nvidia.com/labs/nemotron/Nemotron-3 (Nano 2025-12, 기술 보고서 arXiv 2512.20856)
@@ -226,7 +227,7 @@
       date: 2026-10
 - lab:
     # 정식 회사명은 Knowledge Atlas Technology(北京智谱华章). 해외 브랜드는 Z.ai
-    ko: 즈푸 · Z.ai
+    ko: Zhipu · Z.ai
     en: "Zhipu · Z.ai"
   models:
     # https://github.com/THUDM/ChatGLM-6B (2023-03, 가중치 공개)
@@ -299,7 +300,7 @@
     - name: Grok 4.7
       date: 2026-09
 - lab:
-    ko: 네이버
+    ko: NAVER
     en: "NAVER"
   models:
     # https://clova.ai/en/hyperclova (2023-08-24 공개)

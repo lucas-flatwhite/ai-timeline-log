@@ -31,7 +31,7 @@ export function posterFiles(locale: Locale): { pdf: string; png: string; web: st
   return { pdf: `poster-${locale}.pdf`, png: `poster-${locale}.png`, web: `poster-${locale}-web.png` };
 }
 
-/* 가져가기 칸의 미리보기: 그 판의 화면용 PNG를 줄인 AVIF. 사이트(public/poster/)에는 마지막 포스터 판의 것만 언어별로 하나씩 둔다 */
+/* 포스터와 데이터 칸의 미리보기: 그 판의 화면용 PNG를 줄인 AVIF. 사이트(public/poster/)에는 마지막 포스터 판의 것만 언어별로 하나씩 둔다 */
 export const PREVIEW_WIDTH = 600;
 export const PREVIEW_DIR = 'poster';
 export function previewFile(n: number, locale: Locale): string {

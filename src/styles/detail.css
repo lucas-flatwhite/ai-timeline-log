@@ -60,7 +60,7 @@ html.js #details { display: none }
 #report .rin{position:relative;padding:26px}
 #report .x{position:absolute;top:10px;right:14px;padding:4px;border:0;background:none;color:inherit;cursor:pointer;font:400 26px/1 var(--display)}
 #report h2{margin:0 0 14px;padding-right:28px;font:400 30px/1.15 var(--display)}
-#report .note{margin:0;font-size:15px;line-height:1.7;text-wrap:pretty;word-break:keep-all}
+#report .note{margin:0;font-size:15px;line-height:1.7;text-wrap:pretty}
 #report .ways{list-style:none;margin:20px 0 0;padding:12px 0 0;border-top:1px solid var(--ghost);display:grid;gap:4px;font:500 12px/1.4 var(--mono)}
 #report .ways li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}
 #report .ways a{display:inline-flex;align-items:center;min-height:36px;color:var(--ink)}

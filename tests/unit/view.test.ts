@@ -242,14 +242,15 @@ describe('topics and visits on the wall', () => {
   });
 });
 
-describe('take-it-with-you section', () => {
+describe('poster and data section', () => {
   const e = buildView(loadContent(), 'en', '2026-10-25');
   const REL = 'https://github.com/lucas-flatwhite/ai-timeline-log/releases';
 
   // 용량과 미리보기 크기는 Release 뒤(poster:pull)에야 정해지므로 판 기록의 files에서 읽는다
   const files = latestPosterEdition(loadContent())!.files!;
   test('take section links poster 5, feed and data', () => {
-    expect(v.outro.take.title).toBe('가져가기');
+    expect(v.outro.take.title).toBe('포스터와 데이터');
+    expect(e.outro.take.title).toBe('Poster and data');
     expect(v.outro.take.poster).toEqual({
       label: '포스터 · 제 5판 · 2026.11.02', note: '벽 전체를 A2 한 장에',
       desc: '420 × 594 mm, 300dpi로 찍은 PDF와 PNG입니다.',
@@ -340,7 +341,7 @@ describe('guide (쓰는 법)', () => {
     expect(ko.title).toBe('쓰는 법');
     expect(ko.steps.map(s => s.glyph)).toEqual(['보기', '열기', '흐름', '포스터', '묻기']);
     expect(en.title).toBe('How to use');
-    expect(en.steps.map(s => s.glyph)).toEqual(['LOOK', 'OPEN', 'FOLLOW', 'TAKE', 'ASK']);
+    expect(en.steps.map(s => s.glyph)).toEqual(['LOOK', 'OPEN', 'FOLLOW', 'POSTER', 'ASK']);
     // 작은 판 규칙: 한글 3자 이내, 영어 핵심어에는 한글이 없다
     for (const s of ko.steps) expect([...s.glyph].length).toBeLessThanOrEqual(3);
     for (const s of en.steps) expect(s.glyph).not.toMatch(/[가-힣]/);

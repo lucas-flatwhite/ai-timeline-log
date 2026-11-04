@@ -30,7 +30,7 @@ const r1 = (n: number) => Math.round(n * 10) / 10;
     <p class="note">{o.ledgerNote}</p>
     <div class="ledger" id="ledger">{o.ledger.map(l => <div class="lab"><h3>{l.lab}</h3><ol>{l.models.map(m => <li>{m.name}<time>{m.date}</time></li>)}</ol></div>)}</div>
 
-    {/* 가져가기: 포스터(파일은 GitHub Releases, 미리보기만 사이트), AI에게 건네기, 피드 */}
+    {/* 포스터와 데이터: 포스터(파일은 GitHub Releases, 미리보기만 사이트), AI에게 건네기, 피드 */}
     <section class="take" id="take" aria-labelledby="takeH">
       <h2 class="sub" id="takeH">{o.take.title}</h2>
       {p && <div class:list={['pst', { bare: !pf }]} id="take-poster">
@@ -84,13 +84,14 @@ const r1 = (n: number) => Math.round(n * 10) / 10;
             <li><b>3</b><span>{ai.steps[2]}
               <ul class="agt-ex">{ai.examples.map(x => <li><em>{x.label}</em><q>{x.text}</q></li>)}</ul></span></li>
           </ol>
-          <p class="links"><a href={ai.links.agent}>agent.md</a><a href={ai.links.llms}>llms-full.txt</a><a href={ai.links.json}>timeline.json</a></p>
+          {/* 파일 링크는 새 탭에서 연다(이 쪽을 떠나지 않게). 아래 RSS도 같다 */}
+          <p class="links"><a href={ai.links.agent} target="_blank" rel="noopener">agent.md ↗</a><a href={ai.links.llms} target="_blank" rel="noopener">llms-full.txt ↗</a><a href={ai.links.json} target="_blank" rel="noopener">timeline.json ↗</a></p>
         </div>
       </div>
       <ul>
         <li>
           <h3>{o.take.feed.label}</h3><p>{o.take.feed.note}</p>
-          <p class="links"><a href={o.take.feed.href}>RSS</a></p>
+          <p class="links"><a href={o.take.feed.href} target="_blank" rel="noopener">RSS ↗</a></p>
         </li>
       </ul>
       <p class="note">{o.take.license}</p>
