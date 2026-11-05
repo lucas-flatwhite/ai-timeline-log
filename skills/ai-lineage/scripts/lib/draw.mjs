@@ -27,6 +27,9 @@ export const TEXT_FLOOR = 14;
 /** 상자 변에 걸친 꼬리표(연표 표지, 종류 꼬리표)의 하한. */
 export const TAG_FLOOR = 11;
 
+/** 교정지 인쇄 표시(판 정보 줄, 먹 농도 견본의 K 글자)의 하한. */
+export const MARK_FLOOR = 7;
+
 /** 상자 안 치수. 이름 줄 높이와 첫 줄 기준선은 NAME_SIZE 28에 맞춘 값이다. padTop은 위 변에 걸친 꼬리표 아래를 비운다. */
 export const BOX = { padX: 10, padTop: 11, padBottom: 8, line: 30, ascent: 23, subGap: 12 };
 
@@ -146,7 +149,8 @@ export function mapPoints(cmds, fn) {
 /**
  * Collects Scene items and the strings drawn. Every string goes through `text`, which shapes it with the
  * role's own font chain and turns glyphs no font has into errors that name where the string is.
- * Every stroked item gets the style's line cap and join.
+ * Every stroked item gets the style's line join. Solid strokes get the style's cap; dashed ones get a butt cap,
+ * so the dash pattern draws at its own lengths.
  * @param {Fonts} fonts
  * @param {string[]} errors
  * @param {Style} S
@@ -192,7 +196,7 @@ export function createPainter(fonts, errors, S) {
   const add = (item) => {
     if (!item.cmds.length) return;
     if (item.stroke) {
-      item.cap = S.line.cap;
+      item.cap = item.dash ? 'butt' : S.line.cap;
       item.join = S.line.join;
     }
     items.push(item);
@@ -207,7 +211,7 @@ export function createPainter(fonts, errors, S) {
 
 /**
  * @param {Painter} p @param {Style} S @param {number} W @param {number} H
- * @param {{ slug: string, slugShort: string, slugSize: number, slugWhere: string }} info
+ * @param {{ slug: string, slugShort: string, slugSize: number, markSize: number, slugWhere: string }} info
  */
 export function drawFrame(p, S, W, H, info) {
   const { ink, ink2 } = TOKENS;
@@ -235,14 +239,14 @@ export function drawFrame(p, S, W, H, info) {
   const size = info.slugSize;
   const steps = [1, 0.75, 0.5, 0.25, 0.1];
   const labels = steps.map((a) => `K${Math.round(a * 100)}`);
-  const widths = labels.map((l) => p.measure('mono', l, size - 1));
+  const widths = labels.map((l) => p.measure('mono', l, info.markSize));
   const sw = 18;
   const total = widths.reduce((a, w) => a + sw + 3 + w + 6, 0) - 6;
   let x = W - INSET - total;
   const base = H - 5;
   steps.forEach((a, i) => {
     p.add({ cmds: rect(x, base - 6, sw, 6), fill: blend(ink, a, S.background) });
-    p.text('mono', labels[i], size - 1, x + sw + 3, base, ink2, { where: 'frame' });
+    p.text('mono', labels[i], info.markSize, x + sw + 3, base, ink2, { where: 'frame' });
     x += sw + 3 + widths[i] + 6;
   });
   // 판 정보 줄, 왼쪽 아래 여백. 맞춤표 앞에서 끝나야 한다.

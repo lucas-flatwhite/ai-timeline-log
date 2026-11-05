@@ -4,11 +4,11 @@ import { dateKey } from './schema.mjs';
 import { STRINGS, KIND_TAGS } from './strings.mjs';
 import { STYLES, TOKENS } from './styles.mjs';
 import {
-  BOX, INSET, NAME_SIZE, TAG_FLOOR, TEXT_FLOOR, boxHeight, createPainter, drawBox, drawEdge, drawFrame, drawLegend,
+  BOX, INSET, MARK_FLOOR, NAME_SIZE, TAG_FLOOR, TEXT_FLOOR, boxHeight, createPainter, drawBox, drawEdge, drawFrame, drawLegend,
   drawRowLabel, edgeDash, legendWidth, tagRects,
 } from './draw.mjs';
 
-export { NAME_SIZE, TAG_FLOOR, TEXT_FLOOR };
+export { MARK_FLOOR, NAME_SIZE, TAG_FLOOR, TEXT_FLOOR };
 
 /** @typedef {import('./schema.mjs').Lineage} Lineage */
 /** @typedef {import('./schema.mjs').LNode} LNode */
@@ -27,11 +27,11 @@ export const ROW_ORDER = /** @type {const} */ (['root', 'revival', 'merge', 'spr
 /**
  * Canvas and type sizes. Floors: names NAME_SIZE; sub, legend, focal, omitted, credit and row labels TEXT_FLOOR;
  * the tags on a box's top border (kind, timeline) TAG_FLOOR. `cols` is the most nodes one row may hold.
- * The proof slug line and its K labels are print marks, not text to read, and have no floor.
+ * The proof print marks (slug line `slug`, K labels `mark`) MARK_FLOOR.
  */
 export const CANVAS = {
-  landscape: { width: 1200, height: 675, cols: 4, title: 30, label: 16, sub: 14, tag: 11, legend: 14, credit: 14, focal: 14, omitted: 14, slug: 7, laneStep: 6, maxExtra: 56 },
-  portrait: { width: 1080, height: 1350, cols: 3, title: 32, label: 18, sub: 14, tag: 11, legend: 14, credit: 14, focal: 15, omitted: 14, slug: 8, laneStep: 9, maxExtra: 150 },
+  landscape: { width: 1200, height: 675, cols: 4, title: 30, label: 16, sub: 14, tag: 11, legend: 14, credit: 14, focal: 14, omitted: 14, slug: 7, mark: 7, laneStep: 6, maxExtra: 56 },
+  portrait: { width: 1080, height: 1350, cols: 3, title: 32, label: 18, sub: 14, tag: 11, legend: 14, credit: 14, focal: 15, omitted: 14, slug: 8, mark: 7, laneStep: 9, maxExtra: 150 },
 };
 
 const LABEL_GAP = 10; // 줄 이름 띠와 첫 칸 사이
@@ -303,6 +303,7 @@ export function layout(data, fonts, opts) {
     slug: (opts.credit ? 'AI TIMELINE LOG · ' : '') + slugTail,
     slugShort: (opts.credit ? 'AI TIMELINE LOG · ' : '') + `LINEAGE · ${data.researched}`,
     slugSize: O.slug,
+    markSize: O.mark,
     slugWhere: 'subject',
   });
   p.text(S.fonts.title, title, O.title, INSET, INSET + 0.8 * O.title, TOKENS.ink, { where: 'title' });

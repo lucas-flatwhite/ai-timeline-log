@@ -2,7 +2,7 @@ import { describe, test, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { loadFonts, shapeText } from '../../../skills/ai-lineage/scripts/lib/fonts.mjs';
 import { validate } from '../../../skills/ai-lineage/scripts/lib/schema.mjs';
-import { layout, NAME_SIZE, TEXT_FLOOR, TAG_FLOOR, CANVAS } from '../../../skills/ai-lineage/scripts/lib/layout.mjs';
+import { layout, NAME_SIZE, TEXT_FLOOR, TAG_FLOOR, MARK_FLOOR, CANVAS } from '../../../skills/ai-lineage/scripts/lib/layout.mjs';
 import { boxHeight, createPainter, tagRects } from '../../../skills/ai-lineage/scripts/lib/draw.mjs';
 import { check } from '../../../skills/ai-lineage/scripts/lib/check.mjs';
 import { STRINGS } from '../../../skills/ai-lineage/scripts/lib/strings.mjs';
@@ -563,6 +563,7 @@ describe('floors and columns', () => {
   test('text floors', () => {
     expect(TEXT_FLOOR).toBeGreaterThanOrEqual(14);
     expect(TAG_FLOOR).toBeGreaterThanOrEqual(11);
+    expect(MARK_FLOOR).toBeGreaterThanOrEqual(7);
     // 14px on the 1200 canvas is about 9px when the image is shown 800px wide
     expect((TEXT_FLOOR * 800) / 1200).toBeGreaterThanOrEqual(9);
     for (const O of [CANVAS.landscape, CANVAS.portrait]) {
@@ -570,6 +571,8 @@ describe('floors and columns', () => {
         expect(O[k], k).toBeGreaterThanOrEqual(TEXT_FLOOR);
       }
       expect(O.tag).toBeGreaterThanOrEqual(TAG_FLOOR);
+      expect(O.slug, 'slug').toBeGreaterThanOrEqual(MARK_FLOOR);
+      expect(O.mark, 'mark').toBeGreaterThanOrEqual(MARK_FLOOR);
     }
   });
 
@@ -589,19 +592,26 @@ describe('floors and columns', () => {
 });
 
 describe('styles', () => {
-  test('stroked items carry the style cap and join', () => {
+  test('stroked items carry the style cap and join, dashed ones a butt cap', () => {
     const want: Record<string, [string, string]> = { woodcut: ['square', 'miter'], soft: ['round', 'round'], proof: ['butt', 'miter'] };
     for (const [, data, style, portrait] of cases()) {
-      let stroked = 0;
+      let solid = 0;
+      let dashed = 0;
       for (const it of run(data, style, portrait).scene.items) {
         if (it.stroke === undefined) {
           expect(it.cap).toBeUndefined();
           continue;
         }
-        stroked++;
-        expect([it.cap, it.join]).toEqual(want[style]);
+        if (it.dash) {
+          dashed++;
+          expect([it.cap, it.join]).toEqual(['butt', want[style][1]]);
+        } else {
+          solid++;
+          expect([it.cap, it.join]).toEqual(want[style]);
+        }
       }
-      expect(stroked).toBeGreaterThan(10);
+      expect(solid).toBeGreaterThan(10);
+      expect(dashed).toBeGreaterThan(0);
     }
     expect(STYLES.woodcut.line).toEqual({ cap: 'square', join: 'miter' });
   });
