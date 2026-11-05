@@ -14,6 +14,16 @@ A timeline of generative AI since ChatGPT launched on November 30, 2022. Events 
 
 The timeline focuses on events that shaped generative AI. Dates and claims are checked against company announcements, papers and other primary sources. Found a mistake or a missing event? [Open an issue](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose) with a source.
 
+## Lineage skill
+
+The `ai-lineage` skill is a separate, installable agent skill. It researches where an AI technique came from and draws a sourced lineage chart (PNG, SVG, PDF, Mermaid and a source list). Every box carries a source the agent opened.
+
+```bash
+npx skills add lucas-flatwhite/ai-timeline-log --skill ai-lineage -g
+```
+
+Details are in [`skills/ai-lineage`](skills/ai-lineage).
+
 ## Run locally
 
 Built with Astro and TypeScript, with scenes stored as YAML. Requires Node.js 22.22 or later.

@@ -24,6 +24,7 @@
 - 스키마는 `src/lib/schema.ts`, 빌드 검사는 `src/lib/checks.ts`입니다. 오류는 빌드를 멈추고 경고는 출력만 합니다.
 - 장면 색인: `npm run index`는 장면마다 한 줄(날짜, id, 사건 수, 주제, 영어 제목)을 보여 줍니다. `--items`는 사건 문장 앞부분까지, `--since YYYY-MM`은 그 뒤 장면만, `--grep 낱말`은 장면과 용어집(`content/glossary.yaml`)에서 찾습니다. 중복이나 용어를 확인할 때 YAML을 하나씩 열거나 용어집을 통째로 읽지 말고 이것부터 씁니다.
 - 리서치 메모: `docs/review/<날짜>-<슬러그>.md`. 쓰는 양식은 `scene-research` 스킬에 있습니다.
+- `skills/`는 공개 스킬(`ai-lineage`)이고, 설치하면 그 폴더만 복사됩니다. 스킬 폴더 밖의 파일은 읽지 않습니다. 이 저장소 안에서만 쓰는 내부 스킬(`.agents/skills/`)은 `metadata.internal: true`로 숨깁니다. 스킬 폴더의 라이브러리 사본(`vendor/`)은 `npm run lineage:vendor`로 바꿉니다.
 
 ## 장면 추가·정정 절차
 
