@@ -99,6 +99,14 @@ function overlaps(a: Seg, b: Seg): boolean {
   return Math.min(Math.max(a.y1, a.y2), Math.max(b.y1, b.y2)) - Math.max(Math.min(a.y1, a.y2), Math.min(b.y1, b.y2)) > EPS;
 }
 
+// True when the edge joins two boxes of one row with no box between them.
+function isAdjacent(out: any, e: { from: string; to: string }): boolean {
+  const [a, b] = [out.boxes[e.from], out.boxes[e.to]];
+  if (Math.abs(a.y - b.y) > EPS) return false;
+  const [lo, hi] = [Math.min(a.x, b.x), Math.max(a.x, b.x)];
+  return !Object.values(out.boxes).some((o: any) => Math.abs(o.y - a.y) < EPS && o.x > lo + EPS && o.x < hi - EPS);
+}
+
 describe('fit', () => {
   test('worst is a valid worst case', () => {
     expect(validate(worst).errors).toEqual([]);
@@ -216,8 +224,17 @@ describe('geometry', () => {
         const tb = out.boxes[e.to];
         const [x0, y0] = pts[0];
         const [x1, y1] = pts[pts.length - 1];
-        expect(Math.abs(y0 - (fb.y + fb.h)) < EPS && x0 > fb.x && x0 < fb.x + fb.w, `${eat} starts on from bottom`).toBe(true);
         const sameRow = Math.abs(fb.y - tb.y) < EPS;
+        if (sameRow && isAdjacent(out, e)) {
+          // a direct side-to-side arrow at the vertical middle
+          const right = tb.x > fb.x;
+          expect(pts.length, `${eat} is one straight arrow`).toBe(2);
+          expect(Math.abs(y0 - (fb.y + fb.h / 2)) < EPS && Math.abs(y1 - y0) < EPS, `${eat} is level at the middle`).toBe(true);
+          expect(Math.abs(x0 - (right ? fb.x + fb.w : fb.x)) < EPS, `${eat} starts on the facing side of from`).toBe(true);
+          expect(Math.abs(x1 - (right ? tb.x : tb.x + tb.w)) < EPS, `${eat} ends on the facing side of to`).toBe(true);
+          continue;
+        }
+        expect(Math.abs(y0 - (fb.y + fb.h)) < EPS && x0 > fb.x && x0 < fb.x + fb.w, `${eat} starts on from bottom`).toBe(true);
         const edgeY = sameRow ? tb.y + tb.h : tb.y;
         expect(Math.abs(y1 - edgeY) < EPS && x1 > tb.x && x1 < tb.x + tb.w, `${eat} ends on to ${sameRow ? 'bottom' : 'top'}`).toBe(true);
         expect(Math.abs(x0 - (fb.x + fb.w / 2)) < EPS, `${eat} leaves from the bottom center`).toBe(true);
@@ -290,7 +307,8 @@ describe('geometry', () => {
   });
 
   test('a same-row arrival keeps clear of the target line leaving downward', () => {
-    const d = mini({ a: 'root', b: 'root', c: 'revival' }, [['a', 'b'], ['b', 'c']]);
+    // x sits between a and b, so a -> b is not adjacent and still comes up from below
+    const d = mini({ a: 'root', x: 'root', b: 'root', c: 'revival' }, [['a', 'b'], ['b', 'c']]);
     for (const portrait of ORIENTS) {
       const out = run(d, 'woodcut', portrait);
       noOverlap(out);
@@ -342,16 +360,56 @@ describe('geometry', () => {
     }
   });
 
-  test('a same-row edge comes up into the bottom of its target', () => {
-    const out = run(worst, 'woodcut', false);
-    const e = out.edges.find((x: any) => x.from === 'tau-pool' && x.to === 'iota-pool');
-    const tb = out.boxes['iota-pool'];
-    const pts = e.points;
-    const [xa, ya] = pts[pts.length - 2];
-    const [xb, yb] = pts[pts.length - 1];
-    expect(xa).toBeCloseTo(xb, 6);
-    expect(ya).toBeGreaterThan(yb);
-    expect(yb).toBeCloseTo(tb.y + tb.h, 6);
+  test('an adjacent same-row edge is one straight arrow between the facing sides', () => {
+    const d = mini({ a: 'root', b: 'root' }, [['a', 'b']]);
+    for (const portrait of ORIENTS) {
+      const out = run(d, 'woodcut', portrait);
+      expect(out.errors).toEqual([]);
+      const [a, b] = [out.boxes.a, out.boxes.b];
+      const mid = a.y + a.h / 2;
+      expect(out.edges[0].points).toEqual([[a.x + a.w, mid], [b.x, mid]]);
+      expect(b.x - (a.x + a.w)).toBeGreaterThanOrEqual(36);
+    }
+  });
+
+  test('a leftward adjacent same-row edge also works', () => {
+    // dates make a the left box, so the edge b -> a points left
+    const d = mini({ a: 'root', b: 'root' }, [['b', 'a']]);
+    for (const portrait of ORIENTS) {
+      const out = run(d, 'woodcut', portrait);
+      const [a, b] = [out.boxes.a, out.boxes.b];
+      expect(a.x).toBeLessThan(b.x);
+      const mid = a.y + a.h / 2;
+      expect(out.edges[0].points).toEqual([[b.x, mid], [a.x + a.w, mid]]);
+    }
+  });
+
+  test('a non-adjacent same-row edge keeps the route under the row', () => {
+    const d = mini({ a: 'root', b: 'root', c: 'root' }, [['a', 'c']]);
+    for (const portrait of ORIENTS) {
+      const out = run(d, 'woodcut', portrait);
+      expect(out.errors).toEqual([]);
+      const [a, c] = [out.boxes.a, out.boxes.c];
+      const pts = out.edges[0].points;
+      expect(pts.length).toBe(4);
+      expect(pts[0][1]).toBeCloseTo(a.y + a.h, 6);
+      expect(pts[pts.length - 1][1]).toBeCloseTo(c.y + c.h, 6);
+      expect(pts[1][1]).toBeGreaterThan(a.y + a.h);
+    }
+  });
+
+  test('the column gap widens only when an adjacent same-row edge exists', () => {
+    const gap = (out: any) => out.boxes.b.x - (out.boxes.a.x + out.boxes.a.w);
+    const plain = run(mini({ a: 'root', b: 'root' }, []), 'woodcut', false);
+    const wide = run(mini({ a: 'root', b: 'root' }, [['a', 'b']]), 'woodcut', false);
+    expect(gap(plain)).toBeCloseTo(16, 6);
+    expect(gap(wide)).toBeCloseTo(40, 6);
+  });
+
+  test('an adjacent same-row edge takes no lane', () => {
+    const a = run(mini({ a: 'root', b: 'root', c: 'revival' }, [['a', 'b'], ['b', 'c']]), 'woodcut', false);
+    const b = run(mini({ a: 'root', b: 'root', c: 'revival' }, [['b', 'c']]), 'woodcut', false);
+    expect(a.boxes.c.y).toBeCloseTo(b.boxes.c.y, 6);
   });
 
   test('an edge two or more rows down travels between the columns', () => {
@@ -518,8 +576,8 @@ describe('rules', () => {
 
   test('too tall', () => {
     const d = structuredClone(worst);
-    // worst has under 20px to spare in landscape. These add six lanes (two below revival, four below merge),
-    // about 36px, so landscape runs out while portrait still has room.
+    // worst has little height to spare in landscape, and its same-row arrow takes no lane. These add lanes below revival and merge,
+    // more than the one the same-row arrow gave back, so landscape runs out while portrait still has room.
     d.edges.push(
       { from: 'kappa-capacity', to: 'theta-shared', type: 'enables', status: 'inferred' },
       { from: 'gamma-pool', to: 'lambda-ablation', type: 'lineage', status: 'inferred' },
@@ -527,6 +585,10 @@ describe('rules', () => {
       { from: 'delta-stack', to: 'iota-pool', type: 'lineage', status: 'inferred' },
       { from: 'eta-parallel', to: 'tau-pool', type: 'lineage', status: 'inferred' },
       { from: 'lambda-ablation', to: 'theta-shared', type: 'lineage', status: 'inferred' },
+      { from: 'lambda-ablation', to: 'tau-pool', type: 'lineage', status: 'inferred' },
+      { from: 'kappa-capacity', to: 'tau-pool', type: 'lineage', status: 'inferred' },
+      { from: 'alpha-router', to: 'tau-pool', type: 'lineage', status: 'inferred' },
+      { from: 'gamma-pool', to: 'tau-pool', type: 'lineage', status: 'inferred' },
     );
     expect(run(d, 'woodcut', false).errors).toContain('too tall: shorten names, or move a node to omitted');
     expect(run(d, 'woodcut', true).errors).toEqual([]);

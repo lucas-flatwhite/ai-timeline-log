@@ -36,6 +36,7 @@ export const CANVAS = {
 
 const LABEL_GAP = 10; // 줄 이름 띠와 첫 칸 사이
 const GAP_X = 16; // 칸 사이. 두 줄 이상 내려가는 선이 이 틈의 가운데로 지난다
+const SIDE_GAP_X = 40; // 옆 상자로 곧장 가는 화살표가 있으면 모든 틈이 이만큼 넓어진다(선 24px 이상과 화살촉이 보인다)
 const TITLE_GAP = 18;
 const LANE_TOP = 12; // 줄 아래 변에서 첫 가로 길까지
 const LANE_BOTTOM = 15; // 마지막 가로 길에서 아래 줄 위 변까지(화살촉과 위 변에 걸친 꼬리표가 들어간다)
@@ -96,9 +97,15 @@ export function layout(data, fonts, opts) {
   // 칸 수는 가장 많은 줄을 따르고(최소 2), 칸들이 너비를 고르게 나눈다
   const cols = Math.max(2, ...grid.map((l) => l.length));
   const left = INSET + O.label + LABEL_GAP;
-  const boxW = (W - INSET - left - (cols - 1) * GAP_X) / cols;
+  // 같은 줄에서 바로 옆 상자로 가는 선이 하나라도 있으면 틈을 넓힌다
+  const adjacent = (/** @type {LEdge} */ e) => {
+    const [a, b] = [placed.get(e.from), placed.get(e.to)];
+    return Boolean(a && b && a.row === b.row && Math.abs(a.col - b.col) === 1);
+  };
+  const gapX = data.edges.some(adjacent) ? SIDE_GAP_X : GAP_X;
+  const boxW = (W - INSET - left - (cols - 1) * gapX) / cols;
   const inner = boxW - 2 * BOX.padX;
-  const colX = (/** @type {number} */ c) => left + c * (boxW + GAP_X);
+  const colX = (/** @type {number} */ c) => left + c * (boxW + gapX);
 
   // ---- 상자 안 글: 이름은 띄어쓰기에서 최대 2줄, 아래 줄(날짜 · 부제)은 1줄. 종류는 위 변의 꼬리표 ----
   for (const [id, v] of placed) {
@@ -112,7 +119,7 @@ export function layout(data, fonts, opts) {
   const rowH = grid.map((list) => Math.max(...list.map((n) => boxHeight(placed.get(n.id)?.lines.length || 1, O.sub))));
 
   // ---- 연결선 갈래: 같은 줄, 바로 아래 줄, 두 줄 이상 ----
-  /** @typedef {{ e: LEdge, i: number, kind: 'same'|'next'|'long', a: NonNullable<ReturnType<typeof placed.get>>,
+  /** @typedef {{ e: LEdge, i: number, kind: 'side'|'same'|'next'|'long', a: NonNullable<ReturnType<typeof placed.get>>,
    *   b: NonNullable<ReturnType<typeof placed.get>>, ch?: number, chX?: number, ax?: number, laneA?: number,
    *   laneB?: number, approach?: number, portX?: number }} Route */
   /** @type {Route[]} */
@@ -125,16 +132,18 @@ export function layout(data, fonts, opts) {
       errors.push(`edge ${e.from} -> ${e.to} goes upward`);
       continue;
     }
-    routes.push({ e, i, a, b, kind: b.row === a.row ? 'same' : b.row === a.row + 1 ? 'next' : 'long' });
+    routes.push({ e, i, a, b, kind: adjacent(e) ? 'side' : b.row === a.row ? 'same' : b.row === a.row + 1 ? 'next' : 'long' });
   }
 
   // 한 틈 안에서는 출발 노드마다 가로 길 하나. 그 줄에서 떠나는 노드(칸 순서)가 위, 먼 줄에서 온 선이 아래.
+  // 옆 상자로 곧장 가는 화살표(side)는 길도 자리도 쓰지 않는다
+  const laned = routes.filter((r) => r.kind !== 'side');
   /** @type {string[][]} */
   const lanes = rows.map((_, g) => {
-    const dep = [...new Set(routes.filter((r) => r.a.row === g).map((r) => r.e.from))].sort(
+    const dep = [...new Set(laned.filter((r) => r.a.row === g).map((r) => r.e.from))].sort(
       (x, y) => (placed.get(x)?.col ?? 0) - (placed.get(y)?.col ?? 0),
     );
-    const far = [...new Set(routes.filter((r) => r.kind === 'long' && r.b.row - 1 === g).map((r) => r.e.from))]
+    const far = [...new Set(laned.filter((r) => r.kind === 'long' && r.b.row - 1 === g).map((r) => r.e.from))]
       .filter((id) => !dep.includes(id))
       .sort((x, y) => {
         const [px, py] = [placed.get(x), placed.get(y)];
@@ -216,8 +225,8 @@ export function layout(data, fonts, opts) {
   // ---- 세로 길: 두 줄 이상 내려가는 선은 칸 사이 틈을 쓴다. 가까운 틈, 같으면 덜 붐비는 틈 ----
   /** @type {string[][]} */
   const chUsers = Array.from({ length: cols - 1 }, () => []);
-  const chX = (/** @type {number} */ j) => colX(j) + boxW + GAP_X / 2;
-  for (const r of routes) {
+  const chX = (/** @type {number} */ j) => colX(j) + boxW + gapX / 2;
+  for (const r of laned) {
     r.ax = center(r.e.from);
     r.laneA = laneY(r.a.row, r.e.from);
     if (r.kind !== 'long') continue;
@@ -240,14 +249,14 @@ export function layout(data, fonts, opts) {
   }
   // 한 틈 안에서는 왼쪽에서 온 선이 왼쪽 길을 쓴다. 그래야 서로 덜 건넌다.
   for (const users of chUsers) users.sort((x, y) => center(x) - center(y) || cmp(x, y));
-  for (const r of routes) {
+  for (const r of laned) {
     if (r.kind !== 'long' || r.ch === undefined) continue;
     const users = chUsers[r.ch];
-    const step = users.length > 1 ? Math.min(CHANNEL_STEP, (GAP_X - 6) / (users.length - 1)) : 0;
+    const step = users.length > 1 ? Math.min(CHANNEL_STEP, (gapX - 6) / (users.length - 1)) : 0;
     r.chX = chX(r.ch) + (users.indexOf(r.e.from) - (users.length - 1) / 2) * step;
     r.laneB = laneY(r.b.row - 1, r.e.from);
   }
-  for (const r of routes) {
+  for (const r of laned) {
     r.laneB ??= r.laneA;
     r.approach = r.kind === 'long' ? r.chX : r.ax;
   }
@@ -285,6 +294,11 @@ export function layout(data, fonts, opts) {
   const edges = routes.map((r) => {
     const a = boxes[r.e.from];
     const b = boxes[r.e.to];
+    if (r.kind === 'side') {
+      const mid = a.y + a.h / 2;
+      const right = b.x > a.x;
+      return { from: r.e.from, to: r.e.to, points: /** @type {[number, number][]} */ ([[right ? a.x + a.w : a.x, mid], [right ? b.x : b.x + b.w, mid]]) };
+    }
     const ax = /** @type {number} */ (r.ax);
     const px = /** @type {number} */ (r.portX);
     const la = /** @type {number} */ (r.laneA);

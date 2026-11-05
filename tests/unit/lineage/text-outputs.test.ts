@@ -62,6 +62,19 @@ describe('toSourcesMd', () => {
     expect(s).toContain('## Sources not verified');
     expect(s).toContain('Gamma Expert Pool (원제)');
   });
+  it('ends with the notes when there are any, and leaves the rest unchanged', () => {
+    const plain: string = toSourcesMd(alpha);
+    expect(plain).not.toContain('## Notes');
+    const d = structuredClone(alpha);
+    d.notes = 'As reported; both sides cited.';
+    const en: string = toSourcesMd(d);
+    expect(en).toBe(`${plain}\n## Notes\n\nAs reported; both sides cited.\n`);
+    const k = { ...ko(), notes: '보도 기준.' };
+    const kPlain: string = toSourcesMd(ko());
+    expect(toSourcesMd(k)).toBe(`${kPlain}\n## 메모\n\n보도 기준.\n`);
+    d.notes = '';
+    expect(toSourcesMd(d)).toBe(plain);
+  });
   it('has no em dash in fixed text', () => {
     expect(toSourcesMd(alpha) + toMermaid(alpha)).not.toContain(String.fromCharCode(0x2014));
   });

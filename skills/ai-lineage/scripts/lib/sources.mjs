@@ -5,8 +5,8 @@ import { STRINGS } from './strings.mjs';
 /** @typedef {import('./schema.mjs').Source} Source */
 
 const HEAD = {
-  en: { sources: 'Sources', links: 'Links and evidence', unverified: 'Sources not verified', omitted: 'Omitted', researched: 'Researched' },
-  ko: { sources: '출처', links: '관계와 근거', unverified: '확인 못 한 출처', omitted: '뺀 것', researched: '조사한 날' },
+  en: { sources: 'Sources', links: 'Links and evidence', unverified: 'Sources not verified', omitted: 'Omitted', researched: 'Researched', notes: 'Notes' },
+  ko: { sources: '출처', links: '관계와 근거', unverified: '확인 못 한 출처', omitted: '뺀 것', researched: '조사한 날', notes: '메모' },
 };
 
 const stop = (/** @type {string} */ s) => (/[.!?]$/.test(s) ? s : `${s}.`);
@@ -55,5 +55,7 @@ export function toSourcesMd(data) {
     out.push('', `## ${H.omitted}`, '');
     for (const o of data.omitted) out.push(`- ${o}`);
   }
+  const notes = typeof data.notes === 'string' ? data.notes.trim() : '';
+  if (notes) out.push('', `## ${H.notes}`, '', notes);
   return `${out.join('\n')}\n`;
 }

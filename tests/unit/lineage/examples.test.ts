@@ -1,6 +1,9 @@
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import sharp from 'sharp';
 import { describe, expect, it } from 'vitest';
+import { layout } from '../../../skills/ai-lineage/scripts/lib/layout.mjs';
+import { loadFonts } from '../../../skills/ai-lineage/scripts/lib/fonts.mjs';
+import { toSvg } from '../../../skills/ai-lineage/scripts/lib/svg.mjs';
 import { check } from '../../../skills/ai-lineage/scripts/lib/check.mjs';
 import { toMermaid } from '../../../skills/ai-lineage/scripts/lib/mermaid.mjs';
 import { toSourcesMd } from '../../../skills/ai-lineage/scripts/lib/sources.mjs';
@@ -34,6 +37,11 @@ describe.each(LANGS)('MoE sample (%s)', (lang) => {
   it('keeps the committed Mermaid and source list in step with the tool', () => {
     expect(readFileSync(`${DIR}/moe.${lang}.mmd`, 'utf8')).toBe(toMermaid(d));
     expect(readFileSync(`${DIR}/moe.${lang}.sources.md`, 'utf8')).toBe(toSourcesMd(d));
+  });
+
+  it('keeps the committed SVG in step with a fresh render', async () => {
+    const scene = layout(d, await loadFonts(), { style: 'woodcut', credit: true, portrait: false }).scene;
+    expect(readFileSync(`${DIR}/moe.${lang}.svg`, 'utf8')).toBe(toSvg(scene));
   });
 
   it('has a site image of the agreed size', async () => {

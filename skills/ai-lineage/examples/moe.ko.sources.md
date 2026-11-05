@@ -28,3 +28,7 @@
 - Switch Transformer(2021)
 - DeepSeekMoE(2024)
 - 딥시크 R1(2025)
+
+## 메모
+
+날짜. Adaptive Mixtures: 논문에는 1991만 찍혀 있고 Crossref는 1991-02, Semantic Scholar는 1991-03이라 연도만 적었다. 논문은 이 생각을 1988년 여름학교에서 처음 발표했다고 적는다. Sparsely-Gated MoE: ICLR 2017 제출본이 2016-11-13에는 OpenReview에 공개되어 있었다(Wayback 보관본, ICLR 마감은 2016-11-04). arXiv v1(2017-01-23)보다 앞선다. 첫날을 알려 주는 자료가 없어 연도만 적었다. 이 판의 저자는 6명이고 arXiv v1에 Geoffrey Hinton이 더해졌으며, 뒤 논문들은 2017로 인용한다. Deep Mixture of Experts에서 오는 선의 근거 문장은 arXiv v1에 있고, 2016년 판은 Eigen 외를 관련 연구로만 든다. Mixtral: 발표문은 2023-12-11이고, Mistral AI가 2023-12-08에 X에 마그넷 링크를 올렸다(x.com이 열리지 않아 미러로 읽었다). 그래서 월까지만 적었다. 딥시크 V3: DeepSeek-V3-Base 페이지가 2024-12-25에는 Hugging Face에 공개되어 있었고(Wayback 보관본), 발표문은 2024-12-26, arXiv v1은 2024-12-27이라 월까지만 적었다. 연표의 사건 날짜는 2024-12-26이다. 이름은 연표 용어집(딥시크 V3)을 따랐고 논문 표기는 DeepSeek-V3이다. Mixtral은 Shazeer 외를 인용한 top-K 게이팅도 쓴다(2.1절, 2쪽, 참고문헌 [28]). 그림을 읽기 쉽게 두려고 이 선은 뺐다.

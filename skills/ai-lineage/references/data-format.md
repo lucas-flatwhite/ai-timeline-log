@@ -17,7 +17,7 @@ One JSON file holds everything. The PNG, SVG, PDF, Mermaid text and source list 
 | `edges` | yes | The lines between nodes. May be empty, but a node with no line gets a warning. |
 | `focal` | no | `{ "node": "<id>", "note": "<one line>" }`. At most one key link. |
 | `omitted` | no | Strings naming what you left out. Printed as one line under the chart. With 9 nodes and an empty list, `check` warns. |
-| `notes` | no | Free text for the data file. It is not drawn. |
+| `notes` | no | Free text for the data file. It is not drawn, but it is added as a final `Notes` section at the end of the source list. |
 
 ## Node
 
@@ -59,6 +59,8 @@ Nodes in a row are placed from the left, ordered by date. A missing month or day
 A `lineage` edge whose target is dated earlier than its source gets a warning.
 
 Edges only go downward or stay in the same row. An edge to a higher row is an error (`goes upward`), so put earlier work in higher rows (`root` first, then `revival`, `merge`, `spread`).
+
+Two boxes that sit next to each other in one row, with no box between them, get a direct arrow from the facing side of one to the facing side of the other. When a chart has such an arrow, every gap between columns widens from 16 to 40 px and the boxes get narrower, so check the fit. A same-row edge that skips over a box still goes down, across and up under the row.
 
 ## Fitting text
 
