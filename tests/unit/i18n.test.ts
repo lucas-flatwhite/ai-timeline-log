@@ -42,13 +42,15 @@ describe('언어 주소', () => {
     expect(localePath('ko')).toBe('ko/');
     expect(LOCALE_KEY).toBe('lucas-flatwhite:locale');
   });
-  it('예전 en/ 주소는 base로 영구 이동한다. 경로가 빈 en/은 :path*가 잡지 못해 맨 앞에 따로 둔다', async () => {
+  it('예전 en/ 주소는 base로 영구 이동한다. 경로가 빈 en/은 :path*가 잡지 못해 맨 앞에 따로 둔다. 슬래시 없는 페이지 주소는 canonical(슬래시 있음)로 옮긴다', async () => {
     const { readFileSync } = await import('node:fs');
     const v = JSON.parse(readFileSync('vercel.json', 'utf8')) as { redirects: { source: string; destination: string; permanent: boolean }[] };
     expect(v.redirects).toEqual([
       { source: '/ai-timeline-log/en/', destination: '/ai-timeline-log/', permanent: true },
       { source: '/ai-timeline-log/en', destination: '/ai-timeline-log/', permanent: true },
       { source: '/ai-timeline-log/en/:path*', destination: '/ai-timeline-log/:path*', permanent: true },
+      { source: '/ai-timeline-log', destination: '/ai-timeline-log/', permanent: true },
+      { source: '/ai-timeline-log/ko', destination: '/ai-timeline-log/ko/', permanent: true },
     ]);
   });
 });

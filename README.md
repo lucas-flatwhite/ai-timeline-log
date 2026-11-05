@@ -4,7 +4,7 @@ English | [한국어](README.ko.md)
 
 A timeline of generative AI since ChatGPT launched on November 30, 2022. Events appear in date order with links to their sources, so you can read what happened and check the original material.
 
-[Read the timeline](https://www.lucasflatwhite.com/ai-timeline-log/) · [한국어로 읽기](https://www.lucasflatwhite.com/ai-timeline-log/ko/)
+[Read the timeline](https://lucasflatwhite.com/ai-timeline-log/) · [한국어로 읽기](https://lucasflatwhite.com/ai-timeline-log/ko/)
 
 ## What you'll find
 
