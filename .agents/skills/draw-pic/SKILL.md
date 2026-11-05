@@ -1,6 +1,8 @@
 ---
 name: draw-pic
 description: 사건 상자의 그림(pic)을 붙이거나 content/pics.yaml에 새 윤곽선을 그릴 때 쓰는 규칙. 좌표계, 칠하기 방향, 그리지 않는 것, 쓰는 법 다섯 칸이 쓰는 그림. Use when adding a pic to an event or drawing a new outline in content/pics.yaml.
+metadata:
+  internal: true
 ---
 
 # `pic` (그림 상자)

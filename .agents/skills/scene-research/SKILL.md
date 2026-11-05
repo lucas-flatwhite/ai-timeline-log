@@ -1,6 +1,8 @@
 ---
 name: scene-research
 description: 타임라인에 넣을 AI 사건 후보를 조사해 docs/review/에 리서치 메모로 남기는 절차. "새 사건 리서치", "장면 후보 조사", "이번 주 AI 소식 정리", "빠진 사건 찾기", "이 사건 넣을 만한지 확인" 같은 요청에 쓴다. Use when researching new AI events or scene candidates for the timeline, checking whether an event belongs, or backfilling a period.
+metadata:
+  internal: true
 ---
 
 # 장면 후보 리서치

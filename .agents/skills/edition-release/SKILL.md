@@ -1,6 +1,8 @@
 ---
 name: edition-release
 description: 판(edition)을 찍고 A2 포스터를 GitHub Releases에 올린 뒤 머지하는 절차. content/editions.yaml에 새 판을 적을 때, edition-N 태그를 달 때, poster 워크플로를 확인하거나 다시 돌릴 때, 포스터를 미리 볼 때 쓴다. Use when cutting a new edition, tagging edition-N, releasing or previewing the poster.
+metadata:
+  internal: true
 ---
 
 # 판 기록과 포스터
