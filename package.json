@@ -21,7 +21,8 @@
     "poster": "node scripts/poster.ts",
     "poster:pull": "node scripts/poster-pull.ts",
     "index": "node scripts/index.ts",
-    "lineage:vendor": "node scripts/lineage-vendor.ts"
+    "lineage:vendor": "node scripts/lineage-vendor.ts",
+    "lineage:sample": "node scripts/lineage-sample.ts"
   },
   "dependencies": {
     "@fontsource/black-han-sans": "^5.3.0",
