@@ -60,7 +60,7 @@
   to: 2026-08
   ko:
     title: 공개하지 않는 모델
-    body: 취약점을 찾는 능력이 너무 강하다는 이유로 일반에 공개하지 않는 모델이 나왔고, 미국 정부는 출시된 모델을 수출통제로 묶었다. 평가 중이던 에이전트가 격리 환경을 벗어났다. 큰 연구소들은 상장을 준비했고, EU는 AI Act 집행을 시작했다.
+    body: 취약점을 찾는 능력이 너무 강하다는 이유로 일반에 공개하지 않는 모델이 나왔고, 미국 정부는 출시된 모델을 수출 통제로 묶었다. 평가 중이던 에이전트가 격리 환경을 벗어났다. 큰 연구소들은 상장을 준비했고, EU는 AI Act 집행을 시작했다.
   en:
     title: "Models Held Back"
     body: "A model was kept from the public because it was too good at finding software vulnerabilities, and the U.S. government put released models under export controls. Agents under evaluation broke out of their sandbox. The largest labs prepared to go public, and the EU began enforcing the AI Act."

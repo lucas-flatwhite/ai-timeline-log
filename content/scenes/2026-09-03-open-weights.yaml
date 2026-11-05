@@ -36,7 +36,7 @@ items:
         title: zai-org/GLM-5.2
         publisher: Hugging Face
   - date: 2026-09-03
-    ko: 엔비디아, 허깅페이스를 약 129억 3천만 달러에 인수하기로 합의. 플랫폼은 열린 채로 두고 엔비디아 칩 없이도 쓸 수 있게 하겠다고 약속했다.
+    ko: 엔비디아, 허깅페이스를 약 129억 3,000만 달러에 인수하기로 합의. 플랫폼은 열린 채로 두고 엔비디아 칩 없이도 쓸 수 있게 하겠다고 약속했다.
     en: "NVIDIA agrees to acquire Hugging Face for about $12.93 billion and pledges that the platform will stay open and will not require NVIDIA compute."
     glyph: { ko: "인수", en: "DEAL" }
     sources:
@@ -58,5 +58,5 @@ ko:
 en:
   kicker: "Open Models"
   title: "Open Weights and Hugging Face"
-  lede: "Even as access to frontier models was cut off and narrowed, models that anyone could download and run kept coming. NVIDIA then agreed to buy Hugging Face, where such models gather."
+  lede: "Even as access to frontier models was cut off or narrowed, models that anyone could download and run kept coming. NVIDIA then agreed to buy Hugging Face, where such models gather."
   glyph: "WEIGHTS"

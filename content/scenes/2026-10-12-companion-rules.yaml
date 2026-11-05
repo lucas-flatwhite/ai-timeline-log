@@ -22,7 +22,7 @@ sources:
     publisher: New York State
 items:
   - date: 2026-10-12
-    ko: Character.AI, 파산보호(Chapter 11)를 신청하고 법원 감독 아래 매각에 나섰다. 디즈니는 일부 지식재산 등의 비독점 영구 라이선스에 2,000만 달러를 제안했다. 서비스는 그동안 계속 운영한다.
+    ko: 캐릭터AI, 파산보호(Chapter 11)를 신청하고 법원 감독 아래 매각에 나섰다. 디즈니는 일부 지식재산 등의 비독점 영구 라이선스에 2,000만 달러를 제안했다. 서비스는 그동안 계속 운영한다.
     en: "Character.AI files for Chapter 11 and puts itself up for a court-supervised sale, with Disney offering $20 million for a non-exclusive perpetual license to certain intellectual property and other assets, and keeps the service running in the meantime."
     glyph: { ko: 회생, en: CH.11 }
     sources:
@@ -30,7 +30,7 @@ items:
         title: Character.ai Initiates Voluntary Chapter 11 Proceeding to Facilitate Value-Maximizing Sale Process
         publisher: Character Technologies Inc. / Business Wire
   - date: 2026-10-14
-    ko: 뉴욕주 법무장관과 다른 39명의 법무장관, Character.AI 매각 과정에서 아동과 소비자를 보호하고 민감한 대화 데이터를 쓰거나 넘길 때의 보호 장치를 두라고 요구.
+    ko: 뉴욕주 법무장관과 다른 39명의 법무장관, 캐릭터AI 매각 과정에서 아동과 소비자를 보호하고 민감한 대화 데이터를 쓰거나 넘길 때의 보호 장치를 두라고 요구.
     en: "New York’s attorney general and 39 other attorneys general call for protections for children and consumers in the Character.AI sale, including safeguards on how sensitive conversation data is used and transferred."
     glyph: { ko: 대화, en: CHATS }
     sources:
@@ -51,7 +51,7 @@ items:
 ko:
   kicker: 동반자 챗봇
   title: 파산한 AI 친구 회사
-  lede: 동반자 챗봇 회사 Character.AI가 파산보호를 신청하고 매각에 나서자, 이용자들이 털어놓은 대화가 어디로 가느냐가 문제가 됐다. 10월 말 보도 기준으로 매각은 진행 중이고, 서비스 종료나 대화 데이터 이전은 정해지지 않았다. 뉴욕주는 미성년자에게 줄 수 없는 기능을 법으로 정했다.
+  lede: 동반자 챗봇 회사 캐릭터AI가 파산보호를 신청하고 매각에 나서자, 이용자들이 털어놓은 대화가 어디로 가느냐가 문제가 됐다. 10월 말 보도 기준으로 매각은 진행 중이고, 서비스 종료나 대화 데이터 이전은 정해지지 않았다. 뉴욕주는 미성년자에게 줄 수 없는 기능을 법으로 정했다.
 en:
   kicker: Companion Chatbots
   title: "An AI Companion Goes Bankrupt"

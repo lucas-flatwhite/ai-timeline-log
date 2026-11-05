@@ -35,7 +35,7 @@ items:
     sources:
       - *a1
   - date: 2026-10-30
-    ko: Google, IETF AIPREF 작업을 바탕으로 같은 공통 신호를 2027년에 지원할 계획이라고 발표. Google-Extended를 통한 개별 설정도 유지한다.
+    ko: 구글, IETF AIPREF 작업을 바탕으로 같은 공통 신호를 2027년에 지원할 계획이라고 발표. Google-Extended를 통한 개별 설정도 유지한다.
     en: Google announces plans to support the shared signal in 2027, based on IETF AIPREF work, while retaining individual controls through Google-Extended.
     glyph:
       ko: 예정
@@ -43,7 +43,7 @@ items:
     sources:
       - *a2
   - date: 2026-10-30
-    ko: 영국 CMA, Meta가 시행을 보류한 기업 이용약관 개정안에 경쟁법 조사 개시. 출판사 등의 웹 콘텐츠를 AI 등에 쓰도록 한 조건이 불공정한지 살피며 위법 여부는 결정하지 않았다.
+    ko: 영국 CMA, 메타가 시행을 보류한 기업 이용약관 개정안에 경쟁법 조사 개시. 출판사 등의 웹 콘텐츠를 AI 등에 쓰도록 한 조건이 불공정한지 살피며 위법 여부는 결정하지 않았다.
     en: The UK CMA opens a competition investigation into Meta’s proposed business terms, whose rollout is paused, for using publishers’ web content, including for AI, without reaching a finding of infringement.
     glyph:
       ko: 조사
@@ -53,7 +53,7 @@ items:
 ko:
   kicker: 학습 데이터
   title: 학습에 쓰지 말라는 신호
-  lede: 웹사이트 운영자가 여러 AI 회사에 학습 선호를 한 번에 알리는 신호가 제안됐다. 같은 날 영국 경쟁 당국은 Meta가 콘텐츠 이용 조건을 일방적으로 부과하는지 조사에 나섰다.
+  lede: 웹사이트 운영자가 여러 AI 회사에 학습 선호를 한 번에 알리는 신호가 제안됐다. 같은 날 영국 경쟁 당국은 메타가 콘텐츠 이용 조건을 일방적으로 부과하는지 조사에 나섰다.
 en:
   kicker: Training Data
   title: A Signal Against AI Training
