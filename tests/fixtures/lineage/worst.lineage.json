@@ -7,49 +7,49 @@
   "nodes": [
     {
       "id": "alpha-router", "row": "root", "kind": "paper",
-      "name": "Alpha Sparse Routing for Text", "sub": "A. Example, B. Sample", "date": "2015-03",
+      "name": "Alpha Sparse Routing for Text", "sub": "A. Example", "date": "2015-03",
       "sources": [{ "title": "Alpha Sparse Routing for Text", "by": "A. Example, B. Sample", "year": 2015, "url": "https://example.com/alpha", "opened": true }]
     },
     {
       "id": "kappa-capacity", "row": "root", "kind": "hardware", "side": true,
-      "name": "Kappa Capacity Factor Tuning", "sub": "Fictional accelerator", "date": "2016",
+      "name": "Kappa Capacity Factor Tuning", "sub": "Accelerator", "date": "2016",
       "sources": [{ "title": "Kappa Capacity Factor Tuning", "url": "https://example.com/kappa", "opened": true }]
     },
     {
       "id": "gamma-pool", "row": "root", "kind": "paper",
-      "name": "Gamma Expert Pool for Speech", "sub": "Fictional speech lab", "date": "2017-06-12",
+      "name": "Gamma Expert Pool for Speech", "sub": "Speech lab", "date": "2017-06-12",
       "sources": [{ "title": "Gamma Expert Pool for Speech", "year": 2017, "url": "https://example.com/gamma", "opened": true }]
     },
     {
       "id": "delta-stack", "row": "revival", "kind": "paper",
-      "name": "Delta Fused Stack and Router", "sub": "C. Example and others", "date": "2019-02",
-      "sources": [{ "title": "Delta Fused Stack and Router", "url": "https://example.com/delta", "opened": true }]
+      "name": "Delta Fused Stack", "sub": "C. Example", "date": "2019-02",
+      "sources": [{ "title": "Delta Fused Stack", "url": "https://example.com/delta", "opened": true }]
     },
     {
       "id": "eta-parallel", "row": "revival", "kind": "model",
-      "name": "Eta Parallel Expert Training", "sub": "Fictional model, 600B", "date": "2020-06-30",
-      "sources": [{ "title": "Eta Parallel Expert Training", "url": "https://example.com/eta", "opened": true }]
+      "name": "Eta Parallel Experts", "sub": "600B params", "date": "2020-06-30",
+      "sources": [{ "title": "Eta Parallel Experts", "url": "https://example.com/eta", "opened": true }]
     },
     {
       "id": "theta-shared", "row": "merge", "kind": "model",
-      "name": "Theta Shared Expert Variant B", "sub": "Fictional, 1.2T total", "date": "2023-01-10",
+      "name": "Theta Shared Expert Variant B", "sub": "1.2T total", "date": "2023-01-10",
       "sources": [{ "title": "Theta Shared Expert Variant B", "url": "https://example.com/theta", "opened": true }]
     },
     {
       "id": "lambda-ablation", "row": "merge", "kind": "paper",
-      "name": "Lambda Router Gate Ablation", "sub": "Workshop draft, 2023", "date": "2023-08",
+      "name": "Lambda Router Gate Ablation", "sub": "Workshop draft", "date": "2023-08-21",
       "sources": [{ "title": "Lambda Router Gate Ablation", "url": "https://example.com/lambda", "opened": false }]
     },
     {
       "id": "tau-pool", "row": "spread", "kind": "release",
-      "name": "Tau Expert Pool with Top-2 Gates", "sub": "Open weights, 8x22B v2", "date": "2024-03-15",
-      "sources": [{ "title": "Tau Expert Pool with Top-2 Gates", "url": "https://example.com/tau", "opened": true }],
+      "name": "Tau Expert Pool", "sub": "8x22B weights", "date": "2024-03-15",
+      "sources": [{ "title": "Tau Expert Pool", "url": "https://example.com/tau", "opened": true }],
       "timeline": { "id": "2024-03-tau", "url": "https://example.com/timeline/tau" }
     },
     {
       "id": "iota-pool", "row": "spread", "kind": "model",
-      "name": "Iota Shared Expert Pool v3", "sub": "Fictional model, MIT", "date": "2025-01-20",
-      "sources": [{ "title": "Iota Shared Expert Pool v3", "url": "https://example.com/iota", "opened": true }]
+      "name": "Iota Shared Pool v3", "sub": "MIT license", "date": "2025-01-20",
+      "sources": [{ "title": "Iota Shared Pool v3", "url": "https://example.com/iota", "opened": true }]
     }
   ],
   "edges": [

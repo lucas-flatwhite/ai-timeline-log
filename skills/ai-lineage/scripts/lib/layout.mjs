@@ -4,11 +4,11 @@ import { dateKey } from './schema.mjs';
 import { STRINGS, KIND_TAGS } from './strings.mjs';
 import { STYLES, TOKENS } from './styles.mjs';
 import {
-  BOX, INSET, LEGEND, NAME_SIZE, boxHeight, createPainter, drawBox, drawEdge, drawFrame, drawLegend,
-  drawRowLabel, edgeDash, legendWidth,
+  BOX, INSET, NAME_SIZE, TAG_FLOOR, TEXT_FLOOR, boxHeight, createPainter, drawBox, drawEdge, drawFrame, drawLegend,
+  drawRowLabel, edgeDash, legendWidth, tagRects,
 } from './draw.mjs';
 
-export { NAME_SIZE };
+export { NAME_SIZE, TAG_FLOOR, TEXT_FLOOR };
 
 /** @typedef {import('./schema.mjs').Lineage} Lineage */
 /** @typedef {import('./schema.mjs').LNode} LNode */
@@ -24,17 +24,21 @@ export { NAME_SIZE };
 
 export const ROW_ORDER = /** @type {const} */ (['root', 'revival', 'merge', 'spread']);
 
-/** Canvas and type sizes. Only the node name (NAME_SIZE) has a floor; the rest are set so the worst fixture fits. */
+/**
+ * Canvas and type sizes. Floors: names NAME_SIZE; sub, legend, focal, omitted, credit and row labels TEXT_FLOOR;
+ * the tags on a box's top border (kind, timeline) TAG_FLOOR. `cols` is the most nodes one row may hold.
+ * The proof slug line and its K labels are print marks, not text to read, and have no floor.
+ */
 export const CANVAS = {
-  landscape: { width: 1200, height: 675, cols: 4, title: 30, label: 16, sub: 9, badge: 9, legend: 10.5, focal: 13, omitted: 11, slug: 7, laneStep: 6, maxExtra: 56 },
-  portrait: { width: 1080, height: 1350, cols: 3, title: 32, label: 20, sub: 11, badge: 11, legend: 9, focal: 15, omitted: 13, slug: 8, laneStep: 9, maxExtra: 150 },
+  landscape: { width: 1200, height: 675, cols: 4, title: 30, label: 16, sub: 14, tag: 11, legend: 14, credit: 14, focal: 14, omitted: 14, slug: 7, laneStep: 6, maxExtra: 56 },
+  portrait: { width: 1080, height: 1350, cols: 3, title: 32, label: 18, sub: 14, tag: 11, legend: 14, credit: 14, focal: 15, omitted: 14, slug: 8, laneStep: 9, maxExtra: 150 },
 };
 
 const LABEL_GAP = 10; // 줄 이름 띠와 첫 칸 사이
 const GAP_X = 16; // 칸 사이. 두 줄 이상 내려가는 선이 이 틈의 가운데로 지난다
 const TITLE_GAP = 18;
 const LANE_TOP = 12; // 줄 아래 변에서 첫 가로 길까지
-const LANE_BOTTOM = 14; // 마지막 가로 길에서 아래 줄 위 변까지(화살촉과 연표 표지가 들어간다)
+const LANE_BOTTOM = 15; // 마지막 가로 길에서 아래 줄 위 변까지(화살촉과 위 변에 걸친 꼬리표가 들어간다)
 const ROW_GAP_MIN = 26;
 const LAST_LANE_BOTTOM = 6;
 const BAND_GAP = 12;
@@ -68,10 +72,10 @@ export function layout(data, fonts, opts) {
   const S = STYLES[opts.style] ?? STYLES.woodcut;
   const O = opts.portrait ? CANVAS.portrait : CANVAS.landscape;
   const T = STRINGS[data.lang] ?? STRINGS.en;
-  const { width: W, height: H, cols } = O;
+  const { width: W, height: H } = O;
   /** @type {string[]} */
   const errors = [];
-  const p = createPainter(fonts, errors);
+  const p = createPainter(fonts, errors, S);
 
   // ---- 칸: 줄마다 (날짜, id) 순서로 왼쪽부터 ----
   const rows = ROW_ORDER.filter((r) => data.nodes.some((n) => n.row === r));
@@ -82,25 +86,27 @@ export function layout(data, fonts, opts) {
     const list = data.nodes
       .filter((n) => n.row === r)
       .sort((a, b) => cmp(dateKey(a.date), dateKey(b.date)) || cmp(a.id, b.id));
-    if (list.length > cols) {
+    if (list.length > O.cols) {
       errors.push(`row "${r}": ${list.length} nodes, at most ${CANVAS.landscape.cols} in landscape (${CANVAS.portrait.cols} in portrait)`);
     }
     list.forEach((node, col) => placed.set(node.id, { node, row: ri, col, lines: [], sub: '' }));
     return list;
   });
 
+  // 칸 수는 가장 많은 줄을 따르고(최소 2), 칸들이 너비를 고르게 나눈다
+  const cols = Math.max(2, ...grid.map((l) => l.length));
   const left = INSET + O.label + LABEL_GAP;
   const boxW = (W - INSET - left - (cols - 1) * GAP_X) / cols;
   const inner = boxW - 2 * BOX.padX;
   const colX = (/** @type {number} */ c) => left + c * (boxW + GAP_X);
 
-  // ---- 상자 안 글: 이름은 띄어쓰기에서 최대 2줄, 아래 줄은 1줄 ----
+  // ---- 상자 안 글: 이름은 띄어쓰기에서 최대 2줄, 아래 줄(날짜 · 부제)은 1줄. 종류는 위 변의 꼬리표 ----
   for (const [id, v] of placed) {
     const { lines, fits } = wrap(clean(v.node.name), inner, (s) => p.measure('bodyBold', s, NAME_SIZE));
     if (!fits) errors.push(`node "${id}": name does not fit in two lines`);
     v.lines = lines.slice(0, 2);
     const sub = clean(v.node.sub);
-    v.sub = [KIND_TAGS[v.node.kind] ?? 'OTHER', dotDate(v.node.date), ...(sub ? [sub] : [])].join(' · ');
+    v.sub = [dotDate(v.node.date), ...(sub ? [sub] : [])].join(' · ');
     if (p.measure('mono', v.sub, O.sub) > inner) errors.push(`node "${id}": sub does not fit`);
   }
   const rowH = grid.map((list) => Math.max(...list.map((n) => boxHeight(placed.get(n.id)?.lines.length || 1, O.sub))));
@@ -142,19 +148,20 @@ export function layout(data, fonts, opts) {
     return Math.max(ROW_GAP_MIN, count ? LANE_TOP + (count - 1) * O.laneStep + LANE_BOTTOM : 0);
   });
 
-  // ---- 맨 아래 띠: 범례(와 출처 줄), 징검다리, 뺀 것 ----
+  // ---- 맨 아래 띠: 범례, 징검다리, 뺀 것, 출처 줄(오른쪽 끝). 줄마다 하나 ----
   const legend = legendEntries(data, T);
   const focalText = data.focal ? T.focalPrefix + clean(data.focal.note) : '';
   const omittedText = data.omitted?.length ? T.omittedPrefix + data.omitted.map(clean).join(', ') : '';
-  const lineH = { legend: Math.max(14, O.legend * 1.4), focal: O.focal * 1.35, omitted: O.omitted * 1.35 };
+  const lineH = { legend: O.legend * 1.4, focal: O.focal * 1.35, omitted: O.omitted * 1.35, credit: O.credit * 1.35 };
   const bandH =
-    lineH.legend + (focalText ? BAND_LINE_GAP + lineH.focal : 0) + (omittedText ? BAND_LINE_GAP + lineH.omitted : 0);
+    lineH.legend +
+    (focalText ? BAND_LINE_GAP + lineH.focal : 0) +
+    (omittedText ? BAND_LINE_GAP + lineH.omitted : 0) +
+    (opts.credit ? BAND_LINE_GAP + lineH.credit : 0);
   const contentW = W - 2 * INSET;
-  const legW = legendWidth(p, legend, O.legend);
-  const creditW = opts.credit ? p.measure('body', T.credit, O.legend) : 0;
-  if (legW + (opts.credit ? LEGEND.creditGap + creditW : 0) > contentW) {
-    errors.push(opts.credit ? 'legend and credit line do not fit in one line' : 'legend does not fit in one line');
-  }
+  const creditW = opts.credit ? p.measure('body', T.credit, O.credit) : 0;
+  if (legendWidth(p, legend, O.legend) > contentW) errors.push('legend does not fit in one line');
+  if (creditW > contentW) errors.push('credit line does not fit in one line');
   if (focalText && p.measure('body', focalText, O.focal) > contentW) {
     errors.push('focal note does not fit in one line: shorten it');
   }
@@ -193,11 +200,22 @@ export function layout(data, fonts, opts) {
   const boxes = {};
   for (const [id, v] of placed) boxes[id] = { x: colX(v.col), y: rowTop[v.row], w: boxW, h: rowH[v.row] };
   const center = (/** @type {string} */ id) => boxes[id].x + boxes[id].w / 2;
+  const kindOf = (/** @type {LNode} */ nd) => KIND_TAGS[nd.kind] ?? 'OTHER';
+  const badgeOf = (/** @type {LNode} */ nd) => (nd.timeline ? T.timeline : null);
+  // 위 변의 두 꼬리표 사이에서만 선이 들어온다. 가운데에서 잰 왼쪽, 오른쪽 한계
+  /** @param {LNode} nd */
+  const topRoom = (nd) => {
+    const b = boxes[nd.id];
+    const t = tagRects(p, S, b, kindOf(nd), badgeOf(nd), O.tag);
+    const cx = b.x + b.w / 2;
+    const lo = t.kind.x + t.kind.w + CLEAR - cx;
+    const hi = (t.badge ? t.badge.x : b.x + b.w - PORT_MARGIN) - CLEAR - cx;
+    return /** @type {[number, number]} */ ([lo, hi]);
+  };
 
   // ---- 세로 길: 두 줄 이상 내려가는 선은 칸 사이 틈을 쓴다. 가까운 틈, 같으면 덜 붐비는 틈 ----
-  const span = Math.max(cols, ...grid.map((l) => l.length));
   /** @type {string[][]} */
-  const chUsers = Array.from({ length: Math.max(1, span - 1) }, () => []);
+  const chUsers = Array.from({ length: cols - 1 }, () => []);
   const chX = (/** @type {number} */ j) => colX(j) + boxW + GAP_X / 2;
   for (const r of routes) {
     r.ax = center(r.e.from);
@@ -236,7 +254,7 @@ export function layout(data, fonts, opts) {
 
   // ---- 도착 자리: 상자 가운데. 선이 겹치게 되면 옆으로 비킨다 ----
   for (let g = 0; g < n; g++) {
-    for (let c = 0; c < span; c++) {
+    for (let c = 0; c < cols; c++) {
       const above = grid[g][c];
       const below = grid[g + 1]?.[c];
       /** @type {{ x: number, lane: number, from: string, dep: boolean }[]} */
@@ -245,14 +263,19 @@ export function layout(data, fonts, opts) {
         const departs = lanes[g].includes(above.id);
         if (departs) upper.push({ x: center(above.id), lane: laneY(g, above.id), from: above.id, dep: true });
         const into = routes.filter((r) => r.kind === 'same' && r.e.to === above.id);
-        place(into, boxes[above.id], departs, () => false);
+        const half = boxes[above.id].w / 2 - PORT_MARGIN;
+        place(into, boxes[above.id], departs, () => false, [-half, half]);
         for (const r of into) upper.push({ x: /** @type {number} */ (r.portX), lane: /** @type {number} */ (r.laneB), from: r.e.from, dep: false });
       }
       if (below) {
         const into = routes.filter((r) => r.kind !== 'same' && r.e.to === below.id);
         // 위 상자에서 내려오는 선과 같은 x에 서면 한 선처럼 보인다. 위 상자에서 곧장 내려오는 선만 예외다.
-        place(into, boxes[below.id], false, (r, x) =>
-          upper.some((u) => Math.abs(u.x - x) < CLEAR && !(u.dep && u.from === r.e.from)),
+        place(
+          into,
+          boxes[below.id],
+          false,
+          (r, x) => upper.some((u) => Math.abs(u.x - x) < CLEAR && !(u.dep && u.from === r.e.from)),
+          topRoom(below),
         );
       }
     }
@@ -297,16 +320,14 @@ export function layout(data, fonts, opts) {
         side: node.side === true,
         focal: data.focal?.node === node.id,
         unverified: node.sources.every((s) => s.opened === false),
-        badge: node.timeline ? T.timeline : null,
-        badgeSize: O.badge,
+        kind: kindOf(node),
+        badge: badgeOf(node),
+        tagSize: O.tag,
       });
     }
   }
   let by = bandTop + lineH.legend / 2;
   drawLegend(p, S, legend, INSET, by, O.legend);
-  if (opts.credit) {
-    p.text('body', T.credit, O.legend, W - INSET - creditW, by + 0.35 * O.legend, TOKENS.ink2, { where: 'credit' });
-  }
   by += lineH.legend / 2;
   if (focalText) {
     by += BAND_LINE_GAP + lineH.focal;
@@ -315,6 +336,10 @@ export function layout(data, fonts, opts) {
   if (omittedText) {
     by += BAND_LINE_GAP + lineH.omitted;
     p.text('body', omittedText, O.omitted, INSET, by - lineH.omitted / 2 + 0.35 * O.omitted, TOKENS.ink2, { where: 'omitted' });
+  }
+  if (opts.credit) {
+    by += BAND_LINE_GAP + lineH.credit;
+    p.text('body', T.credit, O.credit, W - INSET - creditW, by - lineH.credit / 2 + 0.35 * O.credit, TOKENS.ink2, { where: 'credit' });
   }
 
   const names = grid.flat().map((nd) => `${clean(nd.name)} (${dotDate(nd.date)})`);
@@ -332,11 +357,12 @@ export function layout(data, fonts, opts) {
 
   /**
    * Spreads the arrival points of `list` along one side of box `b`, ordered by where each line comes from.
-   * `blockCenter` keeps the middle free (the box's own line leaves from there); `clash` rejects a point.
+   * `blockCenter` keeps the middle free (the box's own line leaves from there); `clash` rejects a point;
+   * `room` bounds the offsets from the center.
    * @param {Route[]} list @param {Box} b @param {boolean} blockCenter
-   * @param {(r: Route, x: number) => boolean} clash
+   * @param {(r: Route, x: number) => boolean} clash @param {[number, number]} room
    */
-  function place(list, b, blockCenter, clash) {
+  function place(list, b, blockCenter, clash, room) {
     if (!list.length) return;
     list.sort((r, q) => /** @type {number} */ (r.approach) - /** @type {number} */ (q.approach) || /** @type {number} */ (r.laneB) - /** @type {number} */ (q.laneB) || r.i - q.i);
     const k = list.length;
@@ -346,17 +372,21 @@ export function layout(data, fonts, opts) {
     const mid = list[(k - 1) >> 1];
     const lean = /** @type {number} */ (mid.approach) < cx ? -1 : 1;
     const shifts = [0, 0.5, -0.5, 1, -1, 0.25, -0.25, 1.5, -1.5, 0.75, -0.75].map((s) => s * step * lean);
-    const room = b.w / 2 - PORT_MARGIN;
     let chosen = null;
     for (const s of shifts) {
       const xs = base.map((o) => o + s);
-      if (xs.some((o) => Math.abs(o) > room)) continue;
+      if (xs.some((o) => o < room[0] || o > room[1])) continue;
       if (blockCenter && xs.some((o) => Math.abs(o) < CLEAR)) continue;
       if (list.some((r, i) => clash(r, cx + xs[i]))) continue;
       chosen = xs;
       break;
     }
-    (chosen ?? base).forEach((o, i) => {
+    // 어느 자리도 맞지 않으면 꼬리표 사이 자리 안에 고르게 좁혀 놓는다
+    if (!chosen) {
+      const [lo, hi] = room;
+      chosen = k > 1 ? list.map((_, i) => lo + ((hi - lo) * i) / (k - 1)) : [Math.min(hi, Math.max(lo, 0))];
+    }
+    chosen.forEach((o, i) => {
       list[i].portX = cx + o;
     });
   }

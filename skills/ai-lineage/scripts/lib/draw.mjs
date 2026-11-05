@@ -7,7 +7,8 @@ import { TOKENS, blend } from './styles.mjs';
 /** @typedef {import('./fonts.mjs').Fonts} Fonts */
 /** @typedef {import('./fonts.mjs').Role} Role */
 /** @typedef {import('./styles.mjs').Style} Style */
-/** @typedef {{ cmds: Cmd[], fill?: string, stroke?: string, width?: number, dash?: number[] }} Item */
+/** @typedef {{ cmds: Cmd[], fill?: string, stroke?: string, width?: number, dash?: number[],
+ *   cap?: 'butt'|'round'|'square', join?: 'miter'|'round' }} Item */
 /** @typedef {{ x: number, y: number, w: number, h: number }} Box */
 /** @typedef {'lineage'|'side'|'confirmed'|'inferred'|'condition'|'focal'|'timeline'|'unverified'} LegendKey */
 
@@ -19,17 +20,24 @@ export const INSET = 24;
 /** 노드 이름 글자 크기. 가로 1200 그림을 400으로 줄여도 9px 이상이다. 맞지 않을 때 줄이지 않는다. */
 export const NAME_SIZE = 28;
 
-/** 상자 안 치수. 이름 줄 높이와 첫 줄 기준선은 NAME_SIZE 28에 맞춘 값이다. */
-export const BOX = { padX: 10, padTop: 9, padBottom: 8, line: 30, ascent: 23, subGap: 12 };
+/** 이름 밖 글자의 하한(캔버스 px): 아래 줄, 범례, 징검다리 줄, 뺀 것 줄, 출처 줄, 줄 이름.
+ *  가로 1200 그림을 블로그에서 800으로 보여도 9px 이상이다. */
+export const TEXT_FLOOR = 14;
+
+/** 상자 변에 걸친 꼬리표(연표 표지, 종류 꼬리표)의 하한. */
+export const TAG_FLOOR = 11;
+
+/** 상자 안 치수. 이름 줄 높이와 첫 줄 기준선은 NAME_SIZE 28에 맞춘 값이다. padTop은 위 변에 걸친 꼬리표 아래를 비운다. */
+export const BOX = { padX: 10, padTop: 11, padBottom: 8, line: 30, ascent: 23, subGap: 12 };
 
 /** @param {number} lines @param {number} subSize */
 export const boxHeight = (lines, subSize) =>
   BOX.padTop + BOX.ascent + (lines - 1) * BOX.line + BOX.subGap + 0.97 * subSize + BOX.padBottom;
 
 /** 범례 견본 치수 */
-export const LEGEND = { box: 16, boxH: 10, line: 22, textGap: 5, itemGap: 12, creditGap: 20 };
+export const LEGEND = { box: 16, boxH: 10, line: 22, textGap: 5, itemGap: 12 };
 
-/** 연표 표지 크기. 상자 위 변에 걸쳐 찍고, 위로 `rise`만큼 튀어나온다. @param {number} size */
+/** 상자 위 변에 걸친 꼬리표(연표 표지, 종류 꼬리표)의 크기. 위로 `rise`만큼 튀어나온다. @param {number} size */
 export const badgeMetrics = (size) => {
   const h = size + 7;
   return { h, rise: h / 2 + 2 };
@@ -138,10 +146,12 @@ export function mapPoints(cmds, fn) {
 /**
  * Collects Scene items and the strings drawn. Every string goes through `text`, which shapes it with the
  * role's own font chain and turns glyphs no font has into errors that name where the string is.
+ * Every stroked item gets the style's line cap and join.
  * @param {Fonts} fonts
  * @param {string[]} errors
+ * @param {Style} S
  */
-export function createPainter(fonts, errors) {
+export function createPainter(fonts, errors, S) {
   /** @type {Item[]} */
   const items = [];
   /** @type {string[]} */
@@ -180,7 +190,12 @@ export function createPainter(fonts, errors) {
 
   /** @param {Item} item */
   const add = (item) => {
-    if (item.cmds.length) items.push(item);
+    if (!item.cmds.length) return;
+    if (item.stroke) {
+      item.cap = S.line.cap;
+      item.join = S.line.join;
+    }
+    items.push(item);
   };
 
   return { items, texts, measure, text, add };
@@ -266,9 +281,23 @@ export function drawRowLabel(p, S, label, stack, x, midY, size) {
 // ---- 상자 ----
 
 /**
+ * Where the two tags on a box's top border sit: the kind tag at the left, the timeline badge (if any) at the right.
+ * Layout keeps arrival points clear of both.
+ * @param {Painter} p @param {Style} S @param {Box} b @param {string} kind @param {string | null} badge @param {number} size
+ */
+export function tagRects(p, S, b, kind, badge, size) {
+  const { h, rise } = badgeMetrics(size);
+  const kw = p.measure('mono', kind, size) + 10;
+  const kindRect = { x: b.x + 10, y: b.y - rise, w: kw, h };
+  if (!badge) return { kind: kindRect, badge: null };
+  const bw = p.measure(S.fonts.badge, badge, size) + 12;
+  return { kind: kindRect, badge: { x: b.x + b.w - 10 - bw, y: b.y - rise, w: bw, h } };
+}
+
+/**
  * @param {Painter} p @param {Style} S @param {Box} b
- * @param {{ id: string, lines: string[], sub: string, subSize: number, side: boolean, focal: boolean,
- *   unverified: boolean, badge: string | null, badgeSize: number }} v
+ * @param {{ id: string, lines: string[], kind: string, sub: string, subSize: number, side: boolean, focal: boolean,
+ *   unverified: boolean, badge: string | null, tagSize: number }} v
  */
 export function drawBox(p, S, b, v) {
   const look = v.focal
@@ -280,8 +309,10 @@ export function drawBox(p, S, b, v) {
   const item = { cmds: roundRect(b.x, b.y, b.w, b.h, S.node.radius), fill: look.fill, stroke: look.stroke, width: look.width };
   if (v.unverified) item.dash = [6, 4];
   p.add(item);
-  if (v.badge) drawBadge(p, S, b, v.badge, v.badgeSize, `node "${v.id}"`);
   const where = `node "${v.id}"`;
+  const tags = tagRects(p, S, b, v.kind, v.badge, v.tagSize);
+  drawKindTag(p, S, tags.kind, v.kind, v.tagSize, where);
+  if (v.badge && tags.badge) drawBadge(p, S, tags.badge, v.badge, v.tagSize, where);
   const cx = b.x + b.w / 2;
   // 아래 줄은 상자 아래 변에 붙여 한 줄의 상자끼리 맞춘다. 이름이 줄 높이보다 짧으면 남는 자리 가운데에 둔다.
   const room = Math.max(1, Math.round((b.h - boxHeight(1, v.subSize)) / BOX.line) + 1);
@@ -294,15 +325,19 @@ export function drawBox(p, S, b, v) {
   p.text('mono', v.sub, v.subSize, cx - p.measure('mono', v.sub, v.subSize) / 2, sb, look.sub, { where });
 }
 
-/** @param {Painter} p @param {Style} S @param {Box} b @param {string} label @param {number} size @param {string} where */
-function drawBadge(p, S, b, label, size, where) {
+/** The kind tag cuts the top border like a label on a folder: background fill, no frame, mono text.
+ * @param {Painter} p @param {Style} S @param {Box} r @param {string} label @param {number} size @param {string} where */
+function drawKindTag(p, S, r, label, size, where) {
+  p.add({ cmds: rect(r.x, r.y, r.w, r.h), fill: S.background });
+  p.text('mono', label, size, r.x + 5, r.y + r.h / 2 + 0.35 * size, TOKENS.ink2, { where });
+}
+
+/** @param {Painter} p @param {Style} S @param {Box} r @param {string} label @param {number} size @param {string} where */
+function drawBadge(p, S, r, label, size, where) {
   const { ink } = TOKENS;
-  const { h, rise } = badgeMetrics(size);
   const role = S.fonts.badge;
   const tw = p.measure(role, label, size);
-  const w = tw + 12;
-  const x = b.x + b.w - 10 - w;
-  const y = b.y - rise;
+  const { x, y, w, h } = r;
   if (S.badge === 'stamp') {
     p.add({ cmds: rect(x, y, w, h), fill: S.background, stroke: ink, width: 2 });
     p.add({ cmds: rect(x + 2.5, y + 2.5, w - 5, h - 5), stroke: ink, width: 0.8 });

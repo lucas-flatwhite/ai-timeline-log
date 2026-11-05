@@ -2,7 +2,8 @@ import { describe, test, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { loadFonts, shapeText } from '../../../skills/ai-lineage/scripts/lib/fonts.mjs';
 import { validate } from '../../../skills/ai-lineage/scripts/lib/schema.mjs';
-import { layout, NAME_SIZE } from '../../../skills/ai-lineage/scripts/lib/layout.mjs';
+import { layout, NAME_SIZE, TEXT_FLOOR, TAG_FLOOR, CANVAS } from '../../../skills/ai-lineage/scripts/lib/layout.mjs';
+import { boxHeight, createPainter, tagRects } from '../../../skills/ai-lineage/scripts/lib/draw.mjs';
 import { check } from '../../../skills/ai-lineage/scripts/lib/check.mjs';
 import { STRINGS } from '../../../skills/ai-lineage/scripts/lib/strings.mjs';
 import { STYLES, TOKENS, blend } from '../../../skills/ai-lineage/scripts/lib/styles.mjs';
@@ -17,19 +18,21 @@ const ORIENTS = [false, true];
 const EPS = 1e-6;
 
 // The ko variant of worst. A Hangul syllable at 28px is about 26px wide and a Latin letter about 16px,
-// so a Hangul name with the same character count cannot fit in two lines of a landscape box at all.
-// Each Korean name here is instead about as wide as its English name, and still wraps to two lines.
+// so a Hangul name with the same character count needs far more room than the English name.
+// Each Korean name here is instead about as wide as its English name and takes as many lines.
 const KO_NAMES: Record<string, string> = {
   'alpha-router': '알파 희소 라우팅의 문장 처리 적용판',
   'kappa-capacity': '카파 용량 계수 조정 실험 기록 모음',
   'gamma-pool': '감마 전문가 묶음 음성 인식 적용판',
-  'delta-stack': '델타 융합 층과 라우터 함께 설계',
-  'eta-parallel': '에타 전문가 병렬 학습 방법 정리',
+  'delta-stack': '델타 융합 층의 설계',
+  'eta-parallel': '에타 병렬 전문가 학습',
   'theta-shared': '세타 공유 전문가의 변형 모델 B판',
   'lambda-ablation': '람다 라우터 게이트 제거 실험 기록',
-  'tau-pool': '타우 전문가 묶음과 상위 두 게이트 판',
-  'iota-pool': '요타 공유 전문가 묶음 셋째 판',
+  'tau-pool': '타우 전문가 묶음',
+  'iota-pool': '요타 공유 전문가 묶음',
 };
+// In worst, names in these rows take two lines and the others one, in both orientations.
+const TWO_LINE_ROWS = ['root', 'merge'];
 function worstKo(): any {
   const d = structuredClone(worst);
   d.lang = 'ko';
@@ -48,6 +51,18 @@ beforeAll(async () => {
 const run = (data: any, style: string, portrait: boolean, credit = true): any =>
   layout(data, fonts, { style, credit, portrait } as any);
 const has = (list: string[], word: string): boolean => list.some((m) => m.includes(word));
+
+// Small graphs built from alpha's first node. rows: { id: row }, edges: [from, to].
+function mini(rows: Record<string, string>, edges: [string, string][]): any {
+  const d = structuredClone(alpha);
+  const base = d.nodes[0];
+  d.nodes = Object.entries(rows).map(([id, row], i) => ({
+    ...structuredClone(base), id, row, name: `Node ${id.toUpperCase()}`, date: `20${10 + i}`,
+  }));
+  d.edges = edges.map(([from, to]) => ({ from, to, type: 'lineage', status: 'inferred' }));
+  delete d.focal;
+  return d;
+}
 
 function cases(): [string, any, string, boolean][] {
   const out: [string, any, string, boolean][] = [];
@@ -91,11 +106,15 @@ describe('fit', () => {
     const rows = ['root', 'revival', 'merge', 'spread'].map((r) => worst.nodes.filter((n: any) => n.row === r).length);
     expect(rows).toEqual([3, 2, 2, 2]);
     for (const n of worst.nodes) {
-      expect(n.name.length).toBeGreaterThanOrEqual(26);
-      expect(n.name.length).toBeLessThanOrEqual(32);
       expect(n.name).toContain(' ');
-      expect(n.sub.length).toBeGreaterThanOrEqual(18);
-      expect(n.sub.length).toBeLessThanOrEqual(22);
+      expect(n.sub.length).toBeLessThanOrEqual(14);
+    }
+    expect(Math.max(...worst.nodes.map((n: any) => n.sub.length))).toBe(14);
+    // all eight legend entries are drawn
+    for (const lang of ['en', 'ko'] as const) {
+      const data = lang === 'en' ? worst : worstKo();
+      const t = run(data, 'woodcut', false).texts;
+      for (const label of Object.values(STRINGS[lang].legend)) expect(t).toContain(label);
     }
     expect(worst.nodes.filter((n: any) => n.side).length).toBe(1);
     expect(worst.nodes.filter((n: any) => n.timeline).length).toBe(1);
@@ -126,9 +145,11 @@ describe('fit', () => {
         for (const portrait of ORIENTS) {
           const out = run(data, style, portrait);
           expect({ lang: data.lang, style, portrait, errors: out.errors }).toEqual({ lang: data.lang, style, portrait, errors: [] });
-          // every name took exactly two lines: all boxes share one height, the two-line height
-          const hs = new Set(Object.values(out.boxes).map((b: any) => b.h));
-          expect(hs.size).toBe(1);
+          // names take two lines in the root and merge rows and one line elsewhere
+          const O = portrait ? CANVAS.portrait : CANVAS.landscape;
+          for (const n of data.nodes) {
+            expect(out.boxes[n.id].h, n.id).toBeCloseTo(boxHeight(TWO_LINE_ROWS.includes(n.row) ? 2 : 1, O.sub), 6);
+          }
         }
       }
     }
@@ -145,10 +166,10 @@ describe('fit', () => {
   test('a Hangul name with the English character count does not fit', () => {
     const d = structuredClone(worst);
     d.lang = 'ko';
-    const n = d.nodes.find((x: any) => x.id === 'tau-pool');
+    const n = d.nodes.find((x: any) => x.id === 'alpha-router');
     n.name = n.name.replace(/[^ ]/g, '가');
     for (const portrait of ORIENTS) {
-      expect(run(d, 'woodcut', portrait).errors).toContain('node "tau-pool": name does not fit in two lines');
+      expect(run(d, 'woodcut', portrait).errors).toContain('node "alpha-router": name does not fit in two lines');
     }
   });
 
@@ -241,17 +262,6 @@ describe('geometry', () => {
     }
   });
 
-  // Small graphs built from alpha's first node. rows: { id: row }, edges: [from, to].
-  function mini(rows: Record<string, string>, edges: [string, string][]): any {
-    const d = structuredClone(alpha);
-    const base = d.nodes[0];
-    d.nodes = Object.entries(rows).map(([id, row], i) => ({
-      ...structuredClone(base), id, row, name: `Node ${id.toUpperCase()}`, date: `20${10 + i}`,
-    }));
-    d.edges = edges.map(([from, to]) => ({ from, to, type: 'lineage', status: 'inferred' }));
-    delete d.focal;
-    return d;
-  }
   const tip = (out: any, from: string, to: string) => {
     const e = out.edges.find((x: any) => x.from === from && x.to === to);
     return e.points[e.points.length - 1];
@@ -303,6 +313,31 @@ describe('geometry', () => {
         if (!above || above[0] === e.from || !out.edges.some((q: any) => q.from === above[0])) continue;
         const b: any = above[1];
         expect(Math.abs(x - (b.x + b.w / 2)), `${name} ${style} ${portrait} ${e.from}->${e.to}`).toBeGreaterThanOrEqual(6);
+      }
+    }
+  });
+
+  test('arrivals stay between the tags on the top border', () => {
+    // eight lines into one narrow box that has both a kind tag and a timeline badge
+    const rows: Record<string, string> = { t: 'merge' };
+    for (const id of ['a', 'b', 'c', 'dd']) rows[id] = 'root';
+    for (const id of ['e', 'f', 'g', 'h']) rows[id] = 'revival';
+    const d = mini(rows, Object.keys(rows).filter((id) => id !== 't').map((id) => [id, 't'] as [string, string]));
+    const t = d.nodes.find((n: any) => n.id === 't');
+    t.date = '2024-01-01';
+    t.timeline = { id: 'x', url: 'https://example.com/x' };
+    for (const style of STYLE_IDS) {
+      const out = run(d, style, false);
+      expect(out.errors).toEqual([]);
+      noOverlap(out);
+      const b = out.boxes.t;
+      const p = createPainter(fonts, [], STYLES[style as 'woodcut']);
+      const tags = tagRects(p, STYLES[style as 'woodcut'], b, 'PAPER', 'Timeline', CANVAS.landscape.tag);
+      const xs = out.edges.filter((e: any) => e.to === 't').map((e: any) => e.points[e.points.length - 1][0]);
+      expect(new Set(xs.map((x: number) => x.toFixed(3))).size).toBe(8);
+      for (const x of xs) {
+        expect(x).toBeGreaterThan(tags.kind.x + tags.kind.w);
+        expect(x).toBeLessThan(tags.badge!.x);
       }
     }
   });
@@ -383,28 +418,38 @@ describe('rules', () => {
     expect(t2.some((x: string) => x.startsWith('Omitted · '))).toBe(false);
   });
 
-  test('sub line has kind, dotted date and sub', () => {
+  test('sub line has dotted date and sub, kind sits in a tag', () => {
     const t = run(worst, 'woodcut', false).texts;
-    expect(t).toContain('RELEASE · 2024.03.15 · Open weights, 8x22B v2');
-    expect(t).toContain('HW · 2016 · Fictional accelerator');
-    expect(t).toContain('PAPER · 2015.03 · A. Example, B. Sample');
+    expect(t).toContain('2024.03.15 · 8x22B weights');
+    expect(t).toContain('2016 · Accelerator');
+    expect(t).toContain('2015.03 · A. Example');
+    for (const tag of ['PAPER', 'HW', 'MODEL', 'RELEASE']) expect(t).toContain(tag);
+    expect(t.some((x: string) => /^(PAPER|MODEL|HW|RELEASE|DATA|OTHER) · /.test(x))).toBe(false);
     expect(run(alpha, 'woodcut', false).texts).toContain('Timeline');
     expect(run(worstKo(), 'woodcut', false).texts).toContain('연표');
   });
 
   test('unbreakable names are reported, not cut', () => {
+    const four = mini({ a: 'root', b: 'root', c: 'root', dd: 'root' }, []);
     for (const name of ['SuperLongUnbreakableModelName2026', '가나다라마바사아자차카타파하가나다라마바']) {
-      const d = structuredClone(alpha);
-      d.nodes[0].name = name;
-      for (const portrait of ORIENTS) {
-        expect(has(run(d, 'woodcut', portrait).errors, 'node "alpha-routing": name does not fit')).toBe(true);
+      for (const [data, id] of [[structuredClone(worst), 'gamma-pool'], [structuredClone(four), 'a']] as [any, string][]) {
+        data.nodes.find((x: any) => x.id === id).name = name;
+        for (const portrait of ORIENTS) {
+          expect(has(run(data, 'woodcut', portrait).errors, `node "${id}": name does not fit`), `${id} ${portrait}`).toBe(true);
+        }
       }
     }
+    // in two wide columns the Hangul word fits on one line and is drawn whole
+    const d = structuredClone(alpha);
+    d.nodes[0].name = '가나다라마바사아자차카타파하가나다라마바';
+    const out = run(d, 'woodcut', false);
+    expect(out.errors).toEqual([]);
+    expect(out.texts).toContain(d.nodes[0].name);
   });
 
   test('a sub that is too long is reported', () => {
     const d = structuredClone(alpha);
-    d.nodes[0].sub = 'A very long subtitle that will never fit on one line of this box';
+    d.nodes[0].sub = 'A very long subtitle that will never fit on one line of this box, not even a wide one';
     expect(run(d, 'woodcut', false).errors).toContain('node "alpha-routing": sub does not fit');
   });
 
@@ -453,9 +498,27 @@ describe('rules', () => {
     expect(run(d, 'woodcut', false).errors).toContain('edge epsilon-open -> alpha-routing goes upward');
   });
 
+  test('capacity: two-line names in all four rows do not fit in landscape', () => {
+    const d = structuredClone(worst);
+    const long: Record<string, string> = {
+      'delta-stack': 'Delta Fused Stack and Router',
+      'eta-parallel': 'Eta Parallel Expert Training',
+      'tau-pool': 'Tau Expert Pool with Top-2 Gates',
+      'iota-pool': 'Iota Shared Expert Pool v3',
+    };
+    for (const n of d.nodes) if (long[n.id]) n.name = long[n.id];
+    const l = run(d, 'woodcut', false);
+    expect(l.errors).toEqual(['too tall: shorten names, or move a node to omitted']);
+    for (const style of STYLE_IDS) {
+      const out = run(d, style, true);
+      expect(out.errors).toEqual([]);
+      for (const n of d.nodes) expect(out.boxes[n.id].h).toBeCloseTo(boxHeight(2, CANVAS.portrait.sub), 6);
+    }
+  });
+
   test('too tall', () => {
     const d = structuredClone(worst);
-    // worst has about 23px to spare in landscape. These add six lanes (two below revival, four below merge),
+    // worst has under 20px to spare in landscape. These add six lanes (two below revival, four below merge),
     // about 36px, so landscape runs out while portrait still has room.
     d.edges.push(
       { from: 'kappa-capacity', to: 'theta-shared', type: 'enables', status: 'inferred' },
@@ -496,7 +559,53 @@ describe('rules', () => {
   });
 });
 
+describe('floors and columns', () => {
+  test('text floors', () => {
+    expect(TEXT_FLOOR).toBeGreaterThanOrEqual(14);
+    expect(TAG_FLOOR).toBeGreaterThanOrEqual(11);
+    // 14px on the 1200 canvas is about 9px when the image is shown 800px wide
+    expect((TEXT_FLOOR * 800) / 1200).toBeGreaterThanOrEqual(9);
+    for (const O of [CANVAS.landscape, CANVAS.portrait]) {
+      for (const k of ['sub', 'legend', 'credit', 'focal', 'omitted', 'label'] as const) {
+        expect(O[k], k).toBeGreaterThanOrEqual(TEXT_FLOOR);
+      }
+      expect(O.tag).toBeGreaterThanOrEqual(TAG_FLOOR);
+    }
+  });
+
+  test('columns fill the width', () => {
+    const four = mini({ a: 'root', b: 'root', c: 'root', dd: 'root' }, [['a', 'b']]);
+    const wide = run(alpha, 'woodcut', false).boxes;
+    const narrow = run(four, 'woodcut', false).boxes;
+    expect(wide['alpha-routing'].w).toBeGreaterThan(narrow.a.w);
+    // two columns split the width between the gutter and the right inset
+    const right = Math.max(...(Object.values(wide) as any[]).map((b) => b.x + b.w));
+    expect(right).toBeCloseTo(1200 - 24, 6);
+    expect(Math.max(...(Object.values(narrow) as any[]).map((b) => b.x + b.w))).toBeCloseTo(1200 - 24, 6);
+    // a single node still gets a two-column cell
+    const one = mini({ a: 'root' }, []);
+    expect(run(one, 'woodcut', false).boxes.a.w).toBeCloseTo(wide['alpha-routing'].w, 6);
+  });
+});
+
 describe('styles', () => {
+  test('stroked items carry the style cap and join', () => {
+    const want: Record<string, [string, string]> = { woodcut: ['square', 'miter'], soft: ['round', 'round'], proof: ['butt', 'miter'] };
+    for (const [, data, style, portrait] of cases()) {
+      let stroked = 0;
+      for (const it of run(data, style, portrait).scene.items) {
+        if (it.stroke === undefined) {
+          expect(it.cap).toBeUndefined();
+          continue;
+        }
+        stroked++;
+        expect([it.cap, it.join]).toEqual(want[style]);
+      }
+      expect(stroked).toBeGreaterThan(10);
+    }
+    expect(STYLES.woodcut.line).toEqual({ cap: 'square', join: 'miter' });
+  });
+
   test('tokens match the site', () => {
     const css = readFileSync(new URL('../../../src/styles/tokens.css', import.meta.url), 'utf8');
     const v = (name: string) => css.match(new RegExp(`--${name}:\\s*(#[0-9A-Fa-f]{6})`))![1].toUpperCase();
