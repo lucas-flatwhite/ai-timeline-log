@@ -26,7 +26,7 @@ sources:
     publisher: Marvell and Lumentum
 items:
   - date: 2026-10-01
-    ko: Google, Planet과 만든 Project Suncatcher 시제 위성을 SpaceX Transporter-18로 발사하고 교신 확인. 우주 환경에서 TPU를 시험한다.
+    ko: 구글, Planet과 만든 Project Suncatcher 시제 위성을 스페이스X Transporter-18로 발사하고 교신 확인. 우주 환경에서 TPU를 시험한다.
     en: Google launches its Project Suncatcher prototype satellite, built with Planet, on SpaceX’s Transporter-18 and confirms contact to begin testing TPUs in space.
     glyph:
       ko: 궤도
@@ -34,7 +34,7 @@ items:
     sources:
       - *a1
   - date: 2026-10-30
-    ko: Google, 시제 위성의 TPU에서 Gemma 4를 실행해 지상으로 응답을 받았다고 발표. 우주 방사선과 열 조건에서의 시험을 이어간다.
+    ko: 구글, 시제 위성의 TPU에서 Gemma 4를 실행해 지상으로 응답을 받았다고 발표. 우주 방사선과 열 조건에서의 시험을 이어 간다.
     en: Google reports receiving a response from Gemma 4 running on the prototype satellite’s TPU and plans further tests of radiation exposure and thermal stress.
     glyph:
       ko: 응답
@@ -50,7 +50,7 @@ items:
 ko:
   kicker: 계산 인프라
   title: AI 계산망의 새 연결
-  lede: Google은 궤도의 TPU에서 AI 응답을 받았다고 발표했다. 지상에서는 Marvell이 광학 연결 기술을 가진 Lumentum을 인수하는 계약을 발표했다. 위성은 실험 단계이고 인수에는 승인이 남아 있었다.
+  lede: 구글은 궤도의 TPU에서 AI 응답을 받았다고 발표했다. 지상에서는 Marvell이 광학 연결 기술을 가진 Lumentum을 인수하는 계약을 발표했다. 위성은 실험 단계이고 인수에는 승인이 남아 있었다.
 en:
   kicker: Compute Infrastructure
   title: New Links for AI Compute

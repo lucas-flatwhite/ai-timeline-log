@@ -128,7 +128,7 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
     if (e.files && !e.poster) errors.push(`editions.yaml: edition ${e.n} has files but no poster`);
     for (const loc of ['ko', 'en'] as const) add(`editions.yaml ${e.n}.${loc}`, e[loc], true);
   });
-  // 포스터와 데이터 칸의 포스터 자리은 마지막 포스터 판의 files(용량과 미리보기)를 쓴다. Release 전에는 없으므로 경고만 한다
+  // 포스터와 데이터 칸의 포스터 자리는 마지막 포스터 판의 files(용량과 미리보기)를 쓴다. Release 전에는 없으므로 경고만 한다
   const lastPoster = eds.filter(e => e.poster).at(-1);
   if (lastPoster && !lastPoster.files) {
     warnings.push(`editions.yaml: edition ${lastPoster.n} has no files yet; after the Release run npm run poster:pull -- --edition ${lastPoster.n}`);

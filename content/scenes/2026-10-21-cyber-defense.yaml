@@ -46,7 +46,7 @@ items:
         title: "Gemini 4 Carbon: our next frontier model"
         publisher: Google
   - date: 2026-10-29
-    ko: Mistral, 코딩과 사이버 방어를 내세운 Large 4의 가중치 공개. 조직이 자체 인프라에서 돌릴 수 있고, 악성 사이버 요청은 거부하도록 했다고 밝혔다.
+    ko: 미스트랄 AI, 코딩과 사이버 방어를 내세운 Large 4의 가중치 공개. 조직이 자체 인프라에서 돌릴 수 있고, 악성 사이버 요청은 거부하도록 했다고 밝혔다.
     en: "Mistral releases the weights of Large 4, pitched for coding and cyber defense, so that organizations can run it on their own infrastructure, and says it is built to refuse malicious cyber requests."
     glyph: { ko: 가중치, en: OPEN }
     sources:
@@ -66,7 +66,7 @@ items:
 ko:
   kicker: 사이버 보안
   title: AI가 찾은 결함
-  lede: AI가 널리 쓰이는 소프트웨어의 중대 결함을 찾아냈고, 고친 버전이 공개됐다. Google은 보안 능력을 높인 모델을 방어 담당자에게 먼저 열겠다고 했고, Mistral은 가중치를 공개했다. 영국 NCSC는 AI 악성코드가 국가 기반시설 공격에 쓰일 위험을 경고했다.
+  lede: AI가 널리 쓰이는 소프트웨어의 중대 결함을 찾아냈고, 고친 버전이 공개됐다. 구글은 보안 능력을 높인 모델을 방어 담당자에게 먼저 열겠다고 했고, 미스트랄 AI는 가중치를 공개했다. 영국 NCSC는 AI 악성코드가 국가 기반시설 공격에 쓰일 위험을 경고했다.
 en:
   kicker: Cybersecurity
   title: "Flaws Found by AI"

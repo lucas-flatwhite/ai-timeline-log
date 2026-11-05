@@ -86,7 +86,7 @@ export function buildLlmsIndex(c: Content): string {
     '',
     `> A bilingual (Korean and English) timeline of generative AI from the launch of ChatGPT on ${formatDot(c.site.start)} to ${formatDot(c.site.asOf)}. Each event has a date, one sentence and its sources. ${SCOPE.en}`,
     '',
-    `Facts are current as of ${c.site.asOf}${last ? ` (edition ${last.n})` : ''}. Content is licensed under ${LICENSE.name} (${LICENSE.url}); credit "${ATTRIBUTION}".`,
+    `Facts are current as of ${formatDot(c.site.asOf)}${last ? ` (edition ${last.n})` : ''}. Content is licensed under ${LICENSE.name} (${LICENSE.url}); credit "${ATTRIBUTION}".`,
     '',
     '## Agent setup',
     '',

@@ -60,9 +60,9 @@ items:
         title: Redeploying Claude Fable 5
         publisher: Anthropic
 ko:
-  kicker: 수출통제
+  kicker: 수출 통제
   title: 출시 사흘 만에 멈춘 모델
-  lede: 미 상무부가 Claude Fable 5와 Mythos 5를 수출통제로 묶었다. Fable 5의 서비스는 19일 동안 멈췄고, Mythos 5는 2주 만에 일부 미국 기관부터 다시 열렸다.
+  lede: 미 상무부가 Claude Fable 5와 Mythos 5를 수출 통제로 묶었다. Fable 5의 서비스는 19일 동안 멈췄고, Mythos 5는 2주 만에 일부 미국 기관부터 다시 열렸다.
 en:
   kicker: "Export Controls"
   title: "The Models Halted Three Days After Launch"
