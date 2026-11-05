@@ -16,7 +16,7 @@ The timeline focuses on events that shaped generative AI. Dates and claims are c
 
 ## Lineage skill
 
-The `ai-lineage` skill is a separate, installable agent skill. It researches where an AI technique came from and draws a sourced lineage chart (PNG, SVG, PDF, Mermaid and a source list). Every box carries a source the agent opened.
+The `ai-lineage` skill is a separate, installable agent skill. It researches where an AI technique came from and draws a sourced lineage chart (PNG, SVG, PDF, Mermaid and a source list). Every box carries a source, and a source the agent could not open is marked "not verified".
 
 ```bash
 npx skills add lucas-flatwhite/ai-timeline-log --skill ai-lineage -g

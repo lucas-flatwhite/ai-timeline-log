@@ -5,11 +5,11 @@ description: Draws a sourced lineage chart for an AI technique, model family or 
 
 # AI lineage chart
 
-This skill traces where an AI technique, model family or idea came from and draws the result as one chart. The chart has at most nine boxes, placed in four rows (roots, revival, merge, spread) and joined by lines. Every box has a source you opened, and every line is marked as confirmed or inferred.
+This skill traces where an AI technique, model family or idea came from and draws the result as one chart. The chart has at most nine boxes, placed in four rows (roots, revival, merge, spread) and joined by lines. Every box has a source, and a source you could not open is marked "not verified" in the chart. Every line is marked as confirmed or inferred.
 
 You write one JSON data file. A bundled script checks it and draws from it. Nothing needs to be installed except this skill.
 
-All commands below are relative to the folder that contains this `SKILL.md`. Run them from that folder, or give the full path to `scripts/lineage.mjs`. The script finds its fonts and libraries by itself, so it works from any current directory. It needs Node.js 18 or later.
+All commands below are relative to the folder that contains this `SKILL.md`. Run them from that folder, or give the full path to `scripts/lineage.mjs`. The script finds its fonts and libraries by itself, so it works from any current directory. It needs Node.js 20 or later.
 
 ## Steps
 
