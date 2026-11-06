@@ -406,6 +406,21 @@ describe('geometry', () => {
     expect(gap(wide)).toBeCloseTo(40, 6);
   });
 
+  test('an adjacent same-row edge takes no port: real arrivals do not move', () => {
+    const base: [string, string][] = [['a', 'c'], ['b', 'c']];
+    const rows = { a: 'root', b: 'root', c: 'revival' };
+    for (const portrait of ORIENTS) {
+      const without = run(mini(rows, base), 'woodcut', portrait);
+      const withSide = run(mini(rows, [...base, ['a', 'b']]), 'woodcut', portrait);
+      // the side arrow widens the gaps, so compare the offset from the box center
+      const off = (out: any, from: string) => tip(out, from, 'c')[0] - (out.boxes.c.x + out.boxes.c.w / 2);
+      for (const f of ['a', 'b']) expect(off(withSide, f)).toBeCloseTo(off(without, f), 6);
+    }
+    const w = run(worst, 'woodcut', false);
+    const t = tip(w, 'gamma-pool', 'iota-pool');
+    expect(t[0]).toBeCloseTo(w.boxes['iota-pool'].x + w.boxes['iota-pool'].w / 2, 6);
+  });
+
   test('an adjacent same-row edge takes no lane', () => {
     const a = run(mini({ a: 'root', b: 'root', c: 'revival' }, [['a', 'b'], ['b', 'c']]), 'woodcut', false);
     const b = run(mini({ a: 'root', b: 'root', c: 'revival' }, [['b', 'c']]), 'woodcut', false);

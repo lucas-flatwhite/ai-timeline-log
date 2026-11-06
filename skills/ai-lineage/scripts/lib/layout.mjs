@@ -271,13 +271,13 @@ export function layout(data, fonts, opts) {
       if (above) {
         const departs = lanes[g].includes(above.id);
         if (departs) upper.push({ x: center(above.id), lane: laneY(g, above.id), from: above.id, dep: true });
-        const into = routes.filter((r) => r.kind === 'same' && r.e.to === above.id);
+        const into = laned.filter((r) => r.kind === 'same' && r.e.to === above.id);
         const half = boxes[above.id].w / 2 - PORT_MARGIN;
         place(into, boxes[above.id], departs, () => false, [-half, half]);
         for (const r of into) upper.push({ x: /** @type {number} */ (r.portX), lane: /** @type {number} */ (r.laneB), from: r.e.from, dep: false });
       }
       if (below) {
-        const into = routes.filter((r) => r.kind !== 'same' && r.e.to === below.id);
+        const into = laned.filter((r) => r.kind !== 'same' && r.e.to === below.id);
         // 위 상자에서 내려오는 선과 같은 x에 서면 한 선처럼 보인다. 위 상자에서 곧장 내려오는 선만 예외다.
         place(
           into,

@@ -14,7 +14,7 @@ Write a title, an author list, a date or a venue only after you opened the sourc
 - **At most nine nodes.** Place each in one of four rows by its role: `root` (the original idea), `revival` (the work that brought it back), `merge` (where another branch joined), `spread` (where it reached models and products people use). If there are too many, drop the least important and list them in `omitted`. The chart prints that list on one line under the drawing.
 - **One key link, or none.** Choose at most one lesser-known node that actually connected the lineage and set `focal` on it, with a short note on why. The chart draws it as an inverted box.
 - **Stop where the sources stop.** Do not stretch the roots back to earlier decades without evidence.
-- **Disputed or ongoing matters.** Say in your reply that the account is as reported, and cite sources for both sides of a disputed claim. Keep a short remark in `notes`. It stays in the data file and is not drawn.
+- **Disputed or ongoing matters.** Say in your reply that the account is as reported, and cite sources for both sides of a disputed claim. Keep a short remark in `notes`. It is not drawn, but it is published at the end of the source list.
 
 ## Cross-check with the timeline
 
