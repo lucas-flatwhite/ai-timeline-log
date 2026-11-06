@@ -4,7 +4,7 @@ import { readFileSync, mkdirSync, writeFileSync, realpathSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
-import { check } from './lib/check.mjs';
+import { validate } from './lib/schema.mjs';
 import { layout } from './lib/layout.mjs';
 import { loadFonts } from './lib/fonts.mjs';
 import { toSvg } from './lib/svg.mjs';
@@ -92,11 +92,17 @@ async function run(argv) {
   const credit = o['no-credit'] ? false : (data?.credit ?? true);
   const portrait = command === 'draw' && !!o.portrait;
 
-  const land = await check(data, { style, credit });
-  const results = [land];
-  if (portrait && land.errors.length === 0) results.push(await check(data, { style, credit, portrait: true }));
-  for (const w of land.warnings) console.error(`warning: ${w}`);
-  const errors = results.flatMap((r) => r.errors);
+  const { errors: valErrors, warnings } = validate(data);
+  for (const w of warnings) console.error(`warning: ${w}`);
+  if (valErrors.length) {
+    for (const e of [...new Set(valErrors)]) console.error(`error: ${e}`);
+    return 1;
+  }
+
+  const fonts = await loadFonts();
+  const land = layout(data, fonts, { style, credit, portrait: false });
+  const port = portrait && land.errors.length === 0 ? layout(data, fonts, { style, credit, portrait: true }) : null;
+  const errors = [...land.errors, ...(port?.errors ?? [])];
   if (errors.length) {
     for (const e of [...new Set(errors)]) console.error(`error: ${e}`);
     return 1;
@@ -104,8 +110,7 @@ async function run(argv) {
   if (command === 'check') return 0;
 
   // Compute every output first, then write, so a failure leaves nothing behind.
-  const fonts = await loadFonts();
-  const scene = layout(data, fonts, { style, credit, portrait: false }).scene;
+  const scene = land.scene;
   const svg = toSvg(scene);
   const slug = slugOf(basename(path));
   /** @type {[string, string | Uint8Array][]} */
@@ -116,9 +121,8 @@ async function run(argv) {
     [`${slug}.mmd`, toMermaid(data)],
     [`${slug}.sources.md`, toSourcesMd(data)],
   ];
-  if (portrait) {
-    const ps = layout(data, fonts, { style, credit, portrait: true }).scene;
-    files.push([`${slug}.portrait.png`, await toPng(toSvg(ps))]);
+  if (port) {
+    files.push([`${slug}.portrait.png`, await toPng(toSvg(port.scene))]);
   }
 
   const dir = o.out ? resolve(o.out) : dirname(path);

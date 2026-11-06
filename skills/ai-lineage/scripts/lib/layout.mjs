@@ -383,22 +383,36 @@ export function layout(data, fonts, opts) {
     const k = list.length;
     const cx = b.x + b.w / 2;
     const step = k > 1 ? Math.min(PORT_STEP, (b.w - 2 * PORT_MARGIN) / (k - 1)) : PORT_STEP;
-    const base = list.map((_, i) => (i - (k - 1) / 2) * step);
     const mid = list[(k - 1) >> 1];
     const lean = /** @type {number} */ (mid.approach) < cx ? -1 : 1;
-    const shifts = [0, 0.5, -0.5, 1, -1, 0.25, -0.25, 1.5, -1.5, 0.75, -0.75].map((s) => s * step * lean);
-    let chosen = null;
-    for (const s of shifts) {
-      const xs = base.map((o) => o + s);
-      if (xs.some((o) => o < room[0] || o > room[1])) continue;
-      if (blockCenter && xs.some((o) => Math.abs(o) < CLEAR)) continue;
-      if (list.some((r, i) => clash(r, cx + xs[i]))) continue;
-      chosen = xs;
-      break;
+    const mults = [0, 0.5, -0.5, 1, -1, 0.25, -0.25, 1.5, -1.5, 0.75, -0.75];
+    const [lo, hi] = room;
+    /** @param {number} centerOff @param {number} st */
+    const pick = (centerOff, st) => {
+      const base = list.map((_, i) => centerOff + (i - (k - 1) / 2) * st);
+      for (const m of mults) {
+        const s = m * st * lean;
+        const xs = base.map((o) => o + s);
+        if (xs.some((o) => o < lo || o > hi)) continue;
+        if (blockCenter && xs.some((o) => Math.abs(o) < CLEAR)) continue;
+        if (list.some((r, i) => clash(r, cx + xs[i]))) continue;
+        return xs;
+      }
+      return null;
+    };
+    let chosen = pick(0, step);
+    // 꼬리표 사이 폭이 좁아 기본 간격이 안 맞으면 간격을 줄여 다시 찾는다
+    if (!chosen && hi > lo) {
+      const midOff = (lo + hi) / 2;
+      for (const div of [k - 0.5, k, k + 0.5, k + 1]) {
+        if (div <= 0) continue;
+        const st = Math.min(PORT_STEP, (hi - lo) / div);
+        chosen = pick(0, st) ?? pick(midOff, st);
+        if (chosen) break;
+      }
     }
     // 어느 자리도 맞지 않으면 꼬리표 사이 자리 안에 고르게 좁혀 놓는다
     if (!chosen) {
-      const [lo, hi] = room;
       chosen = k > 1 ? list.map((_, i) => lo + ((hi - lo) * i) / (k - 1)) : [Math.min(hi, Math.max(lo, 0))];
     }
     chosen.forEach((o, i) => {

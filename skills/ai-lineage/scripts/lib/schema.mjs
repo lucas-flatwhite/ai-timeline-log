@@ -118,8 +118,8 @@ export function validate(data) {
     }
 
     if (n.timeline !== undefined && n.timeline !== null) {
-      if (!isObj(n.timeline) || !isStr(n.timeline.id) || !isStr(n.timeline.url)) {
-        errors.push(`${at}: timeline must be null or { id, url }`);
+      if (!isObj(n.timeline) || !isStr(n.timeline.id) || typeof n.timeline.url !== 'string' || !/^https?:\/\/\S+$/.test(n.timeline.url)) {
+        errors.push(`${at}: timeline must be null or { id, url } with an http(s) url`);
       } else if (validDate(n.date) && dateKey(n.date) < TIMELINE_START) {
         errors.push(`${at}: timeline is not allowed before ${TIMELINE_START}`);
       }
@@ -146,27 +146,31 @@ export function validate(data) {
       }
     }
     if (e.from === e.to) errors.push(`${at}: self edge`);
-    const key = `${e.from}\u0000${e.to}\u0000${e.type}`;
-    if (seen.has(key)) errors.push(`${at}: duplicate edge (${e.type})`);
+    const key = [e.from, e.to].sort().join('\u0000');
+    if (seen.has(key)) errors.push(`${at}: duplicate edge`);
     seen.add(key);
     if (ok) {
       touched.add(e.from);
       touched.add(e.to);
     }
-    if (e.status === 'confirmed') {
-      const ev = e.evidence;
+    const ev = e.evidence;
+    if (ev !== undefined) {
       if (!isObj(ev) || !isStr(ev.node) || !isStr(ev.where)) {
-        errors.push(`${at}: confirmed edge needs evidence { node, where }`);
+        errors.push(`${at}: evidence must be { node, where }`);
       } else {
-        const evNode = byId.get(ev.node);
-        const opened = Array.isArray(evNode?.sources) && evNode.sources.some((s) => isObj(s) && s.opened === true);
-        if (evNode && !opened) {
-          errors.push(`${at}: confirmed edge cites "${ev.node}", which has no opened source: open a source of that node, or mark the edge inferred`);
+        if (ev.node !== e.from && ev.node !== e.to) {
+          errors.push(`${at}: evidence.node must be the from or to node`);
+        }
+        if (e.status === 'confirmed') {
+          const evNode = byId.get(ev.node);
+          const opened = Array.isArray(evNode?.sources) && evNode.sources.some((s) => isObj(s) && s.opened === true);
+          if (evNode && !opened) {
+            errors.push(`${at}: confirmed edge cites "${ev.node}", which has no opened source: open a source of that node, or mark the edge inferred`);
+          }
         }
       }
-    }
-    if (e.evidence !== undefined && isObj(e.evidence) && e.evidence.node !== e.from && e.evidence.node !== e.to) {
-      errors.push(`${at}: evidence.node must be the from or to node`);
+    } else if (e.status === 'confirmed') {
+      errors.push(`${at}: confirmed edge needs evidence { node, where }`);
     }
     if (ok && e.type === 'lineage') {
       const a = byId.get(e.from)?.date;

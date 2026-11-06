@@ -51,7 +51,7 @@ Nodes in a row are placed from the left, ordered by date. A missing month or day
 
 | Field | Required | Meaning |
 | --- | --- | --- |
-| `from`, `to` | yes | Node ids. The two must differ, and the same `from`, `to` and `type` may not appear twice. |
+| `from`, `to` | yes | Node ids. The two must differ, and at most one edge may join the same two nodes. |
 | `type` | yes | `lineage` (builds on), `merge` (another branch joins here) or `enables` (a condition such as hardware or data). `enables` is always drawn dotted. |
 | `status` | yes | `confirmed` or `inferred`. Inferred lines are dashed. |
 | `evidence` | when `confirmed` | `{ "node": "<id>", "where": "<section, page, figure>" }`. `node` must be the `from` or the `to` node, the one whose text says the link exists. A confirmed edge without evidence is an error. So is a confirmed edge whose evidence node has no source with `"opened": true`: open a source of that node, or mark the edge `inferred`. |

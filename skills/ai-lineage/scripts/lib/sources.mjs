@@ -45,7 +45,7 @@ export function toSourcesMd(data) {
   if (data.edges.length) {
     out.push('', `## ${H.links}`, '');
     for (const e of data.edges) {
-      const ev = e.evidence ? ` ${[refs(e.evidence.node), e.evidence.where].filter(Boolean).join(' ')}` : '';
+      const ev = e.evidence ? ` ${[refs(e.evidence.node), txt(e.evidence.where)].filter(Boolean).join(' ')}` : '';
       out.push(`- ${name(e.from)} -> ${name(e.to)}: ${L[e.status]}${ev ? `, ${ev.trim()}` : ''}`);
     }
   }

@@ -25,8 +25,11 @@ describe('toMermaid', () => {
     expect(m).toContain('class n_beta_gate side');
     expect(m).toContain('classDef focal fill:#111110,color:#E3E1D9,stroke:#111110');
   });
-  it('is deterministic and escapes quotes', () => {
+  it('is deterministic, sorts nodes by date and id, and escapes quotes', () => {
     expect(toMermaid(alpha)).toBe(m);
+    const reversed = structuredClone(alpha);
+    reversed.nodes.reverse();
+    expect(toMermaid(reversed)).toBe(m);
     const d = structuredClone(alpha);
     d.nodes[0].name = 'Say "hi"';
     expect(toMermaid(d)).toContain('Say #quot;hi#quot;');
@@ -83,12 +86,14 @@ describe('toSourcesMd', () => {
     const d = structuredClone(alpha);
     d.nodes[0].sources[0].title = 'A <b>bold</b>\nsecond line';
     d.nodes[0].name = 'Line\none';
+    d.edges[0].evidence.where = 'Section 2\n<img src=x>';
     d.notes = 'Note with <script>x</script>.';
     d.omitted = ['Left <i>out</i>'];
     const s: string = toSourcesMd(d);
     expect(s).not.toMatch(/<[a-z/]/i);
     expect(s).toContain('A &lt;b&gt;bold&lt;/b&gt; second line');
     expect(s).toContain('Line one ->');
+    expect(s).toContain('Section 2 &lt;img src=x&gt;');
     expect(s).toContain('Note with &lt;script&gt;x&lt;/script&gt;.');
     expect(s).toContain('Left &lt;i&gt;out&lt;/i&gt;');
     expect(toMermaid(d)).toContain('Line one<br/>');

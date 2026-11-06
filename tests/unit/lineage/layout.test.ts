@@ -360,6 +360,33 @@ describe('geometry', () => {
     }
   });
 
+  test('many arrivals into a narrow badged box still step aside from the line above', () => {
+    const rows: Record<string, string> = {
+      a: 'root', b: 'root', c: 'root', dd: 'root',
+      e: 'revival', f: 'revival', g: 'revival',
+      t: 'merge', u: 'merge',
+    };
+    const d = mini(rows, [
+      ['e', 'u'],
+      ['f', 'g'],
+      ...(['a', 'b', 'c', 'dd', 'f', 'g'].map((from) => [from, 't'] as [string, string])),
+    ]);
+    for (const n of d.nodes) n.sub = '';
+    const t = d.nodes.find((n: any) => n.id === 't');
+    t.date = '2025-01-01';
+    t.timeline = { id: 'x', url: 'https://example.com/x' };
+    for (const style of STYLE_IDS) {
+      const out = run(d, style, false);
+      expect(out.errors).toEqual([]);
+      noOverlap(out);
+      const eCenter = out.boxes.e.x + out.boxes.e.w / 2;
+      for (const edge of out.edges.filter((x: any) => x.to === 't')) {
+        const px = edge.points[edge.points.length - 1][0];
+        expect(Math.abs(px - eCenter)).toBeGreaterThanOrEqual(6);
+      }
+    }
+  });
+
   test('an adjacent same-row edge is one straight arrow between the facing sides', () => {
     const d = mini({ a: 'root', b: 'root' }, [['a', 'b']]);
     for (const portrait of ORIENTS) {

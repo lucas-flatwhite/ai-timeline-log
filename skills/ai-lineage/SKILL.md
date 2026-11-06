@@ -40,7 +40,7 @@ All commands below are relative to the folder that contains this `SKILL.md`. Run
 | --- | --- |
 | `<slug>.png` | The chart, 2400 x 1350 px. |
 | `<slug>.svg` | The chart with text converted to outlines, so it needs no fonts. |
-| `<slug>.pdf` | The same chart as a PDF. |
+| `<slug>.pdf` | The same chart as a PDF, with text converted to outlines (needs no fonts, text is not selectable or searchable). |
 | `<slug>.mmd` | A Mermaid version of the graph. |
 | `<slug>.sources.md` | The numbered source list, the evidence for each confirmed relation, the AI Timeline Log address of any matched node, the sources not verified, the omitted list and the notes. |
 | `<slug>.portrait.png` | Only with `--portrait`. 2160 x 2700 px. |

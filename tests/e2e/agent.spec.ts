@@ -91,7 +91,9 @@ for (const path of ['./ko/', './']) {
         await expect(a).toHaveAttribute('href', /^https:\/\/github\.com\/lucas-flatwhite\/ai-timeline-log\//);
         await expect(a).toHaveAttribute('target', '_blank');
       }
+      expect(await page.evaluate(() => [...document.querySelectorAll('#lin-cmd span')].every(s => s.getClientRects().length === 1))).toBe(true);
       await page.setViewportSize({ width: 360, height: 800 });
+      expect(await page.evaluate(() => [...document.querySelectorAll('#lin-cmd span')].every(s => s.getClientRects().length === 1))).toBe(true);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
     });
 

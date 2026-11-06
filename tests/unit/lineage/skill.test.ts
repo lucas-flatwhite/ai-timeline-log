@@ -50,7 +50,9 @@ describe('fonts and notices exist', () => {
     'fonts/BlackHanSans-Regular.ttf', 'fonts/Hahmlet-wght.ttf', 'fonts/IBMPlexMono-Regular.ttf',
     'fonts/OFL-BlackHanSans.txt', 'fonts/OFL-Hahmlet.txt', 'fonts/OFL-IBMPlexMono.txt',
     'THIRD_PARTY_NOTICES.md', 'LICENSE', 'vendor/harfbuzzjs/LICENSE', 'vendor/resvg/LICENSE-MPL-2.0.txt',
-    'vendor/harfbuzzjs/LICENSE-HarfBuzz.txt', 'vendor/resvg/LICENSE-tiny-skia.txt', 'vendor/harfbuzzjs/package.json',
+    'vendor/harfbuzzjs/LICENSE-HarfBuzz.txt', 'vendor/resvg/LICENSE-tiny-skia.txt',
+    'vendor/resvg/LICENSE-Apache-2.0.txt', 'vendor/resvg/LICENSE-MIT-BSD-Zlib.txt',
+    'vendor/harfbuzzjs/package.json',
   ];
   for (const f of files) test(f, () => { expect(existsSync(new URL(f, skill))).toBe(true); });
 });

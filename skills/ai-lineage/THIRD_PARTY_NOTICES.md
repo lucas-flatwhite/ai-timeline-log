@@ -47,15 +47,16 @@ This skill bundles the libraries and fonts below so it runs without an install s
 | unicode-bidi | 0.3.15 | MIT OR Apache-2.0 |
 | unicode-general-category | 0.6.0 | Apache-2.0 |
 | weezl | 0.1.8 | MIT OR Apache-2.0 |
+| woff2 | 0.3.0 (git 88cce4c) | Apache-2.0 |
 | xmlparser | 0.13.6 | MIT/Apache-2.0 |
 | xmlwriter | 0.1.0 | MIT |
 
 Not confirmed from a registry:
 
 - `resvg` (with its `usvg` crates): taken from the git fork https://github.com/zimond/resvg at commit `3495d87`, as named in the `[patch.crates-io]` section of the upstream `Cargo.toml`. The fork's `crates/resvg/Cargo.toml` and its repository state MPL-2.0 (version 0.34.1). I did not check every sub-crate of the fork one by one.
-- `woff2` (fork https://github.com/yisibl/woff2-rs, Apache-2.0 at the repository level): the upstream `Cargo.toml` depends on it, but no source path of it was found in the binary, so it is not confirmed to be linked in.
+- `woff2`: linked from the git fork https://github.com/yisibl/woff2-rs at commit `88cce4c` (branch `fix-total-compressed-size` in `[patch.crates-io]`), licensed under Apache-2.0.
 - `wasm-bindgen`, `js-sys`, `log`, `thiserror`, `serde` and the Rust standard library (MIT OR Apache-2.0 upstream) appear in the dependency list or the binary, but their exact versions were not read from the binary, so they are not in the table.
-- tiny-skia (BSD-3-Clause) license text: `vendor/resvg/LICENSE-tiny-skia.txt`, taken from https://github.com/RazrFalcon/tiny-skia at tag `v0.10.0`. The MIT and Apache-2.0 crates above are used under their own license terms, which their repositories publish.
+- License texts and copyright notices for the crates in `index_bg.wasm`: `vendor/resvg/LICENSE-MPL-2.0.txt` (MPL-2.0), `vendor/resvg/LICENSE-Apache-2.0.txt` (Apache-2.0), `vendor/resvg/LICENSE-tiny-skia.txt` (tiny-skia BSD-3-Clause, taken from https://github.com/RazrFalcon/tiny-skia at tag `v0.10.0`), and `vendor/resvg/LICENSE-MIT-BSD-Zlib.txt` (MIT, BSD-3-Clause, and Zlib license texts and copyright notices).
 
 `npm run lineage:vendor` in the ai-timeline-log repository copies these files from `node_modules`.
 
