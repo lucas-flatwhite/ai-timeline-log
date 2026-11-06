@@ -1,6 +1,7 @@
 ---
 import type { PageView } from '../lib/view.ts';
 import LangSwitch from './LangSwitch.astro';
+import GithubIcon from './GithubIcon.astro';
 const { view } = Astro.props as { view: PageView };
 const u = view.ui;
 ---
@@ -25,6 +26,7 @@ const u = view.ui;
       </ul>
     </div>
   </div>
+  <a class="gh" href={view.repo.href} target="_blank" rel="noopener" aria-label={view.repo.label} title={view.repo.label}><GithubIcon /></a>
   <LangSwitch view={view} />
   <a class="report" href={view.report.href} target="_blank" rel="noopener" data-report aria-haspopup="dialog">{view.report.label}</a>
 </header>

@@ -88,6 +88,18 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('header.top a.report')).toHaveAttribute('href', 'https://github.com/lucas-flatwhite/ai-timeline-log/issues');
     });
 
+    test('the GitHub icon sits left of the language switch and opens the repository in a new tab', async ({ page }) => {
+      await page.goto(path);
+      const gh = page.locator('header.top a.gh');
+      await expect(gh).toHaveAttribute('href', 'https://github.com/lucas-flatwhite/ai-timeline-log');
+      await expect(gh).toHaveAttribute('target', '_blank');
+      await expect(gh).toHaveAttribute('rel', 'noopener');
+      await expect(gh).toHaveAccessibleName(ui[lang]!.repo);
+      await expect(gh.locator('svg')).toBeVisible();
+      const [icon, nav] = [await gh.locator('svg').boundingBox(), await page.locator('header.top nav.lang').boundingBox()];
+      expect(icon!.x + icon!.width).toBeLessThan(nav!.x);
+    });
+
     test('the page ends with the author\'s site and X', async ({ page }) => {
       await page.goto(path);
       const by = page.locator('.outro .foot .by a');
@@ -120,6 +132,26 @@ for (const path of ['./ko/', './']) {
   });
 
   test.describe(`${lang}: with JavaScript`, () => {
+    test('the top bar fits on narrow phones with the GitHub icon', async ({ page }) => {
+      await page.goto(path);
+      for (const width of [320, 360, 375]) {
+        await page.setViewportSize({ width, height: 640 });
+        for (const sel of ['header.top a.gh svg', 'header.top nav.lang', 'header.top a.report']) {
+          const box = await page.locator(sel).boundingBox();
+          expect(box!.x + box!.width, `${sel} at ${width}`).toBeLessThanOrEqual(width);
+        }
+      }
+    });
+
+    test('the site name is not cut at common phone widths', async ({ page }) => {
+      await page.goto(path);
+      const name = page.locator('header.top .name');
+      for (const width of [360, 375, 381, 390]) {
+        await page.setViewportSize({ width, height: 640 });
+        expect(await name.evaluate(e => e.scrollWidth <= e.clientWidth), `at ${width}`).toBe(true);
+      }
+    });
+
     test('details list is hidden; the top bar sticks', async ({ page }) => {
       await page.goto(path);
       await expect(page.locator('html')).toHaveClass(/\bjs\b/);

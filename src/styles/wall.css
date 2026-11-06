@@ -1,8 +1,11 @@
 /* ── 위 막대: 이름, 언어 전환, 제보 링크. 내려도 위에 붙어 있다 ── */
 .top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;height:40px;padding:0;padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));background:var(--paper);border-bottom:1px solid var(--ink)}
 .top .name{font:400 16px/1 var(--display);white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
-.top .lang{margin-left:auto}
+.top .gh{display:flex;margin:-12px -8px -12px auto;padding:12px 8px;color:inherit;opacity:.7}
+.top .gh:hover{opacity:1}
+.top .gh:focus-visible{outline:1px solid currentColor;outline-offset:-6px}
 @media (max-width:400px){.top{gap:12px}}
+@media (max-width:380px){.top{gap:6px}.top .gh{margin-right:-2px;padding-inline:2px}}
 
 /* 찾기 창: 찾는 말, 시기, 주제. 스크립트가 있을 때만. 위 막대 아래 왼쪽에 펼쳐지고 길면 창 안에서 굴린다 */
 .tp{position:relative;flex:none}
