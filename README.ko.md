@@ -6,7 +6,7 @@
 
 ChatGPT가 공개된 2022년 11월 30일부터 생성형 AI의 사건들을 기록합니다. 사건을 날짜순으로 정리하고 출처를 남겨, 무슨 일이 있었는지 읽고 원문을 확인할 수 있습니다.
 
-[한국어로 읽기](https://lucasflatwhite.com/ai-timeline-log/ko/) · [Read in English](https://lucasflatwhite.com/ai-timeline-log/)
+https://lucasflatwhite.com/ai-timeline-log/
 
 ## 연표
 

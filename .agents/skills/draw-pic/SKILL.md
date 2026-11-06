@@ -1,21 +1,20 @@
 ---
 name: draw-pic
-description: 사건 상자의 그림(pic)을 붙이거나 content/pics.yaml에 새 윤곽선을 그릴 때 쓰는 규칙. 좌표계, 칠하기 방향, 그리지 않는 것, 쓰는 법 다섯 칸이 쓰는 그림. Use when adding a pic to an event or drawing a new outline in content/pics.yaml.
+description: Rules for adding a picture (pic) to an event box or drawing a new outline in content/pics.yaml. Covers the coordinate system, fill direction, what not to draw, and the pictures used by the five "How to use" boxes. Use when adding a pic to an event or drawing a new outline in content/pics.yaml.
 metadata:
   internal: true
 ---
 
-# `pic` (그림 상자)
+# `pic` (picture boxes)
 
 
-- 사건 하나에 `pic: <이름>`을 쓰면 상자 위 60%에 그림, 아래 37%에 핵심어를 새깁니다(`glyph`는 그대로 필요합니다). 이름은 `content/pics.yaml`에 있어야 합니다(없으면 빌드 오류).
-- 쓸 때: 윤곽선 하나로 한눈에 읽히는 사물이나 장면이 있는 사건에만 씁니다. 억지로 붙이지 않습니다. 모든 사건에 필요하지 않고, 전체의 일부(10~20개 안팎)면 됩니다.
-- 그리는 법:
-  - 좌표계는 **100×100**입니다. 윤곽선은 `d` 문자열 하나에 담고, 칠해서 보여 줄 실루엣입니다. 닫힌 조각(`M … Z`) 여러 개를 이어 써도 됩니다.
-  - 칠하기 규칙은 nonzero입니다. **실선 조각은 시계 방향, 구멍은 반시계 방향**으로 그립니다. 실선끼리 방향이 다르면 겹친 곳이 비고, 구멍 두 조각이 겹치면 그 자리가 다시 칠해지므로 한 구멍은 한 조각으로 그립니다.
-  - 판에서 −0.12 rad 기울여 새기므로 그림은 대략 12~88 안에 둡니다.
-  - **로고, 상표, 얼굴(실존 인물)은 그리지 않습니다.** 사물과 장면의 일반적인 모양만 씁니다.
-  - 작은 판(약 64px)에서도 읽혀야 하므로 가는 선과 세부 장식을 피하고 굵은 덩어리로 그립니다.
-- 항목은 `<이름>: { d, cx, cy, note }`입니다. `d`는 path 문자열, `cx`·`cy`는 그림 경계 상자의 가운데(그림 칸 가운데에 놓는 기준점), `note`는 무엇을 뜻하는지 한 줄입니다. 이름은 소문자·숫자·하이픈입니다.
-- 맺음 맨 끝의 "쓰는 법" 다섯 칸(`src/lib/guide.ts`)도 이 그림을 씁니다(`eye`, `cursor`, `trail`, `poster`, `bubble`). 사건이 쓰지 않아도 지우지 않습니다. 없으면 빌드 오류라서 시험용 콘텐츠(`tests/fixtures/content/pics.yaml`)에도 둡니다. 칸의 글은 `src/i18n`의 `guide`에 있고, 한국어 핵심어도 한글 3자 이내로 씁니다.
-
+- Writing `pic: <name>` on an event carves the picture in the top 60% of the box and the key word in the bottom 37% (`glyph` is still required). The name must exist in `content/pics.yaml` (otherwise it is a build error).
+- When to use it: only on events with an object or scene that reads at a glance from a single outline. Do not force it. Not every event needs one. A part of the whole (around 10 to 20) is enough.
+- How to draw:
+  - The coordinate system is **100×100**. An outline goes in one `d` string and is a silhouette shown by filling. Several closed pieces (`M … Z`) can follow one another.
+  - The fill rule is nonzero. **Draw solid pieces clockwise and holes counterclockwise.** If solid pieces run in different directions, their overlap goes empty. If two hole pieces overlap, that spot fills in again, so draw each hole as one piece.
+  - The plate carves it at a tilt of −0.12 rad, so keep the picture roughly within 12 to 88.
+  - **Do not draw logos, trademarks or faces (of real people).** Use only the general shape of objects and scenes.
+  - It must read on a small plate (about 64px), so avoid thin lines and fine decoration, and draw in heavy masses.
+- An entry is `<name>: { d, cx, cy, note }`. `d` is the path string, `cx` and `cy` are the center of the picture's bounding box (the reference point placed at the center of the picture area), and `note` is one line on what it means. Names use lowercase letters, numbers and hyphens.
+- The five "How to use" boxes at the very end of the closing section (`src/lib/guide.ts`) use these pictures too (`eye`, `cursor`, `trail`, `poster`, `bubble`). Do not delete them even if no event uses them. A missing one is a build error, so they are also in the test content (`tests/fixtures/content/pics.yaml`). The text of those boxes is in `guide` in `src/i18n`, and their Korean key words also stay within 3 Hangul characters.

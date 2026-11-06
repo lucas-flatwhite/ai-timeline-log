@@ -1,113 +1,113 @@
 # AGENTS.md
 
-이 저장소에서 일하는 에이전트를 위한 규칙입니다. 어떤 에이전트든 이 파일을 기준으로 삼습니다(`CLAUDE.md`는 이 파일을 불러오기만 합니다). 사람이 읽는 개요는 `README.md`에 있습니다.
+Rules for agents working in this repository. Every agent follows this file (`CLAUDE.md` only imports it). The overview for people is in `README.md`.
 
-## 작업별로 먼저 읽을 파일
+## Read first, by task
 
-이 파일에는 늘 지켜야 하는 규칙만 둡니다. 아래 일을 할 때는 해당 파일을 먼저 엽니다. 스킬을 저절로 불러오는 에이전트도 있지만, 그렇지 않더라도 경로를 직접 열면 됩니다.
+This file holds only the rules that always apply. For the tasks below, open the listed file first. Some agents load skills by themselves. If yours does not, open the path directly.
 
-- 새 사건 리서치, 장면 후보 조사: `.agents/skills/scene-research/SKILL.md`
-- 판 기록, 포스터 Release: `.agents/skills/edition-release/SKILL.md`
-- 사건 그림(`pic`), `content/pics.yaml`: `.agents/skills/draw-pic/SKILL.md`
+- Researching a new event or scene candidates: `.agents/skills/scene-research/SKILL.md`
+- Recording an edition, poster Release: `.agents/skills/edition-release/SKILL.md`
+- Event pictures (`pic`), `content/pics.yaml`: `.agents/skills/draw-pic/SKILL.md`
 
-스킬 원본은 `.agents/skills/`에 있고, `.claude/skills`는 이 폴더를 가리키는 심볼릭 링크입니다. 고칠 때는 `.agents/skills/`의 파일을 고칩니다.
+Skill sources live in `.agents/skills/`, and `.claude/skills` is a symlink to that folder. To change a skill, edit the files in `.agents/skills/`.
 
-## 구조
+## Structure
 
-- `content/scenes/<날짜>-<슬러그>.yaml`: 장면 하나가 파일 하나입니다. 파일명은 `date`와 `id`에서 정해집니다(`id`가 `2025-01-deepseek`, `date`가 `2025-01-27`이면 `2025-01-27-deepseek.yaml`).
-- `content/years.yaml` 연도 요약, `content/arcs.yaml` 시기 구분, `content/ledger.yaml` 연구소 계보, `content/site.yaml` 사이트 문구와 `asOf`, `content/pics.yaml` 그림 윤곽선, `content/topics.yaml` 주제(여러 장면을 잇는 흐름), `content/editions.yaml` 판 기록.
-- 내보내기 파일(`timeline.json`, `llms.txt`, `llms-full.txt`, `ko/llms-full.txt`, `feed.xml`, `ko/feed.xml`, `agent.md`, `ko/agent.md`, `.well-known/agent-skills/`)은 빌드가 `src/lib/export.ts`, `src/lib/feed.ts`, `src/lib/agent.ts`로 같은 내용에서 만듭니다. 따로 손대지 않습니다.
-- 포스터와 데이터 칸의 "에이전트에게 알려 주기" 버튼은 `agent.md`를 읽으라는 글만 복사합니다. 에이전트가 할 일은 `agent.md`에, 설치된 뒤 답하는 법은 `SKILL.md`(영어 하나)에 있습니다. `SKILL.md`에는 기준일을 넣지 않습니다(바뀌면 `index.json`의 digest가 바뀌어 설치한 사람에게 업데이트로 뜹니다).
-- 언어 주소: 영어가 기본이라 `/ai-timeline-log/`에 있고, 한국어는 `/ai-timeline-log/ko/`에 있습니다(`src/i18n/index.ts`의 `locales`, `localePath`). 예전 `en/` 주소와 슬래시 없는 페이지 주소(`/ai-timeline-log`, `/ai-timeline-log/ko`)는 `vercel.json`(이 저장소와 lucasflatwhite-com 둘 다)이 영구 이동으로 돌려보냅니다. 대표 주소는 www 없는 `https://lucasflatwhite.com/ai-timeline-log/`이고(canonical, `astro.config.mjs`의 `site`), `www.`는 메인 사이트의 Vercel 도메인 설정이 308로 옮깁니다.
-- 보여 줄 언어는 고른 언어 → 브라우저의 첫 언어 → 영어 순서입니다. 고른 언어는 브라우저 저장소 `lucas-flatwhite:locale`(`LOCALE_KEY`)에 적고, 사이트 전체(아케이드 게임 포함)가 같은 키를 씁니다. 언어 링크를 누를 때만 적고(브라우저 언어로 보여 준 것은 적지 않습니다), 기본 주소로 들어왔을 때만 옮깁니다. `ko/`를 직접 열면 저장된 값과 상관없이 한국어입니다(`src/layouts/Page.astro`의 인라인 스크립트, `tests/e2e/lang.spec.ts`). 브라우저 테스트는 `en-US` 브라우저로 돕니다(`playwright.config.ts`).
-- 사실(날짜, 수치, 판화 설정, 출처)은 한 번만 적고 글만 `ko`/`en`으로 나란히 둡니다.
-- 스키마는 `src/lib/schema.ts`, 빌드 검사는 `src/lib/checks.ts`입니다. 오류는 빌드를 멈추고 경고는 출력만 합니다.
-- 장면 색인: `npm run index`는 장면마다 한 줄(날짜, id, 사건 수, 주제, 영어 제목)을 보여 줍니다. `--items`는 사건 문장 앞부분까지, `--since YYYY-MM`은 그 뒤 장면만, `--grep 낱말`은 장면과 용어집(`content/glossary.yaml`)에서 찾습니다. 중복이나 용어를 확인할 때 YAML을 하나씩 열거나 용어집을 통째로 읽지 말고 이것부터 씁니다.
-- 리서치 메모: `docs/review/<날짜>-<슬러그>.md`. 쓰는 양식은 `scene-research` 스킬에 있습니다.
-- `skills/`는 공개 스킬(`ai-lineage`)이고, 설치하면 그 폴더만 복사됩니다. 스킬 폴더 밖의 파일은 읽지 않습니다. 이 저장소 안에서만 쓰는 내부 스킬(`.agents/skills/`)은 `metadata.internal: true`로 숨깁니다. 스킬 폴더의 라이브러리 사본(`vendor/`)은 `npm run lineage:vendor`로 바꿉니다.
+- `content/scenes/<date>-<slug>.yaml`: one scene per file. The file name comes from `date` and `id` (with `id` `2025-01-deepseek` and `date` `2025-01-27`, the file is `2025-01-27-deepseek.yaml`).
+- `content/years.yaml` year summaries, `content/arcs.yaml` eras, `content/ledger.yaml` lab lineage, `content/site.yaml` site copy and `asOf`, `content/pics.yaml` picture outlines, `content/topics.yaml` topics (threads that connect several scenes), `content/editions.yaml` edition records.
+- Export files (`timeline.json`, `llms.txt`, `llms-full.txt`, `ko/llms-full.txt`, `feed.xml`, `ko/feed.xml`, `agent.md`, `ko/agent.md`, `.well-known/agent-skills/`) are built from the same content by `src/lib/export.ts`, `src/lib/feed.ts` and `src/lib/agent.ts`. Do not edit them by hand.
+- The "tell your agent" button in the poster and data block only copies a line telling the agent to read `agent.md`. What the agent should do is in `agent.md`, and how it answers after install is in `SKILL.md` (English only). Do not put the as-of date in `SKILL.md`: a change would alter the digest in `index.json` and show up as an update for everyone who installed it.
+- Language addresses: English is the default at `/ai-timeline-log/`, and Korean is at `/ai-timeline-log/ko/` (`locales`, `localePath` in `src/i18n/index.ts`). Old `en/` addresses and page addresses without a trailing slash (`/ai-timeline-log`, `/ai-timeline-log/ko`) redirect permanently through `vercel.json` (in both this repository and lucasflatwhite-com). The canonical address is `https://lucasflatwhite.com/ai-timeline-log/` without www (canonical, `site` in `astro.config.mjs`), and the main site's Vercel domain setting moves `www.` with a 308.
+- The language shown is, in order: the chosen language, the browser's first language, English. The chosen language is stored in the browser key `lucas-flatwhite:locale` (`LOCALE_KEY`), and the whole site, including the arcade games, uses the same key. It is written only when a language link is clicked (a language shown from the browser setting is not written), and the redirect happens only when entering at the default address. Opening `ko/` directly always shows Korean, whatever is stored (inline script in `src/layouts/Page.astro`, `tests/e2e/lang.spec.ts`). Browser tests run with an `en-US` browser (`playwright.config.ts`).
+- Facts (dates, figures, print settings, sources) are written once. Only the text sits side by side as `ko` and `en`.
+- The schema is `src/lib/schema.ts` and the build checks are `src/lib/checks.ts`. Errors stop the build. Warnings are only printed.
+- Scene index: `npm run index` prints one line per scene (date, id, event count, topics, English title). `--items` adds the start of each event sentence, `--since YYYY-MM` shows only later scenes, and `--grep <word>` searches scenes and the glossary (`content/glossary.yaml`). Use this first to check for duplicates or terms, instead of opening YAML files one by one or reading the whole glossary.
+- Research notes: `docs/review/<date>-<slug>.md`. The format is in the `scene-research` skill.
+- `skills/` holds public skills (`ai-lineage`). Installing copies only that folder, so a skill reads no file outside its own folder. Internal skills used only in this repository (`.agents/skills/`) are hidden with `metadata.internal: true`. Replace the library copies in a skill folder (`vendor/`) with `npm run lineage:vendor`.
 
-## 장면 추가·정정 절차
+## Adding and correcting scenes
 
-1. **리서치**: 무슨 일이 언제 있었는지 찾습니다. 장면 선정 기준은 "흐름을 바꾼 사건"입니다. 연도별 분량을 맞추려고 넣지 않습니다. 방법과 메모 양식은 `.agents/skills/scene-research/SKILL.md`에 있습니다.
-2. **출처 확인**: 1차 출처(각 사 발표, 논문, 소송 문서)를 먼저 확인하고 언론 보도는 보완으로 씁니다. 진행 중인 사건은 "보도 기준"임을 글에 밝히고, 민감한 사안은 양쪽 입장만 적습니다. 첫 판(`firstEdition`) 이후 추가하는 장면은 출처가 하나 이상 있어야 합니다.
-3. **ko·en 작성**: 한국어와 영어를 함께 씁니다. 영어는 아래 "영어 문장 원칙"을 따릅니다.
-4. **주제 달기**: 장면에 `topics: [..]`를 하나 이상 답니다(`content/topics.yaml`의 id). 모르는 id는 빌드 오류, 주제가 없는 장면은 경고입니다. 새 주제는 장면이 3개 이상일 때만 만듭니다.
-5. **해당 연도 요약 다시 읽기**: `content/years.yaml`의 그 연도 요약(`ko`, `en`)이 새 장면과 맞는지 다시 읽고, 어긋나면 고칩니다. 장면이 있는 연도에는 연도 요약이 반드시 있어야 합니다.
-6. **`asOf` 갱신**: `content/site.yaml`의 `asOf`를 작업한 날로 바꿉니다. `date`, 사건 날짜, `added`는 `asOf`보다 늦을 수 없습니다. 새 장면의 `added`는 작업한 날이고, 고친 장면에는 `updated`를 적습니다.
-7. **검사·테스트**: 아래 "검사 명령"을 모두 돌립니다.
-8. **PR**: 브랜치를 따서 PR을 엽니다. 본문에 바뀐 장면과 근거 링크를 적습니다. 직접 `main`에 올리지 않습니다.
+1. **Research**: find out what happened and when. The bar for a scene is "an event that changed the course". Do not add scenes to balance the count per year. The method and the note format are in `.agents/skills/scene-research/SKILL.md`.
+2. **Check sources**: check primary sources first (company announcements, papers, court documents) and use press reports as a supplement. For an ongoing event, say in the text that it is "as reported". For a sensitive matter, give only the positions of both sides. A scene added after the first edition (`firstEdition`) needs at least one source.
+3. **Write ko and en**: write Korean and English together. English follows "English writing rules" below.
+4. **Add topics**: give the scene at least one topic with `topics: [..]` (ids from `content/topics.yaml`). An unknown id is a build error, and a scene with no topic is a warning. Create a new topic only when it has three or more scenes.
+5. **Reread the year summary**: reread that year's summary (`ko`, `en`) in `content/years.yaml` to check that it fits the new scene, and fix it if it does not. Every year with a scene must have a year summary.
+6. **Update `asOf`**: set `asOf` in `content/site.yaml` to the day of the work. `date`, event dates and `added` cannot be later than `asOf`. For a new scene, `added` is the day of the work. For a changed scene, set `updated`.
+7. **Check and test**: run everything in "Check commands" below.
+8. **PR**: branch and open a PR. List the changed scenes and the source links in the body. Do not push directly to `main`. Write commit messages, PR titles and PR bodies in English.
 
-### 판 기록과 포스터
+### Editions and posters
 
-판을 찍고 포스터 Release를 올리는 절차는 `.agents/skills/edition-release/SKILL.md`에 있습니다. 요점: `main`에 머지하면 바로 배포되므로 **Release를 먼저 만들고, 미리보기와 용량을 가져온 뒤(`npm run poster:pull`) 머지합니다.**
+The steps for recording an edition and uploading the poster Release are in `.agents/skills/edition-release/SKILL.md`. The key point: merging to `main` deploys right away, so **create the Release first, fetch the preview and sizes (`npm run poster:pull`), then merge.**
 
-### 정정
+### Corrections
 
-- 사실 정정(날짜, 수치, 주체)은 장면의 `corrections`에 `{ date, ko, en }`으로 남깁니다. 오타는 조용히 고칩니다.
-- 사실이 바뀌면 장면의 `updated`를 갱신하고, 고친 근거를 `sources`에 더합니다.
-- `id`는 주소라서 바꾸지 않습니다. 부득이하게 바꾸면 예전 `id`를 `aliases`에 둡니다.
-- 정정 제보는 GitHub 이슈 양식(`.github/ISSUE_TEMPLATE/correction.yml`)으로 들어옵니다. 근거를 확인한 뒤에만 고칩니다.
+- Record a factual correction (date, figure, actor) in the scene's `corrections` as `{ date, ko, en }`. Fix typos silently.
+- When a fact changes, update the scene's `updated` and add the source for the fix to `sources`.
+- An `id` is an address, so do not change it. If you must, keep the old `id` in `aliases`.
+- Correction reports arrive through the GitHub issue form (`.github/ISSUE_TEMPLATE/correction.yml`). Change the content only after checking the evidence.
 
-## 사건 `glyph` (상자에 새기는 핵심어)
+## Event `glyph` (the key word carved in a box)
 
-모든 사건(`items[]`)에 `glyph`가 필요합니다.
+Every event (`items[]`) needs a `glyph`.
 
-- 사건 상자는 1×1 작은 판입니다. **한국어는 한 줄에 한글 3자 이내**로 씁니다. 4자 이상이거나 라틴 8자 이상이면 빌드가 경고합니다(작은 판에서 흐려집니다). 줄바꿈 `\n`으로 두 줄로 나눌 수 있습니다.
-- **숫자와 이름**(`GPT-6`, `6개월`, `-17%`)은 두 언어에서 같으므로 문자열 하나로 적습니다.
-- 그 밖에는 `{ ko, en }`으로 둘 다 적습니다. 예: `glyph: { ko: 침입, en: BREACH }`.
-- 영어 핵심어에 한글이 들어 있으면 빌드 오류입니다(번역 누락 방지).
-- 장면의 `print.glyph`는 공용 핵심어이고, 언어별로 다르면 `en.glyph`를 둡니다.
+- An event box is a small 1×1 plate. **Korean must stay within 3 Hangul characters per line.** Four or more, or eight or more Latin characters, gives a build warning (it blurs on a small plate). A line break `\n` splits it into two lines.
+- **Numbers and names** (`GPT-6`, `6개월`, `-17%`) are the same in both languages, so write one string.
+- Otherwise write both as `{ ko, en }`. Example: `glyph: { ko: 침입, en: BREACH }`.
+- Hangul in an English key word is a build error (it guards against a missing translation).
+- A scene's `print.glyph` is the shared key word. If it differs by language, add `en.glyph`.
 
-## `pic` (그림 상자)
+## `pic` (picture boxes)
 
-사건에 그림을 붙이거나 `content/pics.yaml`에 윤곽선을 그릴 때는 `.agents/skills/draw-pic/SKILL.md`를 먼저 읽습니다. 그림은 일부 사건(10~20개 안팎)에만 쓰고, 로고·상표·실존 인물의 얼굴은 그리지 않습니다. 이 규칙은 그림(`pic`)에 대한 것입니다. 포스터와 데이터 칸의 에이전트 버튼 아이콘(Claude, Codex, Cursor, OpenCode)은 "여기에 붙여 넣으면 된다"는 호환 표시로 쓰는 예외이고, lobehub/lobe-icons(MIT)의 SVG를 `src/components/AgentIcons.astro`에 그대로 옮겨 둡니다.
+Before adding a picture to an event or drawing an outline in `content/pics.yaml`, read `.agents/skills/draw-pic/SKILL.md`. Use pictures on only some events (around 10 to 20), and do not draw logos, trademarks or the faces of real people. This rule is about pictures (`pic`). The agent button icons in the poster and data block (Claude, Codex, Cursor, OpenCode) are an exception, used as a compatibility mark meaning "paste it here". Their SVGs come unchanged from lobehub/lobe-icons (MIT) and live in `src/components/AgentIcons.astro`. The GitHub mark in the top bar is another exception, used only to mark the link to this repository. Its SVG comes unchanged from primer/octicons (MIT) and lives in `src/components/GithubIcon.astro`.
 
-## 영어 문장 원칙
+## English writing rules
 
-- 공식 영문명은 1차 출처(발표문, 공식 사이트)에서 확인해 `content/glossary.yaml`에 적고 그대로 씁니다. 같은 대상을 다르게 쓰지 않습니다. 용어집에 없는 이름은 출처를 확인해 먼저 용어집에 더합니다.
-- 한국어를 직역하지 않고 영어로 자연스럽게 읽히는 문장으로 씁니다. 사건 문장은 한 문장, 현재형으로 씁니다(예: "OpenAI discloses that …").
-- 금지어(아래)와 상대 시간 표현은 영어에도 적용됩니다.
+- Confirm official English names in a primary source (announcement, official site), record them in `content/glossary.yaml`, and use them as written. Do not write the same thing in different ways. For a name not in the glossary, check the source and add it to the glossary first.
+- Do not translate the Korean literally. Write sentences that read naturally in English. An event sentence is one sentence in the present tense (for example, "OpenAI discloses that …").
+- The banned words (below) and the ban on relative time expressions apply to English too.
 
-## 문체 규칙 (빌드가 검사합니다)
+## Style rules (checked by the build)
 
-- 금지어: 한국어 `놀라운`, `혁명적`, `게임 체인저` / 영어 `revolutionary`, `game-changer`, `groundbreaking`, `stunning`, `incredible` / 공통 `!`, 이모지.
-- **em dash(U+2014)는 어디에도 쓰지 않습니다. 예외가 없습니다.** 한국어·영어 글, 화면 문구(`src/i18n/`), 출처 제목, YAML 주석, 코드 주석, 테스트, 커밋 메시지, PR 본문까지 해당합니다. 원문 기사 제목에 있으면 쉼표나 쌍점(`:`)으로 바꿔 옮깁니다. 글에서는 마침표로 문장을 나누거나 쉼표·쌍점·괄호를 씁니다. 빌드는 콘텐츠의 모든 문자열(출처 제목 포함)에서 오류로 막고, 단위 테스트(`tests/unit/no-em-dash.test.ts`)가 저장소의 글 파일 전체를 검사합니다. 날짜 범위의 en dash(`–`)는 그대로 씁니다.
-- 상대 시간 표현은 장면·사건·연도·시기 글에서 쓰지 않습니다: 한국어 `오늘`, `최근`, `올해`, `현재` / 영어 `today`, `recently`, `this year`. 읽는 날에 따라 뜻이 달라지기 때문입니다.
-- 사건은 장면마다 3~4개입니다.
+- Banned words: Korean `놀라운`, `혁명적`, `게임 체인저`; English `revolutionary`, `game-changer`, `groundbreaking`, `stunning`, `incredible`; in both, `!` and emoji.
+- **Never use an em dash (U+2014) anywhere. There are no exceptions.** This covers Korean and English text, UI strings (`src/i18n/`), source titles, YAML comments, code comments, tests, commit messages and PR bodies. If an original article title has one, replace it with a comma or a colon (`:`). In text, split the sentence with a period, or use a comma, colon or parentheses. The build blocks it as an error in every content string (source titles included), and a unit test (`tests/unit/no-em-dash.test.ts`) checks all text files in the repository. The en dash (`–`) in date ranges stays.
+- Do not use relative time expressions in scene, event, year or era text: Korean `오늘`, `최근`, `올해`, `현재`; English `today`, `recently`, `this year`. Their meaning changes with the day of reading.
+- Each scene has 3 to 4 events.
 
-### AI가 쓴 것처럼 읽히는 표현 (빌드가 잡지 못하니 직접 봅니다)
+### Phrases that read as AI-written (the build cannot catch these, so check by eye)
 
-사실을 짧게 적고, 의미를 덧붙여 해설하지 않습니다. 아래 표현이 보이면 사실 문장으로 바꿉니다.
+State facts briefly and do not add commentary on what they mean. If you see the phrases below, replace them with factual sentences.
 
-- 한국어: `~하는 일이 중요해졌다`, `~이 과제가 됐다`, `서로 다른 길을 제시했다`, `~의 경계를 정했다`, `~로 이어졌다`(인과를 꾸밀 때), `폭발적으로`, `세상을 놀라게 한`, `새로운 장을 열었다`, `패러다임`, `~에 그치지 않고`.
-- 영어: `became essential`, `became a pressing task`, `offering different ways to`, `extended to`, `marks a turning point`, `a new era`, `landscape`, `paradigm`, `underscores`, `highlights`, `delve`, `pivotal`, `In a world where`, `X Meets Y` 꼴의 제목.
-- 문장 끝에 분사구를 줄줄이 다는 꼴(`…, enabling …, describing …, noting …`). 사건 문장은 한 문장이지만 절을 서너 개 잇지 않습니다. 길어지면 덜 중요한 사실을 뺍니다.
-- 세 가지를 나란히 늘어놓는 수사, 대구로 맞춘 제목(`A의 B, C의 D`)을 반복하지 않습니다.
-- `보도 기준`, `진행 중` 같은 단서는 사실이므로 남깁니다. 다만 한 번만, 짧게 씁니다.
+- Korean: `~하는 일이 중요해졌다`, `~이 과제가 됐다`, `서로 다른 길을 제시했다`, `~의 경계를 정했다`, `~로 이어졌다` (when dressing up causation), `폭발적으로`, `세상을 놀라게 한`, `새로운 장을 열었다`, `패러다임`, `~에 그치지 않고`.
+- English: `became essential`, `became a pressing task`, `offering different ways to`, `extended to`, `marks a turning point`, `a new era`, `landscape`, `paradigm`, `underscores`, `highlights`, `delve`, `pivotal`, `In a world where`, and titles of the form `X Meets Y`.
+- A string of participle phrases at the end of a sentence (`…, enabling …, describing …, noting …`). An event is one sentence, but do not chain three or four clauses. If it gets long, drop the less important fact.
+- Do not repeat three-item lists used for rhetoric, or titles built as parallel pairs (`A의 B, C의 D`).
+- Qualifiers such as `보도 기준` and `진행 중` are facts, so keep them, but write them once and briefly.
 
-## 검사 명령
+## Check commands
 
-PR 전에 모두 통과해야 합니다. CI(`.github/workflows/check.yml`)도 같은 순서로 돌고, 브라우저 테스트는 Chromium과 WebKit을 나란히 돌립니다.
+All of these must pass before a PR. CI (`.github/workflows/check.yml`) runs them in the same order, and browser tests run on Chromium and WebKit side by side.
 
 ```bash
-npm run check        # astro check. precheck가 판 글꼴 목록(src/generated/plate.json)을 먼저 만들어 새로 받은 저장소에서도 돈다
-npm test             # 단위 테스트(콘텐츠 검사 포함)
-npm run build        # 판 글꼴을 만들고 정적 사이트를 빌드. 콘텐츠 오류는 여기서 빌드 실패로 나온다
-npm run budget       # 용량 예산: 언어별 판 글꼴 40KB, 클라이언트 JS 30KB(압축 전) 이하
-npx playwright test --project=chromium   # 브라우저 테스트(빌드와 미리보기 서버를 알아서 띄운다)
-npx playwright test --project=webkit     # Safari 엔진. 마우스로 누른 링크에 초점을 주지 않는 등 Safari에서만 생기는 문제를 잡는다
+npm run check        # astro check. precheck builds the plate font list (src/generated/plate.json) first, so it runs on a fresh clone
+npm test             # unit tests (including content checks)
+npm run build        # builds the plate fonts and the static site. Content errors show up here as a build failure
+npm run budget       # size budget: plate font per language 40KB, client JS 30KB (uncompressed) or less
+npx playwright test --project=chromium   # browser tests (builds and starts the preview server itself)
+npx playwright test --project=webkit     # Safari engine. Catches Safari-only problems, such as links not taking focus on mouse click
 ```
 
-빌드의 경고도 읽습니다. 경고가 늘면 이유를 확인합니다.
+Read the build warnings too. If warnings increase, find out why.
 
-## 하지 않는 것
+## Do not
 
-- 외부 런타임 리소스, 분석 도구, Google Fonts를 넣지 않습니다.
-- `src/generated/`, `public/plate/`는 빌드가 만드는 파일이라 커밋하지 않습니다.
-- 공유 이미지(`public/og/`)는 내용이 크게 바뀌면 `scripts/og.ts`로 다시 찍어 커밋합니다.
-- 포스터 파일은 커밋하지 않고 사이트에도 두지 않습니다. GitHub Releases에만 올립니다(Vercel 비용을 지지 않기 위해서). 예외는 포스터와 데이터 칸의 미리보기뿐입니다. 마지막 포스터 판의 화면용 PNG를 가로 600px AVIF로 줄인 것으로, 언어별 하나씩 100KB 이하로 `public/poster/`에 둡니다. 판마다 덮어써서 쌓이지 않습니다(`npm run poster:pull`이 만들고 `npm run budget`이 검사).
-- 방문자 정보를 서버로 보내지 않습니다. "지난 방문 이후 새 상자"는 브라우저 저장소(`atl:seen`, `atl:since`)만, 고른 언어는 `lucas-flatwhite:locale`만 씁니다.
+- Do not add external runtime resources, analytics tools or Google Fonts.
+- `src/generated/` and `public/plate/` are build output, so do not commit them.
+- Shared images (`public/og/`) are regenerated with `scripts/og.ts` and committed when the content changes a lot.
+- Do not commit poster files or put them on the site. They go only to GitHub Releases (to avoid Vercel costs). The only exception is the preview in the poster and data block: the screen PNG of the latest poster edition reduced to a 600px wide AVIF, one per language, at 100KB or less, in `public/poster/`. Each edition overwrites it, so they do not pile up (`npm run poster:pull` makes it and `npm run budget` checks it).
+- Do not send visitor information to a server. "New boxes since your last visit" uses only browser storage (`atl:seen`, `atl:since`), and the chosen language uses only `lucas-flatwhite:locale`.
 
-## 라이선스
+## License
 
-코드는 MIT(루트 `LICENSE`), 내용(`content/`)은 CC BY 4.0(`content/LICENSE`)입니다.
+Code is MIT (root `LICENSE`), and content (`content/`) is CC BY 4.0 (`content/LICENSE`).
