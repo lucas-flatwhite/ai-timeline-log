@@ -2,11 +2,13 @@
    클립보드를 쓸 수 없으면(권한 거부, 옛 브라우저) 쪽지의 글을 골라 두고 직접 복사하라고 알린다.
    연달아 누르면 마지막 누름부터 4초를 다시 센다 */
 export function initCopy(): void {
-  const btn = document.querySelector<HTMLButtonElement>('button[data-copy]');
-  const src = btn && document.getElementById(btn.dataset.copy!);
-  const label = btn?.querySelector<HTMLElement>('.t');
-  const hint = document.getElementById('agt-hint');
-  if (!btn || !src || !label || !hint) return;
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy]').forEach(copyButton);
+}
+function copyButton(btn: HTMLButtonElement): void {
+  const src = document.getElementById(btn.dataset.copy!);
+  const label = btn.querySelector<HTMLElement>('.t');
+  const hint = document.getElementById(btn.dataset.status!);
+  if (!src || !label || !hint) return;
   const idle = label.textContent;
   let timer = 0;
   const show = (state: 'copied' | 'failed', text: string) => {

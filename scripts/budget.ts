@@ -46,6 +46,10 @@ rows.push({ label: '클라이언트 JS', size: js.reduce((n, f) => n + f.size, 0
 const previews = list('poster/', '');
 for (const f of previews) rows.push({ label: `미리보기 ${f.name}`, size: f.size, limit: PREVIEW });
 
+/* 계보 견본: 언어별 하나. 파일 수가 언어 수와 다르면 npm run lineage:sample로 다시 만든다 */
+const lineage = list('lineage/', '.avif');
+for (const f of lineage) rows.push({ label: `계보 견본 ${f.name}`, size: f.size, limit: PREVIEW });
+
 const w = Math.max(...rows.map(r => r.label.length));
 console.log(`${'항목'.padEnd(w)}  ${'크기'.padStart(8)}  ${'한도'.padStart(8)}  결과`);
 let failed = false;
@@ -61,5 +65,9 @@ for (const l of missing) {
 if (previews.length > EXPECTED.length) {
   failed = true;
   console.error(`dist/poster/에 미리보기가 ${previews.length}개 있습니다. 언어별로 하나(${EXPECTED.length}개)만 둡니다: npm run poster:pull`);
+}
+if (lineage.length !== EXPECTED.length) {
+  failed = true;
+  console.error(`dist/lineage/에 견본이 ${lineage.length}개 있습니다. 언어별로 하나(${EXPECTED.length}개)여야 합니다: npm run lineage:sample`);
 }
 process.exit(failed ? 1 : 0);
