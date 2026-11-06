@@ -11,8 +11,8 @@ One JSON file holds everything. The PNG, SVG, PDF, Mermaid text and source list 
 | `title` | yes | Chart title. It must fit on one line. |
 | `lang` | yes | `"ko"` or `"en"`. Nothing else. |
 | `researched` | yes | The day you did the research, as a full `YYYY-MM-DD`. |
-| `style` | no | `woodcut` (default), `soft` or `proof`. The `--style` option wins. |
-| `credit` | no | `false` turns off the credit line. `--no-credit` does the same. |
+| `style` | no | `woodcut`, `soft` or `proof`: the look the user chose. Without it the tool uses `woodcut`. The `--style` option wins. |
+| `credit` | no | `true` adds the credit line, which is off by default. `--credit` does the same. |
 | `nodes` | yes | 1 to 9 nodes. |
 | `edges` | yes | The lines between nodes. May be empty, but a node with no line gets a warning. |
 | `focal` | no | `{ "node": "<id>", "note": "<one line>" }`. At most one key link. |
@@ -31,7 +31,7 @@ One JSON file holds everything. The PNG, SVG, PDF, Mermaid text and source list 
 | `date` | yes | First public date: `YYYY`, `YYYY-MM` or `YYYY-MM-DD`. |
 | `side` | no | `true` for another branch or a condition rather than the main line (for example the Transformer, or GPU training). It is filled with a wood-grain tone. |
 | `sources` | yes | At least one source. |
-| `timeline` | no | `{ "id": "...", "url": "..." }` when the same event is in the AI Timeline Log, otherwise `null` or omit it. Not allowed on a node dated before 2022-11-30. |
+| `timeline` | no | `{ "id": "...", "url": "..." }` when the same event is in the AI Timeline Log, otherwise `null` or omit it. It is not drawn. It adds the address to the source list. Not allowed on a node dated before 2022-11-30. |
 
 Nodes in a row are placed from the left, ordered by date. A missing month or day counts as the earliest value, and ties are ordered by `id`.
 

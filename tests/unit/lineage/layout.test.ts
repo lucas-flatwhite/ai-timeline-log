@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { loadFonts, shapeText } from '../../../skills/ai-lineage/scripts/lib/fonts.mjs';
 import { validate } from '../../../skills/ai-lineage/scripts/lib/schema.mjs';
 import { layout, NAME_SIZE, TEXT_FLOOR, TAG_FLOOR, MARK_FLOOR, CANVAS } from '../../../skills/ai-lineage/scripts/lib/layout.mjs';
-import { boxHeight, createPainter, tagRects } from '../../../skills/ai-lineage/scripts/lib/draw.mjs';
+import { boxHeight, createPainter, tagRect } from '../../../skills/ai-lineage/scripts/lib/draw.mjs';
 import { check } from '../../../skills/ai-lineage/scripts/lib/check.mjs';
 import { STRINGS } from '../../../skills/ai-lineage/scripts/lib/strings.mjs';
 import { STYLES, TOKENS, blend } from '../../../skills/ai-lineage/scripts/lib/styles.mjs';
@@ -335,32 +335,31 @@ describe('geometry', () => {
     }
   });
 
-  test('arrivals stay between the tags on the top border', () => {
-    // eight lines into one narrow box that has both a kind tag and a timeline badge
+  test('arrivals stay clear of the tag on the top border', () => {
+    // eight lines into one narrow box that has a kind tag
     const rows: Record<string, string> = { t: 'merge' };
     for (const id of ['a', 'b', 'c', 'dd']) rows[id] = 'root';
     for (const id of ['e', 'f', 'g', 'h']) rows[id] = 'revival';
     const d = mini(rows, Object.keys(rows).filter((id) => id !== 't').map((id) => [id, 't'] as [string, string]));
     const t = d.nodes.find((n: any) => n.id === 't');
     t.date = '2024-01-01';
-    t.timeline = { id: 'x', url: 'https://example.com/x' };
     for (const style of STYLE_IDS) {
       const out = run(d, style, false);
       expect(out.errors).toEqual([]);
       noOverlap(out);
       const b = out.boxes.t;
       const p = createPainter(fonts, [], STYLES[style as 'woodcut']);
-      const tags = tagRects(p, STYLES[style as 'woodcut'], b, 'PAPER', 'Timeline', CANVAS.landscape.tag);
+      const tag = tagRect(p, b, 'PAPER', CANVAS.landscape.tag);
       const xs = out.edges.filter((e: any) => e.to === 't').map((e: any) => e.points[e.points.length - 1][0]);
       expect(new Set(xs.map((x: number) => x.toFixed(3))).size).toBe(8);
       for (const x of xs) {
-        expect(x).toBeGreaterThan(tags.kind.x + tags.kind.w);
-        expect(x).toBeLessThan(tags.badge!.x);
+        expect(x).toBeGreaterThan(tag.x + tag.w);
+        expect(x).toBeLessThan(b.x + b.w);
       }
     }
   });
 
-  test('many arrivals into a narrow badged box still step aside from the line above', () => {
+  test('many arrivals into a narrow box still step aside from the line above', () => {
     const rows: Record<string, string> = {
       a: 'root', b: 'root', c: 'root', dd: 'root',
       e: 'revival', f: 'revival', g: 'revival',
@@ -374,7 +373,6 @@ describe('geometry', () => {
     for (const n of d.nodes) n.sub = '';
     const t = d.nodes.find((n: any) => n.id === 't');
     t.date = '2025-01-01';
-    t.timeline = { id: 'x', url: 'https://example.com/x' };
     for (const style of STYLE_IDS) {
       const out = run(d, style, false);
       expect(out.errors).toEqual([]);
@@ -525,8 +523,16 @@ describe('rules', () => {
     expect(t).toContain('2015.03 · A. Example');
     for (const tag of ['PAPER', 'HW', 'MODEL', 'RELEASE']) expect(t).toContain(tag);
     expect(t.some((x: string) => /^(PAPER|MODEL|HW|RELEASE|DATA|OTHER) · /.test(x))).toBe(false);
-    expect(run(alpha, 'woodcut', false).texts).toContain('Timeline');
-    expect(run(worstKo(), 'woodcut', false).texts).toContain('연표');
+  });
+
+  test('a node in the timeline carries no mark in the chart or the legend', () => {
+    for (const style of STYLE_IDS) {
+      for (const data of [alpha, worst, worstKo()]) {
+        expect(data.nodes.some((n: any) => n.timeline)).toBe(true);
+        const t = run(data, style, false).texts;
+        for (const word of ['Timeline', 'In the timeline', '연표', '연표에 있음']) expect(t).not.toContain(word);
+      }
+    }
   });
 
   test('unbreakable names are reported, not cut', () => {

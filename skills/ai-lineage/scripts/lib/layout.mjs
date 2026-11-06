@@ -5,7 +5,7 @@ import { STRINGS, KIND_TAGS } from './strings.mjs';
 import { STYLES, TOKENS } from './styles.mjs';
 import {
   BOX, INSET, MARK_FLOOR, NAME_SIZE, TAG_FLOOR, TEXT_FLOOR, boxHeight, createPainter, drawBox, drawEdge, drawFrame, drawLegend,
-  drawRowLabel, edgeDash, legendWidth, tagRects,
+  drawRowLabel, edgeDash, legendWidth, tagRect,
 } from './draw.mjs';
 
 export { MARK_FLOOR, NAME_SIZE, TAG_FLOOR, TEXT_FLOOR };
@@ -26,7 +26,7 @@ export const ROW_ORDER = /** @type {const} */ (['root', 'revival', 'merge', 'spr
 
 /**
  * Canvas and type sizes. Floors: names NAME_SIZE; sub, legend, focal, omitted, credit and row labels TEXT_FLOOR;
- * the tags on a box's top border (kind, timeline) TAG_FLOOR. `cols` is the most nodes one row may hold.
+ * the kind tag on a box's top border TAG_FLOOR. `cols` is the most nodes one row may hold.
  * The proof print marks (slug line `slug`, K labels `mark`) MARK_FLOOR.
  */
 export const CANVAS = {
@@ -210,15 +210,14 @@ export function layout(data, fonts, opts) {
   for (const [id, v] of placed) boxes[id] = { x: colX(v.col), y: rowTop[v.row], w: boxW, h: rowH[v.row] };
   const center = (/** @type {string} */ id) => boxes[id].x + boxes[id].w / 2;
   const kindOf = (/** @type {LNode} */ nd) => KIND_TAGS[nd.kind] ?? 'OTHER';
-  const badgeOf = (/** @type {LNode} */ nd) => (nd.timeline ? T.timeline : null);
-  // 위 변의 두 꼬리표 사이에서만 선이 들어온다. 가운데에서 잰 왼쪽, 오른쪽 한계
+  // 위 변에서 종류 꼬리표 오른쪽으로만 선이 들어온다. 가운데에서 잰 왼쪽, 오른쪽 한계
   /** @param {LNode} nd */
   const topRoom = (nd) => {
     const b = boxes[nd.id];
-    const t = tagRects(p, S, b, kindOf(nd), badgeOf(nd), O.tag);
+    const t = tagRect(p, b, kindOf(nd), O.tag);
     const cx = b.x + b.w / 2;
-    const lo = t.kind.x + t.kind.w + CLEAR - cx;
-    const hi = (t.badge ? t.badge.x : b.x + b.w - PORT_MARGIN) - CLEAR - cx;
+    const lo = t.x + t.w + CLEAR - cx;
+    const hi = b.x + b.w - PORT_MARGIN - CLEAR - cx;
     return /** @type {[number, number]} */ ([lo, hi]);
   };
 
@@ -336,7 +335,6 @@ export function layout(data, fonts, opts) {
         focal: data.focal?.node === node.id,
         unverified: node.sources.every((s) => s.opened === false),
         kind: kindOf(node),
-        badge: badgeOf(node),
         tagSize: O.tag,
       });
     }
@@ -478,7 +476,6 @@ function legendEntries(data, T) {
     inferred: lineEdges.some((e) => e.status === 'inferred'),
     condition: data.edges.some((e) => e.type === 'enables'),
     focal: Boolean(data.focal),
-    timeline: data.nodes.some((nd) => nd.timeline),
     unverified: data.nodes.some((nd) => nd.sources.every((s) => s.opened === false)),
   };
   return /** @type {LegendKey[]} */ (Object.keys(T.legend))

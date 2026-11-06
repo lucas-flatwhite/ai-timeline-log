@@ -10,7 +10,7 @@ import { TOKENS, blend } from './styles.mjs';
 /** @typedef {{ cmds: Cmd[], fill?: string, stroke?: string, width?: number, dash?: number[],
  *   cap?: 'butt'|'round'|'square', join?: 'miter'|'round' }} Item */
 /** @typedef {{ x: number, y: number, w: number, h: number }} Box */
-/** @typedef {'lineage'|'side'|'confirmed'|'inferred'|'condition'|'focal'|'timeline'|'unverified'} LegendKey */
+/** @typedef {'lineage'|'side'|'confirmed'|'inferred'|'condition'|'focal'|'unverified'} LegendKey */
 
 export const KAPPA = 0.5523;
 
@@ -24,7 +24,7 @@ export const NAME_SIZE = 28;
  *  가로 1200 그림을 블로그에서 800으로 보여도 9px 이상이다. */
 export const TEXT_FLOOR = 14;
 
-/** 상자 변에 걸친 꼬리표(연표 표지, 종류 꼬리표)의 하한. */
+/** 상자 변에 걸친 종류 꼬리표의 하한. */
 export const TAG_FLOOR = 11;
 
 /** 교정지 인쇄 표시(판 정보 줄, 먹 농도 견본의 K 글자)의 하한. */
@@ -40,8 +40,8 @@ export const boxHeight = (lines, subSize) =>
 /** 범례 견본 치수 */
 export const LEGEND = { box: 16, boxH: 10, line: 22, textGap: 5, itemGap: 12 };
 
-/** 상자 위 변에 걸친 꼬리표(연표 표지, 종류 꼬리표)의 크기. 위로 `rise`만큼 튀어나온다. @param {number} size */
-export const badgeMetrics = (size) => {
+/** 상자 위 변에 걸친 종류 꼬리표의 크기. 위로 `rise`만큼 튀어나온다. @param {number} size */
+export const tagMetrics = (size) => {
   const h = size + 7;
   return { h, rise: h / 2 + 2 };
 };
@@ -285,23 +285,18 @@ export function drawRowLabel(p, S, label, stack, x, midY, size) {
 // ---- 상자 ----
 
 /**
- * Where the two tags on a box's top border sit: the kind tag at the left, the timeline badge (if any) at the right.
- * Layout keeps arrival points clear of both.
- * @param {Painter} p @param {Style} S @param {Box} b @param {string} kind @param {string | null} badge @param {number} size
+ * Where the kind tag sits on a box's top border. Layout keeps arrival points clear of it.
+ * @param {Painter} p @param {Box} b @param {string} kind @param {number} size
  */
-export function tagRects(p, S, b, kind, badge, size) {
-  const { h, rise } = badgeMetrics(size);
-  const kw = p.measure('mono', kind, size) + 10;
-  const kindRect = { x: b.x + 10, y: b.y - rise, w: kw, h };
-  if (!badge) return { kind: kindRect, badge: null };
-  const bw = p.measure(S.fonts.badge, badge, size) + 12;
-  return { kind: kindRect, badge: { x: b.x + b.w - 10 - bw, y: b.y - rise, w: bw, h } };
+export function tagRect(p, b, kind, size) {
+  const { h, rise } = tagMetrics(size);
+  return { x: b.x + 10, y: b.y - rise, w: p.measure('mono', kind, size) + 10, h };
 }
 
 /**
  * @param {Painter} p @param {Style} S @param {Box} b
  * @param {{ id: string, lines: string[], kind: string, sub: string, subSize: number, side: boolean, focal: boolean,
- *   unverified: boolean, badge: string | null, tagSize: number }} v
+ *   unverified: boolean, tagSize: number }} v
  */
 export function drawBox(p, S, b, v) {
   const look = v.focal
@@ -314,9 +309,7 @@ export function drawBox(p, S, b, v) {
   if (v.unverified) item.dash = [6, 4];
   p.add(item);
   const where = `node "${v.id}"`;
-  const tags = tagRects(p, S, b, v.kind, v.badge, v.tagSize);
-  drawKindTag(p, S, tags.kind, v.kind, v.tagSize, where);
-  if (v.badge && tags.badge) drawBadge(p, S, tags.badge, v.badge, v.tagSize, where);
+  drawKindTag(p, S, tagRect(p, b, v.kind, v.tagSize), v.kind, v.tagSize, where);
   const cx = b.x + b.w / 2;
   // 아래 줄은 상자 아래 변에 붙여 한 줄의 상자끼리 맞춘다. 이름이 줄 높이보다 짧으면 남는 자리 가운데에 둔다.
   const room = Math.max(1, Math.round((b.h - boxHeight(1, v.subSize)) / BOX.line) + 1);
@@ -334,21 +327,6 @@ export function drawBox(p, S, b, v) {
 function drawKindTag(p, S, r, label, size, where) {
   p.add({ cmds: rect(r.x, r.y, r.w, r.h), fill: S.background });
   p.text('mono', label, size, r.x + 5, r.y + r.h / 2 + 0.35 * size, TOKENS.ink2, { where });
-}
-
-/** @param {Painter} p @param {Style} S @param {Box} r @param {string} label @param {number} size @param {string} where */
-function drawBadge(p, S, r, label, size, where) {
-  const { ink } = TOKENS;
-  const role = S.fonts.badge;
-  const tw = p.measure(role, label, size);
-  const { x, y, w, h } = r;
-  if (S.badge === 'stamp') {
-    p.add({ cmds: rect(x, y, w, h), fill: S.background, stroke: ink, width: 2 });
-    p.add({ cmds: rect(x + 2.5, y + 2.5, w - 5, h - 5), stroke: ink, width: 0.8 });
-  } else {
-    p.add({ cmds: roundRect(x, y, w, h, S.node.radius > 0 ? 2 : 0), fill: S.background, stroke: ink, width: 0.8 });
-  }
-  p.text(role, label, size, x + (w - tw) / 2, y + h / 2 + 0.35 * size, ink, { where });
 }
 
 // ---- 연결선 ----
@@ -398,7 +376,7 @@ const isLine = (k) => k === 'confirmed' || k === 'inferred' || k === 'condition'
  * @param {number} x @param {number} midY @param {number} size
  */
 export function drawLegend(p, S, entries, x, midY, size) {
-  const { ink, ink2 } = TOKENS;
+  const { ink2 } = TOKENS;
   for (const e of entries) {
     const top = midY - LEGEND.boxH / 2;
     const sw = isLine(e.key) ? LEGEND.line : LEGEND.box;
@@ -408,13 +386,6 @@ export function drawLegend(p, S, entries, x, midY, size) {
       const dash = edgeDash({ type: e.key === 'condition' ? 'enables' : 'lineage', status: e.key });
       if (dash) line.dash = dash;
       p.add(line);
-    } else if (e.key === 'timeline') {
-      if (S.badge === 'stamp') {
-        p.add({ cmds: rect(x, top, sw, LEGEND.boxH), fill: S.background, stroke: ink, width: 1.6 });
-        p.add({ cmds: rect(x + 2.5, top + 2.5, sw - 5, LEGEND.boxH - 5), stroke: ink, width: 0.6 });
-      } else {
-        p.add({ cmds: rect(x, top, sw, LEGEND.boxH), fill: S.background, stroke: ink, width: 0.8 });
-      }
     } else {
       const look =
         e.key === 'focal' ? S.focal : e.key === 'side' ? { ...S.side, width: S.node.width } : S.node;

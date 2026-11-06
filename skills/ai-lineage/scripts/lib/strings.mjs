@@ -3,7 +3,7 @@
 /** @typedef {'ko'|'en'} Lang */
 /** @typedef {'root'|'revival'|'merge'|'spread'} Row */
 /** @typedef {'paper'|'model'|'hardware'|'release'|'dataset'|'other'} Kind */
-/** @typedef {'lineage'|'side'|'confirmed'|'inferred'|'condition'|'focal'|'timeline'|'unverified'} LegendKey */
+/** @typedef {'lineage'|'side'|'confirmed'|'inferred'|'condition'|'focal'|'unverified'} LegendKey */
 
 /** 상자 아래 줄 맨 앞의 꼬리표. 두 언어에서 같다. @type {Record<Kind, string>} */
 export const KIND_TAGS = {
@@ -21,7 +21,6 @@ export const KIND_TAGS = {
  *   legend: Record<LegendKey, string>,
  *   focalPrefix: string,
  *   omittedPrefix: string,
- *   timeline: string,
  *   credit: string,
  *   kinds: Record<Kind, string>,
  *   desc: string,
@@ -39,12 +38,10 @@ export const STRINGS = {
       inferred: '추정',
       condition: '조건',
       focal: '징검다리',
-      timeline: '연표에 있음',
       unverified: '확인 못 함',
     },
     focalPrefix: '징검다리 · ',
     omittedPrefix: '뺀 것 · ',
-    timeline: '연표',
     credit: 'AI Timeline Log 계보 스킬로 그림 · lucasflatwhite.com/ai-timeline-log',
     kinds: KIND_TAGS,
     desc: '{subject} 계보도. 노드 {count}개: {names}.',
@@ -58,12 +55,10 @@ export const STRINGS = {
       inferred: 'Inferred',
       condition: 'Condition',
       focal: 'Key link',
-      timeline: 'In the timeline',
       unverified: 'Not verified',
     },
     focalPrefix: 'Key link · ',
     omittedPrefix: 'Omitted · ',
-    timeline: 'Timeline',
     credit: 'Made with AI Timeline Log · lucasflatwhite.com/ai-timeline-log',
     kinds: KIND_TAGS,
     desc: 'Lineage of {subject}. {count} nodes: {names}.',

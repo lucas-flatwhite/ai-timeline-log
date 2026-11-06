@@ -1,5 +1,5 @@
 /* 계보 스킬의 견본(MoE)을 한국어와 영어로 그리고, 사이트 칸이 쓸 AVIF를 만든다.
-   기본 결(woodcut)에 출처 줄을 켠 채로 그린다. 결과물은 examples/와 public/lineage/에 쓴다.
+   기본 결(woodcut)로, 사용자가 받는 기본 모습 그대로(출처 줄 없이) 그린다. 결과물은 examples/와 public/lineage/에 쓴다.
    실행: npm run lineage:sample */
 import { mkdirSync, statSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
