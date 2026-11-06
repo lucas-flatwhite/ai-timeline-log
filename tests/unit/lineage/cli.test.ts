@@ -96,17 +96,38 @@ describe('lineage cli', () => {
     expect(readdirSync(d).sort()).toEqual([...FIVE, 'alpha.portrait.png'].sort());
   });
 
-  test('--no-credit and credit:false give the same svg, different from default', () => {
+  test('the credit line is off unless asked for', () => {
     const d = tmp();
-    const a = join(d, 'a'), b = join(d, 'b'), c = join(d, 'c');
-    run(['draw', alphaPath, '--out', a], d);
-    run(['draw', alphaPath, '--no-credit', '--out', b], d);
-    const nc = join(d, 'alpha.lineage.json');
-    writeFileSync(nc, JSON.stringify({ ...alpha, credit: false }));
-    run(['draw', nc, '--out', c], d);
-    const svg = (x: string) => readFileSync(join(x, 'alpha.svg'), 'utf8');
-    expect(svg(a)).not.toBe(svg(b));
-    expect(svg(c)).toBe(svg(b));
+    const dir = (x: string) => join(d, x);
+    const withData = (name: string, extra: object) => {
+      const f = join(d, `${name}.lineage.json`);
+      writeFileSync(f, JSON.stringify({ ...alpha, ...extra }));
+      return f;
+    };
+    const svg = (x: string, slug = 'alpha') => readFileSync(join(dir(x), `${slug}.svg`), 'utf8');
+    run(['draw', alphaPath, '--out', dir('default')], d);
+    run(['draw', alphaPath, '--credit', '--out', dir('flag')], d);
+    run(['draw', withData('on', { credit: true }), '--out', dir('on')], d);
+    run(['draw', withData('off', { credit: false }), '--out', dir('off')], d);
+    expect(svg('flag')).not.toBe(svg('default'));
+    expect(svg('on', 'on')).toBe(svg('flag'));
+    expect(svg('off', 'off')).toBe(svg('default'));
+  });
+
+  test('--no-credit still works and wins over the data file', () => {
+    const d = tmp();
+    const f = join(d, 'alpha.lineage.json');
+    writeFileSync(f, JSON.stringify({ ...alpha, credit: true }));
+    expect(run(['draw', f, '--no-credit', '--out', join(d, 'a')], d).status).toBe(0);
+    run(['draw', alphaPath, '--out', join(d, 'b')], d);
+    const svg = (x: string) => readFileSync(join(d, x, 'alpha.svg'), 'utf8');
+    expect(svg('a')).toBe(svg('b'));
+  });
+
+  test('check takes neither credit option', () => {
+    const d = tmp();
+    expect(run(['check', alphaPath, '--credit'], d).status).toBe(2);
+    expect(run(['check', alphaPath, '--no-credit'], d).status).toBe(2);
   });
 
   test('--style changes the output', () => {

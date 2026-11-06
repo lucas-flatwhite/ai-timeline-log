@@ -22,7 +22,7 @@ describe.each(LANGS)('MoE sample (%s)', (lang) => {
   const d = data(lang);
 
   it('passes check with no errors and no warnings', async () => {
-    const r = await check(d, { style: 'woodcut', credit: true });
+    const r = await check(d, { style: 'woodcut' });
     expect(r.errors).toEqual([]);
     expect(r.warnings).toEqual([]);
   });
@@ -40,7 +40,7 @@ describe.each(LANGS)('MoE sample (%s)', (lang) => {
   });
 
   it('keeps the committed SVG in step with a fresh render', async () => {
-    const scene = layout(d, await loadFonts(), { style: 'woodcut', credit: true, portrait: false }).scene;
+    const scene = layout(d, await loadFonts(), { style: 'woodcut', credit: false, portrait: false }).scene;
     expect(readFileSync(`${DIR}/moe.${lang}.svg`, 'utf8')).toBe(toSvg(scene));
   });
 

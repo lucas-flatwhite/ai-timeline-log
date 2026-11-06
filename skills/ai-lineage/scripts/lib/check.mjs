@@ -16,7 +16,7 @@ export async function check(data, opts = {}) {
   const d = /** @type {import('./schema.mjs').Lineage} */ (data);
   const out = layout(d, await loadFonts(), {
     style: opts.style ?? d.style ?? 'woodcut',
-    credit: opts.credit ?? d.credit ?? true,
+    credit: opts.credit ?? d.credit ?? false,
     portrait: opts.portrait ?? false,
   });
   return { errors: [...errors, ...out.errors], warnings };

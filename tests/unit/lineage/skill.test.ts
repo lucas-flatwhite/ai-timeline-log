@@ -62,13 +62,28 @@ describe('skill docs', () => {
   const text = (f: string): string => readFileSync(new URL(f, skill), 'utf8');
   const skillMd = text('SKILL.md');
 
-  test('skill docs are English', () => {
-    for (const f of docs) expect(text(f), f).not.toMatch(/[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af]/);
+  test('skill docs are English, except the Korean names of the looks', () => {
+    const koreanNames = ['먹판', '가까운 변화', '교정지'];
+    for (const name of koreanNames) expect(text('references/styles.md')).toContain(`| ${name} |`);
+    for (const f of docs) {
+      const rest = f === 'references/styles.md' ? koreanNames.reduce((t, name) => t.replaceAll(`| ${name} |`, ''), text(f)) : text(f);
+      expect(rest, f).not.toMatch(/[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af]/);
+    }
   });
   test('skill docs name the real commands', () => {
-    for (const s of ['scripts/lineage.mjs check', 'scripts/lineage.mjs draw', '--style', '--no-credit', '--portrait', 'woodcut', 'soft', 'proof']) {
+    for (const s of ['scripts/lineage.mjs check', 'scripts/lineage.mjs draw', '--style', '--credit', '--portrait', 'woodcut', 'soft', 'proof']) {
       expect(skillMd, s).toContain(s);
     }
+  });
+  test('asks for language, look and scope first and leaves the credit line off', () => {
+    for (const f of ['SKILL.md', 'references/styles.md']) expect(text(f), f).not.toContain('Do not ask every time');
+    expect(skillMd).toContain('ask which look');
+    expect(skillMd).toContain('use the Korean names listed there');
+    expect(skillMd).toContain('ask whether the chart should be in Korean or English');
+    expect(skillMd).toContain('say how you would scope this lineage');
+    expect(skillMd).toContain('Put the chosen language in `"lang"` and the chosen look in `"style"`');
+    expect(skillMd).not.toContain('--no-credit');
+    expect(skillMd).toContain('off by default');
   });
   test('no install step', () => { expect(skillMd).not.toContain('npm install'); });
   test('references linked', () => {

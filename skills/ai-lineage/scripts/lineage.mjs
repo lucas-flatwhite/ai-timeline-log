@@ -16,7 +16,7 @@ import { STYLES } from './lib/styles.mjs';
 
 const USAGE = `usage:
   node lineage.mjs check <file>
-  node lineage.mjs draw <file> [--style woodcut|soft|proof] [--no-credit] [--portrait] [--out <dir>]`;
+  node lineage.mjs draw <file> [--style woodcut|soft|proof] [--credit] [--portrait] [--out <dir>]`;
 
 class UsageError extends Error {}
 
@@ -66,6 +66,7 @@ async function run(argv) {
       allowPositionals: true,
       options: {
         style: { type: 'string' },
+        credit: { type: 'boolean' },
         'no-credit': { type: 'boolean' },
         portrait: { type: 'boolean' },
         out: { type: 'string' },
@@ -78,7 +79,7 @@ async function run(argv) {
   const o = /** @type {Record<string, any>} */ (parsed.values);
   if (command !== 'check' && command !== 'draw') throw new UsageError(command ? `unknown command ${command}` : 'missing command');
   if (!file || extra.length) throw new UsageError('expected exactly one data file');
-  if (command === 'check' && (o.style || o['no-credit'] || o.portrait || o.out)) {
+  if (command === 'check' && (o.style || o.credit || o['no-credit'] || o.portrait || o.out)) {
     throw new UsageError('check takes no options');
   }
   // layout falls back to woodcut for an unknown style, so reject it here.
@@ -89,7 +90,7 @@ async function run(argv) {
   const path = resolve(file);
   const data = readData(path);
   const style = o.style ?? data?.style ?? 'woodcut';
-  const credit = o['no-credit'] ? false : (data?.credit ?? true);
+  const credit = o['no-credit'] ? false : (o.credit ?? data?.credit ?? false);
   const portrait = command === 'draw' && !!o.portrait;
 
   const { errors: valErrors, warnings } = validate(data);

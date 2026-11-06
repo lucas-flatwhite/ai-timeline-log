@@ -11,8 +11,7 @@
  *   focal: { fill: string, stroke: string, width: number, text: string, sub: string },
  *   edge: { color: string, width: number, radius: number, arrow: number, arrowHalf: number },
  *   line: { cap: 'butt'|'round'|'square', join: 'miter'|'round' },
- *   fonts: { title: Role, label: Role, badge: Role },
- *   badge: 'stamp'|'tag',
+ *   fonts: { title: Role, label: Role },
  *   frame: 'none'|'block'|'proof',
  * }} Style
  */
@@ -62,8 +61,7 @@ export const STYLES = {
     focal: { fill: ink, stroke: ink, width: 2, text: paper, sub: paper },
     edge: { color: ink, width: 2, radius: 0, arrow: 10, arrowHalf: 5 },
     line: { cap: 'square', join: 'miter' },
-    fonts: { title: 'display', label: 'display', badge: 'display' },
-    badge: 'stamp',
+    fonts: { title: 'display', label: 'display' },
     frame: 'block',
   },
   soft: {
@@ -74,8 +72,7 @@ export const STYLES = {
     focal: { fill: ink, stroke: ink, width: 1, text: paper, sub: paper },
     edge: { color: ink2, width: 1, radius: 8, arrow: 8, arrowHalf: 4 },
     line: { cap: 'round', join: 'round' },
-    fonts: { title: 'bodyBold', label: 'body', badge: 'body' },
-    badge: 'tag',
+    fonts: { title: 'bodyBold', label: 'body' },
     frame: 'none',
   },
   proof: {
@@ -86,8 +83,7 @@ export const STYLES = {
     focal: { fill: blend(ink, 0.14, PROOF_PAPER), stroke: ink, width: 2, text: ink, sub: ink2 },
     edge: { color: ink2, width: 0.8, radius: 6, arrow: 7, arrowHalf: 3.5 },
     line: { cap: 'butt', join: 'miter' },
-    fonts: { title: 'bodyBold', label: 'mono', badge: 'body' },
-    badge: 'tag',
+    fonts: { title: 'bodyBold', label: 'mono' },
     frame: 'proof',
   },
 };
