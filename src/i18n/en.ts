@@ -8,6 +8,7 @@ export const en: UI = {
   outroTitle: (days) => `What changed in ${days} days`,
   ledgerTitle: 'Major model releases',
   endCount: (count, start, end) => `${count} prints · ${start} – ${end}`,
+  repo: 'GitHub repository',
   report: 'Report',
   reportIssue: 'Open a GitHub issue',
   reportMail: 'Send an email',

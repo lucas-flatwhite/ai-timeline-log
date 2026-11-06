@@ -6,6 +6,7 @@ export const ko = {
   outroTitle: (days: string) => `${days}일 동안 바뀐 것`,
   ledgerTitle: '주요 모델 판본',
   endCount: (count: number, start: string, end: string) => `판 ${count}장 · ${start} – ${end}`,
+  repo: 'GitHub 저장소',
   report: '제보',
   reportIssue: 'GitHub 이슈 열기',
   reportMail: '메일 보내기',

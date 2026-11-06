@@ -34,6 +34,8 @@ export interface PageView {
   canonical: string; ogImage: string; alternates: { hreflang: string; href: string }[];
   /** 내보내기 파일의 주소(base 아래 절대 경로). rss는 언어별, json은 하나 */
   feeds: { rss: string; json: string };
+  /** 윗줄의 저장소 링크 */
+  repo: { label: string; href: string };
   /** 제보: href는 GitHub 이슈 목록(스크립트가 없을 때 가는 곳이자 사건 정정 링크의 기본값). 스크립트가 있으면 안내 창을 연다 */
   name: string; report: { label: string; href: string; note: string; issue: string; mailLabel: string; mail: string; email: string };
   /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
@@ -229,6 +231,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     ],
     feeds: { rss: `${new URL(canonical).pathname}feed.xml`, json: `${new URL(ORIGIN).pathname}timeline.json` },
     name: site.name,
+    repo: { label: t.repo, href: site.repo },
     report: {
       label: t.report, href: `${site.repo}/issues`, note: fill(st.reportNote, vars), issue: t.reportIssue, mailLabel: t.reportMail,
       mail: `mailto:${site.email}?subject=${enc(t.reportSubject(site.name))}`, email: site.email,
