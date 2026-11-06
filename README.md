@@ -1,3 +1,5 @@
+[![AI Timeline Log](assets/ai-timeline-log-hero-v2-1920x1080.webp)](https://lucasflatwhite.com/ai-timeline-log/)
+
 # AI Timeline Log
 
 English | [한국어](README.ko.md)
@@ -6,7 +8,7 @@ A timeline of generative AI since ChatGPT launched on November 30, 2022. Events 
 
 [Read the timeline](https://lucasflatwhite.com/ai-timeline-log/) · [한국어로 읽기](https://lucasflatwhite.com/ai-timeline-log/ko/)
 
-## What you'll find
+## The timeline
 
 - A wall of black-and-white woodcut boxes, newest first. Open a box for the story and its sources, or follow a topic across scenes.
 - Each scene is written in English and Korean. Factual corrections are recorded in the scene.
@@ -16,13 +18,37 @@ The timeline focuses on events that shaped generative AI. Dates and claims are c
 
 ## Lineage skill
 
-The `ai-lineage` skill is a separate, installable agent skill. It researches where an AI technique came from and draws a sourced lineage chart (PNG, SVG, PDF, Mermaid and a source list). Every box carries a source, and a box whose sources the agent could not open at all is marked "not verified".
+[`ai-lineage`](skills/ai-lineage) is an [agent skill](https://agentskills.io/specification) in this repository. Ask where an AI technique, model family or idea came from. The agent reads the origin papers and releases, then draws one chart.
+
+A chart has at most nine boxes, in four rows: roots, revival, merge, spread. Every box has a source. A box whose sources could not be opened at all is marked "not verified", and every line is marked confirmed or inferred. You get a PNG, an SVG, a PDF, a Mermaid file and a source list. A finished chart, Mixture of Experts in English and Korean, is in [`skills/ai-lineage/examples`](skills/ai-lineage/examples). Before the research starts, the agent asks for the chart language (Korean or English), the look (Woodcut, Soft or Proof) and the scope.
+
+The drawing script needs Node.js 20 or later. Fonts and libraries ship inside the skill.
+
+## Install
+
+Install the lineage skill:
 
 ```bash
 npx skills add lucas-flatwhite/ai-timeline-log --skill ai-lineage -g
 ```
 
-Details are in [`skills/ai-lineage`](skills/ai-lineage).
+This finds the agents on your computer (Claude Code, Codex, Cursor, OpenCode, Grok Build and others) and installs for them. To install for one agent only, add `-a <id>`. For the current project only, drop `-g`. Agent ids are in the [skills CLI agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md).
+
+For the lineage chart, ask, for example: "Where did mixture of experts come from?" In a chat app that cannot run commands, you get the data file, a Mermaid version and the source list, with no drawn chart.
+
+The `ai-timeline-log` skill answers questions about this timeline with dates and source links. It installs from the site:
+
+```bash
+npx skills add https://lucasflatwhite.com/ai-timeline-log -g
+```
+
+To use the timeline skill in a chat app that cannot save a file, see [agent.md](https://lucasflatwhite.com/ai-timeline-log/agent.md) ([한국어](https://lucasflatwhite.com/ai-timeline-log/ko/agent.md)).
+
+To update:
+
+```bash
+npx skills update ai-lineage ai-timeline-log -g
+```
 
 ## Run locally
 
@@ -46,4 +72,4 @@ English lives at `/ai-timeline-log/`, Korean at `/ai-timeline-log/ko/`. The site
 
 ## License
 
-Code: [MIT](LICENSE). Timeline content in `content/`: [CC BY 4.0](content/LICENSE).
+Code: [MIT](LICENSE). Timeline content in `content/`: [CC BY 4.0](content/LICENSE). The lineage skill bundles third-party libraries and fonts under their own licenses ([list](skills/ai-lineage/THIRD_PARTY_NOTICES.md)).
