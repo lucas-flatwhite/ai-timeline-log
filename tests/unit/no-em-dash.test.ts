@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
 import { EM_DASH } from '../../src/lib/checks.ts';
 
-/* em dash는 저장소 어디에도 두지 않는다(AGENTS.md 문체 규칙). 콘텐츠 검사(checks.ts)는 문자열만 보니,
+/* em dash는 저장소 어디에도 두지 않는다(AGENTS.md "Style rules"). 콘텐츠 검사(checks.ts)는 문자열만 보니,
    여기서는 YAML 주석, 코드 주석, 문서, 테스트까지 글 파일 전체를 읽는다 */
 const ROOTS = ['content', 'src', 'scripts', 'tests', 'docs', '.github', 'public', '.agents', 'skills'];
 const FILES = ['AGENTS.md', 'CLAUDE.md', 'README.md', 'package.json', 'astro.config.mjs', 'playwright.config.ts', 'vitest.config.ts', 'vercel.json', 'tsconfig.json'];
