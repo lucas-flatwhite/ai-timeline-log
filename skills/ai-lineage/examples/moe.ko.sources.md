@@ -22,6 +22,10 @@
 - GShard -> Mixtral 8x7B: 확인, [6, 7] Section 2.1, page 3: "This formulation is similar to the GShard architecture [21]"
 - GShard -> 딥시크 V3: 확인, [8, 9] Section 3.2, page 12: applies "64-way Expert Parallelism (EP) (Lepikhin et al., 2021)"; Section 2.1.2, page 8, compares: "Compared with traditional MoE architectures like GShard"
 
+## AI Timeline Log
+
+- 딥시크 V3: https://lucasflatwhite.com/ai-timeline-log/ko/#2024-11-computer-use-mcp
+
 ## 뺀 것
 
 - Transformer(2017)

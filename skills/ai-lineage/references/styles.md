@@ -2,7 +2,7 @@
 
 Pick the look with `--style woodcut|soft|proof`, or with `"style"` in the data file. The option wins over the file. The default is `woodcut`. Use another look only when the user asks for it. Do not ask every time.
 
-All three looks use the same five colors and no accent color: paper, ink, a dark gray, a light gray and a wood-grain gray. The key link is always an inverted box (light text on ink in Woodcut and Soft). The canvas size and type sizes are the same in every look, so a chart that fits in one fits in all three.
+All three looks draw from the same five colors and use no accent color: paper, ink, a dark gray, a light gray and a wood-grain gray. Proof also uses blended fills, which are those colors mixed in fixed proportions. The key link is always an inverted box (light text on ink in Woodcut and Soft). The canvas size and type sizes are the same in every look, but a long title or name can fit in one look and fail in another, so a chart that passes in one look may still fail in the others. `check` tests one look at a time.
 
 | Id | Name | What it looks like |
 | --- | --- | --- |

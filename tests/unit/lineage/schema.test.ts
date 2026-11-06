@@ -62,6 +62,7 @@ describe('validate', () => {
     ['self edge', (d) => { d.edges[0].to = d.edges[0].from; }, 'self'],
     ['duplicate edge', (d) => { d.edges.push(structuredClone(d.edges[0])); }, 'duplicate edge'],
     ['confirmed without evidence', (d) => { delete d.edges[0].evidence; }, 'evidence'],
+    ['evidence node has no opened source', (d) => { d.nodes.find((n: any) => n.id === 'gamma-pool').sources[0].opened = false; }, 'inferred'],
     ['evidence node unrelated', (d) => { d.edges[0].evidence.node = 'beta-gate'; }, 'evidence'],
     ['focal unknown', (d) => { d.focal.node = 'nope'; }, 'focal'],
     ['timeline before 2022-11-30', (d) => {

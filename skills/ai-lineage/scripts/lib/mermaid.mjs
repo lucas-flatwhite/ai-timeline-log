@@ -1,5 +1,5 @@
 // 계보 데이터를 Mermaid flowchart로 옮긴다. 같은 입력이면 같은 문자열이다.
-import { ROW_ORDER } from './layout.mjs';
+import { ROW_ORDER, clean } from './layout.mjs';
 import { STRINGS } from './strings.mjs';
 import { TOKENS } from './styles.mjs';
 
@@ -7,7 +7,7 @@ import { TOKENS } from './styles.mjs';
 
 const nid = (/** @type {string} */ id) => `n_${id.replaceAll('-', '_')}`;
 const dotDate = (/** @type {string} */ d) => d.replaceAll('-', '.');
-const esc = (/** @type {string} */ s) => s.replaceAll('"', '#quot;').replace(/[<>]/g, (c) => (c === '<' ? '#lt;' : '#gt;'));
+const esc = (/** @type {string} */ s) => clean(s).replaceAll('"', '#quot;').replace(/[<>]/g, (c) => (c === '<' ? '#lt;' : '#gt;'));
 
 /** @param {Lineage} data */
 export function toMermaid(data) {

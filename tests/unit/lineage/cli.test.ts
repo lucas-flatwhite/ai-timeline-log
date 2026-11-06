@@ -128,4 +128,23 @@ describe('lineage cli', () => {
     expect(existsSync(out) ? readdirSync(out) : []).toEqual([]);
     expect(r.stdout).toBe('');
   });
+
+  test('an internal failure exits 3, not 1', () => {
+    const d = tmp();
+    const notDir = join(d, 'file');
+    writeFileSync(notDir, 'x');
+    const r = run(['draw', alphaPath, '--out', notDir], d);
+    expect(r.status).toBe(3);
+    expect(r.stderr).toContain('internal error');
+  });
+
+  const flag = '--no-experimental-detect-module';
+  test.skipIf(!process.allowedNodeEnvironmentFlags.has(flag))('runs on Node without module detection (installed copy)', () => {
+    const d = tmp();
+    const copy = join(d, 'ai-lineage');
+    cpSync(skillDir, copy, { recursive: true });
+    const r = spawnSync(process.execPath, [flag, '--no-experimental-require-module', join(copy, 'scripts/lineage.mjs'), 'draw', alphaPath, '--out', join(d, 'out')], { cwd: d, encoding: 'utf8' });
+    expect(r.stderr).toBe('');
+    expect(r.status).toBe(0);
+  });
 });

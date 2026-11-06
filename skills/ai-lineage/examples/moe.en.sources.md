@@ -22,6 +22,10 @@ Researched: 2026-11-06
 - GShard -> Mixtral 8x7B: Confirmed, [6, 7] Section 2.1, page 3: "This formulation is similar to the GShard architecture [21]"
 - GShard -> DeepSeek V3: Confirmed, [8, 9] Section 3.2, page 12: applies "64-way Expert Parallelism (EP) (Lepikhin et al., 2021)"; Section 2.1.2, page 8, compares: "Compared with traditional MoE architectures like GShard"
 
+## AI Timeline Log
+
+- DeepSeek V3: https://lucasflatwhite.com/ai-timeline-log/#2024-11-computer-use-mcp
+
 ## Omitted
 
 - Transformer (2017)

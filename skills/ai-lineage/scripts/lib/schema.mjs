@@ -157,6 +157,12 @@ export function validate(data) {
       const ev = e.evidence;
       if (!isObj(ev) || !isStr(ev.node) || !isStr(ev.where)) {
         errors.push(`${at}: confirmed edge needs evidence { node, where }`);
+      } else {
+        const evNode = byId.get(ev.node);
+        const opened = Array.isArray(evNode?.sources) && evNode.sources.some((s) => isObj(s) && s.opened === true);
+        if (evNode && !opened) {
+          errors.push(`${at}: confirmed edge cites "${ev.node}", which has no opened source: open a source of that node, or mark the edge inferred`);
+        }
       }
     }
     if (e.evidence !== undefined && isObj(e.evidence) && e.evidence.node !== e.from && e.evidence.node !== e.to) {

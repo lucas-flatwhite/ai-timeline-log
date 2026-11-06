@@ -14,6 +14,16 @@ ChatGPT가 공개된 2022년 11월 30일부터 생성형 AI의 사건들을 기�
 
 생성형 AI의 흐름을 바꾼 사건을 골라 기록합니다. 날짜와 사실은 각 사의 발표문, 논문 등 1차 출처로 확인합니다. 틀린 곳이나 빠진 사건을 발견하면 근거와 함께 [이슈로 알려 주세요](https://github.com/lucas-flatwhite/ai-timeline-log/issues/new/choose).
 
+## 계보 스킬
+
+`ai-lineage`는 따로 설치하는 에이전트 스킬입니다. AI 기법이 어디서 나왔는지 조사해, 출처가 붙은 계보 그림(PNG, SVG, PDF, Mermaid, 출처 목록)을 그립니다. 모든 상자에 출처가 붙고, 에이전트가 출처를 하나도 열지 못한 상자는 "확인 못 함"으로 표시합니다.
+
+```bash
+npx skills add lucas-flatwhite/ai-timeline-log --skill ai-lineage -g
+```
+
+자세한 내용은 [`skills/ai-lineage`](skills/ai-lineage)에 있습니다.
+
 ## 로컬에서 실행하기
 
 Astro와 TypeScript로 만들었으며, 장면은 YAML로 저장합니다. Node.js 22.22 이상이 필요합니다.

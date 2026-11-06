@@ -54,7 +54,7 @@ Nodes in a row are placed from the left, ordered by date. A missing month or day
 | `from`, `to` | yes | Node ids. The two must differ, and the same `from`, `to` and `type` may not appear twice. |
 | `type` | yes | `lineage` (builds on), `merge` (another branch joins here) or `enables` (a condition such as hardware or data). `enables` is always drawn dotted. |
 | `status` | yes | `confirmed` or `inferred`. Inferred lines are dashed. |
-| `evidence` | when `confirmed` | `{ "node": "<id>", "where": "<section, page, figure>" }`. `node` must be the `from` or the `to` node, the one whose text says the link exists. A confirmed edge without evidence is an error. |
+| `evidence` | when `confirmed` | `{ "node": "<id>", "where": "<section, page, figure>" }`. `node` must be the `from` or the `to` node, the one whose text says the link exists. A confirmed edge without evidence is an error. So is a confirmed edge whose evidence node has no source with `"opened": true`: open a source of that node, or mark the edge `inferred`. |
 
 A `lineage` edge whose target is dated earlier than its source gets a warning.
 
@@ -76,7 +76,7 @@ The canvas and type sizes never change. The tool measures the real text with the
 
 ## Messages from `check`
 
-Each message names the node or edge. Exit code 1 means errors, and nothing is drawn. Typical ones: `no source, at least one is required`, `confirmed edge needs evidence { node, where }`, `name does not fit in two lines`, `goes upward`, `timeline is not allowed before 2022-11-30`, and a message naming a character that no bundled font has.
+Each message names the node or edge. Exit code 1 means the data has errors, and nothing is drawn. Typical ones: `no source, at least one is required`, `confirmed edge needs evidence { node, where }`, `name does not fit in two lines`, `goes upward`, `timeline is not allowed before 2022-11-30`, and a message naming a character that no bundled font has.
 
 ## Short example
 

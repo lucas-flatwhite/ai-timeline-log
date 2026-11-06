@@ -15,7 +15,7 @@ const MAX_AVIF = 102400;
 const data = (lang: string) => JSON.parse(readFileSync(`${DIR}/moe.${lang}.lineage.json`, 'utf8'));
 const facts = (lang: string) => {
   const d = data(lang);
-  return { nodes: d.nodes.map(({ name, sub, ...rest }: Record<string, unknown>) => rest), edges: d.edges };
+  return { nodes: d.nodes.map(({ name, sub, timeline, ...rest }: Record<string, any>) => ({ ...rest, timeline: timeline ? { id: timeline.id } : null })), edges: d.edges };
 };
 
 describe.each(LANGS)('MoE sample (%s)', (lang) => {
@@ -50,6 +50,13 @@ describe.each(LANGS)('MoE sample (%s)', (lang) => {
     expect(statSync(file).size).toBeLessThanOrEqual(MAX_AVIF);
     const { width, height } = await sharp(file).metadata();
     expect([width, height]).toEqual([1200, 675]);
+  });
+});
+
+describe('MoE sample timeline address', () => {
+  it('uses the address of its own language', () => {
+    expect(data('ko').nodes.find((n: any) => n.timeline).timeline.url).toBe('https://lucasflatwhite.com/ai-timeline-log/ko/#2024-11-computer-use-mcp');
+    expect(data('en').nodes.find((n: any) => n.timeline).timeline.url).toBe('https://lucasflatwhite.com/ai-timeline-log/#2024-11-computer-use-mcp');
   });
 });
 

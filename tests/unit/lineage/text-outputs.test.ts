@@ -78,4 +78,28 @@ describe('toSourcesMd', () => {
   it('has no em dash in fixed text', () => {
     expect(toSourcesMd(alpha) + toMermaid(alpha)).not.toContain(String.fromCharCode(0x2014));
   });
+
+  it('keeps pasted text from carrying raw HTML or line breaks', () => {
+    const d = structuredClone(alpha);
+    d.nodes[0].sources[0].title = 'A <b>bold</b>\nsecond line';
+    d.nodes[0].name = 'Line\none';
+    d.notes = 'Note with <script>x</script>.';
+    d.omitted = ['Left <i>out</i>'];
+    const s: string = toSourcesMd(d);
+    expect(s).not.toMatch(/<[a-z/]/i);
+    expect(s).toContain('A &lt;b&gt;bold&lt;/b&gt; second line');
+    expect(s).toContain('Line one ->');
+    expect(s).toContain('Note with &lt;script&gt;x&lt;/script&gt;.');
+    expect(s).toContain('Left &lt;i&gt;out&lt;/i&gt;');
+    expect(toMermaid(d)).toContain('Line one<br/>');
+  });
+  it('lists the timeline address of a node', () => {
+    const s: string = toSourcesMd(alpha);
+    expect(s).toContain('## AI Timeline Log');
+    expect(s).toContain('- Epsilon Open Release: https://example.com/timeline/epsilon');
+    expect(toSourcesMd(ko())).toContain('## AI Timeline Log');
+    const d = structuredClone(alpha);
+    d.nodes[4].timeline = null;
+    expect(toSourcesMd(d)).not.toContain('## AI Timeline Log');
+  });
 });

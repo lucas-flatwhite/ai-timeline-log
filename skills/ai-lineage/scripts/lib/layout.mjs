@@ -52,7 +52,7 @@ const CLEAR = 6; // 두 세로선이 이보다 가까우면 한 선처럼 보인
 /** @param {string} a @param {string} b */
 const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 /** Collapses whitespace and control characters so no newline reaches shapeText. @param {unknown} s */
-const clean = (s) =>
+export const clean = (s) =>
   String(s ?? '')
     .replace(/[\u0000-\u001F\u007F\s]+/gu, ' ')
     .trim();

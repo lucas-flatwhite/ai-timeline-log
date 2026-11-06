@@ -50,7 +50,9 @@ export async function main(argv) {
       console.error(`error: ${e.message}\n${USAGE}`);
       return 2;
     }
-    throw e;
+    // Not a data problem: exit 3 so it is not mistaken for check errors (exit 1).
+    console.error(`internal error: ${/** @type {Error} */ (e)?.message ?? e}`);
+    return 3;
   }
 }
 
@@ -134,6 +136,6 @@ try {
     process.exitCode = await main(process.argv.slice(2));
   }
 } catch (e) {
-  console.error(`error: ${/** @type {Error} */ (e).message}`);
-  process.exitCode = 1;
+  console.error(`internal error: ${/** @type {Error} */ (e)?.message ?? e}`);
+  process.exitCode = 3;
 }
