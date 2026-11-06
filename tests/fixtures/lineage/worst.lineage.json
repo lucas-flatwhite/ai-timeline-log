@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "subject": "Alpha Sparse Routing",
+  "title": "Where Alpha Sparse Routing came from, 2015 to 2025",
+  "lang": "en",
+  "researched": "2026-11-05",
+  "nodes": [
+    {
+      "id": "alpha-router", "row": "root", "kind": "paper",
+      "name": "Alpha Sparse Routing for Text", "sub": "A. Example", "date": "2015-03",
+      "sources": [{ "title": "Alpha Sparse Routing for Text", "by": "A. Example, B. Sample", "year": 2015, "url": "https://example.com/alpha", "opened": true }]
+    },
+    {
+      "id": "kappa-capacity", "row": "root", "kind": "hardware", "side": true,
+      "name": "Kappa Capacity Factor Tuning", "sub": "Accelerator", "date": "2016",
+      "sources": [{ "title": "Kappa Capacity Factor Tuning", "url": "https://example.com/kappa", "opened": true }]
+    },
+    {
+      "id": "gamma-pool", "row": "root", "kind": "paper",
+      "name": "Gamma Expert Pool for Speech", "sub": "Speech lab", "date": "2017-06-12",
+      "sources": [{ "title": "Gamma Expert Pool for Speech", "year": 2017, "url": "https://example.com/gamma", "opened": true }]
+    },
+    {
+      "id": "delta-stack", "row": "revival", "kind": "paper",
+      "name": "Delta Fused Stack", "sub": "C. Example", "date": "2019-02",
+      "sources": [{ "title": "Delta Fused Stack", "url": "https://example.com/delta", "opened": true }]
+    },
+    {
+      "id": "eta-parallel", "row": "revival", "kind": "model",
+      "name": "Eta Parallel Experts", "sub": "600B params", "date": "2020-06-30",
+      "sources": [{ "title": "Eta Parallel Experts", "url": "https://example.com/eta", "opened": true }]
+    },
+    {
+      "id": "theta-shared", "row": "merge", "kind": "model",
+      "name": "Theta Shared Expert Variant B", "sub": "1.2T total", "date": "2023-01-10",
+      "sources": [{ "title": "Theta Shared Expert Variant B", "url": "https://example.com/theta", "opened": true }]
+    },
+    {
+      "id": "lambda-ablation", "row": "merge", "kind": "paper",
+      "name": "Lambda Router Gate Ablation", "sub": "Workshop draft", "date": "2023-08-21",
+      "sources": [{ "title": "Lambda Router Gate Ablation", "url": "https://example.com/lambda", "opened": false }]
+    },
+    {
+      "id": "tau-pool", "row": "spread", "kind": "release",
+      "name": "Tau Expert Pool", "sub": "8x22B weights", "date": "2024-03-15",
+      "sources": [{ "title": "Tau Expert Pool", "url": "https://example.com/tau", "opened": true }],
+      "timeline": { "id": "2024-03-tau", "url": "https://example.com/timeline/tau" }
+    },
+    {
+      "id": "iota-pool", "row": "spread", "kind": "model",
+      "name": "Iota Shared Pool v3", "sub": "MIT license", "date": "2025-01-20",
+      "sources": [{ "title": "Iota Shared Pool v3", "url": "https://example.com/iota", "opened": true }]
+    }
+  ],
+  "edges": [
+    { "from": "alpha-router", "to": "delta-stack", "type": "lineage", "status": "confirmed", "evidence": { "node": "delta-stack", "where": "Section 2" } },
+    { "from": "gamma-pool", "to": "eta-parallel", "type": "lineage", "status": "confirmed", "evidence": { "node": "eta-parallel", "where": "Section 1" } },
+    { "from": "kappa-capacity", "to": "eta-parallel", "type": "enables", "status": "confirmed", "evidence": { "node": "eta-parallel", "where": "Appendix A" } },
+    { "from": "delta-stack", "to": "theta-shared", "type": "lineage", "status": "confirmed", "evidence": { "node": "theta-shared", "where": "Related work" } },
+    { "from": "eta-parallel", "to": "theta-shared", "type": "merge", "status": "inferred" },
+    { "from": "alpha-router", "to": "lambda-ablation", "type": "lineage", "status": "inferred" },
+    { "from": "eta-parallel", "to": "lambda-ablation", "type": "lineage", "status": "confirmed", "evidence": { "node": "eta-parallel", "where": "Section 5" } },
+    { "from": "theta-shared", "to": "tau-pool", "type": "lineage", "status": "confirmed", "evidence": { "node": "tau-pool", "where": "Model card" } },
+    { "from": "gamma-pool", "to": "iota-pool", "type": "lineage", "status": "inferred" },
+    { "from": "tau-pool", "to": "iota-pool", "type": "lineage", "status": "confirmed", "evidence": { "node": "iota-pool", "where": "Section 3" } }
+  ],
+  "focal": { "node": "theta-shared", "note": "Fictional bridge: the first model here to share one expert pool across every layer." },
+  "omitted": ["Mu Dense to Sparse Upcycling (2022), a minor branch", "Nu Expert Choice Routing (2023), not cited by later nodes"]
+}

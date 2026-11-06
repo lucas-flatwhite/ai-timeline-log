@@ -287,6 +287,14 @@ describe('poster and data section', () => {
         json: 'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
       },
     });
+    for (const [view, lang] of [[v, 'ko'], [e, 'en']] as const) {
+      const ln = view.outro.take.lineage;
+      expect(ln.command).toBe('npx skills add lucas-flatwhite/ai-timeline-log --skill ai-lineage -g');
+      expect(ln.links.folder).toBe('https://github.com/lucas-flatwhite/ai-timeline-log/tree/main/skills/ai-lineage');
+      expect(ln.links.sample).toBe(`https://github.com/lucas-flatwhite/ai-timeline-log/blob/main/skills/ai-lineage/examples/moe.${lang}.png`);
+      expect(ln.img).toEqual({ src: `/ai-timeline-log/lineage/ai-lineage-${lang}.avif`, w: 1200, h: 675 });
+      expect(ln.steps.length).toBe(3);
+    }
     expect(e.outro.take.ai.button).toBe('Onboard your agent');
     expect(e.outro.take.ai.eyebrow).toBe('Hand It to an AI · As of 2026.11.03');
     expect(e.outro.take.ai.title).toBe('Onboard your agent to this timeline');

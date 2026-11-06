@@ -8,6 +8,7 @@ import { ORIGIN } from './origin.ts';
 import { LICENSE, latestPosterEdition, posterUrl } from './export.ts';
 import { agentSetupUrl, clipText, EXAMPLES } from './agent.ts';
 import { ui, uiFor, locales } from '../i18n/index.ts';
+import { lineageImage, lineageInstall, lineageLinks } from './lineage.ts';
 import { GUIDE, type GuideAct } from './guide.ts';
 import { formatMB, previewFile, previewSize } from './poster.ts';
 
@@ -70,6 +71,12 @@ export interface PageView {
         button: string; copied: string; hint: string; failed: string;
         steps: [string, string, string]; examples: { label: string; text: string }[];
         links: { agent: string; llms: string; json: string };
+      };
+      lineage: {
+        eyebrow: string; title: string; desc: string; caption: string; alt: string;
+        button: string; copied: string; hint: string; failed: string; command: string;
+        steps: [string, string, string]; folderLabel: string; sampleLabel: string;
+        links: { folder: string; sample: string }; img: { src: string; w: number; h: number };
       };
       license: string;
     };
@@ -262,6 +269,12 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
           button: t.aiButton, copied: t.aiCopied, hint: t.aiHint, failed: t.aiFailed,
           steps: t.aiSteps, examples: EXAMPLES[locale],
           links: { agent: agentSetupUrl(locale), llms: `${canonical}llms-full.txt`, json: `${ORIGIN}timeline.json` },
+        },
+        lineage: {
+          eyebrow: t.lnEyebrow, title: t.lnTitle, desc: t.lnDesc, caption: t.lnCaption, alt: t.lnAlt,
+          button: t.lnButton, copied: t.lnCopied, hint: t.lnHint, failed: t.lnFailed, command: lineageInstall(c.site.repo),
+          steps: t.lnSteps, folderLabel: t.lnFolder, sampleLabel: t.lnSample,
+          links: lineageLinks(c.site.repo, locale), img: lineageImage(locale),
         },
         license: t.takeLicense(LICENSE.name, site.name),
       },

@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph row_root["Roots"]
+    n_jacobs_1991["Adaptive Mixtures of Local Experts<br/>1991"]
+  end
+  subgraph row_revival["Revival"]
+    n_eigen_2013["Deep Mixture of Experts<br/>2013.12.16"]
+    n_shazeer_2016["Sparsely-Gated MoE Layer<br/>2016"]
+  end
+  subgraph row_merge["Merge"]
+    n_gshard_2020["GShard<br/>2020.06.30"]
+  end
+  subgraph row_spread["Spread"]
+    n_mixtral_2023["Mixtral 8x7B<br/>2023.12"]
+    n_deepseek_v3["DeepSeek V3<br/>2024.12"]
+  end
+  n_jacobs_1991 --> n_eigen_2013
+  n_eigen_2013 --> n_shazeer_2016
+  n_shazeer_2016 --> n_gshard_2020
+  n_gshard_2020 --> n_mixtral_2023
+  n_gshard_2020 --> n_deepseek_v3
+  class n_eigen_2013 focal
+  classDef focal fill:#111110,color:#E3E1D9,stroke:#111110
+  classDef side fill:#D3D0C6,color:#111110,stroke:#111110

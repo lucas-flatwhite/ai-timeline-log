@@ -183,6 +183,8 @@ test.describe('exported files', () => {
       'https://lucasflatwhite.com/ai-timeline-log/ko/agent.md',
       'https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt',
       'https://lucasflatwhite.com/ai-timeline-log/timeline.json',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/tree/main/skills/ai-lineage',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/blob/main/skills/ai-lineage/examples/moe.ko.png',
       '/ai-timeline-log/ko/feed.xml',
     ]);
     for (const a of await take.locator('a[href^="https://github.com"]').all()) {

@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "subject": "Mixture of Experts",
+  "title": "Mixture of Experts: from a 1991 paper to DeepSeek V3",
+  "lang": "en",
+  "researched": "2026-11-06",
+  "nodes": [
+    {
+      "id": "jacobs-1991",
+      "row": "root",
+      "kind": "paper",
+      "name": "Adaptive Mixtures of Local Experts",
+      "sub": "Jacobs et al.",
+      "date": "1991",
+      "sources": [
+        {
+          "title": "Adaptive Mixtures of Local Experts",
+          "by": "Robert A. Jacobs, Michael I. Jordan, Steven J. Nowlan, Geoffrey E. Hinton",
+          "year": 1991,
+          "venue": "Neural Computation 3, 79-87",
+          "url": "https://www.cs.toronto.edu/~hinton/absps/jjnh91.pdf",
+          "opened": true
+        }
+      ]
+    },
+    {
+      "id": "eigen-2013",
+      "row": "revival",
+      "kind": "paper",
+      "name": "Deep Mixture of Experts",
+      "sub": "Eigen et al.",
+      "date": "2013-12-16",
+      "sources": [
+        {
+          "title": "Learning Factored Representations in a Deep Mixture of Experts",
+          "by": "David Eigen, Marc'Aurelio Ranzato, Ilya Sutskever",
+          "year": 2013,
+          "venue": "arXiv 1312.4314",
+          "url": "https://arxiv.org/abs/1312.4314",
+          "opened": true
+        }
+      ]
+    },
+    {
+      "id": "shazeer-2016",
+      "row": "revival",
+      "kind": "paper",
+      "name": "Sparsely-Gated MoE Layer",
+      "sub": "Shazeer et al.",
+      "date": "2016",
+      "sources": [
+        {
+          "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+          "by": "Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, Jeff Dean",
+          "year": 2017,
+          "venue": "arXiv 1701.06538",
+          "url": "https://arxiv.org/abs/1701.06538",
+          "opened": true
+        },
+        {
+          "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+          "by": "Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Jeff Dean",
+          "year": 2016,
+          "venue": "ICLR 2017 submission on OpenReview, Wayback capture of 2016-11-13",
+          "url": "https://web.archive.org/web/20161113053908/http://openreview.net/pdf?id=B1ckMDqlg",
+          "opened": true
+        }
+      ]
+    },
+    {
+      "id": "gshard-2020",
+      "row": "merge",
+      "kind": "paper",
+      "name": "GShard",
+      "sub": "MoE Transformer",
+      "date": "2020-06-30",
+      "sources": [
+        {
+          "title": "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding",
+          "by": "Dmitry Lepikhin, HyoukJoong Lee, Yuanzhong Xu, Dehao Chen, Orhan Firat, Yanping Huang, Maxim Krikun, Noam Shazeer, Zhifeng Chen",
+          "year": 2020,
+          "venue": "arXiv 2006.16668",
+          "url": "https://arxiv.org/abs/2006.16668",
+          "opened": true
+        }
+      ]
+    },
+    {
+      "id": "mixtral-2023",
+      "row": "spread",
+      "kind": "model",
+      "name": "Mixtral 8x7B",
+      "sub": "Mistral AI",
+      "date": "2023-12",
+      "sources": [
+        {
+          "title": "Mixtral of experts",
+          "by": "Mistral AI",
+          "year": 2023,
+          "venue": "mistral.ai",
+          "url": "https://mistral.ai/news/mixtral-of-experts",
+          "opened": true
+        },
+        {
+          "title": "Mixtral of Experts",
+          "by": "Albert Q. Jiang et al.",
+          "year": 2024,
+          "venue": "arXiv 2401.04088",
+          "url": "https://arxiv.org/abs/2401.04088",
+          "opened": true
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v3",
+      "row": "spread",
+      "kind": "model",
+      "name": "DeepSeek V3",
+      "sub": "671B MoE",
+      "date": "2024-12",
+      "sources": [
+        {
+          "title": "Introducing DeepSeek-V3",
+          "by": "DeepSeek",
+          "year": 2024,
+          "venue": "DeepSeek API Docs",
+          "url": "https://api-docs.deepseek.com/news/news1226",
+          "opened": true
+        },
+        {
+          "title": "DeepSeek-V3 Technical Report",
+          "by": "DeepSeek-AI",
+          "year": 2024,
+          "venue": "arXiv 2412.19437",
+          "url": "https://arxiv.org/abs/2412.19437",
+          "opened": true
+        }
+      ],
+      "timeline": {
+        "id": "2024-11-computer-use-mcp",
+        "url": "https://lucasflatwhite.com/ai-timeline-log/#2024-11-computer-use-mcp"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "jacobs-1991",
+      "to": "eigen-2013",
+      "type": "lineage",
+      "status": "confirmed",
+      "evidence": {
+        "node": "eigen-2013",
+        "where": "arXiv v1, Section 1, page 1: \"we extend the Mixture of Experts to use a different gating network at each layer\"; the model is cited as ref. [4], Jacobs et al."
+      }
+    },
+    {
+      "from": "eigen-2013",
+      "to": "shazeer-2016",
+      "type": "lineage",
+      "status": "confirmed",
+      "evidence": {
+        "node": "shazeer-2016",
+        "where": "arXiv v1, Section 1.3, page 3: \"Our work builds on this use of MoEs as a general purpose neural network component\", after citing Eigen et al. (2013)"
+      }
+    },
+    {
+      "from": "shazeer-2016",
+      "to": "gshard-2020",
+      "type": "lineage",
+      "status": "confirmed",
+      "evidence": {
+        "node": "gshard-2020",
+        "where": "Section 2.2, page 4: \"The Mixture-of-Experts (MoE) layer used in our model is based on [16]\"; ref. [16] is Shazeer et al."
+      }
+    },
+    {
+      "from": "gshard-2020",
+      "to": "mixtral-2023",
+      "type": "lineage",
+      "status": "confirmed",
+      "evidence": {
+        "node": "mixtral-2023",
+        "where": "Section 2.1, page 3: \"This formulation is similar to the GShard architecture [21]\""
+      }
+    },
+    {
+      "from": "gshard-2020",
+      "to": "deepseek-v3",
+      "type": "lineage",
+      "status": "confirmed",
+      "evidence": {
+        "node": "deepseek-v3",
+        "where": "Section 3.2, page 12: applies \"64-way Expert Parallelism (EP) (Lepikhin et al., 2021)\"; Section 2.1.2, page 8, compares: \"Compared with traditional MoE architectures like GShard\""
+      }
+    }
+  ],
+  "focal": {
+    "node": "eigen-2013",
+    "note": "Sparsely-Gated MoE’s arXiv v1 says it builds on this use of MoE as a network component"
+  },
+  "omitted": [
+    "Transformer (2017)",
+    "Switch Transformer (2021)",
+    "DeepSeekMoE (2024)",
+    "DeepSeek R1 (2025)"
+  ],
+  "notes": "Dates. Adaptive Mixtures: the paper prints only 1991; Crossref gives 1991-02 and Semantic Scholar 1991-03, so the year is used. The paper says the idea was first presented at a summer school in 1988. Sparsely-Gated MoE: a version was public on OpenReview as an ICLR 2017 submission by 2016-11-13 (Wayback capture; the ICLR deadline was 2016-11-05), before arXiv v1 of 2017-01-23. Nothing opened gives the first day, so the year is used. The November 2016 version lists six authors; arXiv v1 lists seven, including Geoffrey Hinton. Later papers cite the work as 2017. The sentence quoted for the link from Deep Mixture of Experts is in arXiv v1; the 2016 version cites Eigen et al. as related work without it. Mixtral: the announcement is dated 2023-12-11, and Mistral AI posted a magnet link on X on 2023-12-08 (read through a mirror, because x.com could not be opened), so the month is used. DeepSeek V3: the DeepSeek-V3-Base page was public on Hugging Face by 2024-12-25 (Wayback capture), the announcement is dated 2024-12-26 and arXiv v1 2024-12-27, so the month is used. The timeline item is dated 2024-12-26. Names follow the timeline glossary (DeepSeek V3); the paper prints DeepSeek-V3. Mixtral also uses the top-K gating it cites to Shazeer et al. (Section 2.1, page 2, ref. [28]); that line is left out to keep the chart readable."
+}

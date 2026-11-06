@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "subject": "Alpha Sparse Routing",
+  "title": "Where Alpha Sparse Routing came from",
+  "lang": "en",
+  "researched": "2026-11-05",
+  "nodes": [
+    {
+      "id": "alpha-routing", "row": "root", "kind": "paper",
+      "name": "Alpha Sparse Routing", "sub": "Fictional paper", "date": "2017-01",
+      "sources": [{ "title": "Alpha Sparse Routing", "by": "A. Example", "year": 2017, "url": "https://example.com/alpha", "opened": true }]
+    },
+    {
+      "id": "beta-gate", "row": "root", "kind": "paper", "side": true,
+      "name": "Beta Gate Notes", "sub": "Fictional report", "date": "2018-05",
+      "sources": [{ "title": "Beta Gate Notes", "url": "https://example.com/beta", "opened": true }]
+    },
+    {
+      "id": "gamma-pool", "row": "revival", "kind": "model",
+      "name": "Gamma Expert Pool", "sub": "Fictional model", "date": "2021-06-10",
+      "sources": [{ "title": "Gamma Expert Pool", "year": 2021, "url": "https://example.com/gamma", "opened": true }]
+    },
+    {
+      "id": "delta-stack", "row": "merge", "kind": "model",
+      "name": "Delta Fused Stack", "sub": "Fictional model", "date": "2023-02-14",
+      "sources": [{ "title": "Delta Fused Stack", "url": "https://example.com/delta", "opened": true }]
+    },
+    {
+      "id": "epsilon-open", "row": "spread", "kind": "release",
+      "name": "Epsilon Open Release", "sub": "Fictional release", "date": "2024-03-15",
+      "sources": [{ "title": "Epsilon Open Release", "url": "https://example.com/epsilon", "opened": true }],
+      "timeline": { "id": "2024-03-epsilon", "url": "https://example.com/timeline/epsilon" }
+    }
+  ],
+  "edges": [
+    { "from": "alpha-routing", "to": "gamma-pool", "type": "lineage", "status": "confirmed", "evidence": { "node": "gamma-pool", "where": "Section 2" } },
+    { "from": "gamma-pool", "to": "delta-stack", "type": "lineage", "status": "confirmed", "evidence": { "node": "delta-stack", "where": "Related work" } },
+    { "from": "beta-gate", "to": "delta-stack", "type": "merge", "status": "confirmed", "evidence": { "node": "delta-stack", "where": "Section 3" } },
+    { "from": "alpha-routing", "to": "delta-stack", "type": "lineage", "status": "inferred" },
+    { "from": "delta-stack", "to": "epsilon-open", "type": "enables", "status": "confirmed", "evidence": { "node": "epsilon-open", "where": "Announcement" } }
+  ],
+  "focal": { "node": "delta-stack", "note": "Fictional focal note." },
+  "omitted": ["Zeta Variants, left out as a minor branch"]
+}

@@ -8,6 +8,11 @@ const go = async (page: Page, path: string) => {
   await page.locator('#take-ai').scrollIntoViewIfNeeded();
 };
 
+const goLineage = async (page: Page, path: string) => {
+  await page.goto(path);
+  await page.locator('#take-lineage').scrollIntoViewIfNeeded();
+};
+
 for (const path of ['./ko/', './']) {
   const lang = path === './' ? 'en' : 'ko';
   const t = ui[lang]!;
@@ -38,12 +43,66 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('#agt-hint')).toHaveText('');
     });
 
+    test('lineage copy shows copied state', async ({ page }) => {
+      await page.addInitScript(() => {
+        const w = window as unknown as { __copied: string[] };
+        w.__copied = [];
+        Object.defineProperty(navigator, 'clipboard', { value: { writeText: (s: string) => { w.__copied.push(s); return Promise.resolve(); } }, configurable: true });
+      });
+      await goLineage(page, path);
+      const btn = page.locator('#take-lineage button.agt-cp');
+      await expect(btn.locator('.t')).toHaveText(t.lnButton);
+      await btn.click();
+      await expect(btn).toHaveAttribute('data-state', 'copied');
+      await expect(btn.locator('.t')).toHaveText(t.lnCopied);
+      const cmd = await page.locator('#lin-cmd').textContent();
+      expect(cmd).toContain('--skill ai-lineage');
+      expect(await page.evaluate(() => (window as unknown as { __copied: string[] }).__copied)).toEqual([cmd]);
+      await expect(page.locator('#lin-hint')).toHaveText(t.lnHint);
+      await expect(page.locator('#agt-hint')).toHaveText('');
+    });
+
+    test('lineage copy falls back', async ({ page }) => {
+      await page.addInitScript(() => {
+        Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('denied')) }, configurable: true });
+      });
+      await goLineage(page, path);
+      await page.locator('#take-lineage button.agt-cp').click();
+      await expect(page.locator('#lin-hint')).toHaveText(t.lnFailed);
+      expect(await page.evaluate(() => getSelection()?.toString())).toBe(await page.locator('#lin-cmd').textContent());
+    });
+
+    test('lineage block', async ({ page, request }) => {
+      await goLineage(page, path);
+      // 순서: #take-ai, #take-lineage, 피드 줄
+      const order = await page.evaluate(() => {
+        const ai = document.getElementById('take-ai')!, ln = document.getElementById('take-lineage')!;
+        return [ai.nextElementSibling === ln, ln.nextElementSibling?.tagName];
+      });
+      expect(order).toEqual([true, 'UL']);
+      const img = page.locator('#take-lineage img');
+      await expect(img).toHaveAttribute('alt', t.lnAlt);
+      const src = (await img.getAttribute('src'))!;
+      expect(src.endsWith(`-${lang}.avif`)).toBe(true);
+      expect((await request.get(src)).status()).toBe(200);
+      const links = page.locator('#take-lineage .links a');
+      await expect(links).toHaveCount(2);
+      for (const a of await links.all()) {
+        await expect(a).toHaveAttribute('href', /^https:\/\/github\.com\/lucas-flatwhite\/ai-timeline-log\//);
+        await expect(a).toHaveAttribute('target', '_blank');
+      }
+      expect(await page.evaluate(() => [...document.querySelectorAll('#lin-cmd span')].every(s => s.getClientRects().length === 1))).toBe(true);
+      await page.setViewportSize({ width: 360, height: 800 });
+      expect(await page.evaluate(() => [...document.querySelectorAll('#lin-cmd span')].every(s => s.getClientRects().length === 1))).toBe(true);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+    });
+
     test('copy reaches the real clipboard (Chromium)', async ({ page, context, browserName }) => {
       test.skip(browserName !== 'chromium', 'only Chromium lets Playwright grant clipboard permissions');
       await context.grantPermissions(['clipboard-read', 'clipboard-write']);
       await go(page, path);
-      await page.locator('button.agt-cp').click();
-      await expect(page.locator('button.agt-cp')).toHaveAttribute('data-state', 'copied');
+      await page.locator('#take-ai button.agt-cp').click();
+      await expect(page.locator('#take-ai button.agt-cp')).toHaveAttribute('data-state', 'copied');
       expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(await page.locator('#agt-clip').textContent());
     });
 
@@ -52,8 +111,8 @@ for (const path of ['./ko/', './']) {
         Object.defineProperty(navigator, 'clipboard', { value: { writeText: () => Promise.reject(new Error('denied')) }, configurable: true });
       });
       await go(page, path);
-      await page.locator('button.agt-cp').click();
-      await expect(page.locator('button.agt-cp')).toHaveAttribute('data-state', 'failed');
+      await page.locator('#take-ai button.agt-cp').click();
+      await expect(page.locator('#take-ai button.agt-cp')).toHaveAttribute('data-state', 'failed');
       await expect(page.locator('#agt-hint')).toHaveText(t.aiFailed);
       const sel = await page.evaluate(() => getSelection()?.toString());
       expect(sel).toBe(await page.locator('#agt-clip').textContent());
@@ -62,7 +121,7 @@ for (const path of ['./ko/', './']) {
     test('button stays on one line at 360px', async ({ page }) => {
       await page.setViewportSize({ width: 360, height: 800 });
       await go(page, path);
-      const btn = page.locator('button.agt-cp');
+      const btn = page.locator('#take-ai button.agt-cp');
       const m = await btn.evaluate(b => ({ sw: b.scrollWidth, cw: b.clientWidth, h: b.getBoundingClientRect().height, r: b.getBoundingClientRect().right }));
       expect(m.sw).toBeLessThanOrEqual(m.cw);
       expect(m.h).toBeLessThan(60);
@@ -84,7 +143,7 @@ for (const path of ['./ko/', './']) {
       test.use({ javaScriptEnabled: false });
       test('note and link stay, button hides', async ({ page }) => {
         await page.goto(path);
-        await expect(page.locator('button.agt-cp')).toBeHidden();
+        await expect(page.locator('#take-ai button.agt-cp')).toBeHidden();
         await expect(page.locator('#agt-clip')).toBeVisible();
         const agent = lang === 'ko' ? 'https://lucasflatwhite.com/ai-timeline-log/ko/agent.md' : 'https://lucasflatwhite.com/ai-timeline-log/agent.md';
         await expect(page.locator('#take-ai .links a').first()).toHaveAttribute('href', agent);

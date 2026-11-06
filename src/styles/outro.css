@@ -75,6 +75,11 @@ html:not(.js) .arcs .arc-go{display:none}
 .agt-cp .ic{display:inline-grid;place-items:center;width:26px;height:26px;background:#fff;border:1px solid var(--ink);border-radius:5px;color:#111}
 .agt-cp .ic svg{width:17px;height:17px}
 html:not(.js) .agt-cp,html:not(.js) .agt-hint{display:none}
+.lin-fig{margin:0;border:1px solid var(--ink);background:var(--paper)}
+.lin-fig img{display:block;width:100%;height:auto}
+.lin-fig figcaption{padding:8px 12px;border-top:1px solid var(--ink);font:500 11px/1.5 var(--mono);color:var(--ink-2)}
+.lin-cmd{margin:12px 0 0;padding:10px 12px;background:#EDEBE4;border:1px solid var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;font:500 12px/1.6 var(--mono)}
+.lin-cmd span{white-space:nowrap}
 @media (prefers-reduced-motion:reduce){.agt-cp{transition:none}}
 @media (max-width:420px){.agt-cp{gap:8px;padding:10px 10px 10px 12px;font-size:15px}.agt-cp .ic{width:20px;height:20px;border-radius:4px}.agt-cp .ic svg{width:13px;height:13px}.agt-slip{padding:22px 16px 18px}.agt-slip pre{font-size:12px}}
 .agt-hint{margin:10px 0 0;min-height:1.4em;font:500 12px/1.4 var(--mono);color:var(--ink-2)}

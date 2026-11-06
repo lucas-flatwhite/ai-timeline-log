@@ -6,6 +6,7 @@ const { view } = Astro.props as { view: PageView };
 const o = view.outro;
 const p = o.take.poster;
 const ai = o.take.ai;
+const ln = o.take.lineage;
 /* 교정지: 520 너비 좌표에 포스터(가로 300)를 놓고 둘레에 재단선·치수선·맞춤표를 긋는다. 미리보기 그림은 늦게 읽는 img로 그 자리에 얹는다 */
 const pf = p?.proof && (() => {
   const W = 520, X = 110, PW = 300, Y = 72, PH = PW * p.proof.h / p.proof.w, B = Y + PH, MY = Y + PH / 2, H = B + 110;
@@ -71,7 +72,7 @@ const r1 = (n: number) => Math.round(n * 10) / 10;
           <p class="eyebrow">{ai.eyebrow}</p>
           <h3>{ai.title}</h3>
           <p class="d">{ai.desc}</p>
-          <button type="button" class="agt-cp" data-copy="agt-clip" data-copied={ai.copied} data-hint={ai.hint} data-failed={ai.failed}>
+          <button type="button" class="agt-cp" data-copy="agt-clip" data-status="agt-hint" data-copied={ai.copied} data-hint={ai.hint} data-failed={ai.failed}>
             <svg class="gl cp" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" /><path d="M16 8V4H4v12h4" /></svg>
             <svg class="gl ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
             <span class="t">{ai.button}</span>
@@ -86,6 +87,27 @@ const r1 = (n: number) => Math.round(n * 10) / 10;
           </ol>
           {/* 파일 링크는 새 탭에서 연다(이 쪽을 떠나지 않게). 아래 RSS도 같다 */}
           <p class="links"><a href={ai.links.agent} target="_blank" rel="noopener">agent.md ↗</a><a href={ai.links.llms} target="_blank" rel="noopener">llms-full.txt ↗</a><a href={ai.links.json} target="_blank" rel="noopener">timeline.json ↗</a></p>
+        </div>
+      </div>
+      {/* 기술 계보학자 스킬: 왼쪽 견본 그림, 오른쪽 설치 명령 복사. 같은 copy.ts가 명령을 복사한다 */}
+      <div class="agt lin" id="take-lineage">
+        <figure class="lin-fig">
+          <img src={ln.img.src} width={ln.img.w} height={ln.img.h} alt={ln.alt} loading="lazy" decoding="async">
+          <figcaption>{ln.caption}</figcaption>
+        </figure>
+        <div class="pi">
+          <p class="eyebrow">{ln.eyebrow}</p>
+          <h3>{ln.title}</h3>
+          <p class="d">{ln.desc}</p>
+          <button type="button" class="agt-cp" data-copy="lin-cmd" data-status="lin-hint" data-copied={ln.copied} data-hint={ln.hint} data-failed={ln.failed}>
+            <svg class="gl cp" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" /><path d="M16 8V4H4v12h4" /></svg>
+            <svg class="gl ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" /></svg>
+            <span class="t">{ln.button}</span>
+          </button>
+          <pre class="lin-cmd" id="lin-cmd">{ln.command.split(' ').map((w, i) => <>{i > 0 && ' '}<span>{w}</span></>)}</pre>
+          <p class="agt-hint" id="lin-hint" aria-live="polite"></p>
+          <ol class="agt-steps">{ln.steps.map((s, i) => <li><b>{i + 1}</b><span>{s}</span></li>)}</ol>
+          <p class="links"><a href={ln.links.folder} target="_blank" rel="noopener">{ln.folderLabel} ↗</a><a href={ln.links.sample} target="_blank" rel="noopener">{ln.sampleLabel} ↗</a></p>
         </div>
       </div>
       <ul>
