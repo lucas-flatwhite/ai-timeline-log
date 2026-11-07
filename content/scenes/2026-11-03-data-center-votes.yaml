@@ -31,7 +31,7 @@ items:
       - url: https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium
         title: New York State enacts data center moratorium
         publisher: Davis Polk
-  - date: 2026-10
+  - date: 2026-10-02
     ko: AWS CEO 맷 가먼, 데이터센터 사업에서 정부 기관과 비밀유지계약을 더는 쓰지 않는다고 밝히고 지역사회에 5년간 10억 달러 이상을 투입하는 Built Together를 발표.
     en: "AWS CEO Matt Garman says Amazon no longer uses nondisclosure agreements with government agencies on its projects and announces Built Together, more than $1 billion for communities over five years."
     glyph: NDA
@@ -66,8 +66,8 @@ items:
 ko:
   kicker: 데이터센터
   title: 투표에 부친 데이터센터
-  lede: 데이터센터 건설이 주 행정명령과 지역 주민투표의 쟁점이 됐다. 주민투표 41건은 대부분 시·군 단위이고 비구속 투표 2건을 포함한다. 분석가들은 11월 5일 급락의 이유로 금리와 설비 투자 회의론도 함께 들었다.
+  lede: 데이터센터 건설이 주 행정명령과 지역 주민투표의 쟁점이 됐다. 주민투표 41건은 대부분 시·군 단위이고 비구속 투표 9건을 포함한다. 분석가들은 11월 5일 급락의 이유로 금리와 설비 투자 회의론도 함께 들었다.
 en:
   kicker: "Data Centers"
   title: "Data Centers on the Ballot"
-  lede: "Data center construction came before a state executive order and local voters. Most of the 41 ballot measures were at the city or county level, and two were non-binding. Analysts also pointed to interest rates and doubts about capital spending for the November 5 selloff."
+  lede: "Data center construction came before a state executive order and local voters. Most of the 41 ballot measures were at the city or county level, and nine were non-binding. Analysts also pointed to interest rates and doubts about capital spending for the November 5 selloff."

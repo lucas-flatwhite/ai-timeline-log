@@ -16,7 +16,7 @@
 
 작성하며 아래 내용이 이 노트와 달라졌다.
 
-- 후보 1: Amazon 글에 날짜가 없어 항목 날짜를 `2026-10`으로 뒀다. 뉴욕주 유예 기간은 출처가 달라(주지사실은 최대 1년, Davis Polk는 고정 종료일 없음) 기간을 적지 않았다. 시장 수치는 Yahoo Finance의 반올림 수치(5.5%, 12%)를 썼다.
+- 후보 1: Amazon 항목 날짜는 페이지 메타데이터의 발행일(2026-10-02)이다. 주민투표 41건에는 비구속 투표 9건(반대 측 2건 가결, 지지 측 7건 부결)이 들어 있다. 뉴욕주 유예 기간은 출처가 달라(주지사실은 최대 1년, Davis Polk는 고정 종료일 없음) 기간을 적지 않았다. 시장 수치는 Yahoo Finance의 반올림 수치(5.5%, 12%)를 썼다.
 - 후보 2: 법무부 보도자료가 SI Force 의장을 직접 언급해 조직의 존재가 정부 문서로 확인됐다. 법적 근거 문서는 여전히 찾지 못했다. 캘리포니아 행정명령은 넣지 않았다.
 
 ## 우선 검토할 후보
@@ -34,7 +34,7 @@
 ### 1. 데이터센터 주민투표와 AI 관련주 급락, 11월 3~6일
 
 - 뉴욕주지사는 7월 14일 행정명령으로 대형 데이터센터의 신규 재량 허가를 최대 1년 유예했다. 주 단위로는 처음이고, 대상은 50MW 이상이다. [주지사실 발표](https://www.governor.ny.gov/news/first-statewide-moratorium-new-hyperscale-data-centers-launched-governor-kathy-hochul), [Davis Polk 해설](https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium)
-- AWS CEO는 정부 기관과 NDA를 더는 쓰지 않는다고 밝히고, 데이터센터 지역사회에 5년간 10억 달러 이상을 투입하는 Built Together를 발표했다. 날짜는 10월 2일(보도 기준)이며 Amazon 글에는 날짜가 없다. [Amazon 발표](https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together), [TechCrunch](https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/)
+- AWS CEO는 정부 기관과 NDA를 더는 쓰지 않는다고 밝히고, 데이터센터 지역사회에 5년간 10억 달러 이상을 투입하는 Built Together를 발표했다. 날짜는 10월 2일이다. Amazon 글 본문에는 날짜가 없지만 페이지 메타데이터의 발행일이 2026-10-02다. [Amazon 발표](https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together), [TechCrunch](https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/)
 - 11월 3일 10개 주의 지역 주민투표 41건 중 40건이 데이터센터 개발을 제한하는 쪽으로 결정됐다. 전면 금지 5건, 부분 금지 12건, 6개월 유예 3건이 포함된다. 예외는 노스다코타주 하우드다. [Ballotpedia](https://news.ballotpedia.org/2026/11/06/voters-favored-limiting-data-center-development-in-40-of-41-local-ballot-measures-on-nov-3/), [Scientific American](https://www.scientificamerican.com/article/2026-election-results-show-widespread-opposition-to-ai-data-centers/)
 - 11월 5일(목) 나스닥은 5.52%, 필라델피아 반도체지수는 12.25% 떨어졌다. Nvidia는 9.3%, AMD는 17.3%, Micron은 17.5% 내렸다. 분석가들은 민주당의 의회 장악 이후 규제와 건설 유예 위험을 이유로 들었다. [CNBC](https://www.cnbc.com/2026/11/06/ai-data-center-midterms-selloff.html), [Yahoo Finance](https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html)
 - 11월 6일 코스피는 장중 8%대까지 떨어져 1단계 서킷브레이커가 발동됐고 6.02% 내린 5,059.69로 마쳤다. 2026년 들어 11번째 발동이다. [아시아경제](https://view.asiae.co.kr/article/2026110615475413854), [뉴스1](https://www.news1.kr/finance/market-exr/6345161)
@@ -78,7 +78,7 @@
 
 ### 4. METR의 Anthropic 연구 가속 평가, 11월 5일
 
-- METR은 Anthropic이 잘 정의된 과제에서 모델 역량을 과거의 약 2배 속도로 높이고 있다고 평가했다. 내부 지표 기준 추정치는 1.9배(95% 신뢰구간 1.5~2.8배)이고 기준 기간은 2024년 3월~2025년 10월이다. [METR 보고서](https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/)
+- METR은 Anthropic 모델의 벤치마크 점수(AECI)가 2025년 10월 이후 그 전 추세의 1.9배(95% 신뢰구간 1.5~2.8배) 속도로 올랐다고 추정했다. 이와 별도로 잘 정의된 과제의 역량 향상 속도가 2024년 3월~2025년 10월의 약 2배라는 주관적 판단을 밝혔다. [METR 보고서](https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/)
 - METR은 2026년 10월 가속의 약 80%가 AI 덕분이라고 추측했고, 학습 계산량 증가가 원인은 아니라고 확신한다고 밝혔다. [METR 보고서](https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/)
 - METR은 Anthropic 위험 보고서의 공개 표현 “2배 미만”에 대해, 비공개 수치를 합치면 1.97배가 나온다며 “약 2배”가 더 낫다고 제안했다. [METR 검토](https://metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review/)
 

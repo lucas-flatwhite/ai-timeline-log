@@ -43,8 +43,8 @@ items:
     sources:
       - *a2
   - date: 2026-11-05
-    ko: METR, Anthropic이 잘 정의된 과제에서 모델 역량을 2024년 3월~2025년 10월의 약 2배 속도로 높이고 있다고 평가. 추정치는 1.9배(95% 신뢰구간 1.5~2.8배)이고, 공개본에서는 METR이 가장 유용하다고 본 증거의 대부분이 가려졌다.
-    en: METR estimates that Anthropic is improving model capabilities on well-specified tasks at about twice its March 2024–October 2025 rate (1.9x, 95% confidence interval 1.5–2.8x), with most of its key evidence redacted from the public report.
+    ko: METR, Anthropic 모델의 벤치마크 점수가 2025년 10월 이후 그 전 추세의 1.9배(95% 신뢰구간 1.5~2.8배) 속도로 올랐다고 추정. 이와 별도로 잘 정의된 과제의 역량 향상 속도가 2024년 3월~2025년 10월의 약 2배라는 주관적 판단을 밝혔고, 공개본에서는 METR이 가장 유용하다고 본 증거의 대부분이 가려졌다.
+    en: METR estimates that benchmark scores of Anthropic’s models have grown at 1.9x their pre-October 2025 rate (95% confidence interval 1.5–2.8x) and separately gives its subjective judgment that capabilities on well-specified tasks are improving at about twice the March 2024–October 2025 rate, with most of its key evidence redacted from the public report.
     glyph: 1.9x
     sources:
       - url: https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/
