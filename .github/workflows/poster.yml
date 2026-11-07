@@ -1,20 +1,20 @@
 name: poster
 
-# 판 포스터를 찍어 GitHub Releases에 올린다. 포스터 파일은 저장소와 사이트(Vercel)에 두지 않는다.
-# 포스터와 데이터 칸의 작은 미리보기와 용량은 Release 뒤에 npm run poster:pull로 가져와 PR에 커밋한다(edition-release 스킬).
-# 판을 찍는 법: content/editions.yaml에 poster: true인 판을 적어 머지한 뒤, 그 커밋에 edition-<n> 태그를 푸시한다.
+# Renders the edition poster and uploads it to GitHub Releases. Poster files stay out of the repository and the site (Vercel).
+# After the Release, npm run poster:pull fetches the small preview and file sizes for the poster and data block, and they are committed in the PR (edition-release skill).
+# To cut an edition: merge an edition with poster: true in content/editions.yaml, then push an edition-<n> tag on that commit.
 on:
   push:
     tags: ['edition-*']
   workflow_dispatch:
     inputs:
       edition:
-        description: 판 번호 (edition-<n> 태그가 있어야 한다)
+        description: Edition number (the edition-<n> tag must exist)
         required: true
         type: string
 
 permissions:
-  contents: write   # Release를 만들고 파일을 올린다. 이 워크플로에만 준다
+  contents: write   # Creates the Release and uploads files. Granted to this workflow only
 
 jobs:
   poster:
@@ -23,11 +23,11 @@ jobs:
     env:
       N: ${{ github.event_name == 'workflow_dispatch' && inputs.edition || '' }}
     steps:
-      - name: 판 번호
+      - name: Edition number
         id: ed
         run: |
           n="${N:-${GITHUB_REF_NAME#edition-}}"
-          if ! [[ "$n" =~ ^[0-9]+$ ]]; then echo "판 번호가 아닙니다: $n" >&2; exit 1; fi
+          if ! [[ "$n" =~ ^[0-9]+$ ]]; then echo "Not an edition number: $n" >&2; exit 1; fi
           echo "n=$n" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
         with:
@@ -37,11 +37,11 @@ jobs:
           node-version: '22.22'
           cache: npm
       - run: npm ci
-      - name: 포스터를 낼 판인지 확인
+      - name: Check that this edition has a poster
         run: node scripts/poster.ts --edition ${{ steps.ed.outputs.n }} --check
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - name: 미리보기 서버
+      - name: Preview server
         run: |
           npx astro preview --port 4321 --ignore-lock > preview.log 2>&1 &
           for i in $(seq 1 60); do
@@ -49,9 +49,9 @@ jobs:
             sleep 1
           done
           cat preview.log; exit 1
-      - name: 포스터 찍기
+      - name: Render posters
         run: node scripts/poster.ts --edition ${{ steps.ed.outputs.n }} --locale ko,en --out out
-      - name: Release에 올리기
+      - name: Upload to Release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: edition-${{ steps.ed.outputs.n }}
@@ -60,7 +60,7 @@ jobs:
             const { parse } = require("yaml");
             const e = parse(require("fs").readFileSync("content/editions.yaml", "utf8")).find(x => x.n === Number(process.argv[1]));
             const [y, m, d] = String(e.date instanceof Date ? e.date.toISOString().slice(0, 10) : e.date).split("-");
-            // 사이트처럼 Release도 영어가 기본이다. 한국어 포스터 파일은 그대로 함께 올린다
+            // Like the site, the Release defaults to English. The Korean poster files are uploaded with it
             require("fs").writeFileSync("title.txt", `Edition ${e.n} · ${y}.${m}.${d}`);
             require("fs").writeFileSync("notes.md", `${e.en}\n`);
           ' "${{ steps.ed.outputs.n }}"
