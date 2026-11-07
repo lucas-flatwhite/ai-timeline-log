@@ -209,8 +209,8 @@ test.describe('exported files', () => {
     const take = page.locator('#outro .take');
     const hrefs = await take.locator('a').evaluateAll(as => as.map(a => (a as HTMLAnchorElement).getAttribute('href')!));
     expect(hrefs).toEqual([
-      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-5/poster-ko.pdf',
-      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-5/poster-ko.png',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-6/poster-ko.pdf',
+      'https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-6/poster-ko.png',
       'https://github.com/lucas-flatwhite/ai-timeline-log/releases',
       'https://lucasflatwhite.com/ai-timeline-log/ko/agent.md',
       'https://lucasflatwhite.com/ai-timeline-log/ko/llms-full.txt',
@@ -224,16 +224,16 @@ test.describe('exported files', () => {
       await expect(a).toHaveAttribute('rel', 'noopener');
     }
     const pst = take.locator('#take-poster');
-    await expect(pst.locator('.eyebrow')).toHaveText('포스터 · 제 5판 · 2026.11.02');
+    await expect(pst.locator('.eyebrow')).toHaveText('포스터 · 제 6판 · 2026.11.07');
     await expect(pst.locator('h3')).toHaveText('벽 전체를 A2 한 장에');
     // 받기 버튼에 규격과 용량을 함께 적는다(판 기록의 files. 숫자는 판마다 달라서 모양만 본다)
     await expect(pst.locator('.btn').nth(0)).toHaveText(/^PDF 받기\s*A2 · \d+(\.\d)?MB$/);
     await expect(pst.locator('.btn').nth(1)).toHaveText(/^PNG 받기\s*\d+px · \d+(\.\d)?MB$/);
     // 미리보기는 사이트에 둔 작은 AVIF 하나(늦게 읽는다). 포스터 원본은 GitHub에서 받는다
     const img = pst.locator('.proof img');
-    await expect(img).toHaveAttribute('src', '/ai-timeline-log/poster/edition-5-ko.avif');
+    await expect(img).toHaveAttribute('src', '/ai-timeline-log/poster/edition-6-ko.avif');
     await expect(img).toHaveAttribute('loading', 'lazy');
-    await expect(img).toHaveAttribute('alt', '제 5판 포스터 미리보기');
+    await expect(img).toHaveAttribute('alt', '제 6판 포스터 미리보기');
     await img.scrollIntoViewIfNeeded();
     await expect.poll(() => img.evaluate(i => (i as HTMLImageElement).naturalWidth)).toBe(600);
     const box = (await img.boundingBox())!, fig = (await pst.locator('.proof').boundingBox())!;
@@ -245,7 +245,7 @@ test.describe('exported files', () => {
     await page.goto('./');
     const pst = page.locator('#take-poster');
     await expect(pst.locator('.btn').nth(0)).toHaveText(/^Download PDF\s*A2 · \d+(\.\d)? MB$/);
-    await expect(pst.locator('.proof img')).toHaveAttribute('src', '/ai-timeline-log/poster/edition-5-en.avif');
+    await expect(pst.locator('.proof img')).toHaveAttribute('src', '/ai-timeline-log/poster/edition-6-en.avif');
   });
 
   test('feeds are served', async ({ request, page }) => {

@@ -16,7 +16,7 @@ describe('urls', () => {
     expect(posterUrl(c.site.repo, 4, 'ko', 'pdf'))
       .toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/download/edition-4/poster-ko.pdf');
     expect(releaseUrl(c.site.repo, 4)).toBe('https://github.com/lucas-flatwhite/ai-timeline-log/releases/tag/edition-4');
-    expect(latestPosterEdition(c)?.n).toBe(5);
+    expect(latestPosterEdition(c)?.n).toBe(6);
   });
 });
 
@@ -28,7 +28,7 @@ describe('buildTimeline', () => {
     expect(t.site.license.name).toBe('CC BY 4.0');
     expect(t.site.scope).toEqual(SCOPE);
     expect(t.topics.agents.en).toBe('Agents');
-    expect(t.editions.at(-1)!.n).toBe(5);
+    expect(t.editions.at(-1)!.n).toBe(6);
     expect(t.scenes[0].id).toBe('2026-11-data-center-votes');
     expect(t.glossary.length).toBeGreaterThan(0);
   });

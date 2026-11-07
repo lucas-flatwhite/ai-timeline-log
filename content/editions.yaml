@@ -24,3 +24,8 @@
   files:
     ko: { pdf: 23076115, png: 20541055, web: 7091762, px: [ 4961, 6961 ] }
     en: { pdf: 22400440, png: 19977260, web: 6903045, px: [ 4961, 6961 ] }
+- n: 6
+  date: 2026-11-07
+  poster: true
+  ko: 장면 9개를 더했다. 사고 과정 공개, 월드모델, ChatGPT와 Claude Code의 변화, 메타의 Muse, 에이전트가 쓰는 위키, 퇴사한 연구원의 경고, 미국의 Super Intelligence 전환, 데이터센터 주민투표를 담았고 METR의 평가를 기존 장면에 넣었다.
+  en: Adds nine scenes on visible reasoning, world models, changes to ChatGPT and Claude Code, Meta’s Muse, agent-written wikis, a departing researcher’s warning, the U.S. turn to Super Intelligence and data center votes, and adds METR’s assessment to an existing scene.

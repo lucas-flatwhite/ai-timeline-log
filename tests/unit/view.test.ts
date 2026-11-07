@@ -248,26 +248,26 @@ describe('poster and data section', () => {
 
   // 용량과 미리보기 크기는 Release 뒤(poster:pull)에야 정해지므로 판 기록의 files에서 읽는다
   const files = latestPosterEdition(loadContent())!.files!;
-  test('take section links poster 5, feed and data', () => {
+  test('take section links poster 6, feed and data', () => {
     expect(v.outro.take.title).toBe('포스터와 데이터');
     expect(e.outro.take.title).toBe('Poster and data');
     expect(v.outro.take.poster).toEqual({
-      label: '포스터 · 제 5판 · 2026.11.02', note: '벽 전체를 A2 한 장에',
+      label: '포스터 · 제 6판 · 2026.11.07', note: '벽 전체를 A2 한 장에',
       desc: '420 × 594 mm, 300dpi로 찍은 PDF와 PNG입니다.',
-      pdf: { href: `${REL}/download/edition-5/poster-ko.pdf`, label: 'PDF 받기', meta: `A2 · ${formatMB(files.ko.pdf, 'ko')}` },
-      png: { href: `${REL}/download/edition-5/poster-ko.png`, label: 'PNG 받기', meta: `${files.ko.px[0]}px · ${formatMB(files.ko.png, 'ko')}` },
+      pdf: { href: `${REL}/download/edition-6/poster-ko.pdf`, label: 'PDF 받기', meta: `A2 · ${formatMB(files.ko.pdf, 'ko')}` },
+      png: { href: `${REL}/download/edition-6/poster-ko.png`, label: 'PNG 받기', meta: `${files.ko.px[0]}px · ${formatMB(files.ko.png, 'ko')}` },
       all: REL, allLabel: '지난 판', from: '파일은 GitHub Releases에서 받습니다.',
       proof: {
-        src: '/ai-timeline-log/poster/edition-5-ko.avif', ...previewSize(files.ko.px), alt: '제 5판 포스터 미리보기',
-        width: '420 mm', height: '594 mm', caption: '제 5판 · 2026.11.02 · A2 · 300dpi',
+        src: '/ai-timeline-log/poster/edition-6-ko.avif', ...previewSize(files.ko.px), alt: '제 6판 포스터 미리보기',
+        width: '420 mm', height: '594 mm', caption: '제 6판 · 2026.11.07 · A2 · 300dpi',
       },
     });
     const ep = e.outro.take.poster!;
-    expect(ep.png).toEqual({ href: `${REL}/download/edition-5/poster-en.png`, label: 'Download PNG', meta: `${files.en.px[0]} px · ${formatMB(files.en.png, 'en')}` });
+    expect(ep.png).toEqual({ href: `${REL}/download/edition-6/poster-en.png`, label: 'Download PNG', meta: `${files.en.px[0]} px · ${formatMB(files.en.png, 'en')}` });
     expect(ep.pdf.meta).toBe(`A2 · ${formatMB(files.en.pdf, 'en')}`);
-    expect(ep.label).toBe('Poster · Edition 5 · 2026.11.02');
-    expect(ep.proof!.src).toBe('/ai-timeline-log/poster/edition-5-en.avif');
-    expect(ep.proof!.caption).toBe('Edition 5 · 2026.11.02 · A2 · 300 dpi');
+    expect(ep.label).toBe('Poster · Edition 6 · 2026.11.07');
+    expect(ep.proof!.src).toBe('/ai-timeline-log/poster/edition-6-en.avif');
+    expect(ep.proof!.caption).toBe('Edition 6 · 2026.11.07 · A2 · 300 dpi');
     expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/ko/feed.xml' });
     expect(e.outro.take.feed.href).toBe('/ai-timeline-log/feed.xml');
     expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
@@ -308,7 +308,7 @@ describe('poster and data section', () => {
     const c = structuredClone(loadContent());
     delete c.editions.at(-1)!.files;
     const p = buildView(c, 'ko', '2026-10-25').outro.take.poster!;
-    expect(p.pdf).toEqual({ href: `${REL}/download/edition-5/poster-ko.pdf`, label: 'PDF 받기', meta: undefined });
+    expect(p.pdf).toEqual({ href: `${REL}/download/edition-6/poster-ko.pdf`, label: 'PDF 받기', meta: undefined });
     expect(p.png.meta).toBeUndefined();
     expect(p.proof).toBeUndefined();
   });
