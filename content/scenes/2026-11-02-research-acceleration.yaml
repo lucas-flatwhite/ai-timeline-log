@@ -2,8 +2,9 @@ id: 2026-11-research-acceleration
 date: 2026-11-02
 span:
   from: 2026-10-26
-  to: 2026-11-02
+  to: 2026-11-05
 added: 2026-11-03
+updated: 2026-11-07
 topics:
   - safety
   - compute
@@ -41,12 +42,20 @@ items:
       en: FASTER
     sources:
       - *a2
+  - date: 2026-11-05
+    ko: METR, Anthropic 모델의 벤치마크 점수가 2025년 10월 이후 그 전 추세의 1.9배(95% 신뢰구간 1.5~2.8배) 속도로 올랐다고 추정. 이와 별도로 잘 정의된 과제의 역량 향상 속도가 2024년 3월~2025년 10월의 약 2배라는 주관적 판단을 밝혔고, 공개본에서는 METR이 가장 유용하다고 본 증거의 대부분이 가려졌다.
+    en: METR estimates that benchmark scores of Anthropic’s models have grown at 1.9x their pre-October 2025 rate (95% confidence interval 1.5–2.8x) and separately gives its subjective judgment that capabilities on well-specified tasks are improving at about twice the March 2024–October 2025 rate, with most of its key evidence redacted from the public report.
+    glyph: 1.9x
+    sources:
+      - url: https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/
+        title: Independent Assessment of AI R&D Acceleration at Anthropic in October 2026
+        publisher: METR
 ko:
   kicker: 연구소와 공시
   title: 공시에 적힌 가속과 비용
-  lede: Anthropic은 공개 상장을 준비하며 계산 인프라 약정과 연구 개발의 위험을 밝혔다. 미래 모델이 연구 가속의 자체 기준에 곧 도달할 수 있다고 했지만, 현행 모델이 그 기준을 넘었다고 지정하지는 않았다.
+  lede: Anthropic은 공개 상장을 준비하며 계산 인프라 약정과 연구 개발의 위험을 밝혔다. 미래 모델이 연구 가속의 자체 기준에 곧 도달할 수 있다고 했지만, 현행 모델이 그 기준을 넘었다고 지정하지는 않았다. 외부 평가 기관 METR은 Anthropic의 내부 자료로 모델 역량 향상 속도를 추정했다.
 en:
   kicker: Labs and Disclosure
   title: Acceleration and Costs in the Filing
-  lede: As Anthropic prepared to go public, it disclosed compute commitments and risks in its research and development. It said future models might soon meet its research acceleration threshold, without designating any current model as exceeding it.
+  lede: As Anthropic prepared to go public, it disclosed compute commitments and risks in its research and development. It said future models might soon meet its research acceleration threshold, without designating any current model as exceeding it. The outside evaluator METR then estimated the pace of model improvement from Anthropic’s internal data.
   glyph: FILING

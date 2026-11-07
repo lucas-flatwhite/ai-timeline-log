@@ -11,8 +11,8 @@ const ORIGIN = 'https://lucasflatwhite.com/ai-timeline-log/';
 
 describe('clipboard text', () => {
   test('clip text per locale', () => {
-    expect(clipText(c, 'ko')).toBe('AI Timeline Log(생성형 AI 연표, 2022.11.30–2026.11.03)를 참고 자료로 들여놓으려고 합니다.\nhttps://lucasflatwhite.com/ai-timeline-log/ko/agent.md 를 읽고 거기 적힌 대로 해 주세요.\n링크를 열 수 없으면 먼저 알려 주세요.');
-    expect(clipText(c, 'en')).toBe("I'd like to add AI Timeline Log (a timeline of generative AI, 2022.11.30–2026.11.03) as a reference.\nRead https://lucasflatwhite.com/ai-timeline-log/agent.md and follow it.\nIf you can't open the link, tell me first.");
+    expect(clipText(c, 'ko')).toBe('AI Timeline Log(생성형 AI 연표, 2022.11.30–2026.11.07)를 참고 자료로 들여놓으려고 합니다.\nhttps://lucasflatwhite.com/ai-timeline-log/ko/agent.md 를 읽고 거기 적힌 대로 해 주세요.\n링크를 열 수 없으면 먼저 알려 주세요.');
+    expect(clipText(c, 'en')).toBe("I'd like to add AI Timeline Log (a timeline of generative AI, 2022.11.30–2026.11.07) as a reference.\nRead https://lucasflatwhite.com/ai-timeline-log/agent.md and follow it.\nIf you can't open the link, tell me first.");
   });
   test('setup urls', () => {
     expect(agentSetupUrl('ko')).toBe(`${ORIGIN}ko/agent.md`);
@@ -29,7 +29,7 @@ describe('agent.md', () => {
       for (const p of ['~/.claude/skills/ai-timeline-log/SKILL.md', '~/.agents/skills/ai-timeline-log/SKILL.md',
         '~/.cursor/skills/ai-timeline-log/SKILL.md', '~/.config/opencode/skills/ai-timeline-log/SKILL.md']) expect(d).toContain(p);
       expect(d).toContain(`${ORIGIN}.well-known/agent-skills/ai-timeline-log/SKILL.md`);
-      expect(d).toContain('2026.11.03');
+      expect(d).toContain('2026.11.07');
       expect(d).toContain('CC BY 4.0');
     }
     expect(hasHangul(buildAgentSetup(c, 'en'))).toBe(false);
@@ -59,7 +59,7 @@ describe('SKILL.md', () => {
     expect(SKILL_DESCRIPTION.length).toBeLessThanOrEqual(1024);
     expect(SKILL_DESCRIPTION).not.toMatch(/[:#\n]/);   // YAML 한 줄 값으로 안전하게
     expect(hasHangul(s)).toBe(false);
-    expect(s).not.toMatch(/2026\.11\.03|2026-11-03/);   // 장면이 늘어도 digest가 그대로
+    expect(s).not.toMatch(/2026\.11\.07|2026-11-07/);   // 장면이 늘어도 digest가 그대로
     for (const u of ['llms.txt', 'llms-full.txt', 'ko/llms-full.txt', 'timeline.json', 'feed.xml', 'ko/feed.xml']) expect(s).toContain(ORIGIN + u);
   });
 

@@ -21,7 +21,7 @@ describe('buildView(ko)', () => {
   test('head, cover and report link', () => {
     expect(v.title).toBe('AI Timeline Log');
     expect(v.name).toBe('AI Timeline Log');
-    expect(v.description).toBe('ChatGPT 공개(2022.11.30) 이후 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 65개의 자세한 내용이 열립니다.');
+    expect(v.description).toBe('ChatGPT 공개(2022.11.30) 이후 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 74개의 자세한 내용이 열립니다.');
     expect(v.ogTitle).toBe('AI Timeline Log');
     expect(v.ogDescription).toBe('ChatGPT 공개 이후 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다.');
     // 소개 글 끝은 일수와 같은 날(빌드한 날, 브라우저에서는 보는 날). 틀에는 {todayLong}을 남긴다
@@ -59,7 +59,7 @@ describe('buildView(ko)', () => {
   });
 
   test('the wall is newest first, with a year box per year', () => {
-    expect(v.boxes.length).toBe(65 + 244 + 5);
+    expect(v.boxes.length).toBe(74 + 275 + 5);
     expect(v.boxes[0]).toMatchObject({ kind: 'year', addr: 'year-2026', date: '2026', off: false });
     expect(v.boxes.at(-1)).toMatchObject({ kind: 'scene', addr: '2022-11-chatgpt', date: '2022.11.30' });   // 가장 오래된 상자
     expect(v.boxes.filter(b => b.kind === 'year').map(b => b.addr)).toEqual(['year-2026', 'year-2025', 'year-2024', 'year-2023', 'year-2022']);
@@ -100,20 +100,20 @@ describe('buildView(ko)', () => {
 
   test('only the scenes added on the latest date are marked as recently added', () => {
     const marked = v.scenes.filter(s => s.meta.includes('추가'));
-    expect(marked).toHaveLength(4);
-    expect(marked.every(s => s.meta.endsWith(' · 추가 2026.11.03'))).toBe(true);
-    expect(marked.map(s => s.id).sort()).toEqual(['2026-10-rosalind', '2026-10-training-controls', '2026-11-compute-links', '2026-11-research-acceleration']);
+    expect(marked).toHaveLength(9);
+    expect(marked.every(s => s.meta.endsWith(' · 추가 2026.11.07'))).toBe(true);
+    expect(marked.map(s => s.id).sort()).toEqual(['2025-02-visible-thinking', '2026-01-world-models', '2026-04-beyond-terminal', '2026-04-llm-wiki', '2026-04-muse-spark', '2026-07-chatgpt-work', '2026-09-super-intelligence', '2026-10-coxon', '2026-11-data-center-votes']);
     expect(scene('2025-01-deepseek').meta).not.toContain('추가');
-    expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(61);
+    expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(65);
   });
 
   test('events in a recently added scene carry the same mark, after the scene name', () => {
-    const fresh = scene('2026-10-rosalind');
+    const fresh = scene('2026-10-coxon');
     expect(fresh.items.length).toBeGreaterThan(0);
-    for (const it of fresh.items) expect(it.meta).toMatch(/^\d{4}\.\d{2}(\.\d{2})? · .+ · ‘.+’ 장면의 사건 · 추가 2026\.11\.03$/);
-    const marked = v.scenes.filter(s => s.meta.endsWith(' · 추가 2026.11.03')).flatMap(s => s.items);
-    expect(v.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · 추가 2026.11.03'))).toEqual(marked);
-    expect(scene('2025-01-deepseek').items.every(it => !it.meta.endsWith(' · 추가 2026.11.03'))).toBe(true);
+    for (const it of fresh.items) expect(it.meta).toMatch(/^\d{4}\.\d{2}(\.\d{2})? · .+ · ‘.+’ 장면의 사건 · 추가 2026\.11\.07$/);
+    const marked = v.scenes.filter(s => s.meta.endsWith(' · 추가 2026.11.07')).flatMap(s => s.items);
+    expect(v.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · 추가 2026.11.07'))).toEqual(marked);
+    expect(scene('2025-01-deepseek').items.every(it => !it.meta.endsWith(' · 추가 2026.11.07'))).toBe(true);
   });
 
   test('item sources: its own when it has some, else the scene sources', () => {
@@ -133,7 +133,7 @@ describe('buildView(ko)', () => {
   });
 
   test('details follow the wall order, newest first', () => {
-    expect(v.scenes).toHaveLength(65);
+    expect(v.scenes).toHaveLength(74);
     expect(v.scenes[0].id).toBe(v.boxes.find(b => b.kind === 'scene')!.addr);
     expect(v.scenes.at(-1)!.id).toBe('2022-11-chatgpt');
   });
@@ -153,18 +153,18 @@ describe('buildView(ko)', () => {
   });
 
   test('outro', () => {
-    expect(v.outro.bar).toBe('업데이트 2026.11.03');   // '현재' 대신 마지막으로 고친 날(asOf)
-    expect(v.outro.eyebrow).toBe('업데이트 2026.11.03');
+    expect(v.outro.bar).toBe('업데이트 2026.11.07');   // '현재' 대신 마지막으로 고친 날(asOf)
+    expect(v.outro.eyebrow).toBe('업데이트 2026.11.07');
     expect(v.outro.title).toBe('1,425일 동안 바뀐 것');
     expect(v.outro.arcs).toHaveLength(9);
     expect(v.outro.arcs[0].span).toBe('2022.11 – 2023.02');
-    expect(v.outro.arcs[8].span).toBe('2026.09 – 2026.11.03');
+    expect(v.outro.arcs[8].span).toBe('2026.09 – 2026.11.07');
     expect(v.outro.arcs[8]).toMatchObject({ title: '속도를 묻다' });
     for (const a of v.outro.arcs) expect(a.body.length).toBeGreaterThan(20);
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '2022.11' });
     expect(v.outro).not.toHaveProperty('sources');
-    expect(v.outro.end).toEqual(['판 65장 · 2022.11.30 – 2026.11.03', 'AI Timeline Log']);
+    expect(v.outro.end).toEqual(['판 74장 · 2022.11.30 – 2026.11.07', 'AI Timeline Log']);
     expect(v.outro.making).toContain('GitHub 이슈나 메일(lucas.flatwhite@gmail.com)');
     expect(v.outro.making).not.toMatch(/AI의 도움|Claude/);
     expect(v.outro.makingTitle).toBe('만든 방법');
@@ -192,11 +192,11 @@ describe('buildView(en)', () => {
   });
 
   test('recently added scenes and their events carry the English mark', () => {
-    const fresh = e.scenes.find(s => s.id === '2026-10-rosalind')!;
-    expect(fresh.meta.endsWith(' · Added 2026.11.03')).toBe(true);
-    expect(fresh.items.every(it => it.meta.endsWith(' · Added 2026.11.03'))).toBe(true);
-    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.11.03'))).toHaveLength(
-      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.11.03')).flatMap(s => s.items).length);
+    const fresh = e.scenes.find(s => s.id === '2026-10-coxon')!;
+    expect(fresh.meta.endsWith(' · Added 2026.11.07')).toBe(true);
+    expect(fresh.items.every(it => it.meta.endsWith(' · Added 2026.11.07'))).toBe(true);
+    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.11.07'))).toHaveLength(
+      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.11.07')).flatMap(s => s.items).length);
   });
 });
 
@@ -216,14 +216,14 @@ describe('topics and visits on the wall', () => {
 
   test('topics list follows topics.yaml with scene counts', () => {
     expect(v.topics.map(t => [t.id, t.count])).toEqual([
-      ['agents', 10], ['compute', 14], ['rules', 17], ['safety', 11], ['open', 7], ['science', 5], ['society', 11], ['models', 13], ['korea', 4],
+      ['agents', 13], ['compute', 15], ['rules', 18], ['safety', 12], ['open', 8], ['science', 5], ['society', 13], ['models', 17], ['korea', 4],
     ]);
     expect(v.topics[0].name).toBe('에이전트');
     expect(e.topics[0].name).toBe('Agents');
   });
 
   test('latestAdded is the newest added', () => {
-    expect(v.latestAdded).toBe('2026-11-03');
+    expect(v.latestAdded).toBe('2026-11-07');
   });
 
   test('wall ui strings', () => {
@@ -248,31 +248,31 @@ describe('poster and data section', () => {
 
   // 용량과 미리보기 크기는 Release 뒤(poster:pull)에야 정해지므로 판 기록의 files에서 읽는다
   const files = latestPosterEdition(loadContent())!.files!;
-  test('take section links poster 5, feed and data', () => {
+  test('take section links poster 6, feed and data', () => {
     expect(v.outro.take.title).toBe('포스터와 데이터');
     expect(e.outro.take.title).toBe('Poster and data');
     expect(v.outro.take.poster).toEqual({
-      label: '포스터 · 제 5판 · 2026.11.02', note: '벽 전체를 A2 한 장에',
+      label: '포스터 · 제 6판 · 2026.11.07', note: '벽 전체를 A2 한 장에',
       desc: '420 × 594 mm, 300dpi로 찍은 PDF와 PNG입니다.',
-      pdf: { href: `${REL}/download/edition-5/poster-ko.pdf`, label: 'PDF 받기', meta: `A2 · ${formatMB(files.ko.pdf, 'ko')}` },
-      png: { href: `${REL}/download/edition-5/poster-ko.png`, label: 'PNG 받기', meta: `${files.ko.px[0]}px · ${formatMB(files.ko.png, 'ko')}` },
+      pdf: { href: `${REL}/download/edition-6/poster-ko.pdf`, label: 'PDF 받기', meta: `A2 · ${formatMB(files.ko.pdf, 'ko')}` },
+      png: { href: `${REL}/download/edition-6/poster-ko.png`, label: 'PNG 받기', meta: `${files.ko.px[0]}px · ${formatMB(files.ko.png, 'ko')}` },
       all: REL, allLabel: '지난 판', from: '파일은 GitHub Releases에서 받습니다.',
       proof: {
-        src: '/ai-timeline-log/poster/edition-5-ko.avif', ...previewSize(files.ko.px), alt: '제 5판 포스터 미리보기',
-        width: '420 mm', height: '594 mm', caption: '제 5판 · 2026.11.02 · A2 · 300dpi',
+        src: '/ai-timeline-log/poster/edition-6-ko.avif', ...previewSize(files.ko.px), alt: '제 6판 포스터 미리보기',
+        width: '420 mm', height: '594 mm', caption: '제 6판 · 2026.11.07 · A2 · 300dpi',
       },
     });
     const ep = e.outro.take.poster!;
-    expect(ep.png).toEqual({ href: `${REL}/download/edition-5/poster-en.png`, label: 'Download PNG', meta: `${files.en.px[0]} px · ${formatMB(files.en.png, 'en')}` });
+    expect(ep.png).toEqual({ href: `${REL}/download/edition-6/poster-en.png`, label: 'Download PNG', meta: `${files.en.px[0]} px · ${formatMB(files.en.png, 'en')}` });
     expect(ep.pdf.meta).toBe(`A2 · ${formatMB(files.en.pdf, 'en')}`);
-    expect(ep.label).toBe('Poster · Edition 5 · 2026.11.02');
-    expect(ep.proof!.src).toBe('/ai-timeline-log/poster/edition-5-en.avif');
-    expect(ep.proof!.caption).toBe('Edition 5 · 2026.11.02 · A2 · 300 dpi');
+    expect(ep.label).toBe('Poster · Edition 6 · 2026.11.07');
+    expect(ep.proof!.src).toBe('/ai-timeline-log/poster/edition-6-en.avif');
+    expect(ep.proof!.caption).toBe('Edition 6 · 2026.11.07 · A2 · 300 dpi');
     expect(v.outro.take.feed).toEqual({ label: '피드', note: '새 장면과 정정을 RSS로 받기', href: '/ai-timeline-log/ko/feed.xml' });
     expect(e.outro.take.feed.href).toBe('/ai-timeline-log/feed.xml');
     expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
     expect(v.outro.take.ai).toEqual({
-      eyebrow: 'AI에게 건네기 · 기준일 2026.11.03', title: '쓰는 에이전트에 이 연표를 들여놓기',
+      eyebrow: 'AI에게 건네기 · 기준일 2026.11.07', title: '쓰는 에이전트에 이 연표를 들여놓기',
       desc: '한 번 들여놓으면 AI 역사나 모델 출시를 물을 때 에이전트가 이 연표를 찾아 읽고, 날짜와 출처를 달아 답합니다. 장면이 늘어도 다시 할 일은 없습니다.',
       clip: clipText(loadContent(), 'ko'), slipCap: '클립보드에 들어가는 글',
       slipFoot: 'agent.md가 에이전트마다 할 일을 알려 줍니다. 파일을 저장할 수 있으면 스킬로, 채팅이면 메모리나 프로젝트 지침으로.',
@@ -296,7 +296,7 @@ describe('poster and data section', () => {
       expect(ln.steps.length).toBe(3);
     }
     expect(e.outro.take.ai.button).toBe('Onboard your agent');
-    expect(e.outro.take.ai.eyebrow).toBe('Hand It to an AI · As of 2026.11.03');
+    expect(e.outro.take.ai.eyebrow).toBe('Hand It to an AI · As of 2026.11.07');
     expect(e.outro.take.ai.title).toBe('Onboard your agent to this timeline');
     expect(e.outro.take.ai.clip).toBe(clipText(loadContent(), 'en'));
     expect(e.outro.take.ai.links.agent).toBe('https://lucasflatwhite.com/ai-timeline-log/agent.md');
@@ -308,7 +308,7 @@ describe('poster and data section', () => {
     const c = structuredClone(loadContent());
     delete c.editions.at(-1)!.files;
     const p = buildView(c, 'ko', '2026-10-25').outro.take.poster!;
-    expect(p.pdf).toEqual({ href: `${REL}/download/edition-5/poster-ko.pdf`, label: 'PDF 받기', meta: undefined });
+    expect(p.pdf).toEqual({ href: `${REL}/download/edition-6/poster-ko.pdf`, label: 'PDF 받기', meta: undefined });
     expect(p.png.meta).toBeUndefined();
     expect(p.proof).toBeUndefined();
   });

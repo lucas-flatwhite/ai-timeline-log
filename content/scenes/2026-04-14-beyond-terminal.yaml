@@ -1,0 +1,70 @@
+id: 2026-04-beyond-terminal
+date: 2026-04-14
+span:
+  from: 2025-10
+  to: 2026-04
+added: 2026-11-07
+topics: [agents]
+print:
+  pattern: h
+  angle: 8
+  motif: rise
+  glyph: 터미널
+sources:
+  - url: https://claude.com/blog/cowork-is-now-claude
+    title: Claude Cowork and chat are now one Claude
+    publisher: Anthropic
+items:
+  - date: 2025-10-20
+    ko: Anthropic, 브라우저에서 맡긴 작업을 격리된 클라우드 환경에서 돌리는 Claude Code on the web을 연구 미리보기로 공개.
+    en: "Anthropic launches Claude Code on the web as a research preview, running tasks handed over in the browser in isolated cloud sandboxes."
+    glyph: { ko: "웹", en: "WEB" }
+    sources:
+      - url: https://claude.com/blog/claude-code-on-the-web
+        title: Claude Code on the web
+        publisher: Anthropic
+  - date: 2025-12-18
+    ko: Anthropic, Agent Skills를 공개 표준으로 내놓았다. 며칠 안에 OpenAI도 Codex 문서에 Skills를 추가했다.
+    en: "Anthropic publishes Agent Skills as an open standard, and within days OpenAI adds Skills to the Codex documentation."
+    glyph: Skills
+    sources:
+      - url: https://claude.com/blog/skills
+        title: Introducing Agent Skills
+        publisher: Anthropic
+      - url: https://agentskills.io/
+        title: Agent Skills Overview
+        publisher: Agent Skills
+      - url: https://simonwillison.net/2025/dec/19/agent-skills/
+        title: Agent Skills
+        publisher: Simon Willison
+  - date: 2026-01-12
+    ko: Anthropic, 허용한 폴더의 파일을 직접 다루는 비개발 업무용 에이전트 Claude Cowork를 연구 미리보기로 공개. 처음에는 macOS 앱의 Max 요금제 전용이었다.
+    en: "Anthropic previews Claude Cowork, an agent for non-coding work that handles files in folders the user allows, starting with Max subscribers on macOS."
+    glyph: Cowork
+    sources:
+      - url: https://simonwillison.net/2026/Jan/12/claude-cowork/
+        title: First impressions of Claude Cowork, Anthropic’s general agent
+        publisher: Simon Willison
+      - url: https://www.theregister.com/2026/01/13/anthropic_previews_claude_cowork_for/
+        title: Anthropic floats Claude Cowork for office work automation
+        publisher: The Register
+      - url: https://claude.com/product/cowork
+        title: Claude Cowork
+        publisher: Anthropic
+  - date: 2026-04-14
+    ko: Anthropic, 노트북 없이 일정, API 호출, GitHub 이벤트로 돌아가는 Claude Code routines를 연구 미리보기로 공개.
+    en: "Anthropic previews routines in Claude Code, which run on a schedule, an API call or a GitHub event without a laptop being open."
+    glyph: { ko: "루틴", en: "ROUTINE" }
+    sources:
+      - url: https://claude.com/blog/introducing-routines-in-claude-code
+        title: Introducing routines in Claude Code
+        publisher: Anthropic
+ko:
+  kicker: 에이전트
+  title: 터미널을 벗어난 Claude Code
+  lede: 터미널에서 돌던 Claude Code가 브라우저와 클라우드로 옮겨 갔다. Anthropic은 같은 방식을 코딩 밖의 업무에 쓰는 Cowork를 내놓았고, Cowork는 2026년 9월 채팅과 합쳐졌다. Agent Skills는 OpenAI 등 다른 회사도 받아들였다.
+en:
+  kicker: "Agents"
+  title: "Claude Code Leaves the Terminal"
+  lede: "Claude Code moved from the terminal into the browser and the cloud. Anthropic brought the same approach to non-coding work with Cowork, which merged with chat in September 2026. Other companies, including OpenAI, took up Agent Skills."
+  glyph: "EXIT"

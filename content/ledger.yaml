@@ -133,6 +133,9 @@
       date: 2024-04
     - name: Llama 4
       date: 2025-04
+    # https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/ (2026-04-08)
+    - name: Muse Spark
+      date: 2026-04
     - name: Muse Spark 1.3
       date: 2026-09
     - name: Muse Wonder

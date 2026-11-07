@@ -3,7 +3,7 @@ date: 2026-02-03
 span:
   from: 2026-02
 added: 2026-10-05
-updated: 2026-11-02
+updated: 2026-11-07
 topics: [agents]
 print:
   pattern: d
@@ -22,13 +22,16 @@ sources:
     publisher: CNBC
 items:
   - date: 2026-01-30
-    ko: Anthropic, 법무·영업·재무 등 업무용 Claude 플러그인 11종을 깃허브에 공개.
-    en: "Anthropic publishes 11 Claude plugins for work such as legal, sales and finance on GitHub."
+    ko: Anthropic, 법무·영업·재무 등 업무용 Claude Cowork 플러그인 11종을 깃허브에 공개.
+    en: "Anthropic publishes 11 Claude Cowork plugins for work such as legal, sales and finance on GitHub."
     glyph: { ko: "11종", en: "11\nPLUGINS" }
     sources:
       - url: https://github.com/anthropics/knowledge-work-plugins
         title: anthropics/knowledge-work-plugins
         publisher: Anthropic (GitHub)
+      - url: https://www.lawnext.com/2026/02/anthropics-legal-plugin-for-claude-cowork-may-be-the-opening-salvo-in-a-competition-between-foundation-models-and-legal-tech-incumbents.html
+        title: Anthropic’s Legal Plugin for Claude Cowork May Be the Opening Salvo In A Competition Between Foundation Models and Legal Tech Incumbents
+        publisher: LawSites
   - date: 2026-02-02
     ko: 스페이스X, xAI 인수. 합산 기업가치 1.25조 달러.
     en: "SpaceX acquires xAI, for a combined valuation of $1.25 trillion."

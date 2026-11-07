@@ -83,6 +83,16 @@
 - { ko: "NC AI", en: "NC AI", source: "https://www.newsis.com/view/NISX20250804_0003277653" }
 - { ko: "업스테이지", en: "Upstage", source: "https://www.upstage.ai/" }
 - { ko: "모티프테크놀로지스", en: "Motif Technologies", source: "https://www.kukinews.com/article/view/kuk202602200203" }
+- { ko: "AMI Labs", en: "AMI Labs (Advanced Machine Intelligence Labs)", source: "https://amilabs.xyz/" }
+- { ko: "METR", en: "METR", source: "https://metr.org/" }
+- { ko: "메타 초지능 연구소", en: "Meta Superintelligence Labs", source: "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/" }
+- { ko: "Y Combinator", en: "Y Combinator", source: "https://www.ycombinator.com/" }
+- { ko: "Obsidian", en: "Obsidian", source: "https://obsidian.md/" }
+- { ko: "Unity", en: "Unity", source: "https://unity.com/" }
+- { ko: "Take-Two", en: "Take-Two", source: "https://www.take2games.com/" }
+- { ko: "Roblox", en: "Roblox", source: "https://corp.roblox.com/" }
+- { ko: "TIME", en: "TIME", source: "https://time.com/" }
+- { ko: "Ballotpedia", en: "Ballotpedia", source: "https://news.ballotpedia.org/" }
 
 # 정부·국제기구·행사
 - { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
@@ -130,6 +140,14 @@
 - { ko: "상하이 과학혁신판", en: "STAR Market", source: "https://www.aljazeera.com/economy/2026/8/19/chinas-unitree-soars-in-market-debut-as-investors-bet-on-humanoid-robots" }
 - { ko: "세계 휴머노이드 로봇 대회", en: "World Humanoid Robot Games", source: "https://www.robotics247.com/article/unitree_h1_earns_two_gold_medals_at_world_humanoid_robot_games" }
 - { ko: "춘완(춘제 갈라쇼)", en: "Spring Festival Gala", source: "https://news.cgtn.com/news/2025-01-28/Tradition-meets-tech-Unitree-robots-dance-at-Spring-Festival-Gala-1Axm5TuIAve/index.html" }
+- { ko: "뉴욕시의회", en: "New York City Council", source: "https://council.nyc.gov/press/2026/10/05/3278/" }
+- { ko: "The Daily Show", en: "The Daily Show", source: "https://x.com/TheDailyShow/status/2107531924965069242" }
+- { ko: "미국 법무부", en: "U.S. Department of Justice", source: "https://www.justice.gov/" }
+- { ko: "Super Intelligence Force", en: "Super Intelligence Force (SIF)", source: "https://x.com/WhiteHouse/status/2106731532694028310" }
+- { ko: "Super Intelligence Task Force", en: "Super Intelligence Task Force (DOJ-SITF)", source: "https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force" }
+- { ko: "코스피", en: "KOSPI", source: "https://global.krx.co.kr/" }
+- { ko: "나스닥", en: "Nasdaq", source: "https://www.nasdaq.com/" }
+- { ko: "필라델피아 반도체지수", en: "Philadelphia Semiconductor Index", source: "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html" }
 
 # 법·행정명령·성명
 - { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
@@ -154,6 +172,8 @@
 - { ko: "범용 AI 행동강령", en: "General-Purpose AI Code of Practice", source: "https://www.euronews.com/next/2025/07/18/meta-rebuffs-eus-ai-code-of-practice" }
 - { ko: "NSTM-4", en: "NSTM-4 (Adversarial Distillation of American AI Models)", source: "https://justsecurity.org/137498/diagnosis-deterrence-us-response-distillation" }
 - { ko: "증류", en: "distillation", source: "https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks" }
+- { ko: "뉴욕주 행정명령 62호", en: "Executive Order No. 62", source: "https://www.governor.ny.gov/news/first-statewide-moratorium-new-hyperscale-data-centers-launched-governor-kathy-hochul" }
+- { ko: "행정명령 14434호", en: "Executive Order 14434, Inaugurating The Era Of Super Intelligence", source: "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/" }
 
 # 모델·제품
 - { ko: "ChatGPT", en: "ChatGPT", source: "https://openai.com/index/chatgpt/" }
@@ -319,6 +339,24 @@
 - { ko: "HyperCLOVA X SEED Think 32B", en: "HyperCLOVA X SEED Think 32B", source: "https://huggingface.co/naver-hyperclovax/HyperCLOVAX-SEED-Think-32B" }
 - { ko: "Grok 2", en: "Grok 2", source: "https://x.ai/news/grok-2" }
 - { ko: "Grok 3", en: "Grok 3", source: "https://x.ai/news/grok-3" }
+- { ko: "월드모델", en: "world model", source: "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" }
+- { ko: "Genie 3", en: "Genie 3", source: "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" }
+- { ko: "Project Genie", en: "Project Genie", source: "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/" }
+- { ko: "Genie 4", en: "Genie 4", source: "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" }
+- { ko: "ChatGPT Work", en: "ChatGPT Work", source: "https://openai.com/index/chatgpt-for-your-most-ambitious-work/" }   # openai.com은 자동 접속을 막아(403) 검색 결과로 주소와 제목을 확인
+- { ko: "o3-mini", en: "o3-mini", source: "https://techcrunch.com/2025/02/06/openai-now-reveals-more-of-its-o3-mini-models-thought-process" }
+- { ko: "Gemini 2.0 Flash Thinking", en: "Gemini 2.0 Flash Thinking", source: "https://aistudio.google.com/docs/changelog" }
+- { ko: "Claude Code on the web", en: "Claude Code on the web", source: "https://claude.com/blog/claude-code-on-the-web" }
+- { ko: "Agent Skills", en: "Agent Skills", source: "https://claude.com/blog/skills" }
+- { ko: "Claude Cowork", en: "Claude Cowork", source: "https://claude.com/product/cowork" }
+- { ko: "routines", en: "routines", source: "https://claude.com/blog/introducing-routines-in-claude-code" }
+- { ko: "Muse Spark", en: "Muse Spark", source: "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/" }
+- { ko: "LLM Wiki", en: "LLM Wiki", source: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" }
+- { ko: "GBrain", en: "GBrain", source: "https://github.com/garrytan/gbrain" }
+- { ko: "Obsidian CLI", en: "Obsidian CLI", source: "https://obsidian.md/changelog/2026-02-27-desktop-v1.12.4/" }
+- { ko: "Built Together", en: "Built Together", source: "https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together" }
+- { ko: "Google AI Ultra", en: "Google AI Ultra", source: "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/" }
+- { ko: "Meta AI", en: "Meta AI", source: "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/" }
 
 # 사람
 - { ko: "샘 올트먼", en: "Sam Altman", source: "https://openai.com/" }
@@ -364,3 +402,9 @@
 - { ko: "Harvard CMSA", en: "Harvard CMSA", source: "https://cmsa.fas.harvard.edu/media/2026/10/Summit-on-Math-Research-in-the-Age-of-AI.pdf" }
 - { ko: "영국 국가사이버보안센터(NCSC)", en: "National Cyber Security Centre (NCSC)", source: "https://www.ncsc.gov.uk/news/cyber-chief-uk-facing-ai-powered-attacks-on-critical-infrastructure-in-two-years" }
 - { ko: "책임 있는 확장 정책", en: "Responsible Scaling Policy", source: "https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm" }
+- { ko: "얀 르쿤", en: "Yann LeCun", source: "https://tech.eu/2026/03/10/yann-lecun-s-paris-based-ai-world-model-startup-raises-more-than-1bn/" }
+- { ko: "제이컵 콕슨", en: "Jacob Coxon", source: "https://council.nyc.gov/press/2026/10/05/3278/" }
+- { ko: "존 스튜어트", en: "Jon Stewart", source: "https://www.yahoo.com/entertainment/tv/articles/more-sobering-imagined-jon-stewart-162547038.html" }
+- { ko: "개리 탄", en: "Garry Tan", source: "https://github.com/garrytan/gbrain" }
+- { ko: "맷 가먼", en: "Matt Garman", source: "https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together" }
+- { ko: "제이 클레이턴", en: "Jay Clayton", source: "https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force" }
