@@ -1,0 +1,69 @@
+id: 2026-01-world-models
+date: 2026-01-29
+span:
+  from: 2025-08
+  to: 2026-10
+added: 2026-11-07
+topics: [models]
+print:
+  pattern: c
+  motif: disc
+  glyph: 세계
+sources:
+  - url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/
+    title: "Project Genie: Experimenting with infinite, interactive worlds"
+    publisher: Google
+  - url: https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
+    title: "Genie 4: A new generation of world simulation"
+    publisher: Google DeepMind
+items:
+  - date: 2025-08-05
+    ko: 구글 딥마인드, 글로 지시하면 720p, 초당 24프레임의 상호작용 환경을 실시간으로 만드는 월드모델 Genie 3 공개. 일부 연구자와 창작자에게만 미리보기로 열었다.
+    en: "Google DeepMind unveils Genie 3, a world model that generates interactive environments from text in real time at 720p and 24 frames per second, as a limited research preview."
+    glyph: "Genie 3"
+    sources:
+      - url: https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/
+        title: "Genie 3: A new frontier for world models"
+        publisher: Google DeepMind
+  - date: 2026-01-29
+    ko: 구글, 미국 Google AI Ultra 구독자에게 실험용 시제품 Project Genie 공개. 다음 날 Unity 주가는 24% 떨어졌고 Take-Two와 Roblox도 내렸다.
+    en: "Google opens the experimental prototype Project Genie to Google AI Ultra subscribers in the U.S., and the next day Unity closes down 24% while Take-Two and Roblox also fall."
+    glyph: "-24%"
+    sources:
+      - url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/
+        title: "Project Genie: Experimenting with infinite, interactive worlds"
+        publisher: Google
+      - url: https://www.bloomberg.com/news/articles/2026-01-30/unity-video-game-stocks-fall-as-google-s-ai-tool-genie-sparks-fears
+        title: Unity, Video Game Stocks Fall as Google AI Tool Sparks Fears
+        publisher: Bloomberg
+      - url: https://www.itiger.com/news/2607502338
+        title: Videogame stocks slide on Google’s AI model that turns prompts into playable worlds
+        publisher: Reuters (via Tiger Brokers)
+  - date: 2026-03-10
+    ko: 얀 르쿤이 공동 창업한 AMI Labs, 월드모델 개발을 위해 시드 투자 10억 3,000만 달러 유치. 기업가치는 35억 달러로 보도됐다.
+    en: "AMI Labs, co-founded by Yann LeCun, raises a $1.03 billion seed round to build world models, at a reported valuation of $3.5 billion."
+    glyph: $1.03B
+    sources:
+      - url: https://tech.eu/2026/03/10/yann-lecun-s-paris-based-ai-world-model-startup-raises-more-than-1bn/
+        title: Yann LeCun’s Paris-based AI world model startup raises more than $1BN
+        publisher: Tech.eu
+      - url: https://amilabs.xyz/
+        title: "AMI Labs: Real World. Real Intelligence."
+        publisher: AMI Labs
+  - date: 2026-10-27
+    ko: 구글 딥마인드, 자사 실시간 월드모델 가운데 처음으로 소리를 직접 생성하는 Genie 4를 연구 미리보기로 공개. 긴 세션에서는 세부와 사물의 지속성이 흐트러질 수 있다고 밝혔다.
+    en: "Google DeepMind releases Genie 4 as a research preview, its first real-time world model to generate audio natively, and says details and object permanence can drift over longer sessions."
+    glyph: "Genie 4"
+    sources:
+      - url: https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
+        title: "Genie 4: A new generation of world simulation"
+        publisher: Google DeepMind
+ko:
+  kicker: 월드모델
+  title: 세계를 만드는 모델
+  lede: 글로 지시하면 돌아다닐 수 있는 환경을 실시간으로 만드는 월드모델이 연구실 밖으로 나왔다. 구글은 실험 단계라고 밝히며 구독자에게 시제품을 열었고, AMI Labs는 대규모 언어 모델의 대안으로 월드모델을 내세워 시드 투자를 받았다.
+en:
+  kicker: "World Models"
+  title: "Models That Build Worlds"
+  lede: "World models, which generate explorable environments in real time from text, moved beyond the lab. Google opened a prototype to subscribers while calling it experimental, and AMI Labs raised seed money to build world models as an alternative to large language models."
+  glyph: "WORLDS"

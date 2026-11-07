@@ -3,9 +3,9 @@ date: 2026-09-03
 order: 1
 span:
   from: 2026-06
-  to: 2026-10
+  to: 2026-09
 added: 2026-10-27
-updated: 2026-11-02
+updated: 2026-11-07
 topics: [open]
 print:
   pattern: d
@@ -43,14 +43,6 @@ items:
       - url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/
         title: NVIDIA to Acquire Hugging Face
         publisher: NVIDIA
-  - date: 2026-10-15
-    ko: 메타, Muse Spark Open의 가중치 공개. 상업 이용 조건을 붙인 자체 라이선스를 따른다.
-    en: "Meta releases the weights of Muse Spark Open under its own license with limited commercial terms."
-    glyph: { ko: "공개", en: "OPEN" }
-    sources:
-      - url: https://research.meta.ai/blog/muse-spark-open
-        title: Introducing Muse Spark Open, The Most Capable US Open‑Weight Model to Date
-        publisher: Meta
 ko:
   kicker: 공개 모델
   title: 공개 가중치와 허깅페이스

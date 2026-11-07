@@ -1,0 +1,52 @@
+id: 2026-04-muse-spark
+date: 2026-04-08
+span:
+  from: 2026-04
+  to: 2026-10
+added: 2026-11-07
+aliases:
+  - 2026-09-always-on~20260908
+  - 2026-09-open-weights~20261015
+topics: [models, open]
+print:
+  pattern: d
+  angle: -14
+  motif: rise
+  glyph: Muse
+sources:
+  - url: https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/
+    title: "Introducing Muse Spark: MSL’s First Model, Purpose-Built to Prioritize People"
+    publisher: Meta
+items:
+  - date: 2026-04-08
+    ko: 메타 초지능 연구소, 첫 모델 Muse Spark를 Meta AI 앱과 웹에 적용. 가중치는 공개하지 않았고 향후 버전을 오픈소스로 내고 싶다는 뜻만 밝혔다.
+    en: "Meta Superintelligence Labs puts its first model, Muse Spark, into the Meta AI app and website without releasing the weights, saying only that it hopes to open-source future versions."
+    glyph: "Muse\nSpark"
+    sources:
+      - url: https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/
+        title: "Introducing Muse Spark: MSL’s First Model, Purpose-Built to Prioritize People"
+        publisher: Meta
+  - date: 2026-09-08
+    ko: 메타, 전용 가상 컴퓨터에서 앱을 닫은 뒤에도 일하는 Muse를 미국에 출시. 메일 발송이나 구매 전에는 사용자에게 묻는다.
+    en: "Meta launches Muse in the U.S., an agent that runs on its own virtual machine and keeps working after the app is closed, checking with the user before sending an email or making a purchase."
+    glyph: Muse
+    sources:
+      - url: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
+        title: "Introducing Muse: The World’s First Personal AI Agent Built for Everyone"
+        publisher: Meta
+  - date: 2026-10-15
+    ko: 메타, Muse Spark Open의 가중치 공개. 상업 이용 조건을 붙인 자체 라이선스를 따른다.
+    en: "Meta releases the weights of Muse Spark Open under its own license with limited commercial terms."
+    glyph: { ko: "공개", en: "OPEN" }
+    sources:
+      - url: https://research.meta.ai/blog/muse-spark-open
+        title: Introducing Muse Spark Open, The Most Capable US Open‑Weight Model to Date
+        publisher: Meta
+ko:
+  kicker: 모델 경쟁
+  title: 메타의 Muse
+  lede: Llama의 가중치를 공개해 온 메타가 초지능 연구소의 첫 모델 Muse Spark는 가중치 없이 내놓았다. 5개월 뒤 개인 에이전트 Muse를 출시했고, 10월에는 자체 라이선스로 Muse Spark Open의 가중치를 공개했다.
+en:
+  kicker: "Model Race"
+  title: "Meta’s Muse"
+  lede: "Meta, which had released the weights of Llama, launched Muse Spark, the first model from its Superintelligence Labs, without weights. Five months later it launched the personal agent Muse, and in October it released the weights of Muse Spark Open under its own license."

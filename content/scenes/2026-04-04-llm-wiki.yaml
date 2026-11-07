@@ -1,0 +1,49 @@
+id: 2026-04-llm-wiki
+date: 2026-04-04
+span:
+  from: 2026-02
+  to: 2026-04
+added: 2026-11-07
+topics: [agents]
+print:
+  pattern: w
+  motif: grid
+  glyph: 위키
+sources:
+  - url: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+    title: LLM Wiki
+    publisher: Andrej Karpathy (GitHub)
+items:
+  - date: 2026-02-27
+    ko: Obsidian, 터미널에서 앱을 제어하는 Obsidian CLI를 1.12 공개 버전에 넣었다.
+    en: "Obsidian 1.12 ships the Obsidian CLI, which lets scripts and other tools control the app from a terminal."
+    glyph: CLI
+    sources:
+      - url: https://obsidian.md/changelog/2026-02-27-desktop-v1.12.4/
+        title: Obsidian 1.12 Desktop (Public)
+        publisher: Obsidian
+  - date: 2026-04-04
+    ko: 안드레이 카파시, LLM이 마크다운 위키를 계속 쓰고 고치는 방식을 글 ‘LLM Wiki’로 공개. “Obsidian은 IDE, LLM은 프로그래머, 위키는 코드베이스”라고 설명했다.
+    en: "Andrej Karpathy publishes “LLM Wiki,” describing a markdown wiki that an LLM keeps writing and revising: “Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase.”"
+    glyph: Wiki
+    sources:
+      - url: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+        title: LLM Wiki
+        publisher: Andrej Karpathy (GitHub)
+  - date: 2026-04-05
+    ko: Y Combinator CEO 개리 탄, 에이전트용 기억 시스템 GBrain을 MIT 라이선스로 공개.
+    en: "Y Combinator CEO Garry Tan releases GBrain, a memory system for agents, under the MIT license."
+    glyph: GBrain
+    sources:
+      - url: https://github.com/garrytan/gbrain
+        title: garrytan/gbrain
+        publisher: Garry Tan (GitHub)
+ko:
+  kicker: 에이전트
+  title: 에이전트가 쓰는 위키
+  lede: 사람이 정리하던 개인 지식 베이스를 LLM이 마크다운 파일로 직접 쓰고 고치는 방식이 개발자 사이에 퍼졌다. 사용자 수를 보여 주는 독립 자료는 없다.
+en:
+  kicker: "Agents"
+  title: "A Wiki the Agent Writes"
+  lede: "A personal knowledge base that an LLM writes and revises as markdown files, rather than one a person maintains, spread among developers. No independent figures show how many people use it."
+  glyph: "WIKI"

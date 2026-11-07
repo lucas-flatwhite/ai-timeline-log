@@ -1,0 +1,64 @@
+id: 2025-02-visible-thinking
+date: 2025-02-06
+span:
+  from: 2024-09
+  to: 2025-02
+added: 2026-11-07
+topics: [models]
+print:
+  pattern: d
+  angle: 14
+  motif: none
+  glyph: 생각
+sources:
+  - url: https://openai.com/index/learning-to-reason-with-llms/
+    title: Learning to reason with LLMs
+    publisher: OpenAI
+  - url: https://arxiv.org/abs/2201.11903
+    title: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+    publisher: arXiv
+items:
+  - date: 2024-09-16
+    ko: OpenAI, o1의 숨긴 사고 과정을 캐묻는 사용자에게 이용 중단을 경고하는 메일을 보낸 것으로 보도.
+    en: "OpenAI is reported to be emailing users who probe o1’s hidden reasoning, warning that further violations may cost them access."
+    glyph: { ko: "경고", en: "WARNED" }
+    sources:
+      - url: https://arstechnica.com/information-technology/2024/09/openai-threatens-bans-for-probing-new-ai-models-reasoning-process/
+        title: Ban warnings fly as users dare to probe the “thoughts” of OpenAI’s latest model
+        publisher: Ars Technica
+  - date: 2024-12-19
+    ko: 구글, 사고 과정을 드러내는 시험판 Gemini 2.0 Flash Thinking 공개.
+    en: "Google releases Gemini 2.0 Flash Thinking, an experimental model that shows its thoughts, in public preview."
+    glyph: "Gemini\n2.0"
+    sources:
+      - url: https://aistudio.google.com/docs/changelog
+        title: Gemini API changelog
+        publisher: Google
+      - url: https://gigazine.net/gsc_news/en/20241220-google-gemini-flash-thinking
+        title: Google releases Gemini 2.0 Flash Thinking, an AI model that introduces a thought process to enhance inference, and exceeds OpenAI’s o1-preview and GPT-4o in various tests
+        publisher: GIGAZINE
+  - date: 2025-02-06
+    ko: 딥시크 R1이 사고 과정 전체를 드러낸 뒤, OpenAI가 o3-mini의 사고 과정을 전보다 자세히 표시. 원문이 아니라 후처리를 거친 내용이다.
+    en: "After DeepSeek’s R1 shows its full reasoning, OpenAI makes o3-mini display more of its thought process, in a post-processed form rather than the raw chain of thought."
+    glyph: o3-mini
+    sources:
+      - url: https://techcrunch.com/2025/02/06/openai-now-reveals-more-of-its-o3-mini-models-thought-process
+        title: OpenAI now reveals more of its o3-mini model’s thought process
+        publisher: TechCrunch
+  - date: 2025-02-24
+    ko: Anthropic, Claude 3.7 Sonnet에서 빠른 답변과 긴 사고를 고르게 하고 사고 과정을 사용자에게 표시. API에서는 생각할 길이를 정할 수 있다.
+    en: "Anthropic lets Claude 3.7 Sonnet users pick near-instant answers or extended thinking that they can read, and API users can set how long the model thinks."
+    glyph: "3.7"
+    sources:
+      - url: https://www.anthropic.com/news/claude-3-7-sonnet
+        title: Claude 3.7 Sonnet and Claude Code
+        publisher: Anthropic
+ko:
+  kicker: 추론 모델
+  title: 사고 과정을 보여 줄 것인가
+  lede: 단계적 사고는 2022년 구글 연구진의 프롬프트 기법에서 출발했고, OpenAI의 o1은 이를 강화학습으로 학습시키면서 원본 사고 과정을 숨겼다. 구글, 딥시크, Anthropic이 사고 과정을 보여 주는 모델을 내놓는 사이 OpenAI도 일부를 열었다.
+en:
+  kicker: "Reasoning Models"
+  title: "Whether to Show the Thinking"
+  lede: "Step-by-step reasoning began as a prompting technique from Google researchers in 2022. OpenAI trained it into o1 with reinforcement learning and hid the raw reasoning. As Google, DeepSeek and Anthropic released models that show their thinking, OpenAI opened up part of it."
+  glyph: "THINK"

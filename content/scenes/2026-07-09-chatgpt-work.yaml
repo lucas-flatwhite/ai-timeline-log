@@ -1,0 +1,57 @@
+id: 2026-07-chatgpt-work
+date: 2026-07-09
+span:
+  from: 2026-02
+  to: 2026-07
+added: 2026-11-07
+topics: [agents, models]
+print:
+  pattern: w
+  motif: rays
+  glyph: Work
+sources:
+  - url: https://openai.com/index/chatgpt-for-your-most-ambitious-work/
+    title: ChatGPT is now a partner for your most ambitious work
+    publisher: OpenAI
+items:
+  - date: 2026-02-13
+    ko: OpenAI, ChatGPT에서 GPT-4o와 GPT-4.1 등을 내렸다. 매일 GPT-4o를 고르는 사용자가 0.1%라고 밝혔다.
+    en: "OpenAI retires GPT-4o, GPT-4.1 and other models from ChatGPT, saying only 0.1% of users still choose GPT-4o each day."
+    glyph: "0.1%"
+    sources:
+      - url: https://openai.com/index/retiring-gpt-4o-and-older-models/
+        title: Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT
+        publisher: OpenAI
+      - url: https://help.openai.com/en/articles/20001051-retiring-gpt-4o-and-other-chatgpt-models
+        title: Retiring GPT-4o and other ChatGPT models
+        publisher: OpenAI
+      - url: https://www.engadget.com/ai/openai-has-officially-retired-the-controversial-gpt-4o-model-181553067.html
+        title: OpenAI has officially retired the controversial GPT-4o model
+        publisher: Engadget
+  - date: 2026-03-19
+    ko: OpenAI가 ChatGPT 앱, 브라우저, Codex 앱을 하나의 데스크톱 슈퍼앱으로 합칠 계획이라고 CNBC가 보도.
+    en: "CNBC reports that OpenAI plans to merge the ChatGPT app, its browser and the Codex app into one desktop super app."
+    glyph: { ko: "슈퍼앱", en: "SUPER\nAPP" }
+    sources:
+      - url: https://www.cnbc.com/2026/03/19/openai-desktop-super-app-chatgpt-browser-codex.html
+        title: OpenAI to create desktop super app, combining ChatGPT app, browser and Codex app
+        publisher: CNBC
+  - date: 2026-07-09
+    ko: OpenAI, 앱과 파일을 넘나들며 몇 시간씩 작업을 이어 가는 에이전트 ChatGPT Work를 공개하고 Codex 앱을 새 ChatGPT 데스크톱 앱에 합쳤다.
+    en: "OpenAI launches ChatGPT Work, an agent that acts across apps and files and stays on a project for hours, and folds the Codex app into a new ChatGPT desktop app."
+    glyph: Work
+    sources:
+      - url: https://openai.com/index/chatgpt-for-your-most-ambitious-work/
+        title: ChatGPT is now a partner for your most ambitious work
+        publisher: OpenAI
+      - url: https://9to5mac.com/2026/07/09/openai-announcing-the-next-chapter-for-chatgpt-today-watch-here/
+        title: OpenAI unveils ChatGPT Work agent, GPT-5.6 models now available
+        publisher: 9to5Mac
+ko:
+  kicker: 에이전트
+  title: 일을 맡기는 앱이 된 ChatGPT
+  lede: OpenAI는 GPT-4o를 ChatGPT에서 내리고, 대화 앱과 코딩 앱을 하나의 데스크톱 앱으로 합쳤다. ChatGPT에 몇 시간씩 이어지는 작업을 맡기는 에이전트가 들어왔다.
+en:
+  kicker: "Agents"
+  title: "ChatGPT Becomes an App for Work"
+  lede: "OpenAI retired GPT-4o from ChatGPT and merged its chat and coding apps into one desktop app. ChatGPT gained an agent that takes on work lasting hours."

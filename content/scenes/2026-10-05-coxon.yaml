@@ -1,0 +1,74 @@
+id: 2026-10-coxon
+date: 2026-10-05
+span:
+  from: 2026-09-08
+  to: 2026-10-05
+added: 2026-11-07
+topics: [safety, society]
+print:
+  pattern: h
+  motif: none
+  glyph: 경고
+sources:
+  - &time
+    url: https://time.com/article/2026/09/09/ai-anthropic-openai-jacob-coxon/
+    title: He Helped Build Powerful AI at OpenAI and Anthropic. Now He’s Afraid It Could Kill Us
+    publisher: TIME
+  - &council
+    url: https://council.nyc.gov/press/2026/10/05/3278/
+    title: New York City Council Convenes Hearing on Artificial Intelligence Risks with Testimony from AI Executives, Whistleblowers, Experts
+    publisher: New York City Council
+  - &ap
+    url: https://www.news4jax.com/business/2026/10/05/ai-industry-insiders-voice-alarms-to-nyc-council-as-local-governments-take-up-safety-concerns/
+    title: AI industry insiders voice alarms to NYC council as local governments take up safety concerns
+    publisher: The Associated Press (via News4JAX)
+items:
+  - date: 2026-09-08
+    ko: Anthropic 연구원 제이컵 콕슨, 퇴사를 알리며 OpenAI와 Anthropic 모두 책임 있게 행동하지 않는다고 X에 게시. 두 회사는 TIME의 논평 요청에 바로 답하지 않았다.
+    en: "Anthropic researcher Jacob Coxon announces his resignation on X, saying neither OpenAI nor Anthropic is acting responsibly, and neither company immediately answers TIME’s request for comment."
+    glyph: { ko: "퇴사", en: "RESIGN" }
+    sources:
+      - url: https://x.com/hilbertspaess/status/2097476196791709843
+        title: I resigned from Anthropic today.
+        publisher: Jacob Coxon (X)
+      - *time
+  - date: 2026-10-05
+    ko: 콕슨, 뉴욕시의회 청문회에서 지금 경로라면 인류가 AI에 대한 통제력을 잃을 가능성이 더 크다고 증언.
+    en: "Testifying before the New York City Council, Coxon says that on the current path it is more likely than not that humanity loses control to AI."
+    glyph: { ko: "증언", en: "TESTIFY" }
+    sources:
+      - *council
+      - *ap
+      - url: https://ny1.com/nyc/all-boroughs/politics/2026/10/05/city-council-takes-on-the-debate-over-ai-risk
+        title: City Council takes on debate over catastrophic risks of AI
+        publisher: NY1
+  - date: 2026-10-05
+    ko: 같은 청문회에서 OpenAI, 메타, 구글, Anthropic 대표가 선서 증언. 최악의 위험을 수치로 밝혀 달라는 의장의 요청에 수치를 낸 회사는 없었고, Anthropic 대표는 현명한 규제를 환영한다고 말했다.
+    en: "Representatives of OpenAI, Meta, Google and Anthropic testify under oath at the same hearing; none gives a figure for the worst-case risk, and Anthropic’s representative welcomes “smart regulation.”"
+    glyph: { ko: "4사", en: "4 LABS" }
+    sources:
+      - *council
+      - *ap
+      - url: https://www.cityandstateny.com/politics/2026/10/leading-ai-companies-fail-impress-city-council-ai-hearing/416428/
+        title: Leading AI companies fail to impress at City Council AI hearing
+        publisher: City & State New York
+  - date: 2026-10-05
+    ko: 콕슨, 같은 날 밤 The Daily Show에서 존 스튜어트와 대담. 스튜어트는 생각보다 무거운 대화였다고 말했다.
+    en: "The same night, Coxon sits down with Jon Stewart on The Daily Show, and Stewart calls the conversation “more sobering than I imagined.”"
+    glyph: TV
+    sources:
+      - url: https://www.yahoo.com/entertainment/tv/articles/more-sobering-imagined-jon-stewart-162547038.html
+        title: "‘More Sobering Than I Imagined’: Jon Stewart ‘Dumbstruck’ in Interview With AI Whistleblower Jacob Coxon"
+        publisher: Mediaite (via Yahoo)
+      - url: https://x.com/TheDailyShow/status/2107531924965069242
+        title: Former Anthropic researcher Jacob Coxon and Jon Stewart discuss AI, jobs disappearing, universal income, and whether tech CEOs are creating a dystopian future
+        publisher: The Daily Show (X)
+ko:
+  kicker: 안전
+  title: 퇴사한 연구원의 경고
+  lede: 제이컵 콕슨은 연구소를 떠나며 AI 진전이 빨라지고 있고 통제되지 않는다고 말했고, 그 주장을 시의회와 방송으로 가져갔다. 위험 전망은 콕슨의 주장이다. 회사 대표들은 같은 청문회에서 안전을 중시한다고 답했다.
+en:
+  kicker: "Safety"
+  title: "A Departing Researcher’s Warning"
+  lede: "Jacob Coxon left his lab saying that AI progress is accelerating and not under control, and he took that claim to a city council and to television. The risk forecast is his own. Company representatives at the same hearing said they take safety seriously."
+  glyph: "WARNING"
