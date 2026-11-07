@@ -1,0 +1,58 @@
+id: 2026-09-super-intelligence
+date: 2026-09-29
+order: 1
+span:
+  from: 2026-09
+  to: 2026-11
+added: 2026-11-07
+topics: [rules]
+print:
+  pattern: h
+  angle: -10
+  motif: rays
+  glyph: SI
+sources:
+  - &eo
+    url: https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/
+    title: Inaugurating The Era Of Super Intelligence
+    publisher: The White House
+items:
+  - date: 2026-09-29
+    ko: 트럼프 대통령, 연방 기관이 공문서와 대외 소통에서 AI 대신 Super Intelligence(SI)를 쓰도록 하는 행정명령 14434호에 서명. 기존 규정과 계약은 고치지 않아도 된다.
+    en: "President Trump signs Executive Order 14434, directing federal agencies to use “Super Intelligence” (SI) in place of “AI” in non-statutory documents, while existing regulations and contracts need not change."
+    glyph: "14434"
+    sources:
+      - *eo
+      - url: https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/
+        title: "Fact Sheet: President Donald J. Trump Inaugurates The Era of Super Intelligence"
+        publisher: The White House
+  - date: 2026-10-04
+    ko: 트럼프 대통령, 연방 정부의 SI 대응을 조정할 Super Intelligence Force 발표. 제이 클레이턴 국가정보국장이 이끌고, 4개월 안에 보고서를 내야 한다.
+    en: "President Trump announces the Super Intelligence Force to coordinate the federal effort on SI, led by Director of National Intelligence Jay Clayton and due to report within four months."
+    glyph: SIF
+    sources:
+      - url: https://x.com/WhiteHouse/status/2106731532694028310
+        title: I am announcing the formation of the Super Intelligence Force (SIF).
+        publisher: The White House (X)
+      - url: https://www.valleynewslive.com/2026/10/04/trump-names-national-intelligence-director-jay-clayton-lead-new-federal-ai-task-force/
+        title: Trump names national intelligence director Jay Clayton to lead a new federal AI task force
+        publisher: The Associated Press (via Valley News Live)
+      - url: https://www.crowell.com/en/insights/client-alerts/white-house-announces-ai-responsibility-accord-executive-orders-and-super-intelligence-task-force
+        title: White House Announces AI Responsibility Accord, Executive Orders, and Super Intelligence Task Force
+        publisher: Crowell & Moring
+  - date: 2026-11-05
+    ko: 미국 법무부, 외국 정부, 초국가 범죄 조직, 사기 행위자 등의 SI 악용을 다루는 Super Intelligence Task Force 출범.
+    en: "The U.S. Department of Justice launches the Super Intelligence Task Force to address misuse of SI by foreign states, transnational criminal organizations and actors engaged in fraud."
+    glyph: { ko: "법무부", en: "DOJ" }
+    sources:
+      - url: https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force
+        title: Department of Justice Launches Super Intelligence Task Force
+        publisher: U.S. Department of Justice
+ko:
+  kicker: 정부
+  title: AI를 SI로 부르는 정부
+  lede: 미국 행정부가 공문서의 AI를 Super Intelligence로 바꿔 부르고 담당 조직을 세웠다. 용어 변경은 법률 조문을 바꾸지 않으며, 행정명령은 연방 정의 입법안을 60일 안에 내도록 했다.
+en:
+  kicker: "Government"
+  title: "Washington Renames AI"
+  lede: "The U.S. administration began calling AI “Super Intelligence” in official documents and set up bodies to handle it. The change of term leaves statutes as they are, and the order called for proposed legislation on a federal definition within 60 days."

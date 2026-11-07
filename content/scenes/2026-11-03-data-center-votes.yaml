@@ -1,0 +1,73 @@
+id: 2026-11-data-center-votes
+date: 2026-11-03
+span:
+  from: 2026-07
+  to: 2026-11
+added: 2026-11-07
+topics: [compute, society]
+print:
+  pattern: d
+  angle: 18
+  motif: fall
+  glyph: "40/41"
+sources:
+  - &ballotpedia
+    url: https://news.ballotpedia.org/2026/11/06/voters-favored-limiting-data-center-development-in-40-of-41-local-ballot-measures-on-nov-3/
+    title: Voters favored limiting data center development in 40 of 41 local ballot measures on Nov. 3
+    publisher: Ballotpedia
+  - &cnbc
+    url: https://www.cnbc.com/2026/11/06/ai-data-center-midterms-selloff.html
+    title: AI stocks hammered by midterm shock as data center buildout becomes a ‘war of attrition’
+    publisher: CNBC
+items:
+  - date: 2026-07-14
+    ko: 뉴욕주지사, 행정명령 62호로 50MW 이상 데이터센터의 신규 재량 허가를 주 환경 기준이 정해질 때까지 유예. 주지사실은 주 단위로는 처음이라고 밝혔다.
+    en: "New York’s governor issues Executive Order No. 62, pausing new discretionary state permits for data centers of 50 MW or more until state environmental standards are set, in what the governor’s office calls the first statewide moratorium."
+    glyph: 50MW
+    sources:
+      - url: https://www.governor.ny.gov/news/first-statewide-moratorium-new-hyperscale-data-centers-launched-governor-kathy-hochul
+        title: First Statewide Moratorium on New Hyperscale Data Centers Launched by Governor Kathy Hochul
+        publisher: New York State Governor’s Office
+      - url: https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium
+        title: New York State enacts data center moratorium
+        publisher: Davis Polk
+  - date: 2026-10
+    ko: AWS CEO 맷 가먼, 데이터센터 사업에서 정부 기관과 비밀유지계약을 더는 쓰지 않는다고 밝히고 지역사회에 5년간 10억 달러 이상을 투입하는 Built Together를 발표.
+    en: "AWS CEO Matt Garman says Amazon no longer uses nondisclosure agreements with government agencies on its projects and announces Built Together, more than $1 billion for communities over five years."
+    glyph: NDA
+    sources:
+      - url: https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together
+        title: "Amazon’s approach to data centers: community-focused, sustainable and efficient"
+        publisher: Amazon
+      - url: https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/
+        title: Amazon responds to data center backlash, says it no longer uses NDAs
+        publisher: TechCrunch
+  - date: 2026-11-03
+    ko: 미국 10개 주의 지역 주민투표 41건 중 40건이 데이터센터 개발을 제한하는 쪽으로 결정. 전면 금지 5건, 부분 금지 12건, 6개월 유예 3건이 포함됐다.
+    en: "Voters favor limits on data center development in 40 of 41 local ballot measures across 10 U.S. states, including 5 full bans, 12 partial bans and 3 six-month moratoriums."
+    glyph: "40/41"
+    sources:
+      - *ballotpedia
+      - url: https://www.scientificamerican.com/article/2026-election-results-show-widespread-opposition-to-ai-data-centers/
+        title: The data center boom was on Tuesday ballots 41 times. It won once.
+        publisher: Scientific American
+  - date: 2026-11-05
+    ko: 나스닥이 5.5%, 필라델피아 반도체지수가 12% 하락. 분석가들은 민주당의 의회 장악 뒤 규제와 건설 유예 위험을 이유로 들었고, 다음 날 코스피에 서킷브레이커가 발동됐다.
+    en: "The Nasdaq falls 5.5% and the Philadelphia Semiconductor Index 12% as analysts cite regulation and construction risks after Democrats win Congress, and a circuit breaker halts Korea’s KOSPI the next day."
+    glyph: "-12%"
+    sources:
+      - url: https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html
+        title: "Stock market today: Dow plunges 1,800 points, Nasdaq enters correction in AI trade meltdown"
+        publisher: Yahoo Finance
+      - *cnbc
+      - url: https://view.asiae.co.kr/article/2026110615475413854
+        title: 코스피, 서킷브레이커 발동 후 6%대 하락 마감…5000선은 지켜
+        publisher: 아시아경제
+ko:
+  kicker: 데이터센터
+  title: 투표에 부친 데이터센터
+  lede: 데이터센터 건설이 주 행정명령과 지역 주민투표의 쟁점이 됐다. 주민투표 41건은 대부분 시·군 단위이고 비구속 투표 2건을 포함한다. 분석가들은 11월 5일 급락의 이유로 금리와 설비 투자 회의론도 함께 들었다.
+en:
+  kicker: "Data Centers"
+  title: "Data Centers on the Ballot"
+  lede: "Data center construction came before a state executive order and local voters. Most of the 41 ballot measures were at the city or county level, and two were non-binding. Analysts also pointed to interest rates and doubts about capital spending for the November 5 selloff."

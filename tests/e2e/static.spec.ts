@@ -23,8 +23,8 @@ for (const path of ['./ko/', './']) {
       const text = (await page.locator('#details').textContent())!;
       const missing = scenes.flatMap(s => [s[lang].title, ...s.items.map(it => it[lang])]).filter(t => !text.includes(t));
       expect(missing).toEqual([]);
-      await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(72);
-      await expect(page.locator('#details ol.items > li')).toHaveCount(268);
+      await expect(page.locator('#details article.detail:not(.year)')).toHaveCount(74);
+      await expect(page.locator('#details ol.items > li')).toHaveCount(275);
       await expect(page.locator('#details article.detail.year')).toHaveCount(4);
     });
 
@@ -38,10 +38,10 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('#wall')).toHaveAttribute('data-latest', '2026-11-07');
     });
 
-    test('boxes: 345, newest first, links to addresses', async ({ page }) => {
+    test('boxes: 354, newest first, links to addresses', async ({ page }) => {
       await page.goto(path);
       const boxes = page.locator('.wall .box');
-      await expect(boxes).toHaveCount(345);
+      await expect(boxes).toHaveCount(354);
       await expect(page.locator('.wall > :first-child')).toHaveClass(/\bcover\b/);
       await expect(page.locator('.wall a.box').first()).toHaveAttribute('href', '#year-2026');
       const glyphs = await boxes.evaluateAll(els => els.map(e => (e as HTMLElement).dataset.glyph ?? ''));
@@ -191,7 +191,7 @@ test.describe('exported files', () => {
     const json = await request.get('timeline.json');
     expect(json.status()).toBe(200);
     expect(json.headers()['content-type']).toMatch(/json/);
-    expect((await json.json()).scenes).toHaveLength(72);
+    expect((await json.json()).scenes).toHaveLength(74);
     for (const p of ['llms.txt', 'llms-full.txt', 'ko/llms-full.txt']) {
       const r = await request.get(p);
       expect(r.status(), p).toBe(200);

@@ -22,14 +22,14 @@ describe('urls', () => {
 
 describe('buildTimeline', () => {
   test('timeline has every scene and event', () => {
-    expect(t.scenes).toHaveLength(72);
-    expect(t.scenes.flatMap(s => s.items)).toHaveLength(268);
+    expect(t.scenes).toHaveLength(74);
+    expect(t.scenes.flatMap(s => s.items)).toHaveLength(275);
     expect(t.site.asOf).toBe('2026-11-07');
     expect(t.site.license.name).toBe('CC BY 4.0');
     expect(t.site.scope).toEqual(SCOPE);
     expect(t.topics.agents.en).toBe('Agents');
     expect(t.editions.at(-1)!.n).toBe(5);
-    expect(t.scenes[0].id).toBe('2026-11-research-acceleration');
+    expect(t.scenes[0].id).toBe('2026-11-data-center-votes');
     expect(t.glossary.length).toBeGreaterThan(0);
   });
 
