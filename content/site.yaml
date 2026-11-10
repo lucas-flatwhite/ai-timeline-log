@@ -5,7 +5,7 @@ repo: https://github.com/lucas-flatwhite/ai-timeline-log
 # 제보를 받는 메일 주소. 제보 안내 창과 '만든 방법'에 쓴다
 email: lucas.flatwhite@gmail.com
 start: 2022-11-30
-asOf: 2026-11-07
+asOf: 2026-11-10
 firstEdition: 2026-10-05
 ko:
   heroGlyph:

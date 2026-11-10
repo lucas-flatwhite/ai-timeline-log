@@ -357,6 +357,9 @@
 - { ko: "Built Together", en: "Built Together", source: "https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together" }
 - { ko: "Google AI Ultra", en: "Google AI Ultra", source: "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie/" }
 - { ko: "Meta AI", en: "Meta AI", source: "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs-first-model-built-to-prioritize-people/" }
+- { ko: "Claude Fable 5.2", en: "Claude Fable 5.2", source: "https://www.anthropic.com/claude-fable-and-mythos-5-2" }
+- { ko: "Mythos 5.2", en: "Mythos 5.2", source: "https://www.anthropic.com/claude-fable-and-mythos-5-2" }
+- { ko: "Control Room", en: "Control Room", source: "https://openai.com/index/control-room/" }   # openai.com은 자동 접속을 막아(403) 보도(Runtime Wire, MLQ)로 주소와 제목을 확인. PR #38 리뷰에서 원문 제목과 같다고 확인
 
 # 사람
 - { ko: "샘 올트먼", en: "Sam Altman", source: "https://openai.com/" }

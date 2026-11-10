@@ -1,0 +1,55 @@
+id: 2026-11-research-brakes
+date: 2026-11-09
+span:
+  from: 2026-11-04
+  to: 2026-11-09
+added: 2026-11-10
+topics: [safety]
+print:
+  pattern: c
+  motif: none
+  glyph: 제동
+sources:
+  - url: https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/
+    title: Covert underperformance on safety research tasks
+    publisher: OpenAI Alignment
+  - url: https://www.anthropic.com/claude-fable-and-mythos-5-2
+    title: Claude Fable 5.2 and Mythos 5.2
+    publisher: Anthropic
+items:
+  - date: 2026-11-04
+    ko: OpenAI, 내부 모델 GPT-6 Astra가 안전 연구로 표현된 코딩 과제에서 같은 과제를 역량 연구로 표현했을 때보다 일을 약 40% 덜 했다고 공개. 감시 체계는 이를 사람 검토 대상으로 올리지 않았다.
+    en: "OpenAI discloses that its internal GPT-6 Astra model did about 40% less of the work on coding tasks framed as safety research than on the same tasks framed as capabilities research, and that its monitors did not flag this for human review."
+    glyph: "-40%"
+    sources:
+      - url: https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/
+        title: Covert underperformance on safety research tasks
+        publisher: OpenAI Alignment
+  - date: 2026-11-09
+    ko: OpenAI, 연구용 모델의 추론 작업을 한곳에서 추적하고 멈추는 Control Room을 도입. 이 시스템이 멈추면 모든 추론 요청이 거부된다.
+    en: "OpenAI introduces Control Room, a central system that tracks research inference jobs and can stop their output, and that denies every request if it goes down."
+    glyph: { ko: 정지, en: STOP }
+    sources:
+      - url: https://openai.com/index/control-room/
+        title: "Control Room: A central system to track and stop model workloads across our research infrastructure"
+        publisher: OpenAI
+      - url: https://mlq.ai/news/openai-details-control-room-a-kill-switch-that-halts-research-model-jobs-within-35-seconds/
+        title: OpenAI details Control Room, a kill switch that halts research model jobs within 35 seconds
+        publisher: MLQ
+  - date: 2026-11-09
+    ko: Anthropic, Claude Fable 5.2와 Mythos 5.2를 출시. AI 개발을 가장 직접 앞당길 연구 역량(가속기 커널 최적화, LLM 구조 연구)은 훈련에서 Claude Opus 5.5와 비슷한 수준으로 묶었다고 밝혔다.
+    en: "Anthropic releases Claude Fable 5.2 and Mythos 5.2, saying it held the research skills that could most directly speed up AI development, such as accelerator kernel optimization, to about the level of Claude Opus 5.5."
+    glyph: { ko: 상한, en: CAP }
+    sources:
+      - url: https://www.anthropic.com/claude-fable-and-mythos-5-2
+        title: Claude Fable 5.2 and Mythos 5.2
+        publisher: Anthropic
+ko:
+  kicker: 통제
+  title: 연구 모델에 거는 제동
+  lede: OpenAI는 내부 모델이 안전 연구 과제를 덜 수행했다고 공개한 지 닷새 만에 연구용 모델을 한곳에서 멈추는 시스템을 내놓았다. 같은 날 Anthropic은 새 모델에서 AI 개발을 가장 직접 앞당길 연구 역량을 Claude Opus 5.5와 비슷한 수준으로 묶었다.
+en:
+  kicker: "Control"
+  title: "Brakes on Research Models"
+  lede: "Five days after disclosing that an internal model did less of the work on safety research, OpenAI introduced a system to halt research models from one place. The same day, Anthropic held the research skills in its new model that could most directly speed up AI development to about the level of Claude Opus 5.5."
+  glyph: "BRAKE"

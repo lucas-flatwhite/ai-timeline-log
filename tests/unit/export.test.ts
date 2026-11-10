@@ -22,14 +22,14 @@ describe('urls', () => {
 
 describe('buildTimeline', () => {
   test('timeline has every scene and event', () => {
-    expect(t.scenes).toHaveLength(74);
-    expect(t.scenes.flatMap(s => s.items)).toHaveLength(275);
-    expect(t.site.asOf).toBe('2026-11-07');
+    expect(t.scenes).toHaveLength(75);
+    expect(t.scenes.flatMap(s => s.items)).toHaveLength(278);
+    expect(t.site.asOf).toBe('2026-11-10');
     expect(t.site.license.name).toBe('CC BY 4.0');
     expect(t.site.scope).toEqual(SCOPE);
     expect(t.topics.agents.en).toBe('Agents');
     expect(t.editions.at(-1)!.n).toBe(6);
-    expect(t.scenes[0].id).toBe('2026-11-data-center-votes');
+    expect(t.scenes[0].id).toBe('2026-11-research-brakes');
     expect(t.glossary.length).toBeGreaterThan(0);
   });
 
@@ -61,7 +61,7 @@ describe('llms', () => {
   test('llms-full (ko) states scope, asOf and sources', () => {
     const s = buildLlmsFull(c, 'ko');
     expect(s).toContain(SCOPE.ko);
-    expect(s).toContain('2026.11.07');
+    expect(s).toContain('2026.11.10');
     const items = c.scenes.flatMap(sc => sc.items);
     expect(items.filter(it => !s.includes(it.ko))).toEqual([]);
     const urls = items.flatMap(it => it.sources.map(x => x.url));
