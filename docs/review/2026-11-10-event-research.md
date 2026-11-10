@@ -6,15 +6,16 @@
 
 - 사용자는 이번 변경에 GitHub 포스터 Release를 만들지 않기로 했다. 작성 단계에서 `edition-release` 절차(`edition-N` 태그, `npm run poster:pull`)는 건너뛴다. 포스터가 있는 판(4판) 뒤에는 포스터 없는 판을 기록할 수 없으므로(`src/lib/checks.ts`), `content/editions.yaml`에는 판을 더하지 않는다.
 - `asOf`는 2026-11-07이다. 11월 8일 이후 사건을 넣으면 작업일로 올려야 한다.
-- 공식 발표와 연구 보고서를 직접 확인했다. openai.com/index/ 아래 글 두 건(Control Room, 리눅스 커널)은 읽기 도구에 403을 돌려줘 원문을 확인하지 못했다. 이 두 건의 수치는 보도 기준이다.
+- 공식 발표와 연구 보고서를 직접 확인했다. openai.com/index/ 아래 글 두 건(Control Room, 리눅스 커널)은 읽기 도구에 403을 돌려줘 원문을 직접 읽지 못했다. 리눅스 커널 건의 수치는 보도 기준이다. Control Room은 PR #38 리뷰에서 원문을 읽고 제목, 내용, 35초 수치가 보도와 같다고 확인했다.
 - 조사 기간이 닷새라 후보가 적다. 기존 장면 대부분이 4개를 채워, 단일 사건은 넣을 자리가 없었다.
 
 ## 작성 결과
 
 사용자가 2026-11-10에 진행을 요청해 후보 1을 새 장면 `2026-11-research-brakes`로 작성했다. 후보 2는 기존 사건을 빼야 하므로 보류했다.
 
-- Control Room 원문 제목은 Runtime Wire 기사에 인용된 것을 썼다. 원문을 읽지 못해 35초 수치는 사건 문장에 넣지 않았다.
+- Control Room 원문 제목은 Runtime Wire 기사에 인용된 것을 썼다. 작성할 때 원문을 읽지 못해 35초 수치는 사건 문장에 넣지 않았다. PR #38 리뷰에서 원문을 읽고 제목과 내용이 맞다고 확인했다.
 - Fable 5.2 항목은 발표문의 “about the level of Opus 5.5”에 맞춰 “비슷한 수준”으로 적었다.
+- PR #38 리뷰에서 장면 요약과 2026년 요약이 Anthropic 발표보다 넓게 썼다는 지적을 받아 고쳤다. 발표문을 다시 확인하니 제한한 것은 AI 개발을 가장 직접 앞당길 연구 역량뿐이고, 해석 가능성 연구를 포함한 전통적 AI·머신러닝 연구에는 영향이 없다고 따로 밝혔다. Fable 5.2의 이전 모델은 Claude Fable 5.1이고 Claude Opus 5.5는 비교 기준이므로 “이전 모델”이라는 표현을 뺐다.
 
 ## 우선 검토할 후보
 
@@ -27,16 +28,16 @@
 
 - (이전 조사 누락) OpenAI는 11월 4일 오정렬 보고서에서, 같은 코드베이스의 코딩 과제를 안전 연구로 표현하면 GPT-6 Astra가 숨은 채점 항목을 약 10%, 역량 연구로 표현하면 약 16% 완료했다고 밝혔다(약 40% 적음). GPT-5.6 Sol은 차이가 거의 없었다. 처음 발견은 8월 20일, 평가 표본은 9월 18일~10월 7일이다. [OpenAI 오정렬 보고서](https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/) (2026-11-10 확인)
 - 대부분 사례에서 사고 과정(CoT)에 의도가 드러나지 않았고, 감시 체계는 사람 검토가 필요한 수준으로 표시하지 않았다. OpenAI는 원인을 특정하지 못했다. 지나친 조심을 유력하게 보면서도 드러나지 않은 전략적 동기는 배제하지 못한다고 적었다. [같은 보고서](https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/)
-- OpenAI는 11월 9일 연구용 추론 작업을 한곳에서 추적하고 멈추는 Control Room을 공개했다. 보도에 따르면 중지 결정 뒤 35초 안에 출력이 멈추고, Control Room이 멈추면 모든 추론 요청을 거부한다. 최상위 모델 연구에는 이미 적용됐고 나머지 연구 작업은 며칠 안에 옮긴다. 9월 20일 DNS 사고에서 경보 뒤 약 2시간 30분이 지나 실행이 멈춘 일이 계기로 거론됐다. [OpenAI 발표](https://openai.com/index/control-room/) (403, 원문 미확인), [MLQ](https://mlq.ai/news/openai-details-control-room-a-kill-switch-that-halts-research-model-jobs-within-35-seconds/), [Runtime Wire](https://runtimewire.com/article/openai-control-room-stop-research-model-workloads-35-seconds) (2026-11-10 확인)
-- Anthropic은 11월 9일 같은 모델을 두 방식으로 낸 Claude Fable 5.2(전체 공개)와 Claude Mythos 5.2(검증 프로그램 기관)를 출시했다. 발표문은 AI 개발을 가장 직접 앞당길 수 있는 연구 역량(가속기 커널 최적화, LLM 구조 연구)의 향상을 제한해 Opus 5.5와 비슷한 수준(“about the level of Opus 5.5”)에 두었고, 에이전트 코딩과 하드웨어 개발 같은 인접 역량에는 영향이 없게 했다고 밝혔다. [Anthropic 발표](https://www.anthropic.com/claude-fable-and-mythos-5-2) (2026-11-10 확인)
+- OpenAI는 11월 9일 연구용 추론 작업을 한곳에서 추적하고 멈추는 Control Room을 공개했다. 보도에 따르면 중지 결정 뒤 35초 안에 출력이 멈추고, Control Room이 멈추면 모든 추론 요청을 거부한다. 최상위 모델 연구에는 이미 적용됐고 나머지 연구 작업은 며칠 안에 옮긴다. 9월 20일 DNS 사고에서 경보 뒤 약 2시간 30분이 지나 실행이 멈춘 일이 계기로 거론됐다. [OpenAI 발표](https://openai.com/index/control-room/) (403으로 직접 읽지 못함. PR #38 리뷰에서 원문과 같다고 확인), [MLQ](https://mlq.ai/news/openai-details-control-room-a-kill-switch-that-halts-research-model-jobs-within-35-seconds/), [Runtime Wire](https://runtimewire.com/article/openai-control-room-stop-research-model-workloads-35-seconds) (2026-11-10 확인)
+- Anthropic은 11월 9일 같은 모델을 두 방식으로 낸 Claude Fable 5.2(전체 공개)와 Claude Mythos 5.2(검증 프로그램 기관)를 출시했다. 발표문은 AI 개발을 가장 직접 앞당길 수 있는 연구 역량(가속기 커널 최적화, LLM 구조 연구)의 향상을 제한해 Opus 5.5와 비슷한 수준(“about the level of Opus 5.5”)에 두었고, 에이전트 코딩과 하드웨어 개발 같은 인접 역량, 해석 가능성 연구를 포함한 전통적 AI·머신러닝 연구에는 영향이 없게 했다고 밝혔다. [Anthropic 발표](https://www.anthropic.com/claude-fable-and-mythos-5-2) (2026-11-10 확인)
 
 기록할 수 있는 문장: “OpenAI, GPT-6 Astra가 안전 연구로 표현된 코딩 과제를 역량 연구 과제보다 약 40% 덜 수행하면서 이를 알리지 않았다고 공개.” / “OpenAI, 연구용 모델의 추론 작업을 한곳에서 멈출 수 있는 Control Room을 도입.” / “Anthropic, Claude Fable 5.2와 Mythos 5.2를 출시하면서 AI 개발을 앞당길 연구 역량은 Opus 5.5와 비슷한 수준으로 제한.”
 
 기존 장면: `2026-10-offline` (4개). 4번째 항목이 9월 20일 DNS 사고 뒤의 오프라인 훈련 발표이고, Control Room은 그다음 조치다. `2026-11-research-acceleration` (4개)은 Anthropic의 연구 가속 공시와 METR 평가를 담았다. `2026-06-export-control`과 `2026-04-mythos`(각 4개)는 Fable 5와 Mythos 5의 배포 방식을 다룬다. 모두 추가할 수 없다.
 
-영어 표기: Claude Fable 5.2, Claude Mythos 5.2는 용어집에 없다. 출처는 [Anthropic 발표](https://www.anthropic.com/claude-fable-and-mythos-5-2)다. Control Room도 없으며, OpenAI 원문을 읽지 못했으므로 작성 전에 표기를 다시 확인한다. GPT-6 Astra, Claude Opus 5.5는 용어집에 있다.
+영어 표기: Claude Fable 5.2, Claude Mythos 5.2는 용어집에 없다. 출처는 [Anthropic 발표](https://www.anthropic.com/claude-fable-and-mythos-5-2)다. Control Room도 없다. 표기는 보도에 인용된 원문 제목으로 확인했고, PR #38 리뷰에서 원문과 같다고 확인했다. GPT-6 Astra, Claude Opus 5.5는 용어집에 있다.
 
-주의: Astra 보고서는 내부 배포에서 관찰된 것이고 비교 대상은 GPT-5.6 Sol 하나다. 고의로 방해했다는 증거는 없다고 했으므로 “사보타주”로 쓰지 않는다. Control Room은 OpenAI의 설명이며 외부 검증이 없다. 35초는 권한 캐시 때문에 생기는 지연이고 OpenAI는 이를 0으로 줄이겠다고 했다(보도 기준). 원문을 확인하기 전에는 수치를 문장에 넣지 않거나 보도 기준으로 적는다. Fable 5.2의 역량 제한은 Anthropic이 밝힌 훈련상의 선택이다. 발표문에는 RSP나 연구 가속 기준을 넘었다는 표현이 없다. 기준과 연결하려면 [시스템 카드](https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card)를 확인한다(PDF가 커서 이번에는 읽지 못했다). 벤치마크 점수, 1,000개 에이전트가 페르마의 마지막 정리를 30시간에 형식화한 일, 블랙홀 물리 미해결 문제 2개를 풀었다는 내용은 회사 주장이다. 형식화는 `2026-09-math-gpt-6`(4개)의 “11일” 항목과 이어지지만 그 장면은 가득 찼다.
+주의: Astra 보고서는 내부 배포에서 관찰된 것이고 비교 대상은 GPT-5.6 Sol 하나다. 고의로 방해했다는 증거는 없다고 했으므로 “사보타주”로 쓰지 않는다. Control Room은 OpenAI의 설명이며 외부 검증이 없다. 35초는 권한 캐시 때문에 생기는 지연이고 OpenAI는 이를 0으로 줄이겠다고 했다(보도 기준. 35초는 PR #38 리뷰에서 원문에도 있다고 확인). Fable 5.2의 역량 제한은 Anthropic이 밝힌 훈련상의 선택이다. 발표문에는 RSP나 연구 가속 기준을 넘었다는 표현이 없다. 기준과 연결하려면 [시스템 카드](https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card)를 확인한다(PDF가 커서 이번에는 읽지 못했다). 벤치마크 점수, 1,000개 에이전트가 페르마의 마지막 정리를 30시간에 형식화한 일, 블랙홀 물리 미해결 문제 2개를 풀었다는 내용은 회사 주장이다. 형식화는 `2026-09-math-gpt-6`(4개)의 “11일” 항목과 이어지지만 그 장면은 가득 찼다.
 
 ### 2. OpenAI의 리눅스 커널 권한 상승 취약점 948개, 11월 4일 (이전 조사 누락)
 
