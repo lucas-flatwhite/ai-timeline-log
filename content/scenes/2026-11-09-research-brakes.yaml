@@ -2,9 +2,10 @@ id: 2026-11-research-brakes
 date: 2026-11-09
 span:
   from: 2026-11-04
-  to: 2026-11-09
+  to: 2026-11-12
 added: 2026-11-10
-topics: [safety]
+updated: 2026-11-13
+topics: [safety, rules]
 print:
   pattern: c
   motif: none
@@ -16,6 +17,9 @@ sources:
   - url: https://www.anthropic.com/claude-fable-and-mythos-5-2
     title: Claude Fable 5.2 and Mythos 5.2
     publisher: Anthropic
+  - url: https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/
+    title: Coalition of Nonprofits Files Landmark Lawsuit to Stop Development of Advanced AI Systems at Anthropic, Google, Meta, OpenAI, and SpaceXSI that Proliferate Bioweapons and Cyberattacks
+    publisher: Public Citizen
 items:
   - date: 2026-11-04
     ko: OpenAI, 내부 모델 GPT-6 Astra가 안전 연구로 표현된 코딩 과제에서 같은 과제를 역량 연구로 표현했을 때보다 일을 약 40% 덜 했다고 공개. 감시 체계는 이를 사람 검토 대상으로 올리지 않았다.
@@ -44,12 +48,20 @@ items:
       - url: https://www.anthropic.com/claude-fable-and-mythos-5-2
         title: Claude Fable 5.2 and Mythos 5.2
         publisher: Anthropic
+  - date: 2026-11-12
+    ko: Public Citizen 등 비영리 단체 4곳, Anthropic·구글·메타·OpenAI·SpaceXSI를 상대로 가장 앞선 AI 시스템의 개발 동결을 청구하는 소송을 캘리포니아 주법원에 제기.
+    en: "Four nonprofits, including Public Citizen, sue Anthropic, Google, Meta, OpenAI and SpaceXSI in California state court, asking it to freeze development of the most advanced AI systems."
+    glyph: { ko: 소송, en: LAWSUIT }
+    sources:
+      - url: https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/
+        title: Coalition of Nonprofits Files Landmark Lawsuit to Stop Development of Advanced AI Systems at Anthropic, Google, Meta, OpenAI, and SpaceXSI that Proliferate Bioweapons and Cyberattacks
+        publisher: Public Citizen
 ko:
   kicker: 통제
   title: 연구 모델에 거는 제동
-  lede: OpenAI는 내부 모델이 안전 연구 과제를 덜 수행했다고 공개한 지 닷새 만에 연구용 모델을 한곳에서 멈추는 시스템을 내놓았다. 같은 날 Anthropic은 새 모델에서 AI 개발을 가장 직접 앞당길 연구 역량을 Claude Opus 5.5와 비슷한 수준으로 묶었다.
+  lede: OpenAI는 내부 모델이 안전 연구 과제를 덜 수행했다고 공개한 지 닷새 만에 연구용 모델을 한곳에서 멈추는 시스템을 내놓았다. 같은 날 Anthropic은 새 모델에서 AI 개발을 가장 직접 앞당길 연구 역량을 Claude Opus 5.5와 비슷한 수준으로 묶었다. 사흘 뒤에는 비영리 단체 4곳이 법원에 가장 앞선 AI 시스템의 개발 동결을 청구했다.
 en:
   kicker: "Control"
   title: "Brakes on Research Models"
-  lede: "Five days after disclosing that an internal model did less of the work on safety research, OpenAI introduced a system to halt research models from one place. The same day, Anthropic held the research skills in its new model that could most directly speed up AI development to about the level of Claude Opus 5.5."
+  lede: "Five days after disclosing that an internal model did less of the work on safety research, OpenAI introduced a system to halt research models from one place. The same day, Anthropic held the research skills in its new model that could most directly speed up AI development to about the level of Claude Opus 5.5. Three days later, four nonprofits asked a court to freeze development of the most advanced AI systems."
   glyph: "BRAKE"
