@@ -136,6 +136,20 @@ describe('checkContent', () => {
     const r = broken(c => { delete c.pics.eye; });
     expect(r.errors).toContainEqual('guide look: pic "eye" is not in pics.yaml');
   });
+  test('a fifth event is a warning, not an error', () => {
+    let id = '';
+    const r = broken(c => {
+      const s = c.scenes.find(x => x.items.length === 4)!;
+      id = s.id;
+      s.items.push({ ...structuredClone(s.items[3]) });
+    });
+    expect(r.errors).toEqual([]);
+    expect(r.warnings).toContainEqual(`scene ${id}: has 5 events; the fifth is only for a follow-up to the same story`);
+  });
+  test('four events give no event-count warning', () => {
+    expect(checkContent(loadContent()).warnings.join()).not.toMatch(/has 5 events/);
+  });
+
   test('long small-box keyword is a warning, not an error', () => {
     let id = '';
     const r = broken(c => { id = c.scenes[0].id; c.scenes[0].items[0].glyph = { ko: '행정명령', en: 'ORDER' }; });   // 영어 글이 있는 사건이라 en도 둔다

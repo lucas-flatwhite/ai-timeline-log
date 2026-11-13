@@ -75,6 +75,9 @@ export function checkContent(c: Content): { errors: string[]; warnings: string[]
       for (const g of longOnes) warnings.push(`${iw}: glyph "${g.replaceAll('\n', '/')}" is hard to read in a small box`);
     });
 
+    // 사건은 3~4개가 기본이다. 5번째는 같은 이야기의 후속 사건 자리라서, 쓸 때마다 경고로 드러낸다
+    if (s.items.length > 4) warnings.push(`${sw}: has ${s.items.length} events; the fifth is only for a follow-up to the same story`);
+
     if (s.sources.length === 0 && s.items.every(it => it.sources.length === 0)) {
       warnings.push(`${sw}: has no source on the scene or on any item`);
     }

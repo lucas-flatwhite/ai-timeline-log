@@ -73,7 +73,7 @@ Before adding a picture to an event or drawing an outline in `content/pics.yaml`
 - Banned words: Korean `놀라운`, `혁명적`, `게임 체인저`; English `revolutionary`, `game-changer`, `groundbreaking`, `stunning`, `incredible`; in both, `!` and emoji.
 - **Never use an em dash (U+2014) anywhere. There are no exceptions.** This covers Korean and English text, UI strings (`src/i18n/`), source titles, YAML comments, code comments, tests, commit messages and PR bodies. If an original article title has one, replace it with a comma or a colon (`:`). In text, split the sentence with a period, or use a comma, colon or parentheses. The build blocks it as an error in every content string (source titles included), and a unit test (`tests/unit/no-em-dash.test.ts`) checks all text files in the repository. The en dash (`–`) in date ranges stays.
 - Do not use relative time expressions in scene, event, year or era text: Korean `오늘`, `최근`, `올해`, `현재`; English `today`, `recently`, `this year`. Their meaning changes with the day of reading.
-- Each scene has 3 to 4 events.
+- Each scene has 3 to 4 events. A fifth is allowed only for a follow-up to the same story, and the build warns about it. Six or more is an error. When to start a new scene instead is in `.agents/skills/scene-research/SKILL.md` ("New scene or follow-up").
 
 ### Phrases that read as AI-written (the build cannot catch these, so check by eye)
 

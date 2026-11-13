@@ -21,7 +21,16 @@ The output of this step is **one research note**. Do not write scene YAML. The Y
 - Pick only "events that changed the course". Do not add events to balance the count per year or per topic.
 - The site starts at the ChatGPT launch (`site.start`, 2022-11-30). Earlier events do not become boxes. If needed, use them only as background in a scene's `lede`.
 - Chinese events are covered too, but do not create a separate `china` topic. Put them in existing topics. Propose a new topic only when it has three or more scenes.
-- A scene has 3 to 4 events. Before proposing to add to an existing scene, check its event count (the third column of the index). If it already has 4, it cannot take more, so propose a new scene or a reorganization.
+- A scene has 3 to 4 events, and a fifth only as a follow-up (see below). Before proposing to add to an existing scene, check its event count (the third column of the index).
+
+### New scene or follow-up
+
+Decide by the story, not by the free slots.
+
+- **Follow-up (event 4 or 5 of an existing scene)**: the event is the next step of the question that the scene's title and lede ask, and it is a single event. A fifth event is for this case only. Example: the House Democrats' letter after `2026-10-offline`.
+- **New scene**: the events ask a different question, even with the same company or technology. Or the follow-up story has grown to three or more events confirmed from primary sources. Give the new scene the same `topics` as the earlier one so the two read as one thread.
+- **Hold**: a scene already has 5 events and another follow-up comes. Do not propose a sixth. Hold it until there are three events, then propose them as a new scene. A single event with no scene to join is held the same way.
+- Do not swap out an existing event to make room. An event's address (`<scene id>~<YYYYMMDD>`) has no alias, so the old link stops working.
 
 ## 3. Sources
 
@@ -58,7 +67,7 @@ Checked on: YYYY-MM-DD. State in one or two sentences the date basis (announceme
 
 | Priority | Date | Event | Why chosen | Proposed way to add it |
 | --- | --- | --- | --- | --- |
-| 1 | MM-DD | ... | ... | New scene / event N of `<existing id>` / reorganize |
+| 1 | MM-DD | ... | ... | New scene / event N of `<existing id>` / hold / reorganize |
 
 ### 1. <event>, <month day>
 

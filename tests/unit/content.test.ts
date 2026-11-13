@@ -111,6 +111,17 @@ describe('loadContent', () => {
     expect(msg).toMatch(new RegExp(`${SCENE}: items: `));
   });
 
+  test('a scene takes up to five events, not six', () => {
+    const extra = (n: number) => Array.from({ length: n }, (_, k) =>
+      `  - { date: 2023-03-31, ko: 후속 ${k}, en: Follow-up ${k}, glyph: { ko: 후속, en: NEXT } }\n`).join('');
+    const five = copyFixture();
+    edit(five, SCENE, s => s.replace(/(  - \{ date: 2023-03-31.*\n)/, `$1${extra(2)}`));
+    expect(loadContent(five).scenes[0].items).toHaveLength(5);
+    const six = copyFixture();
+    edit(six, SCENE, s => s.replace(/(  - \{ date: 2023-03-31.*\n)/, `$1${extra(3)}`));
+    expect(() => loadContent(six)).toThrowError(new RegExp(`${SCENE}: items: `));
+  });
+
   test('rejects a span that ends before it starts', () => {
     const dir = copyFixture();
     edit(dir, SCENE, s => s.replace('span: { from: 2023-03-14 }', 'span: { from: 2023-07, to: 2023-05 }'));

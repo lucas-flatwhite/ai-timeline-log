@@ -45,7 +45,7 @@ export const sceneSchema = z.object({
     glyph: glyphSpec,
     pic: z.string().optional(),
     sources: z.array(source).default([]),
-  })).min(3).max(4),
+  })).min(3).max(5),   // 5번째는 같은 이야기의 후속 사건에만 쓴다(checks.ts가 경고한다)
   ko: sceneText,
   en: sceneText,
 });
