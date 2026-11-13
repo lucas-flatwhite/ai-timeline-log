@@ -15,6 +15,7 @@ The output of this step is **one research note**. Do not write scene YAML. The Y
 - `npm run index -- --grep <word>`: finds events already covered, and glossary spellings, by company, model or institution name.
 - See the site's start date and as-of date only with `grep -E '^(start|asOf):' content/site.yaml`.
 - Open a scene file only to judge whether a candidate belongs in an existing scene, and open only that file.
+- Held candidates from earlier sessions stay in their research notes, where the "Proposed way to add it" column says `보류`. Find them with `grep -rn "보류" docs/review` and check whether a new event lets one of them go ahead.
 
 ## 2. Selection criteria
 
@@ -27,10 +28,15 @@ The output of this step is **one research note**. Do not write scene YAML. The Y
 
 Decide by the story, not by the free slots.
 
-- **Follow-up (event 4 or 5 of an existing scene)**: the event is the next step of the question that the scene's title and lede ask, and it is a single event. A fifth event is for this case only. Example: the House Democrats' letter after `2026-10-offline`.
-- **New scene**: the events ask a different question, even with the same company or technology. Or the follow-up story has grown to three or more events confirmed from primary sources. Give the new scene the same `topics` as the earlier one so the two read as one thread.
-- **Hold**: a scene already has 5 events and another follow-up comes. Do not propose a sixth. Hold it until there are three events, then propose them as a new scene. A single event with no scene to join is held the same way.
-- Do not swap out an existing event to make room. An event's address (`<scene id>~<YYYYMMDD>`) has no alias, so the old link stops working.
+- **Join an existing scene**: the event is the next step of the question that the scene's title and lede ask. A scene with 3 events takes it as the fourth. A scene with 4 events takes it as the fifth only when it is a single follow-up.
+- **New scene**: the events ask a different question, even with the same company or technology. Or the follow-up story has three or more events confirmed from primary sources. Give the new scene the same `topics` as the earlier one so the two read as one thread.
+- **Hold**: there is no legal place yet. This covers a follow-up to a scene that already has 5 events, two or more follow-ups to a scene with 4 (keep them together instead of putting one in the fifth slot), and a single event with no scene to join. Do not propose a sixth event. Propose a new scene once the held events reach three.
+- Events never move between scenes. Do not swap an event out to make room, and an event already in a fifth slot does not count toward a new scene's three. An event's address (`<scene id>~<YYYYMMDD>`) has no alias, so a moved or removed event's link stops working.
+
+Same question or not:
+
+- Same: the House Democrats' letter of 2026-10-28 asking frontier AI companies to report safety incidents within 48 hours. `2026-10-offline` records agents acting in the outside world and companies taking models off the live internet in response. The letter is the next response to those incidents.
+- Different: the Claude Fable 5.2 and Mythos 5.2 release. Mythos is in `2026-04-mythos`, which is about a model kept from general release because of its skill at finding vulnerabilities. The 5.2 release is about capping the research skills that would speed up AI development, so it went into `2026-11-research-brakes`.
 
 ## 3. Sources
 
@@ -67,7 +73,7 @@ Checked on: YYYY-MM-DD. State in one or two sentences the date basis (announceme
 
 | Priority | Date | Event | Why chosen | Proposed way to add it |
 | --- | --- | --- | --- | --- |
-| 1 | MM-DD | ... | ... | New scene / event N of `<existing id>` / hold / reorganize |
+| 1 | MM-DD | ... | ... | New scene / event N of `<existing id>` / hold (write `보류` and the reason) |
 
 ### 1. <event>, <month day>
 

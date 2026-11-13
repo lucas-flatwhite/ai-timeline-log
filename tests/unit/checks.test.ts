@@ -147,7 +147,15 @@ describe('checkContent', () => {
     expect(r.warnings).toContainEqual(`scene ${id}: has 5 events; the fifth is only for a follow-up to the same story`);
   });
   test('four events give no event-count warning', () => {
-    expect(checkContent(loadContent()).warnings.join()).not.toMatch(/has 5 events/);
+    // 실제 콘텐츠에 5개짜리 장면이 생겨도 깨지지 않게, 한 장면을 4개로 맞춰 그 장면만 본다
+    let id = '';
+    const r = broken(c => {
+      const s = c.scenes[0];
+      id = s.id;
+      while (s.items.length < 4) s.items.push(structuredClone(s.items[0]));
+      s.items.length = 4;
+    });
+    expect(r.warnings.filter(w => w.startsWith(`scene ${id}: has `) && w.includes('events'))).toEqual([]);
   });
 
   test('long small-box keyword is a warning, not an error', () => {
