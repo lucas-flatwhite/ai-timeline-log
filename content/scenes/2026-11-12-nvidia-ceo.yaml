@@ -1,0 +1,59 @@
+id: 2026-11-nvidia-ceo
+date: 2026-11-12
+span:
+  from: 2026-11-08
+  to: 2026-11-12
+added: 2026-11-13
+topics: [compute]
+print:
+  pattern: d
+  motif: none
+  glyph: CEO
+sources:
+  - url: https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition
+    title: NVIDIA Announces CEO Transition
+    publisher: NVIDIA
+  - url: https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors
+    title: Statement From NVIDIA Board of Directors
+    publisher: NVIDIA
+items:
+  - date: 2026-11-08
+    ko: 엔비디아 이사회, 젠슨 황 CEO가 외국 정보 활동의 표적이 됐다는 보도를 두고 독립 이사 위원회가 감독하는 독립 조사를 시작. 국가 안보나 회사 기밀이 유출됐다고 볼 이유는 없다고 밝혔다.
+    en: "NVIDIA’s board opens an independent investigation, overseen by a committee of independent directors, into reporting that CEO Jensen Huang was the target of a foreign intelligence effort, and says it has no reason to believe national security or company secrets were compromised."
+    glyph: { ko: 조사, en: PROBE }
+    sources:
+      - url: https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors
+        title: Statement From NVIDIA Board of Directors
+        publisher: NVIDIA
+  - date: 2026-11-10
+    ko: 엔비디아 독립 이사들, 전 뉴욕 남부지검 검사장 대행 Joon H. Kim과 그가 속한 Wachtell, Lipton, Rosen & Katz에 조사를 맡김.
+    en: "NVIDIA’s independent directors retain Joon H. Kim, a former acting U.S. Attorney for the Southern District of New York, and his firm Wachtell, Lipton, Rosen & Katz to conduct the investigation."
+    glyph: { ko: 변호인, en: COUNSEL }
+    sources:
+      - url: https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board
+        title: Statement From the Independent Members of the NVIDIA Board
+        publisher: NVIDIA
+  - date: 2026-11-12
+    ko: 젠슨 황, 엔비디아 사장·CEO·이사직에서 즉시 사임. 회사 발표문은 사임 이유를 밝히지 않았다.
+    en: "Jensen Huang resigns as NVIDIA’s president, CEO and board member, effective immediately, in an announcement that gives no reason."
+    glyph: { ko: 사임, en: RESIGNS }
+    sources:
+      - url: https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition
+        title: NVIDIA Announces CEO Transition
+        publisher: NVIDIA
+  - date: 2026-11-12
+    ko: CFO 콜레트 크레스가 CFO를 겸하며 임시 CEO를 맡고, 하비 C. 존스가 엔비디아의 첫 이사회 의장이 됨. 이사회는 내부와 외부 후보를 모두 놓고 후임 CEO를 찾는다.
+    en: "CFO Colette Kress becomes interim CEO while remaining CFO, Harvey C. Jones becomes the board’s first-ever chair, and the board begins a search for a permanent CEO among internal and external candidates."
+    glyph: { ko: 임시, en: INTERIM }
+    sources:
+      - url: https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition
+        title: NVIDIA Announces CEO Transition
+        publisher: NVIDIA
+ko:
+  kicker: 경영
+  title: 엔비디아의 CEO 교체
+  lede: 엔비디아 이사회는 11월 8일 젠슨 황이 외국 정보 활동의 표적이 됐다는 보도를 두고 독립 조사를 시작했다. 11월 12일에는 창업 뒤 33년 동안 회사를 이끈 황이 즉시 사임했다고 발표했고, 사임 이유는 밝히지 않았다. CFO 콜레트 크레스가 임시 CEO를 맡았다.
+en:
+  kicker: "Leadership"
+  title: "NVIDIA Changes CEOs"
+  lede: "On November 8, NVIDIA’s board opened an independent investigation into reporting that Jensen Huang had been the target of a foreign intelligence effort. On November 12, it announced that Huang, who had led the company for 33 years since its founding, had resigned effective immediately, without giving a reason. CFO Colette Kress became interim CEO."

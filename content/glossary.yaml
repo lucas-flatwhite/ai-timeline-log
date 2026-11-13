@@ -93,6 +93,8 @@
 - { ko: "Roblox", en: "Roblox", source: "https://corp.roblox.com/" }
 - { ko: "TIME", en: "TIME", source: "https://time.com/" }
 - { ko: "Ballotpedia", en: "Ballotpedia", source: "https://news.ballotpedia.org/" }
+- { ko: "Public Citizen", en: "Public Citizen", source: "https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/" }
+- { ko: "Wachtell, Lipton, Rosen & Katz", en: "Wachtell, Lipton, Rosen & Katz", source: "https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board" }
 
 # 정부·국제기구·행사
 - { ko: "미 상원", en: "U.S. Senate", source: "https://www.senate.gov/" }
@@ -411,3 +413,6 @@
 - { ko: "개리 탄", en: "Garry Tan", source: "https://github.com/garrytan/gbrain" }
 - { ko: "맷 가먼", en: "Matt Garman", source: "https://www.aboutamazon.com/news/company-news/amazon-data-centers-built-together" }
 - { ko: "제이 클레이턴", en: "Jay Clayton", source: "https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force" }
+- { ko: "콜레트 크레스", en: "Colette Kress", source: "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" }   # 2026-11-12부터 Interim Chief Executive Officer, Executive Vice President and Chief Financial Officer 겸임
+- { ko: "하비 C. 존스", en: "Harvey C. Jones", source: "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" }   # 엔비디아의 첫 Chair of the Board
+- { ko: "Joon H. Kim", en: "Joon H. Kim", source: "https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board" }   # 전 뉴욕 남부지검 검사장 대행(former acting U.S. Attorney of the Southern District of New York)
