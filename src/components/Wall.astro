@@ -8,6 +8,8 @@ const data = (b: PageView['boxes'][number]) => ({
   'data-angle': b.angle, 'data-motif': b.motif, 'data-seed': b.seed, 'data-pic': b.pic, 'data-scene': b.scene,
   /* 주제 강조와 지난 방문 이후 새 상자 표시가 읽는다 */
   'data-topics': b.topics.length ? b.topics.join(' ') : undefined, 'data-added': b.added,
+  'data-recent': b.recent ? '1' : undefined,
+  'data-edition': b.edition !== undefined ? String(b.edition) : undefined,
 });
 ---
 <main id="wall" class="wall" aria-label={view.aria.wall} data-live-start={c.start} data-latest={view.latestAdded}>

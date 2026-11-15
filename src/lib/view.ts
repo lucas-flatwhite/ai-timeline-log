@@ -1,6 +1,6 @@
 import type { Content } from './content.ts';
 import {
-  daysBetween, formatDot, formatLong, formatMonthLong, todayISO, type Locale,
+  daysBetween, formatDot, formatLong, formatMonthLong, todayISO, toUTC, type Locale,
 } from './dates.ts';
 import { glyphFor, hashSeed, itemAddresses, sortWall, ymd, type WallEntry } from './grid.ts';
 import type { Pics } from './schema.ts';
@@ -20,6 +20,32 @@ export interface BoxView {
   topics: string[];
   /** 장면이 추가된 날. 지난 방문 이후 새 상자 표시에 쓴다. 연도 판에는 없다 */
   added?: string;
+  /** 최근 2주 이내 추가 여부 */
+  recent: boolean;
+  /** 판 번호 (content/editions.yaml 기준) */
+  edition?: number;
+}
+export interface EditionSceneView {
+  id: string;
+  title: string;
+  glyph: string;
+  date: string;
+}
+export interface EditionView {
+  n: number;
+  id: string;
+  label: string;
+  date: string;
+  summary: string;
+  scenes: EditionSceneView[];
+}
+export interface RecentBundleView {
+  id: 'recent';
+  label: string;
+  count: number;
+  since: string;
+  summary: string;
+  scenes: EditionSceneView[];
 }
 export interface SourceView { url: string; title: string }
 export interface ItemDetail { addr: string; date: string; text: string; meta: string; fix: string; sources: SourceView[] }
@@ -41,6 +67,10 @@ export interface PageView {
   /** glyph: 오늘까지 일수를 채운 글, tpl: 채우기 전 틀({days}), start: 일수를 세기 시작하는 날 */
   cover: { glyph: string; tpl: string; start: string; lede: string; ledeTpl: string };
   boxes: BoxView[]; scenes: SceneDetail[]; years: YearDetail[]; pics: Pics;
+  /** 판별 묶음 (1~6판) */
+  editions: EditionView[];
+  /** 최근 2주 업데이트 묶음 */
+  recent: RecentBundleView;
   /** 주제 목록(topics.yaml 순서)과 장면 수 */
   topics: { id: string; name: string; count: number }[];
   /** 가장 늦은 장면 추가일. 브라우저가 지난 방문과 비교한다 */
@@ -50,6 +80,7 @@ export interface PageView {
   /** 찾기 창, 새 상자 줄, 강조 띠의 문구. newLine은 {n} 틀, pick.era는 {i}·{n} 틀, pick.boxes는 {n} 틀 */
   ui: {
     topic: string; topicAll: string; topicClear: string; newLine: string; newShow: string; newLabel: string;
+    newFirstLine: string; newFirstLabel: string; recentShow: string;
     find: string; findLabel: string; findPlaceholder: string; eras: string; eraShow: string; eraPrev: string; eraNext: string; eraText: string;
     pick: { era: string; topic: string; find: string; new: string; clear: string; boxes: string; box1: string; none: string };
   };
@@ -142,9 +173,12 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     `${site.repo}/issues/new?template=correction.yml&title=${enc(clip(t.fixTitle(date, text)))}`
     + `&event=${enc(canonical + '#' + addr)}&lang=${locale}`;
 
-  // 최근 추가 장면: added의 최댓값이 첫 판보다 늦을 때, 그 날짜에 추가된 장면들
   const lastAdded = c.scenes.reduce((m, s) => (s.added > m ? s.added : m), '');
-  const recent = lastAdded > site.firstEdition ? lastAdded : null;
+
+  // 기준일(asOf) 기준 14일(2주) 전 날짜를 계산
+  const cutoffTime = toUTC(site.asOf) - 14 * 86_400_000;
+  const recentCutoff = new Date(cutoffTime).toISOString().slice(0, 10);
+  const editionByDate = new Map(c.editions.map(e => [e.date, e.n]));
 
   const entries: Entry[] = [];
   const scenes: SceneDetail[] = [];
@@ -153,14 +187,21 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     const text = s[locale];
     const sceneDate = formatDot(s.date);
     const sources = s.sources.map(x => ({ url: x.url, title: x.title }));
-    // 최근 추가 표시: 장면 날짜 줄과 그 사건들의 날짜 줄 끝에 똑같이 붙인다
-    const mark = recent && s.added === recent ? ` · ${t.added(formatDot(s.added))}` : '';
+    const isAddedRecent = s.added >= recentCutoff && s.added <= site.asOf;
+    const isUpdatedRecent = !!s.updated && s.updated >= recentCutoff && s.updated <= site.asOf && s.updated > s.added;
+    const sceneEdition = editionByDate.get(s.added);
+
+    // 최근 추가·보강 표시: 장면 날짜 줄과 그 사건들의 날짜 줄 끝에 똑같이 붙인다
+    let mark = '';
+    if (isAddedRecent) mark += ` · ${t.added(formatDot(s.added))}`;
+    if (isUpdatedRecent) mark += ` · ${t.enriched(formatDot(s.updated!))}`;
     entries.push({
       kind: 'scene', date: s.date, order: s.order, seq: i * 100,
       box: {
         kind: 'scene', addr: s.id, date: sceneDate, glyph: text.glyph ?? s.print.glyph,
         pattern: s.print.pattern, angle: s.print.angle, motif: s.print.motif, seed: hashSeed(s.id),
         scene: s.id, label: `${sceneDate} · ${text.title}`, off: false, topics: s.topics, added: s.added,
+        recent: isAddedRecent, edition: sceneEdition,
       },
     });
 
@@ -175,6 +216,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
           pattern: s.print.pattern === 'c' ? 'h' : s.print.pattern, angle: s.print.angle, motif: 'none',
           seed: hashSeed(addr), pic: it.pic, scene: s.id, label: `${date} · ${body}`, off: false,
           topics: s.topics, added: s.added,
+          recent: isAddedRecent, edition: sceneEdition,
         },
       });
       return {
@@ -203,6 +245,7 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
       box: {
         kind: 'year', addr: `year-${y}`, date: y, glyph: y, pattern: 'd', angle: +y % 2 ? -22 : 22,
         motif: 'none', seed: +y, label: yt ? `${y} · ${yt.title}` : y, off: !yt, topics: [],
+        recent: false, edition: undefined,
       },
     });
     if (yt) years.push({ addr: `year-${y}`, year: y, title: yt.title, body: yt.body });
@@ -214,6 +257,44 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
   scenes.sort((a, b) => order.get(a.id)! - order.get(b.id)!);   // 격자와 같은 최신순
   // 상세 창의 사건 목록도 격자와 같은 최신순. 주소는 위에서 원래 순서로 이미 정했다
   scenes.forEach(s => s.items.sort((a, b) => order.get(a.addr)! - order.get(b.addr)!));
+
+  const toShortcut = (s: Content['scenes'][number]): EditionSceneView => ({
+    id: s.id,
+    title: s[locale].title,
+    glyph: s[locale].glyph ?? s.print.glyph,
+    date: formatDot(s.date),
+  });
+
+  const editions: EditionView[] = c.editions.map(e => {
+    const edScenes = c.scenes
+      .filter(s => s.added === e.date)
+      .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
+      .map(toShortcut);
+    return {
+      n: e.n,
+      id: `edition-${e.n}`,
+      label: locale === 'ko' ? `제 ${e.n}판` : `Edition ${e.n}`,
+      date: formatDot(e.date),
+      summary: e[locale],
+      scenes: edScenes,
+    };
+  });
+
+  const recentScenesList = c.scenes
+    .filter(s => s.added >= recentCutoff && s.added <= site.asOf)
+    .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
+    .map(toShortcut);
+
+  const recent: RecentBundleView = {
+    id: 'recent',
+    label: locale === 'ko' ? '최근 업데이트' : 'Recent updates',
+    count: recentScenesList.length,
+    since: recentCutoff,
+    summary: locale === 'ko'
+      ? `기준일(${asOfDot}) 이전 2주 동안 추가된 새 장면 ${recentScenesList.length}개입니다.`
+      : `${recentScenesList.length} new scenes added in the 2 weeks up to ${asOfDot}.`,
+    scenes: recentScenesList,
+  };
 
   const title = site.name;
   const poster = latestPosterEdition(c);
@@ -238,11 +319,13 @@ export function buildView(c: Content, locale: Locale, today: string = todayISO()
     },
     cover: { glyph: fill(st.heroGlyph.wide, vars), tpl: st.heroGlyph.wide, start: site.start, lede: fill(st.lede, vars), ledeTpl: fill(st.lede, { ...vars, todayLong: '{todayLong}' }) },
     boxes, scenes, years, pics: c.pics,
+    editions, recent,
     topics: Object.entries(c.topics).map(([id, v]) => ({ id, name: v[locale], count: c.scenes.filter(s => s.topics.includes(id)).length })),
     latestAdded: lastAdded,
     eras: c.arcs.map(a => ({ from: ym(a.from), to: a.to && ym(a.to), title: a[locale].title, span: arcSpan(a), body: a[locale].body })),
     ui: {
       topic: t.topic, topicAll: t.topicAll, topicClear: t.topicClear, newLine: t.newLine, newShow: t.newShow, newLabel: t.newLabel,
+      newFirstLine: t.newFirstLine, newFirstLabel: t.newFirstLabel, recentShow: t.recentShow,
       find: t.find, findLabel: t.findLabel, findPlaceholder: t.findPlaceholder, eras: t.eras, eraShow: t.eraShow, eraPrev: t.eraPrev, eraNext: t.eraNext, eraText: t.eraText,
       pick: {
         era: t.pickEra('{i}', '{n}'), topic: t.pickTopic, find: t.pickFind, new: t.pickNew, clear: t.pickClear,
