@@ -4,9 +4,15 @@
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const valid = (d: string | null, latest: string) => (d !== null && DAY.test(d) && d <= latest ? d : null);
 
-export function sinceFor(session: string | null, local: string | null, latest: string): { since: string | null; session: string | null } {
-  const since = valid(session, latest) ?? valid(local, latest);
-  return { since, session: since };
+export function sinceFor(
+  session: string | null,
+  local: string | null,
+  latest: string,
+  fallback: string | null = null,
+): { since: string | null; session: string | null; first: boolean } {
+  const isFirst = (session === null && local === null) || session === 'first';
+  const since = isFirst ? fallback : (valid(session, latest) ?? valid(local, latest));
+  return { since, session: isFirst ? (fallback ? 'first' : null) : since, first: isFirst };
 }
 
 export function isNew(added: string | undefined, since: string | null): boolean {

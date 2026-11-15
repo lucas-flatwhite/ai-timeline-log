@@ -8,17 +8,19 @@ const data = (b: PageView['boxes'][number]) => ({
   'data-angle': b.angle, 'data-motif': b.motif, 'data-seed': b.seed, 'data-pic': b.pic, 'data-scene': b.scene,
   /* 주제 강조와 지난 방문 이후 새 상자 표시가 읽는다 */
   'data-topics': b.topics.length ? b.topics.join(' ') : undefined, 'data-added': b.added,
+  'data-recent': b.recent ? '1' : undefined,
+  'data-edition': b.edition !== undefined ? String(b.edition) : undefined,
 });
 ---
-<main id="wall" class="wall" aria-label={view.aria.wall} data-live-start={c.start} data-latest={view.latestAdded}>
+<main id="wall" class="wall" aria-label={view.aria.wall} data-live-start={c.start} data-latest={view.latestAdded} data-recent-since={view.recent.since}>
   <div class="cover">
     <canvas class="cv" data-kind="days" data-glyph={c.glyph} data-tpl={c.tpl} role="img" aria-label={c.glyph}></canvas>
     <span class="g" aria-hidden="true" data-live={c.tpl}>{c.glyph}</span>
-    <p class="lede" data-live={c.ledeTpl}>{c.lede}</p>
+    <p class="lede"><span data-live={c.ledeTpl}>{c.lede}</span> <a href="#recent" class="cv-recent" data-recent>{view.ui.recentShow}</a></p>
   </div>
   {view.boxes.map(b => b.off
     ? <span class={`box ${b.kind} off`} {...data(b)} role="img" aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></span>
     : <a class={`box ${b.kind}`} href={`#${b.addr}`} {...data(b)} aria-label={b.label}><canvas></canvas><span class="g" aria-hidden="true">{b.glyph}</span><i class="d" aria-hidden="true">{b.date}</i></a>)}
 </main>
 {/* 지난 방문 이후 새 상자 알림: 화면 아래에 떠 있는 쪽지. 새 상자가 있을 때만 스크립트가 보인다. 표지의 소개 글은 그대로 둔다 */}
-<p class="since" hidden data-tpl={view.ui.newLine} data-label={view.ui.newLabel}><span></span><button type="button" class="since-show">{view.ui.newShow}</button><button type="button" class="since-x" aria-label={view.dialog.close}>×</button></p>
+<p class="since" hidden data-tpl={view.ui.newLine} data-label={view.ui.newLabel} data-tpl-first={view.ui.newFirstLine} data-label-first={view.ui.newFirstLabel}><span></span><button type="button" class="since-show">{view.ui.newShow}</button><button type="button" class="since-x" aria-label={view.dialog.close}>×</button></p>

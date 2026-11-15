@@ -1,13 +1,22 @@
 /* 강조 하나: 주제, 시기, 찾기, 지난 방문 이후 새 상자. 한 번에 하나만 켜진다.
    .wall에 .pick, 고른 상자에 .on을 붙이고 나머지는 CSS가 흐리게 한다. 바뀔 때마다 document에 'pick'을 보낸다.
    주소에는 ?topic=, ?era=YYYY-MM, ?q=를 남기고(해시는 상세 창 주소가 쓴다) 언어 링크도 같은 쿼리를 들고 간다. 새 상자는 남기지 않는다 */
-export type Pick = { kind: 'topic'; id: string } | { kind: 'era'; from: string } | { kind: 'q'; q: string } | { kind: 'new' } | null;
+export type Pick =
+  | { kind: 'topic'; id: string }
+  | { kind: 'era'; from: string }
+  | { kind: 'q'; q: string }
+  | { kind: 'new' }
+  | { kind: 'recent' }
+  | { kind: 'edition'; n: number }
+  | null;
 type On = NonNullable<Pick>;
 
 /* 상자가 강조에 드는지. 시기와 찾기는 그 모듈이 붙인다(시기 범위, 찾기 글이 거기 있다) */
 const match: { [K in On['kind']]?: (b: HTMLElement, p: Extract<On, { kind: K }>) => boolean } = {
   topic: (b, p) => (b.dataset.topics ?? '').split(' ').includes(p.id),
   new: b => b.classList.contains('new'),
+  recent: b => b.dataset.recent === '1',
+  edition: (b, p) => b.dataset.edition === String(p.n),
 };
 export function addMatch<K extends On['kind']>(kind: K, f: (b: HTMLElement, p: Extract<On, { kind: K }>) => boolean): void {
   (match as Record<string, unknown>)[kind] = f;

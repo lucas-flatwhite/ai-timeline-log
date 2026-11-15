@@ -32,7 +32,10 @@ export function initFind(): void {
       setPick(id ? { kind: 'topic', id } : null);
     }
     close();   // 시기는 문서의 클릭이 이어서 고른다(eras.ts)
-    if (b.dataset.new !== undefined) { setPick({ kind: 'new' }); scrollToPicked(); }
+    if (b.dataset.new !== undefined) {
+      setPick(b.dataset.pick === 'recent' ? { kind: 'recent' } : { kind: 'new' });
+      scrollToPicked();
+    }
   });
   input.addEventListener('input', () => {
     const q = input.value;
@@ -51,9 +54,9 @@ export function initFind(): void {
   });
   document.addEventListener('pick', () => {
     const p = currentPick();
-    btn.setAttribute('aria-pressed', String(!!p && p.kind !== 'new'));
+    btn.setAttribute('aria-pressed', String(!!p && p.kind !== 'new' && p.kind !== 'recent'));
     topics.forEach(b => b.setAttribute('aria-current', String(p?.kind === 'topic' && b.dataset.topic === p.id)));
-    list.querySelector('button[data-new]')?.setAttribute('aria-current', String(p?.kind === 'new'));
+    list.querySelector('button[data-new]')?.setAttribute('aria-current', String(p?.kind === 'new' || p?.kind === 'recent'));
     list.querySelectorAll<HTMLButtonElement>('button[data-era]').forEach(b =>
       b.setAttribute('aria-current', String(p?.kind === 'era' && b.dataset.era === p.from)));
     if (p?.kind !== 'q') input.value = '';

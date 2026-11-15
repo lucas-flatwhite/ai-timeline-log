@@ -88,7 +88,7 @@ describe('buildView(ko)', () => {
     const d = scene('2026-07-sandbox-escape');
     expect(d.meta.startsWith('2026.07.21 · ')).toBe(true);
     const it = item('2026-07-sandbox-escape', '2026-07-sandbox-escape~20260721');
-    expect(it.meta).toBe('2026.07.21 · 사고 · ‘샌드박스를 나간 에이전트’ 장면의 사건');
+    expect(it.meta).toBe('2026.07.21 · 사고 · ‘샌드박스를 나간 에이전트’ 장면의 사건 · 보강 2026.11.02');
     expect(decodeURIComponent(it.fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/ko/#2026-07-sandbox-escape~20260721');
     expect(decodeURIComponent(it.fix)).toContain('title=[정정] 2026.07.21 ');
     expect(it.fix).toContain('&lang=ko');
@@ -98,22 +98,27 @@ describe('buildView(ko)', () => {
     expect(scene('2025-01-deepseek').aliases).toEqual([]);
   });
 
-  test('only the scenes added on the latest date are marked as recently added', () => {
-    const marked = v.scenes.filter(s => s.meta.includes('추가'));
-    expect(marked).toHaveLength(1);
-    expect(marked.every(s => s.meta.endsWith(' · 추가 2026.11.13'))).toBe(true);
-    expect(marked.map(s => s.id).sort()).toEqual(['2026-11-nvidia-ceo']);
-    expect(scene('2025-01-deepseek').meta).not.toContain('추가');
-    expect(v.scenes.filter(s => !s.meta.includes('추가'))).toHaveLength(75);
+  test('scenes added within 2 weeks of asOf carry added badge, and updated scenes carry enriched badge', () => {
+    const addedMarked = v.scenes.filter(s => s.meta.includes('추가'));
+    expect(addedMarked).toHaveLength(38);
+    expect(addedMarked.every(s => / · 추가 \d{4}\.\d{2}\.\d{2}/.test(s.meta))).toBe(true);
+    expect(scene('2026-11-nvidia-ceo').meta).toContain(' · 추가 2026.11.13');
+
+    const updatedMarked = v.scenes.filter(s => s.meta.includes('보강'));
+    expect(updatedMarked.length).toBeGreaterThan(0);
+    expect(updatedMarked.every(s => / · 보강 \d{4}\.\d{2}\.\d{2}/.test(s.meta))).toBe(true);
+    expect(scene('2022-11-chatgpt').meta).toContain(' · 보강 2026.11.02');
+
+    // Untouched older scenes have neither badge
+    expect(scene('2026-06-ipo').meta).not.toContain('추가');
+    expect(scene('2026-06-ipo').meta).not.toContain('보강');
   });
 
   test('events in a recently added scene carry the same mark, after the scene name', () => {
     const fresh = scene('2026-11-nvidia-ceo');
     expect(fresh.items.length).toBeGreaterThan(0);
     for (const it of fresh.items) expect(it.meta).toMatch(/^\d{4}\.\d{2}(\.\d{2})? · .+ · ‘.+’ 장면의 사건 · 추가 2026\.11\.13$/);
-    const marked = v.scenes.filter(s => s.meta.endsWith(' · 추가 2026.11.13')).flatMap(s => s.items);
-    expect(v.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · 추가 2026.11.13'))).toEqual(marked);
-    expect(scene('2025-01-deepseek').items.every(it => !it.meta.endsWith(' · 추가 2026.11.13'))).toBe(true);
+    expect(scene('2026-06-ipo').items.every(it => !it.meta.includes('추가') && !it.meta.includes('보강'))).toBe(true);
   });
 
   test('item sources: its own when it has some, else the scene sources', () => {
@@ -353,5 +358,83 @@ describe('guide (쓰는 법)', () => {
     // 작은 판 규칙: 한글 3자 이내, 영어 핵심어에는 한글이 없다
     for (const s of ko.steps) expect([...s.glyph].length).toBeLessThanOrEqual(3);
     for (const s of en.steps) expect(s.glyph).not.toMatch(/[가-힣]/);
+  });
+});
+
+describe('precomputed editions and recent bundle', () => {
+  const e = buildView(loadContent(), 'en', '2026-10-25');
+
+  test('view.editions contains Editions 1 through 6 in order', () => {
+    expect(v.editions).toHaveLength(6);
+    expect(v.editions.map(ed => ed.n)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(v.editions.map(ed => ed.id)).toEqual(['edition-1', 'edition-2', 'edition-3', 'edition-4', 'edition-5', 'edition-6']);
+    // Korean label spacing: must be "제 N판" (with space), never "제N판"
+    expect(v.editions.map(ed => ed.label)).toEqual(['제 1판', '제 2판', '제 3판', '제 4판', '제 5판', '제 6판']);
+    expect(e.editions.map(ed => ed.label)).toEqual(['Edition 1', 'Edition 2', 'Edition 3', 'Edition 4', 'Edition 5', 'Edition 6']);
+    expect(JSON.stringify(v.editions)).not.toMatch(/제\d+판/);
+
+    // Each edition has date, summary from content/editions.yaml, and scenes
+    const ed1 = v.editions[0];
+    expect(ed1.date).toBe('2026.10.05');
+    expect(ed1.summary).toBe('첫 판. ChatGPT 공개부터 장면 28개를 찍었다.');
+    expect(ed1.scenes).toHaveLength(28);
+    expect(ed1.scenes[0]).toMatchObject({
+      id: expect.any(String),
+      title: expect.any(String),
+      glyph: expect.any(String),
+      date: expect.any(String),
+    });
+
+    const ed6 = v.editions[5];
+    expect(ed6.date).toBe('2026.11.07');
+    expect(ed6.summary).toContain('장면 9개를 더했다.');
+    expect(ed6.scenes).toHaveLength(9);
+  });
+
+  test('view.recent bundle groups scenes added within 2 weeks of asOf', () => {
+    expect(v.recent.id).toBe('recent');
+    expect(v.recent.label).toBe('최근 업데이트');
+    expect(e.recent.label).toBe('Recent updates');
+    expect(v.recent.since).toBe('2026-10-30');
+    expect(v.recent.count).toBe(38);
+    expect(v.recent.scenes).toHaveLength(38);
+    expect(v.recent.summary).toContain('38개');
+    expect(v.recent.scenes.every(s => s.id && s.title && s.glyph && s.date)).toBe(true);
+
+    // Excludes older past events even if updated recently
+    expect(v.recent.scenes.some(s => s.id === '2022-11-chatgpt')).toBe(false);
+    // Includes scenes added within the 14-day window
+    expect(v.recent.scenes.some(s => s.id === '2026-11-nvidia-ceo')).toBe(true);
+  });
+
+  test('boxes carry recent and edition tags', () => {
+    // Scene in Edition 6 added on 2026-11-07 (within 2 weeks of asOf: 2026-11-13)
+    const b6 = v.boxes.find(b => b.addr === '2026-09-super-intelligence')!;
+    expect(b6.edition).toBe(6);
+    expect(b6.recent).toBe(true);
+
+    // Scene in Edition 1 added on 2026-10-05 (outside 2-week window)
+    const b1 = v.boxes.find(b => b.addr === '2022-11-chatgpt')!;
+    expect(b1.edition).toBe(1);
+    expect(b1.recent).toBe(false);
+
+    // Item box inherits recent and edition from scene
+    const itemBox = v.boxes.find(b => b.addr === '2026-09-super-intelligence~20260929')!;
+    expect(itemBox.edition).toBe(6);
+    expect(itemBox.recent).toBe(true);
+
+    // Year box has recent: false and edition: undefined
+    const yearBox = v.boxes.find(b => b.kind === 'year')!;
+    expect(yearBox.recent).toBe(false);
+    expect(yearBox.edition).toBeUndefined();
+  });
+
+  test('ui includes first-time and inline recent link copy', () => {
+    expect(v.ui.newFirstLine).toBe('최근 업데이트 · 새 상자 {n}개');
+    expect(v.ui.newFirstLabel).toBe('최근 업데이트');
+    expect(v.ui.recentShow).toBe('최근 업데이트');
+    expect(e.ui.newFirstLine).toBe('Recent updates · {n} new boxes');
+    expect(e.ui.newFirstLabel).toBe('Recent updates');
+    expect(e.ui.recentShow).toBe('Recent updates');
   });
 });

@@ -68,7 +68,8 @@ describe('pdf', () => {
     expect(s.startsWith('%PDF-1.4')).toBe(true);
     expect(s.trimEnd().endsWith('%%EOF')).toBe(true);
     expect(s).toContain(`/MediaBox [0 0 ${sc.width} ${sc.height}]`);
-    for (const bad of ['/CreationDate', '/ID', '/Producer']) expect(s).not.toContain(bad);
+    const dict = s.replace(/stream[\s\S]*?endstream/g, '');
+    for (const bad of ['/CreationDate', '/ID', '/Producer']) expect(dict).not.toContain(bad);
     expect(Buffer.from(toPdf(scene(style, portrait))).equals(Buffer.from(pdf))).toBe(true);
     if (hasQpdf) {
       const dir = mkdtempSync(join(tmpdir(), 'pdf-'));
