@@ -58,7 +58,7 @@ html:not(.js) .tp{display:none}
 @media (max-width:720px){
   .pickbar:is(.era,.edition,.recent) .pb-more{display:block}
   /* 글은 띠 아래에 겹쳐 띄운다. 접어도 띠 높이가 그대로라 굴리는 중에 벽이 튀지 않는다 */
-  .pickbar .pb-body{position:absolute;left:0;right:0;top:100%;margin:0;padding:8px max(16px,env(safe-area-inset-left)) 10px;background:var(--paper);border-bottom:2px solid var(--ink)}
+  .pickbar .pb-body{position:absolute;left:0;right:0;top:100%;margin:0;padding:8px max(16px,env(safe-area-inset-left)) 10px;background:var(--paper);border-bottom:2px solid var(--ink);max-height:calc(100dvh - 40px - 100% - var(--bot));overflow-y:auto;overscroll-behavior:contain}
   .pickbar:is(.era,.edition,.recent).tight .pb-body{display:none}
   .pickbar .pb-more[aria-expanded="true"]{transform:rotate(180deg)}
 }

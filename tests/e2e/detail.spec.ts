@@ -225,6 +225,7 @@ for (const path of ['./ko/', './']) {
       await expect(page.locator('#detail .prev')).toBeDisabled();
       await expect(page.locator('#detail .next')).toBeDisabled();
       await expect(page.locator('#detail .fix')).toBeHidden();
+      await expect(page.locator('#detail .pos')).toHaveText('');
       await expect(page.locator('#detail .dsrc')).toBeHidden();
       await page.keyboard.press('ArrowLeft');
       await hashIs(page, '#year-2024');

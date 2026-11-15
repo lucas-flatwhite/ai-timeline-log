@@ -154,14 +154,17 @@ test.describe('Tier 1: Feature Coverage', () => {
     // Open first scene in active set
     const firstScene = page.locator('.wall .box.scene.on').first();
     const firstAddr = await firstScene.getAttribute('data-addr');
+    const sceneCount = await page.locator('.wall .box.scene.on').count();
     await firstScene.click();
 
     const dlg = page.locator('#detail');
     await expect(dlg).toHaveAttribute('open', '');
+    await expect(page.locator('#detail .pos')).toHaveText(`${sceneCount} / ${sceneCount}`);
     const initialTitle = await page.locator('#detail-title').textContent();
 
     // ArrowLeft steps to next scene in timeline sequence
     await page.keyboard.press('ArrowLeft');
+    await expect(page.locator('#detail .pos')).toHaveText(`${sceneCount - 1} / ${sceneCount}`);
     const nextTitle = await page.locator('#detail-title').textContent();
     expect(nextTitle).not.toBe(initialTitle);
 

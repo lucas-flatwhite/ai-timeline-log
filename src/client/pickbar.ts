@@ -61,8 +61,9 @@ export function initPickbar(): void {
   document.addEventListener('pick', render);
   $('.pb-x').addEventListener('click', () => setPick(null));
   more.addEventListener('click', () => fold(!el.classList.contains('tight')));
-  /* 스크립트가 내리는 스크롤은 접지 않는다. 손가락·휠로 굴릴 때만 */
-  const onUser = () => {
+  /* 벽을 손가락·휠로 굴릴 때만 접는다. 목록 안의 스크롤은 그대로 둔다 */
+  const onUser = (e: Event) => {
+    if (e.target instanceof Node && body.contains(e.target)) return;
     if (!el.hidden && (el.classList.contains('era') || el.classList.contains('edition') || el.classList.contains('recent')) && !el.classList.contains('tight')) fold(true);
   };
   addEventListener('touchmove', onUser, { passive: true });
