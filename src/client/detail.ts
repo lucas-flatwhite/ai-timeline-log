@@ -17,9 +17,12 @@ export function initDetail(): void {
   const all = [...wall.querySelectorAll<HTMLElement>('.box:not(.year)')];
   const seq = all.map(b => b.dataset.addr!);
   const items = new Set(all.filter(b => b.dataset.kind === 'item').map(b => b.dataset.addr!));
-  /* 강조(주제·시기·검색·새 상자)가 켜져 있고 지금 주소가 그 안에 있으면 그 사건들 사이에서만 움직인다. 밖이면 전체 순서 */
+  /* 강조(주제·시기·검색·새 상자·판·최근)가 켜져 있고 지금 주소가 그 안에 있으면 그 사건(또는 장면)들 사이에서만 움직인다. 밖이면 전체 순서 */
   const orderFor = (addr: string) => {
     const p = pickedSeq(), inPick = !!p && p.includes(addr);
+    if (!items.has(addr) && inPick) {
+      return [...wall.querySelectorAll<HTMLElement>('.box.scene.on')].map(b => b.dataset.addr!);
+    }
     const ok = new Set(inPick ? p!.filter(a => items.has(a)) : items);
     return seq.filter(a => a === addr || ok.has(a));
   };
@@ -80,8 +83,8 @@ export function initDetail(): void {
     const order = orderFor(at), i = year ? -1 : order.indexOf(at);
     prev.disabled = i < 0 || i >= order.length - 1;
     next.disabled = i <= 0;
-    /* 위치: 가장 오래된 사건이 1. 장면·연도 카드에는 적지 않는다 */
-    pos.textContent = items.has(at) ? `${order.length - i} / ${order.length}` : '';
+    /* 위치: 가장 오래된 항목이 1. 단일 장면·연도 카드에는 적지 않는다 */
+    pos.textContent = (items.has(at) || order.length > 1) ? `${order.length - i} / ${order.length}` : '';
     const box = boxOf.get(at);
     if (box) {
       try { carveTile(cv, boxSpec(box, pics), 280, 280); } catch (e) { console.error(e); }

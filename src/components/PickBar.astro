@@ -2,11 +2,15 @@
 import type { PageView } from '../lib/view.ts';
 const { view } = Astro.props as { view: PageView };
 const p = view.ui.pick;
-/* 강조 띠: 지금 무엇을 골랐는지(시기, 주제, 찾기, 새 상자)와 상자 수를 위 막대 아래에 보인다. 시기는 글과 앞뒤 시기 단추까지.
+/* 강조 띠: 지금 무엇을 골랐는지(시기, 주제, 찾기, 새 상자, 최근, 판)와 상자 수를 위 막대 아래에 보인다. 시기는 글과 앞뒤 시기 단추까지.
    문구 틀은 data-*에 두고 스크립트(client/pickbar.ts)가 채운다 */
+const seq = [...view.editions.map(e => `edition-${e.n}`), 'recent'];
 ---
 <div class="pickbar" id="pickbar" hidden
-  data-era={p.era} data-topic={p.topic} data-find={p.find} data-new={p.new} data-recent={view.ui.recentShow} data-boxes={p.boxes} data-box1={p.box1} data-none={p.none}>
+  data-era={p.era} data-topic={p.topic} data-find={p.find} data-new={p.new} data-recent={view.ui.recentShow}
+  data-edition-k={view.lang === 'ko' ? '판' : 'Edition'}
+  data-seq={JSON.stringify(seq)}
+  data-boxes={p.boxes} data-box1={p.box1} data-none={p.none}>
   <div class="pb-row">
     <button class="pb-prev" type="button" aria-label={view.ui.eraPrev}>‹</button>
     <p class="pb-t" aria-live="polite"><b class="pb-k"></b><span class="pb-name"></span><span class="pb-n"></span></p>
@@ -15,6 +19,32 @@ const p = view.ui.pick;
     <button class="pb-more" type="button" aria-expanded="true" aria-controls="pb-body" aria-label={view.ui.eraText}>▾</button>
     <button class="pb-x" type="button" aria-label={p.clear}>×</button>
   </div>
-  <p class="pb-body" id="pb-body"></p>
+  <div class="pb-body" id="pb-body">
+    <p class="pb-era" hidden></p>
+    <div class="pb-bundle" id="bundle-recent" data-bundle="recent" data-label={view.recent.label} hidden>
+      <p class="pb-summary">{view.recent.summary}</p>
+      <div class="pb-chips">
+        {view.recent.scenes.map(s => (
+          <a href={`#${s.id}`} class="pb-chip" data-scene={s.id}>
+            <span class="pb-chip-glyph">{s.glyph}</span>
+            <span class="pb-chip-title">{s.title}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+    {view.editions.map(e => (
+      <div class="pb-bundle" id={`edition-${e.n}`} data-bundle={`edition-${e.n}`} data-n={e.n} data-label={e.label} hidden>
+        <p class="pb-summary">{e.summary}</p>
+        <div class="pb-chips">
+          {e.scenes.map(s => (
+            <a href={`#${s.id}`} class="pb-chip" data-scene={s.id}>
+              <span class="pb-chip-glyph">{s.glyph}</span>
+              <span class="pb-chip-title">{s.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
 </div>
 <script type="application/json" id="eras" is:inline set:html={JSON.stringify(view.eras).replace(/</g, '\\u003c')}></script>
