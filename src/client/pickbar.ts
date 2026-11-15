@@ -31,7 +31,7 @@ export function initPickbar(): void {
     fold(false);
     const era = eras[at];
     k.textContent = p.kind === 'era' ? d.era!.replace('{i}', String(at + 1)).replace('{n}', String(eras.length))
-      : p.kind === 'topic' ? d.topic! : p.kind === 'q' ? d.find! : d.new!;
+      : p.kind === 'topic' ? d.topic! : p.kind === 'q' ? d.find! : (p.kind === 'recent' ? (d.recent ?? '최근') : d.new!);
     name.textContent = p.kind === 'era' ? `${era?.title ?? ''} · ${era?.span ?? ''}`
       : p.kind === 'topic' ? topicName(p.id) : p.kind === 'q' ? `“${p.q.trim()}”` : '';
     n.textContent = countLabel(document.querySelectorAll('.wall .box.on').length);

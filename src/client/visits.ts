@@ -9,29 +9,70 @@ const put = (s: () => Storage, k: string, v: string | null) => {
   try { if (v === null) s().removeItem(k); else s().setItem(k, v); } catch { /* 막혀 있으면 기억하지 않는다 */ }
 };
 
+function storageAvailable(): boolean {
+  try {
+    sessionStorage.setItem('__test__', '1');
+    sessionStorage.removeItem('__test__');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function initVisits(): void {
   const wall = document.getElementById('wall'), line = document.querySelector<HTMLElement>('.since');
   const latest = wall?.dataset.latest;
-  if (!wall || !line || !latest) return;
-  const { since, session } = sinceFor(get(() => sessionStorage, SESSION), get(() => localStorage, LOCAL), latest);
+  document.querySelectorAll<HTMLElement>('.cv-recent, a[data-recent]:not(.box)').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      setPick({ kind: 'recent' });
+      scrollToPicked();
+    });
+  });
+  if (!wall || !line || !latest || !storageAvailable()) return;
+
+  const fallback = wall.dataset.recentSince ?? null;
+  const { since, session, first } = sinceFor(
+    get(() => sessionStorage, SESSION),
+    get(() => localStorage, LOCAL),
+    latest,
+    fallback,
+  );
   put(() => sessionStorage, SESSION, session);
   put(() => localStorage, LOCAL, latest);
 
-  const fresh = [...wall.querySelectorAll<HTMLElement>('.box')].filter(b => isNew(b.dataset.added, since));
+  const fresh = [...wall.querySelectorAll<HTMLElement>('.box')].filter(b =>
+    first ? b.dataset.recent === '1' : isNew(b.dataset.added, since),
+  );
   if (!fresh.length) return;
-  const mark = ` · ${line.dataset.label}`;
-  fresh.forEach(b => {
-    b.classList.add('new');
-    b.setAttribute('aria-label', (b.getAttribute('aria-label') ?? '') + mark);
-  });
-  const text = line.dataset.tpl!.split('{n}').join(String(fresh.length));
+
+  if (!first) {
+    const mark = ` · ${line.dataset.label}`;
+    fresh.forEach(b => {
+      b.classList.add('new');
+      b.setAttribute('aria-label', (b.getAttribute('aria-label') ?? '') + mark);
+    });
+  }
+
+  const tpl = (first ? line.dataset.tplFirst : line.dataset.tpl) ?? line.dataset.tpl!;
+  const text = tpl.split('{n}').join(String(fresh.length));
   line.querySelector('span')!.textContent = text;
   const entry = document.querySelector<HTMLElement>('.tp-new');
-  if (entry) { entry.querySelector('button')!.textContent = text; entry.hidden = false; }
+  if (entry) {
+    const btn = entry.querySelector('button')!;
+    btn.textContent = text;
+    btn.dataset.pick = first ? 'recent' : 'new';
+    entry.hidden = false;
+  }
+
   /* 알림 쪽지: 이 탭에서 닫았거나(보기, ×) 강조로 넘어간 뒤에는 다시 띄우지 않는다. 상자의 표시(.new)는 남는다 */
   if (get(() => sessionStorage, OFF) === latest) return;
   line.hidden = false;
   const off = () => { line.hidden = true; put(() => sessionStorage, OFF, latest); };
-  line.querySelector('.since-show')!.addEventListener('click', () => { off(); setPick({ kind: 'new' }); scrollToPicked(); });
+  line.querySelector('.since-show')!.addEventListener('click', () => {
+    off();
+    setPick(first ? { kind: 'recent' } : { kind: 'new' });
+    scrollToPicked();
+  });
   line.querySelector('.since-x')!.addEventListener('click', off);
 }

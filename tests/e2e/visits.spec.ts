@@ -14,8 +14,9 @@ async function addedAfter(request: APIRequestContext, since: string): Promise<nu
 test('first visit', async ({ page }) => {
   await ready(page);
   await expect(page.locator('.wall .box.new')).toHaveCount(0);
-  await expect(page.locator('.since')).toBeHidden();
-  await expect(page.locator('.tp-new')).toBeHidden();
+  // R1.1: first-time visitors see floating note with first-time copy
+  await expect(page.locator('.since')).toBeVisible();
+  await expect(page.locator('.since')).toContainText(/최근 업데이트 · 새 상자 \d+개/);
   expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-13');
 });
 

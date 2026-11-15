@@ -6,7 +6,7 @@ const p = view.ui.pick;
    문구 틀은 data-*에 두고 스크립트(client/pickbar.ts)가 채운다 */
 ---
 <div class="pickbar" id="pickbar" hidden
-  data-era={p.era} data-topic={p.topic} data-find={p.find} data-new={p.new} data-boxes={p.boxes} data-box1={p.box1} data-none={p.none}>
+  data-era={p.era} data-topic={p.topic} data-find={p.find} data-new={p.new} data-recent={view.ui.recentShow} data-boxes={p.boxes} data-box1={p.box1} data-none={p.none}>
   <div class="pb-row">
     <button class="pb-prev" type="button" aria-label={view.ui.eraPrev}>‹</button>
     <p class="pb-t" aria-live="polite"><b class="pb-k"></b><span class="pb-name"></span><span class="pb-n"></span></p>
