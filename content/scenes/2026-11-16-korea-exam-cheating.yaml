@@ -21,8 +21,8 @@ sources:
     publisher: 대한민국 정책브리핑(국무조정실)
 items:
   - date: 2026-10-29
-    ko: 교육부, 2027학년도 대학수학능력시험에서 스마트안경을 착용하거나 사용하기만 해도 시험 무효와 다음 해 응시 자격 박탈 처분을 내리고 형사 고발을 추진하며, 전국 시험장마다 판별 전담 인력을 배치한다고 발표.
-    en: "Korea’s Ministry of Education announces that wearing or using smart glasses during the 2027 College Scholastic Ability Test will void the exam, bar the test-taker the following year and bring criminal referral, and assigns a dedicated inspector to every test site."
+    ko: 교육부, 2027학년도 대학수학능력시험에서 스마트안경 부정행위에 형사 고발을 추진하고 응시 자격 정지 기간을 1년에서 3년으로 늘리는 방안을 추진하며, 전국 시험장마다 판별 전담 인력을 배치한다고 발표.
+    en: "Korea’s Ministry of Education announces that for the 2027 College Scholastic Ability Test it will pursue criminal referrals for smart glasses cheating, seek to lengthen the exam ban from one year to three and assign a dedicated inspector to every test site."
     glyph: { ko: 수능, en: CSAT }
     sources:
       - url: https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=107520&lev=0&m=020402&s=moe
@@ -40,16 +40,16 @@ items:
         title: "(참고)「제63회 세무사 시험 인공지능(AI) 활용 부정행위 관련 비상대책 회의」 개최"
         publisher: 고용노동부
   - date: 2026-11-16
-    ko: 재정경제부·국세청·한국산업인력공단이 대응 TF를 꾸리고, 국세청이 해당 수험자에게 세무사법에 따른 시험 무효와 5년간 응시자격 정지 처분을 위한 청문 사전통지를 실시하며 앞선 3~5년치 최종 합격자 성적을 재점검하기로 발표.
-    en: "The Ministry of Finance and Economy, the National Tax Service and the Human Resources Development Service of Korea form a task force, and the National Tax Service sends prior notice of a hearing to void the test-taker’s exam and suspend eligibility for five years while reviewing final passers’ scores from the past three to five years."
+    ko: 재정경제부·국세청·한국산업인력공단이 대응 TF를 꾸리고, 국세청은 해당 수험자에게 세무사법에 따른 시험 무효와 5년간 응시자격 정지 처분을 위한 청문 사전통지를 실시하며 한국산업인력공단은 앞선 3~5년치 최종 합격자 성적을 재점검하기로 발표.
+    en: "The Ministry of Finance and Economy, the National Tax Service and the Human Resources Development Service of Korea form a task force, with the National Tax Service sending prior notice of a hearing to void the test-taker’s exam and suspend eligibility for five years and the Human Resources Development Service of Korea reviewing final passers’ scores from the past three to five years."
     glyph: { ko: 무효, en: VOID }
     sources:
       - url: https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789441
         title: "「세무사 시험 부정행위 대응 TF」 킥오프 회의 및 세무사 시험 부정행위자 시험 무효 절차 개시"
         publisher: 대한민국 정책브리핑(재정경제부·국세청·한국산업인력공단)
   - date: 2026-11-16
-    ko: 한성숙 국무총리, 8개 부처 회의를 주재해 대학수학능력시험 시험장의 스마트기기 반납과 시험 시간 중 공공 와이파이 차단 검토, 국가 주관시험 전반을 재검토할 범정부 TF 구성을 지시.
-    en: "Prime Minister Han Seong-sook chairs an eight-ministry meeting, ordering the surrender of all smart devices at College Scholastic Ability Test sites, a review of blocking public Wi-Fi during exam hours and a government-wide task force to overhaul national exam administration."
+    ko: 한성숙 국무총리, 8개 기관 회의를 주재해 대학수학능력시험 시험장의 스마트기기 반납과 시험 시간 중 공공 와이파이 차단 검토, 국가 주관시험 전반을 재검토할 범정부 TF 구성을 지시.
+    en: "Prime Minister Han Seongsook chairs an eight-agency meeting, ordering the surrender of all smart devices at College Scholastic Ability Test sites, a review of blocking public Wi-Fi during exam hours and a government-wide task force to overhaul national exam administration."
     glyph: "Wi-Fi"
     sources:
       - url: https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789436
