@@ -27,6 +27,13 @@ for (const width of [320, 390]) {
     await page.locator('.since-show').click();
     const body = page.locator('#pickbar .pb-body');
     const bar = page.locator('#pickbar');
+    // 최근 2주 장면 수가 달라져도 480px 높이에서 항상 스크롤이 생기도록 칩을 채운다.
+    await body.locator('[data-bundle="recent"] .pb-chips').evaluate(el => {
+      const base = [...el.children];
+      while (el.children.length < 32 && base.length > 0) {
+        for (const c of base) el.append(c.cloneNode(true));
+      }
+    });
     const last = body.locator('[data-bundle="recent"] .pb-chip').last();
     await expect(body).toBeVisible();
     const rect = await body.boundingBox();

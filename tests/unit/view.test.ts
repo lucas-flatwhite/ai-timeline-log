@@ -21,7 +21,7 @@ describe('buildView(ko)', () => {
   test('head, cover and report link', () => {
     expect(v.title).toBe('AI Timeline Log');
     expect(v.name).toBe('AI Timeline Log');
-    expect(v.description).toBe('ChatGPT 공개(2022.11.30) 이후 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 76개의 자세한 내용이 열립니다.');
+    expect(v.description).toBe('ChatGPT 공개(2022.11.30) 이후 생성형 AI의 사건을 흑백 목판화 상자로 찍어 최신순으로 늘어놓은 벽. 상자를 누르면 장면 77개의 자세한 내용이 열립니다.');
     expect(v.ogTitle).toBe('AI Timeline Log');
     expect(v.ogDescription).toBe('ChatGPT 공개 이후 생성형 AI의 사건을 목판화 상자로 찍어 최신순으로 늘어놓았습니다. 상자를 누르면 자세한 내용이 열립니다.');
     // 소개 글 끝은 일수와 같은 날(빌드한 날, 브라우저에서는 보는 날). 틀에는 {todayLong}을 남긴다
@@ -59,7 +59,7 @@ describe('buildView(ko)', () => {
   });
 
   test('the wall is newest first, with a year box per year', () => {
-    expect(v.boxes.length).toBe(76 + 283 + 5);
+    expect(v.boxes.length).toBe(77 + 287 + 5);
     expect(v.boxes[0]).toMatchObject({ kind: 'year', addr: 'year-2026', date: '2026', off: false });
     expect(v.boxes.at(-1)).toMatchObject({ kind: 'scene', addr: '2022-11-chatgpt', date: '2022.11.30' });   // 가장 오래된 상자
     expect(v.boxes.filter(b => b.kind === 'year').map(b => b.addr)).toEqual(['year-2026', 'year-2025', 'year-2024', 'year-2023', 'year-2022']);
@@ -88,7 +88,7 @@ describe('buildView(ko)', () => {
     const d = scene('2026-07-sandbox-escape');
     expect(d.meta.startsWith('2026.07.21 · ')).toBe(true);
     const it = item('2026-07-sandbox-escape', '2026-07-sandbox-escape~20260721');
-    expect(it.meta).toBe('2026.07.21 · 사고 · ‘샌드박스를 나간 에이전트’ 장면의 사건 · 보강 2026.11.02');
+    expect(it.meta).toBe('2026.07.21 · 사고 · ‘샌드박스를 나간 에이전트’ 장면의 사건');
     expect(decodeURIComponent(it.fix)).toContain('event=https://lucasflatwhite.com/ai-timeline-log/ko/#2026-07-sandbox-escape~20260721');
     expect(decodeURIComponent(it.fix)).toContain('title=[정정] 2026.07.21 ');
     expect(it.fix).toContain('&lang=ko');
@@ -100,14 +100,14 @@ describe('buildView(ko)', () => {
 
   test('scenes added within 2 weeks of asOf carry added badge, and updated scenes carry enriched badge', () => {
     const addedMarked = v.scenes.filter(s => s.meta.includes('추가'));
-    expect(addedMarked).toHaveLength(38);
+    expect(addedMarked).toHaveLength(16);
     expect(addedMarked.every(s => / · 추가 \d{4}\.\d{2}\.\d{2}/.test(s.meta))).toBe(true);
-    expect(scene('2026-11-nvidia-ceo').meta).toContain(' · 추가 2026.11.13');
+    expect(scene('2026-11-korea-exam-cheating').meta).toContain(' · 추가 2026.11.17');
 
     const updatedMarked = v.scenes.filter(s => s.meta.includes('보강'));
     expect(updatedMarked.length).toBeGreaterThan(0);
     expect(updatedMarked.every(s => / · 보강 \d{4}\.\d{2}\.\d{2}/.test(s.meta))).toBe(true);
-    expect(scene('2022-11-chatgpt').meta).toContain(' · 보강 2026.11.02');
+    expect(scene('2026-02-saaspocalypse').meta).toContain(' · 보강 2026.11.07');
 
     // Untouched older scenes have neither badge
     expect(scene('2026-06-ipo').meta).not.toContain('추가');
@@ -115,9 +115,9 @@ describe('buildView(ko)', () => {
   });
 
   test('events in a recently added scene carry the same mark, after the scene name', () => {
-    const fresh = scene('2026-11-nvidia-ceo');
+    const fresh = scene('2026-11-korea-exam-cheating');
     expect(fresh.items.length).toBeGreaterThan(0);
-    for (const it of fresh.items) expect(it.meta).toMatch(/^\d{4}\.\d{2}(\.\d{2})? · .+ · ‘.+’ 장면의 사건 · 추가 2026\.11\.13$/);
+    for (const it of fresh.items) expect(it.meta).toMatch(/^\d{4}\.\d{2}(\.\d{2})? · .+ · ‘.+’ 장면의 사건 · 추가 2026\.11\.17$/);
     expect(scene('2026-06-ipo').items.every(it => !it.meta.includes('추가') && !it.meta.includes('보강'))).toBe(true);
   });
 
@@ -138,7 +138,7 @@ describe('buildView(ko)', () => {
   });
 
   test('details follow the wall order, newest first', () => {
-    expect(v.scenes).toHaveLength(76);
+    expect(v.scenes).toHaveLength(77);
     expect(v.scenes[0].id).toBe(v.boxes.find(b => b.kind === 'scene')!.addr);
     expect(v.scenes.at(-1)!.id).toBe('2022-11-chatgpt');
   });
@@ -158,18 +158,18 @@ describe('buildView(ko)', () => {
   });
 
   test('outro', () => {
-    expect(v.outro.bar).toBe('업데이트 2026.11.13');   // '현재' 대신 마지막으로 고친 날(asOf)
-    expect(v.outro.eyebrow).toBe('업데이트 2026.11.13');
+    expect(v.outro.bar).toBe('업데이트 2026.11.17');   // '현재' 대신 마지막으로 고친 날(asOf)
+    expect(v.outro.eyebrow).toBe('업데이트 2026.11.17');
     expect(v.outro.title).toBe('1,425일 동안 바뀐 것');
     expect(v.outro.arcs).toHaveLength(9);
     expect(v.outro.arcs[0].span).toBe('2022.11 – 2023.02');
-    expect(v.outro.arcs[8].span).toBe('2026.09 – 2026.11.13');
+    expect(v.outro.arcs[8].span).toBe('2026.09 – 2026.11.17');
     expect(v.outro.arcs[8]).toMatchObject({ title: '속도를 묻다' });
     for (const a of v.outro.arcs) expect(a.body.length).toBeGreaterThan(20);
     expect(v.outro.ledgerTitle).toBe('주요 모델 판본');
     expect(v.outro.ledger[0].models[0]).toEqual({ name: 'ChatGPT (GPT-3.5)', date: '2022.11' });
     expect(v.outro).not.toHaveProperty('sources');
-    expect(v.outro.end).toEqual(['판 76장 · 2022.11.30 – 2026.11.13', 'AI Timeline Log']);
+    expect(v.outro.end).toEqual(['판 77장 · 2022.11.30 – 2026.11.17', 'AI Timeline Log']);
     expect(v.outro.making).toContain('GitHub 이슈나 메일(lucas.flatwhite@gmail.com)');
     expect(v.outro.making).not.toMatch(/AI의 도움|Claude/);
     expect(v.outro.makingTitle).toBe('만든 방법');
@@ -197,11 +197,11 @@ describe('buildView(en)', () => {
   });
 
   test('recently added scenes and their events carry the English mark', () => {
-    const fresh = e.scenes.find(s => s.id === '2026-11-nvidia-ceo')!;
-    expect(fresh.meta.endsWith(' · Added 2026.11.13')).toBe(true);
-    expect(fresh.items.every(it => it.meta.endsWith(' · Added 2026.11.13'))).toBe(true);
-    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.11.13'))).toHaveLength(
-      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.11.13')).flatMap(s => s.items).length);
+    const fresh = e.scenes.find(s => s.id === '2026-11-korea-exam-cheating')!;
+    expect(fresh.meta.endsWith(' · Added 2026.11.17')).toBe(true);
+    expect(fresh.items.every(it => it.meta.endsWith(' · Added 2026.11.17'))).toBe(true);
+    expect(e.scenes.flatMap(s => s.items).filter(it => it.meta.endsWith(' · Added 2026.11.17'))).toHaveLength(
+      e.scenes.filter(s => s.meta.endsWith(' · Added 2026.11.17')).flatMap(s => s.items).length);
   });
 });
 
@@ -221,14 +221,14 @@ describe('topics and visits on the wall', () => {
 
   test('topics list follows topics.yaml with scene counts', () => {
     expect(v.topics.map(t => [t.id, t.count])).toEqual([
-      ['agents', 13], ['compute', 16], ['rules', 19], ['safety', 13], ['open', 8], ['science', 5], ['society', 13], ['models', 17], ['korea', 4],
+      ['agents', 13], ['compute', 16], ['rules', 20], ['safety', 13], ['open', 8], ['science', 5], ['society', 14], ['models', 17], ['korea', 5],
     ]);
     expect(v.topics[0].name).toBe('에이전트');
     expect(e.topics[0].name).toBe('Agents');
   });
 
   test('latestAdded is the newest added', () => {
-    expect(v.latestAdded).toBe('2026-11-13');
+    expect(v.latestAdded).toBe('2026-11-17');
   });
 
   test('wall ui strings', () => {
@@ -277,7 +277,7 @@ describe('poster and data section', () => {
     expect(e.outro.take.feed.href).toBe('/ai-timeline-log/feed.xml');
     expect(v.outro.take.license).toBe('내용은 CC BY 4.0을 따릅니다. 출처: AI Timeline Log');
     expect(v.outro.take.ai).toEqual({
-      eyebrow: 'AI에게 건네기 · 기준일 2026.11.13', title: '쓰는 에이전트에 이 연표를 들여놓기',
+      eyebrow: 'AI에게 건네기 · 기준일 2026.11.17', title: '쓰는 에이전트에 이 연표를 들여놓기',
       desc: '한 번 들여놓으면 AI 역사나 모델 출시를 물을 때 에이전트가 이 연표를 찾아 읽고, 날짜와 출처를 달아 답합니다. 장면이 늘어도 다시 할 일은 없습니다.',
       clip: clipText(loadContent(), 'ko'), slipCap: '클립보드에 들어가는 글',
       slipFoot: 'agent.md가 에이전트마다 할 일을 알려 줍니다. 파일을 저장할 수 있으면 스킬로, 채팅이면 메모리나 프로젝트 지침으로.',
@@ -301,7 +301,7 @@ describe('poster and data section', () => {
       expect(ln.steps.length).toBe(3);
     }
     expect(e.outro.take.ai.button).toBe('Onboard your agent');
-    expect(e.outro.take.ai.eyebrow).toBe('Hand It to an AI · As of 2026.11.13');
+    expect(e.outro.take.ai.eyebrow).toBe('Hand It to an AI · As of 2026.11.17');
     expect(e.outro.take.ai.title).toBe('Onboard your agent to this timeline');
     expect(e.outro.take.ai.clip).toBe(clipText(loadContent(), 'en'));
     expect(e.outro.take.ai.links.agent).toBe('https://lucasflatwhite.com/ai-timeline-log/agent.md');
@@ -395,10 +395,10 @@ describe('precomputed editions and recent bundle', () => {
     expect(v.recent.id).toBe('recent');
     expect(v.recent.label).toBe('최근 업데이트');
     expect(e.recent.label).toBe('Recent updates');
-    expect(v.recent.since).toBe('2026-10-30');
-    expect(v.recent.count).toBe(38);
-    expect(v.recent.scenes).toHaveLength(38);
-    expect(v.recent.summary).toContain('38개');
+    expect(v.recent.since).toBe('2026-11-03');
+    expect(v.recent.count).toBe(16);
+    expect(v.recent.scenes).toHaveLength(16);
+    expect(v.recent.summary).toContain('16개');
     expect(v.recent.scenes.every(s => s.id && s.title && s.glyph && s.date)).toBe(true);
 
     // Excludes older past events even if updated recently
