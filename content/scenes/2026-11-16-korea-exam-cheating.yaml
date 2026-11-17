@@ -1,0 +1,66 @@
+id: 2026-11-korea-exam-cheating
+date: 2026-11-16
+span:
+  from: 2026-10-29
+  to: 2026-11-16
+added: 2026-11-17
+topics: [korea, society, rules]
+print:
+  pattern: h
+  motif: grid
+  glyph: 시험
+sources:
+  - url: https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=20256
+    title: "(참고)「제63회 세무사 시험 인공지능(AI) 활용 부정행위 관련 비상대책 회의」 개최"
+    publisher: 고용노동부
+  - url: https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789441
+    title: "「세무사 시험 부정행위 대응 TF」 킥오프 회의 및 세무사 시험 부정행위자 시험 무효 절차 개시"
+    publisher: 대한민국 정책브리핑(재정경제부·국세청·한국산업인력공단)
+  - url: https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789436
+    title: "[보도자료] 한성숙 국무총리 주재 스마트기기 활용 시험 부정행위 방지 관련 관계부처 회의"
+    publisher: 대한민국 정책브리핑(국무조정실)
+items:
+  - date: 2026-10-29
+    ko: 교육부, 2027학년도 대학수학능력시험에서 스마트안경을 착용하거나 사용하기만 해도 시험 무효와 다음 해 응시 자격 박탈 처분을 내리고 형사 고발을 추진하며, 전국 시험장마다 판별 전담 인력을 배치한다고 발표.
+    en: "Korea’s Ministry of Education announces that wearing or using smart glasses during the 2027 College Scholastic Ability Test will void the exam, bar the test-taker the following year and bring criminal referral, and assigns a dedicated inspector to every test site."
+    glyph: { ko: 수능, en: CSAT }
+    sources:
+      - url: https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=107520&lev=0&m=020402&s=moe
+        title: "[보도참고자료] 대학수학능력시험 스마트안경 활용 부정행위 관련 대응계획"
+        publisher: 교육부
+  - date: 2026-11-15
+    ko: 제63회 세무사 자격시험 수석 합격자가 초소형 카메라와 생성형 AI로 부정행위를 했다고 자백하자(보도 기준), 고용노동부와 한국산업인력공단이 업무방해 혐의로 고소하고 2026년에 실시된 모든 국가자격시험을 조사한다고 발표.
+    en: "After the top scorer on the 63rd Certified Tax Accountant exam confesses to cheating with a miniature camera and generative AI, as reported, the Ministry of Employment and Labor and the Human Resources Development Service of Korea announce a criminal complaint for obstruction of business and an investigation into every national qualification exam held in 2026."
+    glyph: { ko: 자백, en: CONFESS }
+    sources:
+      - url: https://webzine.hrdkorea.or.kr/section/press/view?id=13804
+        title: "“제63회 세무사 시험 AI기기 부정행위”에 대한 한국산업인력공단의 입장문 보도"
+        publisher: 한국산업인력공단
+      - url: https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=20256
+        title: "(참고)「제63회 세무사 시험 인공지능(AI) 활용 부정행위 관련 비상대책 회의」 개최"
+        publisher: 고용노동부
+  - date: 2026-11-16
+    ko: 재정경제부·국세청·한국산업인력공단이 대응 TF를 꾸리고, 국세청이 해당 수험자에게 세무사법에 따른 시험 무효와 5년간 응시자격 정지 처분을 위한 청문 사전통지를 실시하며 앞선 3~5년치 최종 합격자 성적을 재점검하기로 발표.
+    en: "The Ministry of Finance and Economy, the National Tax Service and the Human Resources Development Service of Korea form a task force, and the National Tax Service sends prior notice of a hearing to void the test-taker’s exam and suspend eligibility for five years while reviewing final passers’ scores from the past three to five years."
+    glyph: { ko: 무효, en: VOID }
+    sources:
+      - url: https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789441
+        title: "「세무사 시험 부정행위 대응 TF」 킥오프 회의 및 세무사 시험 부정행위자 시험 무효 절차 개시"
+        publisher: 대한민국 정책브리핑(재정경제부·국세청·한국산업인력공단)
+  - date: 2026-11-16
+    ko: 한성숙 국무총리, 8개 부처 회의를 주재해 대학수학능력시험 시험장의 스마트기기 반납과 시험 시간 중 공공 와이파이 차단 검토, 국가 주관시험 전반을 재검토할 범정부 TF 구성을 지시.
+    en: "Prime Minister Han Seong-sook chairs an eight-ministry meeting, ordering the surrender of all smart devices at College Scholastic Ability Test sites, a review of blocking public Wi-Fi during exam hours and a government-wide task force to overhaul national exam administration."
+    glyph: "Wi-Fi"
+    sources:
+      - url: https://www.korea.kr/briefing/pressReleaseView.do?newsId=156789436
+        title: "[보도자료] 한성숙 국무총리 주재 스마트기기 활용 시험 부정행위 방지 관련 관계부처 회의"
+        publisher: 대한민국 정책브리핑(국무조정실)
+ko:
+  kicker: 한국
+  title: 세무사 시험 수석의 AI 부정행위
+  lede: 제63회 세무사 자격시험 수석 합격자가 초소형 카메라와 생성형 AI로 문제를 풀었다고 자백했다(보도 기준). 정부는 해당 수험자의 시험 무효와 5년간 응시자격 정지 절차를 시작하고, 2026년에 치러진 모든 국가자격시험 조사와 대학수학능력시험 시험장 공공 와이파이 차단 검토에 나섰다.
+en:
+  kicker: "Korea"
+  title: "AI Cheating on Korea’s Tax Exam"
+  lede: "After the top scorer on Korea’s 63rd Certified Tax Accountant exam confessed to using a miniature camera and generative AI to answer questions, as reported, the government began proceedings to void the exam and suspend eligibility for five years, launched a review of every national qualification exam held in 2026 and weighed blocking public Wi-Fi at College Scholastic Ability Test sites."
+  glyph: "EXAM"

@@ -150,6 +150,12 @@
 - { ko: "코스피", en: "KOSPI", source: "https://global.krx.co.kr/" }
 - { ko: "나스닥", en: "Nasdaq", source: "https://www.nasdaq.com/" }
 - { ko: "필라델피아 반도체지수", en: "Philadelphia Semiconductor Index", source: "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html" }
+- { ko: "교육부", en: "Ministry of Education", source: "https://english.moe.go.kr/" }
+- { ko: "고용노동부", en: "Ministry of Employment and Labor", source: "https://www.moel.go.kr/english/" }
+- { ko: "한국산업인력공단", en: "Human Resources Development Service of Korea", source: "https://www.hrdkorea.or.kr/ENG" }
+- { ko: "재정경제부", en: "Ministry of Finance and Economy", source: "https://english.moef.go.kr/" }
+- { ko: "국세청", en: "National Tax Service", source: "https://www.nts.go.kr/english/main.do" }
+- { ko: "대학수학능력시험", en: "College Scholastic Ability Test", source: "https://www.suneung.re.kr/" }
 
 # 법·행정명령·성명
 - { ko: "AI Act", en: "AI Act", source: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj" }
@@ -416,3 +422,4 @@
 - { ko: "콜레트 크레스", en: "Colette Kress", source: "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" }   # 2026-11-12부터 Interim Chief Executive Officer, Executive Vice President and Chief Financial Officer 겸임
 - { ko: "하비 C. 존스", en: "Harvey C. Jones", source: "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" }   # 엔비디아의 첫 Chair of the Board
 - { ko: "Joon H. Kim", en: "Joon H. Kim", source: "https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board" }   # 전 뉴욕 남부지검 검사장 대행(former acting U.S. Attorney of the Southern District of New York)
+- { ko: "한성숙", en: "Han Seong-sook", source: "https://www.opm.go.kr/en/prime/profile.do" }

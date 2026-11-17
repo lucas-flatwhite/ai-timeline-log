@@ -182,9 +182,9 @@ test.describe('Tier 1: Feature Coverage', () => {
     const metaAdded = page.locator('#detail .dbody p.meta');
     await expect(metaAdded).toContainText(/ · 추가 \d{4}\.\d{2}\.\d{2}/);
 
-    // Recently updated scene (ChatGPT has added: 2026-10-05 and updated: 2026-11-02)
+    // Recently updated scene (SaaSpocalypse has added: 2026-10-16 and updated: 2026-11-07)
     await page.locator('#detail .x').click();
-    await page.locator('a.box[href="#2022-11-chatgpt"]').click();
+    await page.locator('a.box[href="#2026-02-saaspocalypse"]').click();
     await expect(dlg).toHaveAttribute('open', '');
     const metaUpdated = page.locator('#detail .dbody p.meta');
     await expect(metaUpdated).toContainText(/ · 보강 \d{4}\.\d{2}\.\d{2}/);
@@ -551,7 +551,7 @@ test.describe('Tier 4: Real-World Application Scenarios', () => {
     await expect(page.locator('#pickbar')).toBeVisible();
 
     // 6. Opens an updated scene and confirms enriched badge
-    await page.locator('a.box[href="#2022-11-chatgpt"]').click();
+    await page.locator('a.box[href="#2026-02-saaspocalypse"]').click();
     const dlg = page.locator('#detail');
     await expect(dlg).toHaveAttribute('open', '');
     await expect(page.locator('#detail .dbody p.meta')).toContainText(/ · 보강 \d{4}\.\d{2}\.\d{2}/);

@@ -21,7 +21,7 @@ for (const path of ['./ko/', './']) {
 
 for (const width of [320, 390]) {
   test(`${width}px recent shortcuts scroll inside the expanded panel`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 480 });
+    await page.setViewportSize({ width, height: 360 });
     await page.goto('./ko/');
     await page.waitForFunction(() => document.documentElement.dataset.ready === '1');
     await page.locator('.since-show').click();
@@ -30,7 +30,7 @@ for (const width of [320, 390]) {
     const last = body.locator('[data-bundle="recent"] .pb-chip').last();
     await expect(body).toBeVisible();
     const rect = await body.boundingBox();
-    expect(rect!.y + rect!.height).toBeLessThanOrEqual(480);
+    expect(rect!.y + rect!.height).toBeLessThanOrEqual(360);
     expect(await body.evaluate(e => e.scrollHeight > e.clientHeight)).toBe(true);
 
     await body.hover();
