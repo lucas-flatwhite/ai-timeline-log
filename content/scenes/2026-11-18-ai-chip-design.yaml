@@ -1,0 +1,50 @@
+id: 2026-11-ai-chip-design
+date: 2026-11-18
+span:
+  from: 2026-09-30
+  to: 2026-11-18
+added: 2026-11-21
+topics: [compute]
+print:
+  pattern: d
+  motif: grid
+  glyph: 설계
+sources:
+  - &openai-chip
+    url: https://openai.com/index/advancing-chip-design-with-our-models/
+    title: Advancing chip design with OpenAI models
+    publisher: OpenAI
+  - &frostbite
+    url: https://architectlabs.com/blog/frostbite
+    title: "Introducing Frostbite: A new CPU architecture discovered, designed, and verified end-to-end by AI"
+    publisher: Architect Labs
+items:
+  - date: 2026-09-30
+    ko: Synopsys와 OpenAI, 전자설계자동화 도구를 사용하는 반도체 설계 모델 GPT-Synopsys를 공동 개발하기로 발표.
+    en: Synopsys and OpenAI announce an agreement to develop GPT-Synopsys, a chip design model that will use electronic design automation tools.
+    glyph: EDA
+    sources:
+      - url: https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx
+        title: OpenAI and Synopsys Announce GPT-Synopsys
+        publisher: Synopsys
+  - date: 2026-11-18
+    ko: OpenAI, 모델이 제안한 회로 변경을 자체 추론 칩 Jalapeño에서 검증했고 AMD도 일부 변경을 제조용 GPU 설계에 반영했다고 발표.
+    en: OpenAI reports verifying model-proposed circuit changes in its Jalapeño inference chip and says AMD incorporated some model-proposed changes into a GPU design sent for manufacturing.
+    glyph: { ko: 회로, en: CIRCUIT }
+    sources:
+      - *openai-chip
+  - date: 2026-11-18
+    ko: Architect Labs, AI 에이전트가 명령어 집합부터 최종 레이아웃까지 설계한 CPU Frostbite를 공개.
+    en: Architect Labs unveils Frostbite, a CPU it says AI agents designed from the instruction set through the final layout.
+    glyph: { ko: 설계, en: LAYOUT }
+    sources:
+      - *frostbite
+ko:
+  kicker: 반도체
+  title: AI가 설계한 회로
+  lede: OpenAI는 모델이 제안한 회로 변경으로 Jalapeño의 벡터 연산부와 행렬 연산부의 표준 셀 면적을 각각 약 13%, 10% 줄였다고 밝혔다. Architect Labs의 자체 평가에서 Frostbite는 설계에 쓰지 않은 15개 과제에서 비교용 코어의 3.83배에 해당하는 전력당 성능을 냈다.
+en:
+  kicker: Chips
+  title: AI Designs Circuits
+  lede: OpenAI says model-proposed changes cut standard-cell area in Jalapeño’s vector and matrix units by about 13% and 10%, respectively. Architect Labs reports that in its design evaluation, Frostbite delivered 3.83 times the reference core’s performance per watt across 15 tasks held back from the design process.
+  glyph: DESIGN

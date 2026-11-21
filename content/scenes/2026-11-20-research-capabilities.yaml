@@ -1,0 +1,53 @@
+id: 2026-11-research-capabilities
+date: 2026-11-20
+span:
+  from: 2026-11-17
+  to: 2026-11-20
+added: 2026-11-21
+topics: [safety, agents]
+print:
+  pattern: h
+  motif: rise
+  glyph: 측정
+sources:
+  - &openai-research
+    url: https://openai.com/index/research-acceleration-jagged-frontier/
+    title: "Research acceleration: The jagged frontier"
+    publisher: OpenAI
+  - &metr
+    url: https://metr.org/blog/2026-11-20-q4-2026-capability-update/
+    title: AI R&D-relevant model capabilities are improving rapidly and are getting harder to measure
+    publisher: METR
+items:
+  - date: 2026-11-17
+    ko: OpenAI, 자체 AI 자기개선 평가에서 High에 도달한 첫 외부 공개 모델 GPT-6.2 Astra를 GPT-6.2 Sol과 함께 출시.
+    en: OpenAI releases GPT-6.2 Astra and GPT-6.2 Sol, with Astra becoming its first externally released model to meet its High threshold for AI Self-Improvement.
+    glyph: GPT-6.2
+    sources:
+      - url: https://openai.com/index/introducing-gpt-6-2-astra-sol/
+        title: Introducing GPT-6.2 Astra and Sol
+        publisher: OpenAI
+      - url: https://deploymentsafety.openai.com/gpt-6-2-astra-sol/internal-deployment-of-gpt-6.2-astra-and-gpt-6.2-sol
+        title: GPT-6.2 System Card
+        publisher: OpenAI
+  - date: 2026-11-18
+    ko: OpenAI, 사람이 2~4시간 걸릴 것으로 추정한 내부 연구 과제에서 에이전트의 자율 완료율이 2026년 3월 23%에서 10월 46%로 올랐다고 보고.
+    en: OpenAI reports that estimated agent success without human help on internal research tasks expected to take people two to four hours rose from 23% in March 2026 to 46% in October.
+    glyph: 46%
+    sources:
+      - *openai-research
+  - date: 2026-11-20
+    ko: METR, 공개 모델 평가에서 에이전트가 50% 확률로 성공하는 과제의 사람 기준 소요 시간이 약 3.6개월마다 두 배로 늘었다고 추정.
+    en: METR estimates that across two test suites, the human time required for tasks agents can complete with a 50% success rate doubles about every 3.6 months.
+    glyph: { ko: "3.6개월", en: "3.6 mo" }
+    sources:
+      - *metr
+ko:
+  kicker: 연구 가속
+  title: 에이전트가 맡을 수 있는 연구
+  lede: OpenAI는 내부 연구에서 짧은 과제의 자율 완료율이 높아졌지만, 훈련 모니터링과 추론 코드 작성의 성공률에는 차이가 있다고 보고했다. METR은 GPT-6 Astra까지의 공개 모델을 두 과제군에서 평가해 더 긴 작업을 해내는 속도를 추정했다.
+en:
+  kicker: Research Acceleration
+  title: How Much Research Can Agents Do?
+  lede: OpenAI reported that agents completed more short research tasks on their own, with higher success at monitoring training runs than at writing inference code. METR tested public models through GPT-6 Astra on two task suites to estimate how quickly agents were taking on longer jobs.
+  glyph: MEASURE

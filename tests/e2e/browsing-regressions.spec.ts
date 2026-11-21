@@ -6,16 +6,20 @@ for (const path of ['./ko/', './']) {
   test(`${path} search scene can step into the matching event`, async ({ page }) => {
     await page.goto(`${path}?q=METR`);
     await page.waitForFunction(() => document.documentElement.dataset.ready === '1');
-    const scene = page.locator('.wall .box.scene.on').first();
-    const event = page.locator('.wall .box.item.on');
+    const sceneId = '2026-11-research-acceleration';
+    const scene = page.locator(`.wall .box.scene.on[data-addr="${sceneId}"]`);
+    const events = page.locator('.wall .box.item.on');
+    const event = events.and(page.locator(`[data-addr^="${sceneId}~"]`));
     await expect(event).toHaveCount(1);
     const addr = await event.getAttribute('data-addr');
+    const addresses = await events.evaluateAll(boxes => boxes.map(box => box.getAttribute('data-addr')));
+    const position = addresses.length - addresses.indexOf(addr);
     await scene.click();
     await expect(page.locator('#detail .next')).toBeEnabled();
     await expect(page.locator('#detail .pos')).toHaveText('');
     await page.keyboard.press('ArrowRight');
     await expect.poll(() => page.evaluate(() => location.hash)).toBe(`#${addr}`);
-    await expect(page.locator('#detail .pos')).toHaveText('1 / 1');
+    await expect(page.locator('#detail .pos')).toHaveText(`${position} / ${addresses.length}`);
   });
 }
 
