@@ -1,0 +1,53 @@
+id: 2026-11-anthropic-ipo
+date: 2026-11-19
+span:
+  from: 2026-11-18
+  to: 2026-11-20
+added: 2026-11-21
+topics: [compute]
+print:
+  pattern: h
+  motif: rise
+  glyph: ANT
+sources:
+  - &prospectus
+    url: https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm
+    title: "Anthropic, PBC: Final IPO Prospectus"
+    publisher: U.S. Securities and Exchange Commission
+  - &close
+    url: https://www.anthropic.com/news/ipo-close
+    title: Anthropic announces closing of initial public offering and concurrent private placement
+    publisher: Anthropic
+items:
+  - date: 2026-11-18
+    ko: Anthropic, 보통주 9억 8,000만 주의 공모가를 예비 범위인 70~78달러보다 높은 주당 83달러로 확정.
+    en: Anthropic prices its initial public offering of 980 million shares at $83 per share, above the preliminary range of $70 to $78.
+    glyph: $83
+    sources:
+      - *prospectus
+      - url: https://www.sec.gov/Archives/edgar/data/2130357/000162828026072953/anthropicpbc-fwpauswrapcap.htm
+        title: Anthropic Preliminary Prospectus and Australian Supplement
+        publisher: U.S. Securities and Exchange Commission
+  - date: 2026-11-19
+    ko: Anthropic, 나스닥에서 종목 기호 ANT로 거래 시작.
+    en: Anthropic begins trading on the Nasdaq Global Select Market under the ticker ANT.
+    glyph: ANT
+    sources:
+      - *close
+      - url: https://www.nasdaq.com/events/anthropic-pbc-rings-opening-bell
+        title: Anthropic, PBC Rings the Opening Bell
+        publisher: Nasdaq
+  - date: 2026-11-20
+    ko: Anthropic, 구주 매각과 추가 매수 옵션을 포함한 약 935억 달러 규모 공모와 별도의 260억 달러 규모 사모 발행 종결.
+    en: Anthropic closes its $93.5 billion IPO, including selling stockholders’ shares and the fully exercised overallotment option, and a separate $26 billion private placement.
+    glyph: $93.5B
+    sources:
+      - *close
+ko:
+  kicker: 상장
+  title: 나스닥에 상장한 Anthropic
+  lede: 계산 인프라 약정을 공시한 Anthropic이 나스닥에서 거래를 시작했다. 회사 몫은 공모에서 수수료와 비용을 빼기 전 약 916억 달러였다. 구글과 엔비디아 등 일곱 곳은 별도 사모 발행에 참여했다.
+en:
+  kicker: IPO
+  title: Anthropic Goes Public
+  lede: Anthropic began trading on Nasdaq after disclosing its compute commitments. The company received about $91.6 billion in gross IPO proceeds. Seven investors, including Google and NVIDIA, took part in a separate private placement.

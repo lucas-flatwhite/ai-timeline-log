@@ -2,8 +2,9 @@ id: 2026-01-world-models
 date: 2026-01-29
 span:
   from: 2025-08
-  to: 2026-10
+  to: 2026-11
 added: 2026-11-07
+updated: 2026-11-21
 topics: [models]
 print:
   pattern: c
@@ -58,6 +59,14 @@ items:
       - url: https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
         title: "Genie 4: A new generation of world simulation"
         publisher: Google DeepMind
+  - date: 2026-11-18
+    ko: 구글, 탐색 도중 글로 환경을 바꿀 수 있는 Genie 4를 Project Genie에서 자격을 갖춘 Google AI Ultra 구독자에게 배포하기 시작.
+    en: Google starts rolling out Genie 4 in Project Genie to eligible Google AI Ultra subscribers, letting them change a world with text as they explore it.
+    glyph: { ko: 배포, en: ROLLOUT }
+    sources:
+      - url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/
+        title: Genie 4 is now available
+        publisher: Google
 ko:
   kicker: 월드모델
   title: 세계를 만드는 모델

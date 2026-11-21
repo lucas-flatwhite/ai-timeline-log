@@ -423,3 +423,14 @@
 - { ko: "하비 C. 존스", en: "Harvey C. Jones", source: "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition" }   # 엔비디아의 첫 Chair of the Board
 - { ko: "Joon H. Kim", en: "Joon H. Kim", source: "https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board" }   # 전 뉴욕 남부지검 검사장 대행(former acting U.S. Attorney of the Southern District of New York)
 - { ko: "한성숙", en: "Han Seongsook", source: "https://www.opm.go.kr/en/prime/profile.do" }
+- { ko: "나스닥 글로벌 셀렉트 마켓", en: "Nasdaq Global Select Market", source: "https://www.anthropic.com/news/ipo-close" }
+- { ko: "GPT-6.2 Astra", en: "GPT-6.2 Astra", source: "https://openai.com/index/introducing-gpt-6-2-astra-sol/" }
+- { ko: "GPT-6.2 Sol", en: "GPT-6.2 Sol", source: "https://openai.com/index/introducing-gpt-6-2-astra-sol/" }
+- { ko: "AI 자기개선", en: "AI Self-Improvement", source: "https://deploymentsafety.openai.com/gpt-6-2-astra-sol/internal-deployment-of-gpt-6.2-astra-and-gpt-6.2-sol" }
+- { ko: "미국 상무부 산업안보국", en: "Bureau of Industry and Security", source: "https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm" }
+- { ko: "한국대학교육협의회", en: "Korean Council for University Education", source: "https://kcue.or.kr/en/kcue/kcue.php" }
+- { ko: "Synopsys", en: "Synopsys", source: "https://investor.synopsys.com/" }
+- { ko: "GPT-Synopsys", en: "GPT-Synopsys", source: "https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx" }
+- { ko: "Jalapeño", en: "Jalapeño", source: "https://openai.com/index/advancing-chip-design-with-our-models/" }
+- { ko: "Architect Labs", en: "Architect Labs", source: "https://architectlabs.com/" }
+- { ko: "Frostbite", en: "Frostbite", source: "https://architectlabs.com/blog/frostbite" }

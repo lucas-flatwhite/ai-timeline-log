@@ -1,0 +1,50 @@
+id: 2026-11-korea-csat-devices
+date: 2026-11-19
+span:
+  from: 2026-11-18
+  to: 2026-11-20
+added: 2026-11-21
+topics: [korea, society, rules]
+print:
+  pattern: w
+  motif: grid
+  glyph: 수능
+sources:
+  - &measures
+    url: https://www.opm.go.kr/opm/news/press-release.do?articleNo=164227&mode=view
+    title: 2027학년도 대학수학능력시험 부정행위 방지 대책
+    publisher: 국무조정실
+  - &results
+    url: https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=107732&lev=0&m=020402&s=moe
+    title: 스마트기기 등 전자기기 관련 부정행위 적발 현황
+    publisher: 교육부
+items:
+  - date: 2026-11-18
+    ko: 정부, 초소형 카메라를 막기 위해 수능에서 흑색 연필 외 개인 필기구의 휴대를 금지하고 필요한 필기구를 시험장에서 지급하기로 결정.
+    en: To guard against miniature cameras, Korea bans personal stationery other than black pencils in the College Scholastic Ability Test and decides to supply the remaining items at test sites.
+    glyph: { ko: 필기구, en: PENCIL }
+    sources:
+      - *measures
+  - date: 2026-11-19
+    ko: 교육부, 11월 19일 수능에서 전자기기 관련 부정행위 111건을 적발했으며 이 중 5건에서 기기 사용을 확인했다고 20일 발표.
+    en: On November 20, Korea’s Ministry of Education reports 111 electronic device violations in the November 19 exam, including five cases of device use.
+    glyph: { ko: 111건, en: "111" }
+    sources:
+      - *results
+  - date: 2026-11-20
+    ko: 교육부와 한국대학교육협의회, 대학 46곳의 스마트기기 부정행위 대응을 점검하고 대학별고사 긴급 대응반을 구성.
+    en: The Ministry of Education and the Korean Council for University Education review anti-cheating measures at 46 universities and set up a task force for university-run entrance exams.
+    glyph: { ko: 대응반, en: "TASK\nFORCE" }
+    sources:
+      - url: https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=294&boardSeq=107745&lev=0&m=020402&s=moe
+        title: 교육부, 대학별고사 관련 부정행위 대응방안 점검 및 긴급 대응체계 구축
+        publisher: 교육부
+ko:
+  kicker: 한국
+  title: 수능 시험장의 전자기기
+  lede: 세무사 시험 부정행위가 드러난 뒤 정부는 수능 시험장에 필기구를 지급하고 위급재난문자로 제출하지 않은 전자기기를 찾았다. 전체 적발 111건 중 54건이 재난문자로 드러났다.
+en:
+  kicker: Korea
+  title: Electronic Devices at Korea’s Entrance Exam
+  lede: After cheating came to light in the tax accountant exam, Korea supplied stationery at national college entrance exam sites and sent emergency alerts to detect devices that had not been handed in. The alerts revealed 54 of the 111 recorded violations.
+  glyph: EXAM

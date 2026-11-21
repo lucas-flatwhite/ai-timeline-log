@@ -2,8 +2,9 @@ id: 2023-10-chip-rules
 date: 2023-10-17
 span:
   from: 2023-10
-  to: 2024-12
+  to: 2026-11
 added: 2026-11-02
+updated: 2026-11-21
 topics: [compute, rules]
 print:
   pattern: h
@@ -44,11 +45,19 @@ items:
       - url: https://www.bloomberg.com/news/articles/2024-12-02/us-tightens-curbs-on-china-s-access-to-ai-memory-and-chips-tools
         title: US Tightens Curbs on China’s Access to AI Memory, Chip Tools
         publisher: Bloomberg
+  - date: 2026-11-19
+    ko: 미국, 중국 등 지정 지역에 본사나 최종 모회사를 둔 업체에 일정 규모 이상의 원격 연산을 제공하는 데이터센터에 첨단 칩을 공급할 때 허가를 요구하는 규칙 시행.
+    en: A U.S. rule takes effect requiring licenses to supply advanced chips to data centers that provide significant remote compute to firms whose headquarters or ultimate parent is in China or another designated jurisdiction.
+    glyph: { ko: 원격, en: REMOTE }
+    sources:
+      - url: https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm
+        title: Addressing Remote Access to Advanced Semiconductors
+        publisher: Bureau of Industry and Security
 ko:
   kicker: 칩 통제
   title: 막힌 우회로
-  lede: 미국은 2022년 10월 첨단 AI 칩의 중국 수출을 막았다. 엔비디아가 성능을 낮춘 중국용 칩으로 길을 찾자, 1년 뒤 미국은 그 칩까지 막았다.
+  lede: 미국은 2022년 10월 첨단 AI 칩의 중국 수출을 막았다. 엔비디아가 성능을 낮춘 중국용 칩으로 길을 찾자, 1년 뒤 미국은 그 칩까지 막았다. 2026년에는 데이터센터가 제공하는 원격 연산까지 허가 요건에 반영했다.
 en:
   kicker: "Chip Controls"
   title: "Closing the Workaround"
-  lede: "In October 2022, the U.S. barred exports of advanced AI chips to China. When NVIDIA answered with toned-down chips made for China, the U.S. blocked those too a year later."
+  lede: "In October 2022, the U.S. barred exports of advanced AI chips to China. When NVIDIA answered with toned-down chips made for China, the U.S. blocked those too a year later. In 2026, it made remote compute access a factor in chip licensing."
