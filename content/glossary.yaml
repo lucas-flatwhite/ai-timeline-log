@@ -441,6 +441,9 @@
 - { ko: "리만 가설", en: "Riemann Hypothesis", source: "https://alpo.ge/remark.pdf" }
 - { ko: "일반화 리만 가설", en: "Generalized Riemann Hypothesis", source: "https://alpo.ge/remark.pdf" }
 - { ko: "Lean FRO", en: "Lean FRO", source: "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" }
+- { ko: "Mathlib", en: "Mathlib", source: "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" }
 - { ko: "Mathlib Initiative", en: "Mathlib Initiative", source: "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" }
+- { ko: "디리클레 L-함수", en: "Dirichlet L-functions", source: "https://math.mit.edu/~drew/grh/" }
+- { ko: "Gemini 4", en: "Gemini 4", source: "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/" }
 - { ko: "Google Quantum AI", en: "Google Quantum AI", source: "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/" }
 - { ko: "Jakub Pachocki", en: "Jakub Pachocki", source: "https://openai.com/index/perplexity-and-intelligence/" }

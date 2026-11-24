@@ -20,7 +20,7 @@ sources:
     publisher: Levent Alpöge
   - &lean-fro
     url: https://leanprover-community.github.io/blog/posts/riemann-hypothesis/
-    title: Joint statement on Levent Alpöge’s proof of the Riemann Hypothesis
+    title: Lean verification of the Riemann Hypothesis
     publisher: Lean FRO and Mathlib Initiative
   - &quantum
     url: https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/

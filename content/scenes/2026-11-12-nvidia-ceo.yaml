@@ -67,9 +67,9 @@ items:
       - *reinstatement-8k
 ko:
   kicker: 경영
-  title: 엔비디아의 CEO 교체
+  title: 엔비디아 CEO의 사임과 복귀
   lede: 엔비디아 이사회는 11월 8일 젠슨 황이 외국 정보 활동의 표적이 됐다는 보도를 두고 독립 조사를 시작했다. 11월 12일 창업 뒤 33년 동안 회사를 이끈 황의 즉시 사임과 임시 CEO 체제를 발표했으나, 11일 만인 11월 23일 미국 정부 고위층 의견을 들은 뒤 만장일치로 황을 복귀시켰다고 밝혔다.
 en:
   kicker: "Leadership"
-  title: "NVIDIA Changes CEOs"
+  title: "NVIDIA’s CEO Resigns and Returns"
   lede: "On November 8, NVIDIA’s board opened an independent investigation into reporting that Jensen Huang had been the target of a foreign intelligence effort. On November 12, it announced the immediate resignation of Huang, who had led the company for 33 years since its founding, and named an interim CEO, before announcing 11 days later on November 23 that it had unanimously reinstated him after receiving input from senior U.S. officials."
