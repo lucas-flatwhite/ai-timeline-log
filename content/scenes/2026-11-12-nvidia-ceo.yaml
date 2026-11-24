@@ -2,8 +2,9 @@ id: 2026-11-nvidia-ceo
 date: 2026-11-12
 span:
   from: 2026-11-08
-  to: 2026-11-12
+  to: 2026-11-23
 added: 2026-11-13
+updated: 2026-11-24
 topics: [compute]
 print:
   pattern: d
@@ -16,6 +17,14 @@ sources:
   - url: https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors
     title: Statement From NVIDIA Board of Directors
     publisher: NVIDIA
+  - &reinstatement
+    url: https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director
+    title: NVIDIA Board Reinstates Jensen Huang as President, CEO and Board Director
+    publisher: NVIDIA
+  - &reinstatement-8k
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000090/nvda-20261122.htm
+    title: "Form 8-K (Item 5.02, dated November 22, 2026, filed November 23, 2026)"
+    publisher: SEC
 items:
   - date: 2026-11-08
     ko: 엔비디아 이사회, 젠슨 황 CEO가 외국 정보 활동의 표적이 됐다는 보도를 두고 독립 이사 위원회가 감독하는 독립 조사를 시작. 국가 안보나 회사 기밀이 유출됐다고 볼 이유는 없다고 밝혔다.
@@ -49,11 +58,18 @@ items:
       - url: https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition
         title: NVIDIA Announces CEO Transition
         publisher: NVIDIA
+  - date: 2026-11-23
+    ko: 엔비디아 이사회, 미국 정부 고위층의 의견을 들은 뒤 11월 22일 만장일치로 젠슨 황을 사장·CEO·이사로 복귀시키기로 의결했다고 23일 발표. 독립 조사는 계속하며 국가안보·수출통제 위원회를 신설했고, 콜레트 크레스는 CFO로 복귀했다.
+    en: "NVIDIA announces that its board voted unanimously on November 22 to reinstate Jensen Huang as president, CEO and director after receiving input from senior U.S. government officials, while continuing the independent investigation, forming a National Security and Export Control Committee and returning Colette Kress to CFO."
+    glyph: { ko: 복귀, en: RETURN }
+    sources:
+      - *reinstatement
+      - *reinstatement-8k
 ko:
   kicker: 경영
   title: 엔비디아의 CEO 교체
-  lede: 엔비디아 이사회는 11월 8일 젠슨 황이 외국 정보 활동의 표적이 됐다는 보도를 두고 독립 조사를 시작했다. 11월 12일에는 창업 뒤 33년 동안 회사를 이끈 황이 즉시 사임했다고 발표했고, 사임 이유는 밝히지 않았다. CFO 콜레트 크레스가 임시 CEO를 맡았다.
+  lede: 엔비디아 이사회는 11월 8일 젠슨 황이 외국 정보 활동의 표적이 됐다는 보도를 두고 독립 조사를 시작했다. 11월 12일 창업 뒤 33년 동안 회사를 이끈 황의 즉시 사임과 임시 CEO 체제를 발표했으나, 11일 만인 11월 23일 미국 정부 고위층 의견을 들은 뒤 만장일치로 황을 복귀시켰다고 밝혔다.
 en:
   kicker: "Leadership"
   title: "NVIDIA Changes CEOs"
-  lede: "On November 8, NVIDIA’s board opened an independent investigation into reporting that Jensen Huang had been the target of a foreign intelligence effort. On November 12, it announced that Huang, who had led the company for 33 years since its founding, had resigned effective immediately, without giving a reason. CFO Colette Kress became interim CEO."
+  lede: "On November 8, NVIDIA’s board opened an independent investigation into reporting that Jensen Huang had been the target of a foreign intelligence effort. On November 12, it announced the immediate resignation of Huang, who had led the company for 33 years since its founding, and named an interim CEO, before announcing 11 days later on November 23 that it had unanimously reinstated him after receiving input from senior U.S. officials."

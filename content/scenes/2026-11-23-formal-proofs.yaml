@@ -1,0 +1,71 @@
+id: 2026-11-formal-proofs
+date: 2026-11-23
+span:
+  from: 2026-11-10
+  to: 2026-11-23
+added: 2026-11-24
+topics: [science]
+print:
+  pattern: d
+  motif: grid
+  glyph: 증명
+sources:
+  - &alphaproof
+    url: https://deepmind.google/blog/introducing-alphaproof-code/
+    title: "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth"
+    publisher: Google DeepMind
+  - &alpoge
+    url: https://alpo.ge/remark.pdf
+    title: Remark
+    publisher: Levent Alpöge
+  - &lean-fro
+    url: https://leanprover-community.github.io/blog/posts/riemann-hypothesis/
+    title: Joint statement on Levent Alpöge’s proof of the Riemann Hypothesis
+    publisher: Lean FRO and Mathlib Initiative
+  - &quantum
+    url: https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/
+    title: Finding faster quantum algorithms with agents and formal verification
+    publisher: Google DeepMind
+items:
+  - date: 2026-11-10
+    ko: 구글 딥마인드, AlphaProof Code로 Signal 암호 프로토콜 구현의 핵심 보안 성질을 기계어 수준까지 Lean으로 형식 증명하고 검증 자료를 공개.
+    en: "Google DeepMind announces AlphaProof Code, formally verifying key security properties of the Signal cryptographic protocol’s implementation down to machine code in Lean, and open-sources the verification artifacts."
+    glyph: Signal
+    sources:
+      - *alphaproof
+      - url: https://google-deepmind.github.io/code-verification/
+        title: "AlphaProof Code: Verifying Signal’s Security at the Machine-Code Level"
+        publisher: Google DeepMind
+  - date: 2026-11-20
+    ko: Anthropic 연구원 Levent Alpöge, Claude와 함께 작성한 리만 가설과 디리클레 L-함수 일반화 리만 가설의 약 1,700만 줄 Lean 형식 증명을 공개.
+    en: "Anthropic researcher Levent Alpöge publishes a roughly 17-million-line Lean formal proof of the Riemann Hypothesis and the Generalized Riemann Hypothesis for Dirichlet L-functions, developed with Claude."
+    glyph: { ko: 리만, en: RIEMANN }
+    sources:
+      - *alpoge
+  - date: 2026-11-21
+    ko: Lean FRO와 Mathlib Initiative, Alpöge의 리만 가설 증명이 Mathlib 정의와 일치하고 Lean 공식 커널과 독립 검증기를 통과했다고 공동 인증.
+    en: "The Lean FRO and the Mathlib Initiative jointly certify that Alpöge’s proof matches Mathlib’s statement of the Riemann Hypothesis and passes both Lean’s official kernel and independent checkers."
+    glyph: { ko: 인증, en: CERTIFY }
+    sources:
+      - *lean-fro
+      - url: https://math.mit.edu/~drew/grh/
+        title: Verification files for the Lean proof of the Riemann Hypothesis
+        publisher: Andrew Sutherland, MIT
+  - date: 2026-11-23
+    ko: 구글 딥마인드와 Google Quantum AI, Gemini 4 에이전트 팀과 Lean 형식 검증으로 핵융합·광화학·약물 대사 양자 회로의 연산 비용을 줄였다고 발표하고 Lean 라이브러리를 공개.
+    en: "Google DeepMind and Google Quantum AI report that Gemini 4 agent teams paired with Lean formal verification reduced computing costs for fusion, photochemistry and drug-metabolism quantum circuits, and open-source their Lean library."
+    glyph: { ko: 양자, en: QUANTUM }
+    sources:
+      - *quantum
+      - url: https://github.com/google-deepmind/formal-quantum-computation
+        title: formal-quantum-computation
+        publisher: Google DeepMind
+ko:
+  kicker: 형식 검증
+  title: 기계가 검사한 증명
+  lede: AI가 보안 코드와 수학 난제, 양자 회로를 형식 증명 언어 Lean으로 증명해 내놓았다. 리만 가설 증명은 1,700만 줄 규모로 Lean 커뮤니티의 기계 검증을 통과했으나, 사람이 이해하고 단순화하는 작업과 수학계의 공식 평가는 남아 있다.
+en:
+  kicker: Formal Verification
+  title: Proofs Checked by Machine
+  lede: AI systems produced proofs in the formal language Lean across security code, pure mathematics and quantum circuits. A 17-million-line proof of the Riemann Hypothesis passed machine checks by the Lean community, while human reading, simplification and formal mathematical recognition remain ahead.
+  glyph: PROOF
