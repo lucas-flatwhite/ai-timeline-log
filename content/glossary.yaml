@@ -434,3 +434,16 @@
 - { ko: "Jalapeño", en: "Jalapeño", source: "https://openai.com/index/advancing-chip-design-with-our-models/" }
 - { ko: "Architect Labs", en: "Architect Labs", source: "https://architectlabs.com/" }
 - { ko: "Frostbite", en: "Frostbite", source: "https://architectlabs.com/blog/frostbite" }
+- { ko: "국가안보·수출통제 위원회", en: "National Security and Export Control Committee", source: "https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director" }
+- { ko: "AlphaProof Code", en: "AlphaProof Code", source: "https://deepmind.google/blog/introducing-alphaproof-code/" }
+- { ko: "Signal", en: "Signal", source: "https://deepmind.google/blog/introducing-alphaproof-code/" }
+- { ko: "Levent Alpöge", en: "Levent Alpöge", source: "https://alpo.ge/remark.pdf" }
+- { ko: "리만 가설", en: "Riemann Hypothesis", source: "https://alpo.ge/remark.pdf" }
+- { ko: "일반화 리만 가설", en: "Generalized Riemann Hypothesis", source: "https://alpo.ge/remark.pdf" }
+- { ko: "Lean FRO", en: "Lean FRO", source: "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" }
+- { ko: "Mathlib", en: "Mathlib", source: "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" }
+- { ko: "Mathlib Initiative", en: "Mathlib Initiative", source: "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" }
+- { ko: "디리클레 L-함수", en: "Dirichlet L-functions", source: "https://math.mit.edu/~drew/grh/" }
+- { ko: "Gemini 4", en: "Gemini 4", source: "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/" }
+- { ko: "Google Quantum AI", en: "Google Quantum AI", source: "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/" }
+- { ko: "Jakub Pachocki", en: "Jakub Pachocki", source: "https://openai.com/index/perplexity-and-intelligence/" }

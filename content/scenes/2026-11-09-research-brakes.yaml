@@ -2,9 +2,9 @@ id: 2026-11-research-brakes
 date: 2026-11-09
 span:
   from: 2026-11-04
-  to: 2026-11-12
+  to: 2026-11-22
 added: 2026-11-10
-updated: 2026-11-13
+updated: 2026-11-24
 topics: [safety, rules]
 print:
   pattern: c
@@ -20,6 +20,10 @@ sources:
   - url: https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/
     title: Coalition of Nonprofits Files Landmark Lawsuit to Stop Development of Advanced AI Systems at Anthropic, Google, Meta, OpenAI, and SpaceXSI that Proliferate Bioweapons and Cyberattacks
     publisher: Public Citizen
+  - &perplexity
+    url: https://openai.com/index/perplexity-and-intelligence/
+    title: Perplexity and Intelligence
+    publisher: OpenAI
 items:
   - date: 2026-11-04
     ko: OpenAI, 내부 모델 GPT-6 Astra가 안전 연구로 표현된 코딩 과제에서 같은 과제를 역량 연구로 표현했을 때보다 일을 약 40% 덜 했다고 공개. 감시 체계는 이를 사람 검토 대상으로 올리지 않았다.
@@ -56,12 +60,18 @@ items:
       - url: https://www.citizen.org/news/coalition-of-nonprofits-files-landmark-lawsuit-to-stop-development-of-advanced-ai-systems-at-anthropic-google-meta-openai-and-spacexsi-that-proliferate-bioweapons-and-cyberattacks/
         title: Coalition of Nonprofits Files Landmark Lawsuit to Stop Development of Advanced AI Systems at Anthropic, Google, Meta, OpenAI, and SpaceXSI that Proliferate Bioweapons and Cyberattacks
         publisher: Public Citizen
+  - date: 2026-11-22
+    ko: OpenAI 수석과학자 Jakub Pachocki, 사내 코드베이스 기준 사전학습 로그 퍼플렉시티 추이를 처음 공개하고 감시 도구가 따라잡을 때까지 개발사들이 넘지 않을 공동 한계선을 제안.
+    en: "OpenAI Chief Scientist Jakub Pachocki publishes OpenAI’s internal pretraining log-perplexity trajectory for the first time and proposes shared development limits that labs commit not to cross until monitoring tools catch up."
+    glyph: { ko: 한계선, en: LIMITS }
+    sources:
+      - *perplexity
 ko:
   kicker: 통제
   title: 연구 모델에 거는 제동
-  lede: OpenAI는 내부 모델이 안전 연구 과제를 덜 수행했다고 공개한 지 닷새 만에 연구용 모델을 한곳에서 멈추는 시스템을 내놓았다. 같은 날 Anthropic은 새 모델에서 AI 개발을 가장 직접 앞당길 연구 역량을 Claude Opus 5.5와 비슷한 수준으로 묶었다. 사흘 뒤에는 비영리 단체 4곳이 법원에 가장 앞선 AI 시스템의 개발 동결을 청구했다.
+  lede: OpenAI는 내부 모델이 안전 연구 과제를 덜 수행했다고 공개한 지 닷새 만에 연구용 모델을 한곳에서 멈추는 시스템을 내놓았다. 같은 날 Anthropic은 새 모델에서 AI 개발을 가장 직접 앞당길 연구 역량을 Claude Opus 5.5와 비슷한 수준으로 묶었다. 사흘 뒤에는 비영리 단체 4곳이 법원에 최첨단 AI 개발 동결을 청구했고, 11월 22일 OpenAI 수석과학자는 사내 사전학습 손실 추이를 공개하며 개발사 공동 한계선을 제안했다.
 en:
   kicker: "Control"
   title: "Brakes on Research Models"
-  lede: "Five days after disclosing that an internal model did less of the work on safety research, OpenAI introduced a system to halt research models from one place. The same day, Anthropic held the research skills in its new model that could most directly speed up AI development to about the level of Claude Opus 5.5. Three days later, four nonprofits asked a court to freeze development of the most advanced AI systems."
+  lede: "Five days after disclosing that an internal model did less of the work on safety research, OpenAI introduced a system to halt research models from one place. The same day, Anthropic held the research skills in its new model that could most directly speed up AI development to about the level of Claude Opus 5.5. Three days later, four nonprofits asked a court to freeze development of the most advanced AI systems, and on November 22 OpenAI’s chief scientist disclosed internal pretraining loss curves and proposed shared development limits."
   glyph: "BRAKE"

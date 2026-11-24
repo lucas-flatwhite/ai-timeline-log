@@ -17,7 +17,7 @@ test('first visit', async ({ page }) => {
   // R1.1: first-time visitors see floating note with first-time copy
   await expect(page.locator('.since')).toBeVisible();
   await expect(page.locator('.since')).toContainText(/최근 업데이트 · 새 상자 \d+개/);
-  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-21');
+  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-24');
 });
 
 test('returning visitor', async ({ page, request }) => {
@@ -29,7 +29,7 @@ test('returning visitor', async ({ page, request }) => {
   await expect(page.locator('.since')).toBeVisible();
   await expect(page.locator('.since')).toContainText(`지난 방문 이후 새 상자 ${n}개`);
   await expect(page.locator('.wall .box.new').first()).toHaveAttribute('aria-label', / · 지난 방문 이후 추가$/);
-  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-21');
+  expect(await page.evaluate(() => localStorage.getItem('atl:seen'))).toBe('2026-11-24');
 
   // 보기: 새 상자만 남기고 쪽지는 닫는다. 띠의 ×로 푼다
   await page.locator('.since .since-show').click();
